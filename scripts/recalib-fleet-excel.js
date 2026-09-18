@@ -245,7 +245,8 @@ function writeGarage(cars) {
     'var GARAGE = '
   ].join('\n');
   fs.writeFileSync(OUT_JS, header + JSON.stringify(cars, null, 2) +
-    ';\n\nif (typeof module !== "undefined" && module.exports) {\n  module.exports = GARAGE;\n}\n');
+    ';\n\nif (typeof module !== "undefined" && module.exports) {\n  module.exports = GARAGE;\n}\n' +
+    'if (typeof window !== "undefined") {\n  window.VB_POWERCURVE_GARAGE = GARAGE;\n} else if (typeof globalThis !== "undefined") {\n  globalThis.VB_POWERCURVE_GARAGE = GARAGE;\n}\n');
 }
 
 function main() {
