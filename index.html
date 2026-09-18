@@ -21,6 +21,7 @@
       <div class="header-credit">Created by <em>Jorge Guerra</em> · Hub: guerra-tools-hub</div>
     </header>
 
+    <!-- 2-column only: garage | instruments+graphs+TimeSlip (no right-rail slip) -->
     <div class="grid">
       <!-- LEFT: vehicle / env -->
       <aside class="card panel-garage">
@@ -151,8 +152,11 @@
         <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>
 
-        <div class="card-title slip-title">Time Slip</div>
-        <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
+        <!-- Time Slip: FULL WIDTH under dyno/speed graphs (center column). NOT a right-rail. -->
+        <section class="slip-block" aria-label="Quarter-mile time slip">
+          <div class="card-title slip-title">Time Slip</div>
+          <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
+        </section>
 
         <p class="disclaimer" style="margin-top:12px">
           Estimates for comparison only — not dyno- or track-certified. Physics uses real gearing + RPM + shift points

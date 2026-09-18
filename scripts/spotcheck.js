@@ -1,5 +1,5 @@
 /**
- * VelocityBench PowerCurve — VERIFY spot-check harness (Phase 4)
+ * VelocityBench PowerCurve — VERIFY spot-check harness (Phase 4 retip)
  *
  * Fleet sample + curated VERIFY cars. tireType ALWAYS explicit.
  * Weather: 70°F / 45% RH / 29.92 inHg, calm wind, launch=auto.

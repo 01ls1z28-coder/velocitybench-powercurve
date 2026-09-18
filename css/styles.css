@@ -132,6 +132,8 @@ body {
 }
 .header-credit em { color: var(--brass-text); font-style: normal; font-weight: 600; }
 
+/* 2-column layout ONLY — garage | main (instruments + graphs + Time Slip under graphs).
+   No right-rail Time Slip column (removed in Phase 4 / retip). */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
@@ -383,7 +385,21 @@ body {
   word-break: break-word;
   scrollbar-width: thin;
 }
-.slip-title { margin-top: 16px; }
+.slip-title { margin-top: 12px; }
+
+/* Time Slip — full width under center instruments/graphs column (not a side rail) */
+.slip-block {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 4px;
+  clear: both;
+}
+.panel-main .slip-block .slip {
+  width: 100%;
+  max-width: 100%;
+}
+
 .slip .slip-head { color: var(--accent); font-weight: 700; text-align: center; }
 .slip .dim { color: var(--text-dim); }
 .slip .hi { color: var(--lime); font-weight: 700; }

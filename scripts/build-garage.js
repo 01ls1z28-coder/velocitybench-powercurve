@@ -1,7 +1,7 @@
 /**
  * Phase 4 — bake 333-car PowerCurve garage from Excel import + VelocityBench garage-data.
  * Merges Cd/area/loss/tire/drive/FI/EV/TX from VB; synthesizes gears/curves/RPM; calibrates
- * loss + forceScale toward Jorge's 0-60 / ¼ / 60-130 targets (trap-first).
+ * loss + forceScale + TireType + launchRpm toward Jorge's 0-60 / ¼ / 60-130 (trap-first).
  *
  *   node scripts/build-garage.js
  */
@@ -149,10 +149,14 @@ function guessRpmBand(hp, isEv, isFI, year, name) {
 }
 
 function guessCdArea(vb, weightLbs, name, isEv) {
+  var n = (name || '').toLowerCase();
+  // Motorcycles / sportbikes — tiny frontal area (Excel trap otherwise impossible)
+  if (/ninja|hayabusa|yamaha|suzuki gsx|honda cbr|kawasaki|ducati|bmw s1000|motorcycle|bike\b/.test(n)) {
+    return { cd: 0.45, area: 6.8 };
+  }
   if (vb && vb.DragCoefficient && vb.FrontalAreaSqFt) {
     return { cd: vb.DragCoefficient, area: vb.FrontalAreaSqFt };
   }
-  var n = (name || '').toLowerCase();
   if (/truck|f-150|silverado|ram /.test(n)) return { cd: 0.44, area: 32 };
   if (/suv|tahoe|suburban|urus|cayenne/.test(n)) return { cd: 0.36, area: 28 };
   if (isEv) return { cd: 0.24, area: 23.5 };
@@ -233,14 +237,29 @@ var TOL = { z60: 0.25, et: 0.25, trap: 2.5, z60130: 0.75 };
 
 function cost(sim, tgt) {
   var c = 0;
-  if (tgt.trap != null && sim.trap != null) c += Math.abs(sim.trap - tgt.trap) / TOL.trap * 4;
-  if (tgt.et != null && sim.et != null) c += Math.abs(sim.et - tgt.et) / TOL.et * 3;
-  if (tgt.z60130 != null && sim.z60130 != null) c += Math.abs(sim.z60130 - tgt.z60130) / TOL.z60130 * 1.5;
-  if (tgt.z60 != null && sim.z60 != null) c += Math.abs(sim.z60 - tgt.z60) / TOL.z60 * 1;
-  // Penalties if missing metrics the target has
-  if (tgt.et != null && sim.et == null) c += 50;
-  if (tgt.trap != null && sim.trap == null) c += 50;
+  var hits = 0;
+  var applicable = 0;
+  function add(key, w, tol) {
+    if (tgt[key] == null) return;
+    applicable++;
+    if (sim[key] == null) { c += 50; return; }
+    var err = Math.abs(sim[key] - tgt[key]);
+    c += (err / tol) * w;
+    if (err <= tol) hits++;
+  }
+  // Trap-first, then ET, then 0-60 (raised weight), then 60-130
+  add('trap', 4, TOL.trap);
+  add('et', 3, TOL.et);
+  add('z60', 2.5, TOL.z60);
+  add('z60130', 1.5, TOL.z60130);
+  // Prefer more in-tolerance hits (pushes all-applicable rate)
+  c -= hits * 3.0;
+  c += (applicable - hits) * 1.25;
   return c;
+}
+
+function countHits(h) {
+  return (h.et ? 1 : 0) + (h.trap ? 1 : 0) + (h.z60 ? 1 : 0) + (h.z60130 ? 1 : 0);
 }
 
 function hitFlags(sim, tgt) {
@@ -274,69 +293,108 @@ function runSim(car) {
   };
 }
 
-function calibrateCar(car, tgt) {
-  var best = { loss: car.drivetrainLossPercent, forceScale: car.forceScale || 1, cost: Infinity, sim: null };
-  var lossLo = car.isEv ? 0 : 2, lossHi = 32;
-  var baseLoss = car.drivetrainLossPercent != null ? car.drivetrainLossPercent : 15;
+function better(best, cand) {
+  if (!best || cand.cost < best.cost - 1e-9) return cand;
+  if (Math.abs(cand.cost - best.cost) < 1e-9 && cand.nh > best.nh) return cand;
+  return best;
+}
 
-  // Coarse grid on loss, then refine; optional forceScale if still off
+function trial(car, tgt, loss, fs, tire, launch, best) {
+  car.drivetrainLossPercent = loss;
+  car.forceScale = fs;
+  car.tireType = tire;
+  if (launch != null) car.launchRpm = launch;
+  var sim = runSim(car);
+  var h = hitFlags(sim, tgt);
+  var cand = {
+    loss: loss,
+    forceScale: fs,
+    tireType: tire,
+    launchRpm: car.launchRpm,
+    cost: cost(sim, tgt),
+    sim: sim,
+    hits: h,
+    nh: countHits(h)
+  };
+  return better(best, cand);
+}
+
+function allHit(h) {
+  return !!(h && h.et && h.trap && h.z60 && h.z60130);
+}
+
+function calibrateCar(car, tgt) {
+  var lossLo = 0, lossHi = 32;
+  var baseLoss = car.drivetrainLossPercent != null ? car.drivetrainLossPercent : 15;
+  var seedTire = car.tireType | 0;
+  var baseLaunch = car.launchRpm != null ? car.launchRpm : 3000;
+  var best = null;
+
+  // Phase 1 — coarse loss on seed tire @ forceScale=1 (fast path for most of fleet)
   var losses = [];
   for (var L = lossLo; L <= lossHi; L += 2) losses.push(L);
   if (losses.indexOf(Math.round(baseLoss)) < 0) losses.push(Math.round(baseLoss));
   losses.sort(function (a, b) { return a - b; });
-
-  losses.forEach(function (loss) {
-    car.drivetrainLossPercent = loss;
-    car.forceScale = 1;
-    var sim = runSim(car);
-    var c = cost(sim, tgt);
-    if (c < best.cost) best = { loss: loss, forceScale: 1, cost: c, sim: sim };
-  });
-
-  // Fine search around best loss
-  var fineCenter = best.loss;
-  for (var d = -1.5; d <= 1.5; d += 0.5) {
-    var loss = Math.max(lossLo, Math.min(lossHi, +(fineCenter + d).toFixed(1)));
-    car.drivetrainLossPercent = loss;
-    car.forceScale = 1;
-    var sim2 = runSim(car);
-    var c2 = cost(sim2, tgt);
-    if (c2 < best.cost) best = { loss: loss, forceScale: 1, cost: c2, sim: sim2 };
+  for (var li = 0; li < losses.length; li++) {
+    best = trial(car, tgt, losses[li], 1, seedTire, baseLaunch, best);
   }
 
-  // Nudge forceScale when trap/ET still off (common when loss hits floor)
-  var hits = best.sim ? hitFlags(best.sim, tgt) : {};
-  if (!hits.et || !hits.trap || !hits.z60) {
-    var scales = [0.72, 0.8, 0.88, 0.95, 1.05, 1.12, 1.2, 1.3, 1.4, 1.55, 1.7];
-    scales.forEach(function (fs) {
-      car.drivetrainLossPercent = best.loss;
-      car.forceScale = fs;
-      var sim3 = runSim(car);
-      var c3 = cost(sim3, tgt);
-      if (c3 < best.cost) best = { loss: best.loss, forceScale: fs, cost: c3, sim: sim3 };
-    });
+  // Phase 1b — fine loss around best
+  if (best) {
+    var lc0 = best.loss;
+    for (var d0 = -1.5; d0 <= 1.5; d0 += 0.5) {
+      var loss0 = Math.max(lossLo, Math.min(lossHi, +(lc0 + d0).toFixed(1)));
+      best = trial(car, tgt, loss0, 1, seedTire, baseLaunch, best);
+    }
   }
 
-  // Tire bump if launch-limited (0-60 slow, trap OK-ish)
-  if (best.sim && tgt.z60 != null && best.sim.z60 != null &&
-      best.sim.z60 - tgt.z60 > TOL.z60 && (car.tireType | 0) === 0) {
-    var prevTire = car.tireType;
-    car.tireType = 3; // Summer
-    car.drivetrainLossPercent = best.loss;
-    car.forceScale = best.forceScale;
-    var sim4 = runSim(car);
-    var c4 = cost(sim4, tgt);
-    if (c4 < best.cost) {
-      best = { loss: best.loss, forceScale: best.forceScale, cost: c4, sim: sim4, tireType: 3 };
-    } else {
-      car.tireType = prevTire;
+  // Phase 2 — forceScale joint at best loss (trap / ET / 0-60 balance)
+  var scales = [0.75, 0.85, 0.92, 1.0, 1.08, 1.15, 1.25, 1.35, 1.5, 1.7];
+  if (best && !allHit(best.hits)) {
+    var lc = best.loss;
+    for (var d = -2; d <= 2; d += 1) {
+      var loss = Math.max(lossLo, Math.min(lossHi, lc + d));
+      for (var si = 0; si < scales.length; si++) {
+        best = trial(car, tgt, loss, scales[si], best.tireType, baseLaunch, best);
+      }
+    }
+  }
+
+  // Phase 3 — TireType ladder only when still missing (launch-limited or trap-skewed)
+  if (best && !allHit(best.hits)) {
+    var tireLadder = [3, 4, 1, 2, 0].filter(function (t) { return t !== (best.tireType | 0); });
+    var lc2 = best.loss;
+    var fs2 = best.forceScale;
+    for (var ti = 0; ti < tireLadder.length; ti++) {
+      var tire = tireLadder[ti];
+      // loss band × a few scales at this tire
+      for (var d2 = -3; d2 <= 3; d2 += 1.5) {
+        var loss2 = Math.max(lossLo, Math.min(lossHi, +(lc2 + d2).toFixed(1)));
+        best = trial(car, tgt, loss2, fs2, tire, baseLaunch, best);
+        best = trial(car, tgt, loss2, 1.0, tire, baseLaunch, best);
+        best = trial(car, tgt, loss2, 1.2, tire, baseLaunch, best);
+        best = trial(car, tgt, loss2, 0.9, tire, baseLaunch, best);
+      }
+      if (allHit(best.hits) && best.cost < 1.0) break;
+    }
+  }
+
+  // Phase 4 — launchRpm knobs when 0-60 still off (static-baked)
+  if (best && best.hits && !best.hits.z60) {
+    var launchDeltas = [-600, -400, -200, 200, 400, 600, 800];
+    for (var di = 0; di < launchDeltas.length; di++) {
+      var lr = Math.max(800, Math.min(5500, baseLaunch + launchDeltas[di]));
+      best = trial(car, tgt, best.loss, best.forceScale, best.tireType, lr, best);
+      best = trial(car, tgt, best.loss, Math.max(0.7, +(best.forceScale - 0.1).toFixed(3)), best.tireType, lr, best);
+      best = trial(car, tgt, best.loss, Math.min(1.7, +(best.forceScale + 0.1).toFixed(3)), best.tireType, lr, best);
     }
   }
 
   car.drivetrainLossPercent = +Number(best.loss).toFixed(1);
   car.forceScale = +Number(best.forceScale).toFixed(3);
-  if (best.tireType != null) car.tireType = best.tireType;
-  return { best: best, hits: hitFlags(best.sim || {}, tgt) };
+  car.tireType = best.tireType | 0;
+  if (best.launchRpm != null) car.launchRpm = Math.round(best.launchRpm);
+  return { best: best, hits: best.hits || hitFlags(best.sim || {}, tgt) };
 }
 
 function buildCar(row, vb) {

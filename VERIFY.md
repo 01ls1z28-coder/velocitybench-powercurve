@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 4)
+# VelocityBench PowerCurve — VERIFY (Phase 4 retip — keep calibrating)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
 
@@ -24,17 +24,17 @@ Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechan
 
 ## Fleet calibration (Excel import)
 
-Source: `/workspace/powercurve-garage-import.json` (333 cars) merged with VelocityBench `garage-data.js` (Cd / area / loss seed / TireType / drive / FI·EV / TX). Gaps filled with class-aware gears, tire radius, RPM bands, and synthesized (or curated) torque curves. Per-car **loss** + **forceScale** (+ tire bump when needed) tuned **trap-first** toward Jorge’s 0-60 / ¼ / 60-130 targets.
+Source: `/workspace/powercurve-garage-import.json` (333 cars) merged with VelocityBench `garage-data.js` (Cd / area / loss seed / TireType / drive / FI·EV / TX). Gaps filled with class-aware gears, tire radius, RPM bands, and synthesized (or curated) torque curves. Per-car **loss** + **forceScale** + **TireType** ladder + **launchRpm** knobs tuned **trap-first** (raised 0-60 weight, hit-count bonus) toward Jorge’s 0-60 / ¼ / 60-130 targets.
 
 **Tolerances:** ET ≤ 0.25 s · trap ≤ 2.5 mph · 0-60 ≤ 0.25 s · 60-130 ≤ 0.75 s.
 
-| Metric | Hits | Rate |
-|--------|------|------|
-| ¼ ET | 268/328 | **81.7%** |
-| ¼ trap | 220/328 | **67.1%** |
-| 0–60 | 218/332 | **65.7%** |
-| 60–130 (numeric targets only; many Excel rows are `n/a`) | 59/77 | **76.6%** |
-| All applicable within tol | 151/333 | **45.3%** |
+| Metric | Hits | Rate | vs a0afdac |
+|--------|------|------|------------|
+| ¼ ET | 317/328 | **96.6%** | was 81.7% |
+| ¼ trap | 260/328 | **79.3%** | was 67.1% |
+| 0–60 | 291/332 | **87.7%** | was 65.7% |
+| 60–130 (numeric targets only; many Excel rows are `n/a`) | 62/77 | **80.5%** | was 76.6% |
+| All applicable within tol | 211/333 | **63.4%** | was 45.3% |
 
 Full per-car residuals: `scripts/garage-calib-meta.json`. Rebuild: `node scripts/build-garage.js`.
 
@@ -61,14 +61,14 @@ Full per-car residuals: `scripts/garage-calib-meta.json`. Rebuild: `node scripts
 
 | Vehicle | Tire (tireType) | Excel target | Sim (tip) |
 |---------|-----------------|--------------|-----------|
-| 2020 Ford Mustang GT | Street (0) | 0-60 3.8 · 12.1 @ 119 · 60-130 11.1 | 3.910 · **12.130 @ 117.2** · 11.234 |
-| 1994 Toyota Supra Twin Turbo | Drag Radial (1) | 4.6 · 13.1 @ 108 | 4.366 · **12.937 @ 107.2** · 60-130 16.411 |
-| 1965 Shelby Cobra 427 | Drag Radial (1) | 4.3 · 12.2 @ 120 | 3.659 · **12.145 @ 114.6** · 13.538 |
-| 2023 Mazda MX-5 Miata Club | Street (0) | 5.7 · 14.3 @ 96 | 5.610 · **14.319 @ 94.1** |
-| 2021 Dodge Charger Hellcat Redeye | Drag Radial (1) | 3.6 · 11.5 @ 128 · 60-130 8.1 | 3.207 · **11.281 @ 126.7** · 8.723 |
-| 2020 Mustang Shelby GT500 | Drag Radial (1) | 3.4 · 11.3 @ 132 · 60-130 7.6 | 3.160 · **11.006 @ 130.9** · 7.698 |
-| 2013 Mustang Boss 302 | Street (0) | 4.3 · 12.7 @ 114 | 4.225 · **12.649 @ 112.9** |
-| 2002 Skyline GT-R R34 | Street (0) | 4.8 · 13.3 @ 107 | 4.660 · **13.263 @ 102.6** |
+| 2020 Ford Mustang GT | Street (0) | 0-60 3.8 · 12.1 @ 119 · 60-130 11.1 | 3.793 · **11.995 @ 118.4** · 10.856 |
+| 1994 Toyota Supra Twin Turbo | Drag Radial (1) | 4.6 · 13.1 @ 108 | 4.520 · **13.095 @ 106.1** · 60-130 17.078 |
+| 1965 Shelby Cobra 427 | Street (0) | 4.3 · 12.2 @ 120 | 4.046 · **12.217 @ 120.0** · 10.626 |
+| 2023 Mazda MX-5 Miata Club | Street (0) | 5.7 · 14.3 @ 96 | 5.450 · **14.177 @ 95.1** |
+| 2021 Dodge Charger Hellcat Redeye | Summer (3) | 3.6 · 11.5 @ 128 · 60-130 8.1 | 3.610 · **11.576 @ 126.9** · 8.554 |
+| 2020 Mustang Shelby GT500 | Drag Radial (1) | 3.4 · 11.3 @ 132 · 60-130 7.6 | 3.172 · **11.053 @ 130.0** · 7.887 |
+| 2013 Mustang Boss 302 | Street (0) | 4.3 · 12.7 @ 114 | 4.435 · **12.858 @ 111.6** |
+| 2002 Skyline GT-R R34 | Street (0) | 4.8 · 13.3 @ 107 | 4.797 · **13.401 @ 101.6** |
 
 ### Environmental / model (measured on tip)
 
@@ -82,7 +82,7 @@ Full per-car residuals: `scripts/garage-calib-meta.json`. Rebuild: `node scripts
 - **Playback** — always real-time (`scale = 1`); Realtime checkbox **removed**.
 - **60–130 / 100–150** — shown on time slip + live metrics strip.
 - **Weather · Wind · Converter · Advanced** — always visible (no click-to-expand).
-- **Time slip** — under the graphs (2-column layout: garage | instruments+slip).
+- **Time slip** — full-width under dyno/speed graphs in the center column (`slip-block`). **No right-rail Time Slip** (2-column: garage | instruments+graphs+slip).
 - **Gauges** — Lexus LFA–inspired dual-dial brass cluster (`js/gauges.js`).
 - **Garage** — 333 baked cars + filter; Custom Builder retained.
 
@@ -104,3 +104,4 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Excel 60-130 is `n/a` for most of the fleet (~255 cars); hit-rate for 60-130 is over the **77 numeric** targets.
 - Hardest residuals: some EVs / hypercars (Cybertruck, Regera, Jesko, Zenvo) — geared + grip model cannot fully match optimistic Excel 0-60 without breaking trap.
 - Phase 4: fleet import, always-realtime playback, 60-130/100-150 surfacing, always-open advanced, slip under graphs, LFA brass gauges.
+- Retip (keep calibrating): TireType ladder + launchRpm + joint loss×forceScale + hit-count bonus; motorcycle aero heuristic; all-applicable **63.4%** (was 45.3% at `a0afdac`). Tip `a0afdac` not cleared — Live Pages stay on `f8f725a` until Seraph clears.
