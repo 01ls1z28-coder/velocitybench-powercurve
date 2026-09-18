@@ -134,7 +134,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 280px);
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
   gap: 12px;
   align-items: start;
   min-width: 0;
@@ -234,8 +234,19 @@ body {
 .btn-run:hover { filter: brightness(1.08); }
 .btn-ghost { background: transparent; color: var(--text-muted); box-shadow: none; border: 1px solid var(--panel-border); }
 
+.garage-filter {
+  width: 100%; max-width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 7px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
 .garage-list {
-  max-height: 168px; overflow: auto;
+  max-height: 260px; overflow: auto;
   display: flex; flex-direction: column; gap: 3px;
   margin-bottom: 8px;
   min-width: 0;
@@ -284,17 +295,23 @@ body {
 }
 .live-readout strong { color: var(--accent); }
 
-.gauges {
+.gauges, .gauges.lfa-cluster {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 12px;
   min-width: 0;
+  padding: 10px 8px;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(215,196,160,0.08), transparent 60%),
+    rgba(0,0,0,0.28);
+  border-radius: var(--radius);
+  border: 1px solid rgba(215,196,160,0.18);
 }
 .gauge-wrap {
   aspect-ratio: 1;
   width: 100%;
-  max-width: 240px;
+  max-width: 280px;
   margin: 0 auto;
   min-width: 0;
 }
@@ -325,7 +342,7 @@ body {
 
 .metrics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   margin-top: 10px;
   min-width: 0;
@@ -354,10 +371,10 @@ body {
   background: rgba(0,0,0,0.45);
   border: 1px solid rgba(76,201,240,0.25);
   border-radius: var(--radius-sm);
-  padding: 12px;
+  padding: 12px 14px;
   color: #dff6ff;
-  min-height: 220px;
-  max-height: min(70vh, 560px);
+  min-height: 200px;
+  max-height: none;
   max-width: 100%;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -366,6 +383,7 @@ body {
   word-break: break-word;
   scrollbar-width: thin;
 }
+.slip-title { margin-top: 16px; }
 .slip .slip-head { color: var(--accent); font-weight: 700; text-align: center; }
 .slip .dim { color: var(--text-dim); }
 .slip .hi { color: var(--lime); font-weight: 700; }
@@ -379,29 +397,26 @@ body {
 }
 .credits a { color: var(--accent); }
 
-details.advanced, .advanced { margin-top: 10px; }
-details.advanced > summary, .advanced > summary {
-  cursor: pointer; color: var(--brass-text); font-size: 11px;
-  margin-bottom: 8px; list-style: none;
+.advanced.always-open { margin-top: 0; margin-bottom: 8px; }
+.playback-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
 }
-details.advanced > summary::-webkit-details-marker { display: none; }
 
-/* ---- Responsive: large tablet — 2-col (params | instruments+slip) ---- */
-@media (max-width: 1200px) {
+/* ---- Responsive: stack ---- */
+@media (max-width: 1100px) {
   .grid {
-    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
-  .grid > aside.card:last-child {
-    grid-column: 1 / -1;
-  }
+  .garage-list { max-height: 180px; }
   .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .slip { max-height: none; min-height: 180px; }
 }
 
 /* ---- Responsive: tablet ---- */
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
-  .grid > aside.card:last-child { grid-column: auto; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -450,17 +465,6 @@ details.advanced > summary::-webkit-details-marker { display: none; }
   .metrics { grid-template-columns: 1fr 1fr; }
 }
 
-.realtime-opt {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--text-dim);
-  cursor: pointer;
-  user-select: none;
-}
-.realtime-opt input { accent-color: var(--accent); }
 .dyno-readout {
   display: flex;
   flex-wrap: wrap;

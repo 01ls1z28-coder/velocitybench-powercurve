@@ -10,131 +10,29 @@
     return;
   }
 
-  // Baked dyno curves: HP ≈ TQ×RPM/5252 at every point; peaks match published ratings.
-  var SAMPLE_CARS = [
-    {
-      id: 'cobra65',
-      name: '1965 Shelby Cobra 427',
-      category: 'Classic Muscle',
-      // C/D curb ~2529; street 427 close-ratio Toploader; open roadster Cd~0.55
-      weightLbs: 2520, dragCoefficient: 0.55, frontalAreaSqFt: 19.5, tireRadiusInches: 13.0,
-      finalDriveRatio: 3.54, gearRatios: [2.20, 1.66, 1.31, 1.00],
-      // ~425 hp @ 6000 / ~480 lb-ft @ 3500 (street 427)
-      torqueCurve: {1500:380,2000:420,2500:450,3000:470,3500:480,4000:475,4500:460,5000:430,5500:400,6000:372,6500:330},
-      isNA: true, driveType: 'RWD', shiftRpm: 6200, launchRpm: 3000, redline: 6500,
-      drivetrainLossPercent: 15, peakHp: 425, peakTqRpm: 3500, peakHpRpm: 6000, txKey: 'Toploader_4'
-    },
-    {
-      id: 'charger70',
-      name: '1970 Dodge Charger R/T 440',
-      category: 'Classic Muscle',
-      weightLbs: 3877, dragCoefficient: 0.50, frontalAreaSqFt: 23.8, tireRadiusInches: 13.7,
-      finalDriveRatio: 3.23, gearRatios: [2.45, 1.45, 1.00],
-      // 375 hp @ 4600 / 480 lb-ft @ 3200 Magnum
-      torqueCurve: {1500:380,2000:420,2500:450,3000:475,3200:480,3500:475,4000:460,4500:440,4600:428,5000:400,5500:360,5800:330},
-      isNA: true, driveType: 'RWD', shiftRpm: 5200, launchRpm: 2200, redline: 5800,
-      drivetrainLossPercent: 18, peakHp: 375, peakTqRpm: 3200, peakHpRpm: 4600, txKey: 'TH400_3',
-      hasAftermarketConverter: true, stallRpm: 2800, flashRpm: 3200
-    },
-    {
-      id: 'supra94',
-      name: '1994 Toyota Supra Turbo',
-      category: 'JDM',
-      // USDM turbo MT curb ~3450; Cd~0.32; V160 FD 3.133; 255/40R17 → r≈12.5
-      weightLbs: 3450, dragCoefficient: 0.32, frontalAreaSqFt: 21.0, tireRadiusInches: 12.5,
-      finalDriveRatio: 3.133, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
-      // USDM 2JZ-GTE: 320 hp @ 5600 / 315 lb-ft @ 4000
-      torqueCurve: {2000:185,2500:230,3000:275,3500:300,4000:315,4500:310,5000:305,5500:302,5600:300,6000:275,6500:250,7000:225},
-      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-      shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12,
-      peakHp: 320, peakTqRpm: 4000, peakHpRpm: 5600, txKey: 'Aisin_6'
-    },
-    {
-      id: 'r34',
-      name: '2002 Nissan Skyline GT-R R34',
-      category: 'JDM',
-      // JDM curb ~1540 kg; Getrag 6-spd (not Supra V160); 245/40R18 → r≈12.9
-      weightLbs: 3395, dragCoefficient: 0.34, frontalAreaSqFt: 21.5, tireRadiusInches: 12.9,
-      finalDriveRatio: 3.545, gearRatios: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634],
-      // RB26 claimed 276 hp @ 6800 / 289 lb-ft @ 4400
-      torqueCurve: {2500:200,3000:230,3500:260,4000:280,4400:289,5000:275,5500:255,6000:235,6500:220,6800:213,7000:205,7500:185,8000:165},
-      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',
-      shiftRpm: 7600, launchRpm: 3500, redline: 8000, drivetrainLossPercent: 14,
-      peakHp: 276, peakTqRpm: 4400, peakHpRpm: 6800, txKey: 'Getrag_R34'
-    },
-    {
-      id: 'boss302',
-      name: '2013 Mustang Boss 302',
-      category: 'Modern Muscle',
-      weightLbs: 3631, dragCoefficient: 0.36, frontalAreaSqFt: 22.7, tireRadiusInches: 13.4,
-      finalDriveRatio: 3.73, gearRatios: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65],
-      // 444 hp @ 7400 / 380 lb-ft @ 4500
-      torqueCurve: {2000:250,2500:280,3000:310,3500:340,4000:365,4500:380,5000:375,5500:360,6000:345,6500:330,7000:320,7400:315,7500:300},
-      isNA: true, driveType: 'RWD', shiftRpm: 7400, launchRpm: 3200, redline: 7500,
-      drivetrainLossPercent: 12, peakHp: 444, peakTqRpm: 4500, peakHpRpm: 7400, txKey: 'Getrag_MT82'
-    },
-    {
-      id: 'miata16',
-      name: '2016 Mazda MX-5 Miata Club',
-      category: 'Sports Cars',
-      // Soft-top Cd~0.36 (0.31 was optimistic); Club 205/45R17 → r≈12.1; FD 2.866
-      weightLbs: 2332, dragCoefficient: 0.36, frontalAreaSqFt: 18.8, tireRadiusInches: 12.1,
-      finalDriveRatio: 2.866, gearRatios: [5.087, 2.991, 2.035, 1.594, 1.286, 1.000],
-      // SkyActiv-G 2.0: 155 hp @ 6000 / 148 lb-ft @ 4600
-      torqueCurve: {2000:105,2500:118,3000:128,3500:138,4000:145,4500:148,4600:148,5000:145,5500:140,6000:136,6500:125,7000:112,7500:98},
-      isNA: true, driveType: 'RWD', shiftRpm: 7200, launchRpm: 3500, redline: 7500,
-      drivetrainLossPercent: 12, peakHp: 155, peakTqRpm: 4600, peakHpRpm: 6000, txKey: 'Aisin_6'
-    },
-    {
-      id: 'hellcat19',
-      name: '2019 Challenger Hellcat Redeye',
-      category: 'Modern Muscle',
-      // Narrow-body curb ~4451; Cd 0.382; 275/40R20 → r≈14.3; ZF 8HP ratios
-      weightLbs: 4451, dragCoefficient: 0.382, frontalAreaSqFt: 24.2, tireRadiusInches: 14.3,
-      finalDriveRatio: 2.62, gearRatios: [4.71, 3.14, 2.11, 1.67, 1.28, 1.00, 0.84, 0.67],
-      // 797 hp @ 6300 / 707 lb-ft @ 4500
-      torqueCurve: {1500:420,2000:520,2500:600,3000:650,3500:685,4000:700,4500:707,5000:700,5500:688,6000:675,6300:665,6500:640},
-      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-      shiftRpm: 6100, launchRpm: 2200, redline: 6500, drivetrainLossPercent: 15,
-      peakHp: 797, peakTqRpm: 4500, peakHpRpm: 6300, txKey: 'ZF8HP',
-      hasAftermarketConverter: false
-    },
-    {
-      id: 'gt50020',
-      name: '2020 Mustang Shelby GT500',
-      category: 'Modern Muscle',
-      // Curb ~4183; Tremec TR-9070 DCT; 305/30R20 → r≈13.6
-      weightLbs: 4183, dragCoefficient: 0.37, frontalAreaSqFt: 23.2, tireRadiusInches: 13.6,
-      finalDriveRatio: 3.73, gearRatios: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56],
-      // 760 hp @ 7300 / 625 lb-ft @ 5000
-      torqueCurve: {2000:420,2500:480,3000:540,3500:580,4000:605,4500:620,5000:625,5500:615,6000:595,6500:575,7000:555,7300:547,7500:520},
-      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-      shiftRpm: 7500, launchRpm: 3000, redline: 7500, drivetrainLossPercent: 10,
-      peakHp: 760, peakTqRpm: 5000, peakHpRpm: 7300, txKey: 'DCT_7_AMG'
-    },
-    {
-      id: '911ts',
-      name: '2020 Porsche 911 Turbo S (992)',
-      category: 'Supercars',
-      weightLbs: 3640, dragCoefficient: 0.33, frontalAreaSqFt: 21.5, tireRadiusInches: 13.6,
-      finalDriveRatio: 3.09, gearRatios: [3.91, 2.29, 1.58, 1.19, 0.97, 0.83, 0.67],
-      // 640 hp @ 6750 / 590 lb-ft @ 2500–4000 plateau
-      torqueCurve: {2000:450,2500:590,3000:590,3500:590,4000:590,4500:585,5000:570,5500:550,6000:525,6500:505,6750:498,7000:475,7200:450},
-      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',
-      shiftRpm: 7000, launchRpm: 3500, redline: 7200, drivetrainLossPercent: 10,
-      peakHp: 640, peakTqRpm: 2500, peakHpRpm: 6750, txKey: 'PDK_7'
-    },
-    {
-      id: 'custom',
-      name: 'Custom Builder',
-      category: 'Custom',
-      weightLbs: 3800, dragCoefficient: 0.35, frontalAreaSqFt: 22.5, tireRadiusInches: 13.2,
-      finalDriveRatio: 3.73, gearRatios: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50],
-      peakHp: 450, peakTqRpm: 4200, peakHpRpm: 6200, redline: 6800,
-      isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000,
-      drivetrainLossPercent: 15, txKey: 'TR6060_6'
-    }
-  ];
+  // Phase 4: fleet from js/garage-data.js (333 cars) + Custom Builder.
+  // Curated torque curves / gearing baked in where available; rest synthesized.
+  var CUSTOM_BUILDER = {
+    id: 'custom',
+    name: 'Custom Builder',
+    category: 'Custom',
+    weightLbs: 3800, dragCoefficient: 0.35, frontalAreaSqFt: 22.5, tireRadiusInches: 13.2,
+    finalDriveRatio: 3.73, gearRatios: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50],
+    peakHp: 450, peakTqRpm: 4200, peakHpRpm: 6200, redline: 6800,
+    isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000,
+    drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 1, forceScale: 1
+  };
+
+  function loadGarageFleet() {
+    var raw = (typeof window !== 'undefined' && window.VB_POWERCURVE_GARAGE) || [];
+    var list = raw.map(function (c) { return c; });
+    // Ensure Custom Builder is always available at end
+    if (!list.some(function (c) { return c.id === 'custom'; })) list.push(CUSTOM_BUILDER);
+    return list;
+  }
+
+  var SAMPLE_CARS = loadGarageFleet();
+  var garageFilterText = '';
 
   var $ = function (id) { return document.getElementById(id); };
   var state = { car: null, lastResult: null, anim: null, powerCurve: [], cursorRpm: null, chartGeom: null };
@@ -227,6 +125,7 @@
     $('converter').value = car.hasAftermarketConverter ? '1' : '0';
     $('stallRpm').value = car.stallRpm || 2800;
     $('flashRpm').value = car.flashRpm || 3500;
+    if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
     rpmGauge.setMax(Math.max(8000, (car.redline || 7000) * 1.05));
     rpmGauge.redline = car.shiftRpm || 6500;
     highlightGarage(car.id);
@@ -241,13 +140,27 @@
   function renderGarage() {
     var list = $('garageList');
     list.innerHTML = '';
+    var q = (garageFilterText || '').toLowerCase().trim();
+    var shown = 0;
     SAMPLE_CARS.forEach(function (c) {
+      if (q) {
+        var hay = ((c.name || '') + ' ' + (c.category || '') + ' ' + (c.peakHp || '')).toLowerCase();
+        if (hay.indexOf(q) < 0) return;
+      }
+      shown++;
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'garage-item'; b.dataset.id = c.id;
-      b.innerHTML = c.name + '<small>' + c.category + ' · ' + (c.peakHp || '?') + ' hp · ' + c.weightLbs + ' lb</small>';
+      b.innerHTML = c.name + '<small>' + (c.category || 'Garage') + ' · ' + (c.peakHp || '?') + ' hp · ' + c.weightLbs + ' lb</small>';
       b.onclick = function () { applyCarToForm(JSON.parse(JSON.stringify(c))); };
       list.appendChild(b);
     });
+    if (!shown) {
+      var empty = document.createElement('div');
+      empty.className = 'garage-item';
+      empty.textContent = 'No matches';
+      empty.style.cursor = 'default';
+      list.appendChild(empty);
+    }
   }
 
   function readCarFromForm() {
@@ -280,6 +193,9 @@
       hasAftermarketConverter: $('converter').value === '1',
       stallRpm: clampNum($('stallRpm').value, 1200, 7000, 2800),
       flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
+      forceScale: base.forceScale != null ? Number(base.forceScale) : 1,
+      tireType: parseInt($('tireType').value, 10) || 0,
+      isEv: !!base.isEv,
       torqueCurve: base.torqueCurve || null
     };
     // If user changed peak HP significantly vs curve peak, resynthesize
@@ -311,7 +227,9 @@
       gustMph: clampNum($('gustMph').value, 0, 60, 0),
       tireType: parseInt($('tireType').value, 10) || 0,
       launchMode: $('launchMode').value,
-      tireLabel: ['Street', 'Drag Radial', 'Slick'][parseInt($('tireType').value, 10) || 0]
+      tireLabel: (Phys.tireLabelForType
+        ? Phys.tireLabelForType(parseInt($('tireType').value, 10) || 0)
+        : ['Street', 'Drag Radial', 'Slick'][parseInt($('tireType').value, 10) || 0])
     };
   }
 
@@ -580,6 +498,8 @@
     lines.push('────────────────────────────────');
     lines.push('  0-60    ' + fmt(r.zeroToSixty, 3) + ' s');
     lines.push('  0-100   ' + fmt(r.zeroToHundred, 3) + ' s');
+    lines.push('  60-130  ' + fmt(r.sixtyToOneThirty, 3) + ' s');
+    lines.push('  100-150 ' + fmt(r.hundredToOneFifty, 3) + ' s');
     lines.push('────────────────────────────────');
     lines.push('  TOP SPD ' + fmt(r.topSpeedMph, 1) + ' mph');
     lines.push('          @ ' + fmt(r.topSpeedTime, 2) + ' s / ' + fmt(r.topSpeedFeet, 0) + ' ft');
@@ -602,6 +522,8 @@
       ['Trap', fmt(r.quarterMileSpeedMph, 1) + ' mph'],
       ['60 ft', fmt(r.sixtyFootTime, 3) + ' s'],
       ['0–60', fmt(r.zeroToSixty, 2) + ' s'],
+      ['60–130', fmt(r.sixtyToOneThirty, 2) + ' s'],
+      ['100–150', fmt(r.hundredToOneFifty, 2) + ' s'],
       ['Top Speed', fmt(r.topSpeedMph, 1) + ' mph'],
       ['Peak HP', fmt(r.peakHorsepower, 0)]
     ];
@@ -620,11 +542,8 @@
     }
     var t0 = performance.now();
     var duration = (tl[tl.length - 1].t || 1) * 1000;
-    // Compress long Vmax runs into ~12s wall time; short runs stay realtime.
-    // scale multiplies wall delta → sim ms (scale>1 = faster than realtime).
-    var TARGET_MS = 12000;
-    var realtime = $('playRealtime') && $('playRealtime').checked;
-    var scale = realtime ? 1 : Math.max(1, duration / Math.max(1, TARGET_MS));
+    // Phase 4: playback ALWAYS real-time (scale=1) so gauges match sim clock.
+    var scale = 1;
     function frame(now) {
       var elapsed = (now - t0) * scale;
       var tSec = elapsed / 1000;
@@ -724,8 +643,18 @@
   });
 
   populateTxPresets();
+  var filterEl = $('garageFilter');
+  if (filterEl) {
+    filterEl.addEventListener('input', function () {
+      garageFilterText = filterEl.value || '';
+      renderGarage();
+    });
+  }
   renderGarage();
-  applyCarToForm(JSON.parse(JSON.stringify(SAMPLE_CARS[2]))); // Supra default
+  var defaultCar = SAMPLE_CARS.find(function (c) { return /Supra Twin Turbo/i.test(c.name); })
+    || SAMPLE_CARS.find(function (c) { return c.id !== 'custom'; })
+    || SAMPLE_CARS[0];
+  applyCarToForm(JSON.parse(JSON.stringify(defaultCar)));
   drawPowerCurve([]);
   drawSpeedPath([], null);
 })();

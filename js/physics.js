@@ -220,13 +220,28 @@
     return Math.max(0, vMps + (wind + gustWave) * longFrac * MPH_TO_MPS);
   }
 
+  /** Tire ladder: 0 Street/AllSeason, 1 Drag Radial/Soft, 2 Slick,
+   *  3 Summer (between Street & Drag), 4 UHP (near Drag). VERIFY uses 0/1/2. */
   function tireGripForType(tireType) {
     switch (tireType | 0) {
-      case 0: return 0.95;
-      case 1: return 1.18;
-      case 2: return 1.45;
+      case 0: return 0.95;  // Street / All-season
+      case 3: return 1.05;  // Summer
+      case 4: return 1.12;  // UHP
+      case 1: return 1.18;  // Drag Radial / Soft compound
+      case 2: return 1.45;  // Slick
       default: return DEFAULT_MU;
     }
+  }
+
+  var TIRE_LABELS = {
+    0: 'Street',
+    1: 'Drag Radial',
+    2: 'Slick',
+    3: 'Summer',
+    4: 'UHP'
+  };
+  function tireLabelForType(tireType) {
+    return TIRE_LABELS[tireType | 0] || TIRE_LABELS[0];
   }
 
   function emptyResult(car, env) {
@@ -471,7 +486,9 @@
         applied = tracLim;
       }
 
-      applied *= CalibrationFactor;
+      var forceScale = car.forceScale != null ? Number(car.forceScale) : 1.0;
+      if (!(forceScale > 0)) forceScale = 1.0;
+      applied *= CalibrationFactor * forceScale;
 
       var net = applied - dragF - rollF;
       // Allow negative net after launch so aero can balance at Vmax
@@ -528,8 +545,24 @@
       if (mph >= 100 && at100 == null) at100 = t;
       if (mph >= 150 && t100_150 == null && at100 != null) t100_150 = t - at100;
 
+      // Quick metrics mode (calib): stop after QM + optional speed windows, no Vmax crawl
+      if (env.quickMetrics && hit1320) {
+        var need130 = env.needSixtyToOneThirty !== false;
+        var need150 = !!env.needHundredToOneFifty;
+        var got130 = !need130 || t60_130 != null;
+        var got150 = !need150 || t100_150 != null;
+        if (got130 && got150) {
+          vmaxDone = true;
+          vmaxReason = 'quick_metrics';
+        } else if (t > (qmT || 0) + 50.0) {
+          // Won't reach requested window (aero-limited) — stop for calib speed
+          vmaxDone = true;
+          vmaxReason = 'quick_metrics_timeout';
+        }
+      }
+
       // Vmax / safety-cap detection (only after quarter-mile markers recorded)
-      if (hit1320) {
+      if (hit1320 && !env.quickMetrics) {
         if (v >= speedCapMps) {
           vmaxDone = true;
           vmaxReason = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';
@@ -551,19 +584,21 @@
         if (!vmaxReason) vmaxReason = 'time_cap_' + MAX_T + 's';
       }
 
-      sampleAcc += DT;
-      var sampleEvery = hit1320 ? 0.05 : 0.02;
-      if (sampleAcc >= sampleEvery) {
-        sampleAcc = 0;
-        result.timeline.push({
-          t: +t.toFixed(3),
-          mph: +mph.toFixed(2),
-          feet: +feet.toFixed(1),
-          rpm: Math.round(rpm),
-          gear: gear,
-          g: +gForce.toFixed(3),
-          wheelspin: +spinPct.toFixed(1)
-        });
+      if (!env.quickMetrics) {
+        sampleAcc += DT;
+        var sampleEvery = hit1320 ? 0.05 : 0.02;
+        if (sampleAcc >= sampleEvery) {
+          sampleAcc = 0;
+          result.timeline.push({
+            t: +t.toFixed(3),
+            mph: +mph.toFixed(2),
+            feet: +feet.toFixed(1),
+            rpm: Math.round(rpm),
+            gear: gear,
+            g: +gForce.toFixed(3),
+            wheelspin: +spinPct.toFixed(1)
+          });
+        }
       }
     }
 
@@ -600,6 +635,9 @@
     airDensityFromDA: airDensityFromDA,
     boostTorqueMult: boostTorqueMult,
     FactoryTransmissions: FactoryTransmissions,
+    tireGripForType: tireGripForType,
+    tireLabelForType: tireLabelForType,
+    TIRE_LABELS: TIRE_LABELS,
     get CalibrationFactor() { return CalibrationFactor; },
     set CalibrationFactor(v) { CalibrationFactor = Number(v) || CalibrationFactor; },
     constants: {

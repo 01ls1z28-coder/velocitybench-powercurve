@@ -23,8 +23,9 @@
 
     <div class="grid">
       <!-- LEFT: vehicle / env -->
-      <aside class="card">
+      <aside class="card panel-garage">
         <div class="card-title">Garage</div>
+        <input type="search" id="garageFilter" class="garage-filter" placeholder="Filter garage…" autocomplete="off" />
         <div class="garage-list" id="garageList"></div>
 
         <div class="card-title">Vehicle</div>
@@ -79,14 +80,16 @@
           <label class="field"><span>Tire</span>
             <select id="tireType">
               <option value="0">Street</option>
+              <option value="3">Summer</option>
+              <option value="4">UHP</option>
               <option value="1" selected>Drag Radial</option>
               <option value="2">Slick</option>
             </select>
           </label>
         </div>
 
-        <details class="advanced">
-          <summary>Weather · Wind · Converter · Advanced</summary>
+        <div class="card-title">Weather · Wind · Converter · Advanced</div>
+        <div class="advanced always-open">
           <div class="field-row-3">
             <label class="field"><span>Temp °F</span><input id="tempF" type="number" value="70" /></label>
             <label class="field"><span>Humidity %</span><input id="humidity" type="number" value="45" /></label>
@@ -118,15 +121,15 @@
             <label class="field"><span>Stall RPM</span><input id="stallRpm" type="number" value="2800" /></label>
             <label class="field"><span>Flash RPM</span><input id="flashRpm" type="number" value="3500" /></label>
           </div>
-        </details>
+        </div>
 
         <button type="button" class="btn btn-run" id="btnRun">RUN TO TOP SPEED</button>
-        <label class="realtime-opt"><input type="checkbox" id="playRealtime" /> Realtime playback</label>
+        <p class="playback-note">Playback is always real-time (sim clock = wall clock).</p>
         <button type="button" class="btn" id="btnReset" style="width:100%;margin-top:6px">Reset to preset</button>
       </aside>
 
-      <!-- CENTER: gauges + curve -->
-      <main class="card">
+      <!-- CENTER: gauges + curves + slip -->
+      <main class="card panel-main">
         <div class="card-title">Instruments · Dyno · Speed Path</div>
         <div class="live-readout">
           <span>Gear <strong id="liveGear">—</strong></span>
@@ -134,9 +137,9 @@
           <span>MPH <strong id="liveMph">—</strong></span>
           <span>G <strong id="liveG">—</strong></span>
         </div>
-        <div class="gauges">
-          <div class="gauge-wrap"><canvas id="rpmGauge" width="240" height="240"></canvas></div>
-          <div class="gauge-wrap"><canvas id="speedGauge" width="240" height="240"></canvas></div>
+        <div class="gauges lfa-cluster" aria-label="LFA-style dual dial cluster">
+          <div class="gauge-wrap"><canvas id="rpmGauge" width="280" height="280"></canvas></div>
+          <div class="gauge-wrap"><canvas id="speedGauge" width="280" height="280"></canvas></div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
         <div class="dyno-readout" id="dynoReadout">
@@ -147,28 +150,27 @@
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>
+
+        <div class="card-title slip-title">Time Slip</div>
+        <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
+
         <p class="disclaimer" style="margin-top:12px">
           Estimates for comparison only — not dyno- or track-certified. Physics uses real gearing + RPM + shift points
           (not HP/weight shortcuts). Calibrated toward published track slips; local weather, tires, and driver vary.
         </p>
-      </main>
-
-      <!-- RIGHT: time slip -->
-      <aside class="card">
-        <div class="card-title">Time Slip</div>
-        <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
-        <p class="credits" style="margin-top:12px">
+        <p class="credits" style="margin-top:10px">
           <strong>VelocityBench PowerCurve</strong> · static Pages app · no server / DB / tracking.<br />
           Race sibling: forcemetric-web · Hub: guerra-tools-hub<br />
           Physics: geared RPM · baked dyno curves · weather/DA · wind · FI · run-to-Vmax.<br />
           Created by Jorge Guerra.
         </p>
-      </aside>
+      </main>
     </div>
   </div>
 
   <script src="js/physics.js"></script>
   <script src="js/gauges.js"></script>
+  <script src="js/garage-data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

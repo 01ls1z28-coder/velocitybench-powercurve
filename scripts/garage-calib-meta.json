@@ -1,0 +1,669 @@
+{
+  "generatedAt": "2026-09-18T13:17:46.993Z",
+  "fleetCount": 333,
+  "missingVbMatch": [
+    "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+    "2011 - 2014 Ford F-150 Enrique's 3.5EB"
+  ],
+  "tolerances": {
+    "z60": 0.25,
+    "et": 0.25,
+    "trap": 2.5,
+    "z60130": 0.75
+  },
+  "hitRates": {
+    "et": "268/328",
+    "trap": "220/328",
+    "z60": "218/332",
+    "z60130": "59/77",
+    "all4": "151/333",
+    "etPct": 81.7,
+    "trapPct": 67.1,
+    "z60Pct": 65.7,
+    "z60130Pct": 76.6,
+    "all4Pct": 45.3
+  },
+  "elapsedSec": 639,
+  "sample": [
+    {
+      "name": "2020 Ford Mustang GT",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.12,
+      "tgt": {
+        "z60": 3.8,
+        "et": 12.1,
+        "trap": 119,
+        "z60130": 11.1
+      },
+      "sim": {
+        "et": 12.13,
+        "trap": 117.2,
+        "z60": 3.91,
+        "z60130": 11.234
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 3.891
+    },
+    {
+      "name": "2021 Dodge Charger Hellcat Redeye",
+      "tireType": 1,
+      "loss": 2,
+      "forceScale": 1,
+      "tgt": {
+        "z60": 3.6,
+        "et": 11.5,
+        "trap": 128,
+        "z60130": 8.1
+      },
+      "sim": {
+        "et": 11.281,
+        "trap": 126.7,
+        "z60": 3.207,
+        "z60130": 8.723
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 7.531
+    },
+    {
+      "name": "2013 Ford Mustang Boss 302",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.7,
+        "trap": 114
+      },
+      "sim": {
+        "et": 12.649,
+        "trap": 112.9,
+        "z60": 4.225,
+        "z60130": 13.606
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 2.66
+    },
+    {
+      "name": "2020 Ford Mustang Shelby GT500",
+      "tireType": 1,
+      "loss": 2,
+      "forceScale": 1,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.3,
+        "trap": 132,
+        "z60130": 7.6
+      },
+      "sim": {
+        "et": 11.006,
+        "trap": 130.9,
+        "z60": 3.16,
+        "z60130": 7.698
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 6.474
+    },
+    {
+      "name": "2007 Ford Mustang GT",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.12,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.7,
+        "trap": 103
+      },
+      "sim": {
+        "et": 13.603,
+        "trap": 103.3,
+        "z60": 5.114,
+        "z60130": 19.748
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 1.632
+    },
+    {
+      "name": "1994 Ford Mustang GT",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.2,
+      "tgt": {
+        "z60": 6.1,
+        "et": 14.7,
+        "trap": 94
+      },
+      "sim": {
+        "et": 14.624,
+        "trap": 95.5,
+        "z60": 6.167,
+        "z60130": 29.747
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 3.566
+    },
+    {
+      "name": "2002 Nissan Skyline GT-R R34",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 107
+      },
+      "sim": {
+        "et": 13.263,
+        "trap": 102.6,
+        "z60": 4.66,
+        "z60130": 20.37
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 8.041
+    },
+    {
+      "name": "1965 Shelby Cobra 427",
+      "tireType": 1,
+      "loss": 4,
+      "forceScale": 0.88,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.2,
+        "trap": 120
+      },
+      "sim": {
+        "et": 12.145,
+        "trap": 114.6,
+        "z60": 3.659,
+        "z60130": 13.538
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 11.908
+    },
+    {
+      "name": "1994 Toyota Supra Twin Turbo",
+      "tireType": 1,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 4.6,
+        "et": 13.1,
+        "trap": 108
+      },
+      "sim": {
+        "et": 12.937,
+        "trap": 107.2,
+        "z60": 4.366,
+        "z60130": 16.411
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 4.115
+    },
+    {
+      "name": "1999 Nissan Skyline GT-R R34",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.2,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 107
+      },
+      "sim": {
+        "et": 13.218,
+        "trap": 104.9,
+        "z60": 4.722,
+        "z60130": 16.805
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 4.638
+    },
+    {
+      "name": "2023 Mazda MX-5 Miata Club",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.12,
+      "tgt": {
+        "z60": 5.7,
+        "et": 14.3,
+        "trap": 96
+      },
+      "sim": {
+        "et": 14.319,
+        "trap": 94.1,
+        "z60": 5.61,
+        "z60130": 40.338
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 3.549
+    }
+  ],
+  "worst": [
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "tireType": 3,
+      "loss": 0,
+      "forceScale": 1.2,
+      "tgt": {
+        "z60": 2.6,
+        "et": 11,
+        "trap": 119
+      },
+      "sim": {
+        "et": 11.603,
+        "trap": 125.6,
+        "z60": 3.711,
+        "z60130": 8.751
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 22.207
+    },
+    {
+      "name": "2018 Zenvo TSR-S",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.4,
+        "trap": 140,
+        "z60130": 6
+      },
+      "sim": {
+        "et": 11.503,
+        "trap": 141.6,
+        "z60": 3.969,
+        "z60130": 6.375
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 21.284
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "tireType": 3,
+      "loss": 25,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.7,
+        "et": 9.9,
+        "trap": 150,
+        "z60130": 3.9
+      },
+      "sim": {
+        "et": 10.762,
+        "trap": 152.5,
+        "z60": 3.489,
+        "z60130": 5.324
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": false
+      },
+      "cost": 20.379
+    },
+    {
+      "name": "2019 Koenigsegg Jesko",
+      "tireType": 3,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.6,
+        "et": 9.6,
+        "trap": 152,
+        "z60130": 4.5
+      },
+      "sim": {
+        "et": 10.798,
+        "trap": 152.4,
+        "z60": 3.494,
+        "z60130": 5.386
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": false
+      },
+      "cost": 20.366
+    },
+    {
+      "name": "2011 Koenigsegg Agera R",
+      "tireType": 3,
+      "loss": 2,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10,
+        "trap": 148,
+        "z60130": 5
+      },
+      "sim": {
+        "et": 10.816,
+        "trap": 151.7,
+        "z60": 3.497,
+        "z60130": 5.426
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 19.352
+    },
+    {
+      "name": "2020 Kawasaki Ninja ZX-14R",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.3,
+      "tgt": {
+        "z60": 2.6,
+        "et": 9.7,
+        "trap": 149,
+        "z60130": 4.6
+      },
+      "sim": {
+        "et": 10.316,
+        "trap": 154.1,
+        "z60": 3.069,
+        "z60130": 5.153
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 18.59
+    },
+    {
+      "name": "2024 Acura Integra Type S",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.4,
+      "tgt": {
+        "z60": 5,
+        "et": 13.5,
+        "trap": 106
+      },
+      "sim": {
+        "et": 13.494,
+        "trap": 115.3,
+        "z60": 5.558,
+        "z60130": 11.058
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 17.239
+    },
+    {
+      "name": "2022 Suzuki Hayabusa",
+      "tireType": 3,
+      "loss": 2,
+      "forceScale": 1.3,
+      "tgt": {
+        "z60": 2.5,
+        "et": 9.7,
+        "trap": 148,
+        "z60130": 4.8
+      },
+      "sim": {
+        "et": 9.702,
+        "trap": 158,
+        "z60": 2.592,
+        "z60130": 4.492
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "cost": 16.931
+    },
+    {
+      "name": "2019 Pagani Huayra Roadster BC",
+      "tireType": 3,
+      "loss": 23.5,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.3,
+        "trap": 137,
+        "z60130": 6
+      },
+      "sim": {
+        "et": 11.029,
+        "trap": 139.8,
+        "z60": 3.502,
+        "z60130": 6.293
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 16.618
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "tireType": 3,
+      "loss": 2,
+      "forceScale": 1,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10,
+        "trap": 150,
+        "z60130": 5.2
+      },
+      "sim": {
+        "et": 10.925,
+        "trap": 149.8,
+        "z60": 3.561,
+        "z60130": 5.54
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 16.361
+    },
+    {
+      "name": "2017 Pagani Huayra BC",
+      "tireType": 3,
+      "loss": 18,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.3,
+        "trap": 138,
+        "z60130": 6
+      },
+      "sim": {
+        "et": 10.999,
+        "trap": 141,
+        "z60": 3.503,
+        "z60130": 6.153
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 16.313
+    },
+    {
+      "name": "2023 Honda Civic Type R",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.4,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 108
+      },
+      "sim": {
+        "et": 13.475,
+        "trap": 114.9,
+        "z60": 5.559,
+        "z60130": 11.356
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 16.218
+    },
+    {
+      "name": "2017 BMW X6M",
+      "tireType": 0,
+      "loss": 2,
+      "forceScale": 1.12,
+      "tgt": {
+        "z60": 3.8,
+        "et": 12.3,
+        "trap": 114,
+        "z60130": 8.8
+      },
+      "sim": {
+        "et": 11.778,
+        "trap": 114.6,
+        "z60": 3.369,
+        "z60130": 12.31
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": false
+      },
+      "cost": 15.91
+    },
+    {
+      "name": "2014 Koenigsegg Agera S",
+      "tireType": 3,
+      "loss": 17,
+      "forceScale": 1.05,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.1,
+        "trap": 145,
+        "z60130": 5.2
+      },
+      "sim": {
+        "et": 10.86,
+        "trap": 147,
+        "z60": 3.497,
+        "z60130": 5.571
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 15.805
+    },
+    {
+      "name": "2024 Rivian R1S Quad Motor",
+      "tireType": 3,
+      "loss": 0,
+      "forceScale": 1.2,
+      "tgt": {
+        "z60": 3,
+        "et": 11.1,
+        "trap": 121
+      },
+      "sim": {
+        "et": 11.55,
+        "trap": 125.4,
+        "z60": 3.644,
+        "z60130": 8.805
+      },
+      "hits": {
+        "et": false,
+        "trap": false,
+        "z60": false,
+        "z60130": true
+      },
+      "cost": 15.094
+    }
+  ]
+}
