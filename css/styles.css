@@ -516,3 +516,9 @@ body {
   margin: -4px 0 10px;
   letter-spacing: 0.02em;
 }
+
+body > .vb-chrome {
+  max-width: 1400px;
+  margin: 0.55rem auto 0.35rem;
+  box-sizing: border-box;
+}

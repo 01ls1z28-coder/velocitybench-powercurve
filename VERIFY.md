@@ -194,3 +194,12 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Tip (sculpt @ 50-RPM): major drag re-lerps minors between adjacent majors; minor drag uses snapshot falloff sculpt; dense commit; no V-spikes.
 - Tip (100-RPM mesh): sample spacing now **100 RPM**; majors every **200 RPM** (250 awkward on 100 grid); minor falloff ±1 sample; garage re-densified; sculpt UX still works.
 - Phase 6 EV + Hybrid: powerSource radios + locks; Hybrid ICE+assist; ZR1X retagged Hybrid; fleet EV **39** / Hybrid **4**.
+
+
+## Hub chrome (2026-09-18 CT)
+
+Shared Family Brass chrome on `index.html` (`css/vb-chrome.css`):
+- Hub → https://velocitybench.com/
+- Switcher: Bench · PowerCurve (current) · SDC · GSPS
+- PowerCurve remains on Pages URL (not nested under velocitybench.com for v1).
+- Soft VERIFY Turbo 95→92 **not** applied this tip (would require fleet recalib); left at CalibrationFactor 0.95.
