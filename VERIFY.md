@@ -1,3 +1,18 @@
+# SEO / indexing (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-seo` · Base: live main @ hub-chrome tip.
+
+Static only: canonical `https://01ls1z28-coder.github.io/velocitybench-powercurve/`, unique title/description, OG/Twitter, `robots.txt`, `sitemap.xml`, semantic `<h1 class="logo-text">`.
+
+**Skipped:** Turbo 95→92 / fleet recalib (docs-only SEO tip — no physics touch).
+
+VERIFY
+1. View-source: canonical + OG/Twitter present; one H1
+2. `/robots.txt` Allow + Sitemap; `/sitemap.xml` lists tool URL
+3. No JS/physics/garage change; disclaimers unchanged; no deploy
+
+---
+
 # VelocityBench PowerCurve — VERIFY (Phase 6 — EV + Hybrid powerSource · Phase 5 dyno/weight/TX)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
