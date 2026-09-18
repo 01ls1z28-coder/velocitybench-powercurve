@@ -213,7 +213,7 @@
     // Typical NA/FI engines make ~8–18% more TQ at peak-TQ RPM than at peak-HP RPM
     var peakTq = tqAtPeakHp * 1.12;
     var curve = {};
-    for (var r = 1000; r <= redline; r += 50) {
+    for (var r = 1000; r <= redline; r += 100) {
       var tq;
       if (r <= peakTqRpm) {
         var u = r / peakTqRpm;
@@ -450,10 +450,10 @@
     var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
     keys.sort(function (a, b) { return a - b; });
     if (keys.length) {
-      var r0 = Math.floor(keys[0] / 50) * 50;
-      if (r0 < keys[0]) r0 += 50;
+      var r0 = Math.floor(keys[0] / 100) * 100;
+      if (r0 < keys[0]) r0 += 100;
       var r1 = Math.max(keys[keys.length - 1], redline);
-      for (var rk = r0; rk <= r1 + 0.01; rk += 50) {
+      for (var rk = r0; rk <= r1 + 0.01; rk += 100) {
         var rpmK = Math.round(rk);
         var tq0 = getTorqueAtRpm(curve, rpmK) * boostTorqueMult(boostModel, boostPsi, rpmK, redline, pressureInHg);
         result.powerCurve.push({ rpm: rpmK, torque: tq0, horsepower: (tq0 * rpmK) / 5252 });

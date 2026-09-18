@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 5 — editable dyno 50-RPM · weight distribution · TX/induction)
+# VelocityBench PowerCurve — VERIFY (Phase 5 — editable dyno 100-RPM · weight distribution · TX/induction)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
 
@@ -106,22 +106,22 @@ Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only 
 Classifier lives in `scripts/build-garage.js` → `classifyInduction()` and is baked into `js/garage-data.js`.
 
 ### Editable dyno curve
-- Dense **50-RPM** TQ mesh; **major** control bullets every **250 RPM** (preferred hit target); minor 50-RPM bullets still editable.
+- Dense **100-RPM** TQ mesh (`RPM_GRID = 100`); **major** control bullets every **200 RPM** (every 2 grid steps — preferred hit target). *Note:* 250-RPM majors do not land cleanly on a 100 mesh (1250/1750/…), so majors use **200 RPM** for continuous sculpt; minors at the in-between 100-RPM samples stay editable.
 - Drag a bullet **up/down** to reshape torque; **HP ≈ TQ×RPM/5252** is derived (drag TQ, HP follows).
-- **Major drag:** moves that 250-RPM handle and **re-lerps** all 50-RPM minors between the adjacent majors so the polyline fills like a real dyno curve (no spike / flat valley of untouched points).
-- **Minor drag:** local cosine **falloff sculpt** (±2 samples / 100 RPM) from a drag-start snapshot so neighbors rise/fall with the point without washing the rest of the curve.
+- **Major drag:** moves that 200-RPM handle and **re-lerps** all 100-RPM minors between the adjacent majors so the polyline fills like a real dyno curve (no spike / flat valley of untouched points).
+- **Minor drag:** local cosine **falloff sculpt** (±1 sample / ~±100 RPM) from a drag-start snapshot so neighbors rise/fall with the point without washing the rest of the curve.
 - Subsequent **RUN** uses the edited dense `torqueCurve`. **Reset to preset** restores the baked garage curve.
 - Pointer Events (+ touch fallback); chart uses `touch-action: none` for mobile drag.
 
-### Editable dyno — 50-RPM dense mesh (V-spike fix)
-- Baked `torqueCurve` samples are densified to **50 RPM** (off-grid peak pins retained).
-- Editable series / polyline / drag handles share that **50-RPM** mesh (major bullets every 250 RPM for visibility / primary control).
+### Editable dyno — 100-RPM dense mesh (smoother sculpt)
+- Baked `torqueCurve` samples are densified to **100 RPM** (true off-grid peak pins retained; prior 50-RPM half-steps dropped).
+- Editable series / polyline / drag handles share that **100-RPM** mesh (major bullets every **200 RPM** for visibility / primary control).
 - Mid-drag: `state.powerCurve` stays authoritative; sculpt/lerp mutates neighbors with a **floor of 5 lb-ft** (no neighbor collapse to zero); `car.torqueCurve` is committed as a **dense numeric-key** map — never rebuilt from a sparse post-RUN key list.
-- Root cause addressed: coarser native keys (e.g. 500 RPM) after RUN used to replace the editable series, so handles and samples disagreed and mid-edit rebuilds could floor neighbors (~5 lb-ft V-spikes).
+- Root cause addressed: coarser native keys (e.g. 500 RPM) after RUN used to replace the editable series, so handles and samples disagreed and mid-edit rebuilds could floor neighbors (~5 lb-ft V-spikes). Fewer minors between majors (one 100-RPM minor per 200-RPM major span) keeps drag interpolation smoother than the prior 50-RPM mesh.
 
 ### UX check — drag smoothness (before → after)
-- **Before (Phase 5 hotfix):** dragging one bullet only nudged ±1 neighbor lightly; raising a major left a knife-edge with a valley of stale 50-RPM minors between 250-RPM controls.
-- **After (this tip):** drag a **major** ~+50 lb-ft — minors between the previous/next major re-lerp into a smooth ramp; drag a **minor** — local neighbors follow with falloff; dense commit still has a key every 50 RPM and no V-spikes. Spotcheck baked-garage ETs unchanged (UI edit path only).
+- **Before (50-RPM tip):** major every 250 with four 50-RPM minors between controls — workable but dense.
+- **After (this tip):** sample spacing **100 RPM**; majors every **200 RPM**; drag a **major** — the single mid minor re-lerps cleanly; drag a **minor** — ±1-sample cosine falloff; dense commit has a key every 100 RPM and no V-spikes. Spotcheck should stay PASS (physics interpolates between keys).
 
 ### Weight distribution (traction-real)
 UI **Front/Rear %** (sum 100) and **Left/Right %** (sum 100). Defaults by `engineLayout` / `driveType` (Front RWD rear≈55 keeps fleet calib; Mid 45/55; Rear ~38/62; FWD ~60/40). Baked into `garage-data.js`.
@@ -141,6 +141,10 @@ From `node scripts/spotcheck.js` weight block (same weather/tires as curated):
 | L/R **60/40** (same F/R 50/50) | 13.688 s | 2.169 s | **+0.072 s** (uneven axle → open/LSD traction loss) |
 
 Fleet RWD cars bake **F/R 45/55** (matches prior `DEFAULT_REAR_PCT=55`) so curated/fleet spot-check ETs stay unchanged.
+
+### Tip — 100-RPM sample spacing (spotcheck)
+- Garage + edit mesh resampled **50 → 100 RPM**; majors **200 RPM** (250 not clean on 100 grid).
+- `node scripts/spotcheck.js` **PASS**. Curated VERIFY ETs unchanged (sparse published curves). Fleet sample ETs unchanged at reported precision except negligible interp noise on Mustang GT 60-130 (**10.856 → 10.858 s**, Δ **+0.002 s**) and 100-150 (**13.697 → 13.701 s**, Δ **+0.004 s**). Weight-distribution deltas vs 50/50 unchanged.
 
 ### Holds (unchanged)
 Static / disclaimer / no secrets · slip under graphs · realtime playback always `scale=1` · LFA gauges · `tireType` must be set explicitly on spot checks.
@@ -164,5 +168,6 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Hardest residuals: some EVs / hypercars (Cybertruck, Regera, Jesko, Zenvo) — geared + grip model cannot fully match optimistic Excel 0-60 without breaking trap.
 - Phase 4: fleet import, always-realtime playback, 60-130/100-150 surfacing, always-open advanced, slip under graphs, LFA brass gauges.
 - Retip (keep calibrating): TireType ladder + launchRpm + joint loss×forceScale + hit-count bonus; motorcycle aero heuristic; all-applicable **63.4%** (was 45.3% at `a0afdac`).
-- Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable **50-RPM** dyno mesh with **250-RPM major** handles (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).
-- Tip (sculpt): major drag re-lerps minors between adjacent majors; minor drag uses snapshot falloff sculpt; dense 50-RPM commit; no V-spikes.
+- Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable dyno mesh (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).
+- Tip (sculpt @ 50-RPM): major drag re-lerps minors between adjacent majors; minor drag uses snapshot falloff sculpt; dense commit; no V-spikes.
+- Tip (100-RPM mesh): sample spacing now **100 RPM**; majors every **200 RPM** (250 awkward on 100 grid); minor falloff ±1 sample; garage re-densified; sculpt UX still works.

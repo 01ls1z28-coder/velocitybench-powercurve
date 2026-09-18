@@ -41,28 +41,32 @@ function mapVbTire(t) {
  * SC: factory supercharged name cues. Turbo: explicit turbo / isFI default. NA/EV unchanged.
  */
 
-function densifyTorqueCurve50(curve, redline) {
+var RPM_GRID = 100;
+
+function densifyTorqueCurve(curve, redline) {
   if (!curve) return curve;
   var keys = Object.keys(curve).map(Number).filter(isFinite).sort(function (a, b) { return a - b; });
   if (!keys.length) return curve;
   var minR = keys[0];
   var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
-  var start = Math.floor(minR / 50) * 50;
-  if (start < minR) start += 50;
+  var start = Math.floor(minR / RPM_GRID) * RPM_GRID;
+  if (start < minR) start += RPM_GRID;
   if (start < 500) start = Math.max(500, start);
   var out = {}, prev = null;
-  for (var r = start; r <= maxR + 0.01; r += 50) {
+  for (var r = start; r <= maxR + 0.01; r += RPM_GRID) {
     var rpm = Math.round(r);
     var tq = Phys.getTorqueAtRpm(curve, rpm);
     if (!isFinite(tq) || tq <= 0) tq = prev != null ? prev : 5;
     out[rpm] = tq;
     prev = tq;
   }
+  // Retain true off-grid peak pins (skip half-grid minors from a prior denser mesh)
+  var half = RPM_GRID / 2;
   keys.forEach(function (k) {
-    if (k % 50 !== 0) {
-      var t = Number(curve[k]);
-      if (isFinite(t) && t > 0) out[k] = t;
-    }
+    if (k % RPM_GRID === 0) return;
+    if (half === Math.floor(half) && k % half === 0) return;
+    var t = Number(curve[k]);
+    if (isFinite(t) && t > 0) out[k] = t;
   });
   return out;
 }
@@ -75,11 +79,13 @@ function bakeWeightDistribution(car) {
   car.rearWeightPercent = sug.rearWeightPercent;
   car.leftWeightPercent = sug.leftWeightPercent;
   car.rightWeightPercent = sug.rightWeightPercent;
+  return car;
+}
 
-  // Phase 5 densify: 50-RPM torque mesh + layout/drive weight bake
-  if (car.torqueCurve) car.torqueCurve = densifyTorqueCurve50(car.torqueCurve, car.redline);
+/** Phase 5 densify: 100-RPM torque mesh + layout/drive weight bake */
+function finalizeCarBake(car) {
+  if (car.torqueCurve) car.torqueCurve = densifyTorqueCurve(car.torqueCurve, car.redline);
   bakeWeightDistribution(car);
-
   return car;
 }
 
@@ -576,7 +582,7 @@ function buildCar(row, vb) {
       // EVs often advertise "peak TQ" ~1.2–1.6× TQ-at-peak-HP
       peakTq *= 1.45;
       var curve = {};
-      for (var r = 0; r <= car.redline; r += 50) {
+      for (var r = 0; r <= car.redline; r += 100) {
         var tq;
         if (r <= car.peakTqRpm) tq = peakTq;
         else if (r <= car.peakHpRpm) {
@@ -662,7 +668,7 @@ function main() {
       if (k === 'targets') return;
       o[k] = c[k];
     });
-    return o;
+    return finalizeCarBake(o);
   });
 
   var header = [

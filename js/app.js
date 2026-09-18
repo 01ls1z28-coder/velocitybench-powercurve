@@ -105,9 +105,10 @@
     }
   }
 
-  var RPM_GRID = 50;  // dense mesh — matches baked torque samples
+  var RPM_GRID = 100;   // dense mesh — matches baked torque samples
+  var RPM_MAJOR = 200;  // major handles every 2 grid steps (250 not divisible by 100)
 
-  /** Build editable HP/TQ series on a 50-RPM grid from a torque curve map. */
+  /** Build editable HP/TQ series on a 100-RPM grid from a torque curve map. */
   function powerCurveFromTorqueCurve(curve, redline) {
     if (!curve) return [];
     var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
@@ -115,7 +116,7 @@
     if (!keys.length) return [];
     var minR = keys[0];
     var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
-    // Snap grid to RPM_GRID (50) starting at nearest <= minR
+    // Snap grid to RPM_GRID (100) starting at nearest <= minR
     var start = Math.floor(minR / RPM_GRID) * RPM_GRID;
     if (start < minR && start + RPM_GRID <= maxR) start += RPM_GRID;
     if (start < 500) start = Math.max(500, start);
@@ -152,7 +153,7 @@
     return out;
   }
 
-  /** Dense numeric-key torque map from the authoritative editable series (all 50-RPM samples). */
+  /** Dense numeric-key torque map from the authoritative editable series (all 100-RPM samples). */
   function torqueCurveFromPowerCurve(powerCurve) {
     var map = {};
     (powerCurve || []).forEach(function (p) {
@@ -196,9 +197,9 @@
 
   /**
    * Snapshot-based sculpt brush: primary bullet moves by delta, neighbors follow
-   * with distance falloff so the dense 50-RPM polyline stays dyno-realistic
+   * with distance falloff so the dense 100-RPM polyline stays dyno-realistic
    * (no knife-edge spike / flat valley of untouched minors).
-   * Majors (every 250 RPM) use a wider brush; minors a lighter local blend.
+   * Majors (every 200 RPM) use a wider brush; minors a lighter local blend.
    * Always floors at 5 lb-ft — never collapses neighbors toward zero.
    */
   function sculptCurveFromDrag(idx, newTq, snapshot, isMajor) {
@@ -207,8 +208,8 @@
     var base = snapshot[idx];
     if (!isFinite(base)) base = pc[idx].torque;
     var delta = newTq - base;
-    // Majors: ±4 samples (200 RPM) soft fill toward next major; minors: ±2 (100 RPM)
-    var radius = isMajor ? 4 : 2;
+    // Majors: ±2 samples (±200 RPM); minors: ±1 sample (±100 RPM) on 100-RPM mesh
+    var radius = isMajor ? 2 : 1;
     for (var i = 0; i < pc.length; i++) {
       var d = Math.abs(i - idx);
       var tq;
@@ -233,12 +234,12 @@
   }
 
   /** When a major is dragged, re-lerp minors between adjacent majors so the
-   *  50-RPM mesh fills the curve instead of leaving a valley of stale points. */
+   *  100-RPM mesh fills the curve instead of leaving a valley of stale points. */
   function interpolateMinorsBetweenMajors(centerIdx) {
     var pc = state.powerCurve;
     if (!pc || centerIdx < 0 || centerIdx >= pc.length) return;
     function isMajorAt(i) {
-      return Math.round(pc[i].rpm) % 250 === 0;
+      return Math.round(pc[i].rpm) % RPM_MAJOR === 0;
     }
     var left = centerIdx, right = centerIdx;
     while (left > 0 && !isMajorAt(left - 1)) left--;
@@ -403,7 +404,7 @@
     rpmGauge.setMax(Math.max(8000, (car.redline || 7000) * 1.05));
     rpmGauge.redline = car.shiftRpm || 6500;
     highlightGarage(car.id);
-    // Show baked (or working) dyno curve immediately — dense 50-RPM mesh, editable bullets
+    // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncPowerCurveFromCar(car);
   }
 
@@ -666,13 +667,13 @@
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.5; ctx.stroke();
 
 
-    // Editable TQ bullets on the dense 50-RPM mesh (major every 250 for visibility)
+    // Editable TQ bullets on the dense 100-RPM mesh (major every 200 for visibility)
     var handles = [];
     powerCurve.forEach(function (p, i) {
       var rpm = Math.round(p.rpm);
-      if (rpm % 50 !== 0) return;
+      if (rpm % RPM_GRID !== 0) return;
       var hx = x(p.rpm), hy = yTq(p.torque);
-      var major = rpm % 250 === 0;
+      var major = rpm % RPM_MAJOR === 0;
       handles.push({ rpm: rpm, torque: p.torque, x: hx, y: hy, index: i, major: major });
       ctx.beginPath();
       ctx.arc(hx, hy, major ? 5.5 : 3.2, 0, Math.PI * 2);
@@ -886,7 +887,7 @@
     state.car = car;
     renderSlip(result, car);
     renderMetrics(result);
-    // Keep dense 50-RPM editable series authoritative — never replace with sparse result keys
+    // Keep dense 100-RPM editable series authoritative — never replace with sparse result keys
     if (!state.curveEdited) {
       state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
     } else {
@@ -952,7 +953,7 @@
     function hitHandle(mx, my) {
       var g = state.chartGeom;
       if (!g || !g.handles) return null;
-      // Prefer major (250-RPM) handles — easier primary controls on a dense 50-RPM mesh
+      // Prefer major (200-RPM) handles — easier primary controls on a dense 100-RPM mesh
       var bestMajor = null, bestMajorD = 16;
       var bestMinor = null, bestMinorD = 10;
       g.handles.forEach(function (h) {
@@ -1002,8 +1003,8 @@
       }
       var isMajor = !!state.drag.major;
       if (isMajor) {
-        // Primary major control: move this 250-RPM handle, then re-lerp all
-        // 50-RPM minors between adjacent majors so the mesh fills (no valley).
+        // Primary major control: move this 200-RPM handle, then re-lerp all
+        // 100-RPM minors between adjacent majors so the mesh fills (no valley).
         var pc = state.powerCurve;
         pc[idx].torque = Math.max(5, tq);
         pc[idx].horsepower = (pc[idx].torque * pc[idx].rpm) / 5252;
@@ -1013,7 +1014,7 @@
         sculptCurveFromDrag(idx, tq, snap, false);
       }
       state.cursorRpm = state.powerCurve[idx].rpm;
-      // Commit dense 50-RPM map to car; keep state.powerCurve authoritative
+      // Commit dense 100-RPM map to car; keep state.powerCurve authoritative
       commitEditedCurveToCar();
       drawPowerCurve(state.powerCurve, state.cursorRpm);
       if (ev.cancelable) ev.preventDefault();
