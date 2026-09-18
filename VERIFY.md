@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 2)
+# VelocityBench PowerCurve — VERIFY (Phase 3)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Estimates for comparison — not track certified.
 
@@ -64,9 +64,12 @@ Quarter-mile ET/trap are frozen at the 1320 crossing; time slip / gauges / speed
 
 - **FactoryTransmissions** — `js/physics.js` exports presets; `js/app.js` populates `#txPreset`.
 - **Weather / DA / Wind / FI** — wired into `runQuarterMile`.
-- **Dyno chart** — HP/TQ vs RPM from baked curve.
+- **Dyno chart** — HP/TQ vs RPM with **numeric RPM / HP / TQ axis ticks** + peak & cursor readout (hover scrub; live RPM scrub during playback).
+- **Playback** — long Vmax runs compress to ~12 s wall (`scale = max(1, duration/12000)`); optional **Realtime playback** checkbox.
 - **Speed path chart** — mph vs feet with ¼-mi markers + Vmax point.
 - **Layout** — CSS-only overflow fixes for desktop and mobile ≤800px; brass/dark theme retained.
+
+**Phase 3 spot-check:** physics numbers unchanged from Phase 2 tip; table above still reproduces with `tireType` explicit.
 
 ## Re-run
 

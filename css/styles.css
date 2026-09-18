@@ -422,3 +422,25 @@ details.advanced > summary::-webkit-details-marker { display: none; }
   .gauge-wrap { max-width: 200px; }
   .metrics { grid-template-columns: 1fr; }
 }
+
+.realtime-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+}
+.realtime-opt input { accent-color: var(--accent); }
+.dyno-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 2px 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+.dyno-readout strong { color: var(--accent); font-weight: 600; }

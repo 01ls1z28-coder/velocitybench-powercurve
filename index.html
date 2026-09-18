@@ -121,6 +121,7 @@
         </details>
 
         <button type="button" class="btn btn-run" id="btnRun">RUN TO TOP SPEED</button>
+        <label class="realtime-opt"><input type="checkbox" id="playRealtime" /> Realtime playback</label>
         <button type="button" class="btn" id="btnReset" style="width:100%;margin-top:6px">Reset to preset</button>
       </aside>
 
@@ -138,7 +139,11 @@
           <div class="gauge-wrap"><canvas id="speedGauge" width="240" height="240"></canvas></div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
-        <div class="chart-label">HP / TQ vs RPM</div>
+        <div class="dyno-readout" id="dynoReadout">
+          <span>Peak <strong id="dynoPeak">—</strong></span>
+          <span>Cursor <strong id="dynoCursor">—</strong></span>
+        </div>
+        <div class="chart-label">HP / TQ vs RPM (numeric axes · hover to scrub)</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>

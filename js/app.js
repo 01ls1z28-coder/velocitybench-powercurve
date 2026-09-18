@@ -131,7 +131,7 @@
   ];
 
   var $ = function (id) { return document.getElementById(id); };
-  var state = { car: null, lastResult: null, anim: null };
+  var state = { car: null, lastResult: null, anim: null, powerCurve: [], cursorRpm: null, chartGeom: null };
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
     min: 0, max: 8000, label: 'RPM', redline: 6500
@@ -317,8 +317,62 @@
     return n;
   }
 
-  function drawPowerCurve(powerCurve) {
+  function niceStep(maxVal, targetTicks) {
+    if (!(maxVal > 0)) return 1;
+    var raw = maxVal / Math.max(1, targetTicks);
+    var pow = Math.pow(10, Math.floor(Math.log10(raw)));
+    var n = raw / pow;
+    var nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
+    return nice * pow;
+  }
+
+  function samplePowerAtRpm(powerCurve, rpm) {
+    if (!powerCurve || !powerCurve.length) return null;
+    if (rpm <= powerCurve[0].rpm) return powerCurve[0];
+    var last = powerCurve[powerCurve.length - 1];
+    if (rpm >= last.rpm) return last;
+    for (var i = 0; i < powerCurve.length - 1; i++) {
+      var a = powerCurve[i], b = powerCurve[i + 1];
+      if (rpm >= a.rpm && rpm <= b.rpm) {
+        var u = (rpm - a.rpm) / Math.max(1e-9, b.rpm - a.rpm);
+        return {
+          rpm: rpm,
+          torque: a.torque + (b.torque - a.torque) * u,
+          horsepower: a.horsepower + (b.horsepower - a.horsepower) * u
+        };
+      }
+    }
+    return last;
+  }
+
+  function updateDynoReadout(powerCurve, cursorRpm) {
+    var peakEl = $('dynoPeak');
+    var curEl = $('dynoCursor');
+    if (!peakEl || !curEl) return;
+    if (!powerCurve || !powerCurve.length) {
+      peakEl.textContent = '—';
+      curEl.textContent = '—';
+      return;
+    }
+    var peakHp = 0, peakTq = 0, peakHpRpm = 0, peakTqRpm = 0;
+    powerCurve.forEach(function (p) {
+      if (p.horsepower > peakHp) { peakHp = p.horsepower; peakHpRpm = p.rpm; }
+      if (p.torque > peakTq) { peakTq = p.torque; peakTqRpm = p.rpm; }
+    });
+    peakEl.textContent =
+      Math.round(peakHp) + ' hp @ ' + Math.round(peakHpRpm) +
+      ' · ' + Math.round(peakTq) + ' lb-ft @ ' + Math.round(peakTqRpm);
+    var pt = samplePowerAtRpm(powerCurve, cursorRpm != null ? cursorRpm : peakHpRpm);
+    if (!pt) { curEl.textContent = '—'; return; }
+    curEl.textContent =
+      Math.round(pt.rpm) + ' rpm · ' +
+      pt.horsepower.toFixed(0) + ' hp · ' +
+      pt.torque.toFixed(0) + ' lb-ft';
+  }
+
+  function drawPowerCurve(powerCurve, cursorRpm) {
     var canvas = $('powerChart');
+    if (!canvas) return;
     var dpr = window.devicePixelRatio || 1;
     var w = canvas.clientWidth || 600;
     var h = canvas.clientHeight || 200;
@@ -329,31 +383,64 @@
     ctx.clearRect(0, 0, w, h);
     ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.fillRect(0, 0, w, h);
+    state.powerCurve = powerCurve || [];
+    if (cursorRpm != null) state.cursorRpm = cursorRpm;
     if (!powerCurve || !powerCurve.length) {
       ctx.fillStyle = '#667084';
       ctx.font = '12px Segoe UI';
       ctx.fillText('Run a simulation to plot HP / TQ vs RPM', 16, h / 2);
+      state.chartGeom = null;
+      updateDynoReadout([], null);
       return;
     }
-    var pad = { l: 44, r: 16, t: 16, b: 28 };
+    var pad = { l: 48, r: 48, t: 22, b: 32 };
+    var minRpm = powerCurve[0].rpm;
     var maxRpm = powerCurve[powerCurve.length - 1].rpm;
     var maxHp = 0, maxTq = 0;
     powerCurve.forEach(function (p) {
       if (p.horsepower > maxHp) maxHp = p.horsepower;
       if (p.torque > maxTq) maxTq = p.torque;
     });
-    maxHp *= 1.1; maxTq *= 1.1;
-    function x(rpm) { return pad.l + ((rpm - powerCurve[0].rpm) / (maxRpm - powerCurve[0].rpm || 1)) * (w - pad.l - pad.r); }
+    maxHp = Math.max(50, maxHp * 1.12);
+    maxTq = Math.max(50, maxTq * 1.12);
+    function x(rpm) {
+      return pad.l + ((rpm - minRpm) / (maxRpm - minRpm || 1)) * (w - pad.l - pad.r);
+    }
     function yHp(v) { return h - pad.b - (v / maxHp) * (h - pad.t - pad.b); }
     function yTq(v) { return h - pad.b - (v / maxTq) * (h - pad.t - pad.b); }
+    state.chartGeom = { pad: pad, w: w, h: h, minRpm: minRpm, maxRpm: maxRpm, x: x };
 
-    ctx.strokeStyle = 'rgba(215,196,160,0.2)';
+    // Grid + numeric axis ticks
+    ctx.font = '10px ui-monospace, monospace';
     ctx.lineWidth = 1;
-    for (var i = 0; i < 5; i++) {
-      var yy = pad.t + ((h - pad.t - pad.b) * i) / 4;
+    var hpStep = niceStep(maxHp, 4);
+    for (var hv = 0; hv <= maxHp + 0.01; hv += hpStep) {
+      var yy = yHp(hv);
+      ctx.strokeStyle = 'rgba(215,196,160,0.18)';
       ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
+      ctx.fillStyle = '#c8ff4a';
+      ctx.textAlign = 'right';
+      ctx.fillText(String(Math.round(hv)), pad.l - 6, yy + 3);
+    }
+    var tqStep = niceStep(maxTq, 4);
+    ctx.textAlign = 'left';
+    for (var tv = 0; tv <= maxTq + 0.01; tv += tqStep) {
+      var yyt = yTq(tv);
+      ctx.fillStyle = '#4cc9f0';
+      ctx.fillText(String(Math.round(tv)), w - pad.r + 6, yyt + 3);
+    }
+    var rpmStep = niceStep(maxRpm - minRpm, 5);
+    var rpmStart = Math.ceil(minRpm / rpmStep) * rpmStep;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#9aa6b8';
+    for (var rv = rpmStart; rv <= maxRpm + 0.01; rv += rpmStep) {
+      var xx = x(rv);
+      ctx.strokeStyle = 'rgba(215,196,160,0.12)';
+      ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
+      ctx.fillText(String(Math.round(rv)), xx, h - 8);
     }
 
+    // TQ then HP curves
     ctx.beginPath();
     powerCurve.forEach(function (p, i) {
       var px = x(p.rpm), py = yTq(p.torque);
@@ -368,11 +455,35 @@
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.5; ctx.stroke();
 
-    ctx.fillStyle = '#9aa6b8';
-    ctx.font = '10px ui-monospace, monospace';
-    ctx.fillText('RPM', w / 2, h - 6);
-    ctx.fillStyle = '#c8ff4a'; ctx.fillText('HP', pad.l, 12);
-    ctx.fillStyle = '#4cc9f0'; ctx.fillText('TQ', pad.l + 28, 12);
+    // Cursor scrubber
+    var cRpm = cursorRpm != null ? cursorRpm : state.cursorRpm;
+    if (cRpm == null) cRpm = powerCurve.reduce(function (best, p) {
+      return p.horsepower > best.horsepower ? p : best;
+    }, powerCurve[0]).rpm;
+    cRpm = Math.max(minRpm, Math.min(maxRpm, cRpm));
+    var cPt = samplePowerAtRpm(powerCurve, cRpm);
+    var cx = x(cRpm);
+    ctx.strokeStyle = 'rgba(232,215,176,0.85)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(cx, pad.t); ctx.lineTo(cx, h - pad.b); ctx.stroke();
+    ctx.setLineDash([]);
+    if (cPt) {
+      ctx.fillStyle = '#c8ff4a';
+      ctx.beginPath(); ctx.arc(cx, yHp(cPt.horsepower), 3.5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#4cc9f0';
+      ctx.beginPath(); ctx.arc(cx, yTq(cPt.torque), 3.5, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#c8ff4a'; ctx.font = '10px ui-monospace, monospace';
+    ctx.fillText('HP', pad.l, 12);
+    ctx.fillStyle = '#4cc9f0'; ctx.fillText('TQ lb-ft', pad.l + 28, 12);
+    ctx.fillStyle = '#9aa6b8'; ctx.textAlign = 'right';
+    ctx.fillText('RPM →', w - pad.r, 12);
+    ctx.textAlign = 'left';
+
+    updateDynoReadout(powerCurve, cRpm);
   }
 
   function drawSpeedPath(timeline, result) {
@@ -503,7 +614,11 @@
     }
     var t0 = performance.now();
     var duration = (tl[tl.length - 1].t || 1) * 1000;
-    var scale = Math.min(1, 12000 / Math.max(1, duration)); // speed up long Vmax runs for UI
+    // Compress long Vmax runs into ~12s wall time; short runs stay realtime.
+    // scale multiplies wall delta → sim ms (scale>1 = faster than realtime).
+    var TARGET_MS = 12000;
+    var realtime = $('playRealtime') && $('playRealtime').checked;
+    var scale = realtime ? 1 : Math.max(1, duration / Math.max(1, TARGET_MS));
     function frame(now) {
       var elapsed = (now - t0) * scale;
       var tSec = elapsed / 1000;
@@ -518,6 +633,10 @@
       $('liveRpm').textContent = String(Math.round(pt.rpm));
       $('liveMph').textContent = pt.mph.toFixed(1);
       $('liveG').textContent = pt.g.toFixed(2);
+      // Scrub dyno cursor with live engine RPM during playback
+      if (state.powerCurve && state.powerCurve.length) {
+        drawPowerCurve(state.powerCurve, pt.rpm);
+      }
       if (elapsed < duration + 200) state.anim = requestAnimationFrame(frame);
     }
     state.anim = requestAnimationFrame(frame);
@@ -556,11 +675,44 @@
     if (state.car) applyCarToForm(JSON.parse(JSON.stringify(state.car)));
   });
 
+  function rpmFromPointer(ev) {
+    var canvas = $('powerChart');
+    var g = state.chartGeom;
+    if (!canvas || !g || !state.powerCurve.length) return null;
+    var rect = canvas.getBoundingClientRect();
+    var mx = ev.clientX - rect.left;
+    var frac = (mx - g.pad.l) / Math.max(1, g.w - g.pad.l - g.pad.r);
+    frac = Math.max(0, Math.min(1, frac));
+    return g.minRpm + frac * (g.maxRpm - g.minRpm);
+  }
+
+  (function wireDynoScrub() {
+    var canvas = $('powerChart');
+    if (!canvas) return;
+    canvas.style.cursor = 'crosshair';
+    canvas.addEventListener('mousemove', function (ev) {
+      var rpm = rpmFromPointer(ev);
+      if (rpm == null) return;
+      state.cursorRpm = rpm;
+      drawPowerCurve(state.powerCurve, rpm);
+    });
+    canvas.addEventListener('mouseleave', function () {
+      if (state.powerCurve && state.powerCurve.length) {
+        // Snap cursor readout back to peak HP point
+        var peak = state.powerCurve.reduce(function (best, p) {
+          return p.horsepower > best.horsepower ? p : best;
+        }, state.powerCurve[0]);
+        state.cursorRpm = peak.rpm;
+        drawPowerCurve(state.powerCurve, peak.rpm);
+      }
+    });
+  })();
+
   window.addEventListener('resize', function () {
     rpmGauge._resize();
     speedGauge._resize();
     if (state.lastResult) {
-      drawPowerCurve(state.lastResult.powerCurve);
+      drawPowerCurve(state.lastResult.powerCurve, state.cursorRpm);
       drawSpeedPath(state.lastResult.timeline, state.lastResult);
     }
   });
