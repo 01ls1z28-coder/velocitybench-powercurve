@@ -1,3 +1,63 @@
+# Excel ET-first tip — forceScale=1 + loss/launch/tires (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-excel-et-first` · Tip off `da815396a56daac8b745307f58ef9b2ddfe5fbc6` (loss/launch/tires — **intact**: Peak HP wipe fix, VB_POWERCURVE_GARAGE bind, canvas-before-listener). **No deploy.**
+
+## Goal
+Fleet Excel match with **ET-heaviest** cost: ¼ ET → trap → 60-130 → 0-60 → soft Vmax/limiter. Knobs = **drivetrainLossPercent + launchRpm + tireType**; curve scale / mid-shape = last resort. `forceScale` always **1.0**.
+
+## Shipped
+1. **ET-first recalib** — `scripts/recalib-et-first.js` (cost weights ET 8 / trap 5 / 60-130 3 / 0-60 2).
+2. **ZR1X** — mid-shape bake + loss/tire/Cd/wt/assist micro-search; drag radial; lim **233**. ET tightened vs da81539 (+0.22 → **+0.14**).
+3. **Cybertruck** — Excel wt **6800**; lim **130**; loss/tire/launch ET-first.
+4. Peak HP wipe fix · VB_POWERCURVE_GARAGE bind · canvas-before-listener — **unchanged**.
+
+## Excel vs sim (UI-path = load + RUN / readCarFromForm equivalent)
+
+| Car | Excel | Sim (fs=1) | Verdict |
+|-----|-------|------------|---------|
+| **2026 Corvette ZR1X** | 1.9 / **8.675@159** / 60-130 **3.87** / lim 233 | **1.899 / 8.818@159.5 / 3.877** · Vmax 224.3 | PASS (all TOL); ET Δ **+0.143** (was +0.219) |
+| **2024 Cybertruck Tri-Motor** | 2.6 / **11.0@119** / lim 130 | **2.748 / 10.992@118.8** · Vmax 130 | PASS (all TOL) |
+
+### Launch-mode delta (ZR1X auto baseline)
+| Mode | 0-60 / 60ft / ET |
+|------|-----------------|
+| soft | 1.627 / 1.343 / 8.591 |
+| auto | 1.899 / 1.465 / 8.818 |
+| aggressive | 2.268 / 1.650 / 9.135 |
+
+### forceScale
+**333/333 = 1.0** (confirmed). Peak HP path does **not** wipe ZR1X/CT garage curves.
+
+## Fleet hit-rates (Excel TOL) vs da81539
+
+| Metric | da81539 | ET-first |
+|--------|---------|----------|
+| ¼ ET | 313/331 **94.6%** | 328/331 **99.1%** |
+| ¼ trap | 288/331 **87.0%** | 286/331 **86.4%** |
+| 0-60 | 283/332 **85.2%** | 291/332 **87.7%** |
+| 60-130 | 72/76 **94.7%** | 72/76 **94.7%** |
+| all4 | 236/333 **70.9%** | 246/333 **73.9%** |
+
+changed 192 · fast 140 · elapsed ~1289s. Meta: `scripts/garage-calib-meta.json`.
+
+### Worst 15 ET misses (by |Δ|)
+Audi R8 V10 (−0.47) · Venom GT (−0.45) · Nova 350 (−0.38) · Galaxie 352 (−0.25) · Veyron SS (−0.24) · Huayra (+0.24) · X6M (−0.24) · Thunderbird (−0.24) · Frontier (−0.24) · Speedtail (−0.24) · Liberty (−0.23) · Avalanche (−0.23) · Diablo VT (−0.22) · GNX (−0.22) · Camaro Z28 (−0.22)
+
+### Worst 15 trap misses (by |Δ|)
+Murciélago LP640 (−8.1) · ’64 GTO (−7.4) · S1000RR (−7.0) · Chevelle SS396 (−6.9) · Escalade V (−6.5) · Durango SRT (−6.1) · RR Sport SVR (−6.0) · S6 V10 (−5.9) · Lucid Air Touring (+5.8) · Dart GTS (−5.8) · Taycan Turbo S (+5.6) · iX M60 (+5.5) · Olds 442 (−5.5) · GTX 440 (−5.5) · RS4 Avant (−5.5)
+
+**Skipped:** deploy · Merovingian holds deploy.
+
+VERIFY
+1. `node scripts/recalib-et-first.js` already applied; spotcheck ZR1X/CT above
+2. Load ZR1X → RUN: ~1.90 / ~8.82@159 / 60-130~3.88 / Vmax~224 — Peak HP must not change curve
+3. Load Cybertruck → RUN: ~2.75 / ~10.99@119 / Vmax 130
+4. Toggle launch soft/auto/aggressive — 0-60 / 60ft must move
+5. Confirm every garage car `forceScale === 1`
+6. Static / no secrets; **no deploy**
+
+---
+
 # Excel accuracy tip — forceScale=1 + loss/launch/tires (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-excel-loss-launch-tires` · Tip off live main `1f53b39b4e25bb7b984221e9ee13f489f5aba83b` (garage bind hotfix — **intact**).
