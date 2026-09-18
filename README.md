@@ -41,3 +41,5 @@ Rebuild garage (optional): `node scripts/build-garage.js`
 ## Disclaimer
 
 Estimates for comparison and education. Not dyno- or track-certified. Created by Jorge Guerra.
+
+Phase 5 addendum: editable dyno on a **50-RPM** dense torque mesh (V-spike fix); Front/Rear + Left/Right weight distribution drives axle traction.

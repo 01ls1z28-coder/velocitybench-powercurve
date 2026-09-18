@@ -50,6 +50,18 @@
           </label>
         </div>
 
+        <div class="card-title">Weight distribution</div>
+        <div class="field-row">
+          <label class="field"><span>Front %</span><input id="frontWeightPct" type="number" min="20" max="80" step="1" value="45" /></label>
+          <label class="field"><span>Rear %</span><input id="rearWeightPct" type="number" min="20" max="80" step="1" value="55" /></label>
+        </div>
+        <div class="weight-hint" id="weightFrHint">F/R sum 100%</div>
+        <div class="field-row">
+          <label class="field"><span>Left %</span><input id="leftWeightPct" type="number" min="20" max="80" step="1" value="50" /></label>
+          <label class="field"><span>Right %</span><input id="rightWeightPct" type="number" min="20" max="80" step="1" value="50" /></label>
+        </div>
+        <div class="weight-hint" id="weightLrHint">L/R sum 100%</div>
+
         <div class="card-title">Transmission (ratios editable)</div>
         <label class="field" id="txPresetField"><span>Factory TX preset <em class="tx-hint">(Custom Builder only)</em></span>
           <select id="txPreset"></select>

@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 5 — TX Custom-only · induction · editable dyno)
+# VelocityBench PowerCurve — VERIFY (Phase 5 — editable dyno 50-RPM · weight distribution · TX/induction)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
 
@@ -106,10 +106,36 @@ Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only 
 Classifier lives in `scripts/build-garage.js` → `classifyInduction()` and is baked into `js/garage-data.js`.
 
 ### Editable dyno curve
-- HP/TQ chart shows **control bullets every 250 RPM** on the TQ curve.
+- Dense **50-RPM** TQ mesh; control bullets on that grid (majors every 250 RPM).
 - Drag a bullet **up/down** to reshape torque; **HP ≈ TQ×RPM/5252** is derived (drag TQ, HP follows).
-- Subsequent **RUN** uses the edited `torqueCurve`. **Reset to preset** restores the baked garage curve.
+- Subsequent **RUN** uses the edited dense `torqueCurve`. **Reset to preset** restores the baked garage curve.
 - Pointer Events (+ touch fallback); chart uses `touch-action: none` for mobile drag.
+
+
+### Editable dyno — 50-RPM dense mesh (V-spike fix)
+- Baked `torqueCurve` samples are densified to **50 RPM** (off-grid peak pins retained).
+- Editable series / polyline / drag handles share that **50-RPM** mesh (major bullets every 250 RPM for visibility).
+- Mid-drag: `state.powerCurve` stays authoritative; only the hit sample’s TQ changes (light ±1 neighbor blend); `car.torqueCurve` is committed as a **dense numeric-key** map — never rebuilt from a sparse post-RUN key list.
+- Root cause addressed: coarser native keys (e.g. 500 RPM) after RUN used to replace the editable series, so handles and samples disagreed and mid-edit rebuilds could floor neighbors (~5 lb-ft V-spikes).
+
+### Weight distribution (traction-real)
+UI **Front/Rear %** (sum 100) and **Left/Right %** (sum 100). Defaults by `engineLayout` / `driveType` (Front RWD rear≈55 keeps fleet calib; Mid 45/55; Rear ~38/62; FWD ~60/40). Baked into `garage-data.js`.
+
+Physics (not cosmetic):
+1. **F/R** sets static axle normals; accel weight transfer unloads the front / loads the rear.
+2. Drive-axle traction uses that normal (RWD=rear, FWD=front, AWD=both).
+3. **L/R** splits each drive axle; open/LSD blend + tire load sensitivity so imbalance cuts launch grip (50/50 matches prior `µ·N` behavior).
+
+#### Delta vs 50/50 baseline (VERIFY Supra Turbo, Drag Radial, tip physics)
+From `node scripts/spotcheck.js` weight block (same weather/tires as curated):
+
+| Setup | 1/4 ET | 60 ft | vs 50/50 ET |
+|-------|--------|-------|-------------|
+| F/R **50/50** · L/R **50/50** | **13.616 s** | **2.130 s** | baseline |
+| F/R **40/60** (RWD rear bias) | 13.526 s | 2.086 s | **−0.090 s** (more rear load → better launch) |
+| L/R **60/40** (same F/R 50/50) | 13.688 s | 2.169 s | **+0.072 s** (uneven axle → open/LSD traction loss) |
+
+Fleet RWD cars bake **F/R 45/55** (matches prior `DEFAULT_REAR_PCT=55`) so curated/fleet spot-check ETs stay unchanged.
 
 ### Holds (unchanged)
 Static / disclaimer / no secrets · slip under graphs · realtime playback always `scale=1` · LFA gauges · `tireType` must be set explicitly on spot checks.

@@ -40,6 +40,49 @@ function mapVbTire(t) {
  * Dyno curves already include boost (boostPsi stays 0); this only drives the Induction radios.
  * SC: factory supercharged name cues. Turbo: explicit turbo / isFI default. NA/EV unchanged.
  */
+
+function densifyTorqueCurve50(curve, redline) {
+  if (!curve) return curve;
+  var keys = Object.keys(curve).map(Number).filter(isFinite).sort(function (a, b) { return a - b; });
+  if (!keys.length) return curve;
+  var minR = keys[0];
+  var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
+  var start = Math.floor(minR / 50) * 50;
+  if (start < minR) start += 50;
+  if (start < 500) start = Math.max(500, start);
+  var out = {}, prev = null;
+  for (var r = start; r <= maxR + 0.01; r += 50) {
+    var rpm = Math.round(r);
+    var tq = Phys.getTorqueAtRpm(curve, rpm);
+    if (!isFinite(tq) || tq <= 0) tq = prev != null ? prev : 5;
+    out[rpm] = tq;
+    prev = tq;
+  }
+  keys.forEach(function (k) {
+    if (k % 50 !== 0) {
+      var t = Number(curve[k]);
+      if (isFinite(t) && t > 0) out[k] = t;
+    }
+  });
+  return out;
+}
+
+function bakeWeightDistribution(car) {
+  var sug = Phys.suggestedWeightDistribution
+    ? Phys.suggestedWeightDistribution(car)
+    : { frontWeightPercent: 45, rearWeightPercent: 55, leftWeightPercent: 50, rightWeightPercent: 50 };
+  car.frontWeightPercent = sug.frontWeightPercent;
+  car.rearWeightPercent = sug.rearWeightPercent;
+  car.leftWeightPercent = sug.leftWeightPercent;
+  car.rightWeightPercent = sug.rightWeightPercent;
+
+  // Phase 5 densify: 50-RPM torque mesh + layout/drive weight bake
+  if (car.torqueCurve) car.torqueCurve = densifyTorqueCurve50(car.torqueCurve, car.redline);
+  bakeWeightDistribution(car);
+
+  return car;
+}
+
 function classifyInduction(name, isFI, isEv) {
   if (isEv) return { boostModel: 'na', isFI: false, isNA: false };
   var n = String(name || '').toLowerCase();
@@ -533,7 +576,7 @@ function buildCar(row, vb) {
       // EVs often advertise "peak TQ" ~1.2–1.6× TQ-at-peak-HP
       peakTq *= 1.45;
       var curve = {};
-      for (var r = 0; r <= car.redline; r += 250) {
+      for (var r = 0; r <= car.redline; r += 50) {
         var tq;
         if (r <= car.peakTqRpm) tq = peakTq;
         else if (r <= car.peakHpRpm) {

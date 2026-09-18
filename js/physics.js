@@ -7,7 +7,7 @@
  *   shift at shiftRpm with delay; converter stall/flash; traction clamp
  *
  * VB extensions: weather/DA, wind+gusts, FI boost models, rolling resistance,
- * weight transfer from prior accel, editable factory TX ratios.
+ * F/R + L/R weight distribution (axle normals, transfer, open/LSD traction), editable factory TX ratios.
  * Estimates — not track certified.
  */
 (function (global) {
@@ -30,7 +30,65 @@
   var DEFAULT_WB_FT = 8.5;
   var DEFAULT_CG_FT = 1.5;
   var DEFAULT_REAR_PCT = 55.0;
+  var DEFAULT_LEFT_PCT = 50.0;
   var DEFAULT_MU = 1.1;
+
+  /**
+   * Suggested static weight bias from layout / drive (UI + garage bake).
+   * Front-engine RWD keeps rear≈55 so existing fleet calibration stays put.
+   */
+  function suggestedWeightDistribution(car) {
+    car = car || {};
+    var layout = String(car.engineLayout || 'Front').toLowerCase();
+    var drive = String(car.driveType || 'RWD').toUpperCase();
+    var rear = DEFAULT_REAR_PCT;
+    if (layout === 'mid') rear = 55;           // ~45/55
+    else if (layout === 'rear') rear = 62;     // ~38/62
+    else if (layout === 'dual') rear = 50;     // ~50/50 pack split
+    else if (drive === 'FWD') rear = 40;       // ~60/40
+    else if (drive === 'AWD') rear = 55;       // slight rear bias
+    else rear = 55;                            // FR RWD — calib-safe (~50/50 + rear bias)
+    var left = DEFAULT_LEFT_PCT;
+    if (car.leftWeightPercent != null && isFinite(Number(car.leftWeightPercent))) {
+      left = clamp(Number(car.leftWeightPercent), 20, 80);
+    }
+    rear = clamp(rear, 20, 80);
+    return {
+      frontWeightPercent: 100 - rear,
+      rearWeightPercent: rear,
+      leftWeightPercent: left,
+      rightWeightPercent: 100 - left
+    };
+  }
+
+  /** Resolve F/R % for traction; prefers explicit car fields, else historical 55 rear. */
+  function resolveWeightDistribution(car) {
+    car = car || {};
+    var rear, left;
+    if (car.rearWeightPercent != null && isFinite(Number(car.rearWeightPercent))) {
+      rear = Number(car.rearWeightPercent);
+    } else if (car.frontWeightPercent != null && isFinite(Number(car.frontWeightPercent))) {
+      rear = 100 - Number(car.frontWeightPercent);
+    } else {
+      // Unset → historical default (NOT layout guess) so spotcheck/fleet stay stable
+      rear = DEFAULT_REAR_PCT;
+    }
+    if (car.leftWeightPercent != null && isFinite(Number(car.leftWeightPercent))) {
+      left = Number(car.leftWeightPercent);
+    } else if (car.rightWeightPercent != null && isFinite(Number(car.rightWeightPercent))) {
+      left = 100 - Number(car.rightWeightPercent);
+    } else {
+      left = DEFAULT_LEFT_PCT;
+    }
+    rear = clamp(rear, 20, 80);
+    left = clamp(left, 20, 80);
+    return {
+      frontWeightPercent: 100 - rear,
+      rearWeightPercent: rear,
+      leftWeightPercent: left,
+      rightWeightPercent: 100 - left
+    };
+  }
 
   // Softened vs C# 2.55/1.16 for track realism (VERIFY.md)
   var GRIP_LT20 = 1.35;
@@ -100,27 +158,46 @@
       keys = [];
       for (var i = 0; i < curve.length; i++) {
         var pt = curve[i];
-        var r = pt.rpm != null ? pt.rpm : pt[0];
+        var r = Number(pt.rpm != null ? pt.rpm : pt[0]);
         var t = pt.tq != null ? pt.tq : (pt.torque != null ? pt.torque : pt[1]);
+        if (!isFinite(r)) continue;
         keys.push(r);
         map[r] = t;
       }
       keys.sort(function (a, b) { return a - b; });
     } else {
-      keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
+      keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
+      keys.sort(function (a, b) { return a - b; });
       map = curve;
     }
     if (!keys.length) return 0;
-    if (rpm <= keys[0]) return Number(map[keys[0]]);
-    if (rpm >= keys[keys.length - 1]) return Number(map[keys[keys.length - 1]]);
+    rpm = Number(rpm);
+    if (!isFinite(rpm)) return 0;
+    function tAt(k) {
+      var v = Number(map[k]);
+      if (!isFinite(v)) v = Number(map[String(Math.round(k))]);
+      return isFinite(v) ? v : 0;
+    }
+    if (rpm <= keys[0]) return tAt(keys[0]);
+    if (rpm >= keys[keys.length - 1]) return tAt(keys[keys.length - 1]);
     for (var j = 0; j < keys.length - 1; j++) {
       var r1 = keys[j], r2 = keys[j + 1];
       if (rpm >= r1 && rpm <= r2) {
-        var t1 = Number(map[r1]), t2 = Number(map[r2]);
+        var t1 = tAt(r1), t2 = tAt(r2);
+        if (!isFinite(t1) && !isFinite(t2)) return 0;
+        if (!isFinite(t1)) return t2;
+        if (!isFinite(t2)) return t1;
+        if (r2 === r1) return t1;
         return t1 + (t2 - t1) * ((rpm - r1) / (r2 - r1));
       }
     }
-    return 0;
+    // Nearest-neighbor fallback — never drop mid-range samples to 0
+    var best = keys[0], bestD = Math.abs(rpm - keys[0]);
+    for (var n = 1; n < keys.length; n++) {
+      var d = Math.abs(rpm - keys[n]);
+      if (d < bestD) { bestD = d; best = keys[n]; }
+    }
+    return tAt(best);
   }
 
   function synthesizeTorqueCurve(peakHp, peakTqRpm, redline, peakHpRpm) {
@@ -136,7 +213,7 @@
     // Typical NA/FI engines make ~8–18% more TQ at peak-TQ RPM than at peak-HP RPM
     var peakTq = tqAtPeakHp * 1.12;
     var curve = {};
-    for (var r = 1000; r <= redline; r += 250) {
+    for (var r = 1000; r <= redline; r += 50) {
       var tq;
       if (r <= peakTqRpm) {
         var u = r / peakTqRpm;
@@ -311,7 +388,10 @@
     var launchRpm = car.launchRpm != null ? Number(car.launchRpm) : DEFAULT_LAUNCH_RPM;
     var wheelbaseM = (Number(car.wheelbaseFeet) || DEFAULT_WB_FT) * FEET_TO_M;
     var cgHeightM = (Number(car.cgHeightFeet) || DEFAULT_CG_FT) * FEET_TO_M;
-    var rearPct = Number(car.rearWeightPercent) || DEFAULT_REAR_PCT;
+    var wDist = resolveWeightDistribution(car);
+    var frontPct = wDist.frontWeightPercent;
+    var rearPct = wDist.rearWeightPercent;
+    var leftPct = wDist.leftWeightPercent;
     var muBase = env.tireGrip != null ? Number(env.tireGrip) : tireGripForType(env.tireType);
     var driveType = String(car.driveType || 'RWD').toUpperCase();
     if (driveType === 'AWD') muBase *= 1.25;
@@ -367,11 +447,17 @@
     result.gearsUsed = gears.slice();
     result.finalDrive = finalDrive;
 
-    var keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
-    for (var i = 0; i < keys.length; i++) {
-      var rk = keys[i];
-      var tq0 = getTorqueAtRpm(curve, rk) * boostTorqueMult(boostModel, boostPsi, rk, redline, pressureInHg);
-      result.powerCurve.push({ rpm: rk, torque: tq0, horsepower: (tq0 * rk) / 5252 });
+    var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
+    keys.sort(function (a, b) { return a - b; });
+    if (keys.length) {
+      var r0 = Math.floor(keys[0] / 50) * 50;
+      if (r0 < keys[0]) r0 += 50;
+      var r1 = Math.max(keys[keys.length - 1], redline);
+      for (var rk = r0; rk <= r1 + 0.01; rk += 50) {
+        var rpmK = Math.round(rk);
+        var tq0 = getTorqueAtRpm(curve, rpmK) * boostTorqueMult(boostModel, boostPsi, rpmK, redline, pressureInHg);
+        result.powerCurve.push({ rpm: rpmK, torque: tq0, horsepower: (tq0 * rpmK) / 5252 });
+      }
     }
 
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
@@ -452,16 +538,13 @@
       var dragF = 0.5 * rho * cd * frontalArea * airV * airV;
       var rollF = v > 0.05 ? rollBase : 0;
 
+      // Longitudinal weight transfer: nose up under accel → load rear, unload front
       var wXfer = (mass * prevA * cgHeightM) / wheelbaseM;
-      var normal;
-      if (driveType === 'AWD') {
-        normal = mass * G + Math.abs(wXfer) * 0.15;
-      } else if (driveType === 'FWD') {
-        normal = mass * G * (1.0 - rearPct / 100.0) - wXfer;
-      } else {
-        normal = mass * G * (rearPct / 100.0) + wXfer;
-      }
-      if (normal < mass * G * 0.25) normal = mass * G * 0.25;
+      var nFront = mass * G * (frontPct / 100.0) - wXfer;
+      var nRear = mass * G * (rearPct / 100.0) + wXfer;
+      var nMin = mass * G * 0.08;
+      if (nFront < nMin) nFront = nMin;
+      if (nRear < nMin) nRear = nMin;
 
       var mu = muBase;
       if (inLaunch) {
@@ -475,7 +558,39 @@
       else if (mph < 40.0) mu *= GRIP_20_40;
       else if (mph < 60.0) mu *= GRIP_40_60;
 
-      var tracLim = normal * mu;
+      /**
+       * Per-axle traction with L/R split.
+       * 50/50 → same as mu*nAxle. Bias toward open-diff (limited by light wheel) so
+       * uneven L/R meaningfully cuts launch grip; load sensitivity softens the heavy side.
+       */
+      function axleTractionLimit(nAxle, muAx, leftP) {
+        var nL = nAxle * (leftP / 100.0);
+        var nR = nAxle * (1.0 - leftP / 100.0);
+        var nRef = Math.max(1e-6, nAxle * 0.5);
+        function sideForce(n) {
+          // Load sensitivity: µ_eff falls as load rises above the balanced half-axle
+          var sens = Math.pow(nRef / Math.max(n, nRef * 0.12), 0.14);
+          return muAx * n * clamp(sens, 0.72, 1.18);
+        }
+        var fL = sideForce(nL);
+        var fR = sideForce(nR);
+        var locked = fL + fR;
+        var open = 2.0 * Math.min(fL, fR);
+        // Street LSD blend (~60% locked). AWD axles slightly more locked.
+        var lockFrac = driveType === 'AWD' ? 0.72 : 0.60;
+        return open * (1.0 - lockFrac) + locked * lockFrac;
+      }
+
+      var tracLim;
+      if (driveType === 'AWD') {
+        // Both axles contribute; F/R static + transfer sets each axle's normal
+        tracLim = axleTractionLimit(nFront, mu, leftPct) + axleTractionLimit(nRear, mu, leftPct);
+      } else if (driveType === 'FWD') {
+        tracLim = axleTractionLimit(nFront, mu, leftPct);
+      } else {
+        // RWD — drive axle is rear (gains load under accel)
+        tracLim = axleTractionLimit(nRear, mu, leftPct);
+      }
       var applied = driveF;
       var spinPct = 0;
       if (applied > tracLim && tracLim > 0) {
@@ -631,6 +746,8 @@
     getTorqueAtRpm: getTorqueAtRpm,
     synthesizeTorqueCurve: synthesizeTorqueCurve,
     peakHpFromCurve: peakHpFromCurve,
+    suggestedWeightDistribution: suggestedWeightDistribution,
+    resolveWeightDistribution: resolveWeightDistribution,
     computeDensityAltitude: computeDensityAltitude,
     airDensityFromDA: airDensityFromDA,
     boostTorqueMult: boostTorqueMult,

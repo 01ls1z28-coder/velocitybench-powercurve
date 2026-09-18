@@ -160,4 +160,37 @@ console.log('12 mph tailwind vs calm (Supra, Drag Radial): ET ' +
   (tail.quarterMileTime - calm.quarterMileTime >= 0 ? '+' : '') +
   (tail.quarterMileTime - calm.quarterMileTime).toFixed(3) + ' s');
 
+
+// ---- Weight distribution traction delta (Supra VERIFY, Drag Radial) ----
+console.log('\n---------- WEIGHT DISTRIBUTION vs 50/50 ----------');
+(function () {
+  var base = JSON.parse(JSON.stringify(CURATED.supra94));
+  base.frontWeightPercent = 50;
+  base.rearWeightPercent = 50;
+  base.leftWeightPercent = 50;
+  base.rightWeightPercent = 50;
+  var calm50 = Phys.runQuarterMile(base, envFor(1));
+
+  var rearBias = JSON.parse(JSON.stringify(base));
+  rearBias.frontWeightPercent = 40;
+  rearBias.rearWeightPercent = 60; // more rear for RWD launch
+  var rRear = Phys.runQuarterMile(rearBias, envFor(1));
+
+  var lrBias = JSON.parse(JSON.stringify(base));
+  lrBias.leftWeightPercent = 60;
+  lrBias.rightWeightPercent = 40; // uneven axle load
+  var rLR = Phys.runQuarterMile(lrBias, envFor(1));
+
+  function dET(a, b) { return (a.quarterMileTime - b.quarterMileTime); }
+  function d60(a, b) { return (a.sixtyFootTime - b.sixtyFootTime); }
+  console.log('Baseline F/R 50/50 · L/R 50/50: 1/4 ' +
+    calm50.quarterMileTime.toFixed(3) + ' s · 60ft ' + calm50.sixtyFootTime.toFixed(3) + ' s');
+  console.log('RWD rear bias F/R 40/60 vs 50/50: ET ' +
+    (dET(rRear, calm50) >= 0 ? '+' : '') + dET(rRear, calm50).toFixed(3) +
+    ' s · 60ft ' + (d60(rRear, calm50) >= 0 ? '+' : '') + d60(rRear, calm50).toFixed(3) + ' s');
+  console.log('L/R 60/40 vs 50/50 (same F/R 50/50): ET ' +
+    (dET(rLR, calm50) >= 0 ? '+' : '') + dET(rLR, calm50).toFixed(3) +
+    ' s · 60ft ' + (d60(rLR, calm50) >= 0 ? '+' : '') + d60(rLR, calm50).toFixed(3) + ' s');
+})();
+
 console.log('\nDone. Re-run: node scripts/spotcheck.js');

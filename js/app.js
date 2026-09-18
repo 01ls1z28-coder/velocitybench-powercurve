@@ -20,7 +20,10 @@
     finalDriveRatio: 3.73, gearRatios: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50],
     peakHp: 450, peakTqRpm: 4200, peakHpRpm: 6200, redline: 6800,
     isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000,
-    drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 1, forceScale: 1
+    drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 1, forceScale: 1,
+    engineLayout: 'Front',
+    frontWeightPercent: 45, rearWeightPercent: 55,
+    leftWeightPercent: 50, rightWeightPercent: 50
   };
 
   function loadGarageFleet() {
@@ -102,47 +105,62 @@
     }
   }
 
+  var RPM_GRID = 50;  // dense mesh — matches baked torque samples
+
   /** Build editable HP/TQ series on a 250-RPM grid from a torque curve map. */
   function powerCurveFromTorqueCurve(curve, redline) {
     if (!curve) return [];
-    var keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
+    var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
+    keys.sort(function (a, b) { return a - b; });
     if (!keys.length) return [];
     var minR = keys[0];
     var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
     // Snap grid to 250 starting at nearest <= minR
-    var start = Math.floor(minR / 250) * 250;
-    if (start < minR && start + 250 <= maxR) start += 250;
+    var start = Math.floor(minR / RPM_GRID) * RPM_GRID;
+    if (start < minR && start + RPM_GRID <= maxR) start += RPM_GRID;
     if (start < 500) start = Math.max(500, start);
     var out = [];
-    for (var r = start; r <= maxR + 0.01; r += 250) {
-      var tq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(curve, r) : null;
-      if (tq == null || !isFinite(tq)) {
-        // local interpolate fallback
-        tq = Number(curve[r]);
-        if (!isFinite(tq)) {
+    var prevTq = null;
+    for (var r = start; r <= maxR + 0.01; r += RPM_GRID) {
+      var rpm = Math.round(r);
+      var tq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(curve, rpm) : null;
+      if (tq == null || !isFinite(tq) || tq <= 0) {
+        // local interpolate fallback — never leave a hole that floors to ~5
+        tq = Number(curve[rpm]);
+        if (!isFinite(tq) || tq <= 0) tq = Number(curve[String(rpm)]);
+        if (!isFinite(tq) || tq <= 0) {
           var lo = null, hi = null;
           for (var i = 0; i < keys.length; i++) {
-            if (keys[i] <= r) lo = keys[i];
-            if (keys[i] >= r) { hi = keys[i]; break; }
+            if (keys[i] <= rpm) lo = keys[i];
+            if (keys[i] >= rpm) { hi = keys[i]; break; }
           }
           if (lo == null) tq = Number(curve[keys[0]]);
           else if (hi == null || hi === lo) tq = Number(curve[lo]);
           else {
             var t1 = Number(curve[lo]), t2 = Number(curve[hi]);
-            tq = t1 + (t2 - t1) * ((r - lo) / (hi - lo));
+            if (!isFinite(t1)) t1 = t2;
+            if (!isFinite(t2)) t2 = t1;
+            tq = t1 + (t2 - t1) * ((rpm - lo) / (hi - lo));
           }
         }
       }
-      tq = Math.max(5, Number(tq) || 5);
-      out.push({ rpm: r, torque: tq, horsepower: (tq * r) / 5252 });
+      if (!isFinite(tq) || tq <= 0) tq = prevTq != null ? prevTq : 5;
+      tq = Math.max(5, tq);
+      prevTq = tq;
+      out.push({ rpm: rpm, torque: tq, horsepower: (tq * rpm) / 5252 });
     }
     return out;
   }
 
+  /** Dense numeric-key torque map from the authoritative editable series (all 250-RPM samples). */
   function torqueCurveFromPowerCurve(powerCurve) {
     var map = {};
     (powerCurve || []).forEach(function (p) {
-      map[Math.round(p.rpm)] = p.torque;
+      if (!p || !isFinite(p.rpm)) return;
+      var rpm = Math.round(Number(p.rpm));
+      var tq = Number(p.torque);
+      if (!isFinite(tq)) return;
+      map[rpm] = Math.max(5, tq);
     });
     return map;
   }
@@ -153,12 +171,15 @@
       drawPowerCurve([]);
       return;
     }
+    // Only rebuild the editable series from the car when not mid-drag
+    if (state.drag) return;
     state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
     drawPowerCurve(state.powerCurve, state.cursorRpm);
   }
 
   function commitEditedCurveToCar() {
     if (!state.car || !state.powerCurve.length) return;
+    // state.powerCurve is authoritative while editing — write a dense integer-key map
     state.car.torqueCurve = torqueCurveFromPowerCurve(state.powerCurve);
     // Keep peakHp label aligned with edited curve peak
     var peak = 0;
@@ -171,6 +192,22 @@
       if (hpEl) hpEl.value = String(Math.round(peak));
     }
     state.curveEdited = true;
+  }
+
+  /** Light neighbor sculpt so raising one bullet doesn't leave a knife-edge spike. */
+  function blendNeighbors(idx, strength) {
+    strength = strength == null ? 0.22 : strength;
+    var pc = state.powerCurve;
+    if (!pc || idx < 0 || idx >= pc.length) return;
+    var tq = pc[idx].torque;
+    if (idx > 0) {
+      pc[idx - 1].torque = pc[idx - 1].torque * (1 - strength) + tq * strength;
+      pc[idx - 1].horsepower = (pc[idx - 1].torque * pc[idx - 1].rpm) / 5252;
+    }
+    if (idx < pc.length - 1) {
+      pc[idx + 1].torque = pc[idx + 1].torque * (1 - strength) + tq * strength;
+      pc[idx + 1].horsepower = (pc[idx + 1].torque * pc[idx + 1].rpm) / 5252;
+    }
   }
 
   function renderGears(ratios) {
@@ -209,6 +246,71 @@
     return el ? el.value : 'na';
   }
 
+
+  function syncWeightFieldsFromCar(car) {
+    var sug = Phys.suggestedWeightDistribution
+      ? Phys.suggestedWeightDistribution(car)
+      : { frontWeightPercent: 45, rearWeightPercent: 55, leftWeightPercent: 50, rightWeightPercent: 50 };
+    var resolved = Phys.resolveWeightDistribution
+      ? Phys.resolveWeightDistribution(car)
+      : sug;
+    // Prefer baked/explicit car fields; else layout/drive suggestion
+    var use = (car.rearWeightPercent != null || car.frontWeightPercent != null) ? resolved : sug;
+    if ($('frontWeightPct')) $('frontWeightPct').value = String(Math.round(use.frontWeightPercent));
+    if ($('rearWeightPct')) $('rearWeightPct').value = String(Math.round(use.rearWeightPercent));
+    if ($('leftWeightPct')) $('leftWeightPct').value = String(Math.round(use.leftWeightPercent));
+    if ($('rightWeightPct')) $('rightWeightPct').value = String(Math.round(use.rightWeightPercent));
+    updateWeightSumHints();
+  }
+
+  function updateWeightSumHints() {
+    var f = Number($('frontWeightPct') && $('frontWeightPct').value);
+    var r = Number($('rearWeightPct') && $('rearWeightPct').value);
+    var l = Number($('leftWeightPct') && $('leftWeightPct').value);
+    var rt = Number($('rightWeightPct') && $('rightWeightPct').value);
+    var fr = $('weightFrHint');
+    var lr = $('weightLrHint');
+    if (fr) {
+      var s = (isFinite(f) ? f : 0) + (isFinite(r) ? r : 0);
+      fr.textContent = 'F/R sum ' + Math.round(s) + '%';
+      fr.style.color = Math.abs(s - 100) < 0.6 ? '' : '#ff6b6b';
+    }
+    if (lr) {
+      var s2 = (isFinite(l) ? l : 0) + (isFinite(rt) ? rt : 0);
+      lr.textContent = 'L/R sum ' + Math.round(s2) + '%';
+      lr.style.color = Math.abs(s2 - 100) < 0.6 ? '' : '#ff6b6b';
+    }
+  }
+
+  function readWeightDistributionFromForm(base) {
+    var sug = Phys.suggestedWeightDistribution
+      ? Phys.suggestedWeightDistribution(base || {})
+      : { frontWeightPercent: 45, rearWeightPercent: 55, leftWeightPercent: 50, rightWeightPercent: 50 };
+    var front = clampNum($('frontWeightPct') && $('frontWeightPct').value, 20, 80, sug.frontWeightPercent);
+    var rear = clampNum($('rearWeightPct') && $('rearWeightPct').value, 20, 80, sug.rearWeightPercent);
+    var left = clampNum($('leftWeightPct') && $('leftWeightPct').value, 20, 80, sug.leftWeightPercent);
+    var right = clampNum($('rightWeightPct') && $('rightWeightPct').value, 20, 80, sug.rightWeightPercent);
+    // Normalize pairs to 100 (rear/right absorb remainder)
+    var fr = front + rear;
+    if (fr > 0 && Math.abs(fr - 100) > 0.01) {
+      rear = 100 - front;
+    }
+    var lr = left + right;
+    if (lr > 0 && Math.abs(lr - 100) > 0.01) {
+      right = 100 - left;
+    }
+    rear = clampNum(rear, 20, 80, 55);
+    front = 100 - rear;
+    right = clampNum(100 - left, 20, 80, 50);
+    left = 100 - right;
+    return {
+      frontWeightPercent: front,
+      rearWeightPercent: rear,
+      leftWeightPercent: left,
+      rightWeightPercent: right
+    };
+  }
+
   function applyCarToForm(car, opts) {
     opts = opts || {};
     state.car = car;
@@ -224,6 +326,7 @@
     $('area').value = car.frontalAreaSqFt;
     $('tireRadius').value = car.tireRadiusInches;
     $('driveType').value = car.driveType || 'RWD';
+    syncWeightFieldsFromCar(car);
     $('finalDrive').value = car.finalDriveRatio;
     $('lossPct').value = car.drivetrainLossPercent != null ? car.drivetrainLossPercent : 15;
     $('launchRpm').value = car.launchRpm || 3000;
@@ -248,7 +351,7 @@
     rpmGauge.setMax(Math.max(8000, (car.redline || 7000) * 1.05));
     rpmGauge.redline = car.shiftRpm || 6500;
     highlightGarage(car.id);
-    // Show baked (or working) dyno curve immediately — editable bullets every 250 RPM
+    // Show baked (or working) dyno curve immediately — dense 50-RPM mesh, editable bullets
     syncPowerCurveFromCar(car);
   }
 
@@ -317,8 +420,14 @@
       forceScale: base.forceScale != null ? Number(base.forceScale) : 1,
       tireType: parseInt($('tireType').value, 10) || 0,
       isEv: !!base.isEv,
+      engineLayout: base.engineLayout || 'Front',
       torqueCurve: base.torqueCurve || null
     };
+    var w = readWeightDistributionFromForm(base);
+    car.frontWeightPercent = w.frontWeightPercent;
+    car.rearWeightPercent = w.rearWeightPercent;
+    car.leftWeightPercent = w.leftWeightPercent;
+    car.rightWeightPercent = w.rightWeightPercent;
     // If user changed peak HP significantly vs curve peak, resynthesize
     if (car.torqueCurve) {
       var curveHp = Phys.peakHpFromCurve(car.torqueCurve);
@@ -505,19 +614,23 @@
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.5; ctx.stroke();
 
 
-    // Phase 5: editable TQ control bullets every 250 RPM (drag up/down; HP = TQ×RPM/5252)
+    // Editable TQ bullets on the dense 50-RPM mesh (major every 250 for visibility)
     var handles = [];
-    powerCurve.forEach(function (p) {
-      if (Math.round(p.rpm) % 250 !== 0) return;
+    powerCurve.forEach(function (p, i) {
+      var rpm = Math.round(p.rpm);
+      if (rpm % 50 !== 0) return;
       var hx = x(p.rpm), hy = yTq(p.torque);
-      handles.push({ rpm: p.rpm, torque: p.torque, x: hx, y: hy });
+      var major = rpm % 250 === 0;
+      handles.push({ rpm: rpm, torque: p.torque, x: hx, y: hy, index: i, major: major });
       ctx.beginPath();
-      ctx.arc(hx, hy, 5.5, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(76,201,240,0.95)';
+      ctx.arc(hx, hy, major ? 5.5 : 3.2, 0, Math.PI * 2);
+      ctx.fillStyle = major ? 'rgba(76,201,240,0.95)' : 'rgba(76,201,240,0.55)';
       ctx.fill();
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(232,215,176,0.9)';
-      ctx.stroke();
+      if (major) {
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(232,215,176,0.9)';
+        ctx.stroke();
+      }
     });
     state.chartGeom.handles = handles;
 
@@ -718,9 +831,17 @@
     }
     var result = Phys.runQuarterMile(car, env);
     state.lastResult = result;
+    state.car = car;
     renderSlip(result, car);
     renderMetrics(result);
-    drawPowerCurve(result.powerCurve);
+    // Keep dense 50-RPM editable series authoritative — never replace with sparse result keys
+    if (!state.curveEdited) {
+      state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
+    } else {
+      // Re-commit ensures car.torqueCurve stays dense after readCarFromForm
+      commitEditedCurveToCar();
+    }
+    drawPowerCurve(state.powerCurve, state.cursorRpm);
     drawSpeedPath(result.timeline, result);
     // Scale speed gauge to cover Vmax
     if (result.topSpeedMph) {
@@ -737,6 +858,15 @@
     $('lossPct').value = tx.loss;
   });
 
+  var driveEl = $('driveType');
+  if (driveEl) {
+    driveEl.addEventListener('change', function () {
+      if (!state.car) return;
+      state.car.driveType = driveEl.value;
+      // Refresh layout-based defaults only when user hasn't customized (near suggested)
+      syncWeightFieldsFromCar(Object.assign({}, state.car, { driveType: driveEl.value, rearWeightPercent: null, frontWeightPercent: null }));
+    });
+  }
   $('btnRun').addEventListener('click', runSim);
   $('btnReset').addEventListener('click', function () {
     var src = state.presetCar || state.car;
@@ -770,10 +900,11 @@
     function hitHandle(mx, my) {
       var g = state.chartGeom;
       if (!g || !g.handles) return null;
-      var best = null, bestD = 16; // px hit radius (finger-friendly)
+      var best = null, bestD = 14; // px — dense 50-RPM mesh, nearest wins
       g.handles.forEach(function (h) {
         var d = Math.hypot(mx - h.x, my - h.y);
-        if (d <= bestD) { bestD = d; best = h; }
+        var rad = h.major ? 14 : 10;
+        if (d <= rad && d <= bestD) { bestD = d; best = h; }
       });
       return best;
     }
@@ -798,17 +929,22 @@
       var xy = localXY(ev);
       var tq = torqueFromY(xy.y);
       if (tq == null) return;
-      var rpm = state.drag.rpm;
-      for (var i = 0; i < state.powerCurve.length; i++) {
-        if (Math.abs(state.powerCurve[i].rpm - rpm) < 1) {
-          state.powerCurve[i].torque = tq;
-          state.powerCurve[i].horsepower = (tq * state.powerCurve[i].rpm) / 5252;
-          break;
+      // Authoritative edit: only the hit index (one 50-RPM sample). Never rebuild from car mid-drag.
+      var idx = state.drag.index;
+      if (idx == null || idx < 0 || idx >= state.powerCurve.length) {
+        for (var i = 0; i < state.powerCurve.length; i++) {
+          if (Math.abs(state.powerCurve[i].rpm - state.drag.rpm) < 1) { idx = i; break; }
         }
       }
-      state.cursorRpm = rpm;
+      if (idx == null || idx < 0) return;
+      state.powerCurve[idx].torque = tq;
+      state.powerCurve[idx].horsepower = (tq * state.powerCurve[idx].rpm) / 5252;
+      // Light sculpt of immediate 50-RPM neighbors so a raise doesn't knife-edge
+      blendNeighbors(idx, 0.18);
+      state.cursorRpm = state.powerCurve[idx].rpm;
+      // Commit dense map to car, but do not syncPowerCurveFromCar (keeps state.powerCurve authoritative)
       commitEditedCurveToCar();
-      drawPowerCurve(state.powerCurve, rpm);
+      drawPowerCurve(state.powerCurve, state.cursorRpm);
       if (ev.cancelable) ev.preventDefault();
     }
 
@@ -819,6 +955,7 @@
       if (h) {
         state.drag = {
           rpm: h.rpm,
+          index: h.index,
           pointerId: ev.pointerId,
           axisMaxTq: state.chartGeom && state.chartGeom.maxTq,
           axisMaxHp: state.chartGeom && state.chartGeom.maxHp
@@ -907,6 +1044,27 @@
   });
 
   populateTxPresets();
+  ['frontWeightPct', 'rearWeightPct', 'leftWeightPct', 'rightWeightPct'].forEach(function (id) {
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener('input', function () {
+      // Keep pairs summing to 100 while typing
+      if (id === 'frontWeightPct' && $('rearWeightPct')) {
+        var f = clampNum(el.value, 20, 80, 45);
+        $('rearWeightPct').value = String(Math.round(100 - f));
+      } else if (id === 'rearWeightPct' && $('frontWeightPct')) {
+        var r = clampNum(el.value, 20, 80, 55);
+        $('frontWeightPct').value = String(Math.round(100 - r));
+      } else if (id === 'leftWeightPct' && $('rightWeightPct')) {
+        var l = clampNum(el.value, 20, 80, 50);
+        $('rightWeightPct').value = String(Math.round(100 - l));
+      } else if (id === 'rightWeightPct' && $('leftWeightPct')) {
+        var rt = clampNum(el.value, 20, 80, 50);
+        $('leftWeightPct').value = String(Math.round(100 - rt));
+      }
+      updateWeightSumHints();
+    });
+  });
   var filterEl = $('garageFilter');
   if (filterEl) {
     filterEl.addEventListener('input', function () {
