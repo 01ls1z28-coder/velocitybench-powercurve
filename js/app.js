@@ -10,46 +10,54 @@
     return;
   }
 
+  // Baked dyno curves: HP ≈ TQ×RPM/5252 at every point; peaks match published ratings.
   var SAMPLE_CARS = [
     {
       id: 'cobra65',
       name: '1965 Shelby Cobra 427',
       category: 'Classic Muscle',
-      weightLbs: 2450, dragCoefficient: 0.52, frontalAreaSqFt: 20.5, tireRadiusInches: 13.5,
-      finalDriveRatio: 3.54, gearRatios: [2.32, 1.61, 1.23, 1.00],
-      torqueCurve: {1500:360,2000:400,2500:440,3000:470,3500:500,4000:520,4500:535,5000:540,5500:525,6000:500,6500:460},
-      isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000, redline: 6500,
-      drivetrainLossPercent: 15, peakHp: 425, txKey: 'Toploader_4'
+      weightLbs: 2450, dragCoefficient: 0.50, frontalAreaSqFt: 20.0, tireRadiusInches: 13.5,
+      finalDriveRatio: 3.54, gearRatios: [2.32, 1.69, 1.29, 1.00],
+      // ~425 hp @ 6000 / ~480 lb-ft @ 3500 (street 427 side-oiler shape)
+      torqueCurve: {1500:380,2000:420,2500:450,3000:470,3500:480,4000:475,4500:460,5000:430,5500:400,6000:372,6500:330},
+      isNA: true, driveType: 'RWD', shiftRpm: 6200, launchRpm: 3000, redline: 6500,
+      drivetrainLossPercent: 15, peakHp: 425, peakTqRpm: 3500, peakHpRpm: 6000, txKey: 'Toploader_4'
     },
     {
       id: 'charger70',
       name: '1970 Dodge Charger R/T 440',
       category: 'Classic Muscle',
-      weightLbs: 4100, dragCoefficient: 0.50, frontalAreaSqFt: 24.0, tireRadiusInches: 14.0,
-      finalDriveRatio: 3.55, gearRatios: [2.45, 1.45, 1.00],
-      torqueCurve: {1500:380,2000:420,2500:460,3000:480,3500:490,4000:500,4500:505,5000:500,5500:480,6000:450,6500:410},
-      isNA: true, driveType: 'RWD', shiftRpm: 5500, launchRpm: 2500, redline: 5800,
-      drivetrainLossPercent: 18, peakHp: 375, txKey: 'TH400_3', hasAftermarketConverter: true, stallRpm: 2800, flashRpm: 3200
+      weightLbs: 3880, dragCoefficient: 0.48, frontalAreaSqFt: 23.5, tireRadiusInches: 14.0,
+      finalDriveRatio: 3.23, gearRatios: [2.45, 1.45, 1.00],
+      // ~375 hp @ ~4600 / ~480 lb-ft @ 3200 Magnum shape
+      torqueCurve: {1500:380,2000:420,2500:450,3000:475,3200:480,3500:475,4000:460,4500:440,4600:428,5000:400,5500:360,5800:330},
+      isNA: true, driveType: 'RWD', shiftRpm: 5200, launchRpm: 2200, redline: 5800,
+      drivetrainLossPercent: 18, peakHp: 375, peakTqRpm: 3200, peakHpRpm: 4600, txKey: 'TH400_3',
+      hasAftermarketConverter: true, stallRpm: 2800, flashRpm: 3200
     },
     {
       id: 'supra94',
       name: '1994 Toyota Supra Turbo',
       category: 'JDM',
-      weightLbs: 3450, dragCoefficient: 0.33, frontalAreaSqFt: 21.8, tireRadiusInches: 13.1,
+      weightLbs: 3410, dragCoefficient: 0.31, frontalAreaSqFt: 21.0, tireRadiusInches: 12.9,
       finalDriveRatio: 3.27, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
-      torqueCurve: {2000:180,2500:220,3000:260,3500:300,4000:330,4500:350,5000:360,5500:365,6000:360,6500:345,7000:320},
+      // USDM 2JZ-GTE: 320 hp @ 5600 / 315 lb-ft @ 4000 (sequential TT spool shape)
+      torqueCurve: {2000:185,2500:230,3000:275,3500:300,4000:315,4500:310,5000:305,5500:302,5600:300,6000:275,6500:250,7000:225},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-      shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12, peakHp: 320, txKey: 'Aisin_6'
+      shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12,
+      peakHp: 320, peakTqRpm: 4000, peakHpRpm: 5600, txKey: 'Aisin_6'
     },
     {
       id: 'r34',
       name: '2002 Nissan Skyline GT-R R34',
       category: 'JDM',
-      weightLbs: 3400, dragCoefficient: 0.33, frontalAreaSqFt: 22.0, tireRadiusInches: 13.0,
-      finalDriveRatio: 3.545, gearRatios: [4.056, 2.301, 1.595, 1.248, 1.000, 0.795],
-      torqueCurve: {2500:180,3000:210,3500:250,4000:280,4500:300,5000:315,5500:325,6000:330,6500:325,7000:310,7500:290},
-      isFI: true, isNA: false, driveType: 'AWD', shiftRpm: 7600, launchRpm: 3500, redline: 8000,
-      drivetrainLossPercent: 12, peakHp: 276, txKey: 'GR6_DCT'
+      weightLbs: 3397, dragCoefficient: 0.34, frontalAreaSqFt: 21.5, tireRadiusInches: 12.8,
+      finalDriveRatio: 3.545, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
+      // RB26 claimed 276 hp @ 6800 / 289 lb-ft @ 4400
+      torqueCurve: {2500:200,3000:230,3500:260,4000:280,4400:289,5000:275,5500:255,6000:235,6500:220,6800:213,7000:205,7500:185,8000:165},
+      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',
+      shiftRpm: 7600, launchRpm: 3500, redline: 8000, drivetrainLossPercent: 14,
+      peakHp: 276, peakTqRpm: 4400, peakHpRpm: 6800, txKey: 'Aisin_6'
     },
     {
       id: 'boss302',
@@ -57,50 +65,58 @@
       category: 'Modern Muscle',
       weightLbs: 3632, dragCoefficient: 0.36, frontalAreaSqFt: 22.7, tireRadiusInches: 13.2,
       finalDriveRatio: 3.73, gearRatios: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65],
-      torqueCurve: {2000:230,2500:250,3000:270,3500:290,4000:310,4500:325,5000:335,5500:345,6000:350,6500:345,7000:330},
+      // 444 hp @ 7400 / 380 lb-ft @ 4500 — high-rev Coyote
+      torqueCurve: {2000:250,2500:280,3000:310,3500:340,4000:365,4500:380,5000:375,5500:360,6000:345,6500:330,7000:320,7400:315,7500:300},
       isNA: true, driveType: 'RWD', shiftRpm: 7400, launchRpm: 3200, redline: 7500,
-      drivetrainLossPercent: 12, peakHp: 444, txKey: 'Getrag_MT82'
+      drivetrainLossPercent: 12, peakHp: 444, peakTqRpm: 4500, peakHpRpm: 7400, txKey: 'Getrag_MT82'
     },
     {
       id: 'miata16',
       name: '2016 Mazda MX-5 Miata Club',
       category: 'Sports Cars',
-      weightLbs: 2340, dragCoefficient: 0.31, frontalAreaSqFt: 19.0, tireRadiusInches: 12.4,
-      finalDriveRatio: 2.87, gearRatios: [5.09, 2.99, 2.05, 1.59, 1.29, 1.00],
-      torqueCurve: {2000:100,2500:110,3000:120,3500:125,4000:130,4500:135,5000:140,5500:142,6000:140,6500:135,7000:130},
+      weightLbs: 2332, dragCoefficient: 0.31, frontalAreaSqFt: 18.5, tireRadiusInches: 12.2,
+      finalDriveRatio: 2.87, gearRatios: [5.087, 2.991, 2.035, 1.594, 1.290, 1.000],
+      // SkyActiv-G 2.0: 155 hp @ 6000 / 148 lb-ft @ 4600
+      torqueCurve: {2000:105,2500:118,3000:128,3500:138,4000:145,4500:148,5000:145,5500:140,6000:136,6500:125,7000:112,7500:98},
       isNA: true, driveType: 'RWD', shiftRpm: 7200, launchRpm: 3500, redline: 7500,
-      drivetrainLossPercent: 12, peakHp: 155, txKey: 'Aisin_6'
+      drivetrainLossPercent: 12, peakHp: 155, peakTqRpm: 4500, peakHpRpm: 6000, txKey: 'Aisin_6'
     },
     {
       id: 'hellcat19',
       name: '2019 Challenger Hellcat Redeye',
       category: 'Modern Muscle',
-      weightLbs: 4445, dragCoefficient: 0.37, frontalAreaSqFt: 24.5, tireRadiusInches: 13.8,
+      weightLbs: 4445, dragCoefficient: 0.38, frontalAreaSqFt: 25.0, tireRadiusInches: 14.2,
       finalDriveRatio: 2.62, gearRatios: [4.71, 3.14, 2.10, 1.67, 1.29, 1.00, 0.84, 0.67],
-      peakHp: 797, peakTqRpm: 4000, peakHpRpm: 6200, redline: 6300,
+      // 797 hp @ 6300 / 707 lb-ft @ 4500 — broad SC plateau
+      torqueCurve: {1500:420,2000:520,2500:600,3000:650,3500:685,4000:700,4500:707,5000:700,5500:688,6000:675,6300:665,6500:640},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-      shiftRpm: 6100, launchRpm: 2200, drivetrainLossPercent: 15, txKey: 'ZF8HP',
+      shiftRpm: 6100, launchRpm: 2200, redline: 6500, drivetrainLossPercent: 15,
+      peakHp: 797, peakTqRpm: 4500, peakHpRpm: 6300, txKey: 'ZF8HP',
       hasAftermarketConverter: false
     },
     {
       id: 'gt50020',
       name: '2020 Mustang Shelby GT500',
       category: 'Modern Muscle',
-      weightLbs: 4170, dragCoefficient: 0.35, frontalAreaSqFt: 23.5, tireRadiusInches: 13.6,
+      weightLbs: 4171, dragCoefficient: 0.35, frontalAreaSqFt: 23.2, tireRadiusInches: 13.6,
       finalDriveRatio: 3.73, gearRatios: [3.25, 2.31, 1.55, 1.14, 0.87, 0.68, 0.56],
-      peakHp: 760, peakTqRpm: 4500, peakHpRpm: 7300, redline: 7500,
-      isFI: true, isNA: false, driveType: 'RWD', shiftRpm: 7500, launchRpm: 3000,
-      drivetrainLossPercent: 10, txKey: 'DCT_7_AMG'
+      // 760 hp @ 7300 / 625 lb-ft @ 5000 — Predator SC
+      torqueCurve: {2000:420,2500:480,3000:540,3500:580,4000:605,4500:620,5000:625,5500:615,6000:595,6500:575,7000:555,7300:547,7500:520},
+      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
+      shiftRpm: 7500, launchRpm: 3000, redline: 7500, drivetrainLossPercent: 10,
+      peakHp: 760, peakTqRpm: 5000, peakHpRpm: 7300, txKey: 'DCT_7_AMG'
     },
     {
       id: '911ts',
       name: '2020 Porsche 911 Turbo S (992)',
       category: 'Supercars',
-      weightLbs: 3640, dragCoefficient: 0.33, frontalAreaSqFt: 22.0, tireRadiusInches: 13.3,
-      finalDriveRatio: 3.02, gearRatios: [3.91, 2.29, 1.58, 1.19, 0.97, 0.83, 0.67],
-      peakHp: 640, peakTqRpm: 2500, peakHpRpm: 6750, redline: 7200,
-      isFI: true, isNA: false, driveType: 'AWD', shiftRpm: 7000, launchRpm: 3500,
-      drivetrainLossPercent: 10, txKey: 'PDK_7'
+      weightLbs: 3616, dragCoefficient: 0.33, frontalAreaSqFt: 21.5, tireRadiusInches: 13.0,
+      finalDriveRatio: 3.15, gearRatios: [3.91, 2.29, 1.58, 1.18, 0.94, 0.79, 0.69],
+      // 640 hp @ 6750 / 590 lb-ft @ 2500–4000 plateau
+      torqueCurve: {2000:450,2500:590,3000:590,3500:590,4000:590,4500:585,5000:570,5500:550,6000:525,6500:505,6750:498,7000:475,7200:450},
+      isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',
+      shiftRpm: 7000, launchRpm: 3500, redline: 7200, drivetrainLossPercent: 10,
+      peakHp: 640, peakTqRpm: 2500, peakHpRpm: 6750, txKey: 'PDK_7'
     },
     {
       id: 'custom',
@@ -359,6 +375,74 @@
     ctx.fillStyle = '#4cc9f0'; ctx.fillText('TQ', pad.l + 28, 12);
   }
 
+  function drawSpeedPath(timeline, result) {
+    var canvas = $('speedChart');
+    if (!canvas) return;
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth || 600;
+    var h = canvas.clientHeight || 160;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.fillRect(0, 0, w, h);
+    if (!timeline || !timeline.length) {
+      ctx.fillStyle = '#667084';
+      ctx.font = '12px Segoe UI';
+      ctx.fillText('Speed vs distance appears after a run', 16, h / 2);
+      return;
+    }
+    var pad = { l: 44, r: 16, t: 18, b: 28 };
+    var maxFt = timeline[timeline.length - 1].feet || 1320;
+    var maxMph = 0;
+    timeline.forEach(function (p) { if (p.mph > maxMph) maxMph = p.mph; });
+    maxMph = Math.max(60, maxMph * 1.08);
+    function x(ft) { return pad.l + (ft / maxFt) * (w - pad.l - pad.r); }
+    function y(mph) { return h - pad.b - (mph / maxMph) * (h - pad.t - pad.b); }
+
+    ctx.strokeStyle = 'rgba(215,196,160,0.2)';
+    ctx.lineWidth = 1;
+    for (var i = 0; i < 4; i++) {
+      var yy = pad.t + ((h - pad.t - pad.b) * i) / 3;
+      ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
+    }
+
+    // Quarter-mile markers
+    var marks = [60, 330, 660, 1000, 1320];
+    ctx.setLineDash([4, 4]);
+    marks.forEach(function (ft) {
+      if (ft > maxFt) return;
+      var xx = x(ft);
+      ctx.strokeStyle = 'rgba(76,201,240,0.35)';
+      ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    ctx.beginPath();
+    timeline.forEach(function (p, i) {
+      var px = x(p.feet), py = y(p.mph);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.2; ctx.stroke();
+
+    if (result && result.topSpeedMph) {
+      var tx = x(result.topSpeedFeet || maxFt);
+      var ty = y(result.topSpeedMph);
+      ctx.fillStyle = '#ff3355';
+      ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#e8d7b0';
+      ctx.font = '10px ui-monospace, monospace';
+      ctx.fillText('Vmax ' + result.topSpeedMph.toFixed(0), Math.min(tx + 6, w - 70), Math.max(ty - 6, 14));
+    }
+
+    ctx.fillStyle = '#9aa6b8';
+    ctx.font = '10px ui-monospace, monospace';
+    ctx.fillText('ft →', w / 2, h - 6);
+    ctx.fillStyle = '#c8ff4a'; ctx.fillText('MPH', pad.l, 12);
+  }
+
   function renderSlip(r, car) {
     var lines = [];
     lines.push('────────────────────────────────');
@@ -379,6 +463,11 @@
     lines.push('────────────────────────────────');
     lines.push('  0-60    ' + fmt(r.zeroToSixty, 3) + ' s');
     lines.push('  0-100   ' + fmt(r.zeroToHundred, 3) + ' s');
+    lines.push('────────────────────────────────');
+    lines.push('  TOP SPD ' + fmt(r.topSpeedMph, 1) + ' mph');
+    lines.push('          @ ' + fmt(r.topSpeedTime, 2) + ' s / ' + fmt(r.topSpeedFeet, 0) + ' ft');
+    if (r.vmaxReason) lines.push('  Vmax    ' + String(r.vmaxReason).replace(/_/g, ' '));
+    lines.push('────────────────────────────────');
     lines.push('  Shifts  ' + (r.totalShifts || 0) + '   Launch ' + r.launchRpm + ' → Shift ' + r.shiftRpm);
     lines.push('  Peak    ' + fmt(r.peakHorsepower, 0) + ' hp  /  ' + fmt(r.peakTorque, 0) + ' lb-ft');
     lines.push('  Peak G  ' + fmt(r.peakG, 2) + '   Wheelspin ' + fmt(r.wheelspinPercent, 1) + '%');
@@ -396,8 +485,8 @@
       ['Trap', fmt(r.quarterMileSpeedMph, 1) + ' mph'],
       ['60 ft', fmt(r.sixtyFootTime, 3) + ' s'],
       ['0–60', fmt(r.zeroToSixty, 2) + ' s'],
-      ['Peak HP', fmt(r.peakHorsepower, 0)],
-      ['Peak G', fmt(r.peakG, 2)]
+      ['Top Speed', fmt(r.topSpeedMph, 1) + ' mph'],
+      ['Peak HP', fmt(r.peakHorsepower, 0)]
     ];
     $('metrics').innerHTML = items.map(function (it) {
       return '<div class="metric"><div class="k">' + it[0] + '</div><div class="v">' + it[1] + '</div></div>';
@@ -414,7 +503,7 @@
     }
     var t0 = performance.now();
     var duration = (tl[tl.length - 1].t || 1) * 1000;
-    var scale = Math.min(1, 8000 / duration); // speed up long runs a bit for UI
+    var scale = Math.min(1, 12000 / Math.max(1, duration)); // speed up long Vmax runs for UI
     function frame(now) {
       var elapsed = (now - t0) * scale;
       var tSec = elapsed / 1000;
@@ -446,6 +535,11 @@
     renderSlip(result, car);
     renderMetrics(result);
     drawPowerCurve(result.powerCurve);
+    drawSpeedPath(result.timeline, result);
+    // Scale speed gauge to cover Vmax
+    if (result.topSpeedMph) {
+      speedGauge.setMax(Math.max(200, Math.ceil(result.topSpeedMph / 25) * 25 + 25));
+    }
     animateRun(result);
   }
 
@@ -465,11 +559,15 @@
   window.addEventListener('resize', function () {
     rpmGauge._resize();
     speedGauge._resize();
-    if (state.lastResult) drawPowerCurve(state.lastResult.powerCurve);
+    if (state.lastResult) {
+      drawPowerCurve(state.lastResult.powerCurve);
+      drawSpeedPath(state.lastResult.timeline, state.lastResult);
+    }
   });
 
   populateTxPresets();
   renderGarage();
   applyCarToForm(JSON.parse(JSON.stringify(SAMPLE_CARS[2]))); // Supra default
   drawPowerCurve([]);
+  drawSpeedPath([], null);
 })();

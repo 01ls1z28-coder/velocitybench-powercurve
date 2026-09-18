@@ -1,5 +1,5 @@
 /**
- * VelocityBench PowerCurve — geared RPM quarter-mile physics
+ * VelocityBench PowerCurve — geared RPM physics (¼-mile + run-to-Vmax)
  *
  * Faithful JS port of CarTestClone Physics/PhysicsEngine.cs:
  *   mechRpm = wheelRpm * gearRatio * finalDrive
@@ -44,11 +44,16 @@
   var DEFAULT_SHIFT_TIME = 0.10;
   var LAUNCH_V_THRESH = 1.0;
   var LAUNCH_HOLD = 1.0;
-  var MAX_T = 60.0;
+  var MAX_T = 180.0;            // allow long accel runs to Vmax
   var DT = 0.001;
+  /** Safety caps for run-to-Vmax (documented in VERIFY.md). */
+  var VMAX_SPEED_CAP_MPH = 250.0;
+  var VMAX_DIST_CAP_FT = 26400.0; // 5 miles
+  var VMAX_A_THRESH = 0.05;       // m/s^2 — equilibrium detect
+  var VMAX_HOLD_S = 0.50;         // sustained low-a before declaring Vmax
 
   /** Global drive-force scale. Tuned via VERIFY spot-checks. */
-  var CalibrationFactor = 0.92;
+  var CalibrationFactor = 0.95;
 
   var FactoryTransmissions = {
     TH400_3: { name: 'GM TH400 3-spd', gears: [2.48, 1.48, 1.00], finalDrive: 3.73, loss: 18 },
@@ -125,25 +130,31 @@
       Number(peakHpRpm) || Math.min(redline * 0.92, peakTqRpm + 1500),
       peakTqRpm, redline
     );
-    var peakTq = (peakHp * 5252) / peakHpRpm;
+    // Peak TQ from published HP@RPM via HP = TQ*RPM/5252 (consistent by construction)
+    var tqAtPeakHp = (peakHp * 5252) / peakHpRpm;
+    // Typical NA/FI engines make ~8–18% more TQ at peak-TQ RPM than at peak-HP RPM
+    var peakTq = tqAtPeakHp * 1.12;
     var curve = {};
     for (var r = 1000; r <= redline; r += 250) {
       var tq;
       if (r <= peakTqRpm) {
         var u = r / peakTqRpm;
-        tq = peakTq * (0.55 + 0.45 * Math.pow(u, 0.85));
+        // Rising flank — soft start then fill (dyno-like, not a flat blob)
+        tq = peakTq * (0.48 + 0.52 * Math.pow(u, 0.72));
       } else if (r <= peakHpRpm) {
         var v = (r - peakTqRpm) / Math.max(1, peakHpRpm - peakTqRpm);
-        var atHp = (peakHp * 5252) / peakHpRpm;
-        tq = peakTq + (atHp - peakTq) * v;
+        // TQ falls gradually so HP keeps climbing to peakHpRpm
+        tq = peakTq + (tqAtPeakHp - peakTq) * (0.25 * v + 0.75 * v * v);
       } else {
         var w = (r - peakHpRpm) / Math.max(1, redline - peakHpRpm);
-        var tqHp = (peakHp * 5252) / peakHpRpm;
-        tq = tqHp * (1.0 - 0.35 * w * w);
+        tq = tqAtPeakHp * (1.0 - 0.22 * w - 0.28 * w * w);
       }
       curve[r] = Math.max(10, tq);
     }
-    if (curve[redline] == null) curve[redline] = Math.max(10, peakTq * 0.65);
+    // Pin exact peaks for HP consistency
+    curve[peakTqRpm] = peakTq;
+    curve[peakHpRpm] = tqAtPeakHp;
+    if (curve[redline] == null) curve[redline] = Math.max(10, tqAtPeakHp * 0.72);
     return curve;
   }
 
@@ -248,7 +259,16 @@
       finalDrive: 0,
       finished: false,
       airDensity: RHO0,
-      weatherFactor: 1
+      weatherFactor: 1,
+      topSpeedMph: 0,
+      topSpeedTime: 0,
+      topSpeedFeet: 0,
+      vmaxReached: false,
+      vmaxReason: '',
+      halfMileTime: null,
+      halfMileSpeedMph: null,
+      mileTime: null,
+      mileSpeedMph: null
     };
   }
 
@@ -342,14 +362,22 @@
     var shifting = false, shiftTimer = 0;
     var spinSum = 0, spinN = 0, prevA = 0;
     var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
+    var hitHalf = false, hitMile = false;
     var qmT = null, qmMph = null;
     var t060 = null, t0100 = null, t60_130 = null, t100_150 = null;
     var at60 = null, at100 = null;
     var peakG = 0, peakHP = 0, peakTQ = 0;
     var sampleAcc = 0;
     var rollBase = 0.015 * mass * G;
+    var vmaxHold = 0;
+    var vmaxDone = false;
+    var vmaxReason = '';
+    var peakMph = 0, peakMphT = 0, peakMphFt = 0;
+    var distCapM = VMAX_DIST_CAP_FT * FEET_TO_M;
+    var speedCapMps = VMAX_SPEED_CAP_MPH * MPH_TO_MPS;
 
-    while (dist < DIST_MILE) {
+    // Continue past 1320 ft to mechanical/aero Vmax (or safety cap)
+    while (!vmaxDone && t <= MAX_T) {
       if (shifting) {
         shiftTimer -= DT;
         if (shiftTimer <= 0) shifting = false;
@@ -445,11 +473,13 @@
       applied *= CalibrationFactor;
 
       var net = applied - dragF - rollF;
-      if (net < 0) net = 0;
+      // Allow negative net after launch so aero can balance at Vmax
+      if (net < 0 && !hit1320 && v < 5.0) net = 0;
       var a = net / mass;
       prevA = a;
 
       v += a * DT;
+      if (v < 0) v = 0;
       dist += v * DT;
       t += DT;
 
@@ -460,6 +490,11 @@
       var instHp = (engTQ * rpm) / 5252;
       if (instHp > peakHP) peakHP = instHp;
       if (engTQ > peakTQ) peakTQ = engTQ;
+      if (mph > peakMph) {
+        peakMph = mph;
+        peakMphT = t;
+        peakMphFt = feet;
+      }
 
       if (!hit60 && dist >= DIST_60) { result.sixtyFootTime = t; hit60 = true; }
       if (!hit330 && dist >= DIST_330) { result.threeThirtyTime = t; hit330 = true; }
@@ -474,6 +509,16 @@
         qmT = t;
         qmMph = mph;
       }
+      if (!hitHalf && dist >= DIST_MILE * 0.5) {
+        hitHalf = true;
+        result.halfMileTime = t;
+        result.halfMileSpeedMph = mph;
+      }
+      if (!hitMile && dist >= DIST_MILE) {
+        hitMile = true;
+        result.mileTime = t;
+        result.mileSpeedMph = mph;
+      }
 
       if (mph >= 60 && t060 == null) t060 = t;
       if (mph >= 100 && t0100 == null) t0100 = t;
@@ -482,8 +527,32 @@
       if (mph >= 100 && at100 == null) at100 = t;
       if (mph >= 150 && t100_150 == null && at100 != null) t100_150 = t - at100;
 
+      // Vmax / safety-cap detection (only after quarter-mile markers recorded)
+      if (hit1320) {
+        if (v >= speedCapMps) {
+          vmaxDone = true;
+          vmaxReason = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';
+        } else if (dist >= distCapM) {
+          vmaxDone = true;
+          vmaxReason = 'dist_cap_' + VMAX_DIST_CAP_FT + 'ft';
+        } else if (a < VMAX_A_THRESH) {
+          vmaxHold += DT;
+          if (vmaxHold >= VMAX_HOLD_S) {
+            vmaxDone = true;
+            vmaxReason = 'aero_mech_equilibrium';
+          }
+        } else {
+          vmaxHold = 0;
+        }
+      }
+      if (t >= MAX_T) {
+        vmaxDone = true;
+        if (!vmaxReason) vmaxReason = 'time_cap_' + MAX_T + 's';
+      }
+
       sampleAcc += DT;
-      if (sampleAcc >= 0.02) {
+      var sampleEvery = hit1320 ? 0.05 : 0.02;
+      if (sampleAcc >= sampleEvery) {
         sampleAcc = 0;
         result.timeline.push({
           t: +t.toFixed(3),
@@ -495,9 +564,6 @@
           wheelspin: +spinPct.toFixed(1)
         });
       }
-
-      if (t > MAX_T) break;
-      if (hit1320 && dist > DIST_1320 + 5) break;
     }
 
     if (qmT != null) {
@@ -516,6 +582,11 @@
     result.peakHorsepower = peakHP;
     result.peakTorque = peakTQ;
     result.finished = hit1320;
+    result.topSpeedMph = peakMph;
+    result.topSpeedTime = peakMphT;
+    result.topSpeedFeet = peakMphFt;
+    result.vmaxReached = vmaxDone && vmaxReason.indexOf('equilibrium') >= 0;
+    result.vmaxReason = vmaxReason || (hit1320 ? 'incomplete' : 'did_not_finish_quarter');
     return result;
   }
 
@@ -535,7 +606,12 @@
       DEFAULT_SHIFT_RPM: DEFAULT_SHIFT_RPM,
       DEFAULT_SHIFT_TIME: DEFAULT_SHIFT_TIME,
       RHO0: RHO0,
-      DT: DT
+      DT: DT,
+      MAX_T: MAX_T,
+      VMAX_SPEED_CAP_MPH: VMAX_SPEED_CAP_MPH,
+      VMAX_DIST_CAP_FT: VMAX_DIST_CAP_FT,
+      VMAX_A_THRESH: VMAX_A_THRESH,
+      VMAX_HOLD_S: VMAX_HOLD_S
     }
   };
 

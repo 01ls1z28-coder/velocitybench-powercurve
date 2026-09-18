@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VelocityBench PowerCurve — Geared RPM Quarter-Mile Simulator</title>
-  <meta name="description" content="Static geared-RPM quarter-mile simulator with factory gear ratios, weather/DA, wind, FI boost models, power curve, and time slip. Estimates for comparison — not track certified." />
+  <title>VelocityBench PowerCurve — Geared RPM · ¼-Mile · Top Speed</title>
+  <meta name="description" content="Static geared-RPM simulator: factory gearing, weather/DA, wind, FI boost, dyno curves, quarter-mile time slip, and run-to-Vmax. Estimates for comparison — not track certified." />
   <meta name="robots" content="index,follow" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -15,7 +15,7 @@
         <div class="logo-mark" aria-hidden="true">VB</div>
         <div>
           <div class="logo-text">VelocityBench PowerCurve</div>
-          <div class="logo-badge">Geared RPM · Factory TX · Power Curve</div>
+          <div class="logo-badge">Geared RPM · Factory TX · Dyno Curve · Vmax</div>
         </div>
       </div>
       <div class="header-credit">Created by <em>Jorge Guerra</em> · Hub: guerra-tools-hub</div>
@@ -120,13 +120,13 @@
           </div>
         </details>
 
-        <button type="button" class="btn btn-run" id="btnRun">RUN QUARTER-MILE</button>
+        <button type="button" class="btn btn-run" id="btnRun">RUN TO TOP SPEED</button>
         <button type="button" class="btn" id="btnReset" style="width:100%;margin-top:6px">Reset to preset</button>
       </aside>
 
       <!-- CENTER: gauges + curve -->
       <main class="card">
-        <div class="card-title">Instruments · Power Curve</div>
+        <div class="card-title">Instruments · Dyno · Speed Path</div>
         <div class="live-readout">
           <span>Gear <strong id="liveGear">—</strong></span>
           <span>RPM <strong id="liveRpm">—</strong></span>
@@ -138,6 +138,9 @@
           <div class="gauge-wrap"><canvas id="speedGauge" width="240" height="240"></canvas></div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
+        <div class="chart-label">HP / TQ vs RPM</div>
+        <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
+        <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>
         <p class="disclaimer" style="margin-top:12px">
           Estimates for comparison only — not dyno- or track-certified. Physics uses real gearing + RPM + shift points
@@ -152,7 +155,7 @@
         <p class="credits" style="margin-top:12px">
           <strong>VelocityBench PowerCurve</strong> · static Pages app · no server / DB / tracking.<br />
           Race sibling: forcemetric-web · Hub: guerra-tools-hub<br />
-          Physics: geared RPM · factory TX ratios · weather/DA · wind · FI boost.<br />
+          Physics: geared RPM · baked dyno curves · weather/DA · wind · FI · run-to-Vmax.<br />
           Created by Jorge Guerra.
         </p>
       </aside>

@@ -1,15 +1,14 @@
 /**
- * VelocityBench PowerCurve — VERIFY spot-check harness
+ * VelocityBench PowerCurve — VERIFY spot-check harness (Phase 2)
  *
  * Loads garage sample vehicles (mirrors js/app.js SAMPLE_CARS) with the SAME
  * weather as VERIFY.md: 70°F / 45% RH / 29.92 inHg, calm wind, launch=auto.
- * Tire: Drag Radial (UI default) for power cars; Street for Miata (as VERIFY).
+ * Tire: Drag Radial for power cars; Street for Miata (as VERIFY).
  *
  *   node scripts/spotcheck.js
  *
- * Note: omitting tireType in physics defaults to Street (case 0) and yields
- * slower ETs (~13.23@109 Supra, etc.). VERIFY / this harness set tireType
- * explicitly to match the UI default (Drag Radial = 1).
+ * Note: omitting tireType in physics defaults to Street (case 0). VERIFY / this
+ * harness set tireType explicitly on every row.
  */
 'use strict';
 
@@ -19,38 +18,40 @@ var CARS = {
   supra94: {
     id: 'supra94',
     name: '1994 Toyota Supra Turbo',
-    weightLbs: 3450, dragCoefficient: 0.33, frontalAreaSqFt: 21.8, tireRadiusInches: 13.1,
+    weightLbs: 3410, dragCoefficient: 0.31, frontalAreaSqFt: 21.0, tireRadiusInches: 12.9,
     finalDriveRatio: 3.27, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
-    torqueCurve: {2000:180,2500:220,3000:260,3500:300,4000:330,4500:350,5000:360,5500:365,6000:360,6500:345,7000:320},
+    torqueCurve: {2000:185,2500:230,3000:275,3500:300,4000:315,4500:310,5000:305,5500:302,5600:300,6000:275,6500:250,7000:225},
     isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-    shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12, peakHp: 320, txKey: 'Aisin_6'
+    shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12,
+    peakHp: 320, peakTqRpm: 4000, peakHpRpm: 5600, txKey: 'Aisin_6'
   },
   cobra65: {
     id: 'cobra65',
     name: '1965 Shelby Cobra 427',
-    weightLbs: 2450, dragCoefficient: 0.52, frontalAreaSqFt: 20.5, tireRadiusInches: 13.5,
-    finalDriveRatio: 3.54, gearRatios: [2.32, 1.61, 1.23, 1.00],
-    torqueCurve: {1500:360,2000:400,2500:440,3000:470,3500:500,4000:520,4500:535,5000:540,5500:525,6000:500,6500:460},
-    isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000, redline: 6500,
-    drivetrainLossPercent: 15, peakHp: 425, txKey: 'Toploader_4'
+    weightLbs: 2450, dragCoefficient: 0.50, frontalAreaSqFt: 20.0, tireRadiusInches: 13.5,
+    finalDriveRatio: 3.54, gearRatios: [2.32, 1.69, 1.29, 1.00],
+    torqueCurve: {1500:380,2000:420,2500:450,3000:470,3500:480,4000:475,4500:460,5000:430,5500:400,6000:372,6500:330},
+    isNA: true, driveType: 'RWD', shiftRpm: 6200, launchRpm: 3000, redline: 6500,
+    drivetrainLossPercent: 15, peakHp: 425, peakTqRpm: 3500, peakHpRpm: 6000, txKey: 'Toploader_4'
   },
   miata16: {
     id: 'miata16',
     name: '2016 Mazda MX-5 Miata Club',
-    weightLbs: 2340, dragCoefficient: 0.31, frontalAreaSqFt: 19.0, tireRadiusInches: 12.4,
-    finalDriveRatio: 2.87, gearRatios: [5.09, 2.99, 2.05, 1.59, 1.29, 1.00],
-    torqueCurve: {2000:100,2500:110,3000:120,3500:125,4000:130,4500:135,5000:140,5500:142,6000:140,6500:135,7000:130},
+    weightLbs: 2332, dragCoefficient: 0.31, frontalAreaSqFt: 18.5, tireRadiusInches: 12.2,
+    finalDriveRatio: 2.87, gearRatios: [5.087, 2.991, 2.035, 1.594, 1.290, 1.000],
+    torqueCurve: {2000:105,2500:118,3000:128,3500:138,4000:145,4500:148,5000:145,5500:140,6000:136,6500:125,7000:112,7500:98},
     isNA: true, driveType: 'RWD', shiftRpm: 7200, launchRpm: 3500, redline: 7500,
-    drivetrainLossPercent: 12, peakHp: 155, txKey: 'Aisin_6'
+    drivetrainLossPercent: 12, peakHp: 155, peakTqRpm: 4500, peakHpRpm: 6000, txKey: 'Aisin_6'
   },
   hellcat19: {
     id: 'hellcat19',
     name: '2019 Challenger Hellcat Redeye',
-    weightLbs: 4445, dragCoefficient: 0.37, frontalAreaSqFt: 24.5, tireRadiusInches: 13.8,
+    weightLbs: 4445, dragCoefficient: 0.38, frontalAreaSqFt: 25.0, tireRadiusInches: 14.2,
     finalDriveRatio: 2.62, gearRatios: [4.71, 3.14, 2.10, 1.67, 1.29, 1.00, 0.84, 0.67],
-    peakHp: 797, peakTqRpm: 4000, peakHpRpm: 6200, redline: 6300,
+    torqueCurve: {1500:420,2000:520,2500:600,3000:650,3500:685,4000:700,4500:707,5000:700,5500:688,6000:675,6300:665,6500:640},
     isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
-    shiftRpm: 6100, launchRpm: 2200, drivetrainLossPercent: 15, txKey: 'ZF8HP',
+    shiftRpm: 6100, launchRpm: 2200, redline: 6500, drivetrainLossPercent: 15,
+    peakHp: 797, peakTqRpm: 4500, peakHpRpm: 6300, txKey: 'ZF8HP',
     hasAftermarketConverter: false
   }
 };
@@ -77,26 +78,52 @@ function run(id, tireType) {
   return Phys.runQuarterMile(car, envFor(tireType));
 }
 
-function line(label, r) {
-  return label + ': ' + r.quarterMileTime.toFixed(3) + 's @ ' +
+function line(label, tireLabel, r) {
+  return label + ' [' + tireLabel + ']: ' + r.quarterMileTime.toFixed(3) + 's @ ' +
     r.quarterMileSpeedMph.toFixed(1) + ' mph, 60ft ' + r.sixtyFootTime.toFixed(3) +
-    ', ' + r.totalShifts + ' shifts';
+    ', ' + r.totalShifts + ' shifts | Vmax ' + r.topSpeedMph.toFixed(1) + ' mph (' +
+    r.vmaxReason + ')';
+}
+
+function curvePeaks(curve) {
+  var keys = Object.keys(curve).map(Number);
+  var pt = 0, pr = 0, ph = 0, phr = 0;
+  keys.forEach(function (r) {
+    var t = Number(curve[r]);
+    var h = (t * r) / 5252;
+    if (t > pt) { pt = t; pr = r; }
+    if (h > ph) { ph = h; phr = r; }
+  });
+  return { tq: pt, tqRpm: pr, hp: ph, hpRpm: phr };
 }
 
 console.log('CalibrationFactor =', Phys.CalibrationFactor);
 console.log('FactoryTransmissions wired:', Object.keys(Phys.FactoryTransmissions).length, 'presets');
 console.log('Weather: 70°F / 45% RH / 29.92 inHg, calm, launch=auto');
+console.log('Vmax caps: speed', Phys.constants.VMAX_SPEED_CAP_MPH, 'mph · dist',
+  Phys.constants.VMAX_DIST_CAP_FT, 'ft · time', Phys.constants.MAX_T, 's');
+console.log('');
+
+console.log('--- Curve peaks (HP = TQ×RPM/5252) ---');
+Object.keys(CARS).forEach(function (id) {
+  var c = CARS[id];
+  var p = curvePeaks(c.torqueCurve);
+  console.log(id + ': peak TQ ' + p.tq.toFixed(0) + ' @ ' + p.tqRpm +
+    ' · peak HP ' + p.hp.toFixed(1) + ' @ ' + p.hpRpm +
+    ' (label peakHp=' + c.peakHp + ')');
+});
 console.log('');
 
 var spots = [
-  ['supra94', 1, '1994 Supra Turbo (Drag Radial)'],
-  ['cobra65', 1, '1965 Cobra 427 (Drag Radial)'],
-  ['miata16', 0, '2016 MX-5 Miata (Street)'],
-  ['hellcat19', 1, '2019 Hellcat Redeye (Drag Radial)']
+  ['supra94', 1, 'Drag Radial', '1994 Supra Turbo'],
+  ['cobra65', 1, 'Drag Radial', '1965 Cobra 427'],
+  ['miata16', 0, 'Street', '2016 MX-5 Miata'],
+  ['hellcat19', 1, 'Drag Radial', '2019 Hellcat Redeye']
 ];
 
+console.log('--- Quarter-mile + Vmax ---');
 spots.forEach(function (s) {
-  console.log(line(s[2], run(s[0], s[1])));
+  console.log(line(s[3], s[2], run(s[0], s[1])));
 });
 
 console.log('');
@@ -105,10 +132,10 @@ var supra = JSON.parse(JSON.stringify(CARS.supra94));
 var calm = Phys.runQuarterMile(supra, envFor(1));
 var head = Phys.runQuarterMile(supra, Object.assign(envFor(1), { windSpeedMph: 12, windDirDeg: 0 }));
 var tail = Phys.runQuarterMile(supra, Object.assign(envFor(1), { windSpeedMph: 12, windDirDeg: 180 }));
-console.log('12 mph headwind vs calm (Supra): ET ' +
+console.log('12 mph headwind vs calm (Supra, Drag Radial): ET ' +
   ((head.quarterMileTime - calm.quarterMileTime) >= 0 ? '+' : '') +
   (head.quarterMileTime - calm.quarterMileTime).toFixed(3) + ' s');
-console.log('12 mph tailwind vs calm (Supra): ET ' +
+console.log('12 mph tailwind vs calm (Supra, Drag Radial): ET ' +
   (tail.quarterMileTime - calm.quarterMileTime).toFixed(3) + ' s');
 
 var na = JSON.parse(JSON.stringify(CARS.supra94));
@@ -118,7 +145,7 @@ na.boostModel = 'na';
 na.boostPsi = 0;
 var da0 = Phys.runQuarterMile(na, Object.assign(envFor(1), { densityAltitudeFtInput: 0 }));
 var da5 = Phys.runQuarterMile(na, Object.assign(envFor(1), { densityAltitudeFtInput: 5000 }));
-console.log('NA Supra-curve DA 0 → 5000 ft: ET +' +
+console.log('NA Supra-curve DA 0 → 5000 ft (Drag Radial): ET +' +
   (da5.quarterMileTime - da0.quarterMileTime).toFixed(3) + ' s');
 
 var boosted = JSON.parse(JSON.stringify(na));
@@ -128,7 +155,7 @@ boosted.isFI = true;
 boosted.isNA = false;
 var naR = Phys.runQuarterMile(na, envFor(1));
 var fiR = Phys.runQuarterMile(boosted, envFor(1));
-console.log('NA Supra-curve + turbo 12 psi: ET ' +
+console.log('NA Supra-curve + turbo 12 psi (Drag Radial): ET ' +
   (fiR.quarterMileTime - naR.quarterMileTime).toFixed(3) + ' s');
 
 var tiny = {
@@ -145,4 +172,10 @@ var huge = {
 };
 var t1 = Phys.runQuarterMile(tiny, envFor(1));
 var t2 = Phys.runQuarterMile(huge, envFor(1));
-console.log('Extremes 1 hp/20 lb and 15000 hp/120000 lb: finish=' + t1.finished + '/' + t2.finished);
+console.log('Extremes 1 hp/20 lb and 15000 hp/120000 lb: finish=' + t1.finished + '/' + t2.finished +
+  ' vmax=' + t1.topSpeedMph.toFixed(0) + '/' + t2.topSpeedMph.toFixed(0) + ' mph');
+
+// Street tire contrast for Supra (documents why tireType must be explicit)
+var street = Phys.runQuarterMile(JSON.parse(JSON.stringify(CARS.supra94)), envFor(0));
+console.log('Supra Street tire (tireType 0) contrast: ' +
+  street.quarterMileTime.toFixed(3) + 's @ ' + street.quarterMileSpeedMph.toFixed(1) + ' mph');
