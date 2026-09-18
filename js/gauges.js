@@ -40,6 +40,48 @@
     if (this.redline > this.max) this.redline = this.max * 0.9;
   };
 
+  BrassGauge.prototype.setRedline = function (r) {
+    this.redline = Math.max(this.min, Math.min(this.max, Number(r) || this.max * 0.9));
+  };
+
+  BrassGauge.prototype.setLabel = function (label, unit) {
+    this.label = label || this.label;
+    if (unit != null) this.unit = unit;
+  };
+
+  /**
+   * Reconfigure dial for ICE tach vs EV power %.
+   * mode: 'rpm' | 'powerPct'
+   */
+  BrassGauge.prototype.configure = function (opts) {
+    opts = opts || {};
+    var mode = opts.mode || 'rpm';
+    this.mode = mode;
+    if (mode === 'powerPct') {
+      this.min = 0;
+      this.max = 100;
+      this.redline = 95;
+      this.label = opts.label || 'PWR';
+      this.unit = '%';
+      this.majorDiv = 10;
+    } else {
+      var red = Number(opts.redline) || 7000;
+      var max = Number(opts.max);
+      if (!isFinite(max) || max <= 0) {
+        // Nice ceiling just above redline (1k steps; 2k when ≥12k)
+        var pad = Math.max(red * 1.02, red + 200);
+        var step = pad >= 12000 ? 2000 : 1000;
+        max = Math.ceil(pad / step) * step;
+      }
+      this.min = 0;
+      this.max = max;
+      this.redline = Math.min(red, max);
+      this.label = opts.label || 'RPM';
+      this.unit = opts.unit || '';
+      this.majorDiv = opts.majorDiv != null ? opts.majorDiv : null;
+    }
+  };
+
   BrassGauge.prototype.start = function () {
     if (this._running) return;
     this._running = true;
@@ -101,9 +143,17 @@
     ctx.strokeStyle = 'rgba(220, 48, 48, 0.92)';
     ctx.lineWidth = 5; ctx.lineCap = 'butt'; ctx.stroke();
 
-    // Tick marks + numerals
+    // Tick marks + numerals — prefer readable ×1000 steps on tach; 10% on power dials
     var span = this.max - this.min;
-    var majors = this.majorDiv || (this.max >= 1000 ? 8 : 10);
+    var majors = this.majorDiv;
+    if (majors == null) {
+      if (this.max <= 100 && this.unit === '%') majors = 10;
+      else if (this.max >= 12000) majors = Math.round(span / 2000); // 2k steps for superbikes / EV motor
+      else if (this.max >= 1000) majors = Math.round(span / 1000) || 8;
+      else majors = 10;
+    }
+    if (majors < 4) majors = 4;
+    if (majors > 16) majors = 16;
     var majorStep = span / majors;
     var minors = 5;
     ctx.lineCap = 'butt';
@@ -126,16 +176,25 @@
         ctx.fillStyle = '#dce3ee';
         ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        var label = this.max >= 1000 ? String(Math.round(val / 1000)) : String(Math.round(val));
+        var label;
+        if (this.unit === '%' || this.unit === 'kW') label = String(Math.round(val));
+        else if (this.max >= 1000) label = String(Math.round(val / 1000));
+        else label = String(Math.round(val));
         ctx.fillText(label, tx, ty);
       }
     }
 
-    // Unit / ×1000 hint
+    // Unit / ×1000 hint (skip for % / kW dials)
     ctx.fillStyle = 'rgba(232,215,176,0.75)';
     ctx.font = '10px "Segoe UI", sans-serif';
     ctx.textAlign = 'center';
-    if (this.max >= 1000) ctx.fillText('×1000', cx, cy - R * 0.18);
+    if (this.max >= 1000 && this.unit !== '%' && this.unit !== 'kW') {
+      ctx.fillText('×1000', cx, cy - R * 0.18);
+    } else if (this.unit === '%') {
+      ctx.fillText('POWER', cx, cy - R * 0.18);
+    } else if (this.unit === 'kW') {
+      ctx.fillText('kW', cx, cy - R * 0.18);
+    }
 
     // Digital value well (LFA-like center bottom)
     ctx.fillStyle = '#e8d7b0';
@@ -144,8 +203,9 @@
 
     ctx.fillStyle = '#f4f7fb';
     ctx.font = 'bold 22px ui-monospace, "Cascadia Code", monospace';
-    var shown = this.max >= 1000 ? Math.round(this.display) : Math.round(this.display);
-    ctx.fillText(String(shown) + (this.unit ? ' ' + this.unit : ''), cx, cy + R * 0.40);
+    var shown = Math.round(this.display);
+    var suffix = this.unit ? ((this.unit === '%') ? '%' : (' ' + this.unit)) : '';
+    ctx.fillText(String(shown) + suffix, cx, cy + R * 0.40);
 
     // Sharp needle (thin white/red tip, brass hub) — drawn last
     var na = rad(ang(this.display));

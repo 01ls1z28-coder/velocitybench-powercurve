@@ -252,4 +252,76 @@ console.log('\n---------- POWER SOURCE (EV / Hybrid) ----------');
 })();
 
 
+
+// ---- Motorcycle redline / shift / powerband ----
+console.log('\n---------- MOTORCYCLES (redline / shift / powerband) ----------');
+(function () {
+  var samples = [
+    { name: '2021 Kawasaki Ninja ZX-10R', minRed: 12000, minShift: 11500, maxPeakTq: 120, cls: 'sport' },
+    { name: '2022 Suzuki Hayabusa', minRed: 10000, minShift: 9500, maxPeakTq: 140, cls: 'hyper' }
+  ];
+  var pass = 0;
+  samples.forEach(function (s) {
+    var car = findCar(function (c) { return c.name === s.name; });
+    if (!car) {
+      console.log('FAIL: missing ' + s.name);
+      return;
+    }
+    var tc = car.torqueCurve || {};
+    var keys = Object.keys(tc).map(Number).filter(isFinite).sort(function (a, b) { return a - b; });
+    var peakTq = 0, peakTqRpm = 0, peakHp = 0, peakHpRpm = 0;
+    keys.forEach(function (k) {
+      var tq = Number(tc[k]);
+      if (tq > peakTq) { peakTq = tq; peakTqRpm = k; }
+      var hp = tq * k / 5252;
+      if (hp > peakHp) { peakHp = hp; peakHpRpm = k; }
+    });
+    var ok =
+      car.category === 'Motorcycle' &&
+      car.redline >= s.minRed &&
+      car.shiftRpm >= s.minShift &&
+      car.shiftRpm <= car.redline &&
+      car.redline >= (keys.length ? keys[keys.length - 1] * 0.95 : 0) &&
+      peakTq <= s.maxPeakTq &&
+      peakHpRpm >= car.redline * 0.75 &&
+      (car.gearRatios || []).length >= 6 &&
+      (car.txKey === 'Bike_Sport_6' || car.txKey === 'Bike_Hyper_6');
+    console.log(s.name + ' [' + s.cls + ']');
+    console.log('  category=' + car.category + ' tx=' + car.txKey +
+      ' gears=' + (car.gearRatios || []).length +
+      ' FD=' + car.finalDriveRatio);
+    console.log('  launch/shift/redline ' + car.launchRpm + '/' + car.shiftRpm + '/' + car.redline +
+      ' · curve ' + (keys[0] || '?') + '..' + (keys[keys.length - 1] || '?') +
+      ' · peakTQ ' + peakTq.toFixed(1) + '@' + peakTqRpm +
+      ' · peakHP ' + peakHp.toFixed(1) + '@' + peakHpRpm);
+    var r = printRun('BIKE ' + s.name, car, car.tireType | 0,
+      s.cls === 'sport' ? 'Excel ~3.1 / ~10.3@146 · shift≥12k' : 'Excel ~2.5 / ~9.9@145 · shift≥10k');
+    console.log('  shiftRpm used in sim: ' + r.shiftRpm + ' · shifts: ' + r.totalShifts +
+      ' → ' + (ok && r.shiftRpm >= s.minShift ? 'PASS' : 'FAIL'));
+    if (ok && r.shiftRpm >= s.minShift) pass++;
+  });
+  console.log('Motorcycle spotchecks: ' + pass + '/' + samples.length +
+    (pass === samples.length ? ' PASS' : ' FAIL'));
+})();
+
+// ---- EV instrument mode (logic gate — Power % primary dial) ----
+console.log('\n---------- EV INSTRUMENTS (Power % primary) ----------');
+(function () {
+  var plaid = findCar(function (c) { return /model s plaid/i.test(c.name); });
+  var hy = findCar(function (c) { return /sf90/i.test(c.name); });
+  var ice = findCar(function (c) { return c.name === '2020 Ford Mustang GT'; });
+  function wantEvDial(car) {
+    return !!(car && (car.isEv || car.powerSource === 'ev') && !car.isHybrid);
+  }
+  var okEv = plaid && wantEvDial(plaid) === true;
+  var okHy = hy && wantEvDial(hy) === false && hy.isHybrid;
+  var okIce = ice && wantEvDial(ice) === false;
+  console.log('EV display choice: primary left dial = Power % (0–100); live strip keeps MOTOR rpm.');
+  console.log('  Garage EV (Plaid) → EV dial: ' + (okEv ? 'PASS' : 'FAIL'));
+  console.log('  Hybrid (SF90) → keep ICE RPM: ' + (okHy ? 'PASS' : 'FAIL'));
+  console.log('  ICE (Mustang GT) → RPM tach: ' + (okIce ? 'PASS' : 'FAIL'));
+  console.log('  Custom EV toggle: same wantEvDial path as garage EV (app.js configurePrimaryGauge).');
+})();
+
+
 console.log('\nDone. Re-run: node scripts/spotcheck.js');

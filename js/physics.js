@@ -43,6 +43,9 @@
     var layout = String(car.engineLayout || 'Front').toLowerCase();
     var drive = String(car.driveType || 'RWD').toUpperCase();
     var rear = DEFAULT_REAR_PCT;
+    var n = String(car.name || car.category || '').toLowerCase();
+    var isBike = car.category === 'Motorcycle' || /ninja|hayabusa|yamaha yzf|suzuki gsx|honda cbr|ducati|bmw s1000|motorcycle|bike\b|panigale/.test(n);
+    if (isBike) rear = 52; // slight rear bias with rider
     if (layout === 'mid') rear = 55;           // ~45/55
     else if (layout === 'rear') rear = 62;     // ~38/62
     else if (layout === 'dual') rear = 50;     // ~50/50 pack split
@@ -128,6 +131,8 @@
     Getrag_R34: { name: 'Getrag 6-spd (R34 GT-R)', gears: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634], finalDrive: 3.545, loss: 14 },
     Aisin_6: { name: 'Aisin/Getrag V160 6-spd', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.133, loss: 12 },
     DCT_7_AMG: { name: 'Tremec TR-9070 DCT 7', gears: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56], finalDrive: 3.73, loss: 10 },
+    Bike_Sport_6: { name: 'Sportbike 6-spd (liter)', gears: [2.600, 2.158, 1.882, 1.650, 1.476, 1.304], finalDrive: 3.96, loss: 12 },
+    Bike_Hyper_6: { name: 'Hyperbike 6-spd', gears: [2.562, 1.934, 1.526, 1.285, 1.125, 1.041], finalDrive: 3.81, loss: 12 },
     EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 }
   };
 

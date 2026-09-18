@@ -63,6 +63,66 @@
   rpmGauge.start();
   speedGauge.start();
 
+  /** True when active power source is full EV (not Hybrid). */
+  function isEvMode(car) {
+    car = car || state.car;
+    if (!car) return inductionValue() === 'ev';
+    if (inductionValue() === 'ev') return true;
+    return !!(car.isEv || car.powerSource === 'ev');
+  }
+
+  /** Nice tach ceiling from redline / curve max. */
+  function niceRpmGaugeMax(redline, curveMax) {
+    var r = Math.max(Number(redline) || 7000, Number(curveMax) || 0);
+    var pad = Math.max(r * 1.02, r + 200);
+    var step = pad >= 12000 ? 2000 : 1000;
+    return Math.ceil(pad / step) * step;
+  }
+
+  function curveRpmMax(curve) {
+    if (!curve) return 0;
+    var keys = Object.keys(curve).map(Number).filter(isFinite);
+    if (!keys.length) return 0;
+    return Math.max.apply(null, keys);
+  }
+
+  /**
+   * ICE: LFA RPM tach scaled to vehicle redline (bikes → 14k+).
+   * EV: replace tach with Power % dial (0–100). Hybrid keeps ICE RPM.
+   * Documented choice: Power % primary (not motor-rpm tach) — clearer EV instrument swap.
+   */
+  function configurePrimaryGauge(car) {
+    car = car || state.car || {};
+    var labelEl = $('livePrimaryLabel');
+    if (isEvMode(car)) {
+      rpmGauge.configure({ mode: 'powerPct', label: 'PWR' });
+      if (labelEl) labelEl.textContent = 'MOTOR';
+      state.evGaugeMode = true;
+      state.evPeakHp = Math.max(
+        1,
+        Number(car.peakHp) || Phys.peakHpFromCurve(car.torqueCurve || {}) || 1
+      );
+    } else {
+      var red = Number(car.redline) || Number(car.shiftRpm) || 7000;
+      var cMax = curveRpmMax(car.torqueCurve);
+      var max = niceRpmGaugeMax(red, cMax);
+      rpmGauge.configure({ mode: 'rpm', redline: red, max: max, label: 'RPM' });
+      if (labelEl) labelEl.textContent = 'RPM';
+      state.evGaugeMode = false;
+      state.evPeakHp = null;
+    }
+  }
+
+  /** Instantaneous engine/motor HP from baked curve @ RPM. */
+  function hpAtRpm(car, rpm) {
+    if (!car || !car.torqueCurve) return 0;
+    var tq = Phys.getTorqueAtRpm
+      ? Phys.getTorqueAtRpm(car.torqueCurve, rpm)
+      : Number(car.torqueCurve[Math.round(rpm)]);
+    if (!isFinite(tq) || tq <= 0) return 0;
+    return (tq * rpm) / 5252;
+  }
+
   function fmt(n, d) {
     if (n == null || !isFinite(n)) return '—';
     return Number(n).toFixed(d != null ? d : 3);
@@ -466,8 +526,7 @@
     $('stallRpm').value = car.stallRpm || 2800;
     $('flashRpm').value = car.flashRpm || 3500;
     if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
-    rpmGauge.setMax(Math.max(8000, (car.redline || 7000) * 1.05));
-    rpmGauge.redline = car.shiftRpm || 6500;
+    configurePrimaryGauge(car);
     highlightGarage(car.id);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncPowerCurveFromCar(car);
@@ -519,7 +578,7 @@
       name: $('carName').value || 'Custom',
       weightLbs: clampNum($('weightLbs').value, 20, 120000, 3800),
       dragCoefficient: clampNum($('cd').value, 0.15, 1.2, 0.35),
-      frontalAreaSqFt: clampNum($('area').value, 8, 80, 22.5),
+      frontalAreaSqFt: clampNum($('area').value, 4, 80, 22.5),
       tireRadiusInches: clampNum($('tireRadius').value, 8, 24, 13.2),
       finalDriveRatio: clampNum($('finalDrive').value, 1.5, 10, 3.73),
       gearRatios: readGears(),
@@ -955,7 +1014,15 @@
         if (tl[i].t <= tSec) pt = tl[i];
         else break;
       }
-      rpmGauge.setValue(pt.rpm);
+      // EV: left dial = power % from curve@RPM / peakHp; live strip still shows motor RPM
+      if (state.evGaugeMode) {
+        var peak = state.evPeakHp || 1;
+        var hpNow = hpAtRpm(state.car, pt.rpm);
+        var pct = Math.max(0, Math.min(100, (hpNow / peak) * 100));
+        rpmGauge.setValue(pct);
+      } else {
+        rpmGauge.setValue(pt.rpm);
+      }
       speedGauge.setValue(pt.mph);
       $('liveGear').textContent = String(pt.gear);
       $('liveRpm').textContent = String(Math.round(pt.rpm));
@@ -980,6 +1047,7 @@
     var result = Phys.runQuarterMile(car, env);
     state.lastResult = result;
     state.car = car;
+    configurePrimaryGauge(car);
     renderSlip(result, car);
     renderMetrics(result);
     // Keep dense 100-RPM editable series authoritative — never replace with sparse result keys
@@ -1043,11 +1111,24 @@
         forceHybrid: v === 'hybrid',
         lockedValue: garagePowerLocked ? v : null
       });
+      // Custom EV toggle + garage EV both swap primary instrument cluster
+      if (state.car) configurePrimaryGauge(state.car);
     });
   });
 
   $('btnRun').addEventListener('click', runSim);
-  $('btnReset').addEventListener('click', function () {
+  // Rescale ICE tach when redline / shift inputs change (bike high-redline support)
+  ['redline', 'shiftRpm'].forEach(function (id) {
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener('change', function () {
+      if (!state.car || state.evGaugeMode) return;
+      state.car.redline = clampNum($('redline').value, 2000, 16000, state.car.redline || 6800);
+      state.car.shiftRpm = clampNum($('shiftRpm').value, 1500, state.car.redline, state.car.shiftRpm || 6500);
+      configurePrimaryGauge(state.car);
+    });
+  });
+$('btnReset').addEventListener('click', function () {
     var src = state.presetCar || state.car;
     if (src) applyCarToForm(JSON.parse(JSON.stringify(src)));
   });

@@ -1,3 +1,33 @@
+# Motorcycle + EV instruments (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-bike-ev-gauges` · Tip off live main (SEO + hub chrome + Phase 6 EV/Hybrid).
+
+## What changed
+1. **Motorcycles** — garage bikes retuned to published-leaning redline / shift RPM / gear ratios / torque powerband (not car-like ~6800 RPM). Category `Motorcycle`. TX: `Bike_Sport_6` / `Bike_Hyper_6`. Rebuild heuristics in `scripts/build-garage.js`; fleet patch via `scripts/patch-bikes.js` (ICE fleet untouched).
+2. **RPM gauge** — LFA brass tach max/redline follow vehicle redline + curve range (superbikes → 14k+ with readable ×1000 / 2k majors). `js/gauges.js` + `configurePrimaryGauge` in `js/app.js`.
+3. **EV instruments** — when `powerSource = ev` (garage EV **or** Custom EV toggle): left dial swaps from ICE RPM to **Power % (0–100)**. Live strip label → **MOTOR** (still shows motor RPM). **Hybrid keeps ICE RPM.**
+
+### EV display choice (documented)
+**Primary dial = Power %** derived from instantaneous curve HP ÷ peak HP during playback. Chosen over a motor-RPM tach so the cluster is visibly EV-native while motor speed remains in the live strip.
+
+### Motorcycle spotcheck samples
+| Vehicle | Class | Redline / Shift | Peak TQ band | Notes |
+|---------|-------|-----------------|--------------|-------|
+| 2021 Kawasaki Ninja ZX-10R | sport | **13500 / 12800** | ~90 lb-ft @ ~11.2k | liter superbike; shifts at bike RPM |
+| 2022 Suzuki Hayabusa | hyper | **11000 / 10500** | ~113 lb-ft @ ~7.8k | hyperbike lower redline / fatter mid |
+
+Curated ICE VERIFY cars unchanged. Frontal-area form clamp lowered to **4 ft²** so bike aero (6.8) survives Custom edits.
+
+**Skipped:** forcemetric-web hub · deploy · Merovingian.
+
+VERIFY
+1. `node scripts/spotcheck.js` — curated PASS; bike samples PASS; EV dial gate PASS
+2. Load ZX-10R / Hayabusa — tach scales to redline; shift RPM ≫ car-like
+3. Load Model S Plaid or toggle Custom → EV — left dial PWR %, strip MOTOR; Hybrid still RPM
+4. Static / disclaimer / no secrets; no hub touch; no deploy
+
+---
+
 # SEO / indexing (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-seo` · Base: live main @ hub-chrome tip.

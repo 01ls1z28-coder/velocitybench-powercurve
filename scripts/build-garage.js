@@ -114,6 +114,21 @@ function looksLikeEvName(name) {
   return /\bev\b|electric|model [syx3]|taycan|e-tron|etron|\bi4\b|\bi5\b|\bi7\b|\bix\b|lucid|rivian|nevera|rimac|ioniq|mach-?e|lightning|cybertruck|ariya|solterra|bz4x|eq[bes]|lyriq|polestar|id\.?\d|blazer ev|niro ev|kona electric|ocean extreme|gv60|ex90|xc40 recharge/.test(n);
 }
 
+/** Liter / hyper / sport motorcycles in the Excel fleet. */
+function looksLikeMotorcycle(name) {
+  var n = String(name || '').toLowerCase();
+  if (/f-150|eclipse|corvette|mustang|camaro|truck|harley-davidson/.test(n)) return false;
+  return /ninja|hayabusa|yamaha yzf|suzuki gsx-?r|honda cbr|kawasaki zx|ducati|panigale|bmw s1000|motorcycle|\bbike\b/.test(n);
+}
+
+function motorcycleClass(name) {
+  var n = String(name || '').toLowerCase();
+  if (/hayabusa|zx-?14/.test(n)) return 'hyper';
+  if (/ninja h2|\bh2\b/.test(n)) return 'h2';
+  return 'sport';
+}
+
+
 function classifyInduction(name, isFI, isEv) {
   // Back-compat wrapper — prefer classifyPowerSource.
   var ps = classifyPowerSource(name, isFI, isEv);
@@ -235,6 +250,9 @@ function loadVbGarage() {
 
 function pickTxKey(vb, name, hp, isEv, year) {
   if (isEv) return 'EV_Single';
+  if (looksLikeMotorcycle(name)) {
+    return motorcycleClass(name) === 'hyper' ? 'Bike_Hyper_6' : 'Bike_Sport_6';
+  }
   var tx = vb && vb.Transmission;
   if (tx && TX_MAP[tx]) return TX_MAP[tx];
   var n = (name || '').toLowerCase();
@@ -257,6 +275,7 @@ function guessCategory(name, vb) {
   var n = (name || '').toLowerCase();
   if (looksLikeHybrid(n)) return 'Hybrid';
   if ((vb && vb.IsEv && !looksLikeHybrid(n)) || looksLikeEvName(n)) return 'EV';
+  if (looksLikeMotorcycle(name)) return 'Motorcycle';
   if (/bugatti|koenigsegg|mclaren senna|chiron|jesko|nevera|rimac/.test(n)) return 'Hypercars';
   if (/ferrari|lamborghini|mclaren|porsche 911|hurac|aventador|720s|gt2|gt3|r8/.test(n)) return 'Supercars';
   if (/supra|skyline|gtr|wrx|evo|civic type|rx-7|s2000|miata|mx-5|350z|370z/.test(n)) return 'Sports Cars';
@@ -272,6 +291,7 @@ function guessCategory(name, vb) {
 function guessTireRadius(weightLbs, drive, isEv, name) {
   var n = (name || '').toLowerCase();
   if (/f1|formula|open.?wheel/.test(n)) return 11.5;
+  if (looksLikeMotorcycle(name)) return motorcycleClass(name) === 'hyper' ? 12.6 : 12.4;
   if (/truck|f-150|silverado|ram |raptor|tundra/.test(n)) return 15.2;
   if (/suv|tahoe|urus|cayenne|suburban/.test(n)) return 14.8;
   if (isEv) return weightLbs > 4500 ? 14.0 : 13.4;
@@ -286,8 +306,20 @@ function guessRpmBand(hp, isEv, isFI, year, name) {
   if (isEv) {
     return { launch: 0, shift: 12000, redline: 14000, peakTqRpm: 2000, peakHpRpm: 8000 };
   }
+  // Motorcycles: published-leaning redlines (sport ~13.5–14.6k, hyper ~11k) — NOT car bands.
+  if (looksLikeMotorcycle(name)) {
+    var cls = motorcycleClass(name);
+    if (cls === 'hyper') {
+      return { launch: 4500, shift: 10500, redline: 11000, peakTqRpm: 7800, peakHpRpm: 9700 };
+    }
+    if (cls === 'h2') {
+      return { launch: 5000, shift: 13200, redline: 14000, peakTqRpm: 10500, peakHpRpm: 13500 };
+    }
+    // liter sport / superbike
+    return { launch: 6000, shift: 13000, redline: 14000, peakTqRpm: 11200, peakHpRpm: 13200 };
+  }
   var n = (name || '').toLowerCase();
-  var highRev = /ferrari|honda|s2000|boss 302|gt3|viper|rotary|rx-7|bike|hayabusa/.test(n);
+  var highRev = /ferrari|s2000|boss 302|gt3|viper|rotary|rx-7/.test(n);
   var redline, peakHpRpm, peakTqRpm, launch, shift;
   if (year && year < 1980) {
     redline = hp > 400 ? 6500 : 5800;
@@ -313,7 +345,7 @@ function guessRpmBand(hp, isEv, isFI, year, name) {
 function guessCdArea(vb, weightLbs, name, isEv) {
   var n = (name || '').toLowerCase();
   // Motorcycles / sportbikes — tiny frontal area (Excel trap otherwise impossible)
-  if (/ninja|hayabusa|yamaha|suzuki gsx|honda cbr|kawasaki|ducati|bmw s1000|motorcycle|bike\b/.test(n)) {
+  if (looksLikeMotorcycle(name)) {
     return { cd: 0.45, area: 6.8 };
   }
   if (vb && vb.DragCoefficient && vb.FrontalAreaSqFt) {
@@ -624,6 +656,18 @@ function buildCar(row, vb) {
     source: (vb && vb.Source) || 'heuristic+import',
     targets: tgt
   };
+
+  // Motorcycles: bike TX + published-leaning RPM already set; quick shift; RWD chain drive
+  if (looksLikeMotorcycle(name)) {
+    car.category = 'Motorcycle';
+    car.driveType = 'RWD';
+    car.engineLayout = 'Mid';
+    car.shiftTimeSeconds = 0.08;
+    car.frontWeightPercent = 48;
+    car.rearWeightPercent = 52;
+    car.leftWeightPercent = 50;
+    car.rightWeightPercent = 50;
+  }
 
   // Phase 5/6: bake power source + induction UI default
   car.powerSource = ps.powerSource;
