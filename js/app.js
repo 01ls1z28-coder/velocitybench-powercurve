@@ -16,9 +16,10 @@
       id: 'cobra65',
       name: '1965 Shelby Cobra 427',
       category: 'Classic Muscle',
-      weightLbs: 2450, dragCoefficient: 0.50, frontalAreaSqFt: 20.0, tireRadiusInches: 13.5,
-      finalDriveRatio: 3.54, gearRatios: [2.32, 1.69, 1.29, 1.00],
-      // ~425 hp @ 6000 / ~480 lb-ft @ 3500 (street 427 side-oiler shape)
+      // C/D curb ~2529; street 427 close-ratio Toploader; open roadster Cd~0.55
+      weightLbs: 2520, dragCoefficient: 0.55, frontalAreaSqFt: 19.5, tireRadiusInches: 13.0,
+      finalDriveRatio: 3.54, gearRatios: [2.20, 1.66, 1.31, 1.00],
+      // ~425 hp @ 6000 / ~480 lb-ft @ 3500 (street 427)
       torqueCurve: {1500:380,2000:420,2500:450,3000:470,3500:480,4000:475,4500:460,5000:430,5500:400,6000:372,6500:330},
       isNA: true, driveType: 'RWD', shiftRpm: 6200, launchRpm: 3000, redline: 6500,
       drivetrainLossPercent: 15, peakHp: 425, peakTqRpm: 3500, peakHpRpm: 6000, txKey: 'Toploader_4'
@@ -27,9 +28,9 @@
       id: 'charger70',
       name: '1970 Dodge Charger R/T 440',
       category: 'Classic Muscle',
-      weightLbs: 3880, dragCoefficient: 0.48, frontalAreaSqFt: 23.5, tireRadiusInches: 14.0,
+      weightLbs: 3877, dragCoefficient: 0.50, frontalAreaSqFt: 23.8, tireRadiusInches: 13.7,
       finalDriveRatio: 3.23, gearRatios: [2.45, 1.45, 1.00],
-      // ~375 hp @ ~4600 / ~480 lb-ft @ 3200 Magnum shape
+      // 375 hp @ 4600 / 480 lb-ft @ 3200 Magnum
       torqueCurve: {1500:380,2000:420,2500:450,3000:475,3200:480,3500:475,4000:460,4500:440,4600:428,5000:400,5500:360,5800:330},
       isNA: true, driveType: 'RWD', shiftRpm: 5200, launchRpm: 2200, redline: 5800,
       drivetrainLossPercent: 18, peakHp: 375, peakTqRpm: 3200, peakHpRpm: 4600, txKey: 'TH400_3',
@@ -39,9 +40,10 @@
       id: 'supra94',
       name: '1994 Toyota Supra Turbo',
       category: 'JDM',
-      weightLbs: 3410, dragCoefficient: 0.31, frontalAreaSqFt: 21.0, tireRadiusInches: 12.9,
-      finalDriveRatio: 3.27, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
-      // USDM 2JZ-GTE: 320 hp @ 5600 / 315 lb-ft @ 4000 (sequential TT spool shape)
+      // USDM turbo MT curb ~3450; Cd~0.32; V160 FD 3.133; 255/40R17 → r≈12.5
+      weightLbs: 3450, dragCoefficient: 0.32, frontalAreaSqFt: 21.0, tireRadiusInches: 12.5,
+      finalDriveRatio: 3.133, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
+      // USDM 2JZ-GTE: 320 hp @ 5600 / 315 lb-ft @ 4000
       torqueCurve: {2000:185,2500:230,3000:275,3500:300,4000:315,4500:310,5000:305,5500:302,5600:300,6000:275,6500:250,7000:225},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
       shiftRpm: 6800, launchRpm: 2800, redline: 7000, drivetrainLossPercent: 12,
@@ -51,21 +53,22 @@
       id: 'r34',
       name: '2002 Nissan Skyline GT-R R34',
       category: 'JDM',
-      weightLbs: 3397, dragCoefficient: 0.34, frontalAreaSqFt: 21.5, tireRadiusInches: 12.8,
-      finalDriveRatio: 3.545, gearRatios: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793],
+      // JDM curb ~1540 kg; Getrag 6-spd (not Supra V160); 245/40R18 → r≈12.9
+      weightLbs: 3395, dragCoefficient: 0.34, frontalAreaSqFt: 21.5, tireRadiusInches: 12.9,
+      finalDriveRatio: 3.545, gearRatios: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634],
       // RB26 claimed 276 hp @ 6800 / 289 lb-ft @ 4400
       torqueCurve: {2500:200,3000:230,3500:260,4000:280,4400:289,5000:275,5500:255,6000:235,6500:220,6800:213,7000:205,7500:185,8000:165},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',
       shiftRpm: 7600, launchRpm: 3500, redline: 8000, drivetrainLossPercent: 14,
-      peakHp: 276, peakTqRpm: 4400, peakHpRpm: 6800, txKey: 'Aisin_6'
+      peakHp: 276, peakTqRpm: 4400, peakHpRpm: 6800, txKey: 'Getrag_R34'
     },
     {
       id: 'boss302',
       name: '2013 Mustang Boss 302',
       category: 'Modern Muscle',
-      weightLbs: 3632, dragCoefficient: 0.36, frontalAreaSqFt: 22.7, tireRadiusInches: 13.2,
+      weightLbs: 3631, dragCoefficient: 0.36, frontalAreaSqFt: 22.7, tireRadiusInches: 13.4,
       finalDriveRatio: 3.73, gearRatios: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65],
-      // 444 hp @ 7400 / 380 lb-ft @ 4500 — high-rev Coyote
+      // 444 hp @ 7400 / 380 lb-ft @ 4500
       torqueCurve: {2000:250,2500:280,3000:310,3500:340,4000:365,4500:380,5000:375,5500:360,6000:345,6500:330,7000:320,7400:315,7500:300},
       isNA: true, driveType: 'RWD', shiftRpm: 7400, launchRpm: 3200, redline: 7500,
       drivetrainLossPercent: 12, peakHp: 444, peakTqRpm: 4500, peakHpRpm: 7400, txKey: 'Getrag_MT82'
@@ -74,20 +77,22 @@
       id: 'miata16',
       name: '2016 Mazda MX-5 Miata Club',
       category: 'Sports Cars',
-      weightLbs: 2332, dragCoefficient: 0.31, frontalAreaSqFt: 18.5, tireRadiusInches: 12.2,
-      finalDriveRatio: 2.87, gearRatios: [5.087, 2.991, 2.035, 1.594, 1.290, 1.000],
+      // Soft-top Cd~0.36 (0.31 was optimistic); Club 205/45R17 → r≈12.1; FD 2.866
+      weightLbs: 2332, dragCoefficient: 0.36, frontalAreaSqFt: 18.8, tireRadiusInches: 12.1,
+      finalDriveRatio: 2.866, gearRatios: [5.087, 2.991, 2.035, 1.594, 1.286, 1.000],
       // SkyActiv-G 2.0: 155 hp @ 6000 / 148 lb-ft @ 4600
-      torqueCurve: {2000:105,2500:118,3000:128,3500:138,4000:145,4500:148,5000:145,5500:140,6000:136,6500:125,7000:112,7500:98},
+      torqueCurve: {2000:105,2500:118,3000:128,3500:138,4000:145,4500:148,4600:148,5000:145,5500:140,6000:136,6500:125,7000:112,7500:98},
       isNA: true, driveType: 'RWD', shiftRpm: 7200, launchRpm: 3500, redline: 7500,
-      drivetrainLossPercent: 12, peakHp: 155, peakTqRpm: 4500, peakHpRpm: 6000, txKey: 'Aisin_6'
+      drivetrainLossPercent: 12, peakHp: 155, peakTqRpm: 4600, peakHpRpm: 6000, txKey: 'Aisin_6'
     },
     {
       id: 'hellcat19',
       name: '2019 Challenger Hellcat Redeye',
       category: 'Modern Muscle',
-      weightLbs: 4445, dragCoefficient: 0.38, frontalAreaSqFt: 25.0, tireRadiusInches: 14.2,
-      finalDriveRatio: 2.62, gearRatios: [4.71, 3.14, 2.10, 1.67, 1.29, 1.00, 0.84, 0.67],
-      // 797 hp @ 6300 / 707 lb-ft @ 4500 — broad SC plateau
+      // Narrow-body curb ~4451; Cd 0.382; 275/40R20 → r≈14.3; ZF 8HP ratios
+      weightLbs: 4451, dragCoefficient: 0.382, frontalAreaSqFt: 24.2, tireRadiusInches: 14.3,
+      finalDriveRatio: 2.62, gearRatios: [4.71, 3.14, 2.11, 1.67, 1.28, 1.00, 0.84, 0.67],
+      // 797 hp @ 6300 / 707 lb-ft @ 4500
       torqueCurve: {1500:420,2000:520,2500:600,3000:650,3500:685,4000:700,4500:707,5000:700,5500:688,6000:675,6300:665,6500:640},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
       shiftRpm: 6100, launchRpm: 2200, redline: 6500, drivetrainLossPercent: 15,
@@ -98,9 +103,10 @@
       id: 'gt50020',
       name: '2020 Mustang Shelby GT500',
       category: 'Modern Muscle',
-      weightLbs: 4171, dragCoefficient: 0.35, frontalAreaSqFt: 23.2, tireRadiusInches: 13.6,
-      finalDriveRatio: 3.73, gearRatios: [3.25, 2.31, 1.55, 1.14, 0.87, 0.68, 0.56],
-      // 760 hp @ 7300 / 625 lb-ft @ 5000 — Predator SC
+      // Curb ~4183; Tremec TR-9070 DCT; 305/30R20 → r≈13.6
+      weightLbs: 4183, dragCoefficient: 0.37, frontalAreaSqFt: 23.2, tireRadiusInches: 13.6,
+      finalDriveRatio: 3.73, gearRatios: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56],
+      // 760 hp @ 7300 / 625 lb-ft @ 5000
       torqueCurve: {2000:420,2500:480,3000:540,3500:580,4000:605,4500:620,5000:625,5500:615,6000:595,6500:575,7000:555,7300:547,7500:520},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'RWD',
       shiftRpm: 7500, launchRpm: 3000, redline: 7500, drivetrainLossPercent: 10,
@@ -110,8 +116,8 @@
       id: '911ts',
       name: '2020 Porsche 911 Turbo S (992)',
       category: 'Supercars',
-      weightLbs: 3616, dragCoefficient: 0.33, frontalAreaSqFt: 21.5, tireRadiusInches: 13.0,
-      finalDriveRatio: 3.15, gearRatios: [3.91, 2.29, 1.58, 1.18, 0.94, 0.79, 0.69],
+      weightLbs: 3640, dragCoefficient: 0.33, frontalAreaSqFt: 21.5, tireRadiusInches: 13.6,
+      finalDriveRatio: 3.09, gearRatios: [3.91, 2.29, 1.58, 1.19, 0.97, 0.83, 0.67],
       // 640 hp @ 6750 / 590 lb-ft @ 2500–4000 plateau
       torqueCurve: {2000:450,2500:590,3000:590,3500:590,4000:590,4500:585,5000:570,5500:550,6000:525,6500:505,6750:498,7000:475,7200:450},
       isFI: true, isNA: false, boostModel: 'na', boostPsi: 0, driveType: 'AWD',

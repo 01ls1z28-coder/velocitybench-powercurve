@@ -58,16 +58,17 @@
   var FactoryTransmissions = {
     TH400_3: { name: 'GM TH400 3-spd', gears: [2.48, 1.48, 1.00], finalDrive: 3.73, loss: 18 },
     Muncie_M21: { name: 'Muncie M21 4-spd', gears: [2.20, 1.64, 1.28, 1.00], finalDrive: 3.70, loss: 12 },
-    Toploader_4: { name: 'Ford Toploader 4-spd', gears: [2.32, 1.69, 1.29, 1.00], finalDrive: 3.50, loss: 12 },
+    Toploader_4: { name: 'Ford Toploader 4-spd', gears: [2.20, 1.66, 1.31, 1.00], finalDrive: 3.54, loss: 12 },
     A833_4: { name: 'Chrysler A833 4-spd', gears: [2.66, 1.91, 1.39, 1.00], finalDrive: 3.55, loss: 12 },
     T5_5: { name: 'BorgWarner T5 5-spd', gears: [2.95, 1.94, 1.34, 1.00, 0.63], finalDrive: 3.73, loss: 13 },
     TR6060_6: { name: 'Tremec TR-6060 6-spd', gears: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50], finalDrive: 3.73, loss: 12 },
     Getrag_MT82: { name: 'Getrag MT-82 6-spd', gears: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65], finalDrive: 3.73, loss: 12 },
-    ZF8HP: { name: 'ZF 8HP Auto', gears: [4.71, 3.14, 2.10, 1.67, 1.29, 1.00, 0.84, 0.67], finalDrive: 3.15, loss: 15 },
+    ZF8HP: { name: 'ZF 8HP Auto', gears: [4.71, 3.14, 2.11, 1.67, 1.28, 1.00, 0.84, 0.67], finalDrive: 3.15, loss: 15 },
     PDK_7: { name: 'Porsche PDK 7-spd', gears: [3.91, 2.29, 1.58, 1.19, 0.97, 0.83, 0.67], finalDrive: 3.09, loss: 10 },
     GR6_DCT: { name: 'Nissan GR6 DCT', gears: [4.056, 2.301, 1.595, 1.248, 1.000, 0.795], finalDrive: 3.70, loss: 10 },
-    Aisin_6: { name: 'Aisin 6-spd Manual', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.27, loss: 12 },
-    DCT_7_AMG: { name: 'AMG SPEEDSHIFT DCT 7', gears: [3.40, 2.19, 1.63, 1.29, 1.03, 0.84, 0.63], finalDrive: 3.67, loss: 10 },
+    Getrag_R34: { name: 'Getrag 6-spd (R34 GT-R)', gears: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634], finalDrive: 3.545, loss: 14 },
+    Aisin_6: { name: 'Aisin/Getrag V160 6-spd', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.133, loss: 12 },
+    DCT_7_AMG: { name: 'Tremec TR-9070 DCT 7', gears: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56], finalDrive: 3.73, loss: 10 },
     EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 }
   };
 

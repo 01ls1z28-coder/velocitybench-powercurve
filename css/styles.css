@@ -75,13 +75,13 @@ body {
 }
 
 .app {
-  max-width: 1440px;
+  max-width: 1480px;
   width: 100%;
   margin: 0 auto;
-  padding: 14px 18px 28px;
+  padding: 12px 14px 24px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
   overflow-x: clip;
 }
@@ -134,8 +134,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr) minmax(0, 300px);
-  gap: 14px;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 280px);
+  gap: 12px;
   align-items: start;
   min-width: 0;
   width: 100%;
@@ -146,7 +146,7 @@ body {
   border: 1px solid var(--brass);
   border-radius: var(--radius);
   box-shadow: var(--brass-shadow);
-  padding: 14px 16px;
+  padding: 12px 14px;
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
@@ -235,13 +235,14 @@ body {
 .btn-ghost { background: transparent; color: var(--text-muted); box-shadow: none; border: 1px solid var(--panel-border); }
 
 .garage-list {
-  max-height: 200px; overflow: auto;
-  display: flex; flex-direction: column; gap: 4px;
-  margin-bottom: 10px;
+  max-height: 168px; overflow: auto;
+  display: flex; flex-direction: column; gap: 3px;
+  margin-bottom: 8px;
   min-width: 0;
+  scrollbar-width: thin;
 }
 .garage-item {
-  text-align: left; padding: 8px 10px;
+  text-align: left; padding: 6px 8px;
   background: rgba(0,0,0,0.35);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-sm);
@@ -301,7 +302,7 @@ body {
 
 .chart-wrap {
   position: relative;
-  height: 200px;
+  height: 190px;
   max-width: 100%;
   background: rgba(0,0,0,0.4);
   border: 1px solid var(--brass);
@@ -312,7 +313,7 @@ body {
   min-width: 0;
   overflow: hidden;
 }
-.chart-wrap-speed { height: 160px; margin-top: 8px; }
+.chart-wrap-speed { height: 148px; margin-top: 6px; }
 .chart-wrap canvas { width: 100%; height: 100%; display: block; }
 .chart-label {
   font-size: 10px;
@@ -324,9 +325,9 @@ body {
 
 .metrics {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
   min-width: 0;
 }
 .metric {
@@ -355,12 +356,15 @@ body {
   border-radius: var(--radius-sm);
   padding: 12px;
   color: #dff6ff;
-  min-height: 280px;
+  min-height: 220px;
+  max-height: min(70vh, 560px);
   max-width: 100%;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   overflow-x: auto;
+  overflow-y: auto;
   word-break: break-word;
+  scrollbar-width: thin;
 }
 .slip .slip-head { color: var(--accent); font-weight: 700; text-align: center; }
 .slip .dim { color: var(--text-dim); }
@@ -382,45 +386,68 @@ details.advanced > summary, .advanced > summary {
 }
 details.advanced > summary::-webkit-details-marker { display: none; }
 
+/* ---- Responsive: large tablet — 2-col (params | instruments+slip) ---- */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  }
+  .grid > aside.card:last-child {
+    grid-column: 1 / -1;
+  }
+  .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .slip { max-height: none; min-height: 180px; }
+}
+
 /* ---- Responsive: tablet ---- */
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
+  .grid > aside.card:last-child { grid-column: auto; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---- Responsive: mobile ≤800px — no overflow, boxes stay in place ---- */
 @media (max-width: 800px) {
-  .app { padding: 10px 10px 22px; gap: 10px; }
-  .header { padding: 10px 12px; gap: 10px; }
+  .app { padding: 8px 8px 20px; gap: 8px; }
+  .header { padding: 10px 12px; gap: 8px; }
   .logo-text { font-size: 15px; }
   .logo-badge { font-size: 10px; }
-  .logo-mark { width: 38px; height: 38px; font-size: 14px; }
+  .logo-mark { width: 36px; height: 36px; font-size: 13px; }
   .header-credit { font-size: 11px; width: 100%; }
-  .card { padding: 12px; }
+  .card { padding: 10px 12px; }
+  .card-title { margin-bottom: 8px; padding-bottom: 6px; }
+  .field { margin-bottom: 6px; }
   .field-row,
   .field-row-3 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
   }
   .gears-editor {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .gauges {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 8px;
   }
-  .gauge-wrap { max-width: 160px; }
-  .chart-wrap { height: 180px; }
-  .chart-wrap-speed { height: 140px; }
-  .metrics { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .gauge-wrap { max-width: 150px; }
+  .chart-wrap { height: 170px; }
+  .chart-wrap-speed { height: 130px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .metric { padding: 6px 8px; }
   .metric .v { font-size: 13px; }
-  .slip { font-size: 10px; padding: 10px; min-height: 220px; }
+  .slip { font-size: 10px; padding: 10px; min-height: 180px; max-height: none; }
   .seg label { flex: 1 1 calc(50% - 4px); }
   .live-readout { font-size: 11px; gap: 6px; }
+  .garage-list { max-height: 140px; }
+  .dyno-readout { font-size: 11px; gap: 8px 12px; }
 }
 
-@media (max-width: 420px) {
-  .gauges { grid-template-columns: 1fr; }
-  .gauge-wrap { max-width: 200px; }
-  .metrics { grid-template-columns: 1fr; }
+@media (max-width: 480px) {
+  .field-row,
+  .field-row-3 { grid-template-columns: 1fr; }
+  .gears-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gauges { grid-template-columns: 1fr 1fr; }
+  .gauge-wrap { max-width: 140px; }
+  .metrics { grid-template-columns: 1fr 1fr; }
 }
 
 .realtime-opt {
