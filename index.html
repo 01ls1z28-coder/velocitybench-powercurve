@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VelocityBench PowerCurve — Geared RPM Quarter-Mile Simulator</title>
+  <meta name="description" content="Static geared-RPM quarter-mile simulator with factory gear ratios, weather/DA, wind, FI boost models, power curve, and time slip. Estimates for comparison — not track certified." />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">VB</div>
+        <div>
+          <div class="logo-text">VelocityBench PowerCurve</div>
+          <div class="logo-badge">Geared RPM · Factory TX · Power Curve</div>
+        </div>
+      </div>
+      <div class="header-credit">Created by <em>Jorge Guerra</em> · Hub: guerra-tools-hub</div>
+    </header>
+
+    <div class="grid">
+      <!-- LEFT: vehicle / env -->
+      <aside class="card">
+        <div class="card-title">Garage</div>
+        <div class="garage-list" id="garageList"></div>
+
+        <div class="card-title">Vehicle</div>
+        <label class="field"><span>Name</span><input id="carName" type="text" value="Custom" /></label>
+        <div class="field-row">
+          <label class="field"><span>Peak HP (1–15000)</span><input id="peakHp" type="number" min="1" max="15000" value="450" /></label>
+          <label class="field"><span>Weight lbs (20–120000)</span><input id="weightLbs" type="number" min="20" max="120000" value="3800" /></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>Cd</span><input id="cd" type="number" step="0.01" value="0.35" /></label>
+          <label class="field"><span>Frontal Area ft²</span><input id="area" type="number" step="0.1" value="22.5" /></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>Tire Radius in</span><input id="tireRadius" type="number" step="0.1" value="13.2" /></label>
+          <label class="field"><span>Drive</span>
+            <select id="driveType">
+              <option value="RWD">RWD</option>
+              <option value="FWD">FWD</option>
+              <option value="AWD">AWD</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="card-title">Transmission (factory defaults — editable)</div>
+        <label class="field"><span>Factory TX preset</span>
+          <select id="txPreset"></select>
+        </label>
+        <div class="field-row">
+          <label class="field"><span>Final Drive</span><input id="finalDrive" type="number" step="0.01" value="3.73" /></label>
+          <label class="field"><span>Drivetrain Loss %</span><input id="lossPct" type="number" step="0.1" value="15" /></label>
+        </div>
+        <div class="gears-editor" id="gearsEditor"></div>
+
+        <div class="field-row">
+          <label class="field"><span>Launch RPM</span><input id="launchRpm" type="number" value="3000" /></label>
+          <label class="field"><span>Shift RPM</span><input id="shiftRpm" type="number" value="6500" /></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>Redline</span><input id="redline" type="number" value="6800" /></label>
+          <label class="field"><span>Shift Time s</span><input id="shiftTime" type="number" step="0.01" value="0.10" /></label>
+        </div>
+
+        <div class="card-title">Induction</div>
+        <div class="seg" id="inductionSeg">
+          <label><input type="radio" name="ind" value="na" checked /><span>NA</span></label>
+          <label><input type="radio" name="ind" value="turbo" /><span>Turbo</span></label>
+          <label><input type="radio" name="ind" value="supercharger" /><span>SC</span></label>
+          <label><input type="radio" name="ind" value="twincharge" /><span>Twin</span></label>
+        </div>
+        <div class="field-row">
+          <label class="field"><span>Boost PSI (on NA curve)</span><input id="boostPsi" type="number" step="0.5" value="0" /></label>
+          <label class="field"><span>Tire</span>
+            <select id="tireType">
+              <option value="0">Street</option>
+              <option value="1" selected>Drag Radial</option>
+              <option value="2">Slick</option>
+            </select>
+          </label>
+        </div>
+
+        <details class="advanced">
+          <summary>Weather · Wind · Converter · Advanced</summary>
+          <div class="field-row-3">
+            <label class="field"><span>Temp °F</span><input id="tempF" type="number" value="70" /></label>
+            <label class="field"><span>Humidity %</span><input id="humidity" type="number" value="45" /></label>
+            <label class="field"><span>Pressure inHg</span><input id="pressure" type="number" step="0.01" value="29.92" /></label>
+          </div>
+          <label class="field"><span>Density Altitude ft (blank = compute)</span><input id="daFt" type="number" placeholder="auto" /></label>
+          <div class="field-row-3">
+            <label class="field"><span>Wind mph</span><input id="windMph" type="number" value="0" /></label>
+            <label class="field"><span>Wind dir ° (0=head)</span><input id="windDir" type="number" value="0" /></label>
+            <label class="field"><span>Gust mph</span><input id="gustMph" type="number" value="0" /></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span>Launch mode</span>
+              <select id="launchMode">
+                <option value="auto">Auto</option>
+                <option value="soft">Soft</option>
+                <option value="aggressive">Aggressive</option>
+                <option value="custom">Custom</option>
+              </select>
+            </label>
+            <label class="field"><span>Aftermarket converter</span>
+              <select id="converter">
+                <option value="0">Off</option>
+                <option value="1">On</option>
+              </select>
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span>Stall RPM</span><input id="stallRpm" type="number" value="2800" /></label>
+            <label class="field"><span>Flash RPM</span><input id="flashRpm" type="number" value="3500" /></label>
+          </div>
+        </details>
+
+        <button type="button" class="btn btn-run" id="btnRun">RUN QUARTER-MILE</button>
+        <button type="button" class="btn" id="btnReset" style="width:100%;margin-top:6px">Reset to preset</button>
+      </aside>
+
+      <!-- CENTER: gauges + curve -->
+      <main class="card">
+        <div class="card-title">Instruments · Power Curve</div>
+        <div class="live-readout">
+          <span>Gear <strong id="liveGear">—</strong></span>
+          <span>RPM <strong id="liveRpm">—</strong></span>
+          <span>MPH <strong id="liveMph">—</strong></span>
+          <span>G <strong id="liveG">—</strong></span>
+        </div>
+        <div class="gauges">
+          <div class="gauge-wrap"><canvas id="rpmGauge" width="240" height="240"></canvas></div>
+          <div class="gauge-wrap"><canvas id="speedGauge" width="240" height="240"></canvas></div>
+        </div>
+        <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
+        <div class="metrics" id="metrics"></div>
+        <p class="disclaimer" style="margin-top:12px">
+          Estimates for comparison only — not dyno- or track-certified. Physics uses real gearing + RPM + shift points
+          (not HP/weight shortcuts). Calibrated toward published track slips; local weather, tires, and driver vary.
+        </p>
+      </main>
+
+      <!-- RIGHT: time slip -->
+      <aside class="card">
+        <div class="card-title">Time Slip</div>
+        <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
+        <p class="credits" style="margin-top:12px">
+          <strong>VelocityBench PowerCurve</strong> · static Pages app · no server / DB / tracking.<br />
+          Race sibling: forcemetric-web · Hub: guerra-tools-hub<br />
+          Physics: geared RPM · factory TX ratios · weather/DA · wind · FI boost.<br />
+          Created by Jorge Guerra.
+        </p>
+      </aside>
+    </div>
+  </div>
+
+  <script src="js/physics.js"></script>
+  <script src="js/gauges.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

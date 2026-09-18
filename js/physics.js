@@ -1,0 +1,544 @@
+/**
+ * VelocityBench PowerCurve — geared RPM quarter-mile physics
+ *
+ * Faithful JS port of CarTestClone Physics/PhysicsEngine.cs:
+ *   mechRpm = wheelRpm * gearRatio * finalDrive
+ *   wheelTorque = engineTQ(rpm) * gear * FD * (1 - loss)
+ *   shift at shiftRpm with delay; converter stall/flash; traction clamp
+ *
+ * VB extensions: weather/DA, wind+gusts, FI boost models, rolling resistance,
+ * weight transfer from prior accel, editable factory TX ratios.
+ * Estimates — not track certified.
+ */
+(function (global) {
+  'use strict';
+
+  var FEET_TO_M = 0.3048;
+  var MPH_TO_MPS = 0.44704;
+  var MPS_TO_MPH = 2.23694;
+  var G = 9.80665;
+  var RHO0 = 1.225;
+
+  var DIST_60 = 60 * FEET_TO_M;
+  var DIST_330 = 330 * FEET_TO_M;
+  var DIST_660 = 660 * FEET_TO_M;
+  var DIST_1000 = 1000 * FEET_TO_M;
+  var DIST_1320 = 1320 * FEET_TO_M;
+  var DIST_MILE = 5280 * FEET_TO_M;
+
+  var DEFAULT_LOSS_PCT = 15.0;
+  var DEFAULT_WB_FT = 8.5;
+  var DEFAULT_CG_FT = 1.5;
+  var DEFAULT_REAR_PCT = 55.0;
+  var DEFAULT_MU = 1.1;
+
+  // Softened vs C# 2.55/1.16 for track realism (VERIFY.md)
+  var GRIP_LT20 = 1.35;
+  var GRIP_20_40 = 1.15;
+  var GRIP_40_60 = 1.05;
+  var FORCE_LT30 = 2.05;
+  var FORCE_GT60 = 1.10;
+
+  var DEFAULT_LAUNCH_RPM = 3000;
+  var DEFAULT_SHIFT_RPM = 6500;
+  var DEFAULT_SHIFT_TIME = 0.10;
+  var LAUNCH_V_THRESH = 1.0;
+  var LAUNCH_HOLD = 1.0;
+  var MAX_T = 60.0;
+  var DT = 0.001;
+
+  /** Global drive-force scale. Tuned via VERIFY spot-checks. */
+  var CalibrationFactor = 0.92;
+
+  var FactoryTransmissions = {
+    TH400_3: { name: 'GM TH400 3-spd', gears: [2.48, 1.48, 1.00], finalDrive: 3.73, loss: 18 },
+    Muncie_M21: { name: 'Muncie M21 4-spd', gears: [2.20, 1.64, 1.28, 1.00], finalDrive: 3.70, loss: 12 },
+    Toploader_4: { name: 'Ford Toploader 4-spd', gears: [2.32, 1.69, 1.29, 1.00], finalDrive: 3.50, loss: 12 },
+    A833_4: { name: 'Chrysler A833 4-spd', gears: [2.66, 1.91, 1.39, 1.00], finalDrive: 3.55, loss: 12 },
+    T5_5: { name: 'BorgWarner T5 5-spd', gears: [2.95, 1.94, 1.34, 1.00, 0.63], finalDrive: 3.73, loss: 13 },
+    TR6060_6: { name: 'Tremec TR-6060 6-spd', gears: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50], finalDrive: 3.73, loss: 12 },
+    Getrag_MT82: { name: 'Getrag MT-82 6-spd', gears: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65], finalDrive: 3.73, loss: 12 },
+    ZF8HP: { name: 'ZF 8HP Auto', gears: [4.71, 3.14, 2.10, 1.67, 1.29, 1.00, 0.84, 0.67], finalDrive: 3.15, loss: 15 },
+    PDK_7: { name: 'Porsche PDK 7-spd', gears: [3.91, 2.29, 1.58, 1.19, 0.97, 0.83, 0.67], finalDrive: 3.09, loss: 10 },
+    GR6_DCT: { name: 'Nissan GR6 DCT', gears: [4.056, 2.301, 1.595, 1.248, 1.000, 0.795], finalDrive: 3.70, loss: 10 },
+    Aisin_6: { name: 'Aisin 6-spd Manual', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.27, loss: 12 },
+    DCT_7_AMG: { name: 'AMG SPEEDSHIFT DCT 7', gears: [3.40, 2.19, 1.63, 1.29, 1.03, 0.84, 0.63], finalDrive: 3.67, loss: 10 },
+    EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 }
+  };
+
+  function clamp(v, lo, hi) {
+    if (v < lo) return lo;
+    if (v > hi) return hi;
+    return v;
+  }
+
+  function airDensityFromDA(daFt) {
+    return RHO0 * Math.exp(-daFt / 145366.45);
+  }
+
+  function computeDensityAltitude(tempF, humidityPct, pressureInHg) {
+    var tempC = (tempF - 32.0) * 5.0 / 9.0;
+    var tempK = tempC + 273.15;
+    var pHpa = pressureInHg * 33.8639;
+    var es = 6.1078 * Math.exp((17.27 * tempC) / (tempC + 237.3));
+    var e = es * (humidityPct / 100.0);
+    void (tempK * (1.0 + 0.61 * (e / pHpa)));
+    var pAlt = (1.0 - Math.pow(pHpa / 1013.25, 0.190284)) * 145366.45;
+    return pAlt + 118.8 * (tempC - (15.0 - 0.0019812 * pAlt));
+  }
+
+  function getTorqueAtRpm(curve, rpm) {
+    if (!curve) return 0;
+    var keys, map = {};
+    if (Array.isArray(curve)) {
+      keys = [];
+      for (var i = 0; i < curve.length; i++) {
+        var pt = curve[i];
+        var r = pt.rpm != null ? pt.rpm : pt[0];
+        var t = pt.tq != null ? pt.tq : (pt.torque != null ? pt.torque : pt[1]);
+        keys.push(r);
+        map[r] = t;
+      }
+      keys.sort(function (a, b) { return a - b; });
+    } else {
+      keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
+      map = curve;
+    }
+    if (!keys.length) return 0;
+    if (rpm <= keys[0]) return Number(map[keys[0]]);
+    if (rpm >= keys[keys.length - 1]) return Number(map[keys[keys.length - 1]]);
+    for (var j = 0; j < keys.length - 1; j++) {
+      var r1 = keys[j], r2 = keys[j + 1];
+      if (rpm >= r1 && rpm <= r2) {
+        var t1 = Number(map[r1]), t2 = Number(map[r2]);
+        return t1 + (t2 - t1) * ((rpm - r1) / (r2 - r1));
+      }
+    }
+    return 0;
+  }
+
+  function synthesizeTorqueCurve(peakHp, peakTqRpm, redline, peakHpRpm) {
+    peakHp = clamp(Number(peakHp) || 300, 1, 15000);
+    peakTqRpm = clamp(Number(peakTqRpm) || 4000, 800, 12000);
+    redline = clamp(Number(redline) || 6500, 2000, 16000);
+    peakHpRpm = clamp(
+      Number(peakHpRpm) || Math.min(redline * 0.92, peakTqRpm + 1500),
+      peakTqRpm, redline
+    );
+    var peakTq = (peakHp * 5252) / peakHpRpm;
+    var curve = {};
+    for (var r = 1000; r <= redline; r += 250) {
+      var tq;
+      if (r <= peakTqRpm) {
+        var u = r / peakTqRpm;
+        tq = peakTq * (0.55 + 0.45 * Math.pow(u, 0.85));
+      } else if (r <= peakHpRpm) {
+        var v = (r - peakTqRpm) / Math.max(1, peakHpRpm - peakTqRpm);
+        var atHp = (peakHp * 5252) / peakHpRpm;
+        tq = peakTq + (atHp - peakTq) * v;
+      } else {
+        var w = (r - peakHpRpm) / Math.max(1, redline - peakHpRpm);
+        var tqHp = (peakHp * 5252) / peakHpRpm;
+        tq = tqHp * (1.0 - 0.35 * w * w);
+      }
+      curve[r] = Math.max(10, tq);
+    }
+    if (curve[redline] == null) curve[redline] = Math.max(10, peakTq * 0.65);
+    return curve;
+  }
+
+  function peakHpFromCurve(curve) {
+    var keys = Object.keys(curve).map(Number);
+    var peak = 0;
+    for (var i = 0; i < keys.length; i++) {
+      var hp = (Number(curve[keys[i]]) * keys[i]) / 5252;
+      if (hp > peak) peak = hp;
+    }
+    return peak;
+  }
+
+  /** FI boost on torque. Use only when curve is NA baseline; dyno curves already include boost. */
+  function boostTorqueMult(model, boostPsi, rpm, redline, ambientInHg) {
+    model = String(model || 'na').toLowerCase();
+    if (model === 'na' || model === 'none' || model === 'ev') return 1.0;
+    boostPsi = clamp(Number(boostPsi) || 0, 0, 80);
+    if (boostPsi <= 0) return 1.0;
+    var atmPsi = (Number(ambientInHg) || 29.92) * 0.491154;
+    var pr = (atmPsi + boostPsi) / atmPsi;
+    var ideal = 1.0 + (pr - 1.0) * 0.88;
+    var spool = 1.0;
+    var r = Number(rpm) || 0;
+    var red = Math.max(3000, Number(redline) || 6500);
+    if (model === 'turbo') {
+      var a = red * 0.28, b = red * 0.55;
+      if (r <= a) spool = 0.15;
+      else if (r >= b) spool = 1.0;
+      else spool = 0.15 + 0.85 * ((r - a) / (b - a));
+    } else if (model === 'twincharge') {
+      var a2 = red * 0.18, b2 = red * 0.42;
+      if (r <= a2) spool = 0.55;
+      else if (r >= b2) spool = 1.0;
+      else spool = 0.55 + 0.45 * ((r - a2) / (b2 - a2));
+    } else {
+      spool = clamp(0.7 + 0.3 * (r / red), 0.7, 1.0);
+    }
+    return 1.0 + (ideal - 1.0) * spool;
+  }
+
+  function weatherTorqueFactor(opts, daFt, rho) {
+    if (opts.isEv) return 1.0;
+    var df = rho / RHO0;
+    var dak = daFt / 1000.0;
+    if (opts.isNA && !opts.isFI) {
+      return df * 0.985 * Math.max(0.30, 1.0 - 0.03 * Math.max(0, dak));
+    }
+    if (opts.isFI && !opts.isNA) {
+      return (0.55 + 0.45 * df) * 1.015 * Math.max(0.40, 1.0 - 0.015 * Math.max(0, dak));
+    }
+    return df;
+  }
+
+  /** windDirDeg 0 = headwind. Gusts oscillate along track. */
+  function relativeAirspeedMps(vMps, windMph, windDirDeg, gustMph, tSec) {
+    var wind = Number(windMph) || 0;
+    var gust = Number(gustMph) || 0;
+    var dir = (((Number(windDirDeg) || 0) % 360) + 360) % 360;
+    var longFrac = Math.cos((dir * Math.PI) / 180);
+    var gustWave = gust > 0 ? gust * Math.sin(tSec * 2.7 + 0.4) * 0.65 : 0;
+    return Math.max(0, vMps + (wind + gustWave) * longFrac * MPH_TO_MPS);
+  }
+
+  function tireGripForType(tireType) {
+    switch (tireType | 0) {
+      case 0: return 0.95;
+      case 1: return 1.18;
+      case 2: return 1.45;
+      default: return DEFAULT_MU;
+    }
+  }
+
+  function emptyResult(car, env) {
+    return {
+      carName: (car && car.name) || '',
+      reactionTime: 0,
+      sixtyFootTime: 0,
+      threeThirtyTime: 0,
+      eighthMileTime: 0,
+      eighthMileSpeedMph: 0,
+      thousandFootTime: 0,
+      quarterMileTime: 0,
+      quarterMileSpeedMph: 0,
+      zeroToSixty: null,
+      zeroToHundred: null,
+      sixtyToOneThirty: null,
+      hundredToOneFifty: null,
+      peakG: 0,
+      peakHorsepower: 0,
+      peakTorque: 0,
+      wheelspinPercent: 0,
+      totalShifts: 0,
+      densityAltitudeFeet: 0,
+      airTempF: (env && env.tempF) != null ? env.tempF : 70,
+      launchRpm: 0,
+      shiftRpm: 0,
+      tireDescription: (env && env.tireLabel) || '',
+      timeline: [],
+      powerCurve: [],
+      gearsUsed: [],
+      finalDrive: 0,
+      finished: false,
+      airDensity: RHO0,
+      weatherFactor: 1
+    };
+  }
+
+  /**
+   * @param {object} car
+   * @param {object} [env]
+   */
+  function runQuarterMile(car, env) {
+    env = env || {};
+    var result = emptyResult(car, env);
+
+    var gears = (car.gearRatios || []).map(Number).filter(function (g) { return g > 0; });
+    if (!gears.length) return result;
+
+    var weightLbs = clamp(Number(car.weightLbs) || 3500, 20, 120000);
+    var mass = weightLbs * 0.453592;
+    var tireRadius = (Number(car.tireRadiusInches) || 13.0) * 0.0254;
+    var frontalArea = (Number(car.frontalAreaSqFt) || 22.0) * 0.092903;
+    var cd = Number(car.dragCoefficient) || 0.35;
+    var finalDrive = Number(car.finalDriveRatio) || 3.73;
+    var loss = (car.drivetrainLossPercent != null ? Number(car.drivetrainLossPercent) : DEFAULT_LOSS_PCT) / 100.0;
+    var shiftTime = car.shiftTimeSeconds != null ? Number(car.shiftTimeSeconds) : DEFAULT_SHIFT_TIME;
+    var shiftRpm = car.shiftRpm != null ? Number(car.shiftRpm) : DEFAULT_SHIFT_RPM;
+    var launchRpm = car.launchRpm != null ? Number(car.launchRpm) : DEFAULT_LAUNCH_RPM;
+    var wheelbaseM = (Number(car.wheelbaseFeet) || DEFAULT_WB_FT) * FEET_TO_M;
+    var cgHeightM = (Number(car.cgHeightFeet) || DEFAULT_CG_FT) * FEET_TO_M;
+    var rearPct = Number(car.rearWeightPercent) || DEFAULT_REAR_PCT;
+    var muBase = env.tireGrip != null ? Number(env.tireGrip) : tireGripForType(env.tireType);
+    var driveType = String(car.driveType || 'RWD').toUpperCase();
+    if (driveType === 'AWD') muBase *= 1.25;
+
+    var curve = car.torqueCurve;
+    if (!curve || (typeof curve === 'object' && !Array.isArray(curve) && !Object.keys(curve).length)) {
+      curve = synthesizeTorqueCurve(car.peakHp || car.horsepower, car.peakTqRpm, car.redline, car.peakHpRpm);
+    }
+
+    var tempF = env.tempF != null ? Number(env.tempF) : 70;
+    var humidity = env.humidity != null ? Number(env.humidity) : 50;
+    var pressureInHg = env.pressureInHg != null ? Number(env.pressureInHg) : 29.92;
+    var daFt;
+    if (env.densityAltitudeFtInput != null && !isNaN(Number(env.densityAltitudeFtInput))) {
+      daFt = Number(env.densityAltitudeFtInput);
+    } else if (car.isEv) {
+      daFt = 0;
+    } else {
+      daFt = computeDensityAltitude(tempF, humidity, pressureInHg);
+    }
+    var rho = car.isEv ? RHO0 : airDensityFromDA(daFt);
+    var wx = weatherTorqueFactor(
+      { isEv: !!car.isEv, isNA: !!(car.isNA || (!car.isFI && !car.isEv)), isFI: !!car.isFI },
+      daFt, rho
+    );
+
+    var windMph = Number(env.windSpeedMph) || 0;
+    var windDir = Number(env.windDirDeg) || 0;
+    var gustMph = Number(env.gustMph) || 0;
+    var boostModel = car.boostModel || 'na';
+    var boostPsi = Number(car.boostPsi) || 0;
+    var redline = Number(car.redline) || shiftRpm;
+
+    var launchMode = env.launchMode || 'auto';
+    var slipTarget = 0.10;
+    if (launchMode === 'soft') {
+      launchRpm = Math.max(1500, launchRpm - 500);
+      slipTarget = 0.05;
+    } else if (launchMode === 'aggressive') {
+      launchRpm += 500;
+      slipTarget = 0.15;
+    } else if (launchMode === 'custom') {
+      if (env.customLaunchRpm > 0) launchRpm = env.customLaunchRpm;
+      if (env.customSlipTarget > 0) slipTarget = env.customSlipTarget;
+    }
+
+    result.launchRpm = Math.round(launchRpm);
+    result.shiftRpm = Math.round(shiftRpm);
+    result.densityAltitudeFeet = daFt;
+    result.airTempF = tempF;
+    result.airDensity = rho;
+    result.weatherFactor = wx;
+    result.gearsUsed = gears.slice();
+    result.finalDrive = finalDrive;
+
+    var keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
+    for (var i = 0; i < keys.length; i++) {
+      var rk = keys[i];
+      var tq0 = getTorqueAtRpm(curve, rk) * boostTorqueMult(boostModel, boostPsi, rk, redline, pressureInHg);
+      result.powerCurve.push({ rpm: rk, torque: tq0, horsepower: (tq0 * rk) / 5252 });
+    }
+
+    var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
+    var shifting = false, shiftTimer = 0;
+    var spinSum = 0, spinN = 0, prevA = 0;
+    var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
+    var qmT = null, qmMph = null;
+    var t060 = null, t0100 = null, t60_130 = null, t100_150 = null;
+    var at60 = null, at100 = null;
+    var peakG = 0, peakHP = 0, peakTQ = 0;
+    var sampleAcc = 0;
+    var rollBase = 0.015 * mass * G;
+
+    while (dist < DIST_MILE) {
+      if (shifting) {
+        shiftTimer -= DT;
+        if (shiftTimer <= 0) shifting = false;
+      }
+
+      var inLaunch = v < LAUNCH_V_THRESH && t < LAUNCH_HOLD;
+      var wheelRpm = tireRadius > 0 ? (v / (2 * Math.PI * tireRadius)) * 60.0 : 0;
+
+      if (!shifting) {
+        if (inLaunch) {
+          rpm = launchRpm;
+          if (car.hasAftermarketConverter) {
+            if (t < 0.10 && v < 1.0) rpm = car.flashRpm || launchRpm;
+            if (rpm < (car.stallRpm || 2200)) rpm = car.stallRpm || 2200;
+          }
+        } else {
+          rpm = wheelRpm * gears[gear - 1] * finalDrive;
+          if (car.hasAftermarketConverter && v < 10.0 * MPH_TO_MPS) {
+            if (rpm < (car.stallRpm || 2200)) rpm = car.stallRpm || 2200;
+          }
+        }
+      }
+
+      if (!shifting && rpm >= shiftRpm && gear < gears.length) {
+        gear++;
+        shifting = true;
+        shiftTimer = shiftTime;
+        result.totalShifts++;
+      }
+
+      var engTQ = getTorqueAtRpm(curve, rpm);
+      engTQ *= boostTorqueMult(boostModel, boostPsi, rpm, redline, pressureInHg);
+      engTQ *= wx;
+      engTQ *= (1.0 - loss);
+
+      var gRatio = gears[Math.min(gear, gears.length) - 1];
+      var whTQ = shifting ? 0 : engTQ * gRatio * finalDrive;
+      var mph = v * MPS_TO_MPH;
+
+      if (!shifting && car.hasAftermarketConverter) {
+        var mech = wheelRpm * gRatio * finalDrive;
+        var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
+        var tMult = 1.10 + Math.min(1.0, slipR * 2.0);
+        if (mph > 10.0) {
+          var fade = Math.min(1.0, Math.max(0, (mph - 40.0) / 40.0));
+          tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
+        }
+        whTQ *= tMult;
+      }
+
+      var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
+      if (mph < 30.0) driveF *= FORCE_LT30;
+      if (mph > 60.0) driveF *= FORCE_GT60;
+
+      var airV = relativeAirspeedMps(v, windMph, windDir, gustMph, t);
+      var dragF = 0.5 * rho * cd * frontalArea * airV * airV;
+      var rollF = v > 0.05 ? rollBase : 0;
+
+      var wXfer = (mass * prevA * cgHeightM) / wheelbaseM;
+      var normal;
+      if (driveType === 'AWD') {
+        normal = mass * G + Math.abs(wXfer) * 0.15;
+      } else if (driveType === 'FWD') {
+        normal = mass * G * (1.0 - rearPct / 100.0) - wXfer;
+      } else {
+        normal = mass * G * (rearPct / 100.0) + wXfer;
+      }
+      if (normal < mass * G * 0.25) normal = mass * G * 0.25;
+
+      var mu = muBase;
+      if (inLaunch) {
+        if (launchMode === 'soft') mu = muBase * 1.15;
+        else if (launchMode === 'aggressive') mu = muBase * 0.90;
+        else if (launchMode === 'custom') {
+          mu = muBase * clamp(1.0 + (0.10 - slipTarget) * 1.5, 0.7, 1.3);
+        }
+      }
+      if (mph < 20.0) mu *= GRIP_LT20;
+      else if (mph < 40.0) mu *= GRIP_20_40;
+      else if (mph < 60.0) mu *= GRIP_40_60;
+
+      var tracLim = normal * mu;
+      var applied = driveF;
+      var spinPct = 0;
+      if (applied > tracLim && tracLim > 0) {
+        var slip = (applied - tracLim) / applied;
+        spinSum += slip;
+        spinN++;
+        spinPct = slip * 100.0;
+        applied = tracLim;
+      }
+
+      applied *= CalibrationFactor;
+
+      var net = applied - dragF - rollF;
+      if (net < 0) net = 0;
+      var a = net / mass;
+      prevA = a;
+
+      v += a * DT;
+      dist += v * DT;
+      t += DT;
+
+      mph = v * MPS_TO_MPH;
+      var feet = dist / FEET_TO_M;
+      var gForce = a / G;
+      if (gForce > peakG) peakG = gForce;
+      var instHp = (engTQ * rpm) / 5252;
+      if (instHp > peakHP) peakHP = instHp;
+      if (engTQ > peakTQ) peakTQ = engTQ;
+
+      if (!hit60 && dist >= DIST_60) { result.sixtyFootTime = t; hit60 = true; }
+      if (!hit330 && dist >= DIST_330) { result.threeThirtyTime = t; hit330 = true; }
+      if (!hit660 && dist >= DIST_660) {
+        result.eighthMileTime = t;
+        result.eighthMileSpeedMph = mph;
+        hit660 = true;
+      }
+      if (!hit1000 && dist >= DIST_1000) { result.thousandFootTime = t; hit1000 = true; }
+      if (!hit1320 && dist >= DIST_1320) {
+        hit1320 = true;
+        qmT = t;
+        qmMph = mph;
+      }
+
+      if (mph >= 60 && t060 == null) t060 = t;
+      if (mph >= 100 && t0100 == null) t0100 = t;
+      if (mph >= 60 && at60 == null) at60 = t;
+      if (mph >= 130 && t60_130 == null && at60 != null) t60_130 = t - at60;
+      if (mph >= 100 && at100 == null) at100 = t;
+      if (mph >= 150 && t100_150 == null && at100 != null) t100_150 = t - at100;
+
+      sampleAcc += DT;
+      if (sampleAcc >= 0.02) {
+        sampleAcc = 0;
+        result.timeline.push({
+          t: +t.toFixed(3),
+          mph: +mph.toFixed(2),
+          feet: +feet.toFixed(1),
+          rpm: Math.round(rpm),
+          gear: gear,
+          g: +gForce.toFixed(3),
+          wheelspin: +spinPct.toFixed(1)
+        });
+      }
+
+      if (t > MAX_T) break;
+      if (hit1320 && dist > DIST_1320 + 5) break;
+    }
+
+    if (qmT != null) {
+      result.quarterMileTime = qmT;
+      result.quarterMileSpeedMph = qmMph;
+    } else {
+      result.quarterMileTime = t;
+      result.quarterMileSpeedMph = v * MPS_TO_MPH;
+    }
+    if (spinN > 0) result.wheelspinPercent = (spinSum / spinN) * 100.0;
+    result.zeroToSixty = t060;
+    result.zeroToHundred = t0100;
+    result.sixtyToOneThirty = t60_130;
+    result.hundredToOneFifty = t100_150;
+    result.peakG = peakG;
+    result.peakHorsepower = peakHP;
+    result.peakTorque = peakTQ;
+    result.finished = hit1320;
+    return result;
+  }
+
+  var API = {
+    runQuarterMile: runQuarterMile,
+    getTorqueAtRpm: getTorqueAtRpm,
+    synthesizeTorqueCurve: synthesizeTorqueCurve,
+    peakHpFromCurve: peakHpFromCurve,
+    computeDensityAltitude: computeDensityAltitude,
+    airDensityFromDA: airDensityFromDA,
+    boostTorqueMult: boostTorqueMult,
+    FactoryTransmissions: FactoryTransmissions,
+    get CalibrationFactor() { return CalibrationFactor; },
+    set CalibrationFactor(v) { CalibrationFactor = Number(v) || CalibrationFactor; },
+    constants: {
+      DEFAULT_LAUNCH_RPM: DEFAULT_LAUNCH_RPM,
+      DEFAULT_SHIFT_RPM: DEFAULT_SHIFT_RPM,
+      DEFAULT_SHIFT_TIME: DEFAULT_SHIFT_TIME,
+      RHO0: RHO0,
+      DT: DT
+    }
+  };
+
+  global.VelocityBenchPowerCurve = API;
+  if (typeof module !== 'undefined' && module.exports) module.exports = API;
+})(typeof window !== 'undefined' ? window : globalThis);
