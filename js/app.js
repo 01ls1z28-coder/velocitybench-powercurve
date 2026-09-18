@@ -1399,6 +1399,10 @@ $('btnReset').addEventListener('click', function () {
   }
 
   (function wireDynoEditAndScrub() {
+    var canvas = $('powerChart');
+    if (!canvas) return;
+    canvas.style.cursor = 'crosshair';
+
     // EV delivery scrub (mph) — no ICE TQ bullet drag
     canvas.addEventListener('mousemove', function (ev) {
       if (!(state.evChartMode || isEvMode(state.car))) return;
@@ -1408,10 +1412,6 @@ $('btnReset').addEventListener('click', function () {
       state.evCursorMph = mph;
       drawEvPowerDeliveryChart(state.car, mph);
     });
-
-    var canvas = $('powerChart');
-    if (!canvas) return;
-    canvas.style.cursor = 'crosshair';
 
     function clientXY(ev) {
       if (ev.touches && ev.touches[0]) return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
