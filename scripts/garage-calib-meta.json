@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-09-18T14:55:29.998Z",
+  "generatedAt": "2026-09-18T20:15:43.754Z",
   "fleetCount": 333,
-  "missingVbMatch": [
-    "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
-    "2011 - 2014 Ford F-150 Enrique's 3.5EB"
-  ],
+  "source": "/workspace/powercurve-garage-import.json",
   "tolerances": {
     "z60": 0.25,
     "et": 0.25,
     "trap": 2.5,
     "z60130": 0.75
   },
+  "priority": "trap → ET → 60-130 → 0-60",
+  "method": "ZR1X special Excel bake + evaluate all + deep-search top 55 metric misses",
+  "outlierImproves": 54,
   "hitRates": {
+    "et": "318/331",
+    "trap": "282/331",
+    "z60": "292/332",
+    "z60130": "65/76",
+    "all4": "228/333",
+    "etPct": 96.1,
+    "trapPct": 85.2,
+    "z60Pct": 88,
+    "z60130Pct": 85.5,
+    "all4Pct": 68.5
+  },
+  "priorHitRates": {
     "et": "317/328",
     "trap": "260/328",
     "z60": "291/332",
@@ -23,7 +35,7 @@
     "z60130Pct": 80.5,
     "all4Pct": 63.4
   },
-  "elapsedSec": 1811,
+  "elapsedSec": 1450.7,
   "sample": [
     {
       "name": "2020 Ford Mustang GT",
@@ -40,15 +52,15 @@
         "et": 11.995,
         "trap": 118.4,
         "z60": 3.793,
-        "z60130": 10.856
+        "z60130": 10.858,
+        "vmax": 179
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -9.225
+      }
     },
     {
       "name": "2021 Dodge Charger Hellcat Redeye",
@@ -65,64 +77,15 @@
         "et": 11.576,
         "trap": 126.9,
         "z60": 3.61,
-        "z60130": 8.554
+        "z60130": 8.554,
+        "vmax": 198.1
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -8.354
-    },
-    {
-      "name": "2013 Ford Mustang Boss 302",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "tgt": {
-        "z60": 4.3,
-        "et": 12.7,
-        "trap": 114
-      },
-      "sim": {
-        "et": 12.858,
-        "trap": 111.6,
-        "z60": 4.435,
-        "z60130": 14.141
-      },
-      "hits": {
-        "et": true,
-        "trap": true,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": -1.947
-    },
-    {
-      "name": "2020 Ford Mustang Shelby GT500",
-      "tireType": 1,
-      "loss": 4,
-      "forceScale": 1,
-      "tgt": {
-        "z60": 3.4,
-        "et": 11.3,
-        "trap": 132,
-        "z60130": 7.6
-      },
-      "sim": {
-        "et": 11.053,
-        "trap": 130,
-        "z60": 3.172,
-        "z60130": 7.887
-      },
-      "hits": {
-        "et": true,
-        "trap": true,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": -2.93
+      }
     },
     {
       "name": "2007 Ford Mustang GT",
@@ -138,15 +101,15 @@
         "et": 13.705,
         "trap": 102.7,
         "z60": 5.22,
-        "z60130": 20.278
+        "z60130": 20.282,
+        "vmax": 150
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -7.233
+      }
     },
     {
       "name": "1994 Ford Mustang GT",
@@ -161,40 +124,65 @@
       "sim": {
         "et": 14.753,
         "trap": 94.7,
-        "z60": 6.315,
-        "z60130": 31.275
+        "z60": 6.316,
+        "z60130": 31.28,
+        "vmax": 134.6
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -5.158
+      }
     },
     {
-      "name": "2002 Nissan Skyline GT-R R34",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
+      "name": "2022 Tesla Model S Plaid",
+      "tireType": 4,
+      "loss": 3.5,
+      "forceScale": 1.25,
       "tgt": {
-        "z60": 4.8,
-        "et": 13.3,
-        "trap": 107
+        "z60": 2.1,
+        "et": 9.25,
+        "trap": 151,
+        "z60130": 4.8
       },
       "sim": {
-        "et": 13.401,
-        "trap": 101.6,
-        "z60": 4.797,
-        "z60130": 21.341
+        "et": 9.488,
+        "trap": 154.5,
+        "z60": 2.321,
+        "z60130": 4.633,
+        "vmax": 200
       },
       "hits": {
         "et": true,
         "trap": false,
         "z60": true,
         "z60130": true
+      }
+    },
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "tireType": 3,
+      "loss": 0,
+      "forceScale": 1.47,
+      "tgt": {
+        "z60": 2.6,
+        "et": 11,
+        "trap": 119
       },
-      "cost": 5.195
+      "sim": {
+        "et": 10.861,
+        "trap": 118.8,
+        "z60": 2.605,
+        "z60130": 14.61,
+        "vmax": 130
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      }
     },
     {
       "name": "1965 Shelby Cobra 427",
@@ -210,15 +198,15 @@
         "et": 12.217,
         "trap": 120,
         "z60": 4.046,
-        "z60130": 10.626
+        "z60130": 10.626,
+        "vmax": 165.4
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": false,
         "z60130": true
-      },
-      "cost": -1.976
+      }
     },
     {
       "name": "1994 Toyota Supra Twin Turbo",
@@ -234,39 +222,15 @@
         "et": 13.095,
         "trap": 106.1,
         "z60": 4.52,
-        "z60130": 17.078
+        "z60130": 17.078,
+        "vmax": 168
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -5.121
-    },
-    {
-      "name": "1999 Nissan Skyline GT-R R34",
-      "tireType": 3,
-      "loss": 3,
-      "forceScale": 1.2,
-      "tgt": {
-        "z60": 4.8,
-        "et": 13.3,
-        "trap": 107
-      },
-      "sim": {
-        "et": 13.269,
-        "trap": 104.6,
-        "z60": 4.771,
-        "z60130": 17.047
-      },
-      "hits": {
-        "et": true,
-        "trap": true,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": -4.431
+      }
     },
     {
       "name": "2023 Mazda MX-5 Miata Club",
@@ -282,395 +246,414 @@
         "et": 14.177,
         "trap": 95.1,
         "z60": 5.45,
-        "z60130": 36.737
+        "z60130": 36.737,
+        "vmax": 133.6
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      },
-      "cost": -3.578
-    }
-  ],
-  "worst": [
-    {
-      "name": "2018 Zenvo TSR-S",
-      "tireType": 2,
-      "loss": 3,
-      "forceScale": 0.9,
-      "tgt": {
-        "z60": 2.8,
-        "et": 10.4,
-        "trap": 140,
-        "z60130": 6
-      },
-      "sim": {
-        "et": 10.017,
-        "trap": 152.6,
-        "z60": 2.838,
-        "z60130": 4.809
-      },
-      "hits": {
-        "et": false,
-        "trap": false,
-        "z60": true,
-        "z60130": false
-      },
-      "cost": 28.309
+      }
     },
     {
-      "name": "2024 Tesla Cybertruck Tri-Motor",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1.35,
-      "tgt": {
-        "z60": 2.6,
-        "et": 11,
-        "trap": 119
-      },
-      "sim": {
-        "et": 11.057,
-        "trap": 131,
-        "z60": 3.284,
-        "z60130": 7.595
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 26.269
-    },
-    {
-      "name": "2019 Koenigsegg Jesko",
-      "tireType": 2,
-      "loss": 3,
-      "forceScale": 0.9,
-      "tgt": {
-        "z60": 2.6,
-        "et": 9.6,
-        "trap": 152,
-        "z60130": 4.5
-      },
-      "sim": {
-        "et": 9.877,
-        "trap": 160.7,
-        "z60": 2.828,
-        "z60130": 4.442
-      },
-      "hits": {
-        "et": false,
-        "trap": false,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": 16.158
-    },
-    {
-      "name": "2022 BMW iX M60",
-      "tireType": 4,
-      "loss": 1.5,
-      "forceScale": 1.2,
-      "tgt": {
-        "z60": 3.6,
-        "et": 12.1,
-        "trap": 114
-      },
-      "sim": {
-        "et": 12.111,
-        "trap": 120.4,
-        "z60": 4.118,
-        "z60130": 10.073
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 15.114
-    },
-    {
-      "name": "2017 BMW X6M",
+      "name": "2026 Chevrolet Corvette ZR1X",
       "tireType": 0,
       "loss": 0,
-      "forceScale": 1,
+      "forceScale": 1.3,
       "tgt": {
-        "z60": 3.8,
-        "et": 12.3,
-        "trap": 114,
-        "z60130": 8.8
+        "z60": 1.9,
+        "et": 8.675,
+        "trap": 159,
+        "z60130": 3.87
       },
       "sim": {
-        "et": 12.179,
-        "trap": 110.9,
-        "z60": 3.708,
-        "z60130": 13.946
+        "et": 8.827,
+        "trap": 159.1,
+        "z60": 1.828,
+        "z60130": 4.017,
+        "vmax": 230.7
       },
       "hits": {
         "et": true,
-        "trap": false,
-        "z60": true,
-        "z60130": false
-      },
-      "cost": 14.193
-    },
-    {
-      "name": "2023 Mercedes EQE AMG 53",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1.08,
-      "tgt": {
-        "z60": 3.2,
-        "et": 11.6,
-        "trap": 120
-      },
-      "sim": {
-        "et": 11.714,
-        "trap": 124.4,
-        "z60": 3.795,
-        "z60130": 9.009
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 13.918
-    },
-    {
-      "name": "2024 Rivian R1S Quad Motor",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1.35,
-      "tgt": {
-        "z60": 3,
-        "et": 11.1,
-        "trap": 121
-      },
-      "sim": {
-        "et": 11.02,
-        "trap": 130.6,
-        "z60": 3.228,
-        "z60130": 7.686
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": 13.838
-    },
-    {
-      "name": "2007 Lamborghini Murciélago LP640",
-      "tireType": 0,
-      "loss": 19.5,
-      "forceScale": 1,
-      "tgt": {
-        "z60": 3.4,
-        "et": 11.4,
-        "trap": 129
-      },
-      "sim": {
-        "et": 11.489,
-        "trap": 119.9,
-        "z60": 3.154,
-        "z60130": 10.715
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": 13.382
-    },
-    {
-      "name": "2024 Lucid Air Touring",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1.25,
-      "tgt": {
-        "z60": 3,
-        "et": 11.2,
-        "trap": 123
-      },
-      "sim": {
-        "et": 11.005,
-        "trap": 131.4,
-        "z60": 3.233,
-        "z60130": 7.539
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": 13.295
-    },
-    {
-      "name": "2012 Audi R8 V10",
-      "tireType": 0,
-      "loss": 7.5,
-      "forceScale": 1.15,
-      "tgt": {
-        "z60": 3.5,
-        "et": 11.6,
-        "trap": 124,
-        "z60130": 8.5
-      },
-      "sim": {
-        "et": 10.978,
-        "trap": 124.7,
-        "z60": 2.821,
-        "z60130": 9.199
-      },
-      "hits": {
-        "et": false,
         "trap": true,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 13.235
-    },
-    {
-      "name": "1966 Ford GT40 MkII",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1.08,
-      "tgt": {
-        "z60": 4.5,
-        "et": 11.8,
-        "trap": 131
-      },
-      "sim": {
-        "et": 11.601,
-        "trap": 128.5,
-        "z60": 3.809,
-        "z60130": 8.073
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 12.864
-    },
-    {
-      "name": "1964 Pontiac GTO",
-      "tireType": 0,
-      "loss": 30,
-      "forceScale": 1,
-      "tgt": {
-        "z60": 6.6,
-        "et": 14.8,
-        "trap": 98
-      },
-      "sim": {
-        "et": 14.961,
-        "trap": 90.1,
-        "z60": 6.363,
-        "z60130": null
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
         "z60": true,
         "z60130": true
-      },
-      "cost": 12.244
-    },
-    {
-      "name": "2022 Porsche Taycan Turbo S",
-      "tireType": 3,
-      "loss": 3.5,
-      "forceScale": 1.25,
-      "tgt": {
-        "z60": 2.4,
-        "et": 10.5,
-        "trap": 130,
-        "z60130": 6.5
-      },
-      "sim": {
-        "et": 10.532,
-        "trap": 136.3,
-        "z60": 2.886,
-        "z60130": 6.652
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 12.191
-    },
-    {
-      "name": "2024 Subaru Solterra",
-      "tireType": 4,
-      "loss": 5,
-      "forceScale": 1.5,
-      "tgt": {
-        "z60": 6.5,
-        "et": 15.1,
-        "trap": 92
-      },
-      "sim": {
-        "et": 15.122,
-        "trap": 95.4,
-        "z60": 7.104,
-        "z60130": 30.428
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
-      },
-      "cost": 11.3
-    },
-    {
-      "name": "2022 Ford F-150 Lightning",
-      "tireType": 4,
-      "loss": 3.5,
-      "forceScale": 1.35,
-      "tgt": {
-        "z60": 4,
-        "et": 12.5,
-        "trap": 108
-      },
-      "sim": {
-        "et": 12.342,
-        "trap": 115.1,
-        "z60": 4.195,
-        "z60130": 12.824
-      },
-      "hits": {
-        "et": true,
-        "trap": false,
-        "z60": true,
-        "z60130": true
-      },
-      "cost": 10.487
+      }
     }
   ],
+  "worst": {
+    "trap": [
+      {
+        "name": "2007 Lamborghini Murciélago LP640",
+        "err": 6.466,
+        "tgt": 129,
+        "sim": 122.534
+      },
+      {
+        "name": "1964 Pontiac GTO",
+        "err": 6.051,
+        "tgt": 98,
+        "sim": 91.949
+      },
+      {
+        "name": "2020 Dodge Durango SRT",
+        "err": 5.529,
+        "tgt": 110,
+        "sim": 104.471
+      },
+      {
+        "name": "2022 Suzuki Hayabusa",
+        "err": 5.345,
+        "tgt": 148,
+        "sim": 142.655
+      },
+      {
+        "name": "2022 Cadillac Escalade V",
+        "err": 5.325,
+        "tgt": 112,
+        "sim": 106.675
+      },
+      {
+        "name": "2013 Audi RS4 Avant",
+        "err": 5.272,
+        "tgt": 114,
+        "sim": 108.728
+      },
+      {
+        "name": "2023 Hyundai Ioniq 5 N",
+        "err": 5.263,
+        "tgt": 124.9,
+        "sim": 130.163
+      },
+      {
+        "name": "2007 Audi S6 V10",
+        "err": 5.234,
+        "tgt": 105,
+        "sim": 99.766
+      },
+      {
+        "name": "2023 Acura TLX Type S",
+        "err": 5.068,
+        "tgt": 107,
+        "sim": 101.932
+      },
+      {
+        "name": "1972 Oldsmobile 442",
+        "err": 4.941,
+        "tgt": 90,
+        "sim": 85.059
+      },
+      {
+        "name": "2009 Lamborghini Gallardo LP560-4",
+        "err": 4.907,
+        "tgt": 126,
+        "sim": 121.093
+      },
+      {
+        "name": "2023 Ford Bronco Raptor",
+        "err": 4.791,
+        "tgt": 99,
+        "sim": 94.209
+      },
+      {
+        "name": "2021 Range Rover Sport SVR",
+        "err": 4.788,
+        "tgt": 111,
+        "sim": 106.212
+      },
+      {
+        "name": "1971 Dodge Demon 340",
+        "err": 4.761,
+        "tgt": 96,
+        "sim": 91.239
+      },
+      {
+        "name": "1985 Mazda RX-7 GSL-SE",
+        "err": 4.593,
+        "tgt": 86,
+        "sim": 90.593
+      }
+    ],
+    "et": [
+      {
+        "name": "2024 Lucid Air Touring",
+        "err": 0.678,
+        "tgt": 11.2,
+        "sim": 11.878
+      },
+      {
+        "name": "2021 BMW S1000RR",
+        "err": 0.607,
+        "tgt": 10.12,
+        "sim": 9.513
+      },
+      {
+        "name": "2023 Mercedes EQE AMG 53",
+        "err": 0.602,
+        "tgt": 11.6,
+        "sim": 12.202
+      },
+      {
+        "name": "2012 Audi R8 V10",
+        "err": 0.594,
+        "tgt": 11.6,
+        "sim": 11.006
+      },
+      {
+        "name": "2022 BMW iX M60",
+        "err": 0.532,
+        "tgt": 12.1,
+        "sim": 12.632
+      },
+      {
+        "name": "1977 Chevrolet Monte Carlo",
+        "err": 0.449,
+        "tgt": 17.8,
+        "sim": 17.351
+      },
+      {
+        "name": "2010 Gumpert Apollo Sport",
+        "err": 0.33,
+        "tgt": 10.8,
+        "sim": 10.47
+      },
+      {
+        "name": "1975 Chevrolet Nova 350",
+        "err": 0.326,
+        "tgt": 17.4,
+        "sim": 17.074
+      },
+      {
+        "name": "2014 Hennessey Venom GT",
+        "err": 0.322,
+        "tgt": 9.8,
+        "sim": 9.478
+      },
+      {
+        "name": "1960 Ford Galaxie 352",
+        "err": 0.299,
+        "tgt": 16.8,
+        "sim": 16.501
+      },
+      {
+        "name": "2024 Porsche 911 GT3 RS",
+        "err": 0.294,
+        "tgt": 11.1,
+        "sim": 10.806
+      },
+      {
+        "name": "2010 Dodge Challenger SRT8",
+        "err": 0.285,
+        "tgt": 13.2,
+        "sim": 12.915
+      },
+      {
+        "name": "2018 Ford Mustang GT PP2",
+        "err": 0.28,
+        "tgt": 12.6,
+        "sim": 12.32
+      },
+      {
+        "name": "1978 Dodge Magnum XE",
+        "err": 0.248,
+        "tgt": 17.2,
+        "sim": 16.952
+      },
+      {
+        "name": "2020 Ford Mustang Shelby GT500",
+        "err": 0.247,
+        "tgt": 11.3,
+        "sim": 11.053
+      }
+    ],
+    "z60": [
+      {
+        "name": "2023 Mercedes EQE AMG 53",
+        "err": 1.012,
+        "tgt": 3.2,
+        "sim": 4.212
+      },
+      {
+        "name": "2022 BMW iX M60",
+        "err": 0.969,
+        "tgt": 3.6,
+        "sim": 4.569
+      },
+      {
+        "name": "2024 Lucid Air Touring",
+        "err": 0.935,
+        "tgt": 3,
+        "sim": 3.935
+      },
+      {
+        "name": "2024 Subaru Solterra",
+        "err": 0.844,
+        "tgt": 6.5,
+        "sim": 7.344
+      },
+      {
+        "name": "2023 Hyundai Kona Electric",
+        "err": 0.745,
+        "tgt": 6.8,
+        "sim": 7.545
+      },
+      {
+        "name": "1966 Ford GT40 MkII",
+        "err": 0.736,
+        "tgt": 4.5,
+        "sim": 3.764
+      },
+      {
+        "name": "2021 BMW S1000RR",
+        "err": 0.72,
+        "tgt": 3.1,
+        "sim": 2.38
+      },
+      {
+        "name": "2023 Toyota bZ4X AWD",
+        "err": 0.713,
+        "tgt": 6.5,
+        "sim": 7.213
+      },
+      {
+        "name": "2024 Volvo XC40 Recharge",
+        "err": 0.668,
+        "tgt": 4.5,
+        "sim": 5.168
+      },
+      {
+        "name": "2023 VW ID.4 AWD Pro",
+        "err": 0.658,
+        "tgt": 5.7,
+        "sim": 6.358
+      },
+      {
+        "name": "2012 Audi R8 V10",
+        "err": 0.647,
+        "tgt": 3.5,
+        "sim": 2.853
+      },
+      {
+        "name": "1969 Dodge Charger 440",
+        "err": 0.619,
+        "tgt": 6.1,
+        "sim": 5.481
+      },
+      {
+        "name": "2024 Kia Niro EV",
+        "err": 0.614,
+        "tgt": 6.9,
+        "sim": 7.514
+      },
+      {
+        "name": "2024 Cadillac Lyriq AWD",
+        "err": 0.608,
+        "tgt": 4.6,
+        "sim": 5.208
+      },
+      {
+        "name": "2023 Audi Q4 e-tron",
+        "err": 0.602,
+        "tgt": 5.8,
+        "sim": 6.402
+      }
+    ],
+    "z60130": [
+      {
+        "name": "2017 BMW X6M",
+        "err": 4.381,
+        "tgt": 8.8,
+        "sim": 13.181
+      },
+      {
+        "name": "2010 Ferrari 458 Italia",
+        "err": 1.331,
+        "tgt": 7.2,
+        "sim": 8.531
+      },
+      {
+        "name": "2021 Porsche 911 Turbo S",
+        "err": 1.252,
+        "tgt": 5.8,
+        "sim": 7.052
+      },
+      {
+        "name": "2016 Koenigsegg Regera",
+        "err": 1.22,
+        "tgt": 3.9,
+        "sim": 5.12
+      },
+      {
+        "name": "2021 Kawasaki Ninja ZX-10R",
+        "err": 1.101,
+        "tgt": 4.5,
+        "sim": 5.601
+      },
+      {
+        "name": "2017 Porsche 911 GT2 RS",
+        "err": 1.022,
+        "tgt": 6.2,
+        "sim": 7.222
+      },
+      {
+        "name": "2020 Suzuki GSX-R1000R",
+        "err": 0.901,
+        "tgt": 4.3,
+        "sim": 5.201
+      },
+      {
+        "name": "2021 McLaren Sabre",
+        "err": 0.869,
+        "tgt": 6,
+        "sim": 6.869
+      },
+      {
+        "name": "2021 Honda CBR1000RR-R Fireblade",
+        "err": 0.866,
+        "tgt": 4.2,
+        "sim": 5.066
+      },
+      {
+        "name": "2020 Yamaha YZF-R1M",
+        "err": 0.864,
+        "tgt": 4.2,
+        "sim": 5.064
+      },
+      {
+        "name": "2019 Lamborghini Huracán Performante",
+        "err": 0.752,
+        "tgt": 6.5,
+        "sim": 7.252
+      },
+      {
+        "name": "2020 Lamborghini Huracán EVO",
+        "err": 0.746,
+        "tgt": 6.8,
+        "sim": 7.546
+      },
+      {
+        "name": "2019 Lamborghini Aventador SVJ",
+        "err": 0.732,
+        "tgt": 5.8,
+        "sim": 6.532
+      },
+      {
+        "name": "2021 Ducati Panigale V4",
+        "err": 0.726,
+        "tgt": 4.1,
+        "sim": 4.826
+      },
+      {
+        "name": "2017 Bugatti Chiron Sport",
+        "err": 0.718,
+        "tgt": 5,
+        "sim": 4.282
+      }
+    ]
+  },
   "powerSourceCounts": {
     "ev": 39,
-    "hybrid": 4,
-    "na": 183,
-    "turbo": 92,
-    "supercharger": 15,
-    "twincharge": 0,
-    "rebuilt": 1
-  },
-  "hybridRebuilds": [
-    "2026 Chevrolet Corvette ZR1X"
-  ],
-  "retagAt": "2026-09-18T16:34:59.328Z"
+    "hybrid": 4
+  }
 }

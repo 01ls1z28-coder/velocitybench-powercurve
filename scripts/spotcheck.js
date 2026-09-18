@@ -214,8 +214,20 @@ console.log('\n---------- POWER SOURCE (EV / Hybrid) ----------');
       ' boost=' + zr.boostModel + ' tx=' + zr.txKey + ' gears=' + (zr.gearRatios || []).length +
       ' → ' + (ok ? 'PASS' : 'FAIL'));
     if (ok) {
-      var rZ = printRun('FLEET Hybrid ZR1X', zr, zr.tireType | 0, 'Excel ~1.9 / 8.675@159');
-      void rZ;
+      var rZ = printRun('FLEET Hybrid ZR1X', zr, zr.tireType | 0,
+        'Excel 1.9 / 8.675@159 / 60-130 3.87 · Vmax≤233');
+      var okZ60 = rZ.zeroToSixty != null && Math.abs(rZ.zeroToSixty - 1.9) <= 0.25;
+      var okZEt = rZ.quarterMileTime != null && Math.abs(rZ.quarterMileTime - 8.675) <= 0.25;
+      var okZTrap = rZ.quarterMileSpeedMph != null && Math.abs(rZ.quarterMileSpeedMph - 159) <= 2.5;
+      var okZ60130 = rZ.sixtyToOneThirty != null && Math.abs(rZ.sixtyToOneThirty - 3.87) <= 0.75;
+      var okZV = rZ.topSpeedMph != null && rZ.topSpeedMph <= 233.5 && rZ.topSpeedMph >= 220;
+      console.log('  vs Excel 1.9 / 8.675@159 / 60-130 3.87 / Vmax≤233 → ' +
+        (okZ60 && okZEt && okZTrap && okZ60130 && okZV ? 'PASS' : 'FAIL') +
+        ' (Δ60 ' + (rZ.zeroToSixty - 1.9).toFixed(3) +
+        ' ΔET ' + (rZ.quarterMileTime - 8.675).toFixed(3) +
+        ' Δtrap ' + (rZ.quarterMileSpeedMph - 159).toFixed(1) +
+        ' Δ60-130 ' + (rZ.sixtyToOneThirty - 3.87).toFixed(3) +
+        ' Vmax ' + rZ.topSpeedMph.toFixed(1) + ')');
     }
   }
 

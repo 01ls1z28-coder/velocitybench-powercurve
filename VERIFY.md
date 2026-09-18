@@ -1,3 +1,63 @@
+# Excel fleet recalib + ZR1X/Cybertruck lock (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-cyber-zr1x-retune` · Tip off live main garage hotfix `5759a822510baeff6b5fe6814eb66ec8bf25679c` (canvas before addEventListener — **intact**).
+
+**Source of truth:** `/workspace/powercurve-garage-import.json` (Jorge Excel, 333 cars). Priority: **trap → ET → 60-130 → 0-60**.
+
+## Method
+1. **ZR1X special Excel bake** — cool trap 162→159 via high-RPM taper + aero + assist; `speedLimiterMph` 233; forceScale 1.30 / assist 0.28 / Cd 0.42 / taper 5200→0.55.
+2. **Cybertruck** — Excel 2.6 / 11.0@119 within TOL; limiter 130 kept.
+3. **Fleet** — evaluate all vs Excel; deep-search top **55** metric misses. **54** improved. Script: `scripts/recalib-fleet-excel.js`.
+
+## Excel LOCK — before → after
+
+### 2026 Chevrolet Corvette ZR1X
+| Metric | Excel | Before (`5759a82`) | After (tip) |
+|--------|-------|--------------------|-------------|
+| 0–60 | **1.9** | 1.897 | **1.828** |
+| ¼ ET @ trap | **8.675 @ 159** | 8.823 @ 162.3 | **8.827 @ 159.1** |
+| 60–130 | **3.87** | 3.878 | **4.017** |
+| Vmax | ≤**233** | 240.9 | **230.7** |
+
+All four within TOL. Screenshot 8.53@172 fantasy-fast **fixed**.
+
+### 2024 Tesla Cybertruck Tri-Motor
+| Metric | Excel | Sim |
+|--------|-------|-----|
+| 0–60 | **2.6** | **2.605** |
+| ¼ ET @ trap | **11.0 @ 119** | **10.861 @ 118.8** |
+| Vmax | **130** | **130** limiter |
+
+## Fleet hit-rates (Excel TOL)
+
+| Metric | Prior | After |
+|--------|-------|-------|
+| ¼ ET | 317/328 96.6% | 318/331 **96.1%** |
+| ¼ trap | 260/328 79.3% | **282/331 85.2%** |
+| 0–60 | 291/332 87.7% | 292/332 **88.0%** |
+| 60–130 | 62/77 80.5% | 65/76 **85.5%** |
+| All applicable | 211/333 63.4% | **228/333 68.5%** |
+
+Trap **+5.9 pts** · all4 **+5.1 pts**. Meta: `scripts/garage-calib-meta.json`.
+
+## Worst outliers (flagged)
+Trap: Murciélago LP640 (−6.5), ’64 GTO (−6.1), Durango SRT (−5.5), Hayabusa (−5.3)…  
+ET: Lucid Air Touring (+0.68), S1000RR (−0.61), EQE 53 (+0.60)…
+
+## Curated ICE (unchanged)
+Supra **13.562@102.0** · Cobra **11.798@115.9** · Miata **15.345@87.9** · Hellcat **11.664@121.3** — PASS.
+
+**Skipped:** deploy · Merovingian holds deploy.
+
+VERIFY
+1. `node scripts/spotcheck.js` — curated ICE PASS; ZR1X Excel PASS; Cybertruck PASS
+2. Load ZR1X — ~1.83 / ~8.83@159 / 60-130~4.02 / Vmax~231 (not 8.5@172)
+3. Load Cybertruck — ~2.60 / ~10.86@119 / Vmax 130
+4. Static / no secrets; **no deploy**
+
+---
+
+
 # EV tip — speed limiters + EV chart + Cybertruck + ATC stall/flash (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-ev-speed-limits` · Tip off live main `baf542f`.
@@ -218,7 +278,7 @@ Same ICE-fraction curve; Hybrid adds motor assist:
 
 #### ZR1X bake gate
 `isHybrid && !isEv && boostModel===turbo && txKey !== EV_Single` → **PASS**.
-Sim (Street tireType 0): **8.823 s @ 162.3 mph** · 0-60 **1.897** · 60-130 **3.878** (Excel ~1.9 / 8.675@159 / 60-130 3.87).
+Sim (Street tireType 0, Excel tip): **8.827 s @ 159.1 mph** · 0-60 **1.828** · 60-130 **4.017** · Vmax **230.7** (Excel 1.9 / 8.675@159 / 60-130 3.87).
 
 #### Model S Plaid (EV lock)
 `isEv && powerSource===ev` → **PASS**. Sim: **9.488 s @ 154.5 mph** · 0-60 **2.321**.
