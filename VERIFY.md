@@ -1,3 +1,64 @@
+# Excel ET-first tip — restore published ZR1X Cd/wt (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-excel-et-first` · Tip **on top of** `389d58d` (do not clear). Base physics from `da81539` (Peak HP wipe fix + forceScale=1). **No deploy.**
+
+## Why
+Seraph: `389d58d` `specialZR1X` searched **Cd [0.42,0.44,0.46]** and **weight [3600,3650,3700]** — Jorge forbade faking Cd/weight. Restored published Excel/import specs and removed those searches.
+
+## Hard rules (kept)
+- Knobs ONLY: **drivetrainLossPercent + launchRpm/launchMode + tireType**
+- Torque-curve scale = **last resort** only
+- **forceScale = 1** always
+- **Do NOT** change Cd / weight / frontal area / gearing to hit times
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · canvas-before-listener — **intact**
+
+## Shipped
+1. **ZR1X restore** — Cd **0.36**, weightLbs **3978**, frontalArea **22.5**, hybridAssistFrac **0.28**, lim **233** (from `da81539` / Excel import WeightLbs 3978).
+2. **Removed Cd/weight search** from `specialZR1X` in `recalib-et-first.js`, `recalib-loss-launch-tires.js`, and `recalib-fleet-excel.js`.
+3. Recalib: `node scripts/recalib-et-first.js --only-special` (ZR1X seed from `da81539` curve; fleet ET-first knobs from `389d58d` kept).
+4. Cybertruck — Excel wt **6800** locked; lim **130**; loss/tire/launch only.
+
+## Excel vs sim (UI-path = load + RUN)
+
+| Car | Excel | Sim (fs=1) | Published specs | Verdict |
+|-----|-------|------------|-----------------|---------|
+| **2026 Corvette ZR1X** | 1.9 / **8.675@159** / 60-130 **3.87** / lim 233 | **1.897 / 8.894@158.8 / 4.077** · Vmax **233** | Cd **0.36** · wt **3978** · area 22.5 | PASS (all TOL) |
+| **2024 Cybertruck Tri-Motor** | 2.6 / **11.0@119** / lim 130 | **2.748 / 10.992@118.8** · Vmax **130** | wt **6800** | PASS (all TOL) |
+
+### Launch-mode delta (ZR1X auto baseline)
+| Mode | 0-60 / 60ft / ET |
+|------|-----------------|
+| soft | 1.625 / 1.343 / 8.668 |
+| auto | 1.897 / 1.465 / 8.894 |
+| aggressive | 2.267 / 1.650 / 9.211 |
+
+### forceScale
+**333/333 = 1.0**. Peak HP path does **not** wipe ZR1X garage curve (label 1250 vs curve peak ~1247).
+
+## Fleet hit-rates (Excel TOL) after restore
+| Metric | Rate |
+|--------|------|
+| ¼ ET | 328/331 **99.1%** |
+| ¼ trap | 286/331 **86.4%** |
+| 0-60 | 291/332 **87.7%** |
+| 60-130 | 72/76 **94.7%** |
+| all4 | 246/333 **73.9%** |
+
+Meta: `scripts/garage-calib-meta.json`.
+
+**Skipped:** deploy · Merovingian holds deploy.
+
+VERIFY
+1. ZR1X Cd=0.36 weightLbs=3978 (not 0.46/3600) · CT wt=6800
+2. Load ZR1X → RUN: ~1.90 / ~8.89@159 / 60-130~4.08 / Vmax 233 — Peak HP must not change curve
+3. Load Cybertruck → RUN: ~2.75 / ~10.99@119 / Vmax 130
+4. Toggle launch soft/auto/aggressive — 0-60 / 60ft must move
+5. Confirm every garage car `forceScale === 1`
+6. `rg '\\[0\\.42|\\[3600' scripts/recalib-*.js` → no Cd/weight search arrays
+7. Static / no secrets; **no deploy**
+
+---
+
 # Excel ET-first tip — forceScale=1 + loss/launch/tires (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-excel-et-first` · Tip off `da815396a56daac8b745307f58ef9b2ddfe5fbc6` (loss/launch/tires — **intact**: Peak HP wipe fix, VB_POWERCURVE_GARAGE bind, canvas-before-listener). **No deploy.**

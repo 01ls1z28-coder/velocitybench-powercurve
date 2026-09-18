@@ -1,8 +1,9 @@
 /**
  * Excel ET-first tip — forceScale=1; knobs = loss + launch + tire (+ curve last resort).
  * Cost priority: 1/4 ET > trap > 60-130 > 0-60 > (soft) Vmax/limiter.
+ * ZR1X: published Cd 0.36 / weightLbs 3978 LOCKED — never search Cd/weight/area.
  * Source: /workspace/powercurve-garage-import.json
- *   node scripts/recalib-et-first.js
+ *   node scripts/recalib-et-first.js [--only-special]
  */
 'use strict';
 var fs = require('fs');
@@ -257,14 +258,14 @@ function calibrateMiss(car, tgt) {
 }
 
 function specialZR1X(car, tgt) {
-  // ET-first bake: mid-shape + Cd/assist/wt; forceScale=1; drag radial; lim 233
+  // Published ZR1X restore: Cd 0.36 / wt 3978 / area 22.5 / assist 0.28 / lim 233.
+  // Knobs ONLY: drivetrainLossPercent + launchRpm + tireType; curve scale = last resort.
+  // NEVER search Cd / weight / frontal area / gearing.
   var c = absorbForceScale(car);
-  var shaped = shapeMid(scaleCurve(c.torqueCurve, 1.03), 0.16, 0.18);
-  c.torqueCurve = shaped;
-  c.dragCoefficient = 0.44;
+  c.dragCoefficient = 0.36;
   c.frontalAreaSqFt = 22.5;
-  c.weightLbs = 3650;
-  c.hybridAssistFrac = 0.36;
+  c.weightLbs = 3978;
+  c.hybridAssistFrac = 0.28;
   c.speedLimiterMph = 233;
   c.forceScale = 1;
   c.drivetrainLossPercent = 0;
@@ -273,38 +274,43 @@ function specialZR1X(car, tgt) {
   delete c._curveScaled;
 
   var best = trial(c, tgt, {
-    loss: 0, tireType: 1, launchRpm: 2400, dragCoefficient: 0.44,
-    weightLbs: 3650, hybridAssistFrac: 0.36, curve: shaped
+    loss: 0, tireType: 1, launchRpm: 2400, hybridAssistFrac: 0.28
   }, null);
-  // Micro search around bake (keep shape; nudge loss/tire/Cd/launch/wt/af)
-  [0, 1, 2].forEach(function (loss) {
-    [1, 4].forEach(function (tire) {
-      [0.42, 0.44, 0.46].forEach(function (Cd) {
-        [2200, 2400, 2600].forEach(function (lr) {
-          [3600, 3650, 3700].forEach(function (wt) {
-            [0.32, 0.36, 0.40].forEach(function (af) {
-              best = trial(c, tgt, {
-                loss: loss, tireType: tire, launchRpm: lr, dragCoefficient: Cd,
-                weightLbs: wt, hybridAssistFrac: af, curve: shaped
-              }, best);
-            });
-          });
-        });
+  [0, 1, 2, 3, 4, 6, 8].forEach(function (loss) {
+    [1, 4, 0, 3].forEach(function (tire) {
+      [1800, 2000, 2200, 2400, 2600, 2800, 3000].forEach(function (lr) {
+        best = trial(c, tgt, {
+          loss: loss, tireType: tire, launchRpm: lr, hybridAssistFrac: 0.28
+        }, best);
       });
     });
   });
+  // LAST RESORT: uniform curve scale only (no Cd/wt/area)
+  if (!allHit(best.hits) || (tgt.et != null && best.etErr > 0.12)) {
+    [0.94, 0.97, 1.03, 1.06, 1.08, 1.10, 1.12, 1.14].forEach(function (sc) {
+      best = trial(c, tgt, {
+        loss: best.knobs.loss, tireType: best.knobs.tireType,
+        launchRpm: best.knobs.launchRpm, hybridAssistFrac: 0.28,
+        curve: scaleCurve(c.torqueCurve, sc)
+      }, best);
+    });
+  }
 
   var out = best.car;
   out.forceScale = 1;
+  out.dragCoefficient = 0.36;
+  out.frontalAreaSqFt = 22.5;
+  out.weightLbs = 3978;
+  out.hybridAssistFrac = 0.28;
   out.speedLimiterMph = 233;
-  if (out.hybridAssistFrac == null) out.hybridAssistFrac = 0.36;
   out.source = (car.source || '2026 Chevrolet Corvette ZR1X') +
-    ' | ET-first tip: mid-shape sc1.03/mb0.16/hc0.18; Cd/wt/assist; loss/tire/launch; Excel 1.9 / 8.675@159 / 3.87 / lim 233';
+    ' | restore published Cd0.36/wt3978; knobs loss/tire/launch only; Excel 1.9 / 8.675@159 / 3.87 / lim 233';
   var sim = runSim(out, true);
   return { car: out, sim: sim, hits: hitFlags(sim, tgt), cost: cost(sim, tgt, out), changed: true, special: true };
 }
 
 function specialCT(car, tgt) {
+  // Excel published wt 6800 locked (not a search knob). Knobs: loss + tire + launch; curve last resort.
   var c = absorbForceScale(car);
   c.weightLbs = 6800;
   c.forceScale = 1;
@@ -313,12 +319,12 @@ function specialCT(car, tgt) {
   c.tireType = 0;
   c.launchRpm = 500;
   delete c._curveScaled;
-  var best = trial(c, tgt, { loss: 0, tireType: 0, launchRpm: 500, weightLbs: 6800 }, null);
+  var best = trial(c, tgt, { loss: 0, tireType: 0, launchRpm: 500 }, null);
   [0, 1, 2, 4].forEach(function (loss) {
     [0, 1, 3].forEach(function (tire) {
       [300, 400, 500, 700, 900].forEach(function (lr) {
         best = trial(c, tgt, {
-          loss: loss, tireType: tire, launchRpm: lr, weightLbs: 6800
+          loss: loss, tireType: tire, launchRpm: lr
         }, best);
       });
     });
@@ -327,7 +333,7 @@ function specialCT(car, tgt) {
     [0.97, 1.03, 1.06].forEach(function (sc) {
       best = trial(c, tgt, {
         loss: best.knobs.loss, tireType: best.knobs.tireType,
-        launchRpm: best.knobs.launchRpm, weightLbs: 6800,
+        launchRpm: best.knobs.launchRpm,
         curve: scaleCurve(c.torqueCurve, sc)
       }, best);
     });
@@ -337,7 +343,7 @@ function specialCT(car, tgt) {
   out.weightLbs = 6800;
   out.speedLimiterMph = 130;
   out.source = (car.source || '2024 Tesla Cybertruck Tri-Motor') +
-    ' | ET-first tip: fs=1; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130';
+    ' | ET-first tip: fs=1; Excel wt 6800 locked; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130';
   var sim = runSim(out, true);
   return { car: out, sim: sim, hits: hitFlags(sim, tgt), cost: cost(sim, tgt, out), changed: true, special: true };
 }
@@ -351,6 +357,7 @@ function writeGarage(cars) {
     ' * Specs: Cd/area/loss/tire/drive/FI/EV/Hybrid/TX from VB where matched; gears/curves synthesized',
     ' * or curated; loss+launch+tire calibrated ET-first toward Excel (forceScale = 1.0 always).',
     ' * Excel source: /workspace/powercurve-garage-import.json',
+    ' * ZR1X: published Cd 0.36 / wt 3978 locked — never search Cd/weight.',
     ' * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-et-first.js',
     ' */',
     "'use strict';",
@@ -364,6 +371,7 @@ function writeGarage(cars) {
 
 function main() {
   var t0 = Date.now();
+  var onlySpecial = process.argv.indexOf('--only-special') >= 0;
   var rows = JSON.parse(fs.readFileSync(IMPORT_PATH, 'utf8'));
   var byName = {};
   rows.forEach(function (r) { byName[r.Name] = r; });
@@ -372,7 +380,26 @@ function main() {
   var changedN = 0, fastN = 0, curveScaleN = 0;
   var worstEt = [], worstTrap = [];
 
-  console.log('ET-first recalib (forceScale=1) — ' + GARAGE.length + ' cars');
+  // Prefer da81539 ZR1X torque curve (pre Cd/wt fake) as seed when restoring.
+  var zr1xSeed = null;
+  try {
+    var { execSync } = require('child_process');
+    var rawDa = execSync('git show da81539:js/garage-data.js', { encoding: 'utf8', maxBuffer: 80 * 1024 * 1024 });
+    var idx = rawDa.indexOf('"name": "2026 Chevrolet Corvette ZR1X"');
+    if (idx >= 0) {
+      var start = rawDa.lastIndexOf('{', idx);
+      var depth = 0, end = -1;
+      for (var j = start; j < rawDa.length; j++) {
+        if (rawDa[j] === '{') depth++;
+        else if (rawDa[j] === '}') { depth--; if (depth === 0) { end = j + 1; break; } }
+      }
+      if (end > start) zr1xSeed = JSON.parse(rawDa.slice(start, end));
+    }
+  } catch (e) {
+    console.warn('da81539 ZR1X seed unavailable:', e.message);
+  }
+
+  console.log('ET-first recalib (forceScale=1)' + (onlySpecial ? ' — ONLY ZR1X+Cybertruck' : '') + ' — ' + GARAGE.length + ' cars');
   for (var i = 0; i < GARAGE.length; i++) {
     var car0 = GARAGE[i];
     var row = byName[car0.name];
@@ -380,7 +407,18 @@ function main() {
     var res;
 
     if (/zr1x/i.test(car0.name || '')) {
-      res = specialZR1X(car0, tgt.z60 ? tgt : { z60: 1.9, et: 8.675, trap: 159, z60130: 3.87 });
+      var seed = zr1xSeed ? absorbForceScale(zr1xSeed) : absorbForceScale(car0);
+      if (!zr1xSeed) console.warn('Using current garage ZR1X as seed (da81539 unavailable)');
+      seed.dragCoefficient = 0.36;
+      seed.frontalAreaSqFt = 22.5;
+      seed.weightLbs = 3978;
+      seed.hybridAssistFrac = 0.28;
+      seed.speedLimiterMph = 233;
+      seed.forceScale = 1;
+      // Keep identity fields from current garage entry
+      seed.name = car0.name;
+      if (car0.id != null) seed.id = car0.id;
+      res = specialZR1X(seed, tgt.z60 ? tgt : { z60: 1.9, et: 8.675, trap: 159, z60130: 3.87 });
       console.log('ZR1X → ' + res.sim.z60.toFixed(3) + ' / ' + res.sim.et.toFixed(3) + '@' +
         res.sim.trap.toFixed(1) + ' / 60-130 ' + (res.sim.z60130 != null ? res.sim.z60130.toFixed(3) : '—') +
         ' Vmax ' + (res.sim.vmax != null ? res.sim.vmax.toFixed(1) : '—') +
@@ -396,6 +434,12 @@ function main() {
         ' tire=' + res.car.tireType + ' wt=' + res.car.weightLbs +
         ' hits=' + JSON.stringify(res.hits));
       changedN++;
+    } else if (onlySpecial) {
+      var keepS = absorbForceScale(car0);
+      delete keepS._curveScaled;
+      keepS.forceScale = 1;
+      outCars.push(keepS);
+      continue;
     } else if (!tgt.et && !tgt.trap && !tgt.z60) {
       var keep = absorbForceScale(car0);
       if (keep._curveScaled) curveScaleN++;

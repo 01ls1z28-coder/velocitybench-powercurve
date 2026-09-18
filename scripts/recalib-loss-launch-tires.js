@@ -209,10 +209,11 @@ function calibrateMiss(car, tgt) {
 }
 
 function specialZR1X(car, tgt) {
-  // Known-good fs=1 bake from tip dry-run (absorb 1.3→curve, Cd restore, drag radial)
+  // Published ZR1X: Cd 0.36 / wt 3978 locked. Knobs ONLY loss + tire + launch; curve last resort.
   var c = absorbForceScale(car);
   c.dragCoefficient = 0.36;
   c.frontalAreaSqFt = 22.5;
+  c.weightLbs = 3978;
   c.hybridAssistFrac = 0.28;
   c.speedLimiterMph = 233;
   c.forceScale = 1;
@@ -220,16 +221,13 @@ function specialZR1X(car, tgt) {
   c.tireType = 1;
   c.launchRpm = 2400;
   delete c._curveScaled;
-  // Micro search around known-good (lean)
-  var best = trial(c, tgt, { loss: 0, tireType: 1, launchRpm: 2400, dragCoefficient: 0.36 }, null);
+  var best = trial(c, tgt, { loss: 0, tireType: 1, launchRpm: 2400 }, null);
   [0, 1, 2].forEach(function (loss) {
     [1, 4, 0].forEach(function (tire) {
-      [0.34, 0.36].forEach(function (Cd) {
-        [2200, 2400, 2600].forEach(function (lr) {
-          best = trial(c, tgt, {
-            loss: loss, tireType: tire, launchRpm: lr, dragCoefficient: Cd
-          }, best);
-        });
+      [2200, 2400, 2600].forEach(function (lr) {
+        best = trial(c, tgt, {
+          loss: loss, tireType: tire, launchRpm: lr
+        }, best);
       });
     });
   });
@@ -237,17 +235,20 @@ function specialZR1X(car, tgt) {
     [1.03, 1.06, 1.08].forEach(function (sc) {
       best = trial(c, tgt, {
         loss: best.knobs.loss, tireType: best.knobs.tireType,
-        launchRpm: best.knobs.launchRpm, dragCoefficient: best.knobs.dragCoefficient,
+        launchRpm: best.knobs.launchRpm,
         curve: scaleCurve(c.torqueCurve, sc)
       }, best);
     });
   }
   var out = best.car;
   out.forceScale = 1;
+  out.dragCoefficient = 0.36;
+  out.frontalAreaSqFt = 22.5;
+  out.weightLbs = 3978;
   out.speedLimiterMph = 233;
   out.hybridAssistFrac = 0.28;
   out.source = (car.source || '2026 Chevrolet Corvette ZR1X') +
-    ' | fs=1 tip: absorb→curve; Cd restore; loss/tire/launch; Excel 1.9 / 8.675@159 / 3.87';
+    ' | fs=1 tip: published Cd0.36/wt3978; loss/tire/launch; Excel 1.9 / 8.675@159 / 3.87';
   var sim = runSim(out, true);
   return { car: out, sim: sim, hits: hitFlags(sim, tgt), cost: cost(sim, tgt), changed: true, special: true };
 }

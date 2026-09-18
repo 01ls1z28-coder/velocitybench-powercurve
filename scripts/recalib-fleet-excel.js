@@ -213,18 +213,20 @@ function calibrateMiss(car, tgt) {
 }
 
 function specialZR1X(car, tgt) {
+  // Published ZR1X lock: Cd 0.36 / wt 3978 / fs=1. Do NOT fake Cd/weight.
+  // Prefer scripts/recalib-et-first.js --only-special for current calib path.
   var c = cloneCar(car);
-  c.forceScale = 1.30;
+  c.forceScale = 1;
   c.hybridAssistFrac = 0.28;
-  c.dragCoefficient = 0.42;
+  c.dragCoefficient = 0.36;
   c.frontalAreaSqFt = 22.5;
+  c.weightLbs = 3978;
   c.drivetrainLossPercent = 0;
-  c.tireType = 0;
+  c.tireType = 1;
   c.launchRpm = 2400;
   c.speedLimiterMph = 233;
-  c.torqueCurve = taperCurve(c.torqueCurve, 5200, 0.55);
   c.source = (car.source || '2026 Chevrolet Corvette ZR1X') +
-    ' | Excel lock 1.9 / 8.675@159 / 60-130 3.87; lim233; fs1.30 assist0.28 Cd0.42 taper5200→0.55';
+    ' | Excel lock published Cd0.36/wt3978; fs=1; loss/tire/launch; 1.9 / 8.675@159 / 60-130 3.87; lim233';
   var sim = runSim(c, true);
   return { car: c, sim: sim, hits: hitFlags(sim, tgt), cost: cost(sim, tgt), changed: true, special: true };
 }
