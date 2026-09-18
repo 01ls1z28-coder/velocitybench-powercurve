@@ -6,8 +6,9 @@
  *   wheelTorque = engineTQ(rpm) * gear * FD * (1 - loss)
  *   shift at shiftRpm with delay; converter stall/flash; traction clamp
  *
- * VB extensions: weather/DA, wind+gusts, FI boost models, rolling resistance,
+ * VB extensions: weather/DA, wind+gusts, FI boost models, EV + Hybrid power sources,
  * F/R + L/R weight distribution (axle normals, transfer, open/LSD traction), editable factory TX ratios.
+ * Hybrid: ICE crank TQ + separate electric-motor assist band (not cosmetic).
  * Estimates — not track certified.
  */
 (function (global) {
@@ -274,10 +275,43 @@
     return 1.0 + (ideal - 1.0) * spool;
   }
 
+
+  /**
+   * Hybrid electric assist (lb-ft added to ICE crank TQ before drivetrain loss).
+   * Documented model — separate motor assist, not a second FI boost curve:
+   *   peakAssist ≈ hybridAssistFrac × (peakHp×5252/peakHpRpm)  (default frac 0.22)
+   *   full assist ≤ 0.40×redline; linear fade to ~27% of peak by 0.85×redline; hold after.
+   * Garage hybrids bake an ICE-fraction dyno (~82% of published system HP) so ICE+assist
+   * lands near the published combined figure. Custom Builder: toggling Hybrid vs NA on the
+   * same ICE curve changes ET (assist on/off).
+   */
+  function hybridAssistTorqueLbFt(rpm, car) {
+    if (!car || !car.isHybrid || car.isEv) return 0;
+    var peakHp = Number(car.peakHp) || 400;
+    var peakHpRpm = Math.max(1000, Number(car.peakHpRpm) || 6000);
+    var red = Math.max(peakHpRpm, Number(car.redline) || 7000);
+    var tqRef = (peakHp * 5252) / peakHpRpm;
+    var fracPeak = car.hybridAssistFrac != null ? Number(car.hybridAssistFrac) : 0.22;
+    if (!isFinite(fracPeak) || fracPeak < 0) fracPeak = 0.22;
+    var peakAssist = tqRef * fracPeak;
+    var lo = red * 0.40;
+    var hi = red * 0.85;
+    var r = Number(rpm) || 0;
+    var shape;
+    if (r <= lo) shape = 1.0;
+    else if (r >= hi) shape = 0.27;
+    else shape = 1.0 + (0.27 - 1.0) * ((r - lo) / Math.max(1, hi - lo));
+    return peakAssist * shape;
+  }
+
   function weatherTorqueFactor(opts, daFt, rho) {
     if (opts.isEv) return 1.0;
     var df = rho / RHO0;
     var dak = daFt / 1000.0;
+    // Hybrid: ICE still density-sensitive; e-motor share softens DA vs pure NA (between NA and FI).
+    if (opts.isHybrid) {
+      return (0.70 + 0.30 * df) * 1.00 * Math.max(0.35, 1.0 - 0.022 * Math.max(0, dak));
+    }
     if (opts.isNA && !opts.isFI) {
       return df * 0.985 * Math.max(0.30, 1.0 - 0.03 * Math.max(0, dak));
     }
@@ -414,7 +448,12 @@
     }
     var rho = car.isEv ? RHO0 : airDensityFromDA(daFt);
     var wx = weatherTorqueFactor(
-      { isEv: !!car.isEv, isNA: !!(car.isNA || (!car.isFI && !car.isEv)), isFI: !!car.isFI },
+      {
+        isEv: !!car.isEv,
+        isHybrid: !!car.isHybrid,
+        isNA: !!(car.isNA || (!car.isFI && !car.isEv && !car.isHybrid)),
+        isFI: !!car.isFI
+      },
       daFt, rho
     );
 
@@ -455,7 +494,11 @@
       var r1 = Math.max(keys[keys.length - 1], redline);
       for (var rk = r0; rk <= r1 + 0.01; rk += 100) {
         var rpmK = Math.round(rk);
-        var tq0 = getTorqueAtRpm(curve, rpmK) * boostTorqueMult(boostModel, boostPsi, rpmK, redline, pressureInHg);
+        var tq0 = getTorqueAtRpm(curve, rpmK);
+        if (!car.isEv) {
+          tq0 *= boostTorqueMult(boostModel, boostPsi, rpmK, redline, pressureInHg);
+          tq0 += hybridAssistTorqueLbFt(rpmK, car);
+        }
         result.powerCurve.push({ rpm: rpmK, torque: tq0, horsepower: (tq0 * rpmK) / 5252 });
       }
     }
@@ -511,7 +554,11 @@
       }
 
       var engTQ = getTorqueAtRpm(curve, rpm);
-      engTQ *= boostTorqueMult(boostModel, boostPsi, rpm, redline, pressureInHg);
+      // EV: no ICE FI boost path. Hybrid: ICE boost (if any) + motor assist band.
+      if (!car.isEv) {
+        engTQ *= boostTorqueMult(boostModel, boostPsi, rpm, redline, pressureInHg);
+        engTQ += hybridAssistTorqueLbFt(rpm, car);
+      }
       engTQ *= wx;
       engTQ *= (1.0 - loss);
 
@@ -751,6 +798,7 @@
     computeDensityAltitude: computeDensityAltitude,
     airDensityFromDA: airDensityFromDA,
     boostTorqueMult: boostTorqueMult,
+    hybridAssistTorqueLbFt: hybridAssistTorqueLbFt,
     FactoryTransmissions: FactoryTransmissions,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
@@ -758,6 +806,8 @@
     get CalibrationFactor() { return CalibrationFactor; },
     set CalibrationFactor(v) { CalibrationFactor = Number(v) || CalibrationFactor; },
     constants: {
+      HYBRID_ICE_FRAC: 0.82,
+      HYBRID_ASSIST_FRAC: 0.22,
       DEFAULT_LAUNCH_RPM: DEFAULT_LAUNCH_RPM,
       DEFAULT_SHIFT_RPM: DEFAULT_SHIFT_RPM,
       DEFAULT_SHIFT_TIME: DEFAULT_SHIFT_TIME,

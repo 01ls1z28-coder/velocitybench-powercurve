@@ -212,6 +212,17 @@ body {
   color: var(--lime); border-color: rgba(200,255,74,0.35);
 }
 .seg label span { pointer-events: none; }
+.seg label.is-locked,
+.seg label:has(input:disabled) {
+  opacity: 0.38;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+}
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: -4px 0 10px;
+}
 
 .btn {
   appearance: none; border: none; cursor: pointer;

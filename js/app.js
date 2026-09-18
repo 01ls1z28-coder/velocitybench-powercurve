@@ -23,8 +23,12 @@
     drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 1, forceScale: 1,
     engineLayout: 'Front',
     frontWeightPercent: 45, rearWeightPercent: 55,
-    leftWeightPercent: 50, rightWeightPercent: 50
+    leftWeightPercent: 50, rightWeightPercent: 50,
+    powerSource: 'na', isEv: false, isHybrid: false, boostModel: 'na'
   };
+
+  /** Garage EV/Hybrid lock — Custom Builder can still change power source freely. */
+  var garagePowerLocked = false;
 
   function loadGarageFleet() {
     var raw = (typeof window !== 'undefined' && window.VB_POWERCURVE_GARAGE) || [];
@@ -299,6 +303,59 @@
     return el ? el.value : 'na';
   }
 
+  var ICE_INDUCTION = { na: 1, turbo: 1, supercharger: 1, twincharge: 1 };
+
+  function setInductionRadio(value) {
+    var radio = document.querySelector('input[name="ind"][value="' + value + '"]');
+    if (radio) radio.checked = true;
+  }
+
+  /**
+   * EV selected → lock/disable ICE induction (NA/Turbo/SC/Twin) + boost PSI.
+   * Garage EV/Hybrid cars also lock the power-source radios to the baked mode.
+   */
+  function syncInductionUi(opts) {
+    opts = opts || {};
+    var ind = inductionValue();
+    var isEv = ind === 'ev' || !!opts.forceEv;
+    var isHybrid = ind === 'hybrid' || !!opts.forceHybrid;
+    var lockGarage = !!garagePowerLocked;
+    document.querySelectorAll('input[name="ind"]').forEach(function (inp) {
+      var v = inp.value;
+      var disable = false;
+      if (lockGarage) {
+        // Garage car: only the baked power source stays selectable
+        var want = opts.lockedValue || (opts.forceEv ? 'ev' : (opts.forceHybrid ? 'hybrid' : ind));
+        disable = v !== want;
+      } else if (isEv) {
+        // Custom / user EV: ICE modes unavailable
+        disable = !!ICE_INDUCTION[v] || v === 'hybrid';
+      } else {
+        disable = false;
+      }
+      inp.disabled = disable;
+      if (inp.parentElement) inp.parentElement.classList.toggle('is-locked', disable);
+    });
+    var boost = $('boostPsi');
+    if (boost) {
+      boost.disabled = isEv || (lockGarage && isEv);
+      if (isEv) boost.value = '0';
+    }
+    var hint = $('inductionLockHint');
+    if (hint) {
+      if (isEv) {
+        hint.hidden = false;
+        hint.textContent = lockGarage
+          ? 'Garage EV — induction locked (NA/Turbo/SC/Twin unavailable).'
+          : 'EV selected — ICE induction locked (NA/Turbo/SC/Twin unavailable).';
+      } else if (lockGarage && isHybrid) {
+        hint.hidden = false;
+        hint.textContent = 'Garage Hybrid — power source locked (ICE + electric assist).';
+      } else {
+        hint.hidden = true;
+      }
+    }
+  }
 
   function syncWeightFieldsFromCar(car) {
     var sug = Phys.suggestedWeightDistribution
@@ -389,14 +446,22 @@
     $('boostPsi').value = car.boostPsi || 0;
     renderGears(car.gearRatios || []);
     updateTxPresetVisibility(car);
-    // Induction: prefer baked boostModel (turbo|supercharger|na); EV stays NA radio (unchanged)
+    // Power source / induction: EV + Hybrid are first-class; ICE uses baked boostModel
+    var custom = isCustomBuilder(car);
+    garagePowerLocked = !custom && (!!car.isEv || !!car.isHybrid || car.powerSource === 'ev' || car.powerSource === 'hybrid');
     var ind = 'na';
-    if (car.isEv) ind = 'na';
-    else if (car.boostModel === 'supercharger') ind = 'supercharger';
-    else if (car.boostModel === 'twincharge') ind = 'twincharge';
-    else if (car.boostModel === 'turbo' || car.isFI) ind = 'turbo';
-    var radio = document.querySelector('input[name="ind"][value="' + ind + '"]');
-    if (radio) radio.checked = true;
+    if (car.isEv || car.powerSource === 'ev') ind = 'ev';
+    else if (car.isHybrid || car.powerSource === 'hybrid') ind = 'hybrid';
+    else if (car.powerSource === 'supercharger' || car.boostModel === 'supercharger') ind = 'supercharger';
+    else if (car.powerSource === 'twincharge' || car.boostModel === 'twincharge') ind = 'twincharge';
+    else if (car.powerSource === 'turbo' || car.boostModel === 'turbo' || car.isFI) ind = 'turbo';
+    else ind = 'na';
+    setInductionRadio(ind);
+    syncInductionUi({
+      forceEv: ind === 'ev',
+      forceHybrid: ind === 'hybrid',
+      lockedValue: garagePowerLocked ? ind : null
+    });
     $('converter').value = car.hasAftermarketConverter ? '1' : '0';
     $('stallRpm').value = car.stallRpm || 2800;
     $('flashRpm').value = car.flashRpm || 3500;
@@ -427,7 +492,11 @@
       shown++;
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'garage-item'; b.dataset.id = c.id;
-      b.innerHTML = c.name + '<small>' + (c.category || 'Garage') + ' · ' + (c.peakHp || '?') + ' hp · ' + c.weightLbs + ' lb</small>';
+      var psTag = c.isEv || c.powerSource === 'ev' ? 'EV'
+        : (c.isHybrid || c.powerSource === 'hybrid' ? 'Hybrid'
+        : (c.boostModel === 'supercharger' ? 'SC'
+        : (c.boostModel === 'turbo' || c.isFI ? 'Turbo' : 'NA')));
+      b.innerHTML = c.name + '<small>' + (c.category || 'Garage') + ' · ' + psTag + ' · ' + (c.peakHp || '?') + ' hp · ' + c.weightLbs + ' lb</small>';
       b.onclick = function () { applyCarToForm(JSON.parse(JSON.stringify(c))); /* resets preset + curve */ };
       list.appendChild(b);
     });
@@ -463,17 +532,34 @@
       peakHp: peakHp,
       peakTqRpm: base.peakTqRpm || Math.round(redline * 0.55),
       peakHpRpm: base.peakHpRpm || Math.round(redline * 0.88),
+      powerSource: ind,
+      isEv: ind === 'ev',
+      isHybrid: ind === 'hybrid',
       isNA: ind === 'na',
-      isFI: ind !== 'na',
-      boostModel: ind === 'na' ? 'na' : ind,
-      boostPsi: ind === 'na' ? 0 : clampNum($('boostPsi').value, 0, 80, 0),
+      isFI: ind === 'turbo' || ind === 'supercharger' || ind === 'twincharge' ||
+        (ind === 'hybrid' && !!(base.isFI || base.boostModel === 'turbo' || base.boostModel === 'supercharger')),
+      boostModel: (function () {
+        if (ind === 'ev') return 'na';
+        if (ind === 'hybrid') {
+          // Keep underlying ICE induction from garage bake (e.g. ZR1X turbo)
+          if (base.boostModel && base.boostModel !== 'na' && base.boostModel !== 'ev') return base.boostModel;
+          return 'na';
+        }
+        if (ind === 'na') return 'na';
+        return ind;
+      })(),
+      boostPsi: (ind === 'na' || ind === 'ev') ? 0 : clampNum($('boostPsi').value, 0, 80, 0),
+      hybridAssistFrac: ind === 'hybrid'
+        ? (base.hybridAssistFrac != null ? Number(base.hybridAssistFrac) : 0.22)
+        : undefined,
       hasAftermarketConverter: $('converter').value === '1',
       stallRpm: clampNum($('stallRpm').value, 1200, 7000, 2800),
       flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
       forceScale: base.forceScale != null ? Number(base.forceScale) : 1,
       tireType: parseInt($('tireType').value, 10) || 0,
-      isEv: !!base.isEv,
-      engineLayout: base.engineLayout || 'Front',
+      engineLayout: (ind === 'ev' && (base.driveType === 'AWD' || $('driveType').value === 'AWD'))
+        ? (base.engineLayout === 'Mid' ? 'Mid' : 'Dual')
+        : (base.engineLayout || 'Front'),
       torqueCurve: base.torqueCurve || null
     };
     var w = readWeightDistributionFromForm(base);
@@ -491,9 +577,18 @@
       car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
     }
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
+    // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.
     if (base.torqueCurve && (car.boostPsi <= 0 || base.boostPsi === 0)) {
-      car.boostModel = 'na';
-      car.boostPsi = 0;
+      if (car.isEv) {
+        car.boostModel = 'na';
+        car.boostPsi = 0;
+      } else if (car.isHybrid) {
+        // Retain underlying ICE boostModel label; PSI stays 0 so boostTorqueMult is identity
+        car.boostPsi = 0;
+      } else {
+        car.boostModel = 'na';
+        car.boostPsi = 0;
+      }
     }
     return car;
   }
@@ -920,6 +1015,37 @@
       syncWeightFieldsFromCar(Object.assign({}, state.car, { driveType: driveEl.value, rearWeightPercent: null, frontWeightPercent: null }));
     });
   }
+  document.querySelectorAll('input[name="ind"]').forEach(function (inp) {
+    inp.addEventListener('change', function () {
+      if (garagePowerLocked) {
+        // Snap back to baked power source
+        var want = (state.car && (state.car.isEv || state.car.powerSource === 'ev')) ? 'ev'
+          : (state.car && (state.car.isHybrid || state.car.powerSource === 'hybrid')) ? 'hybrid'
+          : null;
+        if (want) setInductionRadio(want);
+      }
+      var v = inductionValue();
+      if (state.car) {
+        state.car.powerSource = v;
+        state.car.isEv = v === 'ev';
+        state.car.isHybrid = v === 'hybrid';
+        if (v === 'ev') {
+          state.car.isFI = false;
+          state.car.isNA = false;
+          state.car.boostModel = 'na';
+          if ($('driveType') && $('driveType').value === 'AWD') state.car.engineLayout = 'Dual';
+        } else if (v === 'hybrid') {
+          state.car.hybridAssistFrac = state.car.hybridAssistFrac != null ? state.car.hybridAssistFrac : 0.22;
+        }
+      }
+      syncInductionUi({
+        forceEv: v === 'ev',
+        forceHybrid: v === 'hybrid',
+        lockedValue: garagePowerLocked ? v : null
+      });
+    });
+  });
+
   $('btnRun').addEventListener('click', runSim);
   $('btnReset').addEventListener('click', function () {
     var src = state.presetCar || state.car;

@@ -1,5 +1,5 @@
 /**
- * Phase 4/5 — bake 333-car PowerCurve garage (+ Phase 5 induction boostModel) from Excel import + VelocityBench garage-data.
+ * Phase 4/5/6 — bake 333-car PowerCurve garage (+ powerSource EV/Hybrid + induction boostModel) from Excel import + VelocityBench garage-data.
  * Merges Cd/area/loss/tire/drive/FI/EV/TX from VB; synthesizes gears/curves/RPM; calibrates
  * loss + forceScale + TireType + launchRpm toward Jorge's 0-60 / ¼ / 60-130 (trap-first).
  *
@@ -89,15 +89,60 @@ function finalizeCarBake(car) {
   return car;
 }
 
-function classifyInduction(name, isFI, isEv) {
-  if (isEv) return { boostModel: 'na', isFI: false, isNA: false };
+/**
+ * Phase 6 — power source + induction.
+ * powerSource: ev | hybrid | na | turbo | supercharger | twincharge
+ * Hybrid keeps an underlying ICE boostModel (turbo/SC/NA) for FI physics when boostPsi set.
+ * ZR1X / SF90 / P1 / Regera etc. are Hybrid (not EV) even if VB IsEv was wrong.
+ */
+function looksLikeHybrid(name) {
   var n = String(name || '').toLowerCase();
+  return (
+    /zr1x/.test(n) ||
+    /e-?ray/.test(n) ||
+    /\bsf90\b/.test(n) ||
+    /mclaren\s*p1/.test(n) ||
+    /laferrari|amg one|valkyrie|regera|revuelto|temerario|countach.?lpi|\bsian\b/.test(n) ||
+    /918 spyder|honda nsx.*201[6-9]|acura nsx.*201[6-9]|\bi8\b/.test(n) ||
+    /artura|plug-?in|phev|\bhybrid\b|i-hybrid|e-hybrid/.test(n)
+  );
+}
+
+function looksLikeEvName(name) {
+  var n = String(name || '').toLowerCase();
+  if (looksLikeHybrid(n)) return false;
+  return /\bev\b|electric|model [syx3]|taycan|e-tron|etron|\bi4\b|\bi5\b|\bi7\b|\bix\b|lucid|rivian|nevera|rimac|ioniq|mach-?e|lightning|cybertruck|ariya|solterra|bz4x|eq[bes]|lyriq|polestar|id\.?\d|blazer ev|niro ev|kona electric|ocean extreme|gv60|ex90|xc40 recharge/.test(n);
+}
+
+function classifyInduction(name, isFI, isEv) {
+  // Back-compat wrapper — prefer classifyPowerSource.
+  var ps = classifyPowerSource(name, isFI, isEv);
+  return { boostModel: ps.boostModel, isFI: ps.isFI, isNA: ps.isNA, powerSource: ps.powerSource, isEv: ps.isEv, isHybrid: ps.isHybrid };
+}
+
+function classifyPowerSource(name, isFIHint, isEvHint) {
+  var n = String(name || '').toLowerCase();
+  var hybrid = looksLikeHybrid(n);
+  var isEv = !hybrid && (!!isEvHint || looksLikeEvName(n));
+
+  if (isEv) {
+    return {
+      powerSource: 'ev',
+      boostModel: 'na',
+      isEv: true,
+      isHybrid: false,
+      isFI: false,
+      isNA: false
+    };
+  }
+
   // Factory supercharger platforms (not turbo GNX / not 1971 Demon 340)
+  // C6/C7 ZR1 is SC; ZR1X is twin-turbo hybrid — exclude zr1x from SC cue.
   var isSC =
     /supercharg|kompressor|whipple|eaton|magnuson|rotrex|vortech|procharger/.test(n) ||
     /hellcat|redeye|trackhawk/.test(n) ||
     /\bzl1\b/.test(n) ||
-    (/corvette/.test(n) && /\bzr1\b/.test(n) && !/turbo/.test(n)) ||
+    (/corvette/.test(n) && /\bzr1\b/.test(n) && !/zr1x/.test(n) && !/turbo/.test(n)) ||
     /shelby gt500|mustang shelby gt500/.test(n) ||
     /terminator|cobra \(terminator\)/.test(n) ||
     /challenger.*\bdemon\b|charger.*\bdemon\b|hellcat.*demon|\bdemon 170\b/.test(n) ||
@@ -111,19 +156,44 @@ function classifyInduction(name, isFI, isEv) {
     /\bgnx\b|grand national/.test(n) ||
     /skyline|gt-r|\bgtr\b|wrx|\bsti\b|lancer evolution|mazdaspeed|gt-four|pulsar gti-r|soarer gt-t|chaser tourer/.test(n) ||
     /integra type s|tlx type s|golf r|gr corolla|gr supra|bronco raptor|f-150 raptor/.test(n) ||
-    // FK8/FL5 Type R are turbo; EK9/EP3/FN2 era are NA — require 2015+ year cue
     (/civic type r/.test(n) && /\b(201[5-9]|202\d)\b/.test(n)) ||
     /m5 competition|x5m|x6m|\b135i\b|\b335i\b|\btt rs\b|rs[ ]?[3567]\b/.test(n) ||
-    /amg.*(biturbo|turbo)|sf90|chiron|veyron|huayra|jesko|agera|venom|765lt|720s|600lt|mp4-12c|mclaren p1|speedtail|elva|sabre|\bford gt\b/.test(n);
+    /amg.*(biturbo|turbo)|sf90|chiron|veyron|huayra|jesko|agera|venom|765lt|720s|600lt|mp4-12c|mclaren p1|speedtail|elva|sabre|\bford gt\b|\bzr1x\b/.test(n);
 
+  var boostModel = 'na';
+  var isFI = false;
+  var isNA = true;
   if (isSC) {
-    return { boostModel: 'supercharger', isFI: true, isNA: false };
+    boostModel = 'supercharger';
+    isFI = true;
+    isNA = false;
+  } else if (isTurboName || !!isFIHint) {
+    boostModel = 'turbo';
+    isFI = true;
+    isNA = false;
   }
-  if (isTurboName || isFI) {
-    return { boostModel: 'turbo', isFI: true, isNA: false };
+
+  if (hybrid) {
+    return {
+      powerSource: 'hybrid',
+      boostModel: boostModel,
+      isEv: false,
+      isHybrid: true,
+      isFI: isFI,
+      isNA: isNA
+    };
   }
-  return { boostModel: 'na', isFI: false, isNA: true };
+
+  return {
+    powerSource: boostModel,
+    boostModel: boostModel,
+    isEv: false,
+    isHybrid: false,
+    isFI: isFI,
+    isNA: isNA
+  };
 }
+
 
 function slugId(name) {
   return String(name || 'car')
@@ -185,7 +255,8 @@ function guessYear(name) {
 
 function guessCategory(name, vb) {
   var n = (name || '').toLowerCase();
-  if (vb && vb.IsEv) return 'EV';
+  if (looksLikeHybrid(n)) return 'Hybrid';
+  if ((vb && vb.IsEv && !looksLikeHybrid(n)) || looksLikeEvName(n)) return 'EV';
   if (/bugatti|koenigsegg|mclaren senna|chiron|jesko|nevera|rimac/.test(n)) return 'Hypercars';
   if (/ferrari|lamborghini|mclaren|porsche 911|hurac|aventador|720s|gt2|gt3|r8/.test(n)) return 'Supercars';
   if (/supra|skyline|gtr|wrx|evo|civic type|rx-7|s2000|miata|mx-5|350z|370z/.test(n)) return 'Sports Cars';
@@ -494,16 +565,21 @@ function buildCar(row, vb) {
   var wt = Number(row.WeightLbs) || 3500;
   var tgt = parseTargets(row['0-60 / 1/4 ']);
   var year = guessYear(name);
-  var isEv = !!(vb && vb.IsEv);
+  var isEvHint = !!(vb && vb.IsEv);
   var isFI = !!(vb && vb.IsForcedInduction);
-  // Heuristic FI/EV from name if no VB match
+  // Heuristic FI/EV from name if no VB match; hybrids override bogus VB IsEv (ZR1X).
   if (!vb) {
     var nl = name.toLowerCase();
-    isEv = /\bev\b|electric|model [syx3]|taycan|etron|i4|i7|lucid|rivian|nevera|rimac/.test(nl);
+    isEvHint = looksLikeEvName(nl);
     isFI = /turbo|supercharg|hellcat|gt500|terminator|ecoboost|twin.?turbo|kompressor|fi\b/.test(nl);
   }
+  var ps = classifyPowerSource(name, isFI, isEvHint);
+  var isEv = ps.isEv;
+  var isHybrid = ps.isHybrid;
+  isFI = ps.isFI;
   var aero = guessCdArea(vb, wt, name, isEv);
-  var rpm = guessRpmBand(hp, isEv, isFI, year, name);
+  var rpm = guessRpmBand(hp, isEv, isFI || isHybrid, year, name);
+  // Hybrids keep ICE multi-speed TX (never EV_Single)
   var txKey = pickTxKey(vb, name, hp, isEv, year);
   var tx = Phys.FactoryTransmissions[txKey] || Phys.FactoryTransmissions.TR6060_6;
   var tireType = vb ? mapVbTire(vb.TireType) : 0;
@@ -527,10 +603,13 @@ function buildCar(row, vb) {
     drivetrainLossPercent: loss,
     driveType: (vb && vb.DriveType) || 'RWD',
     isEv: isEv,
+    isHybrid: isHybrid,
+    powerSource: ps.powerSource,
     isFI: isFI && !isEv,
-    isNA: !isFI && !isEv,
+    isNA: ps.isNA && !isEv && !isHybrid,
     boostModel: 'na',
     boostPsi: 0,
+    hybridAssistFrac: isHybrid ? 0.22 : undefined,
     launchRpm: rpm.launch,
     shiftRpm: rpm.shift,
     redline: rpm.redline,
@@ -546,12 +625,20 @@ function buildCar(row, vb) {
     targets: tgt
   };
 
-  // Phase 5: bake induction UI default (turbo vs SC vs NA)
-  var ind = classifyInduction(name, isFI && !isEv, isEv);
-  car.boostModel = ind.boostModel;
-  car.isFI = ind.isFI;
-  car.isNA = ind.isNA;
+  // Phase 5/6: bake power source + induction UI default
+  car.powerSource = ps.powerSource;
+  car.isEv = ps.isEv;
+  car.isHybrid = ps.isHybrid;
+  car.boostModel = ps.boostModel;
+  car.isFI = ps.isFI && !ps.isEv;
+  car.isNA = ps.isNA && !ps.isEv && !ps.isHybrid;
+  if (ps.isHybrid) car.hybridAssistFrac = 0.22;
+  else delete car.hybridAssistFrac;
   // Keep boostPsi at 0 — baked dyno already includes boost; radios are labels only unless user adds PSI.
+  // Dual layout stays EV-appropriate for AWD EVs; hybrids may also be Dual (ZR1X).
+  if (ps.isEv && car.driveType === 'AWD' && (!car.engineLayout || car.engineLayout === 'Front')) {
+    car.engineLayout = 'Dual';
+  }
 
     // EV single-speed FD tweak by power/weight
   if (isEv) {
@@ -598,6 +685,11 @@ function buildCar(row, vb) {
       }
       curve[car.peakHpRpm] = (car.peakHp * 5252) / car.peakHpRpm;
       car.torqueCurve = curve;
+    } else if (isHybrid) {
+      // ICE-fraction curve; physics adds hybridAssistTorqueLbFt so combined ≈ published system HP
+      var iceFrac = (Phys.constants && Phys.constants.HYBRID_ICE_FRAC) || 0.82;
+      var iceHp = car.peakHp * iceFrac;
+      car.torqueCurve = Phys.synthesizeTorqueCurve(iceHp, car.peakTqRpm, car.redline, car.peakHpRpm);
     } else {
       car.torqueCurve = Phys.synthesizeTorqueCurve(car.peakHp, car.peakTqRpm, car.redline, car.peakHpRpm);
     }
@@ -724,4 +816,121 @@ function main() {
   console.log('Hit-rates:', JSON.stringify(summary.hitRates, null, 2));
 }
 
-main();
+
+/**
+ * Retag existing garage: powerSource / isEv / isHybrid / boostModel without full fleet recalib.
+ * Cars that flip EV→Hybrid (or need ICE TX) are rebuilt from import+VB and calibrated alone.
+ *   node scripts/build-garage.js --retag-only
+ */
+function retagOnly() {
+  console.log('Retag-only: loading existing garage + import + VB…');
+  var existing = require(OUT_JS);
+  var imp = JSON.parse(fs.readFileSync(IMPORT_PATH, 'utf8'));
+  var vb = loadVbGarage();
+  var byName = Object.create(null);
+  imp.forEach(function (row) { byName[row.Name] = row; });
+
+  var counts = { ev: 0, hybrid: 0, na: 0, turbo: 0, supercharger: 0, twincharge: 0, rebuilt: 0 };
+  var rebuiltNames = [];
+
+  var out = existing.map(function (car) {
+    var name = car.name;
+    var fiHint = !!car.isFI || car.boostModel === 'turbo' || car.boostModel === 'supercharger' || car.boostModel === 'twincharge';
+    var ps = classifyPowerSource(name, fiHint, !!car.isEv);
+    // Preserve explicit SC boostModel from prior bake when name cues miss
+    if (!ps.isEv && !ps.isHybrid && (car.boostModel === 'supercharger' || car.boostModel === 'twincharge') && ps.boostModel === 'turbo') {
+      ps = Object.assign({}, ps, { boostModel: car.boostModel, powerSource: car.boostModel, isFI: true, isNA: false });
+    }
+    if (!ps.isEv && !ps.isHybrid && car.boostModel === 'turbo' && ps.boostModel === 'na' && fiHint) {
+      ps = Object.assign({}, ps, { boostModel: 'turbo', powerSource: 'turbo', isFI: true, isNA: false });
+    }
+    if (ps.isHybrid && ps.boostModel === 'na' && (car.boostModel === 'turbo' || fiHint)) {
+      ps = Object.assign({}, ps, { boostModel: car.boostModel === 'supercharger' ? 'supercharger' : 'turbo', isFI: true, isNA: false });
+    }
+    var wasEv = !!car.isEv;
+    var needRebuild =
+      (wasEv && ps.isHybrid) ||
+      (ps.isHybrid && (car.txKey === 'EV_Single' || ((car.gearRatios || []).length <= 1 && (car.redline || 0) > 10000)));
+
+    if (needRebuild && byName[name]) {
+      console.log('  rebuild hybrid shell:', name);
+      var rebuilt = buildCar(byName[name], vb.byName[name] || null);
+      var tgt = rebuilt.targets || parseTargets(byName[name]['0-60 / 1/4 '] || '');
+      calibrateCar(rebuilt, tgt);
+      rebuiltNames.push(name);
+      counts.rebuilt++;
+      car = rebuilt;
+      delete car.targets;
+      car = finalizeCarBake(car);
+    } else {
+      var alreadyHybridIce = !!car.isHybrid && !!car.hybridAssistFrac;
+      car.powerSource = ps.powerSource;
+      car.isEv = ps.isEv;
+      car.isHybrid = ps.isHybrid;
+      car.boostModel = ps.boostModel;
+      car.isFI = ps.isFI && !ps.isEv;
+      car.isNA = ps.isNA && !ps.isEv && !ps.isHybrid;
+      if (ps.isHybrid) {
+        car.hybridAssistFrac = car.hybridAssistFrac != null ? car.hybridAssistFrac : 0.22;
+        if (car.category === 'EV') car.category = 'Hybrid';
+        // Scale full combined curve → ICE fraction once when newly tagged hybrid
+        if (!alreadyHybridIce && car.torqueCurve && car.peakHp) {
+          var iceFrac = (Phys.constants && Phys.constants.HYBRID_ICE_FRAC) || 0.82;
+          Object.keys(car.torqueCurve).forEach(function (k) {
+            car.torqueCurve[k] = Math.max(5, Number(car.torqueCurve[k]) * iceFrac);
+          });
+        }
+      } else {
+        delete car.hybridAssistFrac;
+      }
+      if (ps.isEv && (!car.category || car.category === 'Hybrid' || car.category === 'Garage')) {
+        car.category = 'EV';
+      }
+      car = finalizeCarBake(car);
+    }
+
+    var key = car.powerSource || (car.isEv ? 'ev' : (car.isHybrid ? 'hybrid' : car.boostModel));
+    if (counts[key] != null) counts[key]++;
+    else counts[key] = 1;
+    return car;
+  });
+
+  out.forEach(function (c) { delete c.targets; });
+
+  var header = [
+    '/**',
+    ' * VelocityBench PowerCurve — baked garage (Phase 6 EV + Hybrid powerSource).',
+    ' * ' + out.length + ' cars from powercurve-garage-import.json + VB garage-data merge.',
+    ' * Specs: Cd/area/loss/tire/drive/FI/EV/Hybrid/TX from VB where matched; gears/curves synthesized',
+    ' * or curated; loss+forceScale calibrated toward Excel 0-60 / ¼ / 60-130 (trap-first).',
+    ' * Static / no server. Estimates — not track certified.',
+    ' * Generated by scripts/build-garage.js — do not hand-edit (re-run builder).',
+    ' */',
+    '(function (global) {',
+    "  'use strict';",
+    '  var GARAGE_DATA = '
+  ].join('\n');
+  var body = JSON.stringify(out, null, 2);
+  var footer = [
+    ';',
+    '  global.VB_POWERCURVE_GARAGE = GARAGE_DATA;',
+    "  if (typeof module !== 'undefined' && module.exports) module.exports = GARAGE_DATA;",
+    "})(typeof window !== 'undefined' ? window : globalThis);",
+    ''
+  ].join('\n');
+  fs.writeFileSync(OUT_JS, header + body + footer);
+
+  var meta = {};
+  try { meta = JSON.parse(fs.readFileSync(OUT_META, 'utf8')); } catch (e) { meta = {}; }
+  meta.powerSourceCounts = counts;
+  meta.hybridRebuilds = rebuiltNames;
+  meta.retagAt = new Date().toISOString();
+  fs.writeFileSync(OUT_META, JSON.stringify(meta, null, 2));
+  console.log('Wrote', OUT_JS);
+  console.log('Power-source counts:', JSON.stringify(counts));
+  console.log('Rebuilt:', rebuiltNames.join(' | ') || '(none)');
+}
+
+
+if (process.argv.indexOf('--retag-only') >= 0) retagOnly();
+else main();

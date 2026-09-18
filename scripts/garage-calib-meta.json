@@ -659,5 +659,18 @@
       },
       "cost": 10.487
     }
-  ]
+  ],
+  "powerSourceCounts": {
+    "ev": 39,
+    "hybrid": 4,
+    "na": 183,
+    "turbo": 92,
+    "supercharger": 15,
+    "twincharge": 0,
+    "rebuilt": 1
+  },
+  "hybridRebuilds": [
+    "2026 Chevrolet Corvette ZR1X"
+  ],
+  "retagAt": "2026-09-18T16:34:59.328Z"
 }

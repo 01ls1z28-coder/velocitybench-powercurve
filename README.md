@@ -10,7 +10,7 @@ Static **geared RPM** simulator: factory transmission ratios, shift points, weat
 
 ## Physics
 
-**Phase 5:** Factory TX preset is Custom Builder–only; induction defaults (turbo/SC) baked per car; editable dyno TQ mesh at 100 RPM with major bullets every 200 RPM (HP≈TQ×RPM/5252).
+**Phase 6:** EV + Hybrid as real power sources (UI locks when EV); Hybrid = ICE curve + motor assist. **Phase 5:** Factory TX preset Custom-only; induction defaults baked; editable dyno 100-RPM mesh.
 
 Ports the CarTestClone `PhysicsEngine` geared-RPM loop (wheel RPM → gear × final drive → torque curve → traction/aero), with VelocityBench-class weather/DA, wind, FI boost, and run-to-Vmax. **333 garage cars** baked from Jorge’s Excel import + VelocityBench garage merge; HP-consistent curves (`HP ≈ TQ×RPM/5252`). Playback is always real-time. Fleet calib (trap/0-60/ET) all-applicable **~63%** — see `VERIFY.md` (`node scripts/spotcheck.js`).
 

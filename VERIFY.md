@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 5 — editable dyno 100-RPM · weight distribution · TX/induction)
+# VelocityBench PowerCurve — VERIFY (Phase 6 — EV + Hybrid powerSource · Phase 5 dyno/weight/TX)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
 
@@ -100,10 +100,32 @@ Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only 
 |-------|------|-------------------|
 | **Supercharger** | Name cues: Hellcat/Redeye/Trackhawk, ZL1, C6 ZR1, GT500, Terminator, Ram TRX, Ninja H2, Escalade-V, E55/SL55/CL55, Range Rover SVR, explicit “supercharged”, etc. | **15** |
 | **Turbo** | Explicit turbo/EcoBoost/TFSI/… **or** existing `isFI` from VB/import when not SC. GNX = turbo (not SC). | **95** |
-| **NA** | Not FI / not EV. 1971 Demon 340 stays NA (not Hellcat Demon). | **183** |
-| **EV** | Unchanged (`isEv`; induction radio stays NA). | **40** |
+| **NA** | Not FI / not EV / not Hybrid. 1971 Demon 340 stays NA (not Hellcat Demon). | **183** |
+| **EV** | Full-electric (`powerSource: ev`, `isEv`). Induction radios lock — NA/Turbo/SC/Twin unavailable. Dual layout kept for AWD EVs. | **39** |
+| **Hybrid** | ICE + electric assist (`powerSource: hybrid`). Underlying `boostModel` turbo/SC/NA for FI physics. ZR1X / SF90 / P1 / Regera. | **4** |
 
-Classifier lives in `scripts/build-garage.js` → `classifyInduction()` and is baked into `js/garage-data.js`.
+Classifier lives in `scripts/build-garage.js` → `classifyPowerSource()` / `classifyInduction()` and is baked into `js/garage-data.js`.
+
+### Phase 6 — EV + Hybrid power source
+- **UI:** Power source / Induction segment adds **EV** and **Hybrid** radios (with NA/Turbo/SC/Twin). Selecting **EV** disables ICE induction + boost PSI (ForceMetric-style lock). Garage EV/Hybrid cars lock the baked power source.
+- **EV physics:** unchanged motor path — no ICE FI boost; weather factor 1.0 / ρ = std; Dual layout remains EV-appropriate.
+- **Hybrid physics (documented):** ICE crank TQ from baked ICE-fraction dyno (~82% of published system HP) **+** `hybridAssistTorqueLbFt` motor band (peak ≈ 22% of TQ-at-peak-HP below 0.40×redline, fade to ~27% of that peak by 0.85×redline). Weather uses a mild hybrid DA curve (between NA and FI). Not cosmetic — assist changes ET.
+- **Bake audit:** ZR1X was mis-tagged EV (single-speed / 14k redline) → rebuilt as Hybrid turbo AWD Dual with ICE TX. SF90 / P1 / Regera tagged Hybrid (keep turbo `boostModel`). Retag: `node scripts/build-garage.js --retag-only`.
+
+#### Hybrid vs ICE-only spot-check (SF90 Stradale, tip physics)
+Same ICE-fraction curve; Hybrid adds motor assist:
+
+| Mode | 1/4 ET | Trap | 0-60 | ΔET |
+|------|--------|------|------|-----|
+| Hybrid (assist on) | **9.806 s** | 141.6 mph | 2.161 s | |
+| ICE-only (assist off) | **10.020 s** | 138.4 mph | 2.275 s | Hybrid **−0.214 s** → **PASS** |
+
+#### ZR1X bake gate
+`isHybrid && !isEv && boostModel===turbo && txKey !== EV_Single` → **PASS**.
+Sim (Street tireType 0): **8.823 s @ 162.3 mph** · 0-60 **1.897** · 60-130 **3.878** (Excel ~1.9 / 8.675@159 / 60-130 3.87).
+
+#### Model S Plaid (EV lock)
+`isEv && powerSource===ev` → **PASS**. Sim: **9.488 s @ 154.5 mph** · 0-60 **2.321**.
 
 ### Editable dyno curve
 - Dense **100-RPM** TQ mesh (`RPM_GRID = 100`); **major** control bullets every **200 RPM** (every 2 grid steps — preferred hit target). *Note:* 250-RPM majors do not land cleanly on a 100 mesh (1250/1750/…), so majors use **200 RPM** for continuous sculpt; minors at the in-between 100-RPM samples stay editable.
@@ -171,3 +193,4 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable dyno mesh (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).
 - Tip (sculpt @ 50-RPM): major drag re-lerps minors between adjacent majors; minor drag uses snapshot falloff sculpt; dense commit; no V-spikes.
 - Tip (100-RPM mesh): sample spacing now **100 RPM**; majors every **200 RPM** (250 awkward on 100 grid); minor falloff ±1 sample; garage re-densified; sculpt UX still works.
+- Phase 6 EV + Hybrid: powerSource radios + locks; Hybrid ICE+assist; ZR1X retagged Hybrid; fleet EV **39** / Hybrid **4**.

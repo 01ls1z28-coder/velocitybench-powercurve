@@ -81,13 +81,16 @@
           <label class="field"><span>Shift Time s</span><input id="shiftTime" type="number" step="0.01" value="0.10" /></label>
         </div>
 
-        <div class="card-title">Induction</div>
+        <div class="card-title">Power source / Induction</div>
         <div class="seg" id="inductionSeg">
           <label><input type="radio" name="ind" value="na" checked /><span>NA</span></label>
           <label><input type="radio" name="ind" value="turbo" /><span>Turbo</span></label>
           <label><input type="radio" name="ind" value="supercharger" /><span>SC</span></label>
           <label><input type="radio" name="ind" value="twincharge" /><span>Twin</span></label>
+          <label><input type="radio" name="ind" value="ev" /><span>EV</span></label>
+          <label><input type="radio" name="ind" value="hybrid" /><span>Hybrid</span></label>
         </div>
+        <p class="hint" id="inductionLockHint" hidden>EV selected — ICE induction locked (NA/Turbo/SC/Twin unavailable).</p>
         <div class="field-row">
           <label class="field"><span>Boost PSI (on NA curve)</span><input id="boostPsi" type="number" step="0.5" value="0" /></label>
           <label class="field"><span>Tire</span>

@@ -108,7 +108,7 @@ function printRun(label, car, tireType, band) {
   return r;
 }
 
-console.log('VelocityBench PowerCurve VERIFY — Phase 4');
+console.log('VelocityBench PowerCurve VERIFY — Phase 6 (EV + Hybrid powerSource)');
 console.log('CalibrationFactor =', Phys.CalibrationFactor);
 console.log('Garage fleet size =', GARAGE.length);
 console.log('Weather: 70°F / 45% RH / 29.92 inHg, calm, launch=auto');
@@ -192,5 +192,64 @@ console.log('\n---------- WEIGHT DISTRIBUTION vs 50/50 ----------');
     (dET(rLR, calm50) >= 0 ? '+' : '') + dET(rLR, calm50).toFixed(3) +
     ' s · 60ft ' + (d60(rLR, calm50) >= 0 ? '+' : '') + d60(rLR, calm50).toFixed(3) + ' s');
 })();
+
+
+// ---- Phase 6: EV + Hybrid power source ----
+console.log('\n---------- POWER SOURCE (EV / Hybrid) ----------');
+(function () {
+  var evN = 0, hyN = 0, mis = [];
+  GARAGE.forEach(function (c) {
+    if (c.isEv || c.powerSource === 'ev') evN++;
+    if (c.isHybrid || c.powerSource === 'hybrid') hyN++;
+  });
+  console.log('Fleet powerSource counts: EV ' + evN + ' · Hybrid ' + hyN);
+
+  var zr = findCar(function (c) { return /zr1x/i.test(c.name); });
+  if (!zr) {
+    console.log('FAIL: ZR1X missing');
+  } else {
+    var ok = zr.isHybrid && !zr.isEv && zr.powerSource === 'hybrid' &&
+      zr.boostModel === 'turbo' && (zr.gearRatios || []).length > 1 && zr.txKey !== 'EV_Single';
+    console.log('ZR1X bake: isHybrid=' + zr.isHybrid + ' isEv=' + zr.isEv +
+      ' boost=' + zr.boostModel + ' tx=' + zr.txKey + ' gears=' + (zr.gearRatios || []).length +
+      ' → ' + (ok ? 'PASS' : 'FAIL'));
+    if (ok) {
+      var rZ = printRun('FLEET Hybrid ZR1X', zr, zr.tireType | 0, 'Excel ~1.9 / 8.675@159');
+      void rZ;
+    }
+  }
+
+  var sf = findCar(function (c) { return /sf90/i.test(c.name); });
+  if (!sf) {
+    console.log('FAIL: SF90 missing for Hybrid delta');
+  } else {
+    var wx = envFor(sf.tireType | 0);
+    var rHy = Phys.runQuarterMile(sf, wx);
+    var ice = JSON.parse(JSON.stringify(sf));
+    ice.isHybrid = false;
+    ice.powerSource = ice.boostModel || 'turbo';
+    delete ice.hybridAssistFrac;
+    var rIce = Phys.runQuarterMile(ice, wx);
+    var dEt = rHy.quarterMileTime - rIce.quarterMileTime;
+    console.log('SF90 Hybrid vs ICE-only (same ICE-fraction curve):');
+    console.log('  Hybrid  1/4 ' + rHy.quarterMileTime.toFixed(3) + ' s @ ' +
+      rHy.quarterMileSpeedMph.toFixed(1) + ' mph · 0-60 ' +
+      (rHy.zeroToSixty != null ? rHy.zeroToSixty.toFixed(3) : '—'));
+    console.log('  ICE-only 1/4 ' + rIce.quarterMileTime.toFixed(3) + ' s @ ' +
+      rIce.quarterMileSpeedMph.toFixed(1) + ' mph · 0-60 ' +
+      (rIce.zeroToSixty != null ? rIce.zeroToSixty.toFixed(3) : '—'));
+    console.log('  ΔET Hybrid−ICE ' + (dEt >= 0 ? '+' : '') + dEt.toFixed(3) + ' s ' +
+      (dEt < -0.05 ? 'PASS (assist affects run)' : 'FAIL (assist too weak)'));
+  }
+
+  var plaid = findCar(function (c) { return /model s plaid/i.test(c.name); });
+  if (plaid) {
+    var okEv = plaid.isEv && !plaid.isHybrid && plaid.powerSource === 'ev';
+    console.log('Model S Plaid: isEv=' + plaid.isEv + ' powerSource=' + plaid.powerSource +
+      ' → ' + (okEv ? 'PASS' : 'FAIL'));
+    printRun('FLEET EV Model S Plaid', plaid, plaid.tireType | 0, 'Excel 2.1 / 9.25@151');
+  }
+})();
+
 
 console.log('\nDone. Re-run: node scripts/spotcheck.js');
