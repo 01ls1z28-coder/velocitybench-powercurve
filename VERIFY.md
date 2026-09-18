@@ -1,4 +1,4 @@
-# VelocityBench PowerCurve — VERIFY (Phase 4 retip — keep calibrating)
+# VelocityBench PowerCurve — VERIFY (Phase 5 — TX Custom-only · induction · editable dyno)
 
 Static geared-RPM simulator: **quarter-mile markers + run past 1320 ft to mechanical/aero Vmax**. Spot-checks run with Node against `js/physics.js` (`CalibrationFactor` = **0.95**). Fleet: **333** cars baked in `js/garage-data.js`. Estimates for comparison — not track certified.
 
@@ -86,6 +86,34 @@ Full per-car residuals: `scripts/garage-calib-meta.json`. Rebuild: `node scripts
 - **Gauges** — Lexus LFA–inspired dual-dial brass cluster (`js/gauges.js`).
 - **Garage** — 333 baked cars + filter; Custom Builder retained.
 
+
+## Phase 5 — UI / garage bake
+
+### Factory TX preset (Custom Builder only)
+- The **Factory TX preset** dropdown is shown/enabled **only** when garage selection is **Custom Builder**.
+- Named garage cars keep **editable gear ratios + final drive**; the preset list is hidden so a mismatched factory TX name is never shown as if it were that car’s transmission.
+
+### Induction defaults (baked `boostModel`)
+Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only unless the user adds boost PSI on an NA baseline.
+
+| Class | Rule | Count (333 fleet) |
+|-------|------|-------------------|
+| **Supercharger** | Name cues: Hellcat/Redeye/Trackhawk, ZL1, C6 ZR1, GT500, Terminator, Ram TRX, Ninja H2, Escalade-V, E55/SL55/CL55, Range Rover SVR, explicit “supercharged”, etc. | **15** |
+| **Turbo** | Explicit turbo/EcoBoost/TFSI/… **or** existing `isFI` from VB/import when not SC. GNX = turbo (not SC). | **95** |
+| **NA** | Not FI / not EV. 1971 Demon 340 stays NA (not Hellcat Demon). | **183** |
+| **EV** | Unchanged (`isEv`; induction radio stays NA). | **40** |
+
+Classifier lives in `scripts/build-garage.js` → `classifyInduction()` and is baked into `js/garage-data.js`.
+
+### Editable dyno curve
+- HP/TQ chart shows **control bullets every 250 RPM** on the TQ curve.
+- Drag a bullet **up/down** to reshape torque; **HP ≈ TQ×RPM/5252** is derived (drag TQ, HP follows).
+- Subsequent **RUN** uses the edited `torqueCurve`. **Reset to preset** restores the baked garage curve.
+- Pointer Events (+ touch fallback); chart uses `touch-action: none` for mobile drag.
+
+### Holds (unchanged)
+Static / disclaimer / no secrets · slip under graphs · realtime playback always `scale=1` · LFA gauges · `tireType` must be set explicitly on spot checks.
+
 ## Re-run
 
 ```bash
@@ -104,4 +132,5 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Excel 60-130 is `n/a` for most of the fleet (~255 cars); hit-rate for 60-130 is over the **77 numeric** targets.
 - Hardest residuals: some EVs / hypercars (Cybertruck, Regera, Jesko, Zenvo) — geared + grip model cannot fully match optimistic Excel 0-60 without breaking trap.
 - Phase 4: fleet import, always-realtime playback, 60-130/100-150 surfacing, always-open advanced, slip under graphs, LFA brass gauges.
-- Retip (keep calibrating): TireType ladder + launchRpm + joint loss×forceScale + hit-count bonus; motorcycle aero heuristic; all-applicable **63.4%** (was 45.3% at `a0afdac`). Tip `a0afdac` not cleared — Live Pages stay on `f8f725a` until Seraph clears.
+- Retip (keep calibrating): TireType ladder + launchRpm + joint loss×forceScale + hit-count bonus; motorcycle aero heuristic; all-applicable **63.4%** (was 45.3% at `a0afdac`).
+- Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable 250-RPM dyno bullets (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).

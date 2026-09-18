@@ -1,5 +1,5 @@
 /**
- * Phase 4 — bake 333-car PowerCurve garage from Excel import + VelocityBench garage-data.
+ * Phase 4/5 — bake 333-car PowerCurve garage (+ Phase 5 induction boostModel) from Excel import + VelocityBench garage-data.
  * Merges Cd/area/loss/tire/drive/FI/EV/TX from VB; synthesizes gears/curves/RPM; calibrates
  * loss + forceScale + TireType + launchRpm toward Jorge's 0-60 / ¼ / 60-130 (trap-first).
  *
@@ -32,6 +32,48 @@ function mapVbTire(t) {
   if (t === 2) return 4;     // UHP
   if (t === 3) return 1;     // Soft → Drag Radial
   return 2;                  // Slicks → Slick
+}
+
+
+/**
+ * Phase 5 — induction UI default (baked boostModel).
+ * Dyno curves already include boost (boostPsi stays 0); this only drives the Induction radios.
+ * SC: factory supercharged name cues. Turbo: explicit turbo / isFI default. NA/EV unchanged.
+ */
+function classifyInduction(name, isFI, isEv) {
+  if (isEv) return { boostModel: 'na', isFI: false, isNA: false };
+  var n = String(name || '').toLowerCase();
+  // Factory supercharger platforms (not turbo GNX / not 1971 Demon 340)
+  var isSC =
+    /supercharg|kompressor|whipple|eaton|magnuson|rotrex|vortech|procharger/.test(n) ||
+    /hellcat|redeye|trackhawk/.test(n) ||
+    /\bzl1\b/.test(n) ||
+    (/corvette/.test(n) && /\bzr1\b/.test(n) && !/turbo/.test(n)) ||
+    /shelby gt500|mustang shelby gt500/.test(n) ||
+    /terminator|cobra \(terminator\)/.test(n) ||
+    /challenger.*\bdemon\b|charger.*\bdemon\b|hellcat.*demon|\bdemon 170\b/.test(n) ||
+    /\blt4\b|\blsa\b|\bls9\b/.test(n) ||
+    /escalade[- ]?v\b|cts-v|ct[45]-v|\bv-series\b/.test(n) ||
+    /\bram trx\b|ram 1500 trx/.test(n) ||
+    /ninja h2|kawasaki h2/.test(n) ||
+    /\be55\b|\bsl55\b|\bcl55\b|range rover.*svr/.test(n);
+  var isTurboName =
+    /turbo|twin.?turbo|biturbo|ecoboost|tfsi|tdi|t-?jet|powerstroke|power.?stroke/.test(n) ||
+    /\bgnx\b|grand national/.test(n) ||
+    /skyline|gt-r|\bgtr\b|wrx|\bsti\b|lancer evolution|mazdaspeed|gt-four|pulsar gti-r|soarer gt-t|chaser tourer/.test(n) ||
+    /integra type s|tlx type s|golf r|gr corolla|gr supra|bronco raptor|f-150 raptor/.test(n) ||
+    // FK8/FL5 Type R are turbo; EK9/EP3/FN2 era are NA — require 2015+ year cue
+    (/civic type r/.test(n) && /\b(201[5-9]|202\d)\b/.test(n)) ||
+    /m5 competition|x5m|x6m|\b135i\b|\b335i\b|\btt rs\b|rs[ ]?[3567]\b/.test(n) ||
+    /amg.*(biturbo|turbo)|sf90|chiron|veyron|huayra|jesko|agera|venom|765lt|720s|600lt|mp4-12c|mclaren p1|speedtail|elva|sabre|\bford gt\b/.test(n);
+
+  if (isSC) {
+    return { boostModel: 'supercharger', isFI: true, isNA: false };
+  }
+  if (isTurboName || isFI) {
+    return { boostModel: 'turbo', isFI: true, isNA: false };
+  }
+  return { boostModel: 'na', isFI: false, isNA: true };
 }
 
 function slugId(name) {
@@ -455,7 +497,14 @@ function buildCar(row, vb) {
     targets: tgt
   };
 
-  // EV single-speed FD tweak by power/weight
+  // Phase 5: bake induction UI default (turbo vs SC vs NA)
+  var ind = classifyInduction(name, isFI && !isEv, isEv);
+  car.boostModel = ind.boostModel;
+  car.isFI = ind.isFI;
+  car.isNA = ind.isNA;
+  // Keep boostPsi at 0 — baked dyno already includes boost; radios are labels only unless user adds PSI.
+
+    // EV single-speed FD tweak by power/weight
   if (isEv) {
     // Lower FD = more top-end; high-power EVs need it for trap
     car.finalDriveRatio = hp > 1000 ? 6.5 : (hp > 600 ? 7.8 : 9.2);

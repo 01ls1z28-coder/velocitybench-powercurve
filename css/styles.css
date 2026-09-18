@@ -334,6 +334,13 @@ body {
 }
 .chart-wrap-speed { height: 148px; margin-top: 6px; }
 .chart-wrap canvas { width: 100%; height: 100%; display: block; }
+
+/* Phase 5: Factory TX preset — Custom Builder only */
+#txPresetField.tx-hidden { display: none; }
+#txPresetField .tx-hint { font-style: normal; color: var(--text-dim); font-weight: 400; }
+#txPreset:disabled { opacity: 0.45; cursor: not-allowed; }
+.chart-wrap { touch-action: none; }
+
 .chart-label {
   font-size: 10px;
   color: var(--text-dim);

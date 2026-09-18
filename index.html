@@ -50,8 +50,8 @@
           </label>
         </div>
 
-        <div class="card-title">Transmission (factory defaults — editable)</div>
-        <label class="field"><span>Factory TX preset</span>
+        <div class="card-title">Transmission (ratios editable)</div>
+        <label class="field" id="txPresetField"><span>Factory TX preset <em class="tx-hint">(Custom Builder only)</em></span>
           <select id="txPreset"></select>
         </label>
         <div class="field-row">
@@ -147,7 +147,7 @@
           <span>Peak <strong id="dynoPeak">—</strong></span>
           <span>Cursor <strong id="dynoCursor">—</strong></span>
         </div>
-        <div class="chart-label">HP / TQ vs RPM (numeric axes · hover to scrub)</div>
+        <div class="chart-label">HP / TQ vs RPM · drag TQ bullets (every 250 rpm) · HP≈TQ×RPM/5252 · hover scrub</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>

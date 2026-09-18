@@ -35,7 +35,17 @@
   var garageFilterText = '';
 
   var $ = function (id) { return document.getElementById(id); };
-  var state = { car: null, lastResult: null, anim: null, powerCurve: [], cursorRpm: null, chartGeom: null };
+  var state = {
+    car: null,
+    presetCar: null, // pristine garage/custom snapshot for Reset
+    lastResult: null,
+    anim: null,
+    powerCurve: [],
+    cursorRpm: null,
+    chartGeom: null,
+    drag: null, // { rpm, pointerId }
+    curveEdited: false
+  };
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
     min: 0, max: 8000, label: 'RPM', redline: 6500
@@ -61,6 +71,106 @@
       o.textContent = txs[k].name;
       sel.appendChild(o);
     });
+  }
+
+
+  function isCustomBuilder(car) {
+    return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
+  }
+
+  function updateTxPresetVisibility(car) {
+    var field = $('txPresetField');
+    var sel = $('txPreset');
+    if (!sel) return;
+    var custom = isCustomBuilder(car);
+    if (field) field.classList.toggle('tx-hidden', !custom);
+    sel.disabled = !custom;
+    if (!custom) {
+      // Clear selection so a factory TX name is never shown as if it were this car's gearbox
+      sel.selectedIndex = -1;
+      // Keep a blank option so the control isn't stuck on a mismatched label if briefly shown
+      if (!sel.querySelector('option[value=""]')) {
+        var blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = '— car gears —';
+        blank.disabled = true;
+        sel.insertBefore(blank, sel.firstChild);
+      }
+      sel.value = '';
+    } else if (car && car.txKey && Phys.FactoryTransmissions[car.txKey]) {
+      sel.value = car.txKey;
+    }
+  }
+
+  /** Build editable HP/TQ series on a 250-RPM grid from a torque curve map. */
+  function powerCurveFromTorqueCurve(curve, redline) {
+    if (!curve) return [];
+    var keys = Object.keys(curve).map(Number).sort(function (a, b) { return a - b; });
+    if (!keys.length) return [];
+    var minR = keys[0];
+    var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
+    // Snap grid to 250 starting at nearest <= minR
+    var start = Math.floor(minR / 250) * 250;
+    if (start < minR && start + 250 <= maxR) start += 250;
+    if (start < 500) start = Math.max(500, start);
+    var out = [];
+    for (var r = start; r <= maxR + 0.01; r += 250) {
+      var tq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(curve, r) : null;
+      if (tq == null || !isFinite(tq)) {
+        // local interpolate fallback
+        tq = Number(curve[r]);
+        if (!isFinite(tq)) {
+          var lo = null, hi = null;
+          for (var i = 0; i < keys.length; i++) {
+            if (keys[i] <= r) lo = keys[i];
+            if (keys[i] >= r) { hi = keys[i]; break; }
+          }
+          if (lo == null) tq = Number(curve[keys[0]]);
+          else if (hi == null || hi === lo) tq = Number(curve[lo]);
+          else {
+            var t1 = Number(curve[lo]), t2 = Number(curve[hi]);
+            tq = t1 + (t2 - t1) * ((r - lo) / (hi - lo));
+          }
+        }
+      }
+      tq = Math.max(5, Number(tq) || 5);
+      out.push({ rpm: r, torque: tq, horsepower: (tq * r) / 5252 });
+    }
+    return out;
+  }
+
+  function torqueCurveFromPowerCurve(powerCurve) {
+    var map = {};
+    (powerCurve || []).forEach(function (p) {
+      map[Math.round(p.rpm)] = p.torque;
+    });
+    return map;
+  }
+
+  function syncPowerCurveFromCar(car) {
+    if (!car || !car.torqueCurve) {
+      state.powerCurve = [];
+      drawPowerCurve([]);
+      return;
+    }
+    state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
+    drawPowerCurve(state.powerCurve, state.cursorRpm);
+  }
+
+  function commitEditedCurveToCar() {
+    if (!state.car || !state.powerCurve.length) return;
+    state.car.torqueCurve = torqueCurveFromPowerCurve(state.powerCurve);
+    // Keep peakHp label aligned with edited curve peak
+    var peak = 0;
+    state.powerCurve.forEach(function (p) {
+      if (p.horsepower > peak) peak = p.horsepower;
+    });
+    if (peak > 0) {
+      state.car.peakHp = Math.round(peak);
+      var hpEl = $('peakHp');
+      if (hpEl) hpEl.value = String(Math.round(peak));
+    }
+    state.curveEdited = true;
   }
 
   function renderGears(ratios) {
@@ -99,8 +209,13 @@
     return el ? el.value : 'na';
   }
 
-  function applyCarToForm(car) {
+  function applyCarToForm(car, opts) {
+    opts = opts || {};
     state.car = car;
+    if (!opts.keepPreset) {
+      state.presetCar = JSON.parse(JSON.stringify(car));
+      state.curveEdited = false;
+    }
     $('carName').value = car.name || '';
     var hp = car.peakHp || Phys.peakHpFromCurve(car.torqueCurve || {}) || 450;
     $('peakHp').value = Math.round(hp);
@@ -116,10 +231,14 @@
     $('redline').value = car.redline || 6800;
     $('shiftTime').value = car.shiftTimeSeconds != null ? car.shiftTimeSeconds : 0.10;
     $('boostPsi').value = car.boostPsi || 0;
-    if (car.txKey && Phys.FactoryTransmissions[car.txKey]) $('txPreset').value = car.txKey;
     renderGears(car.gearRatios || []);
-    var ind = car.isFI ? (car.boostModel === 'supercharger' ? 'supercharger' : 'turbo') : 'na';
-    if (car.boostModel === 'twincharge') ind = 'twincharge';
+    updateTxPresetVisibility(car);
+    // Induction: prefer baked boostModel (turbo|supercharger|na); EV stays NA radio (unchanged)
+    var ind = 'na';
+    if (car.isEv) ind = 'na';
+    else if (car.boostModel === 'supercharger') ind = 'supercharger';
+    else if (car.boostModel === 'twincharge') ind = 'twincharge';
+    else if (car.boostModel === 'turbo' || car.isFI) ind = 'turbo';
     var radio = document.querySelector('input[name="ind"][value="' + ind + '"]');
     if (radio) radio.checked = true;
     $('converter').value = car.hasAftermarketConverter ? '1' : '0';
@@ -129,6 +248,8 @@
     rpmGauge.setMax(Math.max(8000, (car.redline || 7000) * 1.05));
     rpmGauge.redline = car.shiftRpm || 6500;
     highlightGarage(car.id);
+    // Show baked (or working) dyno curve immediately — editable bullets every 250 RPM
+    syncPowerCurveFromCar(car);
   }
 
   function highlightGarage(id) {
@@ -151,7 +272,7 @@
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'garage-item'; b.dataset.id = c.id;
       b.innerHTML = c.name + '<small>' + (c.category || 'Garage') + ' · ' + (c.peakHp || '?') + ' hp · ' + c.weightLbs + ' lb</small>';
-      b.onclick = function () { applyCarToForm(JSON.parse(JSON.stringify(c))); };
+      b.onclick = function () { applyCarToForm(JSON.parse(JSON.stringify(c))); /* resets preset + curve */ };
       list.appendChild(b);
     });
     if (!shown) {
@@ -327,12 +448,16 @@
     });
     maxHp = Math.max(50, maxHp * 1.12);
     maxTq = Math.max(50, maxTq * 1.12);
+    if (state.drag && state.drag.axisMaxTq) {
+      maxTq = state.drag.axisMaxTq;
+      maxHp = state.drag.axisMaxHp || maxHp;
+    }
     function x(rpm) {
       return pad.l + ((rpm - minRpm) / (maxRpm - minRpm || 1)) * (w - pad.l - pad.r);
     }
     function yHp(v) { return h - pad.b - (v / maxHp) * (h - pad.t - pad.b); }
     function yTq(v) { return h - pad.b - (v / maxTq) * (h - pad.t - pad.b); }
-    state.chartGeom = { pad: pad, w: w, h: h, minRpm: minRpm, maxRpm: maxRpm, x: x };
+    state.chartGeom = { pad: pad, w: w, h: h, minRpm: minRpm, maxRpm: maxRpm, maxTq: maxTq, maxHp: maxHp, x: x, yTq: yTq, yHp: yHp };
 
     // Grid + numeric axis ticks
     ctx.font = '10px ui-monospace, monospace';
@@ -378,6 +503,23 @@
       if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.5; ctx.stroke();
+
+
+    // Phase 5: editable TQ control bullets every 250 RPM (drag up/down; HP = TQ×RPM/5252)
+    var handles = [];
+    powerCurve.forEach(function (p) {
+      if (Math.round(p.rpm) % 250 !== 0) return;
+      var hx = x(p.rpm), hy = yTq(p.torque);
+      handles.push({ rpm: p.rpm, torque: p.torque, x: hx, y: hy });
+      ctx.beginPath();
+      ctx.arc(hx, hy, 5.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(76,201,240,0.95)';
+      ctx.fill();
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(232,215,176,0.9)';
+      ctx.stroke();
+    });
+    state.chartGeom.handles = handles;
 
     // Cursor scrubber
     var cRpm = cursorRpm != null ? cursorRpm : state.cursorRpm;
@@ -597,7 +739,8 @@
 
   $('btnRun').addEventListener('click', runSim);
   $('btnReset').addEventListener('click', function () {
-    if (state.car) applyCarToForm(JSON.parse(JSON.stringify(state.car)));
+    var src = state.presetCar || state.car;
+    if (src) applyCarToForm(JSON.parse(JSON.stringify(src)));
   });
 
   function rpmFromPointer(ev) {
@@ -611,19 +754,138 @@
     return g.minRpm + frac * (g.maxRpm - g.minRpm);
   }
 
-  (function wireDynoScrub() {
+  (function wireDynoEditAndScrub() {
     var canvas = $('powerChart');
     if (!canvas) return;
     canvas.style.cursor = 'crosshair';
-    canvas.addEventListener('mousemove', function (ev) {
+
+    function clientXY(ev) {
+      if (ev.touches && ev.touches[0]) return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+      if (ev.changedTouches && ev.changedTouches[0]) {
+        return { x: ev.changedTouches[0].clientX, y: ev.changedTouches[0].clientY };
+      }
+      return { x: ev.clientX, y: ev.clientY };
+    }
+
+    function hitHandle(mx, my) {
+      var g = state.chartGeom;
+      if (!g || !g.handles) return null;
+      var best = null, bestD = 16; // px hit radius (finger-friendly)
+      g.handles.forEach(function (h) {
+        var d = Math.hypot(mx - h.x, my - h.y);
+        if (d <= bestD) { bestD = d; best = h; }
+      });
+      return best;
+    }
+
+    function localXY(ev) {
+      var rect = canvas.getBoundingClientRect();
+      var c = clientXY(ev);
+      return { x: c.x - rect.left, y: c.y - rect.top };
+    }
+
+    function torqueFromY(my) {
+      var g = state.chartGeom;
+      if (!g) return null;
+      var plotH = g.h - g.pad.t - g.pad.b;
+      var frac = (g.h - g.pad.b - my) / Math.max(1, plotH);
+      frac = Math.max(0, Math.min(1.35, frac)); // allow a little overshoot past axis max
+      return Math.max(5, frac * g.maxTq);
+    }
+
+    function applyDrag(ev) {
+      if (!state.drag || !state.powerCurve.length) return;
+      var xy = localXY(ev);
+      var tq = torqueFromY(xy.y);
+      if (tq == null) return;
+      var rpm = state.drag.rpm;
+      for (var i = 0; i < state.powerCurve.length; i++) {
+        if (Math.abs(state.powerCurve[i].rpm - rpm) < 1) {
+          state.powerCurve[i].torque = tq;
+          state.powerCurve[i].horsepower = (tq * state.powerCurve[i].rpm) / 5252;
+          break;
+        }
+      }
+      state.cursorRpm = rpm;
+      commitEditedCurveToCar();
+      drawPowerCurve(state.powerCurve, rpm);
+      if (ev.cancelable) ev.preventDefault();
+    }
+
+    function onDown(ev) {
+      if (!state.powerCurve.length || !state.chartGeom) return;
+      var xy = localXY(ev);
+      var h = hitHandle(xy.x, xy.y);
+      if (h) {
+        state.drag = {
+          rpm: h.rpm,
+          pointerId: ev.pointerId,
+          axisMaxTq: state.chartGeom && state.chartGeom.maxTq,
+          axisMaxHp: state.chartGeom && state.chartGeom.maxHp
+        };
+        canvas.style.cursor = 'ns-resize';
+        if (canvas.setPointerCapture && ev.pointerId != null) {
+          try { canvas.setPointerCapture(ev.pointerId); } catch (e) {}
+        }
+        applyDrag(ev);
+        if (ev.cancelable) ev.preventDefault();
+        return;
+      }
+      // Scrub cursor when not on a handle
       var rpm = rpmFromPointer(ev);
       if (rpm == null) return;
       state.cursorRpm = rpm;
       drawPowerCurve(state.powerCurve, rpm);
-    });
+    }
+
+    function onMove(ev) {
+      if (state.drag) {
+        applyDrag(ev);
+        return;
+      }
+      if (ev.buttons || (ev.pointers && ev.pointers.length)) return;
+      var xy = localXY(ev);
+      var h = hitHandle(xy.x, xy.y);
+      canvas.style.cursor = h ? 'ns-resize' : 'crosshair';
+      var rpm = rpmFromPointer(ev);
+      if (rpm == null) return;
+      state.cursorRpm = rpm;
+      drawPowerCurve(state.powerCurve, rpm);
+    }
+
+    function onUp(ev) {
+      if (!state.drag) return;
+      applyDrag(ev);
+      state.drag = null;
+      canvas.style.cursor = 'crosshair';
+      if (canvas.releasePointerCapture && ev.pointerId != null) {
+        try { canvas.releasePointerCapture(ev.pointerId); } catch (e) {}
+      }
+    }
+
+    // Prefer Pointer Events (mouse + touch + pen)
+    if (window.PointerEvent) {
+      canvas.addEventListener('pointerdown', onDown);
+      canvas.addEventListener('pointermove', onMove);
+      canvas.addEventListener('pointerup', onUp);
+      canvas.addEventListener('pointercancel', onUp);
+    } else {
+      canvas.addEventListener('mousedown', onDown);
+      window.addEventListener('mousemove', function (ev) {
+        if (state.drag) applyDrag(ev);
+        else onMove(ev);
+      });
+      window.addEventListener('mouseup', onUp);
+      canvas.addEventListener('touchstart', onDown, { passive: false });
+      canvas.addEventListener('touchmove', function (ev) {
+        if (state.drag) applyDrag(ev);
+      }, { passive: false });
+      canvas.addEventListener('touchend', onUp);
+    }
+
     canvas.addEventListener('mouseleave', function () {
+      if (state.drag) return;
       if (state.powerCurve && state.powerCurve.length) {
-        // Snap cursor readout back to peak HP point
         var peak = state.powerCurve.reduce(function (best, p) {
           return p.horsepower > best.horsepower ? p : best;
         }, state.powerCurve[0]);
@@ -636,10 +898,12 @@
   window.addEventListener('resize', function () {
     rpmGauge._resize();
     speedGauge._resize();
-    if (state.lastResult) {
+    if (state.powerCurve && state.powerCurve.length) {
+      drawPowerCurve(state.powerCurve, state.cursorRpm);
+    } else if (state.lastResult) {
       drawPowerCurve(state.lastResult.powerCurve, state.cursorRpm);
-      drawSpeedPath(state.lastResult.timeline, state.lastResult);
     }
+    if (state.lastResult) drawSpeedPath(state.lastResult.timeline, state.lastResult);
   });
 
   populateTxPresets();
