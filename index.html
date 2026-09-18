@@ -116,6 +116,12 @@
           <label><input type="radio" name="ind" value="hybrid" /><span>Hybrid</span></label>
         </div>
         <p class="hint" id="inductionLockHint" hidden>EV selected — ICE induction locked (NA/Turbo/SC/Twin unavailable).</p>
+        <div class="field-row" id="speedLimiterRow">
+          <label class="field"><span>Speed limiter mph <em class="tx-hint">(EV / Hybrid)</em></span>
+            <input id="speedLimiterMph" type="number" min="0" max="300" step="1" placeholder="—" title="Published electronic top-speed limiter. Blank/0 = unlimited (ICE aero Vmax)." />
+          </label>
+          <label class="field"><span></span><span class="hint" id="speedLimiterHint" style="display:block;padding-top:6px">Garage EVs bake OEM limiter · Custom EV editable</span></label>
+        </div>
         <div class="field-row">
           <label class="field"><span>Boost PSI (on NA curve)</span><input id="boostPsi" type="number" step="0.5" value="0" /></label>
           <label class="field"><span>Tire</span>
@@ -171,7 +177,7 @@
 
       <!-- CENTER: gauges + curves + slip -->
       <main class="card panel-main">
-        <div class="card-title">Instruments · Dyno · Speed Path</div>
+        <div class="card-title" id="instrumentsTitle">Instruments · Dyno · Speed Path</div>
         <div class="live-readout">
           <span>Gear <strong id="liveGear">—</strong></span>
           <span><span id="livePrimaryLabel">RPM</span> <strong id="liveRpm">—</strong></span>
@@ -187,7 +193,7 @@
           <span>Peak <strong id="dynoPeak">—</strong></span>
           <span>Cursor <strong id="dynoCursor">—</strong></span>
         </div>
-        <div class="chart-label">HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub</div>
+        <div class="chart-label" id="powerChartLabel">HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label">Speed vs distance (¼-mi markers · path to Vmax)</div>
         <div class="metrics" id="metrics"></div>

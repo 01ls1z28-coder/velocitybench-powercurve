@@ -324,4 +324,107 @@ console.log('\n---------- EV INSTRUMENTS (Power % primary) ----------');
 })();
 
 
+
+// ---- EV electronic speed limiters + chart gate ----
+console.log('\n---------- EV SPEED LIMITERS + CHART ----------');
+(function () {
+  var samples = [
+    { id: '2022-tesla-model-s-plaid', name: /model s plaid/i, lim: 200, tol: 1.5 },
+    { id: '2023-hyundai-kona-electric', name: /kona electric/i, lim: 104, tol: 1.5 }
+  ];
+  var pass = 0;
+  samples.forEach(function (s) {
+    var car = findCar(function (c) { return c.id === s.id || s.name.test(c.name || ''); });
+    if (!car) { console.log('FAIL: missing ' + s.id); return; }
+    var baked = car.speedLimiterMph;
+    var okBake = baked === s.lim;
+    var r = Phys.runQuarterMile(car, envFor(car.tireType | 0));
+    var vmax = r.topSpeedMph;
+    var okV = vmax != null && Math.abs(vmax - s.lim) <= s.tol;
+    var okReason = (r.vmaxReason || '').indexOf('ev_speed_limiter_') === 0;
+    console.log(car.name + ' limiter baked=' + baked + ' (want ' + s.lim + ') · Vmax ' +
+      (vmax != null ? vmax.toFixed(1) : '—') + ' · ' + (r.vmaxReason || '') +
+      ' → ' + (okBake && okV && okReason ? 'PASS' : 'FAIL'));
+    if (okBake && okV && okReason) pass++;
+  });
+
+  // ICE curated unchanged (no limiter field)
+  var supra = findCar(function (c) { return /1994 Toyota Supra Twin Turbo/.test(c.name || ''); });
+  if (!supra) {
+    // curated object path
+    console.log('Fleet Supra skip — using curated VERIFY Supra band from earlier section');
+  } else {
+    var okIce = !(supra.speedLimiterMph > 0);
+    console.log('Fleet ICE Supra speedLimiterMph unset → ' + (okIce ? 'PASS' : 'FAIL'));
+    if (okIce) pass++;
+  }
+
+  // Chart gate (logic): EV mode replaces dyno; Hybrid keeps ICE dyno
+  function wantEvChart(car) {
+    return !!(car && (car.isEv || car.powerSource === 'ev') && !car.isHybrid);
+  }
+  var plaid = findCar(function (c) { return /model s plaid/i.test(c.name || ''); });
+  var hy = findCar(function (c) { return /sf90/i.test(c.name || ''); });
+  var okChart = plaid && wantEvChart(plaid) === true && hy && wantEvChart(hy) === false;
+  console.log('EV chart swap gate (Plaid=EV chart, SF90=ICE dyno): ' + (okChart ? 'PASS' : 'FAIL'));
+  if (okChart) pass++;
+
+  var evN = 0, limN = 0;
+  GARAGE.forEach(function (c) {
+    if (c.isEv || c.powerSource === 'ev') {
+      evN++;
+      if (c.speedLimiterMph > 0) limN++;
+    }
+  });
+  console.log('Garage EVs with speedLimiterMph: ' + limN + '/' + evN +
+    (limN === evN && evN >= 39 ? ' PASS' : ' FAIL'));
+  if (limN === evN && evN >= 39) pass++;
+
+  console.log('EV limiter/chart checks: ' + pass + ' PASS blocks');
+})();
+
+
+// ---- Cybertruck Beast calib + ATC stall/flash ----
+console.log('\n---------- CYBERTRUCK BEAST + ATC ----------');
+(function () {
+  var ct = findCar(function (c) { return c.id === '2024-tesla-cybertruck-tri-motor' || /cybertruck/i.test(c.name || ''); });
+  if (!ct) { console.log('FAIL: Cybertruck missing'); return; }
+  var r = Phys.runQuarterMile(ct, envFor(ct.tireType | 0));
+  var ok60 = r.zeroToSixty != null && Math.abs(r.zeroToSixty - 2.6) <= 0.25;
+  var okEt = r.quarterMileTime != null && Math.abs(r.quarterMileTime - 11.0) <= 0.35;
+  var okTrap = r.quarterMileSpeedMph != null && Math.abs(r.quarterMileSpeedMph - 119) <= 6;
+  var okV = r.topSpeedMph != null && Math.abs(r.topSpeedMph - 130) <= 2
+    && String(r.vmaxReason || '').indexOf('ev_speed_limiter_') === 0;
+  console.log('Cybertruck Tri-Motor: ' +
+    (r.quarterMileTime != null ? r.quarterMileTime.toFixed(3) : '—') + 's @ ' +
+    (r.quarterMileSpeedMph != null ? r.quarterMileSpeedMph.toFixed(1) : '—') + ' · 0-60 ' +
+    (r.zeroToSixty != null ? r.zeroToSixty.toFixed(3) : '—') + ' · Vmax ' +
+    (r.topSpeedMph != null ? r.topSpeedMph.toFixed(1) : '—') + ' (' + (r.vmaxReason || '') + ')');
+  console.log('  vs C&D 2.6 / 11.0@119 / 130gov → ' +
+    (ok60 && okEt && okTrap && okV ? 'PASS' : 'FAIL'));
+
+  var scat = findCar(function (c) { return /challenger r\/t scat/i.test(c.name || ''); });
+  if (!scat) { console.log('FAIL: Scat Pack missing for ATC'); return; }
+  var wx = envFor(1);
+  function atcRun(stall, flash) {
+    var c = JSON.parse(JSON.stringify(scat));
+    c.hasAftermarketConverter = true;
+    c.stallRpm = stall;
+    c.flashRpm = flash;
+    return Phys.runQuarterMile(c, wx);
+  }
+  var off = JSON.parse(JSON.stringify(scat));
+  off.hasAftermarketConverter = false;
+  var rOff = Phys.runQuarterMile(off, wx);
+  var rLo = atcRun(2800, 3500);
+  var rHi = atcRun(4500, 5500);
+  var dOnOff = Math.abs(rLo.zeroToSixty - rOff.zeroToSixty);
+  var dStall = Math.abs(rHi.zeroToSixty - rLo.zeroToSixty);
+  console.log('ATC Scat Pack: OFF 0-60 ' + rOff.zeroToSixty.toFixed(3) +
+    ' · ON 2800/3500 ' + rLo.zeroToSixty.toFixed(3) +
+    ' · ON 4500/5500 ' + rHi.zeroToSixty.toFixed(3));
+  console.log('  ON≠OFF Δ=' + dOnOff.toFixed(3) + ' · stall/flash Δ=' + dStall.toFixed(3) + ' → ' +
+    (dOnOff >= 0.04 && dStall >= 0.01 ? 'PASS' : 'FAIL'));
+})();
+
 console.log('\nDone. Re-run: node scripts/spotcheck.js');

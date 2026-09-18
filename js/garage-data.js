@@ -1,9 +1,11 @@
 /**
  * VelocityBench PowerCurve — baked garage (Phase 6 EV + Hybrid powerSource).
  * Motorcycle tip: published-leaning redline/shift/gears/powerband (Bike_Sport_6 / Bike_Hyper_6).
+ * EV tip: speedLimiterMph = published electronic top-speed limiter (mph) for all garage EVs.
  * Specs: Cd/area/loss/tire/drive/FI/EV/Hybrid/TX from VB where matched; gears/curves synthesized
  * + trap-first calib (loss/forceScale/TireType/launchRpm). Rebuild: node scripts/build-garage.js
  * Bike retune only: node scripts/patch-bikes.js
+ * EV speed limiters: node scripts/patch-ev-speed-limits.js
  */
 (function (root) {
   var data = [
@@ -6082,7 +6084,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 200
   },
   {
     "id": "2024-tesla-model-3-performance",
@@ -6260,7 +6263,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 163
   },
   {
     "id": "2022-porsche-taycan-turbo-s",
@@ -6290,7 +6294,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.25,
+    "forceScale": 1.323,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -6438,7 +6442,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 162
   },
   {
     "id": "2024-lucid-air-sapphire",
@@ -6616,7 +6621,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 205
   },
   {
     "id": "2023-hyundai-ioniq-5-n",
@@ -6794,7 +6800,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 162
   },
   {
     "id": "2022-ford-f-150-lightning",
@@ -6972,7 +6979,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 110
   },
   {
     "id": "2023-tesla-model-y-performance",
@@ -7150,7 +7158,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 155
   },
   {
     "id": "2022-tesla-model-x-plaid",
@@ -7328,7 +7337,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 163
   },
   {
     "id": "2023-kia-ev6-gt",
@@ -7506,7 +7516,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 162
   },
   {
     "id": "2023-polestar-2-performance",
@@ -7684,7 +7695,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 127
   },
   {
     "id": "2022-bmw-ix-m60",
@@ -7714,7 +7726,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.2,
+    "forceScale": 1.275,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -7862,7 +7874,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 155
   },
   {
     "id": "2023-mercedes-eqe-amg-53",
@@ -7892,7 +7905,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.08,
+    "forceScale": 1.157,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -8040,7 +8053,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 149
   },
   {
     "id": "2024-cadillac-lyriq-awd",
@@ -8070,7 +8084,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1,
+    "forceScale": 1.071,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -8218,16 +8232,17 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 118
   },
   {
     "id": "2024-tesla-cybertruck-tri-motor",
     "name": "2024 Tesla Cybertruck Tri-Motor",
     "category": "EV",
     "peakHp": 845,
-    "weightLbs": 6800,
-    "dragCoefficient": 0.4,
-    "frontalAreaSqFt": 35,
+    "weightLbs": 6900,
+    "dragCoefficient": 0.425,
+    "frontalAreaSqFt": 36,
     "tireRadiusInches": 15.2,
     "finalDriveRatio": 7.8,
     "gearRatios": [
@@ -8248,155 +8263,156 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.35,
+    "forceScale": 1.47,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200",
+    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200 | CT tip: C&D Beast 2.6 / 11.0@119 / 130gov; launch+curve taper+aero retune",
     "torqueCurve": {
-      "500": 804.3766249999999,
-      "600": 804.3766249999999,
-      "700": 804.3766249999999,
-      "800": 804.3766249999999,
-      "900": 804.3766249999999,
-      "1000": 804.3766249999999,
-      "1100": 804.3766249999999,
-      "1200": 804.3766249999999,
-      "1300": 804.3766249999999,
-      "1400": 804.3766249999999,
-      "1500": 804.3766249999999,
-      "1600": 804.3766249999999,
-      "1700": 804.3766249999999,
-      "1800": 804.3766249999999,
-      "1900": 804.3766249999999,
-      "2000": 804.3766249999999,
-      "2100": 800.2160562499998,
-      "2200": 796.0554874999999,
-      "2300": 791.8949187499999,
-      "2400": 787.73435,
-      "2500": 783.5737812499999,
-      "2600": 779.4132124999999,
-      "2700": 775.25264375,
-      "2800": 771.0920749999999,
-      "2900": 766.93150625,
-      "3000": 762.7709375,
-      "3100": 758.6103687499999,
-      "3200": 754.4497999999999,
-      "3300": 750.2892312499998,
-      "3400": 746.1286624999999,
-      "3500": 741.9680937499999,
-      "3600": 737.8075249999998,
-      "3700": 733.6469562499999,
-      "3800": 729.4863874999999,
-      "3900": 725.3258187499999,
-      "4000": 721.1652499999999,
-      "4100": 717.0046812499999,
-      "4200": 712.8441124999999,
-      "4300": 708.6835437499999,
-      "4400": 704.522975,
-      "4500": 700.3624062499999,
-      "4600": 696.2018374999999,
-      "4700": 692.04126875,
-      "4800": 687.8806999999999,
-      "4900": 683.7201312499999,
-      "5000": 679.5595624999999,
-      "5100": 675.3989937499999,
-      "5200": 671.238425,
-      "5300": 667.07785625,
-      "5400": 662.9172874999999,
-      "5500": 658.7567187499999,
-      "5600": 654.5961499999999,
-      "5700": 650.4355812499999,
-      "5800": 646.2750124999999,
-      "5900": 642.11444375,
-      "6000": 637.9538749999999,
-      "6100": 633.7933062499999,
-      "6200": 629.6327375,
-      "6300": 625.4721687499999,
-      "6400": 621.3116,
-      "6500": 617.15103125,
-      "6600": 612.9904624999999,
-      "6700": 608.82989375,
-      "6800": 604.669325,
-      "6900": 600.50875625,
-      "7000": 596.3481875,
-      "7100": 592.18761875,
-      "7200": 588.0270499999999,
-      "7300": 583.8664812499999,
-      "7400": 579.7059125,
-      "7500": 575.5453437499999,
-      "7600": 571.3847749999999,
-      "7700": 567.22420625,
-      "7800": 563.0636374999999,
-      "7900": 558.90306875,
-      "8000": 554.7425,
-      "8100": 549.6573604166666,
-      "8200": 544.5722208333333,
-      "8300": 539.48708125,
-      "8400": 534.4019416666666,
-      "8500": 529.3168020833333,
-      "8600": 524.2316625,
-      "8700": 519.1465229166666,
-      "8800": 514.0613833333333,
-      "8900": 508.9762437499999,
-      "9000": 503.8911041666666,
-      "9100": 498.80596458333326,
-      "9200": 493.72082499999993,
-      "9300": 488.6356854166666,
-      "9400": 483.55054583333333,
-      "9500": 478.46540625,
-      "9600": 473.38026666666667,
-      "9700": 468.2951270833333,
-      "9800": 463.20998749999995,
-      "9900": 458.1248479166666,
-      "10000": 453.0397083333333,
-      "10100": 447.95456874999996,
-      "10200": 442.8694291666666,
-      "10300": 437.78428958333325,
-      "10400": 432.6991499999999,
-      "10500": 427.6140104166666,
-      "10600": 422.52887083333326,
-      "10700": 417.44373125,
-      "10800": 412.35859166666665,
-      "10900": 407.27345208333327,
-      "11000": 402.18831249999994,
-      "11100": 397.1031729166666,
-      "11200": 392.01803333333334,
-      "11300": 386.93289375,
-      "11400": 381.8477541666666,
-      "11500": 376.7626145833333,
-      "11600": 371.67747499999996,
-      "11700": 366.59233541666663,
-      "11800": 361.5071958333333,
-      "11900": 356.42205624999997,
-      "12000": 351.33691666666664,
-      "12100": 346.2517770833333,
-      "12200": 341.1666374999999,
-      "12300": 336.0814979166666,
-      "12400": 330.99635833333326,
-      "12500": 325.91121874999993,
-      "12600": 320.8260791666666,
-      "12700": 315.7409395833333,
-      "12800": 310.65579999999994,
-      "12900": 305.5706604166666,
-      "13000": 300.4855208333333,
-      "13100": 295.40038124999995,
-      "13200": 290.3152416666666,
-      "13300": 285.2301020833333,
-      "13400": 280.14496249999996,
-      "13500": 275.05982291666663,
-      "13600": 269.9746833333333,
-      "13700": 264.88954375,
-      "13800": 259.80440416666664,
-      "13900": 254.71926458333328,
-      "14000": 249.63412499999995
+      "500": 989.383,
+      "600": 989.383,
+      "700": 989.383,
+      "800": 989.383,
+      "900": 989.383,
+      "1000": 989.383,
+      "1100": 989.383,
+      "1200": 989.383,
+      "1300": 989.383,
+      "1400": 989.383,
+      "1500": 989.383,
+      "1600": 989.383,
+      "1700": 989.383,
+      "1800": 989.383,
+      "1900": 989.383,
+      "2000": 989.383,
+      "2100": 984.266,
+      "2200": 979.148,
+      "2300": 974.031,
+      "2400": 968.913,
+      "2500": 963.796,
+      "2600": 958.678,
+      "2700": 953.561,
+      "2800": 948.443,
+      "2900": 937.636,
+      "3000": 926.89,
+      "3100": 916.206,
+      "3200": 905.583,
+      "3300": 895.022,
+      "3400": 884.523,
+      "3500": 874.086,
+      "3600": 863.711,
+      "3700": 853.397,
+      "3800": 843.145,
+      "3900": 832.955,
+      "4000": 822.826,
+      "4100": 812.759,
+      "4200": 802.754,
+      "4300": 792.811,
+      "4400": 782.93,
+      "4500": 773.11,
+      "4600": 763.352,
+      "4700": 753.655,
+      "4800": 744.021,
+      "4900": 734.448,
+      "5000": 724.937,
+      "5100": 715.487,
+      "5200": 706.1,
+      "5300": 696.774,
+      "5400": 687.509,
+      "5500": 678.307,
+      "5600": 669.166,
+      "5700": 660.087,
+      "5800": 651.07,
+      "5900": 642.114,
+      "6000": 630.708,
+      "6100": 619.396,
+      "6200": 608.179,
+      "6300": 597.056,
+      "6400": 586.027,
+      "6500": 575.093,
+      "6600": 564.254,
+      "6700": 553.509,
+      "6800": 542.859,
+      "6900": 532.303,
+      "7000": 521.841,
+      "7100": 511.475,
+      "7200": 501.202,
+      "7300": 491.025,
+      "7400": 480.941,
+      "7500": 470.952,
+      "7600": 461.058,
+      "7700": 451.258,
+      "7800": 441.553,
+      "7900": 431.942,
+      "8000": 422.426,
+      "8100": 412.311,
+      "8200": 402.311,
+      "8300": 392.427,
+      "8400": 382.658,
+      "8500": 373.005,
+      "8600": 363.467,
+      "8700": 354.045,
+      "8800": 344.738,
+      "8900": 335.547,
+      "9000": 326.472,
+      "9100": 317.512,
+      "9200": 308.667,
+      "9300": 299.938,
+      "9400": 291.324,
+      "9500": 282.826,
+      "9600": 274.444,
+      "9700": 266.177,
+      "9800": 258.025,
+      "9900": 249.989,
+      "10000": 242.069,
+      "10100": 234.264,
+      "10200": 226.574,
+      "10300": 219,
+      "10400": 211.542,
+      "10500": 204.199,
+      "10600": 196.971,
+      "10700": 189.86,
+      "10800": 182.863,
+      "10900": 175.982,
+      "11000": 169.217,
+      "11100": 162.567,
+      "11200": 156.033,
+      "11300": 149.614,
+      "11400": 143.311,
+      "11500": 137.123,
+      "11600": 131.051,
+      "11700": 125.094,
+      "11800": 119.253,
+      "11900": 113.527,
+      "12000": 107.917,
+      "12100": 102.422,
+      "12200": 97.043,
+      "12300": 91.779,
+      "12400": 86.631,
+      "12500": 81.599,
+      "12600": 76.681,
+      "12700": 71.88,
+      "12800": 68.344,
+      "12900": 67.226,
+      "13000": 66.107,
+      "13100": 64.988,
+      "13200": 63.869,
+      "13300": 62.751,
+      "13400": 61.632,
+      "13500": 60.513,
+      "13600": 59.394,
+      "13700": 58.276,
+      "13800": 57.157,
+      "13900": 56.038,
+      "14000": 54.92
     },
     "frontWeightPercent": 50,
     "rearWeightPercent": 50,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 130
   },
   {
     "id": "2023-genesis-gv60-performance",
@@ -8574,7 +8590,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 162
   },
   {
     "id": "2024-volvo-ex90-twin-motor",
@@ -8604,7 +8621,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.08,
+    "forceScale": 1.141,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -8752,7 +8769,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 112
   },
   {
     "id": "2023-audi-q4-e-tron",
@@ -8782,7 +8800,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.2,
+    "forceScale": 1.285,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -8930,7 +8948,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 112
   },
   {
     "id": "2022-mercedes-eqb-350",
@@ -8960,7 +8979,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.2,
+    "forceScale": 1.281,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -9108,7 +9127,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 99
   },
   {
     "id": "2024-tesla-model-x-long-range",
@@ -9286,7 +9306,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 155
   },
   {
     "id": "2023-nissan-ariya-e-4orce",
@@ -9316,7 +9337,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1,
+    "forceScale": 1.072,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -9464,7 +9485,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 124
   },
   {
     "id": "2024-subaru-solterra",
@@ -9494,7 +9516,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.5,
+    "forceScale": 1.609,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -9642,7 +9664,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 99
   },
   {
     "id": "2023-toyota-bz4x-awd",
@@ -9672,7 +9695,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.35,
+    "forceScale": 1.452,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -9820,7 +9843,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 99
   },
   {
     "id": "2024-fisker-ocean-extreme",
@@ -9850,7 +9874,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1,
+    "forceScale": 1.063,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -9998,7 +10022,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 127
   },
   {
     "id": "2024-hyundai-ioniq-6-awd",
@@ -10176,7 +10201,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 115
   },
   {
     "id": "2023-vw-id-4-awd-pro",
@@ -10206,7 +10232,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.25,
+    "forceScale": 1.349,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -10354,7 +10380,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 112
   },
   {
     "id": "2024-chevrolet-blazer-ev-ss",
@@ -10532,7 +10559,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 125
   },
   {
     "id": "2023-ford-mustang-mach-e-gt",
@@ -10562,7 +10590,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.15,
+    "forceScale": 1.21,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -10710,7 +10738,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 124
   },
   {
     "id": "2024-bmw-i5-m60",
@@ -10740,7 +10769,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1,
+    "forceScale": 1.046,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -10888,7 +10917,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 143
   },
   {
     "id": "2024-rivian-r1s-quad-motor",
@@ -11066,7 +11096,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 125
   },
   {
     "id": "2023-bmw-i7-xdrive60",
@@ -11244,7 +11275,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 149
   },
   {
     "id": "2024-mercedes-eqs-450",
@@ -11274,7 +11306,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 0,
-    "forceScale": 1.25,
+    "forceScale": 1.317,
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "Auto",
@@ -11422,7 +11454,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 130
   },
   {
     "id": "2023-audi-e-tron-gt",
@@ -11600,7 +11633,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 152
   },
   {
     "id": "2024-lucid-air-touring",
@@ -11778,7 +11812,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 155
   },
   {
     "id": "2024-tesla-model-s-long-range",
@@ -11956,7 +11991,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 155
   },
   {
     "id": "2023-hyundai-kona-electric",
@@ -11986,7 +12022,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 2,
-    "forceScale": 1.2,
+    "forceScale": 1.312,
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
@@ -12134,7 +12170,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 104
   },
   {
     "id": "2024-kia-niro-ev",
@@ -12164,7 +12201,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 2,
-    "forceScale": 1.2,
+    "forceScale": 1.289,
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
@@ -12312,7 +12349,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 104
   },
   {
     "id": "2023-mercedes-eqs-580-suv",
@@ -12342,7 +12380,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 4,
-    "forceScale": 1.15,
+    "forceScale": 1.216,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -12490,7 +12528,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 130
   },
   {
     "id": "2024-volvo-xc40-recharge",
@@ -12520,7 +12559,7 @@
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
     "tireType": 3,
-    "forceScale": 1.08,
+    "forceScale": 1.141,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
@@ -12668,7 +12707,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 112
   },
   {
     "id": "2021-ferrari-sf90-stradale",
@@ -12784,7 +12824,8 @@
     "rightWeightPercent": 50,
     "powerSource": "hybrid",
     "isHybrid": true,
-    "hybridAssistFrac": 0.22
+    "hybridAssistFrac": 0.22,
+    "speedLimiterMph": 211
   },
   {
     "id": "2021-porsche-911-turbo-s",
@@ -13776,7 +13817,8 @@
     "rightWeightPercent": 50,
     "powerSource": "hybrid",
     "isHybrid": true,
-    "hybridAssistFrac": 0.22
+    "hybridAssistFrac": 0.22,
+    "speedLimiterMph": 217
   },
   {
     "id": "2014-ferrari-f12-berlinetta",
@@ -17130,7 +17172,8 @@
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "ev",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 258
   },
   {
     "id": "2015-koenigsegg-one-1",
@@ -18839,7 +18882,8 @@
     "rightWeightPercent": 50,
     "powerSource": "hybrid",
     "isHybrid": true,
-    "hybridAssistFrac": 0.22
+    "hybridAssistFrac": 0.22,
+    "speedLimiterMph": 250
   },
   {
     "id": "2017-pagani-huayra-bc",

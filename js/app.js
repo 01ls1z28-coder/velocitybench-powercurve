@@ -504,6 +504,10 @@
     $('redline').value = car.redline || 6800;
     $('shiftTime').value = car.shiftTimeSeconds != null ? car.shiftTimeSeconds : 0.10;
     $('boostPsi').value = car.boostPsi || 0;
+    if ($('speedLimiterMph')) {
+      var limV = car.speedLimiterMph != null ? car.speedLimiterMph : car.topSpeedMph;
+      $('speedLimiterMph').value = (limV != null && Number(limV) > 0) ? Math.round(Number(limV)) : '';
+    }
     renderGears(car.gearRatios || []);
     updateTxPresetVisibility(car);
     // Power source / induction: EV + Hybrid are first-class; ICE uses baked boostModel
@@ -529,6 +533,7 @@
     configurePrimaryGauge(car);
     highlightGarage(car.id);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
+    syncEvChartMode(car);
     syncPowerCurveFromCar(car);
   }
 
@@ -619,7 +624,14 @@
       engineLayout: (ind === 'ev' && (base.driveType === 'AWD' || $('driveType').value === 'AWD'))
         ? (base.engineLayout === 'Mid' ? 'Mid' : 'Dual')
         : (base.engineLayout || 'Front'),
-      torqueCurve: base.torqueCurve || null
+      torqueCurve: base.torqueCurve || null,
+      speedLimiterMph: (function () {
+        var el = $('speedLimiterMph');
+        if (!el || el.value === '' || el.value == null) return undefined;
+        var n = Number(el.value);
+        if (!(n > 0) || !isFinite(n)) return undefined;
+        return Math.min(300, Math.max(1, Math.round(n)));
+      })()
     };
     var w = readWeightDistributionFromForm(base);
     car.frontWeightPercent = w.frontWeightPercent;
@@ -731,7 +743,248 @@
       pt.torque.toFixed(0) + ' lb-ft';
   }
 
+
+  /** Toggle primary chart: ICE editable dyno vs EV power-delivery vs speed. */
+  function syncEvChartMode(car) {
+    car = car || state.car;
+    var ev = isEvMode(car);
+    var label = $('powerChartLabel');
+    var title = $('instrumentsTitle');
+    if (title) {
+      title.textContent = ev
+        ? 'Instruments · EV Power Delivery · Speed Path'
+        : 'Instruments · Dyno · Speed Path';
+    }
+    if (label) {
+      label.textContent = ev
+        ? 'EV power delivery vs speed · motor kW + Power% vs mph (curve × gearing) · hover scrub · not an ICE dyno'
+        : 'HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub';
+    }
+    state.evChartMode = !!ev;
+    if (ev) {
+      drawEvPowerDeliveryChart(car, state.evCursorMph);
+    } else if (state.powerCurve && state.powerCurve.length) {
+      drawPowerCurve(state.powerCurve, state.cursorRpm);
+    }
+  }
+
+  /** Theoretical EV power vs road speed from motor curve + single-speed ratio. */
+  function buildEvPowerDeliverySeries(car) {
+    car = car || state.car || {};
+    var curve = car.torqueCurve || {};
+    var gears = car.gearRatios || [1];
+    var gear = Number(gears[0]) || 1;
+    var fd = Number(car.finalDriveRatio) || 9;
+    var tireIn = Number(car.tireRadiusInches) || 13.2;
+    var tireM = tireIn * 0.0254;
+    var redline = Number(car.redline) || 14000;
+    var peakHp = Math.max(
+      1,
+      Number(car.peakHp) || (Phys.peakHpFromCurve ? Phys.peakHpFromCurve(curve) : 1) || 1
+    );
+    var lim = Number(car.speedLimiterMph) || Number(car.topSpeedMph) || 0;
+    var maxMph = lim > 0 ? lim : Math.min(220, Math.max(120, peakHp / 4));
+    var pts = [];
+    for (var mph = 0; mph <= maxMph + 0.01; mph += 2) {
+      var v = mph * 0.44704;
+      var wheelRpm = tireM > 0 ? (v / (2 * Math.PI * tireM)) * 60 : 0;
+      var motorRpm = Math.min(redline, wheelRpm * gear * fd);
+      var tq = 0;
+      if (Phys.getTorqueAtRpm) tq = Phys.getTorqueAtRpm(curve, motorRpm) || 0;
+      else if (Phys.torqueAtRpm) tq = Phys.torqueAtRpm(curve, motorRpm) || 0;
+      else {
+        var key = Math.round(motorRpm / 100) * 100;
+        tq = Number(curve[key]) || Number(curve[String(key)]) || 0;
+      }
+      if (!(tq > 0)) tq = 0;
+      var hp = (tq * motorRpm) / 5252;
+      var kw = hp * 0.7457;
+      var pct = Math.max(0, Math.min(100, (hp / peakHp) * 100));
+      pts.push({ mph: mph, rpm: motorRpm, torque: tq, horsepower: hp, kw: kw, powerPct: pct });
+    }
+    return { points: pts, peakHp: peakHp, maxMph: maxMph, limiterMph: lim > 0 ? lim : null };
+  }
+
+  function updateEvDeliveryReadout(series, cursorMph) {
+    var peakEl = $('dynoPeak');
+    var curEl = $('dynoCursor');
+    if (!peakEl || !curEl) return;
+    if (!series || !series.points || !series.points.length) {
+      peakEl.textContent = '—';
+      curEl.textContent = '—';
+      return;
+    }
+    var peak = series.points[0];
+    for (var i = 1; i < series.points.length; i++) {
+      if (series.points[i].kw > peak.kw) peak = series.points[i];
+    }
+    peakEl.textContent =
+      Math.round(peak.kw) + ' kW (' + Math.round(peak.horsepower) + ' hp) @ ' +
+      Math.round(peak.mph) + ' mph · peak ' + Math.round(series.peakHp) + ' hp';
+    var mph = cursorMph != null ? cursorMph : peak.mph;
+    var pt = series.points[0];
+    for (var j = 0; j < series.points.length; j++) {
+      if (Math.abs(series.points[j].mph - mph) < Math.abs(pt.mph - mph)) pt = series.points[j];
+    }
+    curEl.textContent =
+      Math.round(pt.mph) + ' mph · ' +
+      pt.kw.toFixed(0) + ' kW · ' +
+      pt.powerPct.toFixed(0) + '% · ' +
+      Math.round(pt.rpm) + ' motor rpm';
+  }
+
+  function drawEvPowerDeliveryChart(car, cursorMph) {
+    var canvas = $('powerChart');
+    if (!canvas) return;
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth || 600;
+    var h = canvas.clientHeight || 200;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.fillRect(0, 0, w, h);
+
+    var series = buildEvPowerDeliverySeries(car);
+    state.evDeliverySeries = series;
+    state.chartGeom = null;
+    state.evChartMode = true;
+
+    if (!series.points.length) {
+      ctx.fillStyle = '#667084';
+      ctx.font = '12px Segoe UI, sans-serif';
+      ctx.fillText('EV power delivery vs speed — select an EV or Custom → EV', 16, h / 2);
+      updateEvDeliveryReadout(null, null);
+      return;
+    }
+
+    var pad = { l: 48, r: 48, t: 22, b: 32 };
+    var maxMph = series.maxMph || series.points[series.points.length - 1].mph;
+    var maxKw = 0;
+    series.points.forEach(function (p) { if (p.kw > maxKw) maxKw = p.kw; });
+    maxKw = Math.max(40, maxKw * 1.12);
+
+    function xMph(mph) {
+      return pad.l + (mph / Math.max(1, maxMph)) * (w - pad.l - pad.r);
+    }
+    function yKw(v) {
+      return h - pad.b - (v / maxKw) * (h - pad.t - pad.b);
+    }
+    function yPct(v) {
+      return h - pad.b - (v / 100) * (h - pad.t - pad.b);
+    }
+
+    state.evChartGeom = { pad: pad, w: w, h: h, maxMph: maxMph, maxKw: maxKw, x: xMph };
+
+    ctx.font = '10px ui-monospace, monospace';
+    ctx.lineWidth = 1;
+    var gi;
+    for (gi = 0; gi <= 4; gi++) {
+      var kv = (maxKw * gi) / 4;
+      var yy = yKw(kv);
+      ctx.strokeStyle = 'rgba(215,196,160,0.18)';
+      ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
+      ctx.fillStyle = '#c8ff4a';
+      ctx.textAlign = 'right';
+      ctx.fillText(String(Math.round(kv)), pad.l - 6, yy + 3);
+    }
+    ctx.textAlign = 'left';
+    for (gi = 0; gi <= 100; gi += 25) {
+      var yp = yPct(gi);
+      ctx.fillStyle = '#4cc9f0';
+      ctx.fillText(gi + '%', w - pad.r + 6, yp + 3);
+    }
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#9aa6b8';
+    var mphStep = maxMph > 180 ? 40 : (maxMph > 100 ? 20 : 10);
+    for (var m = 0; m <= maxMph + 0.01; m += mphStep) {
+      var xx = xMph(m);
+      ctx.strokeStyle = 'rgba(215,196,160,0.12)';
+      ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
+      ctx.fillText(String(Math.round(m)), xx, h - 8);
+    }
+
+    ctx.beginPath();
+    series.points.forEach(function (pt, idx) {
+      var px = xMph(pt.mph), py = yPct(pt.powerPct);
+      if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.strokeStyle = 'rgba(76,201,240,0.85)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    series.points.forEach(function (pt, idx) {
+      var px = xMph(pt.mph), py = yKw(pt.kw);
+      if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.strokeStyle = '#c8ff4a';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    if (series.limiterMph) {
+      var lx = xMph(series.limiterMph);
+      ctx.strokeStyle = 'rgba(255,107,107,0.85)';
+      ctx.setLineDash([4, 3]);
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(lx, pad.t); ctx.lineTo(lx, h - pad.b); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#ff6b6b';
+      ctx.textAlign = 'center';
+      ctx.fillText('Limiter ' + Math.round(series.limiterMph), lx, pad.t + 10);
+    }
+
+    var cMph = cursorMph != null ? cursorMph : state.evCursorMph;
+    if (cMph == null) {
+      cMph = series.points.reduce(function (b, p) {
+        return p.kw > b.kw ? p : b;
+      }, series.points[0]).mph;
+    }
+    cMph = Math.max(0, Math.min(maxMph, cMph));
+    state.evCursorMph = cMph;
+    var cx = xMph(cMph);
+    ctx.strokeStyle = 'rgba(232,215,176,0.85)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(cx, pad.t); ctx.lineTo(cx, h - pad.b); ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#c8ff4a';
+    ctx.font = '10px ui-monospace, monospace';
+    ctx.fillText('kW', pad.l, 12);
+    ctx.fillStyle = '#4cc9f0';
+    ctx.fillText('Power %', pad.l + 28, 12);
+    ctx.fillStyle = '#9aa6b8';
+    ctx.textAlign = 'right';
+    ctx.fillText('mph →', w - pad.r, 12);
+
+    updateEvDeliveryReadout(series, cMph);
+  }
+
+  function mphFromPointer(ev) {
+    var canvas = $('powerChart');
+    var g = state.evChartGeom;
+    if (!canvas || !g) return null;
+    var rect = canvas.getBoundingClientRect();
+    var clientX = ev.clientX;
+    if (clientX == null && ev.touches && ev.touches[0]) clientX = ev.touches[0].clientX;
+    if (clientX == null && ev.changedTouches && ev.changedTouches[0]) clientX = ev.changedTouches[0].clientX;
+    var mx = clientX - rect.left;
+    var frac = (mx - g.pad.l) / Math.max(1, g.w - g.pad.l - g.pad.r);
+    frac = Math.max(0, Math.min(1, frac));
+    return frac * g.maxMph;
+  }
+
   function drawPowerCurve(powerCurve, cursorRpm) {
+    // EV: replace ICE dyno (TQ bullets vs RPM) with power delivery vs speed
+    if (isEvMode(state.car)) {
+      drawEvPowerDeliveryChart(state.car, state.evCursorMph);
+      return;
+    }
+    state.evChartMode = false;
     var canvas = $('powerChart');
     if (!canvas) return;
     var dpr = window.devicePixelRatio || 1;
@@ -1113,6 +1366,7 @@
       });
       // Custom EV toggle + garage EV both swap primary instrument cluster
       if (state.car) configurePrimaryGauge(state.car);
+      syncEvChartMode(state.car);
     });
   });
 
@@ -1145,6 +1399,16 @@ $('btnReset').addEventListener('click', function () {
   }
 
   (function wireDynoEditAndScrub() {
+    // EV delivery scrub (mph) — no ICE TQ bullet drag
+    canvas.addEventListener('mousemove', function (ev) {
+      if (!(state.evChartMode || isEvMode(state.car))) return;
+      if (state.drag) return;
+      var mph = mphFromPointer(ev);
+      if (mph == null) return;
+      state.evCursorMph = mph;
+      drawEvPowerDeliveryChart(state.car, mph);
+    });
+
     var canvas = $('powerChart');
     if (!canvas) return;
     canvas.style.cursor = 'crosshair';
@@ -1158,6 +1422,7 @@ $('btnReset').addEventListener('click', function () {
     }
 
     function hitHandle(mx, my) {
+      if (state.evChartMode || isEvMode(state.car)) return null;
       var g = state.chartGeom;
       if (!g || !g.handles) return null;
       // Prefer major (200-RPM) handles — easier primary controls on a dense 100-RPM mesh

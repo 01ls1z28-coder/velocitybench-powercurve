@@ -408,6 +408,24 @@
    * @param {object} car
    * @param {object} [env]
    */
+
+  /**
+   * Published electronic top-speed limiter (mph).
+   * Field: speedLimiterMph (alias topSpeedMph).
+   * Enforced for EVs always when set; for Hybrids when a published limiter was baked;
+   * Custom EV uses the same path when the user sets a limit.
+   */
+  function resolveSpeedLimiterMph(car) {
+    if (!car) return 0;
+    var raw = car.speedLimiterMph != null ? car.speedLimiterMph : car.topSpeedMph;
+    var lim = Number(raw);
+    if (!(lim > 0) || !isFinite(lim)) return 0;
+    var isEv = !!(car.isEv || car.powerSource === 'ev');
+    var isHybrid = !!(car.isHybrid || car.powerSource === 'hybrid');
+    if (isEv || isHybrid) return lim;
+    return 0;
+  }
+
   function runQuarterMile(car, env) {
     env = env || {};
     var result = emptyResult(car, env);
@@ -524,9 +542,13 @@
     var vmaxReason = '';
     var peakMph = 0, peakMphT = 0, peakMphFt = 0;
     var distCapM = VMAX_DIST_CAP_FT * FEET_TO_M;
-    var speedCapMps = VMAX_SPEED_CAP_MPH * MPH_TO_MPS;
+    var speedLimiterMph = resolveSpeedLimiterMph(car);
+    // When an OEM/custom limiter is set, it becomes the operative Vmax (Nevera-class may exceed the 250 safety).
+    var operativeCapMph = speedLimiterMph > 0 ? speedLimiterMph : VMAX_SPEED_CAP_MPH;
+    var speedCapMps = operativeCapMph * MPH_TO_MPS;
+    var limiterMps = speedLimiterMph > 0 ? speedLimiterMph * MPH_TO_MPS : 0;
 
-    // Continue past 1320 ft to mechanical/aero Vmax (or safety cap)
+    // Continue past 1320 ft to mechanical/aero Vmax (or OEM limiter / safety cap)
     while (!vmaxDone && t <= MAX_T) {
       if (shifting) {
         shiftTimer -= DT;
@@ -537,17 +559,39 @@
       var wheelRpm = tireRadius > 0 ? (v / (2 * Math.PI * tireRadius)) * 60.0 : 0;
 
       if (!shifting) {
-        if (inLaunch) {
-          rpm = launchRpm;
-          if (car.hasAftermarketConverter) {
-            if (t < 0.10 && v < 1.0) rpm = car.flashRpm || launchRpm;
-            if (rpm < (car.stallRpm || 2200)) rpm = car.stallRpm || 2200;
+        if (car.hasAftermarketConverter) {
+          /**
+           * Aftermarket stall converter (realistic-lite):
+           * - Stall RPM = engine speed against a stalled/near-stalled turbine (brake launch).
+           * - Flash RPM = brief free-rev peak as the converter unloads off the line.
+           * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
+           * Stock path (ATC off) keeps classic launchRpm hold.
+           */
+          var stall = Number(car.stallRpm) || 2800;
+          var flash = Number(car.flashRpm) || Math.max(stall + 400, 3500);
+          if (flash < stall) flash = stall;
+          var gNow = gears[Math.min(gear, gears.length) - 1];
+          var mechRpm = wheelRpm * gNow * finalDrive;
+          var mphNow = v * MPS_TO_MPH;
+          // Lockup progress: 0 at standstill → 1 by ~50 mph
+          var lockup = clamp(mphNow / 50.0, 0, 1);
+          // Flash pulse: peaks in first ~0.20 s while still very slow
+          var flashPulse = 0;
+          if (t < 0.35 && mphNow < 18) {
+            // Longer flash window so Flash RPM is audible in 60ft / 0-60
+            flashPulse = Math.sin((Math.min(t, 0.35) / 0.35) * Math.PI);
           }
+          var target = stall + (flash - stall) * flashPulse;
+          // Blend toward mechanical RPM as converter couples / locks
+          rpm = target * (1 - lockup) + mechRpm * lockup;
+          // Never fall below stall while still heavily slipped (< ~25 mph)
+          if (mphNow < 25 && rpm < stall) rpm = stall;
+          // Soft ceiling: don't wildly exceed flash during flash window
+          if (flashPulse > 0.05 && rpm > flash) rpm = flash;
+        } else if (inLaunch) {
+          rpm = launchRpm;
         } else {
           rpm = wheelRpm * gears[gear - 1] * finalDrive;
-          if (car.hasAftermarketConverter && v < 10.0 * MPH_TO_MPS) {
-            if (rpm < (car.stallRpm || 2200)) rpm = car.stallRpm || 2200;
-          }
         }
       }
 
@@ -572,11 +616,16 @@
       var mph = v * MPS_TO_MPH;
 
       if (!shifting && car.hasAftermarketConverter) {
+        // Torque multiplication from converter slip: ~2.1× at stall → 1.0 at lockup
         var mech = wheelRpm * gRatio * finalDrive;
         var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
-        var tMult = 1.10 + Math.min(1.0, slipR * 2.0);
-        if (mph > 10.0) {
-          var fade = Math.min(1.0, Math.max(0, (mph - 40.0) / 40.0));
+        // Higher stall → more slip capacity at leave → more multiply (capped)
+        var stallN = Number(car.stallRpm) || 2800;
+        var stallBoost = clamp((stallN - 2200) / 2800, 0, 1) * 0.25;
+        var tMult = 1.0 + Math.min(1.35, slipR * (2.2 + stallBoost));
+        // Extra fade with road speed (mechanical lockup / coupling)
+        if (mph > 15.0) {
+          var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / 40.0));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
         whTQ *= tMult;
@@ -665,6 +714,12 @@
 
       v += a * DT;
       if (v < 0) v = 0;
+      // EV / Hybrid electronic speed limiter — hard clamp (not aero equilibrium)
+      if (limiterMps > 0 && v > limiterMps) {
+        v = limiterMps;
+        a = 0;
+        prevA = 0;
+      }
       dist += v * DT;
       t += DT;
 
@@ -730,7 +785,10 @@
 
       // Vmax / safety-cap detection (only after quarter-mile markers recorded)
       if (hit1320 && !env.quickMetrics) {
-        if (v >= speedCapMps) {
+        if (speedLimiterMph > 0 && v >= limiterMps - 1e-6) {
+          vmaxDone = true;
+          vmaxReason = 'ev_speed_limiter_' + speedLimiterMph + 'mph';
+        } else if (v >= speedCapMps) {
           vmaxDone = true;
           vmaxReason = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';
         } else if (dist >= distCapM) {
@@ -795,6 +853,7 @@
 
   var API = {
     runQuarterMile: runQuarterMile,
+    resolveSpeedLimiterMph: resolveSpeedLimiterMph,
     getTorqueAtRpm: getTorqueAtRpm,
     synthesizeTorqueCurve: synthesizeTorqueCurve,
     peakHpFromCurve: peakHpFromCurve,

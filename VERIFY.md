@@ -1,3 +1,54 @@
+# EV tip — speed limiters + EV chart + Cybertruck + ATC stall/flash (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-ev-speed-limits` · Tip off live main `baf542f`.
+
+## Shipped
+1. **`speedLimiterMph`** baked for all **39 garage EVs** (published electronic limiters). Hybrids only when published (SF90 / P1 / Regera). Physics `resolveSpeedLimiterMph` enforces EV (and Hybrid when set / Custom EV when user sets a limit). Vmax reason `ev_speed_limiter_<N>mph`.
+2. **EV chart swap** — garage EV or Custom EV replaces ICE dyno (TQ/HP vs RPM bullets) with **power delivery vs speed** (motor kW + Power% vs mph). Hybrid keeps ICE dyno; NA/Turbo/SC restore dyno editor.
+3. **Cybertruck Tri-Motor (Beast)** retune — launch + curve taper + aero/weight toward C&D published slips (see below). Limiter **130 mph**.
+4. **Fleet EV accuracy pass** — cheap `forceScale` nudges toward import 0–60 targets. Hit-rate in snapshot.
+5. **Aftermarket Converter stall/flash — FIXED (kept)** — was a no-op (stall/flash ignored; only ON vs OFF torque mult). Now realistic-lite: stall = brake-launch engine RPM, flash = brief unload peak, slip→lockup by ~50 mph with torque multiply. Stall/flash inputs change 60′ / 0–60 / early ET when ATC is ON; OFF = stock launchRpm path.
+
+## Cybertruck (Beast / Tri-Motor) — sources & sim
+| Metric | Published | Sim (tip) |
+|--------|-----------|-----------|
+| 0–60 | **2.6 s** (C&D / Tesla claim; MT 2.5) | **~2.61 s** |
+| ¼-mile | **11.0 s @ 119 mph** (C&D) | **~10.86 @ 118.8** |
+| Top speed | **130–131 mph** governed | **130** `ev_speed_limiter_130mph` |
+
+Sources: [Car and Driver Cybertruck Beast test](https://www.caranddriver.com/reviews/a60115630/2024-tesla-cybertruck-beast-test/) · MotorTrend Beast test · Tesla claim 2.6 / 130. Bake: weight 6900 lb (C&D ~6901), Cd/area, low-RPM torque boost + high-RPM taper, forceScale 1.47, launchRpm 500.
+
+## EV limiter VERIFY samples
+| Vehicle | Limiter | Sim Vmax | Verdict |
+|---------|---------|----------|---------|
+| 2022 Model S Plaid | 200 | ≈200 · `ev_speed_limiter_200mph` | PASS |
+| 2023 Kona Electric | 104 | ≈104 · `ev_speed_limiter_104mph` | PASS |
+| Cybertruck Tri-Motor | 130 | ≈130 | PASS |
+
+## EV fleet hit-rate (import targets, tip weather)
+See `scripts/ev-calib-snapshot.json`. Approx: **0–60 ±0.35 → 39/39**; ET ±0.35 → ~34/38; trap ±5 → ~27/38. Worst 0–60 residual ~0.35 s (Polestar 2 Perf). ICE curated VERIFY cars not retuned.
+
+## ATC stall/flash VERIFY (Challenger Scat Pack, Drag Radial)
+| Setup | 0–60 | 60′ | ¼ ET |
+|-------|------|-----|------|
+| ATC OFF | ~3.70 | ~1.82 | ~12.09 |
+| ON stall 2800 / flash 3500 | ~3.58 | ~1.80 | ~12.01 |
+| ON stall 4500 / flash 5500 | ~3.63 | ~1.81 | ~12.04 |
+
+ON vs OFF and stall/flash deltas are measurable — feature kept (not removed).
+
+**Skipped:** deploy · hub · Merovingian.
+
+VERIFY
+1. `node scripts/spotcheck.js` — curated ICE PASS; EV limiters PASS; EV chart gate PASS; ATC stall/flash PASS; Cybertruck slip note
+2. Load Plaid — Vmax≈200; EV kW/% vs mph chart (not ICE dyno)
+3. Load Cybertruck — ~2.6 / ~11@119 / Vmax 130; ATC ON changes launch with stall/flash
+4. Static / disclaimer / no secrets; no deploy
+
+---
+
+---
+
 # Motorcycle + EV instruments (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-bike-ev-gauges` · Tip off live main (SEO + hub chrome + Phase 6 EV/Hybrid).
