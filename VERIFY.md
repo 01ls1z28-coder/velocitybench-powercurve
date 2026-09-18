@@ -106,17 +106,22 @@ Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only 
 Classifier lives in `scripts/build-garage.js` → `classifyInduction()` and is baked into `js/garage-data.js`.
 
 ### Editable dyno curve
-- Dense **50-RPM** TQ mesh; control bullets on that grid (majors every 250 RPM).
+- Dense **50-RPM** TQ mesh; **major** control bullets every **250 RPM** (preferred hit target); minor 50-RPM bullets still editable.
 - Drag a bullet **up/down** to reshape torque; **HP ≈ TQ×RPM/5252** is derived (drag TQ, HP follows).
+- **Major drag:** moves that 250-RPM handle and **re-lerps** all 50-RPM minors between the adjacent majors so the polyline fills like a real dyno curve (no spike / flat valley of untouched points).
+- **Minor drag:** local cosine **falloff sculpt** (±2 samples / 100 RPM) from a drag-start snapshot so neighbors rise/fall with the point without washing the rest of the curve.
 - Subsequent **RUN** uses the edited dense `torqueCurve`. **Reset to preset** restores the baked garage curve.
 - Pointer Events (+ touch fallback); chart uses `touch-action: none` for mobile drag.
 
-
 ### Editable dyno — 50-RPM dense mesh (V-spike fix)
 - Baked `torqueCurve` samples are densified to **50 RPM** (off-grid peak pins retained).
-- Editable series / polyline / drag handles share that **50-RPM** mesh (major bullets every 250 RPM for visibility).
-- Mid-drag: `state.powerCurve` stays authoritative; only the hit sample’s TQ changes (light ±1 neighbor blend); `car.torqueCurve` is committed as a **dense numeric-key** map — never rebuilt from a sparse post-RUN key list.
+- Editable series / polyline / drag handles share that **50-RPM** mesh (major bullets every 250 RPM for visibility / primary control).
+- Mid-drag: `state.powerCurve` stays authoritative; sculpt/lerp mutates neighbors with a **floor of 5 lb-ft** (no neighbor collapse to zero); `car.torqueCurve` is committed as a **dense numeric-key** map — never rebuilt from a sparse post-RUN key list.
 - Root cause addressed: coarser native keys (e.g. 500 RPM) after RUN used to replace the editable series, so handles and samples disagreed and mid-edit rebuilds could floor neighbors (~5 lb-ft V-spikes).
+
+### UX check — drag smoothness (before → after)
+- **Before (Phase 5 hotfix):** dragging one bullet only nudged ±1 neighbor lightly; raising a major left a knife-edge with a valley of stale 50-RPM minors between 250-RPM controls.
+- **After (this tip):** drag a **major** ~+50 lb-ft — minors between the previous/next major re-lerp into a smooth ramp; drag a **minor** — local neighbors follow with falloff; dense commit still has a key every 50 RPM and no V-spikes. Spotcheck baked-garage ETs unchanged (UI edit path only).
 
 ### Weight distribution (traction-real)
 UI **Front/Rear %** (sum 100) and **Left/Right %** (sum 100). Defaults by `engineLayout` / `driveType` (Front RWD rear≈55 keeps fleet calib; Mid 45/55; Rear ~38/62; FWD ~60/40). Baked into `garage-data.js`.
@@ -159,4 +164,5 @@ Open `index.html` in a browser (no build step). Static / baked Pages app — no 
 - Hardest residuals: some EVs / hypercars (Cybertruck, Regera, Jesko, Zenvo) — geared + grip model cannot fully match optimistic Excel 0-60 without breaking trap.
 - Phase 4: fleet import, always-realtime playback, 60-130/100-150 surfacing, always-open advanced, slip under graphs, LFA brass gauges.
 - Retip (keep calibrating): TireType ladder + launchRpm + joint loss×forceScale + hit-count bonus; motorcycle aero heuristic; all-applicable **63.4%** (was 45.3% at `a0afdac`).
-- Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable 250-RPM dyno bullets (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).
+- Phase 5: Factory TX preset Custom-only; induction `boostModel` baked; editable **50-RPM** dyno mesh with **250-RPM major** handles (HP≈TQ×RPM/5252). Physics spotchecks still reproduce (no calib change).
+- Tip (sculpt): major drag re-lerps minors between adjacent majors; minor drag uses snapshot falloff sculpt; dense 50-RPM commit; no V-spikes.

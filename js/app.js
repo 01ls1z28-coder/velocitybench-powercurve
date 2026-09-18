@@ -107,7 +107,7 @@
 
   var RPM_GRID = 50;  // dense mesh — matches baked torque samples
 
-  /** Build editable HP/TQ series on a 250-RPM grid from a torque curve map. */
+  /** Build editable HP/TQ series on a 50-RPM grid from a torque curve map. */
   function powerCurveFromTorqueCurve(curve, redline) {
     if (!curve) return [];
     var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
@@ -115,7 +115,7 @@
     if (!keys.length) return [];
     var minR = keys[0];
     var maxR = Math.max(keys[keys.length - 1], redline || keys[keys.length - 1]);
-    // Snap grid to 250 starting at nearest <= minR
+    // Snap grid to RPM_GRID (50) starting at nearest <= minR
     var start = Math.floor(minR / RPM_GRID) * RPM_GRID;
     if (start < minR && start + RPM_GRID <= maxR) start += RPM_GRID;
     if (start < 500) start = Math.max(500, start);
@@ -152,7 +152,7 @@
     return out;
   }
 
-  /** Dense numeric-key torque map from the authoritative editable series (all 250-RPM samples). */
+  /** Dense numeric-key torque map from the authoritative editable series (all 50-RPM samples). */
   function torqueCurveFromPowerCurve(powerCurve) {
     var map = {};
     (powerCurve || []).forEach(function (p) {
@@ -194,20 +194,72 @@
     state.curveEdited = true;
   }
 
-  /** Light neighbor sculpt so raising one bullet doesn't leave a knife-edge spike. */
-  function blendNeighbors(idx, strength) {
-    strength = strength == null ? 0.22 : strength;
+  /**
+   * Snapshot-based sculpt brush: primary bullet moves by delta, neighbors follow
+   * with distance falloff so the dense 50-RPM polyline stays dyno-realistic
+   * (no knife-edge spike / flat valley of untouched minors).
+   * Majors (every 250 RPM) use a wider brush; minors a lighter local blend.
+   * Always floors at 5 lb-ft — never collapses neighbors toward zero.
+   */
+  function sculptCurveFromDrag(idx, newTq, snapshot, isMajor) {
     var pc = state.powerCurve;
-    if (!pc || idx < 0 || idx >= pc.length) return;
-    var tq = pc[idx].torque;
-    if (idx > 0) {
-      pc[idx - 1].torque = pc[idx - 1].torque * (1 - strength) + tq * strength;
-      pc[idx - 1].horsepower = (pc[idx - 1].torque * pc[idx - 1].rpm) / 5252;
+    if (!pc || !snapshot || idx < 0 || idx >= pc.length) return;
+    var base = snapshot[idx];
+    if (!isFinite(base)) base = pc[idx].torque;
+    var delta = newTq - base;
+    // Majors: ±4 samples (200 RPM) soft fill toward next major; minors: ±2 (100 RPM)
+    var radius = isMajor ? 4 : 2;
+    for (var i = 0; i < pc.length; i++) {
+      var d = Math.abs(i - idx);
+      var tq;
+      if (d === 0) {
+        tq = newTq;
+      } else if (d > radius) {
+        // Restore from snapshot outside brush so mid-drag scrubbing is stable
+        tq = snapshot[i];
+        if (!isFinite(tq)) continue;
+      } else {
+        // Cosine falloff: 1 at d=0 edge, 0 at d=radius+epsilon
+        var w = 0.5 * (1 + Math.cos(Math.PI * d / (radius + 1)));
+        var snap = snapshot[i];
+        if (!isFinite(snap)) snap = pc[i].torque;
+        tq = snap + delta * w;
+      }
+      if (!isFinite(tq)) continue;
+      tq = Math.max(5, tq);
+      pc[i].torque = tq;
+      pc[i].horsepower = (tq * pc[i].rpm) / 5252;
     }
-    if (idx < pc.length - 1) {
-      pc[idx + 1].torque = pc[idx + 1].torque * (1 - strength) + tq * strength;
-      pc[idx + 1].horsepower = (pc[idx + 1].torque * pc[idx + 1].rpm) / 5252;
+  }
+
+  /** When a major is dragged, re-lerp minors between adjacent majors so the
+   *  50-RPM mesh fills the curve instead of leaving a valley of stale points. */
+  function interpolateMinorsBetweenMajors(centerIdx) {
+    var pc = state.powerCurve;
+    if (!pc || centerIdx < 0 || centerIdx >= pc.length) return;
+    function isMajorAt(i) {
+      return Math.round(pc[i].rpm) % 250 === 0;
     }
+    var left = centerIdx, right = centerIdx;
+    while (left > 0 && !isMajorAt(left - 1)) left--;
+    if (left > 0 && isMajorAt(left - 1)) left = left - 1;
+    else left = centerIdx; // no left major — only fill toward right
+    while (right < pc.length - 1 && !isMajorAt(right + 1)) right++;
+    if (right < pc.length - 1 && isMajorAt(right + 1)) right = right + 1;
+    else right = centerIdx;
+    // Fill left segment [leftMajor .. center] and right [center .. rightMajor]
+    function lerpSpan(a, b) {
+      if (b <= a + 1) return;
+      var tqA = pc[a].torque, tqB = pc[b].torque;
+      for (var i = a + 1; i < b; i++) {
+        var t = (i - a) / (b - a);
+        var tq = Math.max(5, tqA + (tqB - tqA) * t);
+        pc[i].torque = tq;
+        pc[i].horsepower = (tq * pc[i].rpm) / 5252;
+      }
+    }
+    if (left < centerIdx) lerpSpan(left, centerIdx);
+    if (centerIdx < right) lerpSpan(centerIdx, right);
   }
 
   function renderGears(ratios) {
@@ -900,13 +952,19 @@
     function hitHandle(mx, my) {
       var g = state.chartGeom;
       if (!g || !g.handles) return null;
-      var best = null, bestD = 14; // px — dense 50-RPM mesh, nearest wins
+      // Prefer major (250-RPM) handles — easier primary controls on a dense 50-RPM mesh
+      var bestMajor = null, bestMajorD = 16;
+      var bestMinor = null, bestMinorD = 10;
       g.handles.forEach(function (h) {
         var d = Math.hypot(mx - h.x, my - h.y);
-        var rad = h.major ? 14 : 10;
-        if (d <= rad && d <= bestD) { bestD = d; best = h; }
+        if (h.major) {
+          if (d <= 16 && d <= bestMajorD) { bestMajorD = d; bestMajor = h; }
+        } else {
+          if (d <= 10 && d <= bestMinorD) { bestMinorD = d; bestMinor = h; }
+        }
       });
-      return best;
+      if (bestMajor) return bestMajor;
+      return bestMinor;
     }
 
     function localXY(ev) {
@@ -929,7 +987,7 @@
       var xy = localXY(ev);
       var tq = torqueFromY(xy.y);
       if (tq == null) return;
-      // Authoritative edit: only the hit index (one 50-RPM sample). Never rebuild from car mid-drag.
+      // Authoritative edit on state.powerCurve — never rebuild from car mid-drag.
       var idx = state.drag.index;
       if (idx == null || idx < 0 || idx >= state.powerCurve.length) {
         for (var i = 0; i < state.powerCurve.length; i++) {
@@ -937,12 +995,25 @@
         }
       }
       if (idx == null || idx < 0) return;
-      state.powerCurve[idx].torque = tq;
-      state.powerCurve[idx].horsepower = (tq * state.powerCurve[idx].rpm) / 5252;
-      // Light sculpt of immediate 50-RPM neighbors so a raise doesn't knife-edge
-      blendNeighbors(idx, 0.18);
+      var snap = state.drag.snapshot;
+      if (!snap || snap.length !== state.powerCurve.length) {
+        snap = state.powerCurve.map(function (p) { return p.torque; });
+        state.drag.snapshot = snap;
+      }
+      var isMajor = !!state.drag.major;
+      if (isMajor) {
+        // Primary major control: move this 250-RPM handle, then re-lerp all
+        // 50-RPM minors between adjacent majors so the mesh fills (no valley).
+        var pc = state.powerCurve;
+        pc[idx].torque = Math.max(5, tq);
+        pc[idx].horsepower = (pc[idx].torque * pc[idx].rpm) / 5252;
+        interpolateMinorsBetweenMajors(idx);
+      } else {
+        // Minor: local distance-falloff sculpt from drag-start snapshot
+        sculptCurveFromDrag(idx, tq, snap, false);
+      }
       state.cursorRpm = state.powerCurve[idx].rpm;
-      // Commit dense map to car, but do not syncPowerCurveFromCar (keeps state.powerCurve authoritative)
+      // Commit dense 50-RPM map to car; keep state.powerCurve authoritative
       commitEditedCurveToCar();
       drawPowerCurve(state.powerCurve, state.cursorRpm);
       if (ev.cancelable) ev.preventDefault();
@@ -956,6 +1027,8 @@
         state.drag = {
           rpm: h.rpm,
           index: h.index,
+          major: !!h.major,
+          snapshot: state.powerCurve.map(function (p) { return p.torque; }),
           pointerId: ev.pointerId,
           axisMaxTq: state.chartGeom && state.chartGeom.maxTq,
           axisMaxHp: state.chartGeom && state.chartGeom.maxHp
