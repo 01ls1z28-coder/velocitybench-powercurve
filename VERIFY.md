@@ -1,3 +1,70 @@
+# Excel accuracy tip — forceScale=1 + loss/launch/tires (2026-09-18 CT)
+
+Branch: `review/vb-powercurve-excel-loss-launch-tires` · Tip off live main `1f53b39b4e25bb7b984221e9ee13f489f5aba83b` (garage bind hotfix — **intact**).
+
+## Goal
+Realistic physics matching Excel using ONLY **drivetrainLossPercent / launchRpm+launchMode / tireType**. `forceScale` retired (always **1.0**). Torque-curve scale = last resort when former fs>1 cannot fold into loss.
+
+## Shipped
+1. **Peak HP wipe FIX** (`js/app.js` `readCarFromForm`) — garage / dyno `torqueCurve` is never resynthesized from Peak HP label on RUN. Custom Builder may still resynth only when curve not dyno-edited. (Was wiping ZR1X 1247→1250 synth → fantasy 8.39@175.)
+2. **forceScale retired** — physics ignores it; garage all `forceScale: 1`. Former fs folded into loss when net≤1, else curve scale (last resort).
+3. **Launch modes meaningful** — soft/auto/aggressive window extended to ~60 ft / ~40 mph; drive mult + µ deltas. ZR1X/CT show clear 0-60 / 60-ft spreads.
+4. **ZR1X** — absorb fs1.3→curve; restore Cd **0.36** (undo fake 0.42); tire drag-radial; loss 0 / launch 2400.
+5. **Cybertruck** — absorb fs1.47→curve; Excel weight **6800**; street tire; loss 0 / launch 500.
+6. **Fleet** — `scripts/recalib-loss-launch-tires.js` · canvas-before-listener + `VB_POWERCURVE_GARAGE` bind **kept**.
+
+## Excel vs sim (UI-path = load + RUN / readCarFromForm equivalent)
+
+| Car | Excel | Sim (fs=1) | Verdict |
+|-----|-------|------------|---------|
+| **2026 Corvette ZR1X** | 1.9 / **8.675@159** / 60-130 **3.87** | **1.897 / 8.894@158.8 / 4.077** · Vmax 233 | PASS (all TOL) |
+| **2024 Cybertruck Tri-Motor** | 2.6 / **11.0@119** | **2.729 / 10.963@119.1** · Vmax 130 | PASS (all TOL) |
+
+### Launch-mode delta proof (auto baseline)
+| Mode | ZR1X 0-60 / 60ft | CT 0-60 / 60ft |
+|------|-----------------|---------------|
+| soft | 1.625 / 1.343 | 2.747 / 1.625 |
+| auto | 1.897 / 1.465 | 2.729 / 1.664 |
+| aggressive | 2.267 / 1.650 | 2.977 / 1.832 |
+
+### forceScale
+**333/333 = 1.0** (confirmed).
+
+### Peak HP fix
+ZR1X curve peak ~1247 vs label 1250 — garage path **does not wipe** on RUN. CT curve (post-absorb) vs label 845 — kept (physics uses curve).
+
+### 5 random UI-path spot-checks
+| Car | Excel | Sim | Notes |
+|-----|-------|-----|-------|
+| 2002 Camaro SS | 5.2 / 13.7@104 | 5.228 / 13.669@103.4 | PASS |
+| 2024 Model 3 Perf | 2.9 / 11@124.5 | 2.941 / 10.970@124.5 | PASS |
+| 2015 McLaren P1 | 2.6 / 9.8@148 | 2.327 / 9.704@148.2 | ET/trap PASS; 0-60 soft |
+| 2021 ZX-10R | 3.1 / 10.2@147 | 2.724 / 9.986@145.8 | ET/trap PASS; 0-60 soft |
+| 1999 R34 GT-R | 4.8 / 13.3@107 | 4.661 / 13.117@105.4 | PASS |
+
+## Fleet hit-rates (Excel TOL)
+| Metric | Rate |
+|--------|------|
+| ¼ ET | 313/331 **94.6%** |
+| ¼ trap | 288/331 **87.0%** |
+| 0-60 | 283/332 **85.2%** |
+| 60-130 | 72/76 **94.7%** |
+| all4 | 236/333 **70.9%** |
+
+changed 162 · fast 170 · curveAbsorb 139 · elapsed ~811s. Meta: `scripts/garage-calib-meta.json`.
+
+**Skipped:** deploy · Merovingian holds deploy.
+
+VERIFY
+1. `node scripts/recalib-loss-launch-tires.js` already applied; spotcheck ZR1X/CT above
+2. Load ZR1X → RUN: ~1.90 / ~8.89@159 / 60-130~4.08 / Vmax 233 — Peak HP must not change curve
+3. Load Cybertruck → RUN: ~2.73 / ~10.96@119 / Vmax 130
+4. Toggle launch soft/auto/aggressive — 0-60 / 60ft must move
+5. Confirm every garage car `forceScale === 1`
+6. Static / no secrets; **no deploy**
+
+---
+
 # Excel fleet recalib + ZR1X/Cybertruck lock (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-cyber-zr1x-retune` · Tip off live main garage hotfix `5759a822510baeff6b5fe6814eb66ec8bf25679c` (canvas before addEventListener — **intact**).

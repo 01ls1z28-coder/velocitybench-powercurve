@@ -104,8 +104,11 @@
   var DEFAULT_LAUNCH_RPM = 3000;
   var DEFAULT_SHIFT_RPM = 6500;
   var DEFAULT_SHIFT_TIME = 0.10;
-  var LAUNCH_V_THRESH = 1.0;
-  var LAUNCH_HOLD = 1.0;
+  // Launch-mode window: early rollout (~60 ft / ~40 mph), not just first ~2 mph.
+  // Soft/auto/aggressive must produce meaningful, realistic deltas on CT/ZR1X-class cars.
+  var LAUNCH_V_THRESH = 18.0;   // m/s ≈ 40 mph
+  var LAUNCH_HOLD = 2.2;        // seconds of launch-mode influence
+  var LAUNCH_DIST_M = 18.3;     // ≈ 60 ft
   var MAX_T = 180.0;            // allow long accel runs to Vmax
   var DT = 0.001;
   /** Safety caps for run-to-Vmax (documented in VERIFY.md). */
@@ -489,12 +492,17 @@
 
     var launchMode = env.launchMode || 'auto';
     var slipTarget = 0.10;
+    var launchDriveMult = 1.0; // soft leaves cleaner; aggressive leans on tires
     if (launchMode === 'soft') {
-      launchRpm = Math.max(1500, launchRpm - 500);
-      slipTarget = 0.05;
+      // Clean leave: lower brake-launch RPM, more grip, slight torque ease
+      launchRpm = Math.max(car.isEv ? 200 : 1200, launchRpm - 700);
+      slipTarget = 0.04;
+      launchDriveMult = car.isEv ? 0.86 : 0.92;
     } else if (launchMode === 'aggressive') {
-      launchRpm += 500;
-      slipTarget = 0.15;
+      // Hot leave: higher RPM, more slip allowance, brief overdrive
+      launchRpm = Math.min(redline, launchRpm + (car.isEv ? 1200 : 800));
+      slipTarget = 0.18;
+      launchDriveMult = car.isEv ? 1.08 : 1.04;
     } else if (launchMode === 'custom') {
       if (env.customLaunchRpm > 0) launchRpm = env.customLaunchRpm;
       if (env.customSlipTarget > 0) slipTarget = env.customSlipTarget;
@@ -555,7 +563,7 @@
         if (shiftTimer <= 0) shifting = false;
       }
 
-      var inLaunch = v < LAUNCH_V_THRESH && t < LAUNCH_HOLD;
+      var inLaunch = (t < LAUNCH_HOLD && v < LAUNCH_V_THRESH) || (dist < LAUNCH_DIST_M && t < LAUNCH_HOLD + 0.4);
       var wheelRpm = tireRadius > 0 ? (v / (2 * Math.PI * tireRadius)) * 60.0 : 0;
 
       if (!shifting) {
@@ -634,6 +642,7 @@
       var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
       if (mph < 30.0) driveF *= FORCE_LT30;
       if (mph > 60.0) driveF *= FORCE_GT60;
+      if (inLaunch && launchDriveMult !== 1.0) driveF *= launchDriveMult;
 
       var airV = relativeAirspeedMps(v, windMph, windDir, gustMph, t);
       var dragF = 0.5 * rho * cd * frontalArea * airV * airV;
@@ -649,8 +658,8 @@
 
       var mu = muBase;
       if (inLaunch) {
-        if (launchMode === 'soft') mu = muBase * 1.15;
-        else if (launchMode === 'aggressive') mu = muBase * 0.90;
+        if (launchMode === 'soft') mu = muBase * 1.20;
+        else if (launchMode === 'aggressive') mu = muBase * 0.78;
         else if (launchMode === 'custom') {
           mu = muBase * clamp(1.0 + (0.10 - slipTarget) * 1.5, 0.7, 1.3);
         }
@@ -702,9 +711,8 @@
         applied = tracLim;
       }
 
-      var forceScale = car.forceScale != null ? Number(car.forceScale) : 1.0;
-      if (!(forceScale > 0)) forceScale = 1.0;
-      applied *= CalibrationFactor * forceScale;
+      // forceScale is retired as a calibration knob — always 1.0 (garage must bake fs=1).
+      applied *= CalibrationFactor;
 
       var net = applied - dragF - rollF;
       // Allow negative net after launch so aero can balance at Vmax

@@ -619,7 +619,7 @@
       hasAftermarketConverter: $('converter').value === '1',
       stallRpm: clampNum($('stallRpm').value, 1200, 7000, 2800),
       flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
-      forceScale: base.forceScale != null ? Number(base.forceScale) : 1,
+      forceScale: 1, // retired calib knob — physics ignores; garage bakes 1.0
       tireType: parseInt($('tireType').value, 10) || 0,
       engineLayout: (ind === 'ev' && (base.driveType === 'AWD' || $('driveType').value === 'AWD'))
         ? (base.engineLayout === 'Mid' ? 'Mid' : 'Dual')
@@ -638,15 +638,20 @@
     car.rearWeightPercent = w.rearWeightPercent;
     car.leftWeightPercent = w.leftWeightPercent;
     car.rightWeightPercent = w.rightWeightPercent;
-    // If user changed peak HP significantly vs curve peak, resynthesize
-    if (car.torqueCurve) {
+    // Peak HP label must NEVER wipe garage / dyno torqueCurve on RUN.
+    // Garage hybrids/FI often have label peakHp (system) ≠ curve-only peak; the old
+    // |curveHp-peakHp|>12% path resynthesized ZR1X and fantasy-fast 8.39@175.
+    // Keep existing curve unless absent. Custom Builder may resynthesize only when
+    // there is no curve yet, or user has not dyno-edited and explicitly wants Peak HP.
+    if (!car.torqueCurve) {
+      car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
+    } else if (isCustomBuilder(car) && !state.curveEdited) {
       var curveHp = Phys.peakHpFromCurve(car.torqueCurve);
-      if (Math.abs(curveHp - peakHp) > peakHp * 0.12) {
+      if (curveHp > 0 && Math.abs(curveHp - peakHp) > peakHp * 0.12) {
         car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
       }
-    } else {
-      car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
     }
+    // else: garage or dyno-edited curve stays authoritative; physics uses the curve
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
     // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.
     if (base.torqueCurve && (car.boostPsi <= 0 || base.boostPsi === 0)) {
