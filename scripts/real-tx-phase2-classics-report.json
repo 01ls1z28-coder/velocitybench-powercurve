@@ -1,0 +1,1269 @@
+{
+  "tip": "real-tx-phase2-classics",
+  "elapsedMs": 415540,
+  "stats": {
+    "et": 328,
+    "trap": 301,
+    "z60": 292,
+    "z60130": 72,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 261
+  },
+  "report": [
+    {
+      "name": "1957 Chevrolet Bel Air 283",
+      "gi": 244,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.6,
+        "trap": 82
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 21,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 16.565,
+          "trap": 79.6,
+          "z60": 8.598,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.7,
+        "transmission": "Manual",
+        "loss": 14.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 16.572,
+          "trap": 81.9,
+          "z60": 8.624,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1961 Chevrolet Corvette 283",
+      "gi": 249,
+      "tgt": {
+        "z60": 6.6,
+        "et": 15,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 18,
+        "tire": 0,
+        "launch": 1900,
+        "sim": {
+          "et": 14.822,
+          "trap": 90.6,
+          "z60": 6.165,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.7,
+        "transmission": "Manual",
+        "loss": 16.5,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 14.99,
+          "trap": 91.1,
+          "z60": 6.482,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1962 Chevrolet Impala SS 409",
+      "gi": 240,
+      "tgt": {
+        "z60": 6.3,
+        "et": 14.6,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 28,
+        "tire": 0,
+        "launch": 2200,
+        "sim": {
+          "et": 14.597,
+          "trap": 93.9,
+          "z60": 6.106,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.7,
+        "transmission": "Manual",
+        "loss": 21,
+        "tire": 0,
+        "launch": 1400,
+        "sim": {
+          "et": 14.664,
+          "trap": 96.9,
+          "z60": 6.056,
+          "z60130": 36.712
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1963 Corvette Stingray 327",
+      "gi": 238,
+      "tgt": {
+        "z60": 5.9,
+        "et": 14.4,
+        "trap": 100
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 29,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.386,
+          "trap": 95.4,
+          "z60": 5.719,
+          "z60130": 40.384
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.7,
+        "transmission": "Manual",
+        "loss": 24,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.262,
+          "trap": 97.7,
+          "z60": 5.709,
+          "z60130": 43.911
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1964 Pontiac GTO",
+      "gi": 236,
+      "tgt": {
+        "z60": 6.6,
+        "et": 14.8,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 24,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 14.952,
+          "trap": 90.6,
+          "z60": 6.372,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 17.5,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 14.8,
+          "trap": 94.1,
+          "z60": 6.352,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1965 Chevrolet Chevelle SS396",
+      "gi": 237,
+      "tgt": {
+        "z60": 6.4,
+        "et": 14.7,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 30,
+        "tire": 0,
+        "launch": 2200,
+        "sim": {
+          "et": 14.789,
+          "trap": 91.1,
+          "z60": 6.196,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 25,
+        "tire": 0,
+        "launch": 1800,
+        "sim": {
+          "et": 14.69,
+          "trap": 93.3,
+          "z60": 6.188,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1969 Chevrolet Camaro SS 396",
+      "gi": 230,
+      "tgt": {
+        "z60": 6,
+        "et": 14.4,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 19.5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.207,
+          "trap": 96.6,
+          "z60": 5.561,
+          "z60130": 37.888
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 18,
+        "tire": 1,
+        "launch": 200,
+        "sim": {
+          "et": 14.397,
+          "trap": 97.1,
+          "z60": 5.93,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1979 Pontiac Firebird Trans Am",
+      "gi": 29,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.5,
+        "trap": 86
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 16.501,
+          "trap": 84.2,
+          "z60": 8.415,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Muncie_M21",
+        "nG": 4,
+        "fd": 3.23,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 16.714,
+          "trap": 86.1,
+          "z60": 8.549,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1967 Ford Mustang GT 390",
+      "gi": 227,
+      "tgt": {
+        "z60": 6.8,
+        "et": 15.2,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 31.5,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 15.182,
+          "trap": 88.2,
+          "z60": 6.662,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toploader_4",
+        "nG": 4,
+        "fd": 3.5,
+        "transmission": "Manual",
+        "loss": 26,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 15.157,
+          "trap": 90.9,
+          "z60": 6.769,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1968 Mercury Cougar XR-7",
+      "gi": 250,
+      "tgt": {
+        "z60": 7.2,
+        "et": 15.5,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 30,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 15.454,
+          "trap": 88.5,
+          "z60": 7.006,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toploader_4",
+        "nG": 4,
+        "fd": 3.5,
+        "transmission": "Manual",
+        "loss": 24.5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 15.517,
+          "trap": 91.7,
+          "z60": 7.22,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1966 Ford GT40 MkII",
+      "gi": 232,
+      "tgt": {
+        "z60": 4.5,
+        "et": 11.8,
+        "trap": 131
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 11.891,
+          "trap": 130.9,
+          "z60": 4.183,
+          "z60130": 7.568
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "KarKraft_T44_4",
+        "nG": 4,
+        "fd": 2.77,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 11.809,
+          "trap": 131,
+          "z60": 4.044,
+          "z60130": 7.619
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1967 Plymouth GTX 440",
+      "gi": 241,
+      "tgt": {
+        "z60": 6,
+        "et": 14.3,
+        "trap": 100
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 12,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.126,
+          "trap": 97.5,
+          "z60": 5.544,
+          "z60130": 33.271
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.54,
+        "transmission": "Manual",
+        "loss": 10.5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.099,
+          "trap": 97.6,
+          "z60": 5.483,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1968 Dodge Dart GTS 383",
+      "gi": 235,
+      "tgt": {
+        "z60": 6.5,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 13,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.624,
+          "trap": 93.5,
+          "z60": 6.01,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 17,
+        "tire": 1,
+        "launch": 200,
+        "sim": {
+          "et": 14.893,
+          "trap": 91.6,
+          "z60": 6.267,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1969 Dodge Charger 440",
+      "gi": 226,
+      "tgt": {
+        "z60": 6.1,
+        "et": 14.3,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 16,
+        "tire": 0,
+        "launch": 1900,
+        "sim": {
+          "et": 14.145,
+          "trap": 96.6,
+          "z60": 5.531,
+          "z60130": 44.128
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.54,
+        "transmission": "Manual",
+        "loss": 14.5,
+        "tire": 0,
+        "launch": 900,
+        "sim": {
+          "et": 14.189,
+          "trap": 96.7,
+          "z60": 5.561,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1970 Dodge Challenger 426 Hemi",
+      "gi": 229,
+      "tgt": {
+        "z60": 5.8,
+        "et": 13.8,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 9,
+        "tire": 0,
+        "launch": 1600,
+        "sim": {
+          "et": 13.653,
+          "trap": 101.5,
+          "z60": 5.138,
+          "z60130": 24.315
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.54,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 0,
+        "launch": 400,
+        "sim": {
+          "et": 13.675,
+          "trap": 101.5,
+          "z60": 5.151,
+          "z60130": 21.896
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1970 Plymouth Road Runner 440",
+      "gi": 234,
+      "tgt": {
+        "z60": 6,
+        "et": 14.2,
+        "trap": 100
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 15,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 14.074,
+          "trap": 97.7,
+          "z60": 5.485,
+          "z60130": 32.795
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.54,
+        "transmission": "Manual",
+        "loss": 14,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.102,
+          "trap": 97.6,
+          "z60": 5.486,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1971 Dodge Demon 340",
+      "gi": 231,
+      "tgt": {
+        "z60": 6.4,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.604,
+          "trap": 93.5,
+          "z60": 5.979,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "A833_4",
+        "nG": 4,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 13,
+        "tire": 1,
+        "launch": 200,
+        "sim": {
+          "et": 14.8,
+          "trap": 92,
+          "z60": 6.15,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1987 Ford Mustang 5.0 LX",
+      "gi": 31,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.7,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 4,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.665,
+          "trap": 93.9,
+          "z60": 6.21,
+          "z60130": 41.499
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "T5_5",
+        "nG": 5,
+        "fd": 3.08,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 14.7,
+          "trap": 93.5,
+          "z60": 6.279,
+          "z60130": 41.897
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1989 Ford Mustang GT 5.0",
+      "gi": 49,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.7,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.666,
+          "trap": 93.9,
+          "z60": 6.215,
+          "z60130": 39.239
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "T5_5",
+        "nG": 5,
+        "fd": 3.27,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 14.68,
+          "trap": 93.3,
+          "z60": 6.231,
+          "z60130": 39.521
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1983 Toyota Supra (Mk2)",
+      "gi": 290,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.5,
+        "trap": 85
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 16.42,
+          "trap": 83.5,
+          "z60": 8.546,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 16.495,
+          "trap": 82.2,
+          "z60": 8.643,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1989 Toyota MR2 Supercharged",
+      "gi": 280,
+      "tgt": {
+        "z60": 6.6,
+        "et": 15.2,
+        "trap": 90
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 15.181,
+          "trap": 90.9,
+          "z60": 6.848,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 4.285,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 3,
+        "launch": 2200,
+        "sim": {
+          "et": 15.146,
+          "trap": 88.9,
+          "z60": 6.824,
+          "z60130": 57.358
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1986 Toyota Corolla AE86",
+      "gi": 284,
+      "tgt": {
+        "z60": 8.3,
+        "et": 16.4,
+        "trap": 84
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 4,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 16.371,
+          "trap": 83.2,
+          "z60": 8.421,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_T50_5",
+        "nG": 5,
+        "fd": 4.3,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 0,
+        "launch": 1700,
+        "sim": {
+          "et": 16.261,
+          "trap": 81.7,
+          "z60": 8.508,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1985 Mazda RX-7 GSL-SE",
+      "gi": 287,
+      "tgt": {
+        "z60": 7.8,
+        "et": 16,
+        "trap": 86
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 5100,
+        "sim": {
+          "et": 16.062,
+          "trap": 88.3,
+          "z60": 7.959,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mazda_5M",
+        "nG": 5,
+        "fd": 3.909,
+        "transmission": "Manual",
+        "loss": 17.5,
+        "tire": 0,
+        "launch": 4700,
+        "sim": {
+          "et": 15.939,
+          "trap": 83.7,
+          "z60": 7.839,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1987 Nissan Skyline GTS-R",
+      "gi": 291,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.6,
+        "trap": 97
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.485,
+          "trap": 96.1,
+          "z60": 6.041,
+          "z60130": 30.065
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.111,
+        "transmission": "Manual",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 14.57,
+          "trap": 94.8,
+          "z60": 5.965,
+          "z60130": 29.05
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    }
+  ],
+  "n4": 17,
+  "n5": 7,
+  "fsBad": 0,
+  "still6060": []
+}

@@ -1,3 +1,127 @@
+# Real-TX Phase 2 classics — off TR6060 onto period gearboxes (2026-09-24 CT)
+
+Branch: `review/pc-real-tx-phase2-classics` · Tip off `33aaa9b` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (spot-check Demon 340, GTO, Mustang GT 390, AE86).
+
+## Goal
+Remap classic / late-80s manuals that wrongly wore Tremec TR-6060 6-speed onto real period gearboxes + published-leaning ratios/FD. Recalib **loss / launch / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY after gear/FD writes: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- OUT OF SCOPE: Euro DCT marque split; EV FD; more modern ZF8 filler; Phase 1 cars already fixed
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · canvas-before-listener — **intact**
+
+## FactoryTransmissions used / added (`js/physics.js`)
+| txKey | Speeds | Default FD | Ratios (abbrev) | Sources |
+|---|---:|---:|---|---|
+| `Toploader_4` (existing) | 4 | 3.54 | 2.20…1.00 | Ford close-ratio Toploader; muscle 1960–73 |
+| `Muncie_M21` (existing) | 4 | 3.70 | 2.20…1.00 | GM M21 close-ratio; Camaro/Corvette/GTO era |
+| `A833_4` (existing) | 4 | 3.55 | 2.66…1.00 | Chrysler A833 B/C-body; Brewers Performance history |
+| `T5_5` (existing) | 5 | 3.73 | 2.95…0.63 | BorgWarner T5 World Class; Fox Mustang |
+| `KarKraft_T44_4` **new** | 4 | 2.77 | 2.22 / 1.43 / 1.19 / 1.00 | R&T GT40 Mk II analysis; Kar Kraft T-44 Le Mans set (FD 2.77 = 3.09 × 0.899 transfer) |
+| `Toyota_T50_5` **new** | 5 | 4.30 | 3.587…0.861 | AE86 T50; aeu86.org specs |
+| `Toyota_W58_5` **new** | 5 | 3.73 | 3.285…0.783 | Club4AG / Toyota W58 (Supra Mk2 / MR2) |
+| `Mazda_5M` **new** | 5 | 3.909 | 3.622…0.758 | RX-7 Series 1/GSL-SE 5-spd published-leaning |
+| `Nissan_FS5W71_5` **new** | 5 | 4.111 | 3.321…0.838 | Nissan FS5W71C (R31 Skyline GTS-R era) |
+
+UI Custom factory-TX dropdown auto-lists new keys via `populateTxPresets()` (already wired).
+
+## Remapped cars (24)
+**Muncie_M21 (8):** Bel Air 283, Corvette 283, Impala SS 409, Stingray 327, GTO, Chevelle SS396, Camaro SS 396, 1979 Trans Am.  
+**Toploader_4 (2):** Mustang GT 390, Cougar XR-7.  
+**KarKraft_T44_4 (1):** GT40 MkII @ FD **2.77**.  
+**A833_4 (6):** GTX 440, Dart GTS 383, Charger 440, Challenger 426 Hemi, Road Runner 440, Demon 340.  
+**T5_5 (2):** 1987 Mustang 5.0 LX (FD 3.08), 1989 Mustang GT 5.0 (FD 3.27).  
+**JDM 5spd (5):** Supra Mk2 / MR2 SC → W58; AE86 → T50; RX-7 GSL-SE → Mazda_5M; Skyline GTS-R → FS5W71C.
+
+## Per-car before → after
+
+| Car | Before tx/nG/FD | After tx/nG/FD | Excel ET@trap | Sim ET@trap | loss / tire / launch | ET+trap |
+|---|---|---|---|---|---|---|
+| 1957 Chevrolet Bel Air 283 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.7 | 16.6@82 | 16.572@81.9 | 14.5% / T0 / L2400 | HIT |
+| 1961 Chevrolet Corvette 283 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.7 | 15@93 | 14.99@91.1 | 16.5% / T0 / L1500 | HIT |
+| 1962 Chevrolet Impala SS 409 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.7 | 14.6@99 | 14.664@96.9 | 21% / T0 / L1400 | HIT |
+| 1963 Corvette Stingray 327 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.7 | 14.4@100 | 14.262@97.7 | 24% / T0 / L200 | HIT |
+| 1964 Pontiac GTO | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.55 | 14.8@98 | 14.8@94.1 | 17.5% / T0 / L1500 | MISS |
+| 1965 Chevrolet Chevelle SS396 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.73 | 14.7@98 | 14.69@93.3 | 25% / T0 / L1800 | MISS |
+| 1969 Chevrolet Camaro SS 396 | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.55 | 14.4@99 | 14.397@97.1 | 18% / T1 / L200 | HIT |
+| 1979 Pontiac Firebird Trans Am | `TR6060_6`/6/3.73 | `Muncie_M21`/4/3.23 | 16.5@86 | 16.714@86.1 | 0% / T0 / L500 | HIT |
+| 1967 Ford Mustang GT 390 | `TR6060_6`/6/3.73 | `Toploader_4`/4/3.5 | 15.2@93 | 15.157@90.9 | 26% / T0 / L2400 | HIT |
+| 1968 Mercury Cougar XR-7 | `TR6060_6`/6/3.73 | `Toploader_4`/4/3.5 | 15.5@91 | 15.517@91.7 | 24.5% / T0 / L200 | HIT |
+| 1966 Ford GT40 MkII | `TR6060_6`/6/3.73 | `KarKraft_T44_4`/4/2.77 | 11.8@131 | 11.809@131 | 8% / T0 / L1500 | HIT |
+| 1967 Plymouth GTX 440 | `TR6060_6`/6/3.73 | `A833_4`/4/3.54 | 14.3@100 | 14.099@97.6 | 10.5% / T0 / L200 | HIT |
+| 1968 Dodge Dart GTS 383 | `TR6060_6`/6/3.73 | `A833_4`/4/3.55 | 14.8@96 | 14.893@91.6 | 17% / T1 / L200 | MISS |
+| 1969 Dodge Charger 440 | `TR6060_6`/6/3.73 | `A833_4`/4/3.54 | 14.3@99 | 14.189@96.7 | 14.5% / T0 / L900 | HIT |
+| 1970 Dodge Challenger 426 Hemi | `TR6060_6`/6/3.73 | `A833_4`/4/3.54 | 13.8@104 | 13.675@101.5 | 8% / T0 / L400 | HIT |
+| 1970 Plymouth Road Runner 440 | `TR6060_6`/6/3.73 | `A833_4`/4/3.54 | 14.2@100 | 14.102@97.6 | 14% / T0 / L200 | HIT |
+| 1971 Dodge Demon 340 | `TR6060_6`/6/3.73 | `A833_4`/4/3.55 | 14.8@96 | 14.8@92 | 13% / T1 / L200 | MISS |
+| 1987 Ford Mustang 5.0 LX | `TR6060_6`/6/3.73 | `T5_5`/5/3.08 | 14.7@94 | 14.7@93.5 | 0% / T0 / L2600 | HIT |
+| 1989 Ford Mustang GT 5.0 | `TR6060_6`/6/3.73 | `T5_5`/5/3.27 | 14.7@94 | 14.68@93.3 | 0% / T0 / L2800 | HIT |
+| 1983 Toyota Supra (Mk2) | `TR6060_6`/6/3.73 | `Toyota_W58_5`/5/3.727 | 16.5@85 | 16.495@82.2 | 6% / T0 / L2000 | MISS |
+| 1989 Toyota MR2 Supercharged | `TR6060_6`/6/3.73 | `Toyota_W58_5`/5/4.285 | 15.2@90 | 15.146@88.9 | 7.5% / T3 / L2200 | HIT |
+| 1986 Toyota Corolla AE86 | `TR6060_6`/6/3.73 | `Toyota_T50_5`/5/4.3 | 16.4@84 | 16.261@81.7 | 7.5% / T0 / L1700 | HIT |
+| 1985 Mazda RX-7 GSL-SE | `TR6060_6`/6/3.73 | `Mazda_5M`/5/3.909 | 16@86 | 15.939@83.7 | 17.5% / T0 / L4700 | HIT |
+| 1987 Nissan Skyline GTS-R | `TR6060_6`/6/3.73 | `Nissan_FS5W71_5`/5/4.111 | 14.6@97 | 14.57@94.8 | 0.5% / T0 / L2000 | HIT |
+
+## Shipped
+1. `js/physics.js` — five OEM-distinct presets (KarKraft T-44, Toyota T50/W58, Mazda 5M, Nissan FS5W71).
+2. `scripts/recalib-real-tx-phase2-classics.js` — remap + loss/tire/launch search for the 24.
+3. `js/garage-data.js` — remapped + recalib’d; `window.VB_POWERCURVE_GARAGE` bind intact.
+4. `scripts/garage-calib-meta.json` tip `real-tx-phase2-classics` + `scripts/real-tx-phase2-classics-report.json`.
+
+## Reproduce
+```bash
+git fetch origin && git checkout review/pc-real-tx-phase2-classics
+node scripts/recalib-real-tx-phase2-classics.js
+node -e "const G=require('./js/garage-data.js'); const N=['1971 Dodge Demon 340','1964 Pontiac GTO','1967 Ford Mustang GT 390','1986 Toyota Corolla AE86']; N.forEach(n=>{const c=G.find(x=>x.name===n); console.log(n,c.txKey,c.gearRatios.length,c.finalDriveRatio);}); console.log('fs!=1',G.filter(c=>+c.forceScale!==1).length)"
+rg 'window.VB_POWERCURVE_GARAGE' js/garage-data.js
+rg 'Peak HP label must NEVER wipe' js/app.js
+rg 'KarKraft_T44|Toyota_T50|Muncie_M21|A833_4|T5_5' js/physics.js
+```
+
+## Fleet hit-rates (Excel TOL) vs tip `33aaa9b` / real-tx-batch1
+
+| Metric | Before (`real-tx-batch1`) | After (phase2-classics) |
+|--------|---------------------------|-------------------------|
+| ¼ ET | 328/331 **99.1%** | 328/331 **99.1%** |
+| ¼ trap | 301/331 **90.9%** | 301/331 **90.9%** |
+| 0-60 | 288/332 **86.7%** | 292/332 **88.0%** |
+| 60-130 | 72/76 **94.7%** | 72/76 **94.7%** |
+| all4 | 257 | 261 |
+
+Batch ET+trap: **19/24 HIT**.
+
+## Batch still-miss (honest — do not cheat Cd/wt/curve)
+| Car | ΔET | Δtrap | Notes |
+|-----|----:|------:|---|
+| 1964 Pontiac GTO | +0.000 | -3.9 | ET HIT; trap soft at published 4/5spd + loss/tire/launch exhausted |
+| 1965 Chevrolet Chevelle SS396 | -0.010 | -4.7 | ET HIT; trap soft at published 4/5spd + loss/tire/launch exhausted |
+| 1968 Dodge Dart GTS 383 | +0.093 | -4.4 | ET HIT; trap soft at published 4/5spd + loss/tire/launch exhausted |
+| 1971 Dodge Demon 340 | +0.000 | -4.0 | ET HIT; trap soft at published 4/5spd + loss/tire/launch exhausted |
+| 1983 Toyota Supra (Mk2) | -0.005 | -2.8 | ET HIT; trap soft at published 4/5spd + loss/tire/launch exhausted |
+
+## Integrity
+- forceScale≠1: **0**
+- Listed Phase2 cars still on TR6060_6: **0**
+- Phase2 gear counts: **17×4spd + 7×5spd**
+- Cd/weight/frontalArea/torqueCurve: **unchanged** on all 24 remapped cars
+- `window.VB_POWERCURVE_GARAGE` bind present
+- Peak HP wipe fix comment present in `js/app.js`
+- Garage cars with `gearRatios.length === 10`: **9** (batch1 intact)
+
+**Skipped:** deploy · Merovingian holds deploy · no push to main · remaining phases: Euro DCT marque presets; EV FD/oddballs; residual ZF8/TR6060 filler.
+
+VERIFY
+1. Meta tip `real-tx-phase2-classics` · ET 328/331 · trap ≥301/331 · none of 24 on TR6060
+2. Spot gear editor: Demon 340 = 4 A833 · GTO = 4 Muncie · Mustang GT 390 = 4 Toploader · AE86 = 5 T50
+3. Custom builder TX dropdown lists KarKraft T-44 / Toyota T50 / W58 / Mazda 5M / Nissan FS5W71 (+ existing classics)
+4. Every garage `forceScale === 1`; no Cd/wt/curve edits
+
+---
+
 # Real-TX batch1 — published 10R80 / 10L90 / TR-9080 + Hellcat FD (2026-09-24 CT)
 
 Branch: `review/pc-real-tx-batch1` · Tip off `b8af352` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (Mustang GT / Camaro ZL1 / ZR1X / Hellcat gear editor counts).

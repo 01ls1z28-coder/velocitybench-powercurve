@@ -126,6 +126,12 @@
     Toploader_4: { name: 'Ford Toploader 4-spd', gears: [2.20, 1.66, 1.31, 1.00], finalDrive: 3.54, loss: 12 },
     A833_4: { name: 'Chrysler A833 4-spd', gears: [2.66, 1.91, 1.39, 1.00], finalDrive: 3.55, loss: 12 },
     T5_5: { name: 'BorgWarner T5 5-spd', gears: [2.95, 1.94, 1.34, 1.00, 0.63], finalDrive: 3.73, loss: 13 },
+    // Phase2 classics: OEM-distinct 4/5spd (prefer existing Toploader/Muncie/A833/T5 unless OEM needs distinct)
+    KarKraft_T44_4: { name: 'Kar Kraft T-44 4-spd (GT40 MkII)', gears: [2.22, 1.43, 1.19, 1.00], finalDrive: 2.77, loss: 12 },
+    Toyota_T50_5: { name: 'Toyota T50 5-spd (AE86)', gears: [3.587, 2.022, 1.384, 1.000, 0.861], finalDrive: 4.30, loss: 13 },
+    Toyota_W58_5: { name: 'Toyota W58 5-spd (Supra/MR2)', gears: [3.285, 1.894, 1.275, 1.000, 0.783], finalDrive: 3.73, loss: 13 },
+    Mazda_5M: { name: 'Mazda 5-spd (RX-7 GSL-SE)', gears: [3.622, 2.181, 1.419, 1.000, 0.758], finalDrive: 3.909, loss: 13 },
+    Nissan_FS5W71_5: { name: 'Nissan FS5W71C 5-spd (Skyline)', gears: [3.321, 1.902, 1.308, 1.000, 0.838], finalDrive: 4.111, loss: 13 },
     TR6060_6: { name: 'Tremec TR-6060 6-spd', gears: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50], finalDrive: 3.73, loss: 12 },
     Getrag_MT82: { name: 'Getrag MT-82 6-spd', gears: [3.66, 2.43, 1.69, 1.32, 1.00, 0.65], finalDrive: 3.73, loss: 12 },
     ZF8HP: { name: 'ZF 8HP Auto', gears: [4.71, 3.14, 2.11, 1.67, 1.28, 1.00, 0.84, 0.67], finalDrive: 3.15, loss: 15 },
