@@ -159,7 +159,15 @@
     Tesla_EV_Plaid: { name: 'Tesla Plaid single-speed', gears: [1.00], finalDrive: 7.56, loss: 8 },
     Tesla_EV_Cybertruck: { name: 'Tesla Cybertruck single-speed', gears: [1.00], finalDrive: 15.02, loss: 8 },
     Porsche_Taycan_2: { name: 'Porsche Taycan 2-spd rear', gears: [1.925, 1.00], finalDrive: 8.05, loss: 8 },
-    Koenigsegg_KDD: { name: 'Koenigsegg Direct Drive', gears: [1.00], finalDrive: 2.73, loss: 8 }
+    Koenigsegg_KDD: { name: 'Koenigsegg Direct Drive', gears: [1.00], finalDrive: 2.73, loss: 8 },
+    // Phase 5 residual ZF8/TR6060 filler — published-leaning OEM autos + JDM manuals
+    GM_4L60E: { name: 'GM 4L60-E 4-spd Auto', gears: [3.06, 1.63, 1.00, 0.70], finalDrive: 3.42, loss: 16 },
+    GM_2004R: { name: 'GM THM 200-4R 4-spd Auto', gears: [2.74, 1.57, 1.00, 0.67], finalDrive: 3.42, loss: 16 },
+    GM_6L80: { name: 'GM 6L80 6-spd Auto', gears: [4.027, 2.364, 1.532, 1.152, 0.852, 0.667], finalDrive: 3.27, loss: 15 },
+    Chrysler_NAG1_5: { name: 'Chrysler NAG1/W5A580 5-spd Auto', gears: [3.59, 2.19, 1.41, 1.00, 0.83], finalDrive: 3.06, loss: 15 },
+    Mazda_Miata_5: { name: 'Mazda Miata NA 5-spd', gears: [3.136, 1.888, 1.330, 1.000, 0.814], finalDrive: 4.30, loss: 13 },
+    Honda_S2000_6: { name: 'Honda S2000 6-spd (AP1)', gears: [3.133, 2.045, 1.481, 1.161, 0.970, 0.810], finalDrive: 4.756, loss: 12 },
+    Toyota_FA86_6: { name: 'Toyota/Subaru FA86 6-spd', gears: [3.626, 2.188, 1.541, 1.213, 1.000, 0.767], finalDrive: 4.10, loss: 12 }
   };
 
   function clamp(v, lo, hi) {

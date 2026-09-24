@@ -7,7 +7,7 @@
 'use strict';
 
 var VB_CALIB_META = {
-  "tip": "real-tx-phase4-ev-fd",
+  "tip": "real-tx-phase5-zf8-tr6060",
   "sourcePath": "scripts/garage-calib-meta.json",
   "tol": {
     "z60": 0.25,
@@ -16,29 +16,29 @@ var VB_CALIB_META = {
     "z60130": 0.75
   },
   "stats": {
-    "et": 323,
-    "trap": 300,
-    "z60": 285,
-    "z60130": 72,
+    "et": 320,
+    "trap": 295,
+    "z60": 280,
+    "z60130": 71,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
-    "all4": 249
+    "all4": 243
   },
   "baseline": {
-    "tip": "real-tx-phase3-euro-dct@42cae82",
-    "et": 324,
-    "trap": 301,
-    "z60": 284,
+    "tip": "real-tx-phase4-ev-fd@7108fdd",
+    "et": 323,
+    "trap": 300,
+    "z60": 285,
     "z60130": 72,
-    "all4": 250
+    "all4": 249
   },
-  "note": "Real-TX Phase4 EV/oddballs: Tesla_EV_Plaid/Cybertruck FD + Porsche_Taycan_2 + Koenigsegg_KDD; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P3 intact; NO Merovingian",
+  "note": "Real-TX Phase5 residual ZF8/TR6060 filler: GM_4L60E/2004R/6L80 + Chrysler_NAG1_5 + TH400 classics + Mazda_Miata_5/Honda_S2000_6/Toyota_FA86_6 + Getrag_R34; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P4 intact; NO Merovingian",
   "honestMissCount": 14,
-  "honestMissNote": "14 honest-miss cars left untouched (no Cd/wt/curve cheat) \u2014 see VERIFY.md / trap-miss-batch22",
+  "honestMissNote": "14 honest-miss cars left untouched (no Cd/wt/curve cheat) — see VERIFY.md / trap-miss-batch22",
   "honestMissNames": [
-    "2007 Lamborghini Murci\u00e9lago LP640",
+    "2007 Lamborghini Murciélago LP640",
     "1964 Pontiac GTO",
     "2021 BMW S1000RR",
     "1965 Chevrolet Chevelle SS396",
@@ -53,8 +53,8 @@ var VB_CALIB_META = {
     "1973 Ford Torino 351",
     "1955 Ford Thunderbird"
   ],
-  "caveat": "Compiled estimates toward published Excel track slips \u2014 not lab-certified, not dyno-certified, not track-certified. Local weather, tires, and driver vary.",
-  "knobs": "loss / launchRpm / tireType only \u00b7 forceScale = 1"
+  "caveat": "Compiled estimates toward published Excel track slips — not lab-certified, not dyno-certified, not track-certified. Local weather, tires, and driver vary.",
+  "knobs": "loss / launchRpm / tireType only · forceScale = 1"
 };
 
 if (typeof module !== "undefined" && module.exports) {

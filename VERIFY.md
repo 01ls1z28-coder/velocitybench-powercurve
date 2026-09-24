@@ -1,3 +1,149 @@
+# BUILD LOCK — Real-TX Phase 5 residual ZF8 / TR6060 filler (Seraph gate)
+
+Branch: `review/pc-real-tx-phase5-zf8-tr6060` · Based on `7108fdd` (live main = Phase4 EV FD CLEARED).
+**No Merovingian deploy.** Hold for Seraph browser gate (G8 GXP 6L80 · Challenger SRT8 NAG1 · Miata NA 5spd · S2000 / GR86).
+
+## VERIFY note (required)
+- Phase 1 intact: Ford_10R80 / GM_10L90 / Tremec_TR9080_8DCT + Hellcat FD 2.62.
+- Phase 2 intact: classics off TR6060 (Demon A833_4, GTO Muncie_M21, …).
+- Phase 3 intact: Porsche_PDK_7/_GT · AMG_SPEEDSHIFT · VW_DQ500 · Audi_STronic · GT500 TR-9070.
+- Phase 4 intact: Tesla_EV_Plaid/Cybertruck · Porsche_Taycan_2 · Koenigsegg_KDD · FD clamp 20.
+- Launch-tach intact: `resolveLeaveRpm` + stock slip→lockup (`launchLocked`) — **not touched**.
+- Gear UI (`#txFactoryLabelField`) + calib panel (`#calibPanel` / `js/calib-meta.js`) — **kept / tip advanced**.
+- Phase 5: residual ZF8/TR6060 filler → period OEM where published-leaning source exists.
+- Recalib: loss / launchRpm / tireType only; forceScale=1; no Cd/wt/curve fakes.
+- Fleet hits: BEFORE et 323/331 trap 300/331 z60 285/332 60-130 72/76 all4 249 → AFTER et 320/331 trap 295/331 z60 280/332 60-130 71/76 all4 243.
+- Leftover filler after tip: **ZF8HP 91** · **TR6060_6 73** (honest leftovers — modern ZF8 platforms kept; obscure manuals/trucks/hypercars without published-leaning source left on filler).
+- OUT OF SCOPE: Euro supercar DCT marque split (~34 still on DCT_7_AMG).
+
+---
+
+# Real-TX Phase 5 residual ZF8 / TR6060 filler (2026-09-24 CT)
+
+Branch: `review/pc-real-tx-phase5-zf8-tr6060` · Base `7108fdd` (origin/main Phase4 CLEARED). **No deploy.** Do **not** ask Merovingian to push main.
+
+## Goal
+Remap remaining cars still on generic ZF8HP / TR6060_6 filler onto period-correct factory TX where published-leaning source exists. Recalib **loss / launch / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY after gear/FD writes: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · launch-tach blend · Phase 1–4 remaps — **intact**
+- Credits: **Jorge Guerra** only (no Merovingian / Sati in public UI)
+
+## FactoryTransmissions added (`js/physics.js`)
+| txKey | Speeds | Default FD | Ratios (abbrev) | Sources |
+|---|---:|---:|---|---|
+| `GM_4L60E` **new** | 4 | 3.42 | 3.06 / 1.63 / 1.00 / 0.70 | GM 4L60-E / 700R4 family (Impala SS / Caprice docs) |
+| `GM_2004R` **new** | 4 | 3.42 | 2.74 / 1.57 / 1.00 / 0.67 | Buick GNX THM 200-4R published |
+| `GM_6L80` **new** | 6 | 3.27 | 4.027 … 0.667 | GM Hydra-Matic 6L80 product bulletin |
+| `Chrysler_NAG1_5` **new** | 5 | 3.06 | 3.59 / 2.19 / 1.41 / 1.00 / 0.83 | Chrysler NAG1/W5A580 service ratios |
+| `Mazda_Miata_5` **new** | 5 | 4.30 | 3.136 / 1.888 / 1.330 / 1.000 / 0.814 | 1990 MX-5 Miata specs (miata.net) |
+| `Honda_S2000_6` **new** | 6 | **4.756** | 3.133 … 0.810 | Honda News S2000; FD = primary 1.160 × axle 4.100 |
+| `Toyota_FA86_6` **new** | 6 | 4.10 | 3.626 / 2.188 / 1.541 / 1.213 / 1.000 / 0.767 | FR-S/BRZ/GR86 published 6MT |
+| `TH400_3` reused | 3 | 3.73 | existing | Classic GM autos |
+| `Mazda_5M` reused | 5 | 3.909 | existing | RX-7 FC Turbo |
+| `Getrag_R34` reused | 6 | 3.545 | existing | 1999 R34 (match curated 2002) |
+
+## Remapped cars (24)
+**TH400_3 (5):** 1970 Chevelle SS 454, 1972 Olds 442, 1974 Firebird 400, 1975 Nova 350, 1977 Monte Carlo.  
+**GM_2004R (1):** 1987 Buick GNX.  
+**GM_4L60E (3):** 1996 Impala SS, 1985 Camaro IROC-Z, 1984 Corvette C4.  
+**Chrysler_NAG1_5 (5):** 2008/2010 Challenger SRT8, 2009 Challenger R/T, 2007 Charger SRT8, 2006 Charger R/T.  
+**GM_6L80 (3):** 2009 G8 GXP, 2014 Chevy SS, 2012 Corvette ZR1 (Auto).  
+**Mazda_Miata_5 (1):** 1990 Miata NA.  
+**Mazda_5M (1):** 1990 RX-7 FC Turbo.  
+**Honda_S2000_6 (1):** 2001 S2000.  
+**Toyota_FA86_6 (3):** 2013 FR-S, 2024 GR86, 2024 BRZ.  
+**Getrag_R34 (1):** 1999 Skyline GT-R R34.
+
+## Per-car before → after (batch)
+
+| Car | Before tx/nG/FD | After tx/nG/FD | Excel ET@trap | Sim ET@trap | loss / tire / launch | ET+trap |
+|---|---|---|---|---|---|---|
+| 1970 Chevelle SS 454 | ZF8HP/8/3.15 | TH400_3/3/3.31 | 13.9@103 | 13.898@102.4 | 8.5% / T0 / L1200 | HIT |
+| 1972 Oldsmobile 442 | ZF8HP/8/3.15 | TH400_3/3/3.23 | 15.8@90 | 15.792@87.7 | 19.5% / T0 / L2400 | HIT |
+| 1974 Firebird 400 | ZF8HP/8/3.15 | TH400_3/3/3.23 | 16.3@86 | 16.300@85.1 | 0% / T0 / L4771 | HIT |
+| 1975 Nova 350 | ZF8HP/8/3.15 | TH400_3/3/3.42 | 17.4@79 | 17.774@76.5 | 0% / T0 / L200 | **MISS** |
+| 1977 Monte Carlo | ZF8HP/8/3.15 | TH400_3/3/3.08 | 17.8@78 | 18.172@75.1 | 0% / T0 / L200 | **MISS** |
+| 1987 Buick GNX | ZF8HP/8/3.15 | GM_2004R/4/3.42 | 13.5@104 | 13.483@100.4 | 0% / T2 / L2700 | **MISS** |
+| 1996 Impala SS | ZF8HP/8/3.15 | GM_4L60E/4/3.08 | 15.4@91 | 16.017@85.3 | 0% / T0 / L4200 | **MISS** |
+| 1985 Camaro IROC-Z | ZF8HP/8/3.15 | GM_4L60E/4/3.23 | 15.5@90 | 15.501@88.4 | 0% / T1 / L4400 | HIT |
+| 1984 Corvette C4 | ZF8HP/8/3.15 | GM_4L60E/4/3.07 | 15.0@91 | 15.703@87.4 | 0% / T0 / L4200 | **MISS** |
+| 2008 Challenger SRT8 | ZF8HP/8/3.15 | Chrysler_NAG1_5/5/3.06 | 13.3@108 | 13.379@104.7 | 0% / T0 / L4200 | **MISS** |
+| 2010 Challenger SRT8 | ZF8HP/8/3.15 | Chrysler_NAG1_5/5/3.06 | 13.2@109 | 13.177@107.0 | 0% / T0 / L3000 | HIT |
+| 2009 Challenger R/T | ZF8HP/8/3.15 | Chrysler_NAG1_5/5/3.06 | 13.9@102 | 13.827@100.0 | 0% / T0 / L3000 | HIT |
+| 2007 Charger SRT8 | ZF8HP/8/3.15 | Chrysler_NAG1_5/5/3.06 | 13.5@106 | 13.489@103.7 | 1% / T0 / L3000 | HIT |
+| 2006 Charger R/T | ZF8HP/8/3.15 | Chrysler_NAG1_5/5/2.82 | 13.9@101 | 13.893@97.2 | 0% / T2 / L3600 | **MISS** |
+| 2009 Pontiac G8 GXP | ZF8HP/8/3.15 | GM_6L80/6/3.27 | 13.2@108 | 13.291@106.6 | 0% / T0 / L3000 | HIT |
+| 2014 Chevrolet SS | ZF8HP/8/3.15 | GM_6L80/6/3.27 | 13.0@111 | 13.047@109.2 | 0% / T0 / L3000 | HIT |
+| 2012 Corvette ZR1 | ZF8HP/8/3.15 | GM_6L80/6/3.42 | 11.5@128 | 11.505@128.0 | 9% / T3 / L2000 | HIT |
+| 1990 Miata NA | TR6060_6/6/3.73 | Mazda_Miata_5/5/4.30 | 16.3@84 | 16.183@82.0 | 10% / T0 / L2600 | HIT |
+| 1990 RX-7 FC Turbo | TR6060_6/6/3.73 | Mazda_5M/5/3.909 | 14.8@95 | 14.796@93.5 | 9% / T0 / L2400 | HIT |
+| 2001 Honda S2000 | TR6060_6/6/3.73 | Honda_S2000_6/6/4.756 | 14.4@97 | 14.379@94.9 | 16% / T3 / L3100 | HIT |
+| 2013 Scion FR-S | TR6060_6/6/3.73 | Toyota_FA86_6/6/4.10 | 14.8@94 | 14.620@93.9 | 4% / T3 / L3000 | HIT |
+| 2024 Toyota GR86 | TR6060_6/6/3.73 | Toyota_FA86_6/6/4.10 | 14.0@101 | 13.853@99.6 | 0.5% / T3 / L2600 | HIT |
+| 2024 Subaru BRZ | TR6060_6/6/3.73 | Toyota_FA86_6/6/4.10 | 14.0@101 | 13.845@99.6 | 0% / T3 / L3000 | HIT |
+| 1999 Skyline GT-R R34 | TR6060_6/6/3.73 | Getrag_R34/6/3.545 | 13.3@107 | 13.156@104.8 | 4% / T0 / L2000 | HIT |
+
+## Shipped
+1. `js/physics.js` — GM_4L60E / GM_2004R / GM_6L80 / Chrysler_NAG1_5 / Mazda_Miata_5 / Honda_S2000_6 / Toyota_FA86_6.
+2. `scripts/recalib-real-tx-phase5-zf8-tr6060.js` — remap + loss/tire/launch search for the 24.
+3. `js/garage-data.js` — remapped + recalib'd; `window.VB_POWERCURVE_GARAGE` bind intact.
+4. `scripts/garage-calib-meta.json` tip `real-tx-phase5-zf8-tr6060` + `js/calib-meta.js` sync.
+5. `scripts/real-tx-phase5-zf8-tr6060-report.json`.
+
+## Reproduce
+```bash
+git fetch origin && git checkout review/pc-real-tx-phase5-zf8-tr6060
+node scripts/recalib-real-tx-phase5-zf8-tr6060.js
+node -e "const G=require('./js/garage-data.js'); console.log('ZF8',G.filter(c=>c.txKey==='ZF8HP').length,'TR6060',G.filter(c=>c.txKey==='TR6060_6').length,'fs!=1',G.filter(c=>+c.forceScale!==1).length)"
+rg 'window.VB_POWERCURVE_GARAGE' js/garage-data.js
+rg 'Peak HP label must NEVER wipe' js/app.js
+rg 'resolveLeaveRpm|launchLocked' js/physics.js
+rg 'GM_4L60E|GM_6L80|Chrysler_NAG1_5|Mazda_Miata_5|Honda_S2000_6|Toyota_FA86_6' js/physics.js
+```
+
+## Fleet hit-rates (Excel TOL) vs tip `7108fdd` / phase4-ev-fd
+
+| Metric | Before (`7108fdd`) | After (phase5-zf8-tr6060) |
+|--------|--------------------|---------------------------|
+| ¼ ET | 323/331 **97.6%** | 320/331 **96.7%** (−3 honest) |
+| ¼ trap | 300/331 **90.6%** | 295/331 **89.1%** (−5 honest) |
+| 0-60 | 285/332 **85.8%** | 280/332 **84.3%** (−5) |
+| 60-130 | 72/76 **94.7%** | 71/76 **93.4%** (−1) |
+| all4 | 249 | 243 (−6) |
+
+Batch ET+trap: **17/24 HIT**.
+
+## Batch still-miss (honest — do not cheat Cd/wt/curve)
+| Car | ΔET | Δtrap | Notes |
+|-----|----:|------:|---|
+| 1975 Chevrolet Nova 350 | +0.374 | −2.5 | TH400 + published-leaning FD; knobs exhausted at 0%/L200 — **honest miss** |
+| 1977 Chevrolet Monte Carlo | +0.372 | −2.9 | Same class; stock-tall FD 3.08 — **honest miss** |
+| 1987 Buick GNX | −0.017 | −3.6 | ET HIT; trap soft on real 200-4R+3.42 — **honest miss** |
+| 1996 Chevrolet Impala SS | +0.617 | −5.7 | Stock-only FD **3.08** + 4L60E OD; ZF8 8spd was cheating ET — **honest miss** |
+| 1984 Chevrolet Corvette C4 | +0.703 | −3.6 | 4L60E + 3.07; knobs exhausted — **honest miss** |
+| 2008 Challenger SRT8 | +0.079 | −3.3 | ET HIT; NAG1+3.06 trap soft vs Excel — **honest miss** |
+| 2006 Charger R/T | −0.007 | −3.8 | ET HIT; NAG1+2.82 trap soft — **honest miss** |
+
+## Honest leftovers (still on filler — no invented ratios)
+- **ZF8HP 91** — keep real ZF8 platforms (Hellcat/Scat/Trackhawk/M5/RS7/TRX/…); trucks/SUVs/Mercedes 5G-7G/BMW ZF6HP-era/Koenigsegg LST/Pagani/Aston without published-leaning preset this tip; Lexus 10AT / Bronco 10R140 count-wrong deferred.
+- **TR6060_6 73** — keep real Tremec platforms (GT350R, Z/28, ZL1, Viper, …); remaining JDM/Euro manuals (STI/Evo/Civic Type R/350Z/M3 E46/…) without dedicated preset this tip.
+- **DCT_7_AMG ~34** — Euro supercar marque split **soft backlog** (out of scope Phase 5).
+
+## Integrity
+- forceScale≠1 = **0**
+- Peak HP wipe + `VB_POWERCURVE_GARAGE` bind intact
+- Launch-tach blend untouched vs `7108fdd`
+- Phase 1–4 remaps intact (spot: Z06 TR9080, Mustang 10R80, Hellcat FD 2.62, GTO Muncie, GT3 RS PDK, Cybertruck 15.02, Regera KDD)
+- Public credits Jorge Guerra only
+
+---
+
 # BUILD LOCK — Real-TX Phase 4 EV FD / oddballs (Seraph gate)
 
 Branch: `review/pc-real-tx-phase4-ev-fd` · Rebased onto `85a545f` (live main: gear UI + calib panel on Phase 3).
