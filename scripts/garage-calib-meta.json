@@ -1,5 +1,5 @@
 {
-  "tip": "real-tx-phase5-zf8-tr6060",
+  "tip": "real-tx-phase6-euro-supercar-dct",
   "tol": {
     "z60": 0.25,
     "et": 0.25,
@@ -9,29 +9,28 @@
   "stats": {
     "et": 320,
     "trap": 295,
-    "z60": 280,
+    "z60": 285,
     "z60130": 71,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
+    "all4": 248
+  },
+  "changedN": 34,
+  "batchN": 34,
+  "baseline": {
+    "tip": "real-tx-phase5-zf8-tr6060@8b47f89",
+    "et": 320,
+    "trap": 295,
+    "z60": 280,
+    "z60130": 71,
     "all4": 243
   },
-  "changedN": 24,
-  "batchN": 24,
-  "baseline": {
-    "tip": "real-tx-phase4-ev-fd@7108fdd",
-    "et": 323,
-    "trap": 300,
-    "z60": 285,
-    "z60130": 72,
-    "all4": 249
-  },
   "leftover": {
-    "ZF8HP": 91,
-    "TR6060_6": 73
+    "DCT_7_AMG": 0
   },
-  "note": "Real-TX Phase5 residual ZF8/TR6060 filler: GM_4L60E/2004R/6L80 + Chrysler_NAG1_5 + TH400 classics + Mazda_Miata_5/Honda_S2000_6/Toyota_FA86_6 + Getrag_R34; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P4 intact; NO Merovingian",
+  "note": "Real-TX Phase6 Euro supercar DCT marque split: Ferrari_DCT_7/8 + Ferrari_F1_6 + McLaren_SSG_7 + Lambo_LDF/ISR/EGear + Bugatti_DSG_7 + BMW_M_DCT_7 + GR6; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P5 intact; NO Merovingian",
   "results": [
     {
       "name": "2020 Ford Mustang GT",
@@ -2635,11 +2634,11 @@
         "trap": 148
       },
       "sim": {
-        "et": 9.493,
-        "trap": 147.9,
-        "z60": 2.069,
-        "z60130": 5.122,
-        "vmax": 147.9
+        "et": 9.516,
+        "trap": 148.2,
+        "z60": 2.098,
+        "z60130": 5.174,
+        "vmax": 148.2
       },
       "hits": {
         "et": true,
@@ -2647,13 +2646,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 0.5,
       "tireType": 3,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Ferrari_DCT_8",
+      "nG": 8,
+      "fd": 4.51
     },
     {
       "name": "2021 Porsche 911 Turbo S",
@@ -2693,11 +2692,11 @@
         "z60130": 6.8
       },
       "sim": {
-        "et": 10.5,
-        "trap": 132.2,
-        "z60": 2.554,
-        "z60130": 7.546,
-        "vmax": 132.2
+        "et": 10.501,
+        "trap": 133,
+        "z60": 2.577,
+        "z60130": 7.453,
+        "vmax": 133
       },
       "hits": {
         "et": true,
@@ -2705,13 +2704,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 0.5,
       "tireType": 0,
       "launchRpm": 3000,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Lambo_LDF_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 4.89
     },
     {
       "name": "2020 McLaren 765LT",
@@ -2722,11 +2721,11 @@
         "z60130": 6
       },
       "sim": {
-        "et": 10.089,
-        "trap": 140.6,
-        "z60": 2.373,
-        "z60130": 6.28,
-        "vmax": 140.6
+        "et": 10.058,
+        "trap": 140.9,
+        "z60": 2.455,
+        "z60130": 6.099,
+        "vmax": 140.9
       },
       "hits": {
         "et": true,
@@ -2734,13 +2733,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 17,
+      "loss": 15.5,
       "tireType": 2,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2017 Ferrari 812 Superfast",
@@ -2751,11 +2750,11 @@
         "z60130": 6.5
       },
       "sim": {
-        "et": 10.359,
-        "trap": 135.9,
-        "z60": 2.558,
-        "z60130": 6.928,
-        "vmax": 135.9
+        "et": 10.368,
+        "trap": 135.6,
+        "z60": 2.554,
+        "z60130": 6.967,
+        "vmax": 135.6
       },
       "hits": {
         "et": true,
@@ -2763,13 +2762,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 9,
+      "loss": 11.5,
       "tireType": 2,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Ferrari_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 5.14
     },
     {
       "name": "2018 McLaren 600LT",
@@ -2780,10 +2779,10 @@
         "z60130": 6.8
       },
       "sim": {
-        "et": 10.803,
+        "et": 10.806,
         "trap": 135,
-        "z60": 3.074,
-        "z60130": 6.951,
+        "z60": 3.147,
+        "z60130": 6.841,
         "vmax": 135
       },
       "hits": {
@@ -2792,13 +2791,13 @@
         "z60": false,
         "z60130": true
       },
-      "loss": 4.5,
+      "loss": 4,
       "tireType": 1,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2019 Lamborghini Huracán Performante",
@@ -2809,11 +2808,11 @@
         "z60130": 6.5
       },
       "sim": {
-        "et": 10.398,
-        "trap": 133.9,
-        "z60": 2.523,
-        "z60130": 7.207,
-        "vmax": 133.9
+        "et": 10.454,
+        "trap": 133.8,
+        "z60": 2.568,
+        "z60130": 7.231,
+        "vmax": 133.8
       },
       "hits": {
         "et": true,
@@ -2821,13 +2820,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 5,
+      "loss": 7.5,
       "tireType": 2,
-      "launchRpm": 3000,
+      "launchRpm": 2600,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Lambo_LDF_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 4.89
     },
     {
       "name": "2017 Porsche 911 GT2 RS",
@@ -2867,11 +2866,11 @@
         "z60130": 6.6
       },
       "sim": {
-        "et": 10.498,
-        "trap": 133.5,
-        "z60": 2.588,
-        "z60130": 7.342,
-        "vmax": 133.5
+        "et": 10.471,
+        "trap": 133.2,
+        "z60": 2.577,
+        "z60130": 7.341,
+        "vmax": 133.2
       },
       "hits": {
         "et": true,
@@ -2883,9 +2882,9 @@
       "tireType": 2,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Ferrari_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 5.14
     },
     {
       "name": "2015 McLaren P1",
@@ -2896,25 +2895,25 @@
         "z60130": 5.4
       },
       "sim": {
-        "et": 9.744,
+        "et": 9.749,
         "trap": 147.9,
-        "z60": 2.327,
-        "z60130": 5.286,
+        "z60": 2.4,
+        "z60130": 5.194,
         "vmax": 147.9
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 2,
+      "loss": 1,
       "tireType": 2,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2014 Ferrari F12 Berlinetta",
@@ -2925,11 +2924,11 @@
         "z60130": 6.8
       },
       "sim": {
-        "et": 10.997,
-        "trap": 131.6,
-        "z60": 3.139,
-        "z60130": 7.494,
-        "vmax": 131.6
+        "et": 10.986,
+        "trap": 131.9,
+        "z60": 3.14,
+        "z60130": 7.527,
+        "vmax": 131.9
       },
       "hits": {
         "et": true,
@@ -2941,9 +2940,9 @@
       "tireType": 1,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Ferrari_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 5.14
     },
     {
       "name": "2013 McLaren MP4-12C",
@@ -2954,11 +2953,11 @@
         "z60130": 6.8
       },
       "sim": {
-        "et": 10.85,
-        "trap": 134.1,
-        "z60": 3.069,
-        "z60130": 7.142,
-        "vmax": 134.1
+        "et": 10.855,
+        "trap": 134,
+        "z60": 3.146,
+        "z60130": 7.06,
+        "vmax": 134
       },
       "hits": {
         "et": true,
@@ -2966,13 +2965,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 2,
+      "loss": 1.5,
       "tireType": 1,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2012 Lamborghini Gallardo LP570-4",
@@ -2982,25 +2981,25 @@
         "trap": 127
       },
       "sim": {
-        "et": 10.964,
-        "trap": 126.3,
-        "z60": 2.814,
-        "z60130": 9.003,
+        "et": 11.191,
+        "trap": 124.6,
+        "z60": 3.138,
+        "z60130": 9.144,
         "vmax": 130
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 5.5,
+      "loss": 6,
       "tireType": 0,
-      "launchRpm": 5887,
+      "launchRpm": 6687,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Lambo_EGear_6",
+      "nG": 6,
+      "fd": 3.08
     },
     {
       "name": "2010 Ferrari 458 Italia",
@@ -3011,10 +3010,10 @@
         "z60130": 7.2
       },
       "sim": {
-        "et": 10.904,
+        "et": 10.872,
         "trap": 127,
-        "z60": 2.837,
-        "z60130": 8.635,
+        "z60": 2.787,
+        "z60130": 8.649,
         "vmax": 130
       },
       "hits": {
@@ -3023,13 +3022,13 @@
         "z60": true,
         "z60130": false
       },
-      "loss": 2,
+      "loss": 4.5,
       "tireType": 2,
       "launchRpm": 5500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Ferrari_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 5.14
     },
     {
       "name": "2006 Ford GT",
@@ -3097,11 +3096,11 @@
         "z60130": 7.2
       },
       "sim": {
-        "et": 11.009,
-        "trap": 134,
-        "z60": 3.307,
-        "z60130": 7.079,
-        "vmax": 134
+        "et": 11.058,
+        "trap": 133.1,
+        "z60": 3.29,
+        "z60130": 7.285,
+        "vmax": 133.1
       },
       "hits": {
         "et": true,
@@ -3109,13 +3108,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 5,
       "tireType": 4,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Ferrari_F1_6",
+      "nG": 6,
+      "fd": 4.3
     },
     {
       "name": "2007 Lamborghini Murciélago LP640",
@@ -3125,25 +3124,25 @@
         "trap": 129
       },
       "sim": {
-        "et": 11.507,
-        "trap": 119.1,
-        "z60": 3.152,
-        "z60130": 10.916,
+        "et": 11.273,
+        "trap": 126.9,
+        "z60": 3.235,
+        "z60130": 8.591,
         "vmax": 130
       },
       "hits": {
         "et": true,
-        "trap": false,
+        "trap": true,
         "z60": true,
         "z60130": true
       },
-      "loss": 21.5,
+      "loss": 4.5,
       "tireType": 0,
-      "launchRpm": 3348,
+      "launchRpm": 2548,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Lambo_EGear_V12_6",
+      "nG": 6,
+      "fd": 2.53
     },
     {
       "name": "2009 Nissan GT-R",
@@ -3153,15 +3152,15 @@
         "trap": 124
       },
       "sim": {
-        "et": 11.364,
-        "trap": 121.7,
-        "z60": 3.069,
-        "z60130": 10.177,
+        "et": 11.403,
+        "trap": 121.3,
+        "z60": 3.087,
+        "z60130": 10.116,
         "vmax": 130
       },
       "hits": {
         "et": true,
-        "trap": true,
+        "trap": false,
         "z60": true,
         "z60130": true
       },
@@ -3169,9 +3168,9 @@
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "GR6_DCT",
+      "nG": 6,
+      "fd": 3.7
     },
     {
       "name": "2012 Audi R8 V10",
@@ -3238,10 +3237,10 @@
         "trap": 114
       },
       "sim": {
-        "et": 12.602,
-        "trap": 114,
-        "z60": 4.323,
-        "z60130": 12.66,
+        "et": 12.605,
+        "trap": 113.9,
+        "z60": 4.273,
+        "z60130": 12.596,
         "vmax": 130
       },
       "hits": {
@@ -3250,13 +3249,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 4,
+      "loss": 6,
       "tireType": 0,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Ferrari_F1_6",
+      "nG": 6,
+      "fd": 4.3
     },
     {
       "name": "2007 Porsche 911 Turbo",
@@ -3350,10 +3349,10 @@
         "trap": 118
       },
       "sim": {
-        "et": 12.039,
-        "trap": 118.4,
-        "z60": 3.828,
-        "z60130": 10.929,
+        "et": 12.082,
+        "trap": 118,
+        "z60": 3.808,
+        "z60130": 11.059,
         "vmax": 130
       },
       "hits": {
@@ -3362,13 +3361,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 8,
+      "loss": 11,
       "tireType": 3,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Ferrari_F1_6",
+      "nG": 6,
+      "fd": 4.3
     },
     {
       "name": "2009 Lamborghini Gallardo LP560-4",
@@ -3378,25 +3377,25 @@
         "trap": 126
       },
       "sim": {
-        "et": 11.169,
-        "trap": 123.8,
-        "z60": 2.942,
-        "z60130": 9.622,
+        "et": 11.253,
+        "trap": 123.7,
+        "z60": 3.104,
+        "z60130": 9.466,
         "vmax": 130
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 6.5,
+      "loss": 4.5,
       "tireType": 0,
-      "launchRpm": 1200,
+      "launchRpm": 1000,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Lambo_EGear_6",
+      "nG": 6,
+      "fd": 3.08
     },
     {
       "name": "2010 Aston Martin V12 Vantage",
@@ -3520,10 +3519,10 @@
         "trap": 116
       },
       "sim": {
-        "et": 12.539,
-        "trap": 116,
-        "z60": 4.289,
-        "z60130": 11.95,
+        "et": 12.542,
+        "trap": 115.8,
+        "z60": 4.294,
+        "z60130": 11.967,
         "vmax": 130
       },
       "hits": {
@@ -3532,13 +3531,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 3,
+      "loss": 5.5,
       "tireType": 0,
       "launchRpm": 3500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Ferrari_F1_6",
+      "nG": 6,
+      "fd": 4.3
     },
     {
       "name": "2008 Lamborghini Reventón",
@@ -3548,25 +3547,25 @@
         "trap": 128
       },
       "sim": {
-        "et": 11.056,
-        "trap": 125.7,
-        "z60": 2.882,
-        "z60130": 9.133,
+        "et": 11.306,
+        "trap": 128.1,
+        "z60": 3.31,
+        "z60130": 8.324,
         "vmax": 130
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 11.5,
+      "loss": 4.5,
       "tireType": 0,
       "launchRpm": 1200,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
-      "nG": 7,
-      "fd": 3.73
+      "txKey": "Lambo_EGear_V12_6",
+      "nG": 6,
+      "fd": 2.53
     },
     {
       "name": "2011 McLaren MP4-12C HS",
@@ -3576,11 +3575,11 @@
         "trap": 134
       },
       "sim": {
-        "et": 10.85,
-        "trap": 134.1,
-        "z60": 3.069,
-        "z60130": 7.142,
-        "vmax": 134.1
+        "et": 10.855,
+        "trap": 134,
+        "z60": 3.146,
+        "z60130": 7.06,
+        "vmax": 134
       },
       "hits": {
         "et": true,
@@ -3588,13 +3587,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 2,
+      "loss": 1.5,
       "tireType": 1,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2015 Aston Martin V12 Vantage S",
@@ -3633,10 +3632,10 @@
         "z60130": 5
       },
       "sim": {
-        "et": 9.249,
+        "et": 9.256,
         "trap": 157.8,
         "z60": 2.167,
-        "z60130": 4.292,
+        "z60130": 4.3,
         "vmax": 157.8
       },
       "hits": {
@@ -3645,13 +3644,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 10,
+      "loss": 11,
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2020 McLaren 720S",
@@ -3662,11 +3661,11 @@
         "z60130": 5.6
       },
       "sim": {
-        "et": 10.065,
-        "trap": 141.5,
-        "z60": 2.384,
-        "z60130": 6.171,
-        "vmax": 141.5
+        "et": 10.017,
+        "trap": 142,
+        "z60": 2.446,
+        "z60130": 5.954,
+        "vmax": 142
       },
       "hits": {
         "et": true,
@@ -3674,13 +3673,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 3.5,
+      "loss": 1.5,
       "tireType": 2,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2019 Lamborghini Aventador SVJ",
@@ -3691,11 +3690,11 @@
         "z60130": 5.8
       },
       "sim": {
-        "et": 10.201,
-        "trap": 137.7,
-        "z60": 2.467,
-        "z60130": 6.532,
-        "vmax": 137.7
+        "et": 10.208,
+        "trap": 137.9,
+        "z60": 2.51,
+        "z60130": 6.514,
+        "vmax": 137.9
       },
       "hits": {
         "et": true,
@@ -3703,13 +3702,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 3.5,
+      "loss": 4,
       "tireType": 2,
       "launchRpm": 3000,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Lambo_ISR_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 2.867
     },
     {
       "name": "2021 Rimac Nevera",
@@ -3805,11 +3804,11 @@
         "z60130": 4.8
       },
       "sim": {
-        "et": 9.665,
-        "trap": 148,
-        "z60": 2.216,
-        "z60130": 5.314,
-        "vmax": 148
+        "et": 9.66,
+        "trap": 147.8,
+        "z60": 2.191,
+        "z60130": 5.322,
+        "vmax": 147.8
       },
       "hits": {
         "et": true,
@@ -3817,13 +3816,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 10,
+      "loss": 11,
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2005 Bugatti Veyron",
@@ -3834,10 +3833,10 @@
         "z60130": 5.4
       },
       "sim": {
-        "et": 9.967,
+        "et": 9.953,
         "trap": 141.8,
-        "z60": 2.316,
-        "z60130": 6.057,
+        "z60": 2.281,
+        "z60130": 6.053,
         "vmax": 141.8
       },
       "hits": {
@@ -3846,13 +3845,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 2.5,
+      "loss": 3.5,
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2011 Koenigsegg Agera R",
@@ -4124,10 +4123,10 @@
         "z60130": 5
       },
       "sim": {
-        "et": 9.244,
+        "et": 9.252,
         "trap": 157.9,
         "z60": 2.167,
-        "z60130": 4.282,
+        "z60130": 4.291,
         "vmax": 157.9
       },
       "hits": {
@@ -4136,13 +4135,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 11,
+      "loss": 12,
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2019 McLaren Speedtail",
@@ -4153,11 +4152,11 @@
         "z60130": 5.2
       },
       "sim": {
-        "et": 9.753,
-        "trap": 147.5,
-        "z60": 2.324,
-        "z60130": 5.288,
-        "vmax": 147.5
+        "et": 9.752,
+        "trap": 148.8,
+        "z60": 2.402,
+        "z60130": 5.194,
+        "vmax": 148.8
       },
       "hits": {
         "et": true,
@@ -4165,13 +4164,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 25.5,
+      "loss": 24.5,
       "tireType": 2,
       "launchRpm": 1800,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2016 Koenigsegg Regera",
@@ -4240,11 +4239,11 @@
         "z60130": 5
       },
       "sim": {
-        "et": 9.388,
-        "trap": 154.6,
+        "et": 9.368,
+        "trap": 154.9,
         "z60": 2.169,
-        "z60130": 4.637,
-        "vmax": 154.6
+        "z60130": 4.578,
+        "vmax": 154.9
       },
       "hits": {
         "et": true,
@@ -4256,9 +4255,9 @@
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2020 McLaren Elva",
@@ -4269,11 +4268,11 @@
         "z60130": 6.2
       },
       "sim": {
-        "et": 10.772,
-        "trap": 136,
-        "z60": 3.073,
-        "z60130": 6.805,
-        "vmax": 136
+        "et": 10.773,
+        "trap": 136.2,
+        "z60": 3.136,
+        "z60130": 6.694,
+        "vmax": 136.2
       },
       "hits": {
         "et": true,
@@ -4281,13 +4280,13 @@
         "z60": false,
         "z60130": true
       },
-      "loss": 32.8,
+      "loss": 31.5,
       "tireType": 1,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "2014 Koenigsegg Agera S",
@@ -4327,10 +4326,10 @@
         "z60130": 5
       },
       "sim": {
-        "et": 9.249,
+        "et": 9.256,
         "trap": 157.8,
         "z60": 2.167,
-        "z60130": 4.294,
+        "z60130": 4.302,
         "vmax": 157.8
       },
       "hits": {
@@ -4339,13 +4338,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 10,
+      "loss": 11,
       "tireType": 0,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "Bugatti_DSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.64
     },
     {
       "name": "2019 Pagani Huayra Roadster BC",
@@ -4385,25 +4384,25 @@
         "z60130": 6
       },
       "sim": {
-        "et": 10.211,
-        "trap": 138.1,
-        "z60": 2.429,
-        "z60130": 6.617,
-        "vmax": 138.1
+        "et": 10.184,
+        "trap": 138,
+        "z60": 2.486,
+        "z60130": 6.484,
+        "vmax": 138
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 21,
+      "loss": 20.5,
       "tireType": 2,
       "launchRpm": 1500,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "McLaren_SSG_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.31
     },
     {
       "name": "1998 Toyota Supra Turbo (Mk4)",
@@ -7281,10 +7280,10 @@
         "trap": 122
       },
       "sim": {
-        "et": 11.831,
-        "trap": 121.8,
-        "z60": 3.67,
-        "z60130": 10.091,
+        "et": 11.864,
+        "trap": 121.3,
+        "z60": 3.76,
+        "z60130": 9.982,
         "vmax": 130
       },
       "hits": {
@@ -7297,9 +7296,9 @@
       "tireType": 3,
       "launchRpm": 2400,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "BMW_M_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.462
     },
     {
       "name": "2017 Mercedes-AMG C63 S",
@@ -8402,10 +8401,10 @@
         "trap": 118
       },
       "sim": {
-        "et": 12.127,
-        "trap": 118,
-        "z60": 3.821,
-        "z60130": 11.546,
+        "et": 12.101,
+        "trap": 116.9,
+        "z60": 3.833,
+        "z60130": 11.579,
         "vmax": 130
       },
       "hits": {
@@ -8414,13 +8413,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
-      "tireType": 3,
-      "launchRpm": 2400,
+      "loss": 1,
+      "tireType": 4,
+      "launchRpm": 2000,
       "forceScale": 1,
-      "txKey": "DCT_7_AMG",
+      "txKey": "BMW_M_DCT_7",
       "nG": 7,
-      "fd": 3.73
+      "fd": 3.462
     },
     {
       "name": "2014 Mercedes CLA45 AMG",
@@ -9492,12 +9491,6 @@
       "d": -11.7
     },
     {
-      "name": "2007 Lamborghini Murciélago LP640",
-      "tgt": 129,
-      "sim": 119.1,
-      "d": -9.9
-    },
-    {
       "name": "1968 Dodge Dart GTS 383",
       "tgt": 96,
       "sim": 88.8,
@@ -9562,342 +9555,37 @@
       "tgt": 114,
       "sim": 109.2,
       "d": -4.8
+    },
+    {
+      "name": "2023 Ford Bronco Raptor",
+      "tgt": 99,
+      "sim": 94.2,
+      "d": -4.8
     }
   ],
   "batch": [
     {
-      "name": "1970 Chevrolet Chevelle SS 454",
-      "gi": 228,
+      "name": "2017 Ferrari 812 Superfast",
+      "gi": 96,
       "tgt": {
-        "z60": 5.8,
-        "et": 13.9,
-        "trap": 103
+        "z60": 2.8,
+        "et": 10.5,
+        "trap": 136,
+        "z60130": 6.5
       },
       "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 12.5,
-        "tire": 0,
-        "launch": 1600,
-        "sim": {
-          "et": 13.665,
-          "trap": 101.1,
-          "z60": 5.155,
-          "z60130": 25.112
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "TH400_3",
-        "nG": 3,
-        "fd": 3.31,
-        "transmission": "Auto",
-        "loss": 8.5,
-        "tire": 0,
-        "launch": 1200,
-        "sim": {
-          "et": 13.898,
-          "trap": 102.4,
-          "z60": 5.173,
-          "z60130": 24.177
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "1972 Oldsmobile 442",
-      "gi": 239,
-      "tgt": {
-        "z60": 7.5,
-        "et": 15.8,
-        "trap": 90
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 29,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 15.686,
-          "trap": 85.1,
-          "z60": 7.51,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "TH400_3",
-        "nG": 3,
-        "fd": 3.23,
-        "transmission": "Auto",
-        "loss": 19.5,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 15.792,
-          "trap": 87.7,
-          "z60": 7.549,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "1974 Pontiac Firebird 400",
-      "gi": 246,
-      "tgt": {
-        "z60": 8.2,
-        "et": 16.3,
-        "trap": 86
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 14.5,
-        "tire": 0,
-        "launch": 4371,
-        "sim": {
-          "et": 16.117,
-          "trap": 82.5,
-          "z60": 8.19,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "TH400_3",
-        "nG": 3,
-        "fd": 3.23,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 4771,
-        "sim": {
-          "et": 16.3,
-          "trap": 85.1,
-          "z60": 8.291,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "1975 Chevrolet Nova 350",
-      "gi": 251,
-      "tgt": {
-        "z60": 9.8,
-        "et": 17.4,
-        "trap": 79
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 5.5,
-        "tire": 0,
-        "launch": 1200,
-        "sim": {
-          "et": 17.158,
-          "trap": 76.7,
-          "z60": 9.906,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "TH400_3",
-        "nG": 3,
-        "fd": 3.42,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 17.774,
-          "trap": 76.5,
-          "z60": 10.959,
-          "z60130": null
-        },
-        "hits": {
-          "et": false,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "1977 Chevrolet Monte Carlo",
-      "gi": 247,
-      "tgt": {
-        "z60": 10.5,
-        "et": 17.8,
-        "trap": 78
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 9.5,
-        "tire": 0,
-        "launch": 1200,
-        "sim": {
-          "et": 17.364,
-          "trap": 75.6,
-          "z60": 10.34,
-          "z60130": null
-        },
-        "hits": {
-          "et": false,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "TH400_3",
-        "nG": 3,
-        "fd": 3.08,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 18.172,
-          "trap": 75.1,
-          "z60": 11.029,
-          "z60130": null
-        },
-        "hits": {
-          "et": false,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "1987 Buick GNX",
-      "gi": 28,
-      "tgt": {
-        "z60": 4.7,
-        "et": 13.5,
-        "trap": 104
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 13.367,
-          "trap": 103,
-          "z60": 4.867,
-          "z60130": 20.676
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "GM_2004R",
-        "nG": 4,
-        "fd": 3.42,
-        "transmission": "Auto",
-        "loss": 0,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 11.5,
         "tire": 2,
-        "launch": 2700,
+        "launch": 3500,
         "sim": {
-          "et": 13.483,
-          "trap": 100.4,
-          "z60": 4.937,
-          "z60130": 22.238
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "1996 Chevrolet Impala SS",
-      "gi": 19,
-      "tgt": {
-        "z60": 7.1,
-        "et": 15.4,
-        "trap": 91
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 2,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 15.254,
-          "trap": 88.7,
-          "z60": 7.024,
-          "z60130": null
+          "et": 10.368,
+          "trap": 135.6,
+          "z60": 2.554,
+          "z60130": 6.967
         },
         "hits": {
           "et": true,
@@ -9907,49 +9595,50 @@
         }
       },
       "after": {
-        "txKey": "GM_4L60E",
-        "nG": 4,
-        "fd": 3.08,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 4200,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 11.5,
+        "tire": 2,
+        "launch": 3500,
         "sim": {
-          "et": 16.017,
-          "trap": 85.3,
-          "z60": 7.863,
-          "z60130": null
+          "et": 10.368,
+          "trap": 135.6,
+          "z60": 2.554,
+          "z60130": 6.967
         },
         "hits": {
-          "et": false,
-          "trap": false,
-          "z60": false,
+          "et": true,
+          "trap": true,
+          "z60": true,
           "z60130": true
         }
       },
-      "stillMiss": true
+      "stillMiss": false
     },
     {
-      "name": "1985 Chevrolet Camaro IROC-Z",
-      "gi": 30,
+      "name": "2016 Ferrari 488 GTB",
+      "gi": 100,
       "tgt": {
-        "z60": 7,
-        "et": 15.5,
-        "trap": 90
+        "z60": 2.8,
+        "et": 10.7,
+        "trap": 133,
+        "z60130": 6.6
       },
       "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 8,
-        "tire": 0,
-        "launch": 3000,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 10,
+        "tire": 2,
+        "launch": 2400,
         "sim": {
-          "et": 15.34,
-          "trap": 88,
-          "z60": 7.127,
-          "z60130": null
+          "et": 10.471,
+          "trap": 133.2,
+          "z60": 2.577,
+          "z60130": 7.341
         },
         "hits": {
           "et": true,
@@ -9959,49 +9648,50 @@
         }
       },
       "after": {
-        "txKey": "GM_4L60E",
-        "nG": 4,
-        "fd": 3.23,
-        "transmission": "Auto",
-        "loss": 0,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 10,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 10.471,
+          "trap": 133.2,
+          "z60": 2.577,
+          "z60130": 7.341
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2014 Ferrari F12 Berlinetta",
+      "gi": 102,
+      "tgt": {
+        "z60": 2.9,
+        "et": 10.9,
+        "trap": 131,
+        "z60130": 6.8
+      },
+      "before": {
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 10,
         "tire": 1,
-        "launch": 4400,
+        "launch": 3500,
         "sim": {
-          "et": 15.501,
-          "trap": 88.4,
-          "z60": 7.465,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "1984 Chevrolet Corvette C4",
-      "gi": 36,
-      "tgt": {
-        "z60": 6.6,
-        "et": 15,
-        "trap": 91
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 15.023,
-          "trap": 90.9,
-          "z60": 6.72,
-          "z60130": 50.589
+          "et": 10.986,
+          "trap": 131.9,
+          "z60": 3.14,
+          "z60130": 7.527
         },
         "hits": {
           "et": true,
@@ -10011,122 +9701,18 @@
         }
       },
       "after": {
-        "txKey": "GM_4L60E",
-        "nG": 4,
-        "fd": 3.07,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 4200,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 10,
+        "tire": 1,
+        "launch": 3500,
         "sim": {
-          "et": 15.703,
-          "trap": 87.4,
-          "z60": 7.606,
-          "z60130": 68.233
-        },
-        "hits": {
-          "et": false,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2008 Dodge Challenger SRT8",
-      "gi": 24,
-      "tgt": {
-        "z60": 4.8,
-        "et": 13.3,
-        "trap": 108
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.264,
-          "trap": 106.1,
-          "z60": 4.848,
-          "z60130": 16.806
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Chrysler_NAG1_5",
-        "nG": 5,
-        "fd": 3.06,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 4200,
-        "sim": {
-          "et": 13.379,
-          "trap": 104.7,
-          "z60": 4.881,
-          "z60130": 18.529
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2010 Dodge Challenger SRT8",
-      "gi": 13,
-      "tgt": {
-        "z60": 4.7,
-        "et": 13.2,
-        "trap": 109
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 1,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.113,
-          "trap": 107.7,
-          "z60": 4.725,
-          "z60130": 15.668
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Chrysler_NAG1_5",
-        "nG": 5,
-        "fd": 3.06,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.177,
-          "trap": 107,
-          "z60": 4.709,
-          "z60130": 16.922
+          "et": 10.986,
+          "trap": 131.9,
+          "z60": 3.14,
+          "z60130": 7.527
         },
         "hits": {
           "et": true,
@@ -10138,256 +9724,48 @@
       "stillMiss": false
     },
     {
-      "name": "2009 Dodge Challenger R/T",
-      "gi": 46,
+      "name": "2010 Ferrari 458 Italia",
+      "gi": 105,
       "tgt": {
-        "z60": 5.3,
-        "et": 13.9,
-        "trap": 102
+        "z60": 3,
+        "et": 10.9,
+        "trap": 127,
+        "z60130": 7.2
       },
       "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 6,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.899,
-          "trap": 100,
-          "z60": 5.435,
-          "z60130": 22.567
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Chrysler_NAG1_5",
-        "nG": 5,
-        "fd": 3.06,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.827,
-          "trap": 100,
-          "z60": 5.307,
-          "z60130": 22.723
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2007 Dodge Charger SRT8",
-      "gi": 52,
-      "tgt": {
-        "z60": 5,
-        "et": 13.5,
-        "trap": 106
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 3,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.431,
-          "trap": 104.5,
-          "z60": 5,
-          "z60130": 17.69
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Chrysler_NAG1_5",
-        "nG": 5,
-        "fd": 3.06,
-        "transmission": "Auto",
-        "loss": 1,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.489,
-          "trap": 103.7,
-          "z60": 4.993,
-          "z60130": 18.847
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2006 Dodge Charger R/T",
-      "gi": 39,
-      "tgt": {
-        "z60": 5.3,
-        "et": 13.9,
-        "trap": 101
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.928,
-          "trap": 99.7,
-          "z60": 5.465,
-          "z60130": 22.801
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Chrysler_NAG1_5",
-        "nG": 5,
-        "fd": 2.82,
-        "transmission": "Auto",
-        "loss": 0,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 4.5,
         "tire": 2,
-        "launch": 3600,
+        "launch": 5500,
         "sim": {
-          "et": 13.893,
-          "trap": 97.2,
-          "z60": 5.369,
-          "z60130": 23.613
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2009 Pontiac G8 GXP",
-      "gi": 14,
-      "tgt": {
-        "z60": 4.7,
-        "et": 13.2,
-        "trap": 108
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.197,
-          "trap": 107.1,
-          "z60": 4.805,
-          "z60130": 15.777
+          "et": 10.872,
+          "trap": 127,
+          "z60": 2.787,
+          "z60130": 8.649
         },
         "hits": {
           "et": true,
           "trap": true,
           "z60": true,
-          "z60130": true
+          "z60130": false
         }
       },
       "after": {
-        "txKey": "GM_6L80",
-        "nG": 6,
-        "fd": 3.27,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
+        "txKey": "Ferrari_DCT_7",
+        "nG": 7,
+        "fd": 5.14,
+        "transmission": "DCT",
+        "loss": 4.5,
+        "tire": 2,
+        "launch": 5500,
         "sim": {
-          "et": 13.291,
-          "trap": 106.6,
-          "z60": 4.786,
-          "z60130": 16.268
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2014 Chevrolet SS",
-      "gi": 53,
-      "tgt": {
-        "z60": 4.5,
-        "et": 13,
-        "trap": 111,
-        "z60130": 13.8
-      },
-      "before": {
-        "txKey": "ZF8HP",
-        "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 12.95,
-          "trap": 110,
-          "z60": 4.61,
-          "z60130": 14.167
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "GM_6L80",
-        "nG": 6,
-        "fd": 3.27,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.047,
-          "trap": 109.2,
-          "z60": 4.602,
-          "z60130": 14.605
+          "et": 10.872,
+          "trap": 127,
+          "z60": 2.787,
+          "z60130": 8.649
         },
         "hits": {
           "et": true,
@@ -10399,26 +9777,26 @@
       "stillMiss": false
     },
     {
-      "name": "2012 Chevrolet Corvette ZR1",
-      "gi": 12,
+      "name": "2021 Ferrari SF90 Stradale",
+      "gi": 92,
       "tgt": {
-        "z60": 3.4,
-        "et": 11.5,
-        "trap": 128
+        "z60": 2,
+        "et": 9.5,
+        "trap": 148
       },
       "before": {
-        "txKey": "ZF8HP",
+        "txKey": "Ferrari_DCT_8",
         "nG": 8,
-        "fd": 3.15,
-        "transmission": "Auto",
-        "loss": 10,
-        "tire": 4,
+        "fd": 4.51,
+        "transmission": "DCT",
+        "loss": 0.5,
+        "tire": 3,
         "launch": 2400,
         "sim": {
-          "et": 11.333,
-          "trap": 128.1,
-          "z60": 3.477,
-          "z60130": 8.219
+          "et": 9.516,
+          "trap": 148.2,
+          "z60": 2.098,
+          "z60130": 5.174
         },
         "hits": {
           "et": true,
@@ -10428,18 +9806,18 @@
         }
       },
       "after": {
-        "txKey": "GM_6L80",
-        "nG": 6,
-        "fd": 3.42,
-        "transmission": "Auto",
-        "loss": 9,
+        "txKey": "Ferrari_DCT_8",
+        "nG": 8,
+        "fd": 4.51,
+        "transmission": "DCT",
+        "loss": 0.5,
         "tire": 3,
-        "launch": 2000,
+        "launch": 2400,
         "sim": {
-          "et": 11.505,
-          "trap": 128,
-          "z60": 3.616,
-          "z60130": 8.291
+          "et": 9.516,
+          "trap": 148.2,
+          "z60": 2.098,
+          "z60130": 5.174
         },
         "hits": {
           "et": true,
@@ -10451,26 +9829,79 @@
       "stillMiss": false
     },
     {
-      "name": "1990 Mazda Miata NA",
-      "gi": 173,
+      "name": "2002 Ferrari Enzo",
+      "gi": 108,
       "tgt": {
-        "z60": 8.1,
-        "et": 16.3,
-        "trap": 84
+        "z60": 3.3,
+        "et": 11.1,
+        "trap": 133,
+        "z60130": 7.2
       },
       "before": {
-        "txKey": "TR6060_6",
+        "txKey": "Ferrari_F1_6",
         "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 5,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 11.058,
+          "trap": 133.1,
+          "z60": 3.29,
+          "z60130": 7.285
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ferrari_F1_6",
+        "nG": 6,
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 5,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 11.058,
+          "trap": 133.1,
+          "z60": 3.29,
+          "z60130": 7.285
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2003 Ferrari 360 Modena",
+      "gi": 113,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.6,
+        "trap": 114
+      },
+      "before": {
+        "txKey": "Ferrari_F1_6",
+        "nG": 6,
+        "fd": 4.3,
+        "transmission": "Auto",
         "loss": 6,
         "tire": 0,
-        "launch": 3000,
+        "launch": 3500,
         "sim": {
-          "et": 16.228,
-          "trap": 83.2,
-          "z60": 8.184,
-          "z60130": null
+          "et": 12.605,
+          "trap": 113.9,
+          "z60": 4.273,
+          "z60130": 12.596
         },
         "hits": {
           "et": true,
@@ -10480,18 +9911,18 @@
         }
       },
       "after": {
-        "txKey": "Mazda_Miata_5",
-        "nG": 5,
+        "txKey": "Ferrari_F1_6",
+        "nG": 6,
         "fd": 4.3,
-        "transmission": "Manual",
-        "loss": 10,
+        "transmission": "Auto",
+        "loss": 6,
         "tire": 0,
-        "launch": 2600,
+        "launch": 3500,
         "sim": {
-          "et": 16.183,
-          "trap": 82,
-          "z60": 8.343,
-          "z60130": null
+          "et": 12.605,
+          "trap": 113.9,
+          "z60": 4.273,
+          "z60130": 12.596
         },
         "hits": {
           "et": true,
@@ -10503,78 +9934,26 @@
       "stillMiss": false
     },
     {
-      "name": "1990 Mazda RX-7 FC Turbo",
-      "gi": 285,
+      "name": "2005 Ferrari F430",
+      "gi": 117,
       "tgt": {
-        "z60": 6.3,
-        "et": 14.8,
-        "trap": 95
+        "z60": 3.9,
+        "et": 12.1,
+        "trap": 118
       },
       "before": {
-        "txKey": "TR6060_6",
+        "txKey": "Ferrari_F1_6",
         "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 4,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 14.744,
-          "trap": 94.5,
-          "z60": 6.361,
-          "z60130": 29.623
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Mazda_5M",
-        "nG": 5,
-        "fd": 3.909,
-        "transmission": "Manual",
-        "loss": 9,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 14.796,
-          "trap": 93.5,
-          "z60": 6.161,
-          "z60130": 33.191
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2001 Honda S2000",
-      "gi": 165,
-      "tgt": {
-        "z60": 5.8,
-        "et": 14.4,
-        "trap": 97
-      },
-      "before": {
-        "txKey": "TR6060_6",
-        "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 4,
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 11,
         "tire": 3,
         "launch": 3500,
         "sim": {
-          "et": 14.389,
-          "trap": 98,
-          "z60": 5.958,
-          "z60130": 24.195
+          "et": 12.082,
+          "trap": 118,
+          "z60": 3.808,
+          "z60130": 11.059
         },
         "hits": {
           "et": true,
@@ -10584,18 +9963,18 @@
         }
       },
       "after": {
-        "txKey": "Honda_S2000_6",
+        "txKey": "Ferrari_F1_6",
         "nG": 6,
-        "fd": 4.756,
-        "transmission": "Manual",
-        "loss": 16,
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 11,
         "tire": 3,
-        "launch": 3100,
+        "launch": 3500,
         "sim": {
-          "et": 14.379,
-          "trap": 94.9,
-          "z60": 5.714,
-          "z60130": 29.82
+          "et": 12.082,
+          "trap": 118,
+          "z60": 3.808,
+          "z60130": 11.059
         },
         "hits": {
           "et": true,
@@ -10607,26 +9986,26 @@
       "stillMiss": false
     },
     {
-      "name": "2013 Scion FR-S",
-      "gi": 172,
+      "name": "2006 Ferrari 612 Scaglietti",
+      "gi": 123,
       "tgt": {
-        "z60": 6.2,
-        "et": 14.8,
-        "trap": 94
+        "z60": 4.3,
+        "et": 12.6,
+        "trap": 116
       },
       "before": {
-        "txKey": "TR6060_6",
+        "txKey": "Ferrari_F1_6",
         "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 3,
-        "tire": 3,
-        "launch": 3000,
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 5.5,
+        "tire": 0,
+        "launch": 3500,
         "sim": {
-          "et": 14.745,
-          "trap": 93.8,
-          "z60": 6.337,
-          "z60130": 29.645
+          "et": 12.542,
+          "trap": 115.8,
+          "z60": 4.294,
+          "z60130": 11.967
         },
         "hits": {
           "et": true,
@@ -10636,18 +10015,177 @@
         }
       },
       "after": {
-        "txKey": "Toyota_FA86_6",
+        "txKey": "Ferrari_F1_6",
         "nG": 6,
-        "fd": 4.1,
-        "transmission": "Manual",
+        "fd": 4.3,
+        "transmission": "Auto",
+        "loss": 5.5,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 12.542,
+          "trap": 115.8,
+          "z60": 4.294,
+          "z60130": 11.967
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 McLaren 765LT",
+      "gi": 95,
+      "tgt": {
+        "z60": 2.6,
+        "et": 10.2,
+        "trap": 141,
+        "z60130": 6
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 15.5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 10.058,
+          "trap": 140.9,
+          "z60": 2.455,
+          "z60130": 6.099
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 15.5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 10.058,
+          "trap": 140.9,
+          "z60": 2.455,
+          "z60130": 6.099
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 McLaren 600LT",
+      "gi": 97,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.7,
+        "trap": 135,
+        "z60130": 6.8
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
         "loss": 4,
-        "tire": 3,
-        "launch": 3000,
+        "tire": 1,
+        "launch": 2400,
         "sim": {
-          "et": 14.62,
-          "trap": 93.9,
-          "z60": 6.273,
-          "z60130": 31.974
+          "et": 10.806,
+          "trap": 135,
+          "z60": 3.147,
+          "z60130": 6.841
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 4,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.806,
+          "trap": 135,
+          "z60": 3.147,
+          "z60130": 6.841
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2015 McLaren P1",
+      "gi": 101,
+      "tgt": {
+        "z60": 2.6,
+        "et": 9.8,
+        "trap": 148,
+        "z60130": 5.4
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 9.749,
+          "trap": 147.9,
+          "z60": 2.4,
+          "z60130": 5.194
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 9.749,
+          "trap": 147.9,
+          "z60": 2.4,
+          "z60130": 5.194
         },
         "hits": {
           "et": true,
@@ -10659,26 +10197,344 @@
       "stillMiss": false
     },
     {
-      "name": "2024 Toyota GR86",
-      "gi": 323,
+      "name": "2013 McLaren MP4-12C",
+      "gi": 103,
       "tgt": {
-        "z60": 5.3,
-        "et": 14,
-        "trap": 101
+        "z60": 2.9,
+        "et": 10.7,
+        "trap": 134,
+        "z60130": 6.8
       },
       "before": {
-        "txKey": "TR6060_6",
-        "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 0,
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.855,
+          "trap": 134,
+          "z60": 3.146,
+          "z60130": 7.06
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.855,
+          "trap": 134,
+          "z60": 3.146,
+          "z60130": 7.06
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 McLaren MP4-12C HS",
+      "gi": 125,
+      "tgt": {
+        "z60": 2.9,
+        "et": 10.7,
+        "trap": 134
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.855,
+          "trap": 134,
+          "z60": 3.146,
+          "z60130": 7.06
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.855,
+          "trap": 134,
+          "z60": 3.146,
+          "z60130": 7.06
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 McLaren 720S",
+      "gi": 128,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10.1,
+        "trap": 142,
+        "z60130": 5.6
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 10.017,
+          "trap": 142,
+          "z60": 2.446,
+          "z60130": 5.954
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 10.017,
+          "trap": 142,
+          "z60": 2.446,
+          "z60130": 5.954
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "gi": 145,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10,
+        "trap": 150,
+        "z60130": 5.2
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 24.5,
+        "tire": 2,
+        "launch": 1800,
+        "sim": {
+          "et": 9.752,
+          "trap": 148.8,
+          "z60": 2.402,
+          "z60130": 5.194
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 24.5,
+        "tire": 2,
+        "launch": 1800,
+        "sim": {
+          "et": 9.752,
+          "trap": 148.8,
+          "z60": 2.402,
+          "z60130": 5.194
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 McLaren Elva",
+      "gi": 149,
+      "tgt": {
+        "z60": 2.8,
+        "et": 10.6,
+        "trap": 136,
+        "z60130": 6.2
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 31.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.773,
+          "trap": 136.2,
+          "z60": 3.136,
+          "z60130": 6.694
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 31.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.773,
+          "trap": 136.2,
+          "z60": 3.136,
+          "z60130": 6.694
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2021 McLaren Sabre",
+      "gi": 153,
+      "tgt": {
+        "z60": 2.7,
+        "et": 10.4,
+        "trap": 138,
+        "z60130": 6
+      },
+      "before": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 20.5,
+        "tire": 2,
+        "launch": 1500,
+        "sim": {
+          "et": 10.184,
+          "trap": 138,
+          "z60": 2.486,
+          "z60130": 6.484
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "McLaren_SSG_7",
+        "nG": 7,
+        "fd": 3.31,
+        "transmission": "DCT",
+        "loss": 20.5,
+        "tire": 2,
+        "launch": 1500,
+        "sim": {
+          "et": 10.184,
+          "trap": 138,
+          "z60": 2.486,
+          "z60130": 6.484
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Lamborghini Huracán EVO",
+      "gi": 94,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10.6,
+        "trap": 133,
+        "z60130": 6.8
+      },
+      "before": {
+        "txKey": "Lambo_LDF_7",
+        "nG": 7,
+        "fd": 4.89,
+        "transmission": "DCT",
+        "loss": 0.5,
         "tire": 0,
         "launch": 3000,
         "sim": {
-          "et": 13.938,
-          "trap": 100.3,
-          "z60": 5.458,
-          "z60130": 21.789
+          "et": 10.501,
+          "trap": 133,
+          "z60": 2.577,
+          "z60130": 7.453
         },
         "hits": {
           "et": true,
@@ -10688,49 +10544,50 @@
         }
       },
       "after": {
-        "txKey": "Toyota_FA86_6",
-        "nG": 6,
-        "fd": 4.1,
-        "transmission": "Manual",
+        "txKey": "Lambo_LDF_7",
+        "nG": 7,
+        "fd": 4.89,
+        "transmission": "DCT",
         "loss": 0.5,
-        "tire": 3,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 10.501,
+          "trap": 133,
+          "z60": 2.577,
+          "z60130": 7.453
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2019 Lamborghini Huracán Performante",
+      "gi": 98,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10.5,
+        "trap": 134,
+        "z60130": 6.5
+      },
+      "before": {
+        "txKey": "Lambo_LDF_7",
+        "nG": 7,
+        "fd": 4.89,
+        "transmission": "DCT",
+        "loss": 7.5,
+        "tire": 2,
         "launch": 2600,
         "sim": {
-          "et": 13.853,
-          "trap": 99.6,
-          "z60": 5.415,
-          "z60130": 22.932
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2024 Subaru BRZ",
-      "gi": 324,
-      "tgt": {
-        "z60": 5.3,
-        "et": 14,
-        "trap": 101
-      },
-      "before": {
-        "txKey": "TR6060_6",
-        "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 13.949,
-          "trap": 100.4,
-          "z60": 5.47,
-          "z60130": 21.865
+          "et": 10.454,
+          "trap": 133.8,
+          "z60": 2.568,
+          "z60130": 7.231
         },
         "hits": {
           "et": true,
@@ -10740,18 +10597,18 @@
         }
       },
       "after": {
-        "txKey": "Toyota_FA86_6",
-        "nG": 6,
-        "fd": 4.1,
-        "transmission": "Manual",
-        "loss": 0,
-        "tire": 3,
-        "launch": 3000,
+        "txKey": "Lambo_LDF_7",
+        "nG": 7,
+        "fd": 4.89,
+        "transmission": "DCT",
+        "loss": 7.5,
+        "tire": 2,
+        "launch": 2600,
         "sim": {
-          "et": 13.845,
-          "trap": 99.6,
-          "z60": 5.407,
-          "z60130": 22.815
+          "et": 10.454,
+          "trap": 133.8,
+          "z60": 2.568,
+          "z60130": 7.231
         },
         "hits": {
           "et": true,
@@ -10763,26 +10620,605 @@
       "stillMiss": false
     },
     {
-      "name": "1999 Nissan Skyline GT-R R34",
-      "gi": 277,
+      "name": "2019 Lamborghini Aventador SVJ",
+      "gi": 129,
       "tgt": {
-        "z60": 4.8,
-        "et": 13.3,
-        "trap": 107
+        "z60": 2.6,
+        "et": 10.3,
+        "trap": 136,
+        "z60130": 5.8
       },
       "before": {
-        "txKey": "TR6060_6",
+        "txKey": "Lambo_ISR_7",
+        "nG": 7,
+        "fd": 2.867,
+        "transmission": "Auto",
+        "loss": 4,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.208,
+          "trap": 137.9,
+          "z60": 2.51,
+          "z60130": 6.514
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_ISR_7",
+        "nG": 7,
+        "fd": 2.867,
+        "transmission": "Auto",
+        "loss": 4,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.208,
+          "trap": 137.9,
+          "z60": 2.51,
+          "z60130": 6.514
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2012 Lamborghini Gallardo LP570-4",
+      "gi": 104,
+      "tgt": {
+        "z60": 3.2,
+        "et": 11.2,
+        "trap": 127
+      },
+      "before": {
+        "txKey": "Lambo_EGear_6",
         "nG": 6,
-        "fd": 3.73,
-        "transmission": "Manual",
-        "loss": 2,
+        "fd": 3.08,
+        "transmission": "Auto",
+        "loss": 6,
+        "tire": 0,
+        "launch": 6287,
+        "sim": {
+          "et": 11.083,
+          "trap": 124.9,
+          "z60": 2.981,
+          "z60130": 9.144
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_EGear_6",
+        "nG": 6,
+        "fd": 3.08,
+        "transmission": "Auto",
+        "loss": 6,
+        "tire": 0,
+        "launch": 6687,
+        "sim": {
+          "et": 11.191,
+          "trap": 124.6,
+          "z60": 3.138,
+          "z60130": 9.144
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2009 Lamborghini Gallardo LP560-4",
+      "gi": 118,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.4,
+        "trap": 126
+      },
+      "before": {
+        "txKey": "Lambo_EGear_6",
+        "nG": 6,
+        "fd": 3.08,
+        "transmission": "Auto",
+        "loss": 4,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 11.232,
+          "trap": 123.9,
+          "z60": 3.089,
+          "z60130": 9.405
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_EGear_6",
+        "nG": 6,
+        "fd": 3.08,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 11.253,
+          "trap": 123.7,
+          "z60": 3.104,
+          "z60130": 9.466
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2007 Lamborghini Murciélago LP640",
+      "gi": 109,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.4,
+        "trap": 129
+      },
+      "before": {
+        "txKey": "Lambo_EGear_V12_6",
+        "nG": 6,
+        "fd": 2.53,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 2948,
+        "sim": {
+          "et": 11.231,
+          "trap": 126.9,
+          "z60": 3.187,
+          "z60130": 8.591
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_EGear_V12_6",
+        "nG": 6,
+        "fd": 2.53,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 2548,
+        "sim": {
+          "et": 11.273,
+          "trap": 126.9,
+          "z60": 3.235,
+          "z60130": 8.591
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Lamborghini Reventón",
+      "gi": 124,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.3,
+        "trap": 128
+      },
+      "before": {
+        "txKey": "Lambo_EGear_V12_6",
+        "nG": 6,
+        "fd": 2.53,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 11.306,
+          "trap": 128.1,
+          "z60": 3.31,
+          "z60130": 8.324
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_EGear_V12_6",
+        "nG": 6,
+        "fd": 2.53,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 11.306,
+          "trap": 128.1,
+          "z60": 3.31,
+          "z60130": 8.324
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2019 Bugatti Chiron",
+      "gi": 127,
+      "tgt": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.256,
+          "trap": 157.8,
+          "z60": 2.167,
+          "z60130": 4.3
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.256,
+          "trap": 157.8,
+          "z60": 2.167,
+          "z60130": 4.3
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2013 Bugatti Veyron Super Sport",
+      "gi": 133,
+      "tgt": {
+        "z60": 2.4,
+        "et": 9.9,
+        "trap": 148,
+        "z60130": 4.8
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.66,
+          "trap": 147.8,
+          "z60": 2.191,
+          "z60130": 5.322
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.66,
+          "trap": 147.8,
+          "z60": 2.191,
+          "z60130": 5.322
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2005 Bugatti Veyron",
+      "gi": 134,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10.1,
+        "trap": 142,
+        "z60130": 5.4
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 3.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.953,
+          "trap": 141.8,
+          "z60": 2.281,
+          "z60130": 6.053
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 3.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.953,
+          "trap": 141.8,
+          "z60": 2.281,
+          "z60130": 6.053
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2017 Bugatti Chiron Sport",
+      "gi": 144,
+      "tgt": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 12,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.252,
+          "trap": 157.9,
+          "z60": 2.167,
+          "z60130": 4.291
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 12,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.252,
+          "trap": 157.9,
+          "z60": 2.167,
+          "z60130": 4.291
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 Bugatti Divo",
+      "gi": 148,
+      "tgt": {
+        "z60": 2.4,
+        "et": 9.5,
+        "trap": 155,
+        "z60130": 5
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 19,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.368,
+          "trap": 154.9,
+          "z60": 2.169,
+          "z60130": 4.578
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 19,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.368,
+          "trap": 154.9,
+          "z60": 2.169,
+          "z60130": 4.578
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2016 Bugatti Chiron",
+      "gi": 151,
+      "tgt": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "before": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.256,
+          "trap": 157.8,
+          "z60": 2.167,
+          "z60130": 4.302
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Bugatti_DSG_7",
+        "nG": 7,
+        "fd": 3.64,
+        "transmission": "DCT",
+        "loss": 11,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 9.256,
+          "trap": 157.8,
+          "z60": 2.167,
+          "z60130": 4.302
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 BMW M3 Competition",
+      "gi": 256,
+      "tgt": {
+        "z60": 3.8,
+        "et": 11.9,
+        "trap": 122
+      },
+      "before": {
+        "txKey": "BMW_M_DCT_7",
+        "nG": 7,
+        "fd": 3.462,
+        "transmission": "DCT",
+        "loss": 0,
         "tire": 3,
         "launch": 2400,
         "sim": {
-          "et": 13.105,
-          "trap": 104.9,
-          "z60": 4.598,
-          "z60130": 16.829
+          "et": 11.864,
+          "trap": 121.3,
+          "z60": 3.76,
+          "z60130": 9.982
         },
         "hits": {
           "et": true,
@@ -10792,18 +11228,18 @@
         }
       },
       "after": {
-        "txKey": "Getrag_R34",
-        "nG": 6,
-        "fd": 3.545,
-        "transmission": "Manual",
-        "loss": 4,
-        "tire": 0,
-        "launch": 2000,
+        "txKey": "BMW_M_DCT_7",
+        "nG": 7,
+        "fd": 3.462,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 2400,
         "sim": {
-          "et": 13.156,
-          "trap": 104.8,
-          "z60": 4.596,
-          "z60130": 17.796
+          "et": 11.864,
+          "trap": 121.3,
+          "z60": 3.76,
+          "z60130": 9.982
         },
         "hits": {
           "et": true,
@@ -10813,6 +11249,110 @@
         }
       },
       "stillMiss": false
+    },
+    {
+      "name": "2015 BMW M4",
+      "gi": 296,
+      "tgt": {
+        "z60": 3.9,
+        "et": 12.1,
+        "trap": 118
+      },
+      "before": {
+        "txKey": "BMW_M_DCT_7",
+        "nG": 7,
+        "fd": 3.462,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 4,
+        "launch": 2000,
+        "sim": {
+          "et": 12.101,
+          "trap": 116.9,
+          "z60": 3.833,
+          "z60130": 11.579
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "BMW_M_DCT_7",
+        "nG": 7,
+        "fd": 3.462,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 4,
+        "launch": 2000,
+        "sim": {
+          "et": 12.101,
+          "trap": 116.9,
+          "z60": 3.833,
+          "z60130": 11.579
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2009 Nissan GT-R",
+      "gi": 110,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.5,
+        "trap": 124
+      },
+      "before": {
+        "txKey": "GR6_DCT",
+        "nG": 6,
+        "fd": 3.7,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 11.403,
+          "trap": 121.3,
+          "z60": 3.087,
+          "z60130": 10.116
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GR6_DCT",
+        "nG": 6,
+        "fd": 3.7,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 11.403,
+          "trap": 121.3,
+          "z60": 3.087,
+          "z60130": 10.116
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
     }
   ]
 }

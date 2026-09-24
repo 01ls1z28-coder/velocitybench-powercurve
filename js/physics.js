@@ -146,7 +146,18 @@
     GR6_DCT: { name: 'Nissan GR6 DCT', gears: [4.056, 2.301, 1.595, 1.248, 1.000, 0.795], finalDrive: 3.70, loss: 10 },
     Getrag_R34: { name: 'Getrag 6-spd (R34 GT-R)', gears: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634], finalDrive: 3.545, loss: 14 },
     Aisin_6: { name: 'Aisin/Getrag V160 6-spd', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.133, loss: 12 },
-    // Legacy key kept for non-Euro DCT fleet still on Tremec clone; GT500 remapped to Tremec_TR9070_7DCT
+    // Phase6 Euro supercar DCT marque presets (published-leaning). Legacy DCT_7_AMG kept empty of fleet after Phase6 remap.
+    Ferrari_DCT_7: { name: 'Ferrari Getrag F1 DCT 7', gears: [3.08, 2.19, 1.63, 1.29, 1.03, 0.84, 0.69], finalDrive: 5.14, loss: 10 },
+    Ferrari_DCT_8: { name: 'Ferrari Magna 8DCT (SF90)', gears: [3.61, 2.34, 1.74, 1.40, 1.07, 0.87, 0.77, 0.67], finalDrive: 4.51, loss: 10 },
+    Ferrari_F1_6: { name: 'Ferrari F1 6-spd AMT', gears: [3.29, 2.16, 1.61, 1.27, 1.03, 0.82], finalDrive: 4.30, loss: 12 },
+    McLaren_SSG_7: { name: 'McLaren SSG 7DCT', gears: [3.98, 2.61, 1.91, 1.48, 1.16, 0.91, 0.69], finalDrive: 3.31, loss: 10 },
+    Lambo_LDF_7: { name: 'Lamborghini LDF 7DCT', gears: [3.133, 2.083, 1.575, 1.244, 0.979, 0.788, 0.677], finalDrive: 4.89, loss: 10 },
+    Lambo_ISR_7: { name: 'Lamborghini ISR 7 AMT', gears: [3.909, 2.438, 1.810, 1.458, 1.185, 0.967, 0.844], finalDrive: 2.867, loss: 12 },
+    Lambo_EGear_6: { name: 'Lamborghini e-gear 6 AMT (Gallardo)', gears: [3.31, 2.05, 1.46, 1.14, 0.94, 0.78], finalDrive: 3.08, loss: 12 },
+    Lambo_EGear_V12_6: { name: 'Lamborghini e-gear 6 AMT (Murciélago)', gears: [3.091, 2.105, 1.565, 1.241, 1.065, 0.939], finalDrive: 2.53, loss: 12 },
+    Bugatti_DSG_7: { name: 'Bugatti DSG 7DCT', gears: [3.18, 2.26, 1.67, 1.29, 1.06, 0.88, 0.80], finalDrive: 3.64, loss: 10 },
+    BMW_M_DCT_7: { name: 'BMW M DCT 7 (GS7D36SG)', gears: [4.806, 2.583, 1.701, 1.277, 1.000, 0.844, 0.671], finalDrive: 3.462, loss: 10 },
+    // Legacy key kept for any residual Tremec clone; GT500 = Tremec_TR9070_7DCT; Phase6 remaps Euro supercars off this
     DCT_7_AMG: { name: 'Tremec TR-9070 DCT 7 (legacy key)', gears: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56], finalDrive: 3.73, loss: 10 },
     Tremec_TR9070_7DCT: { name: 'Tremec TR-9070 DCT 7', gears: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56], finalDrive: 3.73, loss: 10 },
     Ford_10R80: { name: 'Ford 10R80 10-spd Auto', gears: [4.696, 2.985, 2.146, 1.769, 1.520, 1.275, 1.000, 0.854, 0.689, 0.636], finalDrive: 3.15, loss: 15 },

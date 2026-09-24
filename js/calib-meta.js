@@ -7,7 +7,7 @@
 'use strict';
 
 var VB_CALIB_META = {
-  "tip": "real-tx-phase5-zf8-tr6060",
+  "tip": "real-tx-phase6-euro-supercar-dct",
   "sourcePath": "scripts/garage-calib-meta.json",
   "tol": {
     "z60": 0.25,
@@ -18,23 +18,23 @@ var VB_CALIB_META = {
   "stats": {
     "et": 320,
     "trap": 295,
-    "z60": 280,
+    "z60": 285,
     "z60130": 71,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
-    "all4": 243
+    "all4": 248
   },
   "baseline": {
-    "tip": "real-tx-phase4-ev-fd@7108fdd",
-    "et": 323,
-    "trap": 300,
-    "z60": 285,
-    "z60130": 72,
-    "all4": 249
+    "tip": "real-tx-phase5-zf8-tr6060@8b47f89",
+    "et": 320,
+    "trap": 295,
+    "z60": 280,
+    "z60130": 71,
+    "all4": 243
   },
-  "note": "Real-TX Phase5 residual ZF8/TR6060 filler: GM_4L60E/2004R/6L80 + Chrysler_NAG1_5 + TH400 classics + Mazda_Miata_5/Honda_S2000_6/Toyota_FA86_6 + Getrag_R34; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P4 intact; NO Merovingian",
+  "note": "Real-TX Phase6 Euro supercar DCT marque split: Ferrari_DCT_7/8 + Ferrari_F1_6 + McLaren_SSG_7 + Lambo_LDF/ISR/EGear + Bugatti_DSG_7 + BMW_M_DCT_7 + GR6; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P5 intact; NO Merovingian",
   "honestMissCount": 14,
   "honestMissNote": "14 honest-miss cars left untouched (no Cd/wt/curve cheat) — see VERIFY.md / trap-miss-batch22",
   "honestMissNames": [

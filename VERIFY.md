@@ -1,3 +1,138 @@
+# BUILD LOCK — Real-TX Phase 6 Euro supercar DCT marque split (Seraph gate)
+
+Branch: `review/pc-real-tx-phase6-euro-supercar-dct` · Based on `8b47f89` (live main = Phase5 residual ZF8/TR6060 CLEARED).
+**No Merovingian deploy.** Hold for Seraph browser gate (Ferrari SF90 · McLaren 720S · Huracán EVO · Bugatti Chiron / GT-R GR6).
+
+## VERIFY note (required)
+- Phase 1 intact: Ford_10R80 / GM_10L90 / Tremec_TR9080_8DCT + Hellcat FD 2.62.
+- Phase 2 intact: classics off TR6060 (Demon A833_4, GTO Muncie_M21, …).
+- Phase 3 intact: Porsche_PDK_7/_GT · AMG_SPEEDSHIFT · VW_DQ500 · Audi_STronic · GT500 TR-9070.
+- Phase 4 intact: Tesla_EV_Plaid/Cybertruck · Porsche_Taycan_2 · Koenigsegg_KDD · FD clamp 20.
+- Phase 5 intact: GM_4L60E/2004R/6L80 · Chrysler_NAG1_5 · Miata/S2000/FA86 · Getrag_R34.
+- Launch-tach intact: `resolveLeaveRpm` + stock slip→lockup (`launchLocked`) — **not touched**.
+- Gear UI (`#txFactoryLabelField`) + calib panel (`#calibPanel` / `js/calib-meta.js`) — **kept / tip advanced**.
+- Phase 6: remap all 34 cars still on legacy `DCT_7_AMG` onto marque/period DCT·AMT presets.
+- Recalib: loss / launchRpm / tireType only; forceScale=1; no Cd/wt/curve fakes.
+- Fleet hits: BEFORE et 320/331 trap 295/331 z60 280/332 60-130 71/76 all4 243 → AFTER et 320/331 trap 295/331 z60 285/332 60-130 71/76 all4 248.
+- Leftover after tip: **DCT_7_AMG 0** (fleet clear of Tremec clone filler).
+- Honest miss (knobs exhausted): **2009 Nissan GT-R** trap Δ−2.7 mph (tol ±2.5) — documented, no Cd/wt/curve cheat.
+
+---
+
+# Real-TX Phase 6 Euro supercar DCT marque split (2026-09-24 CT)
+
+Branch: `review/pc-real-tx-phase6-euro-supercar-dct` · Base `8b47f895b9e286d115420bac03d76b66edd76225` (origin/main Phase5 CLEARED). **No deploy.** Do **not** ask Merovingian to push main.
+
+## Goal
+Stop cloning one AMG-style / Tremec TR-9070 (`DCT_7_AMG`) across remaining Euro supercars. Add marque/period DCT·AMT presets with published-leaning ratios + FD; remap all 34 leftovers. Recalib **loss / launch / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY after gear/FD writes: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · launch-tach blend · Phase 1–5 remaps — **intact**
+- Credits: **Jorge Guerra** only (no Merovingian / Sati in public UI)
+
+## FactoryTransmissions added (`js/physics.js`)
+| txKey | Speeds | Default FD | Ratios (abbrev) | Sources |
+|---|---:|---:|---|---|
+| `Ferrari_DCT_7` **new** | 7 | 5.14 | 3.08 / 2.19 / 1.63 / 1.29 / 1.03 / 0.84 / 0.69 | Ferrari 458/488 EPA / Autoweb Getrag 7DCL750 |
+| `Ferrari_DCT_8` **new** | 8 | 4.51 | 3.61 … 0.67 | SF90 Magna 8DCL900 published-leaning (Motormatchup class) |
+| `Ferrari_F1_6` **new** | 6 | 4.30 | 3.29 / 2.16 / 1.61 / 1.27 / 1.03 / 0.82 | F430 F1 AMT published |
+| `McLaren_SSG_7` **new** | 7 | 3.31 | 3.98 / 2.61 / 1.91 / 1.48 / 1.16 / 0.91 / 0.69 | McLaren 720S C&D / Autoweb SSG |
+| `Lambo_LDF_7` **new** | 7 | 4.89 | 3.133 … 0.677 | Huracán LDF published |
+| `Lambo_ISR_7` **new** | 7 | 2.867 | 3.909 … 0.844 | Aventador ISR (LamboCars / C&D) |
+| `Lambo_EGear_6` **new** | 6 | 3.08 | 3.31 / 2.05 / 1.46 / 1.14 / 0.94 / 0.78 | Gallardo e-gear C&D |
+| `Lambo_EGear_V12_6` **new** | 6 | 2.53 | 3.091 … 0.939 | Murciélago/Reventón e-gear (LamboCars) |
+| `Bugatti_DSG_7` **new** | 7 | 3.64 | 3.18 / 2.26 / 1.67 / 1.29 / 1.06 / 0.88 / 0.80 | Veyron C/D gear table + FD 3.64 |
+| `BMW_M_DCT_7` **new** | 7 | 3.462 | 4.806 / 2.583 / 1.701 / 1.277 / 1.000 / 0.844 / 0.671 | F80/F82 M-DKG 436 (BMW tech / AU reviews) |
+| `GR6_DCT` reused | 6 | 3.70 | existing | Nissan GT-R (was wrongly on 7-spd filler) |
+
+Phase 3 Porsche/AMG/VW-Audi presets **kept**. Tremec TR-9070/TR-9080 **only** on GT500 / C8 trio.
+
+## Remapped cars (34) — all previously on `DCT_7_AMG`
+**Ferrari_DCT_7 (4):** 812 Superfast, 488 GTB, F12 Berlinetta, 458 Italia.  
+**Ferrari_DCT_8 (1):** SF90 Stradale.  
+**Ferrari_F1_6 (4):** Enzo, 360 Modena, F430, 612 Scaglietti.  
+**McLaren_SSG_7 (9):** 765LT, 600LT, P1, MP4-12C, MP4-12C HS, 720S, Speedtail, Elva, Sabre.  
+**Lambo_LDF_7 (2):** Huracán EVO, Huracán Performante.  
+**Lambo_ISR_7 (1):** Aventador SVJ.  
+**Lambo_EGear_6 (2):** Gallardo LP570-4, Gallardo LP560-4.  
+**Lambo_EGear_V12_6 (2):** Murciélago LP640, Reventón.  
+**Bugatti_DSG_7 (6):** Chiron ×3, Chiron Sport, Divo, Veyron, Veyron Super Sport.  
+**BMW_M_DCT_7 (2):** M3 Competition, M4.  
+**GR6_DCT (1):** 2009 Nissan GT-R.
+
+## Per-car before → after (batch)
+
+| Car | Before tx/nG/FD | After tx/nG/FD | Excel ET@trap | Sim ET@trap | loss / tire / launch | ET+trap |
+|---|---|---|---|---|---|---|
+| 2017 Ferrari 812 Superfast | DCT_7_AMG/7/3.73 | Ferrari_DCT_7/7/5.14 | 10.5@136 | 10.368@135.6 | 11.5% / T2 / L3500 | **HIT** |
+| 2016 Ferrari 488 GTB | DCT_7_AMG/7/3.73 | Ferrari_DCT_7/7/5.14 | 10.7@133 | 10.471@133.2 | 10% / T2 / L2400 | **HIT** |
+| 2014 Ferrari F12 Berlinetta | DCT_7_AMG/7/3.73 | Ferrari_DCT_7/7/5.14 | 10.9@131 | 10.986@131.9 | 10% / T1 / L3500 | **HIT** |
+| 2010 Ferrari 458 Italia | DCT_7_AMG/7/3.73 | Ferrari_DCT_7/7/5.14 | 10.9@127 | 10.872@127 | 4.5% / T2 / L5500 | **HIT** |
+| 2021 Ferrari SF90 Stradale | DCT_7_AMG/7/3.73 | Ferrari_DCT_8/8/4.51 | 9.5@148 | 9.516@148.2 | 0.5% / T3 / L2400 | **HIT** |
+| 2002 Ferrari Enzo | DCT_7_AMG/7/3.73 | Ferrari_F1_6/6/4.3 | 11.1@133 | 11.058@133.1 | 5% / T4 / L3500 | **HIT** |
+| 2003 Ferrari 360 Modena | DCT_7_AMG/7/3.73 | Ferrari_F1_6/6/4.3 | 12.6@114 | 12.605@113.9 | 6% / T0 / L3500 | **HIT** |
+| 2005 Ferrari F430 | DCT_7_AMG/7/3.73 | Ferrari_F1_6/6/4.3 | 12.1@118 | 12.082@118 | 11% / T3 / L3500 | **HIT** |
+| 2006 Ferrari 612 Scaglietti | DCT_7_AMG/7/3.73 | Ferrari_F1_6/6/4.3 | 12.6@116 | 12.542@115.8 | 5.5% / T0 / L3500 | **HIT** |
+| 2020 McLaren 765LT | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.2@141 | 10.058@140.9 | 15.5% / T2 / L2400 | **HIT** |
+| 2018 McLaren 600LT | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.7@135 | 10.806@135 | 4% / T1 / L2400 | **HIT** |
+| 2015 McLaren P1 | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 9.8@148 | 9.749@147.9 | 1% / T2 / L2400 | **HIT** |
+| 2013 McLaren MP4-12C | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.7@134 | 10.855@134 | 1.5% / T1 / L2400 | **HIT** |
+| 2011 McLaren MP4-12C HS | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.7@134 | 10.855@134 | 1.5% / T1 / L2400 | **HIT** |
+| 2020 McLaren 720S | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.1@142 | 10.017@142 | 1.5% / T2 / L2400 | **HIT** |
+| 2019 McLaren Speedtail | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10@150 | 9.752@148.8 | 24.5% / T2 / L1800 | **HIT** |
+| 2020 McLaren Elva | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.6@136 | 10.773@136.2 | 31.5% / T1 / L2400 | **HIT** |
+| 2021 McLaren Sabre | DCT_7_AMG/7/3.73 | McLaren_SSG_7/7/3.31 | 10.4@138 | 10.184@138 | 20.5% / T2 / L1500 | **HIT** |
+| 2020 Lamborghini Huracán EVO | DCT_7_AMG/7/3.73 | Lambo_LDF_7/7/4.89 | 10.6@133 | 10.501@133 | 0.5% / T0 / L3000 | **HIT** |
+| 2019 Lamborghini Huracán Performante | DCT_7_AMG/7/3.73 | Lambo_LDF_7/7/4.89 | 10.5@134 | 10.454@133.8 | 7.5% / T2 / L2600 | **HIT** |
+| 2019 Lamborghini Aventador SVJ | DCT_7_AMG/7/3.73 | Lambo_ISR_7/7/2.867 | 10.3@136 | 10.208@137.9 | 4% / T2 / L3000 | **HIT** |
+| 2012 Lamborghini Gallardo LP570-4 | DCT_7_AMG/7/3.73 | Lambo_EGear_6/6/3.08 | 11.2@127 | 11.191@124.6 | 6% / T0 / L6687 | **HIT** |
+| 2009 Lamborghini Gallardo LP560-4 | DCT_7_AMG/7/3.73 | Lambo_EGear_6/6/3.08 | 11.4@126 | 11.253@123.7 | 4.5% / T0 / L1000 | **HIT** |
+| 2007 Lamborghini Murciélago LP640 | DCT_7_AMG/7/3.73 | Lambo_EGear_V12_6/6/2.53 | 11.4@129 | 11.273@126.9 | 4.5% / T0 / L2548 | **HIT** |
+| 2008 Lamborghini Reventón | DCT_7_AMG/7/3.73 | Lambo_EGear_V12_6/6/2.53 | 11.3@128 | 11.306@128.1 | 4.5% / T0 / L1200 | **HIT** |
+| 2019 Bugatti Chiron | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 9.4@158 | 9.256@157.8 | 11% / T0 / L2400 | **HIT** |
+| 2013 Bugatti Veyron Super Sport | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 9.9@148 | 9.66@147.8 | 11% / T0 / L2400 | **HIT** |
+| 2005 Bugatti Veyron | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 10.1@142 | 9.953@141.8 | 3.5% / T0 / L2400 | **HIT** |
+| 2017 Bugatti Chiron Sport | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 9.4@158 | 9.252@157.9 | 12% / T0 / L2400 | **HIT** |
+| 2018 Bugatti Divo | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 9.5@155 | 9.368@154.9 | 19% / T0 / L2400 | **HIT** |
+| 2016 Bugatti Chiron | DCT_7_AMG/7/3.73 | Bugatti_DSG_7/7/3.64 | 9.4@158 | 9.256@157.8 | 11% / T0 / L2400 | **HIT** |
+| 2018 BMW M3 Competition | DCT_7_AMG/7/3.73 | BMW_M_DCT_7/7/3.462 | 11.9@122 | 11.864@121.3 | 0% / T3 / L2400 | **HIT** |
+| 2015 BMW M4 | DCT_7_AMG/7/3.73 | BMW_M_DCT_7/7/3.462 | 12.1@118 | 12.101@116.9 | 1% / T4 / L2000 | **HIT** |
+| 2009 Nissan GT-R | DCT_7_AMG/7/3.73 | GR6_DCT/6/3.7 | 11.5@124 | 11.403@121.3 | 0% / T0 / L2400 | **MISS** |
+
+## Fleet vs Phase5 base (`8b47f89`)
+| Metric | Phase5 base | Phase6 tip |
+|---|---:|---:|
+| ET | 320/331 | 320/331 |
+| trap | 295/331 | 295/331 |
+| 0-60 | 280/332 | **285/332** |
+| 60-130 | 71/76 | 71/76 |
+| all4 | 243 | **248** |
+| forceScale≠1 | 0 | **0** |
+| DCT_7_AMG leftover | 34 | **0** |
+
+## Seraph spot-check (node physics, 70°F / 45% / 29.92, launch=auto)
+| Car | txKey / nG / FD | Sim ET@trap | 0-60 |
+|---|---|---|---|
+| 2021 Ferrari SF90 Stradale | Ferrari_DCT_8 / 8 / 4.51 | 9.516@148.2 | 2.098 |
+| 2020 McLaren 720S | McLaren_SSG_7 / 7 / 3.31 | 10.017@142.0 | 2.446 |
+| 2020 Lamborghini Huracán EVO | Lambo_LDF_7 / 7 / 4.89 | 10.501@133.0 | 2.577 |
+| 2019 Bugatti Chiron | Bugatti_DSG_7 / 7 / 3.64 | 9.256@157.8 | 2.167 |
+
+## Honest miss
+- **2009 Nissan GT-R** → `GR6_DCT`/6/3.70: ET HIT (11.403 vs 11.5) · trap MISS Δ−2.7 mph (121.3 vs 124, tol ±2.5). Loss already 0%; no Cd/wt/curve cheat — knobs exhausted.
+
+## Rebuild
+```
+node scripts/recalib-real-tx-phase6-euro-supercar-dct.js
+```
+
+---
+
 # BUILD LOCK — Real-TX Phase 5 residual ZF8 / TR6060 filler (Seraph gate)
 
 Branch: `review/pc-real-tx-phase5-zf8-tr6060` · Based on `7108fdd` (live main = Phase4 EV FD CLEARED).
