@@ -1,3 +1,59 @@
+# BUILD LOCK — PowerCurve calib/source transparency panel (Seraph cloud B)
+
+Branch: `review/pc-calib-transparency-panel` · Tip off `42cae82` (Phase 3 Euro DCT).
+**No Merovingian deploy.** Hold for Seraph browser gate (compact calib panel in results/meta).
+**UI-only** — parallel with Phase 4 / gear-UI tip; **no garage remaps**, no physics / launch-tach / FD edits.
+Prefer not overlapping `#txFactoryLabelField` (gear-UI tip) — panel lives under Time Slip / metrics.
+
+## VERIFY note (required)
+- Phase 1–3 remaps **intact** (this tip does not touch `js/garage-data.js` / `js/physics.js`).
+- Launch-tach intact: `resolveLeaveRpm` + `launchLocked` — **not touched**.
+- forceScale untouched; no recalib (UI-only).
+- Peak HP wipe guard + `VB_POWERCURVE_GARAGE` bind intact.
+- Credits **Jorge Guerra** only.
+- Panel surfaces **existing** fleet hit-rates from `scripts/garage-calib-meta.json` tip `real-tx-phase3-euro-dct` + honest-miss caveat from `scripts/recalib-trap-miss-batch22.js` — **no new metrics / sources invented**.
+
+## Goal
+Compact calib/source transparency panel so users see compiled fleet hit-rates vs Excel TOL, honest-miss language, and a clear **compiled estimates / not lab-certified / not track-certified** caveat.
+
+## What the panel shows (data source)
+| Surface | Content | Source |
+|---|---|---|
+| `#calibCaveat` | Compiled estimates — not lab / dyno / track certified | baked caveat (matches existing disclaimer language) |
+| `#calibHits` | Fleet ET / trap / 0–60 / 60–130 / all4 hit counts + % | `garage-calib-meta.json` → `stats` (324/331 · 301/331 · 284/332 · 72/76 · all4 250) |
+| `#calibMetaLine` | Tip name · knobs · Excel TOL | meta `tip` / `tol` / knobs note |
+| `#calibHonest` | 14 honest-miss cars left untouched | `recalib-trap-miss-batch22.js` HONEST_MISS |
+| `#calibSource` | `scripts/garage-calib-meta.json` | path label |
+
+## Files
+- `js/calib-meta.js` — compact `window.VB_POWERCURVE_CALIB_META` subset (new)
+- `index.html` — `#calibPanel` under Time Slip (results/meta); script tag for calib-meta
+- `css/styles.css` — `.calib-panel` compact chrome
+- `js/app.js` — `renderCalibPanel()` on init
+- **Not touched:** `js/garage-data.js`, `js/physics.js`, `js/gauges.js`, launch-tach, gear ratios / FD, `#txFactoryLabelField`
+
+## Spot (browser)
+1. Load app → below Time Slip, panel shows fleet hits matching meta tip `real-tx-phase3-euro-dct`.
+2. Caveat visible: compiled estimates / not lab-certified / not track-certified.
+3. Honest-miss line present (14 cars).
+4. Gear editor / `#txFactoryLabelField` area **unchanged** (no overlap with gear-UI tip).
+5. Credits remain **Jorge Guerra** only.
+
+## Integrity
+- forceScale / physics / garage remaps / launch-tach: **unchanged**
+- Phase 1 nG10 + Phase 2 classics + Phase 3 Euro DCT: **not regressed** (no garage edit)
+- `window.VB_POWERCURVE_GARAGE` bind present · Peak HP wipe comment present
+- **Skipped:** deploy · Merovingian · push main · Phase 4 EV FD remaps
+
+VERIFY
+1. Branch tip off `42cae82`; files = HTML/CSS/`js/app.js`/`js/calib-meta.js` (+ VERIFY) only
+2. Panel stats match `node -e "console.log(require('./scripts/garage-calib-meta.json').stats)"`
+3. `rg 'renderCalibPanel|VB_POWERCURVE_CALIB_META' js/app.js js/calib-meta.js index.html`
+4. `rg 'resolveLeaveRpm|launchLocked' js/physics.js` still present; garage-data untouched vs base
+5. Static / no secrets; **no deploy**; main not pushed
+
+---
+
 # BUILD LOCK — Real-TX Phase 3 Euro DCT marque presets (Seraph gate)
 
 Branch: `review/pc-real-tx-phase3-euro-dct` · Tip off `2315f65` (launch-tach on Phase2 / main).
