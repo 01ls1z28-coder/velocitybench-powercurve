@@ -1,3 +1,16 @@
+# BUILD LOCK — launch-tach on Phase2 (Seraph re-gate)
+
+Branch: `review/pc-launch-tach-on-phase2` · Rebase of launch-tach realism onto Phase2 main `c825038`.
+**No Merovingian deploy.** Hold for Seraph browser re-gate (Hellcat / Mustang GT tach climb + Demon/GTO/Mustang390/AE86 period TX).
+
+## VERIFY note (required)
+- Phase 2 present: 24 classics remapped off TR6060 (Demon A833_4, GTO Muncie_M21, Mustang GT 390 Toploader_4, AE86 Toyota_T50_5, …).
+- Tach blend present: stock slip→lockup (no hard `rpm=launchRpm` hold); absurd ICE leave seeds to peak-TQ; EV Power % intact.
+- Recalib after rebase: loss / launchRpm / tireType only; forceScale=1; no Cd/wt/curve fakes.
+- Fleet hits: BEFORE et 316/331 trap 303/331 z60 273/332 all4 245 → AFTER et 324/331 trap 304/331 z60 283/332 all4 252.
+
+---
+
 # Real-TX Phase 2 classics — off TR6060 onto period gearboxes (2026-09-24 CT)
 
 Branch: `review/pc-real-tx-phase2-classics` · Tip off `33aaa9b` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (spot-check Demon 340, GTO, Mustang GT 390, AE86).
