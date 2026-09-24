@@ -1,3 +1,17 @@
+# BUILD LOCK — Remove PowerCurve CALIB · SOURCE TRANSPARENCY panel (Jorge via Seraph)
+
+Branch: `review/pc-remove-calib-panel` · Base `b1f1329` (Phase 6 Euro supercar DCT).
+**No Merovingian.** Do **not** push main.
+
+## VERIFY note (required)
+- Removed `#calibPanel` / “Calib · source transparency” UI under Time Slip + related CSS.
+- Deleted unused bake `js/calib-meta.js` + script tag + `renderCalibPanel` / `VB_POWERCURVE_CALIB_META` wiring.
+- **No new disclaimer text.** Existing footer disclaimer kept as-is: “Estimates for comparison only — not dyno- or track-certified… Calibrated toward published track slips…”. Credits: Jorge Guerra only.
+- Kept untouched: physics, garage, gear UI `#txFactoryLabelField`, P1–6 remaps, launch-tach, forceScale=1, Peak HP wipe, `VB_POWERCURVE_GARAGE` bind.
+- `scripts/garage-calib-meta.json` retained for offline recalib tooling (not UI-wired).
+
+---
+
 # BUILD LOCK — Real-TX Phase 6 Euro supercar DCT marque split (Seraph gate)
 
 Branch: `review/pc-real-tx-phase6-euro-supercar-dct` · Based on `8b47f89` (live main = Phase5 residual ZF8/TR6060 CLEARED).
