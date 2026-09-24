@@ -1,0 +1,1056 @@
+{
+  "tip": "trap-miss-batch22",
+  "elapsedMs": 62776,
+  "stats": {
+    "et": 328,
+    "trap": 302,
+    "z60": 288,
+    "z60130": 72,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 258
+  },
+  "report": [
+    {
+      "name": "2023 Hyundai Ioniq 5 N",
+      "gi": 58,
+      "tgt": {
+        "z60": 3.2,
+        "et": 11,
+        "trap": 124.9
+      },
+      "before": {
+        "loss": 5,
+        "tire": 4,
+        "launch": 500,
+        "sim": {
+          "et": 11.09,
+          "trap": 128.2,
+          "z60": 3.275,
+          "z60130": 8.2
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 7,
+        "tire": 1,
+        "launch": 200,
+        "sim": {
+          "et": 11.183,
+          "trap": 127.4,
+          "z60": 3.349,
+          "z60130": 8.409
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "gi": 54,
+      "tgt": {
+        "z60": 2.1,
+        "et": 9.25,
+        "trap": 151,
+        "z60130": 4.8
+      },
+      "before": {
+        "loss": 6,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.362,
+          "trap": 154.6,
+          "z60": 2.263,
+          "z60130": 4.412
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 9,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.484,
+          "trap": 153.1,
+          "z60": 2.342,
+          "z60130": 4.567
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1978 Dodge Magnum XE",
+      "gi": 243,
+      "tgt": {
+        "z60": 9.5,
+        "et": 17.2,
+        "trap": 80
+      },
+      "before": {
+        "loss": 18,
+        "tire": 0,
+        "launch": 1900,
+        "sim": {
+          "et": 17.022,
+          "trap": 77.2,
+          "z60": 9.744,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 16,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 17.069,
+          "trap": 77.8,
+          "z60": 9.73,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2023 Mercedes EQE AMG 53",
+      "gi": 65,
+      "tgt": {
+        "z60": 3.2,
+        "et": 11.6,
+        "trap": 120
+      },
+      "before": {
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.747,
+          "trap": 123.3,
+          "z60": 3.875,
+          "z60130": 9.396
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.747,
+          "trap": 123.3,
+          "z60": 3.875,
+          "z60130": 9.396
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": false
+    },
+    {
+      "name": "2007 Ford F-150 4.6 Triton",
+      "gi": 218,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.6,
+        "trap": 84
+      },
+      "before": {
+        "loss": 3,
+        "tire": 1,
+        "launch": 3000,
+        "sim": {
+          "et": 16.456,
+          "trap": 81,
+          "z60": 8.556,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 1.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 16.367,
+          "trap": 81.5,
+          "z60": 8.418,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "gi": 145,
+      "tgt": {
+        "z60": 2.5,
+        "et": 10,
+        "trap": 150,
+        "z60130": 5.2
+      },
+      "before": {
+        "loss": 26,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 9.763,
+          "trap": 147.2,
+          "z60": 2.324,
+          "z60130": 5.327
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 25.5,
+        "tire": 2,
+        "launch": 1800,
+        "sim": {
+          "et": 9.75,
+          "trap": 147.5,
+          "z60": 2.324,
+          "z60130": 5.288
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": true
+    },
+    {
+      "name": "1985 Mazda RX-7 GSL-SE",
+      "gi": 287,
+      "tgt": {
+        "z60": 7.8,
+        "et": 16,
+        "trap": 86
+      },
+      "before": {
+        "loss": 5,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 15.991,
+          "trap": 89.2,
+          "z60": 7.849,
+          "z60130": 62.951
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 10,
+        "tire": 0,
+        "launch": 5100,
+        "sim": {
+          "et": 16.062,
+          "trap": 88.3,
+          "z60": 7.959,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1967 Plymouth GTX 440",
+      "gi": 241,
+      "tgt": {
+        "z60": 6,
+        "et": 14.3,
+        "trap": 100
+      },
+      "before": {
+        "loss": 20,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 14.381,
+          "trap": 94.5,
+          "z60": 5.787,
+          "z60130": 50.309
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 12,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.126,
+          "trap": 97.5,
+          "z60": 5.544,
+          "z60130": 33.271
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1968 Mercury Cougar XR-7",
+      "gi": 250,
+      "tgt": {
+        "z60": 7.2,
+        "et": 15.5,
+        "trap": 91
+      },
+      "before": {
+        "loss": 35,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 15.416,
+          "trap": 87.3,
+          "z60": 6.998,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 30,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 15.454,
+          "trap": 88.5,
+          "z60": 7.006,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1963 Corvette Stingray 327",
+      "gi": 238,
+      "tgt": {
+        "z60": 5.9,
+        "et": 14.4,
+        "trap": 100
+      },
+      "before": {
+        "loss": 30,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 14.409,
+          "trap": 94.9,
+          "z60": 5.738,
+          "z60130": 42.774
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 29,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.386,
+          "trap": 95.4,
+          "z60": 5.719,
+          "z60130": 40.384
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": true
+    },
+    {
+      "name": "2001 Lamborghini Diablo VT 6.0",
+      "gi": 112,
+      "tgt": {
+        "z60": 3.6,
+        "et": 11.8,
+        "trap": 122
+      },
+      "before": {
+        "loss": 9,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 11.578,
+          "trap": 119.2,
+          "z60": 3.353,
+          "z60130": 10.578
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 2,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 11.669,
+          "trap": 121.9,
+          "z60": 3.607,
+          "z60130": 9.669
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1969 Chevrolet Camaro SS 396",
+      "gi": 230,
+      "tgt": {
+        "z60": 6,
+        "et": 14.4,
+        "trap": 99
+      },
+      "before": {
+        "loss": 26,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 14.44,
+          "trap": 93.9,
+          "z60": 5.78,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 19.5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.207,
+          "trap": 96.6,
+          "z60": 5.561,
+          "z60130": 37.888
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1968 Dodge Dart GTS 383",
+      "gi": 235,
+      "tgt": {
+        "z60": 6.5,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "loss": 22,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 14.878,
+          "trap": 90.2,
+          "z60": 6.295,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 13,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.624,
+          "trap": 93.5,
+          "z60": 6.01,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2023 Chevrolet Silverado ZR2",
+      "gi": 202,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.8,
+        "trap": 95
+      },
+      "before": {
+        "loss": 5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.705,
+          "trap": 91.1,
+          "z60": 6.192,
+          "z60130": 52.563
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 0,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 14.754,
+          "trap": 92.6,
+          "z60": 6.264,
+          "z60130": 42.522
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2022 BMW iX M60",
+      "gi": 64,
+      "tgt": {
+        "z60": 3.6,
+        "et": 12.1,
+        "trap": 114
+      },
+      "before": {
+        "loss": 0,
+        "tire": 4,
+        "launch": 500,
+        "sim": {
+          "et": 12.134,
+          "trap": 119.5,
+          "z60": 4.095,
+          "z60130": 10.449
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 0,
+        "tire": 4,
+        "launch": 500,
+        "sim": {
+          "et": 12.134,
+          "trap": 119.5,
+          "z60": 4.095,
+          "z60130": 10.449
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": false
+    },
+    {
+      "name": "1979 Pontiac Firebird Trans Am",
+      "gi": 29,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.5,
+        "trap": 86
+      },
+      "before": {
+        "loss": 18,
+        "tire": 1,
+        "launch": 2800,
+        "sim": {
+          "et": 16.494,
+          "trap": 81.4,
+          "z60": 8.557,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 10,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 16.501,
+          "trap": 84.2,
+          "z60": 8.415,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2008 Audi S5",
+      "gi": 283,
+      "tgt": {
+        "z60": 4.9,
+        "et": 13.4,
+        "trap": 105
+      },
+      "before": {
+        "loss": 13,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.378,
+          "trap": 100.1,
+          "z60": 4.793,
+          "z60130": 22.025
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 13.341,
+          "trap": 102.7,
+          "z60": 4.861,
+          "z60130": 19.187
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2008 Audi S5",
+      "gi": 303,
+      "tgt": {
+        "z60": 4.9,
+        "et": 13.4,
+        "trap": 105
+      },
+      "before": {
+        "loss": 13,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.378,
+          "trap": 100.1,
+          "z60": 4.793,
+          "z60130": 22.025
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 5,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 13.341,
+          "trap": 102.7,
+          "z60": 4.861,
+          "z60130": 19.187
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1971 Dodge Demon 340",
+      "gi": 231,
+      "tgt": {
+        "z60": 6.4,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "loss": 18,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 14.804,
+          "trap": 90.7,
+          "z60": 6.194,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 10,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 14.604,
+          "trap": 93.5,
+          "z60": 5.979,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "gi": 56,
+      "tgt": {
+        "z60": 2.4,
+        "et": 10.5,
+        "trap": 130,
+        "z60130": 6.5
+      },
+      "before": {
+        "loss": 0,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.52,
+          "trap": 135.6,
+          "z60": 2.834,
+          "z60130": 6.775
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 0,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.52,
+          "trap": 135.6,
+          "z60": 2.834,
+          "z60130": 6.775
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": false
+    },
+    {
+      "name": "1977 Chevrolet Monte Carlo",
+      "gi": 247,
+      "tgt": {
+        "z60": 10.5,
+        "et": 17.8,
+        "trap": 78
+      },
+      "before": {
+        "loss": 14,
+        "tire": 0,
+        "launch": 1900,
+        "sim": {
+          "et": 17.609,
+          "trap": 74.1,
+          "z60": 10.87,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 9,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 17.607,
+          "trap": 75.6,
+          "z60": 10.634,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false,
+      "knobsChanged": true
+    },
+    {
+      "name": "1974 Pontiac Firebird 400",
+      "gi": 246,
+      "tgt": {
+        "z60": 8.2,
+        "et": 16.3,
+        "trap": 86
+      },
+      "before": {
+        "loss": 17,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 16.116,
+          "trap": 81.8,
+          "z60": 8.199,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 15,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 16.289,
+          "trap": 82.3,
+          "z60": 8.395,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": true
+    },
+    {
+      "name": "2018 Jeep Grand Cherokee SRT",
+      "gi": 265,
+      "tgt": {
+        "z60": 4.5,
+        "et": 13.1,
+        "trap": 108
+      },
+      "before": {
+        "loss": 2,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 13.072,
+          "trap": 103.3,
+          "z60": 4.441,
+          "z60130": 20.355
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.083,
+          "trap": 104,
+          "z60": 4.488,
+          "z60130": 19.686
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true,
+      "knobsChanged": true
+    }
+  ],
+  "fsBad": 0
+}

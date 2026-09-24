@@ -1,3 +1,75 @@
+# Trap-miss accuracy tip — batch22 (2026-09-24 CT)
+
+Branch: `review/pc-trap-miss-batch22` · Tip off `6266e17` (published ZR1X Cd/wt restore). **No deploy.** Do **not** ask Merovingian to push main.
+
+## Goal
+Recover Excel **trap** on the first 22 knob-recoverable / near / stretch cars from `/workspace/powercurve-trap-miss-inventory.md`, **ET-first**, knobs only.
+
+## Hard rules (kept)
+- Knobs ONLY: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / torque-curve shape / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s · 60–130 ±0.75s
+- **14 honest-miss cars left untouched** (Murciélago, GTO, S1000RR, Chevelle SS396, Escalade V, Durango SRT, RR Sport SVR, Audi S6 V10, Olds 442, Skyline R34, TLX Type S, Bronco Raptor, Torino 351, Thunderbird)
+- Duplicate **2008 Audi S5** ×2 — both trap-miss rows retuned identically
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · canvas-before-listener — **intact**
+
+## Shipped
+1. `scripts/recalib-trap-miss-batch22.js` — targeted batch22 recalib (recipes + optional `--search`).
+2. Garage knobs updated for 20 rows (22 names; EQE / iX M60 / Taycan left unchanged after knobs exhausted).
+3. `scripts/garage-calib-meta.json` tip `trap-miss-batch22` + `scripts/trap-miss-batch22-report.json`.
+
+## Reproduce
+```bash
+git fetch origin && git checkout review/pc-trap-miss-batch22
+node scripts/recalib-trap-miss-batch22.js          # apply shipped recipes + fleet meta
+# optional full search (slow): node scripts/recalib-trap-miss-batch22.js --search
+node -e "const m=require('./scripts/garage-calib-meta.json'); console.log(m.tip,m.stats)"
+rg 'window.VB_POWERCURVE_GARAGE' js/garage-data.js
+rg 'Peak HP label must NEVER wipe' js/app.js
+node -e "const G=require('./js/garage-data.js'); console.log('fs!=1',G.filter(c=>+c.forceScale!==1).length)"
+```
+
+## Fleet hit-rates (Excel TOL)
+
+| Metric | Before (`6266e17`) | After (batch22) |
+|--------|--------------------|-----------------|
+| ¼ ET | 328/331 **99.1%** | 328/331 **99.1%** (no regress) |
+| ¼ trap | 286/331 **86.4%** | **302/331 91.2%** (**+16**) |
+| 0-60 | 291/332 **87.7%** | 288/332 **86.7%** (−3; ET/trap priority — 4 muscle cars faster 0-60 at low launch) |
+| 60-130 | 72/76 **94.7%** | 72/76 **94.7%** |
+| all4 | 246 | **258** |
+
+## Batch22 still-miss after knobs exhausted (do not cheat Cd/wt/curve)
+| Car | ΔET | Δtrap | Best knobs tried |
+|-----|----:|------:|---|
+| 2023 Mercedes EQE AMG 53 | +0.147 | +3.3 | unchanged 0%/Summer/L500 (raise loss breaks ET) |
+| 2019 McLaren Speedtail | −0.250 | −2.5* | 25.5%/Slick/L1800 (*float edge; ET already at tol) |
+| 1963 Corvette Stingray 327 | −0.014 | −4.6 | 29%/Street/L200 |
+| 2022 BMW iX M60 | +0.034 | +5.5 | unchanged 0%/UHP/L500 |
+| 2022 Porsche Taycan Turbo S | +0.020 | +5.6 | unchanged 0%/Drag Radial/L500 |
+| 1974 Pontiac Firebird 400 | −0.011 | −3.7 | 15%/Street/L200 |
+| 2018 Jeep Grand Cherokee SRT | −0.017 | −4.0 | 0%/Street/L2400 |
+
+## Integrity
+- forceScale≠1: **0**
+- Cd/weight/frontalArea/torqueCurve vs `6266e17`: **unchanged** on all batch cars
+- 14 honest-miss knobs: **unchanged**
+- `window.VB_POWERCURVE_GARAGE` bind present
+- Peak HP wipe fix comment present in `js/app.js`
+
+**Skipped:** deploy · Merovingian holds deploy · no push to main.
+
+VERIFY
+1. Meta tip `trap-miss-batch22` · trap ≥302/331 · ET 328/331
+2. Spot: Ioniq 5 N / Model S Plaid / Magnum XE / RX-7 / GTX 440 / Audi S5 (both) — ET+trap HIT
+3. Honest-miss list knobs match `6266e17`
+4. Every garage `forceScale === 1`; no Cd/wt edits on batch cars
+5. Static / no secrets; **no deploy**
+
+---
+
 # Excel ET-first tip — restore published ZR1X Cd/wt (2026-09-18 CT)
 
 Branch: `review/vb-powercurve-excel-et-first` · Tip **on top of** `389d58d` (do not clear). Base physics from `da81539` (Peak HP wipe fix + forceScale=1). **No deploy.**
