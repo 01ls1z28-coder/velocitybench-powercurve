@@ -1,3 +1,55 @@
+# BUILD LOCK — PowerCurve Gear UI: factory TX / preset name in gear editor (Seraph gate)
+
+Branch: `review/pc-gear-ui-tx-label` · Tip off `42cae82` (Phase 3 Euro DCT).
+**No Merovingian deploy.** Hold for Seraph browser gate (gear editor shows factory TX name).
+**UI-only** — parallel with Phase 4; **no garage remaps**, no physics / launch-tach / gear-ratio edits.
+
+## VERIFY note (required)
+- Phase 1–3 remaps **intact** (this tip does not touch `js/garage-data.js` / `js/physics.js`).
+- Launch-tach intact: `resolveLeaveRpm` + `launchLocked` — **not touched**.
+- forceScale untouched; no recalib (UI-only).
+- Peak HP wipe guard + `VB_POWERCURVE_GARAGE` bind intact.
+- Soft flag (Phase 2): bake was right; **label was missing** — gear editor now shows human factory TX / preset name from `car.txKey` → `FactoryTransmissions[txKey].name`.
+
+## Goal
+In the gear editor, garage cars show e.g. **“Muncie M21 4-spd”** / **“Porsche PDK 7-spd (GT)”** above the editable gear rows — not anonymous ratios only. Custom Builder keeps the existing Factory TX preset dropdown.
+
+## Where / how sourced
+| Surface | Behavior |
+|---|---|
+| `#txFactoryLabel` (garage cars) | Read-only brass label = `Phys.FactoryTransmissions[car.txKey].name` |
+| `#txFactoryKey` | Muted `preset · <txKey>` under the name |
+| `#txPreset` (Custom Builder only) | Unchanged editable dropdown; factory label field hidden |
+| `readCarFromForm` | Preserves `base.txKey` so the label survives RUN |
+
+## Files
+- `index.html` — `#txFactoryLabelField` / `#txFactoryLabel` / `#txFactoryKey`
+- `css/styles.css` — `.tx-factory-label` brass read-only chrome
+- `js/app.js` — `resolveTxDisplayName`, `updateTxFactoryLabel`, wired from `updateTxPresetVisibility`; `txKey` preserved on RUN
+- **Not touched:** `js/garage-data.js`, `js/physics.js`, launch-tach, gear ratios / FD
+
+## Spot (browser)
+1. Load garage **1964 Pontiac GTO** → Transmission shows **Muncie M21 4-spd** (`preset · Muncie_M21`).
+2. **1971 Dodge Demon 340** → **Chrysler A833 4-spd**.
+3. **2024 Porsche 911 GT3 RS** → **Porsche PDK 7-spd (GT)**.
+4. **Custom Builder** → factory label hidden; Factory TX preset dropdown still lists keys.
+5. Credits remain **Jorge Guerra** only.
+
+## Integrity
+- forceScale / physics / garage remaps / launch-tach: **unchanged**
+- Phase 1 nG10 + Phase 2 classics + Phase 3 Euro DCT: **not regressed** (no garage edit)
+- `window.VB_POWERCURVE_GARAGE` bind present · Peak HP wipe comment present
+- **Skipped:** deploy · Merovingian · push main · Phase 4 EV FD remaps
+
+VERIFY
+1. Branch tip off `42cae82`; files = HTML/CSS/`js/app.js` (+ VERIFY) only
+2. GTO / Demon / GT3 RS show human TX names in gear editor; Custom Builder dropdown intact
+3. `rg 'resolveTxDisplayName|txFactoryLabel' js/app.js index.html`
+4. `rg 'resolveLeaveRpm|launchLocked' js/physics.js` still present; garage-data untouched vs base
+5. Static / no secrets; **no deploy**; main not pushed
+
+---
+
 # BUILD LOCK — Real-TX Phase 3 Euro DCT marque presets (Seraph gate)
 
 Branch: `review/pc-real-tx-phase3-euro-dct` · Tip off `2315f65` (launch-tach on Phase2 / main).
@@ -936,7 +988,7 @@ Full per-car residuals: `scripts/garage-calib-meta.json`. Rebuild: `node scripts
 
 ### Factory TX preset (Custom Builder only)
 - The **Factory TX preset** dropdown is shown/enabled **only** when garage selection is **Custom Builder**.
-- Named garage cars keep **editable gear ratios + final drive**; the preset list is hidden so a mismatched factory TX name is never shown as if it were that car’s transmission.
+- Named garage cars keep **editable gear ratios + final drive**; the Custom Builder preset **dropdown** stays hidden. As of Gear UI tip `review/pc-gear-ui-tx-label`, garage cars show a **read-only** factory TX label from baked `txKey` → `FactoryTransmissions.name` (Phase 2 soft flag: bake right, label was missing).
 
 ### Induction defaults (baked `boostModel`)
 Dyno curves already include boost (`boostPsi = 0`); radios are UI defaults only unless the user adds boost PSI on an NA baseline.

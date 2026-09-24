@@ -352,6 +352,29 @@ body {
 #txPresetField.tx-hidden { display: none; }
 #txPresetField .tx-hint { font-style: normal; color: var(--text-dim); font-weight: 400; }
 #txPreset:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Phase 2 soft flag / Gear UI: show baked factory TX name for garage cars */
+#txFactoryLabelField.tx-hidden { display: none; }
+.tx-factory-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brass-text);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+.tx-factory-label.is-unknown { color: var(--text-muted); font-weight: 500; }
+.tx-factory-key {
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
 .chart-wrap { touch-action: none; }
 
 .chart-label {

@@ -145,6 +145,46 @@
     return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
   }
 
+  /** Human label for a car's baked factory TX (txKey → FactoryTransmissions.name). */
+  function resolveTxDisplayName(car) {
+    if (!car || !car.txKey) return null;
+    var tx = Phys.FactoryTransmissions[car.txKey];
+    if (!tx) return null;
+    return tx.name || car.txKey;
+  }
+
+  function updateTxFactoryLabel(car) {
+    var field = $('txFactoryLabelField');
+    var label = $('txFactoryLabel');
+    var keyEl = $('txFactoryKey');
+    if (!field || !label) return;
+    var custom = isCustomBuilder(car);
+    // Custom Builder uses the editable preset dropdown; garage cars get a read-only name.
+    field.classList.toggle('tx-hidden', !!custom);
+    if (custom) {
+      label.textContent = '—';
+      label.classList.remove('is-unknown');
+      if (keyEl) { keyEl.hidden = true; keyEl.textContent = ''; }
+      return;
+    }
+    var name = resolveTxDisplayName(car);
+    if (name) {
+      label.textContent = name;
+      label.classList.remove('is-unknown');
+      if (keyEl) {
+        keyEl.hidden = false;
+        keyEl.textContent = 'preset · ' + car.txKey;
+      }
+    } else {
+      label.textContent = 'Custom / unknown gears';
+      label.classList.add('is-unknown');
+      if (keyEl) {
+        keyEl.hidden = !car || !car.txKey;
+        keyEl.textContent = car && car.txKey ? ('txKey · ' + car.txKey) : '';
+      }
+    }
+  }
+
   function updateTxPresetVisibility(car) {
     var field = $('txPresetField');
     var sel = $('txPreset');
@@ -153,9 +193,8 @@
     if (field) field.classList.toggle('tx-hidden', !custom);
     sel.disabled = !custom;
     if (!custom) {
-      // Clear selection so a factory TX name is never shown as if it were this car's gearbox
+      // Garage: hide dropdown; factory name is shown via #txFactoryLabel (bake is right).
       sel.selectedIndex = -1;
-      // Keep a blank option so the control isn't stuck on a mismatched label if briefly shown
       if (!sel.querySelector('option[value=""]')) {
         var blank = document.createElement('option');
         blank.value = '';
@@ -167,6 +206,7 @@
     } else if (car && car.txKey && Phys.FactoryTransmissions[car.txKey]) {
       sel.value = car.txKey;
     }
+    updateTxFactoryLabel(car);
   }
 
   var RPM_GRID = 100;   // dense mesh — matches baked torque samples
@@ -620,6 +660,7 @@
       stallRpm: clampNum($('stallRpm').value, 1200, 7000, 2800),
       flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
       forceScale: 1, // retired calib knob — physics ignores; garage bakes 1.0
+      txKey: base.txKey || undefined, // keep baked factory TX key so gear-editor label survives RUN
       tireType: parseInt($('tireType').value, 10) || 0,
       engineLayout: (ind === 'ev' && (base.driveType === 'AWD' || $('driveType').value === 'AWD'))
         ? (base.engineLayout === 'Mid' ? 'Mid' : 'Dual')
@@ -1326,11 +1367,13 @@
   }
 
   $('txPreset').addEventListener('change', function () {
-    var tx = Phys.FactoryTransmissions[$('txPreset').value];
+    var key = $('txPreset').value;
+    var tx = Phys.FactoryTransmissions[key];
     if (!tx) return;
     renderGears(tx.gears.slice());
     $('finalDrive').value = tx.finalDrive;
     $('lossPct').value = tx.loss;
+    if (state.car) state.car.txKey = key;
   });
 
   var driveEl = $('driveType');
