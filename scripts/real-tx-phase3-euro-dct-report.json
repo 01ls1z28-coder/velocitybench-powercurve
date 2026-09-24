@@ -1,0 +1,964 @@
+{
+  "tip": "real-tx-phase3-euro-dct",
+  "elapsedMs": 156965,
+  "stats": {
+    "et": 324,
+    "trap": 301,
+    "z60": 284,
+    "z60130": 72,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 250
+  },
+  "report": [
+    {
+      "name": "2021 Porsche 911 Turbo S",
+      "gi": 93,
+      "tgt": {
+        "z60": 2.2,
+        "et": 10.3,
+        "trap": 137,
+        "z60130": 5.8
+      },
+      "before": {
+        "txKey": "PDK_7",
+        "nG": 7,
+        "fd": 3.09,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 10.169,
+          "trap": 136.4,
+          "z60": 2.374,
+          "z60130": 6.817
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7",
+        "nG": 7,
+        "fd": 3.09,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 10.178,
+          "trap": 136.9,
+          "z60": 2.389,
+          "z60130": 6.777
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2014 Porsche 911 Carrera S",
+      "gi": 121,
+      "tgt": {
+        "z60": 3.7,
+        "et": 12,
+        "trap": 117
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.081,
+          "trap": 118.6,
+          "z60": 3.799,
+          "z60130": 11.045
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7",
+        "nG": 7,
+        "fd": 3.44,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 2600,
+        "sim": {
+          "et": 11.954,
+          "trap": 118.4,
+          "z60": 3.636,
+          "z60130": 10.953
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2017 Porsche 911 GT2 RS",
+      "gi": 99,
+      "tgt": {
+        "z60": 2.7,
+        "et": 10.6,
+        "trap": 134,
+        "z60130": 6.2
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 15,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.488,
+          "trap": 136.4,
+          "z60": 2.734,
+          "z60130": 6.763
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7_GT",
+        "nG": 7,
+        "fd": 3.97,
+        "transmission": "DCT",
+        "loss": 20,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.616,
+          "trap": 134.6,
+          "z60": 2.859,
+          "z60130": 6.936
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2019 Porsche 911 GT3",
+      "gi": 294,
+      "tgt": {
+        "z60": 3.2,
+        "et": 11.4,
+        "trap": 125
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 11.368,
+          "trap": 125.5,
+          "z60": 3.34,
+          "z60130": 8.889
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7_GT",
+        "nG": 7,
+        "fd": 3.97,
+        "transmission": "DCT",
+        "loss": 3.5,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 11.423,
+          "trap": 125.1,
+          "z60": 3.309,
+          "z60130": 9.058
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Porsche 911 GT3 RS",
+      "gi": 314,
+      "tgt": {
+        "z60": 3,
+        "et": 11.1,
+        "trap": 128
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 3,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 11.041,
+          "trap": 128.6,
+          "z60": 3.081,
+          "z60130": 8.218
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7_GT",
+        "nG": 7,
+        "fd": 4.54,
+        "transmission": "DCT",
+        "loss": 7,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 11.102,
+          "trap": 127.9,
+          "z60": 3.119,
+          "z60130": 8.362
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Porsche 718 Cayman GT4 RS",
+      "gi": 315,
+      "tgt": {
+        "z60": 3.1,
+        "et": 11.3,
+        "trap": 125
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 11.295,
+          "trap": 125.1,
+          "z60": 3.164,
+          "z60130": 9.25
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_PDK_7_GT",
+        "nG": 7,
+        "fd": 3.97,
+        "transmission": "DCT",
+        "loss": 0.5,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 11.29,
+          "trap": 124.9,
+          "z60": 3.209,
+          "z60130": 9.099
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 Mercedes SLS AMG",
+      "gi": 116,
+      "tgt": {
+        "z60": 3.5,
+        "et": 11.7,
+        "trap": 125
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 11.64,
+          "trap": 125.3,
+          "z60": 3.645,
+          "z60130": 8.857
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_DCT_7",
+        "nG": 7,
+        "fd": 3.67,
+        "transmission": "DCT",
+        "loss": 1,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 11.627,
+          "trap": 124.9,
+          "z60": 3.623,
+          "z60130": 9.008
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 Mercedes-AMG GT R",
+      "gi": 293,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.6,
+        "trap": 125
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 3.5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.624,
+          "trap": 124.9,
+          "z60": 3.579,
+          "z60130": 9.113
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_DCT_7",
+        "nG": 7,
+        "fd": 3.67,
+        "transmission": "DCT",
+        "loss": 5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.629,
+          "trap": 125.1,
+          "z60": 3.575,
+          "z60130": 8.984
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2014 Mercedes CLA45 AMG",
+      "gi": 297,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.6,
+        "trap": 111
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 12.495,
+          "trap": 109.1,
+          "z60": 3.886,
+          "z60130": 15.45
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_DCT_7",
+        "nG": 7,
+        "fd": 4.13,
+        "transmission": "DCT",
+        "loss": 3,
+        "tire": 0,
+        "launch": 1100,
+        "sim": {
+          "et": 12.466,
+          "trap": 108.7,
+          "z60": 3.914,
+          "z60130": 15.644
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2017 Mercedes-AMG C63 S",
+      "gi": 257,
+      "tgt": {
+        "z60": 3.8,
+        "et": 11.8,
+        "trap": 123
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.814,
+          "trap": 122.7,
+          "z60": 3.693,
+          "z60130": 9.815
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_MCT_7",
+        "nG": 7,
+        "fd": 2.82,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.849,
+          "trap": 121.5,
+          "z60": 3.649,
+          "z60130": 9.896
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Mercedes C63 AMG",
+      "gi": 282,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.2,
+        "trap": 115
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 12.301,
+          "trap": 113.8,
+          "z60": 3.877,
+          "z60130": 12.846
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_MCT_7",
+        "nG": 7,
+        "fd": 2.82,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 12.41,
+          "trap": 113.2,
+          "z60": 3.957,
+          "z60130": 12.695
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Mercedes C63 AMG",
+      "gi": 302,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.2,
+        "trap": 115
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 1.5,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 12.301,
+          "trap": 113.8,
+          "z60": 3.877,
+          "z60130": 12.846
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_MCT_7",
+        "nG": 7,
+        "fd": 2.82,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 12.41,
+          "trap": 113.2,
+          "z60": 3.957,
+          "z60130": 12.695
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 Mercedes E63 AMG",
+      "gi": 300,
+      "tgt": {
+        "z60": 3.9,
+        "et": 12.3,
+        "trap": 117
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 3,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 12.163,
+          "trap": 117.5,
+          "z60": 3.872,
+          "z60130": 11.323
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "AMG_SPEEDSHIFT_MCT_7",
+        "nG": 7,
+        "fd": 2.65,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 12.144,
+          "trap": 116.8,
+          "z60": 3.846,
+          "z60130": 11.335
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2022 Volkswagen Golf R",
+      "gi": 252,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.6,
+        "trap": 112
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 12.399,
+          "trap": 110.2,
+          "z60": 3.809,
+          "z60130": 14.87
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "VW_DQ500_7",
+        "nG": 7,
+        "fd": 4.059,
+        "transmission": "DCT",
+        "loss": 3,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 12.553,
+          "trap": 107.2,
+          "z60": 3.859,
+          "z60130": 16.13
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2016 Audi TT RS",
+      "gi": 295,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.7,
+        "trap": 120
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 11.573,
+          "trap": 118.5,
+          "z60": 3.161,
+          "z60130": 11.482
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "VW_DQ500_7",
+        "nG": 7,
+        "fd": 4.059,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 11.717,
+          "trap": 117.1,
+          "z60": 3.238,
+          "z60130": 11.902
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2024 Audi RS 3",
+      "gi": 330,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.7,
+        "trap": 119
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 11.693,
+          "trap": 117,
+          "z60": 3.241,
+          "z60130": 12.013
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "VW_DQ500_7",
+        "nG": 7,
+        "fd": 4.059,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.711,
+          "trap": 115.6,
+          "z60": 3.171,
+          "z60130": 12.458
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2013 Audi RS4 Avant",
+      "gi": 299,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.6,
+        "trap": 114
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 3,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 12.414,
+          "trap": 110.6,
+          "z60": 3.874,
+          "z60130": 14.334
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Audi_STronic_7",
+        "nG": 7,
+        "fd": 4.093,
+        "transmission": "DCT",
+        "loss": 5.5,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 12.443,
+          "trap": 109.2,
+          "z60": 3.851,
+          "z60130": 15.119
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2020 Ford Mustang Shelby GT500",
+      "gi": 21,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.3,
+        "trap": 132,
+        "z60130": 7.6
+      },
+      "before": {
+        "txKey": "DCT_7_AMG",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 4,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 11.197,
+          "trap": 129.7,
+          "z60": 3.353,
+          "z60130": 7.89
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9070_7DCT",
+        "nG": 7,
+        "fd": 3.73,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 11.348,
+          "trap": 130.9,
+          "z60": 3.57,
+          "z60130": 7.631
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    }
+  ],
+  "n7": 17,
+  "fsBad": 0,
+  "stillClone": [],
+  "tr9080": [
+    "2024 Chevrolet Corvette Stingray",
+    "2023 Chevrolet Corvette Z06",
+    "2026 Chevrolet Corvette ZR1X"
+  ]
+}

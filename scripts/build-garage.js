@@ -20,7 +20,7 @@ var OUT_META = path.join(ROOT, 'scripts/garage-calib-meta.json');
 var TX_MAP = {
   Auto: 'ZF8HP',
   Manual: 'TR6060_6',
-  DCT: 'DCT_7_AMG',
+  DCT: 'Tremec_TR9070_7DCT',
   Sequential: 'GR6_DCT'
 };
 
@@ -256,7 +256,14 @@ function pickTxKey(vb, name, hp, isEv, year) {
   var tx = vb && vb.Transmission;
   if (tx && TX_MAP[tx]) return TX_MAP[tx];
   var n = (name || '').toLowerCase();
-  if (/pdk|dct|dual.?clutch|tremec tr-9070|gr6/.test(n)) return 'DCT_7_AMG';
+  if (/tremec tr-9080|tr-?9080/.test(n)) return 'Tremec_TR9080_8DCT';
+  if (/tremec tr-9070|tr-?9070|gt500/.test(n)) return 'Tremec_TR9070_7DCT';
+  if (/pdk|porsche/.test(n)) return 'Porsche_PDK_7';
+  if (/speedshift.?mct|\bmct\b/.test(n)) return 'AMG_SPEEDSHIFT_MCT_7';
+  if (/speedshift.?dct|amg.?gt|sls.?amg/.test(n)) return 'AMG_SPEEDSHIFT_DCT_7';
+  if (/dq500|golf.?r|dsg/.test(n)) return 'VW_DQ500_7';
+  if (/s-?tronic|dl501/.test(n)) return 'Audi_STronic_7';
+  if (/dct|dual.?clutch|gr6/.test(n)) return 'DCT_7_AMG';
   if (year && year < 1975) {
     if (hp >= 350) return 'Toploader_4';
     return 'Muncie_M21';

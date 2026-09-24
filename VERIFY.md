@@ -1,3 +1,138 @@
+# BUILD LOCK — Real-TX Phase 3 Euro DCT marque presets (Seraph gate)
+
+Branch: `review/pc-real-tx-phase3-euro-dct` · Tip off `2315f65` (launch-tach on Phase2 / main).
+**No Merovingian deploy.** Hold for Seraph browser gate (Porsche PDK / AMG SPEEDSHIFT / VW-Audi DSG / GT500 TR-9070 / C8 TR-9080).
+
+## VERIFY note (required)
+- Phase 1 intact: Ford_10R80 / GM_10L90 / Tremec_TR9080_8DCT + Hellcat FD 2.62.
+- Phase 2 intact: 24 classics off TR6060 (Demon A833_4, GTO Muncie_M21, Mustang GT 390 Toploader_4, AE86 Toyota_T50_5, …).
+- Launch-tach intact: `resolveLeaveRpm` + stock slip→lockup (`launchLocked`) blend — **not touched**.
+- Phase 3: Euro DCT marque split — stop cloning Tremec TR-9070 (`DCT_7_AMG`) across Porsche/AMG/VW/Audi; GT500 → `Tremec_TR9070_7DCT`.
+- Recalib: loss / launchRpm / tireType only; forceScale=1; no Cd/wt/curve fakes.
+- Fleet hits: BEFORE et 324/331 trap 304/331 z60 283/332 60-130 72/76 all4 252 → AFTER et 324/331 trap 301/331 z60 284/332 60-130 72/76 all4 250.
+
+---
+
+# Real-TX Phase 3 Euro DCT — marque presets (2026-09-24 CT)
+
+Branch: `review/pc-real-tx-phase3-euro-dct` · Tip off `2315f65` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (GT3 RS PDK, AMG GT R DCT, Golf R DQ500, GT500 TR-9070, Z06 TR-9080).
+
+## Goal
+Stop cloning one GT500-style Tremec 7DCT across all DCT cars. Add marque/period DCT (and AMG MCT) presets with published-leaning ratios + FD; remap garage Euro DCTs that wrongly shared `DCT_7_AMG`. Recalib **loss / launch / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY after gear/FD writes: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- OUT OF SCOPE this tip: Ferrari/McLaren/Lambo/Bugatti/BMW/GT-R still on legacy `DCT_7_AMG` (later marque tips); EV FD; Gear UI
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · launch-tach blend · Phase 1/2 remaps — **intact**
+
+## FactoryTransmissions added / updated (`js/physics.js`)
+| txKey | Speeds | Default FD | Ratios (abbrev) | Sources |
+|---|---:|---:|---|---|
+| `Porsche_PDK_7` **new** | 7 | 3.44 | 3.91…0.62 | Porsche Newsroom 911 Carrera PDK tech specs; Car and Driver PDK tech dept |
+| `Porsche_PDK_7_GT` **new** | 7 | 3.97 | 3.75…0.84 | Porsche Newsroom 911 GT3 PDK PDF (FD 3.97 / GT3 RS 4.54 override) |
+| `PDK_7` (updated alias) | 7 | 3.44 | = Carrera set | kept for UI/legacy; garage remapped off it |
+| `AMG_SPEEDSHIFT_DCT_7` **new** | 7 | 3.67 | 3.40…0.72 | MBUSA SLS AMG tech data; Mercedes archive SPEEDSHIFT DCT |
+| `AMG_SPEEDSHIFT_MCT_7` **new** | 7 | 2.82 | 4.377…0.728 | Mercedes archive C63 MCT; 7G-Tronic W7A gearset (wet start clutch) |
+| `VW_DQ500_7` **new** | 7 | 4.059 | 3.562…0.635 | gearboxlist DQ500 Golf R; TVS DQ500 (dual FD approx → 4.059 primary) |
+| `Audi_STronic_7` **new** | 7 | 4.093 | 3.692…0.519 | DL501/0B5 published-leaning (A7/RS class); RS4 Avant longitudinal |
+| `Tremec_TR9070_7DCT` **new** | 7 | 3.73 | 3.14…0.56 | same ratios as legacy `DCT_7_AMG`; OEM GT500-class only |
+| `DCT_7_AMG` (legacy key) | 7 | 3.73 | unchanged | leftover Italian/UK/BMW/GT-R fleet until later tips |
+| `Tremec_TR9080_8DCT` | 8 | 5.20 | Phase 1 | C8 Stingray/Z06/ZR1X **untouched** |
+
+UI Custom factory-TX dropdown auto-lists new keys via `populateTxPresets()` (already wired).
+
+## Remapped cars (17 names / 18 garage rows — duplicate 2010 C63 AMG ×2)
+**Porsche_PDK_7 (2):** 2021 911 Turbo S (FD 3.09), 2014 911 Carrera S (FD 3.44).  
+**Porsche_PDK_7_GT (4):** 2017 911 GT2 RS (FD 3.97), 2019 911 GT3 (FD 3.97), 2024 911 GT3 RS (FD **4.54**), 2023 718 Cayman GT4 RS (FD 3.97).  
+**AMG_SPEEDSHIFT_DCT_7 (3):** 2011 SLS AMG (FD 3.67), 2018 AMG GT R (FD 3.67), 2014 CLA45 AMG (FD 4.13).  
+**AMG_SPEEDSHIFT_MCT_7 (3 names / 4 rows):** 2017 C63 S (FD 2.82), 2010 C63 AMG ×2 (FD 2.82), 2011 E63 AMG (FD 2.65).  
+**VW_DQ500_7 (3):** 2022 Golf R, 2016 TT RS, 2024 RS 3 (FD 4.059).  
+**Audi_STronic_7 (1):** 2013 RS4 Avant (FD 4.093).  
+**Tremec_TR9070_7DCT (1):** 2020 Shelby GT500 (FD 3.73).
+
+## Per-car before → after
+
+| Car | Before tx/nG/FD | After tx/nG/FD | Excel ET@trap | Sim ET@trap | loss / tire / launch | ET+trap |
+|---|---|---|---|---|---|---|
+| 2021 Porsche 911 Turbo S | `PDK_7`/7/3.09 | `Porsche_PDK_7`/7/3.09 | 10.3@137 | 10.178@136.9 | 1% / T3 / L3500 | HIT |
+| 2014 Porsche 911 Carrera S | `DCT_7_AMG`/7/3.73 | `Porsche_PDK_7`/7/3.44 | 12@117 | 11.954@118.4 | 1.5% / T3 / L2600 | HIT |
+| 2017 Porsche 911 GT2 RS | `DCT_7_AMG`/7/3.73 | `Porsche_PDK_7_GT`/7/3.97 | 10.6@134 | 10.616@134.6 | 20% / T1 / L2400 | HIT |
+| 2019 Porsche 911 GT3 | `DCT_7_AMG`/7/3.73 | `Porsche_PDK_7_GT`/7/3.97 | 11.4@125 | 11.423@125.1 | 3.5% / T3 / L3500 | HIT |
+| 2024 Porsche 911 GT3 RS | `DCT_7_AMG`/7/3.73 | `Porsche_PDK_7_GT`/7/4.54 | 11.1@128 | 11.102@127.9 | 7% / T4 / L3500 | HIT |
+| 2023 Porsche 718 Cayman GT4 RS | `DCT_7_AMG`/7/3.73 | `Porsche_PDK_7_GT`/7/3.97 | 11.3@125 | 11.290@124.9 | 0.5% / T4 / L3000 | HIT |
+| 2011 Mercedes SLS AMG | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_DCT_7`/7/3.67 | 11.7@125 | 11.627@124.9 | 1% / T3 / L3000 | HIT |
+| 2018 Mercedes-AMG GT R | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_DCT_7`/7/3.67 | 11.6@125 | 11.629@125.1 | 5% / T3 / L2400 | HIT |
+| 2014 Mercedes CLA45 AMG | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_DCT_7`/7/4.13 | 12.6@111 | 12.466@108.7 | 3% / T0 / L1100 | HIT |
+| 2017 Mercedes-AMG C63 S | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_MCT_7`/7/2.82 | 11.8@123 | 11.849@121.5 | 0% / T3 / L2400 | HIT |
+| 2010 Mercedes C63 AMG (×2) | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_MCT_7`/7/2.82 | 12.2@115 | 12.410@113.2 | 0% / T3 / L2400 | HIT |
+| 2011 Mercedes E63 AMG | `DCT_7_AMG`/7/3.73 | `AMG_SPEEDSHIFT_MCT_7`/7/2.65 | 12.3@117 | 12.144@116.8 | 1% / T3 / L2400 | HIT |
+| 2022 Volkswagen Golf R | `DCT_7_AMG`/7/3.73 | `VW_DQ500_7`/7/4.059 | 12.6@112 | 12.553@107.2 | 3% / T0 / L1000 | MISS |
+| 2016 Audi TT RS | `DCT_7_AMG`/7/3.73 | `VW_DQ500_7`/7/4.059 | 11.7@120 | 11.717@117.1 | 0% / T0 / L2400 | MISS |
+| 2024 Audi RS 3 | `DCT_7_AMG`/7/3.73 | `VW_DQ500_7`/7/4.059 | 11.7@119 | 11.711@115.6 | 0% / T4 / L2400 | MISS |
+| 2013 Audi RS4 Avant | `DCT_7_AMG`/7/3.73 | `Audi_STronic_7`/7/4.093 | 12.6@114 | 12.443@109.2 | 5.5% / T0 / L1000 | MISS |
+| 2020 Ford Mustang Shelby GT500 | `DCT_7_AMG`/7/3.73 | `Tremec_TR9070_7DCT`/7/3.73 | 11.3@132 | 11.348@130.9 | 0% / T3 / L3000 | HIT |
+
+## Shipped
+1. `js/physics.js` — Porsche_PDK_7 / _GT, AMG_SPEEDSHIFT_DCT_7 / MCT_7, VW_DQ500_7, Audi_STronic_7, Tremec_TR9070_7DCT (+ PDK_7 alias update).
+2. `scripts/recalib-real-tx-phase3-euro-dct.js` — remap + loss/tire/launch search for the 17/18.
+3. `js/garage-data.js` — remapped + recalib'd; `window.VB_POWERCURVE_GARAGE` bind intact.
+4. `scripts/garage-calib-meta.json` tip `real-tx-phase3-euro-dct` + `scripts/real-tx-phase3-euro-dct-report.json`.
+
+## Reproduce
+```bash
+git fetch origin && git checkout review/pc-real-tx-phase3-euro-dct
+node scripts/recalib-real-tx-phase3-euro-dct.js
+node -e "const G=require('./js/garage-data.js'); const N=['2024 Porsche 911 GT3 RS','2018 Mercedes-AMG GT R','2022 Volkswagen Golf R','2020 Ford Mustang Shelby GT500','2023 Chevrolet Corvette Z06']; N.forEach(n=>{const c=G.find(x=>x.name===n); console.log(n,c.txKey,c.gearRatios.length,c.finalDriveRatio);}); console.log('fs!=1',G.filter(c=>+c.forceScale!==1).length)"
+rg 'window.VB_POWERCURVE_GARAGE' js/garage-data.js
+rg 'Peak HP label must NEVER wipe' js/app.js
+rg 'resolveLeaveRpm|launchLocked' js/physics.js
+rg 'Porsche_PDK_7|AMG_SPEEDSHIFT|VW_DQ500|Audi_STronic|Tremec_TR9070' js/physics.js
+```
+
+## Fleet hit-rates (Excel TOL) vs tip `2315f65` / launch-tach-on-phase2
+
+| Metric | Before (`2315f65`) | After (phase3-euro-dct) |
+|--------|--------------------|-------------------------|
+| ¼ ET | 324/331 **97.9%** | 324/331 **97.9%** |
+| ¼ trap | 304/331 **91.8%** | 301/331 **90.9%** (−3 = VW/Audi DQ500/DL501 honest trap) |
+| 0-60 | 283/332 **85.2%** | 284/332 **85.5%** |
+| 60-130 | 72/76 **94.7%** | 72/76 **94.7%** |
+| all4 | 252 | 250 (−2) |
+
+Batch ET+trap: **14/18 HIT**.
+
+## Batch still-miss (honest — do not cheat Cd/wt/curve)
+| Car | ΔET | Δtrap | Notes |
+|-----|----:|------:|---|
+| 2022 Volkswagen Golf R | −0.047 | −4.8 | ET HIT; trap soft at published DQ500 + single-FD approx + loss/tire/launch exhausted |
+| 2016 Audi TT RS | +0.017 | −2.9 | ET HIT; trap soft (just outside ±2.5) at DQ500 + knobs exhausted |
+| 2024 Audi RS 3 | +0.011 | −3.4 | ET HIT; trap soft at DQ500 + knobs exhausted |
+| 2013 Audi RS4 Avant | −0.157 | −4.8 | ET HIT; trap soft at DL501 S-tronic + knobs exhausted |
+
+## Integrity
+- forceScale≠1: **0**
+- Phase 1 TR9080 still on C8 Stingray / Z06 / ZR1X
+- Phase 2 classics still on Toploader/Muncie/A833/T5/JDM (spot Demon/GTO/Mustang390/AE86)
+- Launch-tach `resolveLeaveRpm` + `launchLocked` slip→lockup present
+- Cd/weight/frontalArea/torqueCurve: **unchanged** on remapped cars
+- `window.VB_POWERCURVE_GARAGE` bind present
+- Peak HP wipe fix comment present in `js/app.js`
+
+**Skipped:** deploy · Merovingian holds deploy · no push to main · Ferrari/McLaren/Lambo/Bugatti/BMW/GT-R marque tips · Gear UI · Phase 4.
+
+VERIFY
+1. Meta tip `real-tx-phase3-euro-dct` · ET 324/331 · trap ≥301/331 · forceScale≠1 = 0
+2. Spot gear editor: GT3 RS = Porsche_PDK_7_GT 7@FD4.54 · AMG GT R = AMG_SPEEDSHIFT_DCT_7 · Golf R = VW_DQ500_7 · GT500 = Tremec_TR9070_7DCT · Z06 = Tremec_TR9080_8DCT 8@5.56
+3. Custom builder TX dropdown lists new Euro/Tremec keys
+4. Every garage `forceScale === 1`; no Cd/wt/curve edits; launch-tach blend intact
+5. Static / no secrets; **no deploy**
+
+---
+
 # BUILD LOCK — launch-tach on Phase2 (Seraph re-gate)
 
 Branch: `review/pc-launch-tach-on-phase2` · Rebase of launch-tach realism onto Phase2 main `c825038`.
