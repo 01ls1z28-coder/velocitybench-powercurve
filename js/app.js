@@ -1277,6 +1277,59 @@
     $('slip').textContent = lines.join('\n');
   }
 
+
+  /** Populate calib/source transparency panel from VB_POWERCURVE_CALIB_META (existing fleet meta). */
+  function renderCalibPanel() {
+    var meta = (typeof window !== 'undefined' && window.VB_POWERCURVE_CALIB_META) || null;
+    var body = $('calibPanelBody');
+    if (!body) return;
+    if (!meta || !meta.stats) {
+      body.innerHTML = '<p class="calib-caveat">Compiled estimates — not lab-certified · not track-certified. Fleet meta unavailable.</p>';
+      return;
+    }
+    var s = meta.stats;
+    var tol = meta.tol || {};
+    function pct(n, d) {
+      if (d == null || !d) return '—';
+      return ((100 * n) / d).toFixed(1) + '%';
+    }
+    function hit(label, n, d) {
+      return '<div class="calib-hit"><span class="k">' + label + '</span>'
+        + '<span class="v">' + n + '/' + d + '</span>'
+        + '<span class="pct">' + pct(n, d) + '</span></div>';
+    }
+    if ($('calibCaveat')) {
+      $('calibCaveat').textContent = meta.caveat
+        || 'Compiled estimates — not lab-certified · not dyno-certified · not track-certified.';
+    }
+    if ($('calibHits')) {
+      $('calibHits').innerHTML = [
+        hit('¼ ET', s.et, s.nEt),
+        hit('Trap', s.trap, s.nTrap),
+        hit('0–60', s.z60, s.nZ60),
+        hit('60–130', s.z60130, s.n60130),
+        hit('all4', s.all4, s.nEt)
+      ].join('');
+    }
+    if ($('calibMetaLine')) {
+      var tolBits = 'Excel TOL ±' + (tol.et != null ? tol.et + 's ET' : '—')
+        + ' · ±' + (tol.trap != null ? tol.trap + ' mph trap' : '—')
+        + ' · ±' + (tol.z60 != null ? tol.z60 + 's 0–60' : '—');
+      $('calibMetaLine').textContent = 'Tip ' + (meta.tip || '—')
+        + ' · ' + (meta.knobs || 'loss/launch/tire · forceScale=1')
+        + ' · ' + tolBits;
+    }
+    if ($('calibHonest')) {
+      var n = meta.honestMissCount != null ? meta.honestMissCount : 14;
+      $('calibHonest').textContent = meta.honestMissNote
+        || (n + ' honest-miss cars left untouched (no Cd/wt/curve cheat).');
+    }
+    if ($('calibSource')) {
+      $('calibSource').innerHTML = 'Source: <code>' + (meta.sourcePath || 'scripts/garage-calib-meta.json')
+        + '</code> (baked subset — no new physics).';
+    }
+  }
+
   function renderMetrics(r) {
     var items = [
       ['1/4 ET', fmt(r.quarterMileTime, 3) + ' s'],
@@ -1668,6 +1721,7 @@ $('btnReset').addEventListener('click', function () {
     });
   }
   renderGarage();
+  renderCalibPanel();
   var defaultCar = SAMPLE_CARS.find(function (c) { return /Supra Twin Turbo/i.test(c.name); })
     || SAMPLE_CARS.find(function (c) { return c.id !== 'custom'; })
     || SAMPLE_CARS[0];
