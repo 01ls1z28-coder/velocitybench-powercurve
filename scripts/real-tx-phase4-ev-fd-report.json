@@ -1,0 +1,499 @@
+{
+  "tip": "real-tx-phase4-ev-fd",
+  "elapsedMs": 150004,
+  "stats": {
+    "et": 323,
+    "trap": 300,
+    "z60": 285,
+    "z60130": 72,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 249
+  },
+  "report": [
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "gi": 54,
+      "tgt": {
+        "z60": 2.1,
+        "et": 9.25,
+        "trap": 151,
+        "z60130": 4.8
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 6.5,
+        "transmission": "Auto",
+        "loss": 8.5,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.495,
+          "trap": 153.2,
+          "z60": 2.371,
+          "z60130": 4.54
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tesla_EV_Plaid",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 8,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.244,
+          "trap": 149.8,
+          "z60": 2.073,
+          "z60130": 4.513
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2022 Tesla Model X Plaid",
+      "gi": 61,
+      "tgt": {
+        "z60": 2.5,
+        "et": 9.8,
+        "trap": 145
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 6.5,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 10.025,
+          "trap": 146.6,
+          "z60": 2.649,
+          "z60130": 5.403
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tesla_EV_Plaid",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.792,
+          "trap": 144.9,
+          "z60": 2.389,
+          "z60130": 5.383
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "gi": 67,
+      "tgt": {
+        "z60": 2.6,
+        "et": 11,
+        "trap": 119
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 0,
+        "launch": 300,
+        "sim": {
+          "et": 11.037,
+          "trap": 118.7,
+          "z60": 2.815,
+          "z60130": 14.636
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tesla_EV_Cybertruck",
+        "nG": 1,
+        "fd": 15.02,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 2,
+        "launch": 300,
+        "sim": {
+          "et": 12.764,
+          "trap": 86.1,
+          "z60": 2.459,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2024 Tesla Model S Long Range",
+      "gi": 87,
+      "tgt": {
+        "z60": 3.1,
+        "et": 10.8,
+        "trap": 129
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.875,
+          "trap": 131.3,
+          "z60": 3.156,
+          "z60130": 7.465
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.99,
+          "trap": 131.3,
+          "z60": 3.281,
+          "z60130": 7.465
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Tesla Model 3 Performance",
+      "gi": 55,
+      "tgt": {
+        "z60": 2.9,
+        "et": 11,
+        "trap": 124.5,
+        "z60130": 9.2
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.04,
+          "trap": 124.4,
+          "z60": 3.04,
+          "z60130": 9.264
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 4,
+        "launch": 500,
+        "sim": {
+          "et": 11.052,
+          "trap": 124.8,
+          "z60": 3.069,
+          "z60130": 9.195
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Tesla Model Y Performance",
+      "gi": 60,
+      "tgt": {
+        "z60": 3.5,
+        "et": 11.8,
+        "trap": 115
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.847,
+          "trap": 117.3,
+          "z60": 3.683,
+          "z60130": 11.876
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.913,
+          "trap": 117.4,
+          "z60": 3.767,
+          "z60130": 11.858
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "gi": 56,
+      "tgt": {
+        "z60": 2.4,
+        "et": 10.5,
+        "trap": 130,
+        "z60130": 6.5
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.653,
+          "trap": 134.6,
+          "z60": 2.962,
+          "z60130": 6.93
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_Taycan_2",
+        "nG": 2,
+        "fd": 8.05,
+        "transmission": "DCT",
+        "loss": 14,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.497,
+          "trap": 130.1,
+          "z60": 2.394,
+          "z60130": 8.084
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Audi e-tron GT",
+      "gi": 85,
+      "tgt": {
+        "z60": 3.6,
+        "et": 12.1,
+        "trap": 116
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.952,
+          "trap": 118.1,
+          "z60": 3.839,
+          "z60130": 11.428
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_Taycan_2",
+        "nG": 2,
+        "fd": 8.05,
+        "transmission": "DCT",
+        "loss": 15,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 12.028,
+          "trap": 113.6,
+          "z60": 3.446,
+          "z60130": 13.062
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "gi": 146,
+      "tgt": {
+        "z60": 2.7,
+        "et": 9.9,
+        "trap": 150,
+        "z60130": 3.9
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 30.7,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 9.785,
+          "trap": 150.1,
+          "z60": 2.466,
+          "z60130": 5.11
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "after": {
+        "txKey": "Koenigsegg_KDD",
+        "nG": 1,
+        "fd": 2.73,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 2,
+        "launch": 3400,
+        "sim": {
+          "et": 9.831,
+          "trap": 163.5,
+          "z60": 2.916,
+          "z60130": 4.303
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    }
+  ],
+  "n2": 2,
+  "nKdd": 1,
+  "nPlaid": 2,
+  "fsBad": 0,
+  "stillWrong": [],
+  "tr9080": [
+    "2024 Chevrolet Corvette Stingray",
+    "2023 Chevrolet Corvette Z06",
+    "2026 Chevrolet Corvette ZR1X"
+  ]
+}

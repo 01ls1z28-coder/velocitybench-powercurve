@@ -154,7 +154,12 @@
     Tremec_TR9080_8DCT: { name: 'Tremec TR-9080 8DCT', gears: [2.91, 1.76, 1.22, 0.88, 0.65, 0.51, 0.40, 0.33], finalDrive: 5.20, loss: 10 },
     Bike_Sport_6: { name: 'Sportbike 6-spd (liter)', gears: [2.600, 2.158, 1.882, 1.650, 1.476, 1.304], finalDrive: 3.96, loss: 12 },
     Bike_Hyper_6: { name: 'Hyperbike 6-spd', gears: [2.562, 1.934, 1.526, 1.285, 1.125, 1.041], finalDrive: 3.81, loss: 12 },
-    EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 }
+    EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 },
+    // Phase 4 EV / oddball — published-leaning (Tesla manuals / Porsche Newsroom / Koenigsegg KDD)
+    Tesla_EV_Plaid: { name: 'Tesla Plaid single-speed', gears: [1.00], finalDrive: 7.56, loss: 8 },
+    Tesla_EV_Cybertruck: { name: 'Tesla Cybertruck single-speed', gears: [1.00], finalDrive: 15.02, loss: 8 },
+    Porsche_Taycan_2: { name: 'Porsche Taycan 2-spd rear', gears: [1.925, 1.00], finalDrive: 8.05, loss: 8 },
+    Koenigsegg_KDD: { name: 'Koenigsegg Direct Drive', gears: [1.00], finalDrive: 2.73, loss: 8 }
   };
 
   function clamp(v, lo, hi) {

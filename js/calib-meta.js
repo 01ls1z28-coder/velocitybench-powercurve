@@ -7,7 +7,7 @@
 'use strict';
 
 var VB_CALIB_META = {
-  "tip": "real-tx-phase3-euro-dct",
+  "tip": "real-tx-phase4-ev-fd",
   "sourcePath": "scripts/garage-calib-meta.json",
   "tol": {
     "z60": 0.25,
@@ -16,25 +16,25 @@ var VB_CALIB_META = {
     "z60130": 0.75
   },
   "stats": {
-    "et": 324,
-    "trap": 301,
-    "z60": 284,
+    "et": 323,
+    "trap": 300,
+    "z60": 285,
     "z60130": 72,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
-    "all4": 250
+    "all4": 249
   },
   "baseline": {
-    "tip": "launch-tach-on-phase2@2315f65",
+    "tip": "real-tx-phase3-euro-dct@42cae82",
     "et": 324,
-    "trap": 304,
-    "z60": 283,
+    "trap": 301,
+    "z60": 284,
     "z60130": 72,
-    "all4": 252
+    "all4": 250
   },
-  "note": "Real-TX Phase3 Euro DCT: Porsche_PDK_7/_GT + AMG_SPEEDSHIFT_DCT/MCT + VW_DQ500 + Audi_STronic + Tremec_TR9070 on GT500; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE intact; NO Merovingian",
+  "note": "Real-TX Phase4 EV/oddballs: Tesla_EV_Plaid/Cybertruck FD + Porsche_Taycan_2 + Koenigsegg_KDD; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P3 intact; NO Merovingian",
   "honestMissCount": 14,
   "honestMissNote": "14 honest-miss cars left untouched (no Cd/wt/curve cheat) \u2014 see VERIFY.md / trap-miss-batch22",
   "honestMissNames": [

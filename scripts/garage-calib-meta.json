@@ -1,5 +1,5 @@
 {
-  "tip": "real-tx-phase3-euro-dct",
+  "tip": "real-tx-phase4-ev-fd",
   "tol": {
     "z60": 0.25,
     "et": 0.25,
@@ -7,27 +7,27 @@
     "z60130": 0.75
   },
   "stats": {
-    "et": 324,
-    "trap": 301,
-    "z60": 284,
+    "et": 323,
+    "trap": 300,
+    "z60": 285,
     "z60130": 72,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
+    "all4": 249
+  },
+  "changedN": 9,
+  "batchN": 9,
+  "baseline": {
+    "tip": "real-tx-phase3-euro-dct@42cae82",
+    "et": 324,
+    "trap": 301,
+    "z60": 284,
+    "z60130": 72,
     "all4": 250
   },
-  "changedN": 18,
-  "batchN": 18,
-  "baseline": {
-    "tip": "launch-tach-on-phase2@2315f65",
-    "et": 324,
-    "trap": 304,
-    "z60": 283,
-    "z60130": 72,
-    "all4": 252
-  },
-  "note": "Real-TX Phase3 Euro DCT: Porsche_PDK_7/_GT + AMG_SPEEDSHIFT_DCT/MCT + VW_DQ500 + Audi_STronic + Tremec_TR9070 on GT500; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE intact; NO Merovingian",
+  "note": "Real-TX Phase4 EV/oddballs: Tesla_EV_Plaid/Cybertruck FD + Porsche_Taycan_2 + Koenigsegg_KDD; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe + VB_POWERCURVE_GARAGE + launch-tach + P1-P3 intact; NO Merovingian",
   "results": [
     {
       "name": "2020 Ford Mustang GT",
@@ -1564,25 +1564,25 @@
         "z60130": 4.8
       },
       "sim": {
-        "et": 9.495,
-        "trap": 153.2,
-        "z60": 2.371,
-        "z60130": 4.54,
-        "vmax": 153.2
+        "et": 9.244,
+        "trap": 149.8,
+        "z60": 2.073,
+        "z60130": 4.513,
+        "vmax": 149.8
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": false,
+        "z60": true,
         "z60130": true
       },
-      "loss": 8.5,
+      "loss": 8,
       "tireType": 2,
       "launchRpm": 500,
       "forceScale": 1,
-      "txKey": "EV_Single",
+      "txKey": "Tesla_EV_Plaid",
       "nG": 1,
-      "fd": 6.5
+      "fd": 7.56
     },
     {
       "name": "2024 Tesla Model 3 Performance",
@@ -1593,10 +1593,10 @@
         "z60130": 9.2
       },
       "sim": {
-        "et": 11.04,
-        "trap": 124.4,
-        "z60": 3.04,
-        "z60130": 9.264,
+        "et": 11.052,
+        "trap": 124.8,
+        "z60": 3.069,
+        "z60130": 9.195,
         "vmax": 130
       },
       "hits": {
@@ -1606,12 +1606,12 @@
         "z60130": true
       },
       "loss": 0,
-      "tireType": 3,
+      "tireType": 4,
       "launchRpm": 500,
       "forceScale": 1,
       "txKey": "EV_Single",
       "nG": 1,
-      "fd": 9.2
+      "fd": 9
     },
     {
       "name": "2022 Porsche Taycan Turbo S",
@@ -1622,25 +1622,25 @@
         "z60130": 6.5
       },
       "sim": {
-        "et": 10.653,
-        "trap": 134.6,
-        "z60": 2.962,
-        "z60130": 6.93,
-        "vmax": 134.6
+        "et": 10.497,
+        "trap": 130.1,
+        "z60": 2.394,
+        "z60130": 8.084,
+        "vmax": 130.1
       },
       "hits": {
         "et": true,
-        "trap": false,
-        "z60": false,
-        "z60130": true
+        "trap": true,
+        "z60": true,
+        "z60130": false
       },
-      "loss": 2,
+      "loss": 14,
       "tireType": 1,
       "launchRpm": 500,
       "forceScale": 1,
-      "txKey": "EV_Single",
-      "nG": 1,
-      "fd": 7.8
+      "txKey": "Porsche_Taycan_2",
+      "nG": 2,
+      "fd": 8.05
     },
     {
       "name": "2024 Lucid Air Sapphire",
@@ -1735,25 +1735,25 @@
         "trap": 115
       },
       "sim": {
-        "et": 11.847,
-        "trap": 117.3,
-        "z60": 3.683,
-        "z60130": 11.876,
+        "et": 11.913,
+        "trap": 117.4,
+        "z60": 3.767,
+        "z60130": 11.858,
         "vmax": 130
       },
       "hits": {
         "et": true,
         "trap": true,
-        "z60": true,
+        "z60": false,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 0.5,
       "tireType": 3,
       "launchRpm": 500,
       "forceScale": 1,
       "txKey": "EV_Single",
       "nG": 1,
-      "fd": 9.2
+      "fd": 9
     },
     {
       "name": "2022 Tesla Model X Plaid",
@@ -1763,11 +1763,11 @@
         "trap": 145
       },
       "sim": {
-        "et": 10.025,
-        "trap": 146.6,
-        "z60": 2.649,
-        "z60130": 5.403,
-        "vmax": 146.6
+        "et": 9.792,
+        "trap": 144.9,
+        "z60": 2.389,
+        "z60130": 5.383,
+        "vmax": 144.9
       },
       "hits": {
         "et": true,
@@ -1775,13 +1775,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 2.5,
       "tireType": 2,
       "launchRpm": 500,
       "forceScale": 1,
-      "txKey": "EV_Single",
+      "txKey": "Tesla_EV_Plaid",
       "nG": 1,
-      "fd": 6.5
+      "fd": 7.56
     },
     {
       "name": "2023 Kia EV6 GT",
@@ -1931,25 +1931,25 @@
         "trap": 119
       },
       "sim": {
-        "et": 11.037,
-        "trap": 118.7,
-        "z60": 2.815,
-        "z60130": 14.636,
-        "vmax": 130
+        "et": 12.764,
+        "trap": 86.1,
+        "z60": 2.459,
+        "z60130": null,
+        "vmax": 118
       },
       "hits": {
-        "et": true,
-        "trap": true,
+        "et": false,
+        "trap": false,
         "z60": true,
         "z60130": true
       },
-      "loss": 1,
-      "tireType": 0,
+      "loss": 0,
+      "tireType": 2,
       "launchRpm": 300,
       "forceScale": 1,
-      "txKey": "EV_Single",
+      "txKey": "Tesla_EV_Cybertruck",
       "nG": 1,
-      "fd": 7.8
+      "fd": 15.02
     },
     {
       "name": "2023 Genesis GV60 Performance",
@@ -2435,10 +2435,10 @@
         "trap": 116
       },
       "sim": {
-        "et": 11.952,
-        "trap": 118.1,
-        "z60": 3.839,
-        "z60130": 11.428,
+        "et": 12.028,
+        "trap": 113.6,
+        "z60": 3.446,
+        "z60130": 13.062,
         "vmax": 130
       },
       "hits": {
@@ -2447,13 +2447,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
-      "tireType": 3,
+      "loss": 15,
+      "tireType": 0,
       "launchRpm": 500,
       "forceScale": 1,
-      "txKey": "EV_Single",
-      "nG": 1,
-      "fd": 9.2
+      "txKey": "Porsche_Taycan_2",
+      "nG": 2,
+      "fd": 8.05
     },
     {
       "name": "2024 Lucid Air Touring",
@@ -2491,9 +2491,9 @@
         "trap": 129
       },
       "sim": {
-        "et": 10.875,
+        "et": 10.99,
         "trap": 131.3,
-        "z60": 3.156,
+        "z60": 3.281,
         "z60130": 7.465,
         "vmax": 131.3
       },
@@ -2503,13 +2503,13 @@
         "z60": true,
         "z60130": true
       },
-      "loss": 0,
+      "loss": 1,
       "tireType": 1,
       "launchRpm": 500,
       "forceScale": 1,
       "txKey": "EV_Single",
       "nG": 1,
-      "fd": 7.8
+      "fd": 7.56
     },
     {
       "name": "2023 Hyundai Kona Electric",
@@ -4178,25 +4178,25 @@
         "z60130": 3.9
       },
       "sim": {
-        "et": 9.785,
-        "trap": 150.1,
-        "z60": 2.466,
-        "z60130": 5.11,
-        "vmax": 150.1
+        "et": 9.831,
+        "trap": 163.5,
+        "z60": 2.916,
+        "z60130": 4.303,
+        "vmax": 163.5
       },
       "hits": {
         "et": true,
-        "trap": true,
+        "trap": false,
         "z60": true,
-        "z60130": false
+        "z60130": true
       },
-      "loss": 30.7,
+      "loss": 1.5,
       "tireType": 2,
-      "launchRpm": 2400,
+      "launchRpm": 3400,
       "forceScale": 1,
-      "txKey": "ZF8HP",
-      "nG": 8,
-      "fd": 3.15
+      "txKey": "Koenigsegg_KDD",
+      "nG": 1,
+      "fd": 2.73
     },
     {
       "name": "2017 Pagani Huayra BC",
@@ -9402,6 +9402,12 @@
   ],
   "worst15Et": [
     {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "tgt": 11,
+      "sim": 12.764,
+      "d": 1.764
+    },
+    {
       "name": "1963 Corvette Stingray 327",
       "tgt": 14.4,
       "sim": 13.87,
@@ -9445,6 +9451,18 @@
     }
   ],
   "worst15Trap": [
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "tgt": 119,
+      "sim": 86.1,
+      "d": -32.9
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "tgt": 150,
+      "sim": 163.5,
+      "d": 13.5
+    },
     {
       "name": "2021 BMW S1000RR",
       "tgt": 156,
@@ -9522,720 +9540,31 @@
       "tgt": 114,
       "sim": 109.2,
       "d": -4.8
-    },
-    {
-      "name": "2023 Ford Bronco Raptor",
-      "tgt": 99,
-      "sim": 94.2,
-      "d": -4.8
-    },
-    {
-      "name": "2022 Porsche Taycan Turbo S",
-      "tgt": 130,
-      "sim": 134.6,
-      "d": 4.6
     }
   ],
   "batch": [
     {
-      "name": "2021 Porsche 911 Turbo S",
-      "gi": 93,
+      "name": "2022 Tesla Model S Plaid",
+      "gi": 54,
       "tgt": {
-        "z60": 2.2,
-        "et": 10.3,
-        "trap": 137,
-        "z60130": 5.8
+        "z60": 2.1,
+        "et": 9.25,
+        "trap": 151,
+        "z60130": 4.8
       },
       "before": {
-        "txKey": "PDK_7",
-        "nG": 7,
-        "fd": 3.09,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 3,
-        "launch": 3500,
-        "sim": {
-          "et": 10.169,
-          "trap": 136.4,
-          "z60": 2.374,
-          "z60130": 6.817
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": false
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7",
-        "nG": 7,
-        "fd": 3.09,
-        "transmission": "DCT",
-        "loss": 1,
-        "tire": 3,
-        "launch": 3500,
-        "sim": {
-          "et": 10.178,
-          "trap": 136.9,
-          "z60": 2.389,
-          "z60130": 6.777
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": false
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2014 Porsche 911 Carrera S",
-      "gi": 121,
-      "tgt": {
-        "z60": 3.7,
-        "et": 12,
-        "trap": 117
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 12.081,
-          "trap": 118.6,
-          "z60": 3.799,
-          "z60130": 11.045
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7",
-        "nG": 7,
-        "fd": 3.44,
-        "transmission": "DCT",
-        "loss": 1.5,
-        "tire": 3,
-        "launch": 2600,
-        "sim": {
-          "et": 11.954,
-          "trap": 118.4,
-          "z60": 3.636,
-          "z60130": 10.953
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2017 Porsche 911 GT2 RS",
-      "gi": 99,
-      "tgt": {
-        "z60": 2.7,
-        "et": 10.6,
-        "trap": 134,
-        "z60130": 6.2
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 15,
-        "tire": 1,
-        "launch": 2400,
-        "sim": {
-          "et": 10.488,
-          "trap": 136.4,
-          "z60": 2.734,
-          "z60130": 6.763
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7_GT",
-        "nG": 7,
-        "fd": 3.97,
-        "transmission": "DCT",
-        "loss": 20,
-        "tire": 1,
-        "launch": 2400,
-        "sim": {
-          "et": 10.616,
-          "trap": 134.6,
-          "z60": 2.859,
-          "z60130": 6.936
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2019 Porsche 911 GT3",
-      "gi": 294,
-      "tgt": {
-        "z60": 3.2,
-        "et": 11.4,
-        "trap": 125
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 3,
-        "launch": 3500,
-        "sim": {
-          "et": 11.368,
-          "trap": 125.5,
-          "z60": 3.34,
-          "z60130": 8.889
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7_GT",
-        "nG": 7,
-        "fd": 3.97,
-        "transmission": "DCT",
-        "loss": 3.5,
-        "tire": 3,
-        "launch": 3500,
-        "sim": {
-          "et": 11.423,
-          "trap": 125.1,
-          "z60": 3.309,
-          "z60130": 9.058
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2024 Porsche 911 GT3 RS",
-      "gi": 314,
-      "tgt": {
-        "z60": 3,
-        "et": 11.1,
-        "trap": 128
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 3,
-        "tire": 4,
-        "launch": 3500,
-        "sim": {
-          "et": 11.041,
-          "trap": 128.6,
-          "z60": 3.081,
-          "z60130": 8.218
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7_GT",
-        "nG": 7,
-        "fd": 4.54,
-        "transmission": "DCT",
-        "loss": 7,
-        "tire": 4,
-        "launch": 3500,
-        "sim": {
-          "et": 11.102,
-          "trap": 127.9,
-          "z60": 3.119,
-          "z60130": 8.362
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2023 Porsche 718 Cayman GT4 RS",
-      "gi": 315,
-      "tgt": {
-        "z60": 3.1,
-        "et": 11.3,
-        "trap": 125
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 4,
-        "launch": 3000,
-        "sim": {
-          "et": 11.295,
-          "trap": 125.1,
-          "z60": 3.164,
-          "z60130": 9.25
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Porsche_PDK_7_GT",
-        "nG": 7,
-        "fd": 3.97,
-        "transmission": "DCT",
-        "loss": 0.5,
-        "tire": 4,
-        "launch": 3000,
-        "sim": {
-          "et": 11.29,
-          "trap": 124.9,
-          "z60": 3.209,
-          "z60130": 9.099
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2011 Mercedes SLS AMG",
-      "gi": 116,
-      "tgt": {
-        "z60": 3.5,
-        "et": 11.7,
-        "trap": 125
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 3,
-        "launch": 3000,
-        "sim": {
-          "et": 11.64,
-          "trap": 125.3,
-          "z60": 3.645,
-          "z60130": 8.857
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_DCT_7",
-        "nG": 7,
-        "fd": 3.67,
-        "transmission": "DCT",
-        "loss": 1,
-        "tire": 3,
-        "launch": 3000,
-        "sim": {
-          "et": 11.627,
-          "trap": 124.9,
-          "z60": 3.623,
-          "z60130": 9.008
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2018 Mercedes-AMG GT R",
-      "gi": 293,
-      "tgt": {
-        "z60": 3.4,
-        "et": 11.6,
-        "trap": 125
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 3.5,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 11.624,
-          "trap": 124.9,
-          "z60": 3.579,
-          "z60130": 9.113
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_DCT_7",
-        "nG": 7,
-        "fd": 3.67,
-        "transmission": "DCT",
-        "loss": 5,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 11.629,
-          "trap": 125.1,
-          "z60": 3.575,
-          "z60130": 8.984
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2014 Mercedes CLA45 AMG",
-      "gi": 297,
-      "tgt": {
-        "z60": 4.1,
-        "et": 12.6,
-        "trap": 111
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 1500,
-        "sim": {
-          "et": 12.495,
-          "trap": 109.1,
-          "z60": 3.886,
-          "z60130": 15.45
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_DCT_7",
-        "nG": 7,
-        "fd": 4.13,
-        "transmission": "DCT",
-        "loss": 3,
-        "tire": 0,
-        "launch": 1100,
-        "sim": {
-          "et": 12.466,
-          "trap": 108.7,
-          "z60": 3.914,
-          "z60130": 15.644
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2017 Mercedes-AMG C63 S",
-      "gi": 257,
-      "tgt": {
-        "z60": 3.8,
-        "et": 11.8,
-        "trap": 123
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 11.814,
-          "trap": 122.7,
-          "z60": 3.693,
-          "z60130": 9.815
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_MCT_7",
-        "nG": 7,
-        "fd": 2.82,
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 6.5,
         "transmission": "Auto",
-        "loss": 0,
-        "tire": 3,
-        "launch": 2400,
+        "loss": 8.5,
+        "tire": 2,
+        "launch": 500,
         "sim": {
-          "et": 11.849,
-          "trap": 121.5,
-          "z60": 3.649,
-          "z60130": 9.896
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2010 Mercedes C63 AMG",
-      "gi": 282,
-      "tgt": {
-        "z60": 4.1,
-        "et": 12.2,
-        "trap": 115
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 1.5,
-        "tire": 4,
-        "launch": 2400,
-        "sim": {
-          "et": 12.301,
-          "trap": 113.8,
-          "z60": 3.877,
-          "z60130": 12.846
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_MCT_7",
-        "nG": 7,
-        "fd": 2.82,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 12.41,
-          "trap": 113.2,
-          "z60": 3.957,
-          "z60130": 12.695
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2010 Mercedes C63 AMG",
-      "gi": 302,
-      "tgt": {
-        "z60": 4.1,
-        "et": 12.2,
-        "trap": 115
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 1.5,
-        "tire": 4,
-        "launch": 2400,
-        "sim": {
-          "et": 12.301,
-          "trap": 113.8,
-          "z60": 3.877,
-          "z60130": 12.846
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_MCT_7",
-        "nG": 7,
-        "fd": 2.82,
-        "transmission": "Auto",
-        "loss": 0,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 12.41,
-          "trap": 113.2,
-          "z60": 3.957,
-          "z60130": 12.695
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2011 Mercedes E63 AMG",
-      "gi": 300,
-      "tgt": {
-        "z60": 3.9,
-        "et": 12.3,
-        "trap": 117
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 3,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 12.163,
-          "trap": 117.5,
-          "z60": 3.872,
-          "z60130": 11.323
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "AMG_SPEEDSHIFT_MCT_7",
-        "nG": 7,
-        "fd": 2.65,
-        "transmission": "Auto",
-        "loss": 1,
-        "tire": 3,
-        "launch": 2400,
-        "sim": {
-          "et": 12.144,
-          "trap": 116.8,
-          "z60": 3.846,
-          "z60130": 11.335
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false
-    },
-    {
-      "name": "2022 Volkswagen Golf R",
-      "gi": 252,
-      "tgt": {
-        "z60": 4.1,
-        "et": 12.6,
-        "trap": 112
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 1200,
-        "sim": {
-          "et": 12.399,
-          "trap": 110.2,
-          "z60": 3.809,
-          "z60130": 14.87
+          "et": 9.495,
+          "trap": 153.2,
+          "z60": 2.371,
+          "z60130": 4.54
         },
         "hits": {
           "et": true,
@@ -10245,227 +9574,18 @@
         }
       },
       "after": {
-        "txKey": "VW_DQ500_7",
-        "nG": 7,
-        "fd": 4.059,
-        "transmission": "DCT",
-        "loss": 3,
-        "tire": 0,
-        "launch": 1000,
+        "txKey": "Tesla_EV_Plaid",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 8,
+        "tire": 2,
+        "launch": 500,
         "sim": {
-          "et": 12.553,
-          "trap": 107.2,
-          "z60": 3.859,
-          "z60130": 16.13
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2016 Audi TT RS",
-      "gi": 295,
-      "tgt": {
-        "z60": 3.3,
-        "et": 11.7,
-        "trap": 120
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 11.573,
-          "trap": 118.5,
-          "z60": 3.161,
-          "z60130": 11.482
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "VW_DQ500_7",
-        "nG": 7,
-        "fd": 4.059,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 11.717,
-          "trap": 117.1,
-          "z60": 3.238,
-          "z60130": 11.902
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2024 Audi RS 3",
-      "gi": 330,
-      "tgt": {
-        "z60": 3.3,
-        "et": 11.7,
-        "trap": 119
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 11.693,
-          "trap": 117,
-          "z60": 3.241,
-          "z60130": 12.013
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "VW_DQ500_7",
-        "nG": 7,
-        "fd": 4.059,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 4,
-        "launch": 2400,
-        "sim": {
-          "et": 11.711,
-          "trap": 115.6,
-          "z60": 3.171,
-          "z60130": 12.458
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2013 Audi RS4 Avant",
-      "gi": 299,
-      "tgt": {
-        "z60": 4.1,
-        "et": 12.6,
-        "trap": 114
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 3,
-        "tire": 0,
-        "launch": 1200,
-        "sim": {
-          "et": 12.414,
-          "trap": 110.6,
-          "z60": 3.874,
-          "z60130": 14.334
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Audi_STronic_7",
-        "nG": 7,
-        "fd": 4.093,
-        "transmission": "DCT",
-        "loss": 5.5,
-        "tire": 0,
-        "launch": 1000,
-        "sim": {
-          "et": 12.443,
-          "trap": 109.2,
-          "z60": 3.851,
-          "z60130": 15.119
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true
-    },
-    {
-      "name": "2020 Ford Mustang Shelby GT500",
-      "gi": 21,
-      "tgt": {
-        "z60": 3.4,
-        "et": 11.3,
-        "trap": 132,
-        "z60130": 7.6
-      },
-      "before": {
-        "txKey": "DCT_7_AMG",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 4,
-        "tire": 4,
-        "launch": 3000,
-        "sim": {
-          "et": 11.197,
-          "trap": 129.7,
-          "z60": 3.353,
-          "z60130": 7.89
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "txKey": "Tremec_TR9070_7DCT",
-        "nG": 7,
-        "fd": 3.73,
-        "transmission": "DCT",
-        "loss": 0,
-        "tire": 3,
-        "launch": 3000,
-        "sim": {
-          "et": 11.348,
-          "trap": 130.9,
-          "z60": 3.57,
-          "z60130": 7.631
+          "et": 9.244,
+          "trap": 149.8,
+          "z60": 2.073,
+          "z60130": 4.513
         },
         "hits": {
           "et": true,
@@ -10475,6 +9595,425 @@
         }
       },
       "stillMiss": false
+    },
+    {
+      "name": "2022 Tesla Model X Plaid",
+      "gi": 61,
+      "tgt": {
+        "z60": 2.5,
+        "et": 9.8,
+        "trap": 145
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 6.5,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 10.025,
+          "trap": 146.6,
+          "z60": 2.649,
+          "z60130": 5.403
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tesla_EV_Plaid",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 2,
+        "launch": 500,
+        "sim": {
+          "et": 9.792,
+          "trap": 144.9,
+          "z60": 2.389,
+          "z60130": 5.383
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "gi": 67,
+      "tgt": {
+        "z60": 2.6,
+        "et": 11,
+        "trap": 119
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 0,
+        "launch": 300,
+        "sim": {
+          "et": 11.037,
+          "trap": 118.7,
+          "z60": 2.815,
+          "z60130": 14.636
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tesla_EV_Cybertruck",
+        "nG": 1,
+        "fd": 15.02,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 2,
+        "launch": 300,
+        "sim": {
+          "et": 12.764,
+          "trap": 86.1,
+          "z60": 2.459,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2024 Tesla Model S Long Range",
+      "gi": 87,
+      "tgt": {
+        "z60": 3.1,
+        "et": 10.8,
+        "trap": 129
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.875,
+          "trap": 131.3,
+          "z60": 3.156,
+          "z60130": 7.465
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.56,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.99,
+          "trap": 131.3,
+          "z60": 3.281,
+          "z60130": 7.465
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Tesla Model 3 Performance",
+      "gi": 55,
+      "tgt": {
+        "z60": 2.9,
+        "et": 11,
+        "trap": 124.5,
+        "z60130": 9.2
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.04,
+          "trap": 124.4,
+          "z60": 3.04,
+          "z60130": 9.264
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 4,
+        "launch": 500,
+        "sim": {
+          "et": 11.052,
+          "trap": 124.8,
+          "z60": 3.069,
+          "z60130": 9.195
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Tesla Model Y Performance",
+      "gi": 60,
+      "tgt": {
+        "z60": 3.5,
+        "et": 11.8,
+        "trap": 115
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.847,
+          "trap": 117.3,
+          "z60": 3.683,
+          "z60130": 11.876
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.913,
+          "trap": 117.4,
+          "z60": 3.767,
+          "z60130": 11.858
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "gi": 56,
+      "tgt": {
+        "z60": 2.4,
+        "et": 10.5,
+        "trap": 130,
+        "z60130": 6.5
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 7.8,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.653,
+          "trap": 134.6,
+          "z60": 2.962,
+          "z60130": 6.93
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_Taycan_2",
+        "nG": 2,
+        "fd": 8.05,
+        "transmission": "DCT",
+        "loss": 14,
+        "tire": 1,
+        "launch": 500,
+        "sim": {
+          "et": 10.497,
+          "trap": 130.1,
+          "z60": 2.394,
+          "z60130": 8.084
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Audi e-tron GT",
+      "gi": 85,
+      "tgt": {
+        "z60": 3.6,
+        "et": 12.1,
+        "trap": 116
+      },
+      "before": {
+        "txKey": "EV_Single",
+        "nG": 1,
+        "fd": 9.2,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 500,
+        "sim": {
+          "et": 11.952,
+          "trap": 118.1,
+          "z60": 3.839,
+          "z60130": 11.428
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_Taycan_2",
+        "nG": 2,
+        "fd": 8.05,
+        "transmission": "DCT",
+        "loss": 15,
+        "tire": 0,
+        "launch": 500,
+        "sim": {
+          "et": 12.028,
+          "trap": 113.6,
+          "z60": 3.446,
+          "z60130": 13.062
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "gi": 146,
+      "tgt": {
+        "z60": 2.7,
+        "et": 9.9,
+        "trap": 150,
+        "z60130": 3.9
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 30.7,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 9.785,
+          "trap": 150.1,
+          "z60": 2.466,
+          "z60130": 5.11
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": false
+        }
+      },
+      "after": {
+        "txKey": "Koenigsegg_KDD",
+        "nG": 1,
+        "fd": 2.73,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 2,
+        "launch": 3400,
+        "sim": {
+          "et": 9.831,
+          "trap": 163.5,
+          "z60": 2.916,
+          "z60130": 4.303
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
     }
   ]
 }

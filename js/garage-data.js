@@ -6,9 +6,9 @@
  * or curated; loss+launch+tire calibrated ET-first toward Excel (forceScale = 1.0 always).
  * Excel source: /workspace/powercurve-garage-import.json
  * ZR1X: published Cd 0.36 / wt 3978 locked — never search Cd/weight.
- * Tip: real-tx-phase3-euro-dct — Porsche PDK / AMG SPEEDSHIFT / VW DQ500 / Audi S-tronic + GT500 TR-9070;
+ * Tip: real-tx-phase4-ev-fd — Tesla Plaid/Cybertruck FD + Taycan 2-spd + Regera KDD;
  *   knobs loss/tire/launch only after gear/FD writes; no Cd/wt/curve fakes.
- * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-real-tx-phase3-euro-dct.js
+ * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-real-tx-phase4-ev-fd.js
  */
 'use strict';
 
@@ -5927,12 +5927,12 @@ var GARAGE = [
     "dragCoefficient": 0.208,
     "frontalAreaSqFt": 25,
     "tireRadiusInches": 14,
-    "finalDriveRatio": 6.5,
+    "finalDriveRatio": 7.56,
     "gearRatios": [
       1
     ],
-    "txKey": "EV_Single",
-    "drivetrainLossPercent": 8.5,
+    "txKey": "Tesla_EV_Plaid",
+    "drivetrainLossPercent": 8,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -6106,7 +6106,7 @@ var GARAGE = [
     "dragCoefficient": 0.23,
     "frontalAreaSqFt": 23,
     "tireRadiusInches": 13.4,
-    "finalDriveRatio": 9.2,
+    "finalDriveRatio": 9,
     "gearRatios": [
       1
     ],
@@ -6124,7 +6124,7 @@ var GARAGE = [
     "peakTqRpm": 2000,
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
-    "tireType": 3,
+    "tireType": 4,
     "forceScale": 1,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
@@ -6285,12 +6285,13 @@ var GARAGE = [
     "dragCoefficient": 0.26,
     "frontalAreaSqFt": 24.5,
     "tireRadiusInches": 14,
-    "finalDriveRatio": 7.8,
+    "finalDriveRatio": 8.05,
     "gearRatios": [
+      1.925,
       1
     ],
-    "txKey": "EV_Single",
-    "drivetrainLossPercent": 2,
+    "txKey": "Porsche_Taycan_2",
+    "drivetrainLossPercent": 14,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -6307,7 +6308,7 @@ var GARAGE = [
     "forceScale": 1,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
-    "transmission": "Auto",
+    "transmission": "DCT",
     "source": "Perf: C&D Taycan Turbo S 2.4 / 10.5@130 (loss 20.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 20.6; driver 200",
     "torqueCurve": {
       "500": 857.5792,
@@ -7001,12 +7002,12 @@ var GARAGE = [
     "dragCoefficient": 0.23,
     "frontalAreaSqFt": 27,
     "tireRadiusInches": 13.4,
-    "finalDriveRatio": 9.2,
+    "finalDriveRatio": 9,
     "gearRatios": [
       1
     ],
     "txKey": "EV_Single",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 0.5,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -7180,12 +7181,12 @@ var GARAGE = [
     "dragCoefficient": 0.25,
     "frontalAreaSqFt": 30,
     "tireRadiusInches": 14,
-    "finalDriveRatio": 6.5,
+    "finalDriveRatio": 7.56,
     "gearRatios": [
       1
     ],
-    "txKey": "EV_Single",
-    "drivetrainLossPercent": 0,
+    "txKey": "Tesla_EV_Plaid",
+    "drivetrainLossPercent": 2.5,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -8254,12 +8255,12 @@ var GARAGE = [
     "dragCoefficient": 0.425,
     "frontalAreaSqFt": 36,
     "tireRadiusInches": 15.2,
-    "finalDriveRatio": 7.8,
+    "finalDriveRatio": 15.02,
     "gearRatios": [
       1
     ],
-    "txKey": "EV_Single",
-    "drivetrainLossPercent": 1,
+    "txKey": "Tesla_EV_Cybertruck",
+    "drivetrainLossPercent": 0,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -8272,7 +8273,7 @@ var GARAGE = [
     "peakTqRpm": 2000,
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
-    "tireType": 0,
+    "tireType": 2,
     "forceScale": 1,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
@@ -11476,12 +11477,13 @@ var GARAGE = [
     "dragCoefficient": 0.24,
     "frontalAreaSqFt": 25,
     "tireRadiusInches": 14,
-    "finalDriveRatio": 9.2,
+    "finalDriveRatio": 8.05,
     "gearRatios": [
+      1.925,
       1
     ],
-    "txKey": "EV_Single",
-    "drivetrainLossPercent": 0,
+    "txKey": "Porsche_Taycan_2",
+    "drivetrainLossPercent": 15,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -11494,11 +11496,11 @@ var GARAGE = [
     "peakTqRpm": 2000,
     "peakHpRpm": 8000,
     "shiftTimeSeconds": 0.01,
-    "tireType": 3,
+    "tireType": 0,
     "forceScale": 1,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
-    "transmission": "Auto",
+    "transmission": "DCT",
     "source": "Perf: C&D/peer e-tron GT (non-RS) ~3.9 / ~12.3@113 (loss 24.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200",
     "torqueCurve": {
       "500": 571.4406,
@@ -11834,12 +11836,12 @@ var GARAGE = [
     "dragCoefficient": 0.21,
     "frontalAreaSqFt": 25,
     "tireRadiusInches": 14,
-    "finalDriveRatio": 7.8,
+    "finalDriveRatio": 7.56,
     "gearRatios": [
       1
     ],
     "txKey": "EV_Single",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 1,
     "driveType": "AWD",
     "isEv": true,
     "isFI": false,
@@ -18796,26 +18798,19 @@ var GARAGE = [
     "dragCoefficient": 0.28,
     "frontalAreaSqFt": 21,
     "tireRadiusInches": 13.2,
-    "finalDriveRatio": 3.15,
+    "finalDriveRatio": 2.73,
     "gearRatios": [
-      4.71,
-      3.14,
-      2.11,
-      1.67,
-      1.28,
-      1,
-      0.84,
-      0.67
+      1
     ],
-    "txKey": "ZF8HP",
-    "drivetrainLossPercent": 30.7,
+    "txKey": "Koenigsegg_KDD",
+    "drivetrainLossPercent": 1.5,
     "driveType": "RWD",
     "isEv": false,
     "isFI": true,
     "isNA": false,
     "boostModel": "turbo",
     "boostPsi": 0,
-    "launchRpm": 2400,
+    "launchRpm": 3400,
     "shiftRpm": 6045,
     "redline": 6500,
     "peakTqRpm": 3575,
@@ -18892,7 +18887,7 @@ var GARAGE = [
     "rightWeightPercent": 50,
     "powerSource": "hybrid",
     "isHybrid": true,
-    "hybridAssistFrac": 0.22,
+    "hybridAssistFrac": 0.3,
     "speedLimiterMph": 250
   },
   {

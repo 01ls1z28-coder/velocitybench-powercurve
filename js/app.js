@@ -625,7 +625,7 @@
       dragCoefficient: clampNum($('cd').value, 0.15, 1.2, 0.35),
       frontalAreaSqFt: clampNum($('area').value, 4, 80, 22.5),
       tireRadiusInches: clampNum($('tireRadius').value, 8, 24, 13.2),
-      finalDriveRatio: clampNum($('finalDrive').value, 1.5, 10, 3.73),
+      finalDriveRatio: clampNum($('finalDrive').value, 1.5, 20, 3.73), // Phase4: Cybertruck FD 15.02
       gearRatios: readGears(),
       drivetrainLossPercent: clampNum($('lossPct').value, 0, 35, 15),
       launchRpm: clampNum($('launchRpm').value, 800, redline, 3000),
