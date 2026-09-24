@@ -1,3 +1,74 @@
+# Launch-tach realism — stock slip→lockup (2026-09-24 CT)
+
+Branch: `review/pc-launch-tach-realism` · Tip off `33aaa9b` (real-tx-batch1). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (Hellcat / Mustang GT / Demon 340 tach climb + Model 3 Perf Power %).
+
+## Goal
+Stock path (ATC off) no longer hard-holds `rpm = launchRpm` for ~LAUNCH_HOLD 2.2s. Replace with slip→lockup blend (same idea as ATC): seed at leave RPM, blend toward mechRpm as speed rises; manuals short clutch fade; after first lock always follow mechRpm (shift drops preserved). Absurd ICE `launchRpm` (e.g. Demon 200) seeds toward peak-TQ band at leave. Recalib **loss / launchRpm / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- EV: leave Power % primary dial alone (`configurePrimaryGauge` / `evGaugeMode`); motor rpm may blend — Power % from curve@rpm still correct
+- Priority: ¼ ET → trap → 60-130 → 0-60
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind — **intact**
+- Independent of Phase 2 classics (`review/pc-real-tx-phase2-classics`) — branched from `33aaa9b` only
+
+## Before → after (tach)
+| Car | Before | After |
+|-----|--------|-------|
+| Hellcat / Mustang GT | Flat ~launchRpm for ~2.2s then cliff to already-at-shift mechRpm | Leave → climb through 1st to shiftRpm → drop on shift |
+| Demon 340 | Flat **200** RPM for ~2.2s then cliff | Leave seeded **~peak-TQ** → climb 1st → drop on shift |
+| Model 3 Perf | Flat motor 500 then cliff | Motor rpm climbs with speed; **Power %** dial unchanged |
+
+## Spot-check (Excel weather, baked tire, driver 200)
+
+| Car | Before ET@trap / 0-60 | After ET@trap / 0-60 | Notes |
+|-----|----------------------:|---------------------:|-------|
+| 2020 Challenger Hellcat | 11.610@126.0 / 3.613 | **11.610@126.0 / 3.613** | Unchanged; tach climbs 2400→6033 1st; shift drop ~6046→4106 |
+| 2020 Mustang GT | 12.090@117.7 / 3.881 | **12.111@117.7 / 3.907** | ET/0-60 still HIT vs 12.1@119 / 3.8; tach 3000→6744 |
+| 1971 Demon 340 | 14.604@93.5 / 5.979 | **14.449@93.6 / 5.779** | Leave 200→**4371** (peak-TQ seed + recalib); ET still fast vs 14.8 (**honest** — trap at edge); tach climbs + shift drop 5452→3671 |
+| 2024 Model 3 Performance | 10.970@124.5 / 2.941 | **11.040@124.4 / 3.040** | HIT; Power % via `configurePrimaryGauge` / `evGaugeMode` intact |
+
+## Shipped
+1. `js/physics.js` — `resolveLeaveRpm` / `peakTqRpmFromCurve`; stock slip→lockup + `launchLocked`; manuals short clutch fade.
+2. `scripts/recalib-launch-tach-realism.js` — drifted-only loss/launch/tire search (trap-preserving).
+3. `js/garage-data.js` — recalib’d drifted cars; `window.VB_POWERCURVE_GARAGE` bind intact.
+4. `scripts/garage-calib-meta.json` tip `launch-tach-realism` + `scripts/launch-tach-realism-report.json`.
+
+## Fleet hit-rates (Excel TOL) vs `33aaa9b` / real-tx-batch1
+
+| Metric | Before (`real-tx-batch1`) | After physics (pre-recalib) | After recalib |
+|--------|---------------------------|-----------------------------|---------------|
+| ¼ ET | 328/331 **99.1%** | 306/331 | **318/331 96.1%** |
+| ¼ trap | 301/331 **90.9%** | 301/331 | **303/331 91.5%** (+2) |
+| 0-60 | 288/332 **86.7%** | 260/332 | **278/332 83.7%** |
+| 60-130 | 72/76 **94.7%** | 72/76 | **72/76 94.7%** |
+| all4 | 257 | 229 | **246** |
+
+Pre-recalib drift: **103** cars. Recalib changed those (loss/launch/tire); ET recovery pass preserved trap hits.
+
+## Honest misses (do not cheat Cd/wt/curve)
+Leave seeding into peak-TQ makes former absurd-`launchRpm` classics faster; further loss often sits on the trap TOL edge. Notable ET-still-fast: Demon 340, Camaro SS 396, Dart GTS 383, GTX 440, Diablo VT 6.0, R8 V10, Venom GT, Monte Carlo, Cougar XR-7, Nova 350, Audi S5×2, Galaxie 352. Many EV 0-60 soft / known trap soft remain (Plaid, Taycan, EQE, iX, …) — same class as prior tips.
+
+## Integrity
+- forceScale≠1: **0**
+- Cd/weight/frontalArea/torqueCurve: **unchanged** by this tip’s knobs
+- `window.VB_POWERCURVE_GARAGE` bind present
+- Peak HP wipe fix comment present in `js/app.js`
+- `configurePrimaryGauge` / `evGaugeMode` untouched
+
+**Skipped:** deploy · Merovingian holds deploy · no push to main · Phase 2 classics worktree untouched.
+
+VERIFY
+1. Meta tip `launch-tach-realism` · ET ≥315/331 · trap ≥301/331 · forceScale≠1 = 0
+2. Spot tach: Hellcat/Mustang/Demon climb through 1st from leave; shift RPM drops; no multi-second flat ~3k then cliff
+3. Model 3 Perf: primary gauge still Power % (`evGaugeMode`)
+4. No Cd/wt/curve edits in the tip diff
+
+---
+
 # Real-TX batch1 — published 10R80 / 10L90 / TR-9080 + Hellcat FD (2026-09-24 CT)
 
 Branch: `review/pc-real-tx-batch1` · Tip off `b8af352` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (Mustang GT / Camaro ZL1 / ZR1X / Hellcat gear editor counts).

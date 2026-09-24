@@ -1,0 +1,431 @@
+[
+  {
+    "name": "1979 Pontiac Firebird Trans Am",
+    "before": {
+      "loss": 11.5,
+      "launch": 1971,
+      "sim": {
+        "et": 16.187,
+        "trap": 83.9,
+        "z60": 8.045
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 12,
+      "launch": 1371,
+      "sim": {
+        "et": 16.319,
+        "trap": 83.7,
+        "z60": 8.2
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "2012 Audi R8 V10",
+    "before": {
+      "loss": 0,
+      "launch": 4987,
+      "sim": {
+        "et": 11.118,
+        "trap": 124.5,
+        "z60": 2.983
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 0,
+      "launch": 5587,
+      "sim": {
+        "et": 11.142,
+        "trap": 124.4,
+        "z60": 3.01
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "2009 Lamborghini Gallardo LP560-4",
+    "before": {
+      "loss": 2,
+      "launch": 1200,
+      "sim": {
+        "et": 11,
+        "trap": 126,
+        "z60": 2.835
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 6.5,
+      "launch": 1200,
+      "sim": {
+        "et": 11.169,
+        "trap": 123.8,
+        "z60": 2.942
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "2008 Lamborghini Reventón",
+    "before": {
+      "loss": 7.5,
+      "launch": 1200,
+      "sim": {
+        "et": 10.901,
+        "trap": 127.6,
+        "z60": 2.785
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 11.5,
+      "launch": 1200,
+      "sim": {
+        "et": 11.056,
+        "trap": 125.7,
+        "z60": 2.882
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1969 Chevrolet Camaro SS 396",
+    "before": {
+      "loss": 14.5,
+      "launch": 4371,
+      "sim": {
+        "et": 13.925,
+        "trap": 98.8,
+        "z60": 5.246
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 14.5,
+      "launch": 4671,
+      "sim": {
+        "et": 13.968,
+        "trap": 98.4,
+        "z60": 5.291
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1971 Dodge Demon 340",
+    "before": {
+      "loss": 9,
+      "launch": 4371,
+      "sim": {
+        "et": 14.429,
+        "trap": 93.9,
+        "z60": 5.761
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 10,
+      "launch": 4371,
+      "sim": {
+        "et": 14.47,
+        "trap": 93.5,
+        "z60": 5.808
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1968 Dodge Dart GTS 383",
+    "before": {
+      "loss": 12,
+      "launch": 4371,
+      "sim": {
+        "et": 14.439,
+        "trap": 93.9,
+        "z60": 5.781
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 13,
+      "launch": 4371,
+      "sim": {
+        "et": 14.482,
+        "trap": 93.6,
+        "z60": 5.83
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1967 Plymouth GTX 440",
+    "before": {
+      "loss": 7,
+      "launch": 4371,
+      "sim": {
+        "et": 13.848,
+        "trap": 99.4,
+        "z60": 5.234
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 12,
+      "launch": 4371,
+      "sim": {
+        "et": 14.049,
+        "trap": 97.5,
+        "z60": 5.437
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1977 Chevrolet Monte Carlo",
+    "before": {
+      "loss": 9.5,
+      "launch": 1971,
+      "sim": {
+        "et": 17.282,
+        "trap": 75.6,
+        "z60": 10.252
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 9.5,
+      "launch": 1371,
+      "sim": {
+        "et": 17.346,
+        "trap": 75.6,
+        "z60": 10.321
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1968 Mercury Cougar XR-7",
+    "before": {
+      "loss": 29,
+      "launch": 1671,
+      "sim": {
+        "et": 15.117,
+        "trap": 89.1,
+        "z60": 6.585
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 30,
+      "launch": 1200,
+      "sim": {
+        "et": 15.25,
+        "trap": 88.7,
+        "z60": 6.741
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "1975 Chevrolet Nova 350",
+    "before": {
+      "loss": 5.5,
+      "launch": 1300,
+      "sim": {
+        "et": 17.081,
+        "trap": 76.7,
+        "z60": 9.799
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 5.5,
+      "launch": 1200,
+      "sim": {
+        "et": 17.09,
+        "trap": 76.7,
+        "z60": 9.809
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "2008 Audi S5",
+    "before": {
+      "loss": 5,
+      "launch": 2166,
+      "sim": {
+        "et": 13.053,
+        "trap": 102.9,
+        "z60": 4.498
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 6,
+      "launch": 1566,
+      "sim": {
+        "et": 13.133,
+        "trap": 102.6,
+        "z60": 4.579
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  },
+  {
+    "name": "2008 Audi S5",
+    "before": {
+      "loss": 5,
+      "launch": 2166,
+      "sim": {
+        "et": 13.053,
+        "trap": 102.9,
+        "z60": 4.498
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    },
+    "after": {
+      "loss": 6,
+      "launch": 1566,
+      "sim": {
+        "et": 13.133,
+        "trap": 102.6,
+        "z60": 4.579
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      }
+    }
+  }
+]

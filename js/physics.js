@@ -212,6 +212,48 @@
     return tAt(best);
   }
 
+
+  /**
+   * Peak-TQ RPM from baked curve (fallback when car.peakTqRpm missing).
+   */
+  function peakTqRpmFromCurve(curve) {
+    if (!curve) return 0;
+    var bestR = 0, bestT = -1;
+    var keys = Array.isArray(curve)
+      ? curve.map(function (pt) { return Number(pt.rpm != null ? pt.rpm : pt[0]); })
+      : Object.keys(curve).map(Number);
+    for (var i = 0; i < keys.length; i++) {
+      var r = keys[i];
+      if (!isFinite(r)) continue;
+      var t = getTorqueAtRpm(curve, r);
+      if (t > bestT) { bestT = t; bestR = r; }
+    }
+    return bestR;
+  }
+
+  /**
+   * Leave / brake-launch target RPM.
+   * launchRpm is the intended leave; absurd ICE values (idle / near-zero) seed
+   * toward the peak-TQ band so stock slip→lockup has a sane tach start.
+   * EV keeps launchRpm as-is (motor rpm for TQ; Power % dial uses timeline rpm).
+   */
+  function resolveLeaveRpm(car, launchRpm, redline, curve) {
+    var lr = Number(launchRpm);
+    if (!isFinite(lr) || lr < 0) lr = DEFAULT_LAUNCH_RPM;
+    redline = Number(redline) || DEFAULT_SHIFT_RPM;
+    if (car && car.isEv) {
+      return clamp(lr, 0, Math.max(redline, lr));
+    }
+    var peakTq = Number(car && car.peakTqRpm);
+    if (!(peakTq > 0)) peakTq = peakTqRpmFromCurve(curve);
+    if (!(peakTq > 0)) peakTq = Math.min(4000, redline * 0.55);
+    // Absurd leave (calib leftovers / idle): seed ~0.9× peak-TQ band
+    if (lr < 1000) {
+      lr = Math.round(clamp(peakTq * 0.9, 1800, Math.min(redline - 200, peakTq)));
+    }
+    return clamp(lr, 800, redline);
+  }
+
   function synthesizeTorqueCurve(peakHp, peakTqRpm, redline, peakHpRpm) {
     peakHp = clamp(Number(peakHp) || 300, 1, 15000);
     peakTqRpm = clamp(Number(peakTqRpm) || 4000, 800, 12000);
@@ -511,7 +553,10 @@
       if (env.customSlipTarget > 0) slipTarget = env.customSlipTarget;
     }
 
-    result.launchRpm = Math.round(launchRpm);
+    // Effective leave target (absurd ICE launchRpm → peak-TQ band)
+    var leaveRpm = resolveLeaveRpm(car, launchRpm, redline, curve);
+    launchRpm = leaveRpm; // soft/aggressive/custom already applied above
+    result.launchRpm = Math.round(leaveRpm);
     result.shiftRpm = Math.round(shiftRpm);
     result.densityAltitudeFeet = daFt;
     result.airTempF = tempF;
@@ -538,6 +583,7 @@
     }
 
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
+    var launchLocked = false; // after first catch, always follow mechRpm (preserve shift drops)
     var shifting = false, shiftTimer = 0;
     var spinSum = 0, spinN = 0, prevA = 0;
     var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
@@ -570,20 +616,19 @@
       var wheelRpm = tireRadius > 0 ? (v / (2 * Math.PI * tireRadius)) * 60.0 : 0;
 
       if (!shifting) {
+        var gNow = gears[Math.min(gear, gears.length) - 1];
+        var mechRpm = wheelRpm * gNow * finalDrive;
+        var mphNow = v * MPS_TO_MPH;
         if (car.hasAftermarketConverter) {
           /**
            * Aftermarket stall converter (realistic-lite):
            * - Stall RPM = engine speed against a stalled/near-stalled turbine (brake launch).
            * - Flash RPM = brief free-rev peak as the converter unloads off the line.
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
-           * Stock path (ATC off) keeps classic launchRpm hold.
            */
           var stall = Number(car.stallRpm) || 2800;
           var flash = Number(car.flashRpm) || Math.max(stall + 400, 3500);
           if (flash < stall) flash = stall;
-          var gNow = gears[Math.min(gear, gears.length) - 1];
-          var mechRpm = wheelRpm * gNow * finalDrive;
-          var mphNow = v * MPS_TO_MPH;
           // Lockup progress: 0 at standstill → 1 by ~50 mph
           var lockup = clamp(mphNow / 50.0, 0, 1);
           // Flash pulse: peaks in first ~0.20 s while still very slow
@@ -599,10 +644,39 @@
           if (mphNow < 25 && rpm < stall) rpm = stall;
           // Soft ceiling: don't wildly exceed flash during flash window
           if (flashPulse > 0.05 && rpm > flash) rpm = flash;
-        } else if (inLaunch) {
-          rpm = launchRpm;
         } else {
-          rpm = wheelRpm * gears[gear - 1] * finalDrive;
+          /**
+           * Stock slip→lockup (ATC off) — same idea as ATC without stall/flash:
+           * - Seed tach at leaveRpm (launchRpm; absurd ICE values seeded to peak-TQ band).
+           * - Blend leave → max(mech, leave) so tach never sags below leave while slipped.
+           * - After first lock (mech caught leave): always follow mechRpm — including after
+           *   shifts (new-gear mech may be below leave; must NOT re-hold leave).
+           * - Manuals: short clutch fade (time ~0.55 s and/or ~28 mph).
+           * - Autos / DCT / EV: lock as soon as mechRpm catches leaveRpm.
+           * - Shift RPM drop preserved via existing shift torque-cut + new-gear mechRpm.
+           */
+          if (launchLocked) {
+            rpm = mechRpm;
+          } else {
+            var isManual = /^manual$/i.test(String(car.transmission || '').trim());
+            var couple;
+            if (isManual) {
+              couple = Math.max(clamp(mphNow / 28.0, 0, 1), clamp(t / 0.55, 0, 1));
+            } else if (mechRpm >= leaveRpm) {
+              couple = 1;
+            } else {
+              couple = 0; // hold leave until converter/road catches
+            }
+            var targetRpm = Math.max(mechRpm, leaveRpm);
+            rpm = leaveRpm * (1 - couple) + targetRpm * couple;
+            if (mechRpm >= leaveRpm && couple >= 0.85) {
+              launchLocked = true;
+              rpm = mechRpm;
+            } else if (couple >= 0.995 && mechRpm < leaveRpm) {
+              // Clutch dumped but road not caught yet — keep leave (no sag)
+              rpm = leaveRpm;
+            }
+          }
         }
       }
 
