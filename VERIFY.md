@@ -1,3 +1,87 @@
+# Real-TX batch1 — published 10R80 / 10L90 / TR-9080 + Hellcat FD (2026-09-24 CT)
+
+Branch: `review/pc-real-tx-batch1` · Tip off `b8af352` (main / live). **No deploy.** Do **not** ask Merovingian to push main. Hold for Seraph browser gate (Mustang GT / Camaro ZL1 / ZR1X / Hellcat gear editor counts).
+
+## Goal
+First Jorge-approved real-transmission batch: correct gear **count** + published-leaning ratios/FD on modern Ford/GM 10AT, C8 TR-9080 8DCT, ZR1X FD 5.56, Hellcat FD 2.62. Recalib **loss / launch / tire only**.
+
+## Hard rules (kept)
+- Knobs ONLY after gear/FD writes: **drivetrainLossPercent + launchRpm + tireType**
+- **forceScale = 1** everywhere (verified 333/333)
+- **Do NOT** change Cd / weight / frontal area / torque-curve / Peak HP wipe path
+- Priority: ¼ ET → trap → 60-130 → 0-60 → 60′ → Vmax
+- Tolerances: ET ±0.25s · trap ±2.5 mph · 0–60 ±0.25s
+- FIRST BATCH only — leave obscure ZF8HP / TR6060 filler alone
+- Peak HP wipe fix · `VB_POWERCURVE_GARAGE` bind · canvas-before-listener — **intact**
+
+## FactoryTransmissions added (`js/physics.js`)
+| txKey | Speeds | Default FD | Ratios (abbrev) | Sources |
+|---|---:|---:|---|---|
+| `Ford_10R80` | 10 | 3.15 | 4.696…0.636 | Ford Component Sales 10R80 sheet; BlueOvalTrucks / F150Hub; Wikipedia Ford–GM 10-speed |
+| `GM_10L90` | 10 | 2.85 | 4.70…0.64 | GM Authority 10L90; Camaro ZL1 published set (same ratios as 10L80 gearset) |
+| `Tremec_TR9080_8DCT` | 8 | 5.20 | 2.91…0.33 | Tremec TR-9080 product sheet; CorvetteForum DCT 101; ZR1X/Z06 **effective FD 5.56** (OEM convention) |
+
+UI Custom factory-TX dropdown auto-lists new keys via `populateTxPresets()`.
+
+## Remapped cars (14)
+**10AT Ford (`Ford_10R80`):** 2020 Mustang GT (FD 3.15), 2018 Mustang GT PP2 Auto (FD 3.55), 2024 Dark Horse (FD 3.55), 2020 F-150 Raptor (FD 4.10), 2018 F-150 5.0 (FD 3.31).  
+**10AT GM (`GM_10L90`):** 2020 Camaro SS (FD 2.77), 2023 Camaro ZL1 (FD 2.85), 2020 Silverado 6.2 (FD 3.23), 2023 Silverado ZR2 (FD 3.23).  
+**TR-9080 8DCT:** 2024 C8 Stingray (FD 5.20, `transmission`→DCT), 2023 C8 Z06 (FD 5.56, DCT), 2026 ZR1X (FD **5.56**, DCT).  
+**Hellcat FD only (keep ZF8HP):** 2020 + 2015 Challenger Hellcat FD **3.15→2.62** (Redeye already 2.62).
+
+**Left alone this tip:** 2012 F-150 EcoBoost (pre-10R80), 2017 Silverado 5.3 (pre-10L90 era), Scat Packs (not Hellcat 2.62), classics / Euro DCTs / Regera / Taycan / Cybertruck / Plaid.
+
+## Shipped
+1. `js/physics.js` — three new `FactoryTransmissions` presets.
+2. `scripts/recalib-real-tx-batch1.js` — remap + loss/tire/launch search for the 14.
+3. `js/garage-data.js` — remapped + recalib’d; `window.VB_POWERCURVE_GARAGE` bind intact.
+4. `scripts/garage-calib-meta.json` tip `real-tx-batch1` + `scripts/real-tx-batch1-report.json`.
+
+## Reproduce
+```bash
+git fetch origin && git checkout review/pc-real-tx-batch1
+node scripts/recalib-real-tx-batch1.js
+node -e "const G=require('./js/garage-data.js'); console.log('nG10',G.filter(c=>c.gearRatios.length===10).length,'fs!=1',G.filter(c=>+c.forceScale!==1).length)"
+rg 'window.VB_POWERCURVE_GARAGE' js/garage-data.js
+rg 'Peak HP label must NEVER wipe' js/app.js
+rg 'Ford_10R80|GM_10L90|Tremec_TR9080' js/physics.js
+```
+
+## Fleet hit-rates (Excel TOL) vs tip `b8af352` / `5aefbea` baseline
+
+| Metric | Before (`trap-miss-batch22`) | After (real-tx-batch1) |
+|--------|------------------------------|------------------------|
+| ¼ ET | 328/331 **99.1%** | 328/331 **99.1%** (no regress) |
+| ¼ trap | 302/331 **91.2%** | 301/331 **90.9%** (−1 = Raptor honest trap) |
+| 0-60 | 288/332 **86.7%** | 288/332 **86.7%** |
+| 60-130 | 72/76 **94.7%** | 72/76 **94.7%** |
+| all4 | 258 | 257 (−1) |
+
+Batch ET+trap: **13/14 HIT**.
+
+## Batch still-miss (honest — do not cheat Cd/wt/curve)
+| Car | ΔET | Δtrap | Notes |
+|-----|----:|------:|---|
+| 2020 Ford F-150 Raptor | +0.005 | **−5.6** | ET HIT; trap soft at published-leaning 10R80@4.10 + loss/tire/launch exhausted |
+
+## Integrity
+- forceScale≠1: **0**
+- Garage cars with `gearRatios.length === 10`: **9**
+- Cd/weight/frontalArea/torqueCurve: **unchanged** on remapped cars (ZR1X stays published Cd 0.36 / wt 3978)
+- `window.VB_POWERCURVE_GARAGE` bind present
+- Peak HP wipe fix comment present in `js/app.js`
+
+**Skipped:** deploy · Merovingian holds deploy · no push to main · classics / Euro DCT fleet / Regera / Taycan / Cybertruck / Plaid follow-ups.
+
+VERIFY
+1. Meta tip `real-tx-batch1` · ET 328/331 · trap ≥301/331 · nG10 = 9
+2. Spot gear editor: Mustang GT = 10 gears · Camaro ZL1 = 10 · ZR1X = 8 DCT @ FD 5.56 · Hellcat FD 2.62
+3. Custom builder TX dropdown lists Ford 10R80 / GM 10L90 / Tremec TR-9080 8DCT
+4. Every garage `forceScale === 1`; no Cd/wt/curve edits
+5. Static / no secrets; **no deploy**
+
+---
+
 # Trap-miss accuracy tip — batch22 (2026-09-24 CT)
 
 Branch: `review/pc-trap-miss-batch22` · Tip off `6266e17` (published ZR1X Cd/wt restore). **No deploy.** Do **not** ask Merovingian to push main.

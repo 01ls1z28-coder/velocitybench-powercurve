@@ -134,6 +134,9 @@
     Getrag_R34: { name: 'Getrag 6-spd (R34 GT-R)', gears: [3.214, 1.925, 1.302, 1.000, 0.752, 0.634], finalDrive: 3.545, loss: 14 },
     Aisin_6: { name: 'Aisin/Getrag V160 6-spd', gears: [3.827, 2.360, 1.685, 1.312, 1.000, 0.793], finalDrive: 3.133, loss: 12 },
     DCT_7_AMG: { name: 'Tremec TR-9070 DCT 7', gears: [3.14, 2.05, 1.43, 1.10, 0.86, 0.68, 0.56], finalDrive: 3.73, loss: 10 },
+    Ford_10R80: { name: 'Ford 10R80 10-spd Auto', gears: [4.696, 2.985, 2.146, 1.769, 1.520, 1.275, 1.000, 0.854, 0.689, 0.636], finalDrive: 3.15, loss: 15 },
+    GM_10L90: { name: 'GM 10L90 10-spd Auto', gears: [4.70, 2.99, 2.15, 1.80, 1.52, 1.28, 1.00, 0.85, 0.69, 0.64], finalDrive: 2.85, loss: 15 },
+    Tremec_TR9080_8DCT: { name: 'Tremec TR-9080 8DCT', gears: [2.91, 1.76, 1.22, 0.88, 0.65, 0.51, 0.40, 0.33], finalDrive: 5.20, loss: 10 },
     Bike_Sport_6: { name: 'Sportbike 6-spd (liter)', gears: [2.600, 2.158, 1.882, 1.650, 1.476, 1.304], finalDrive: 3.96, loss: 12 },
     Bike_Hyper_6: { name: 'Hyperbike 6-spd', gears: [2.562, 1.934, 1.526, 1.285, 1.125, 1.041], finalDrive: 3.81, loss: 12 },
     EV_Single: { name: 'EV Single-Speed', gears: [1.00], finalDrive: 9.0, loss: 8 }

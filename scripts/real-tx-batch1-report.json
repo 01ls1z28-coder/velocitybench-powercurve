@@ -1,0 +1,769 @@
+{
+  "tip": "real-tx-batch1",
+  "elapsedMs": 151215,
+  "stats": {
+    "et": 328,
+    "trap": 301,
+    "z60": 288,
+    "z60130": 72,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 257
+  },
+  "report": [
+    {
+      "name": "2020 Ford Mustang GT",
+      "gi": 0,
+      "tgt": {
+        "z60": 3.8,
+        "et": 12.1,
+        "trap": 119,
+        "z60130": 11.1
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.083,
+          "trap": 118.3,
+          "z60": 3.907,
+          "z60130": 10.858
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.09,
+          "trap": 117.7,
+          "z60": 3.881,
+          "z60130": 11.083
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 Ford Mustang GT PP2",
+      "gi": 1,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.6,
+        "trap": 115,
+        "z60130": 11.65
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.541,
+          "trap": 115.3,
+          "z60": 4.363,
+          "z60130": 11.785
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.55,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.556,
+          "trap": 115.7,
+          "z60": 4.34,
+          "z60130": 12.318
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Ford Mustang Dark Horse",
+      "gi": 5,
+      "tgt": {
+        "z60": 3.7,
+        "et": 12,
+        "trap": 118.4,
+        "z60130": 11.07
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.074,
+          "trap": 118.3,
+          "z60": 3.888,
+          "z60130": 10.813
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.55,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 4,
+        "launch": 2600,
+        "sim": {
+          "et": 11.965,
+          "trap": 118.4,
+          "z60": 3.715,
+          "z60130": 11.328
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Ford F-150 Raptor",
+      "gi": 200,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.8,
+        "trap": 101
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.648,
+          "trap": 98.6,
+          "z60": 5.004,
+          "z60130": 26.362
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 4.1,
+        "transmission": "Auto",
+        "loss": 13,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.805,
+          "trap": 95.4,
+          "z60": 5.098,
+          "z60130": 33.664
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2018 Ford F-150 5.0",
+      "gi": 206,
+      "tgt": {
+        "z60": 6.1,
+        "et": 14.7,
+        "trap": 95
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 13.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.638,
+          "trap": 92.7,
+          "z60": 6.098,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.31,
+        "transmission": "Auto",
+        "loss": 13,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 14.599,
+          "trap": 93.7,
+          "z60": 6.102,
+          "z60130": 52.172
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Chevrolet Camaro SS",
+      "gi": 2,
+      "tgt": {
+        "z60": 3.9,
+        "et": 12.2,
+        "trap": 118,
+        "z60130": 11.25
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.086,
+          "trap": 118.3,
+          "z60": 3.91,
+          "z60130": 10.816
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 2.77,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.134,
+          "trap": 117.9,
+          "z60": 3.838,
+          "z60130": 11.399
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Chevrolet Camaro ZL1",
+      "gi": 6,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.5,
+        "trap": 125,
+        "z60130": 8.4
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 7,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.555,
+          "trap": 125.2,
+          "z60": 3.569,
+          "z60130": 9.087
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 2.85,
+        "transmission": "Auto",
+        "loss": 7,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.486,
+          "trap": 125,
+          "z60": 3.37,
+          "z60130": 9.083
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Chevrolet Silverado 6.2",
+      "gi": 203,
+      "tgt": {
+        "z60": 5.4,
+        "et": 14,
+        "trap": 99
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.008,
+          "trap": 98.4,
+          "z60": 5.425,
+          "z60130": 30.164
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.992,
+          "trap": 98.9,
+          "z60": 5.437,
+          "z60130": 29.186
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Chevrolet Silverado ZR2",
+      "gi": 202,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.8,
+        "trap": 95
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 1500,
+        "sim": {
+          "et": 14.754,
+          "trap": 92.6,
+          "z60": 6.264,
+          "z60130": 42.522
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 1100,
+        "sim": {
+          "et": 14.811,
+          "trap": 93.3,
+          "z60": 6.358,
+          "z60130": 40.096
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Chevrolet Corvette Stingray",
+      "gi": 319,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.2,
+        "trap": 123
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 11.23,
+          "trap": 123.4,
+          "z60": 3.117,
+          "z60130": 9.389
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.2,
+        "transmission": "DCT",
+        "loss": 5.5,
+        "tire": 2,
+        "launch": 2600,
+        "sim": {
+          "et": 11.235,
+          "trap": 121.5,
+          "z60": 3.051,
+          "z60130": 10.072
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Chevrolet Corvette Z06",
+      "gi": 325,
+      "tgt": {
+        "z60": 3,
+        "et": 10.9,
+        "trap": 131
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.822,
+          "trap": 129.7,
+          "z60": 2.881,
+          "z60130": 7.991
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.56,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.808,
+          "trap": 129.1,
+          "z60": 2.858,
+          "z60130": 8.095
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2026 Chevrolet Corvette ZR1X",
+      "gi": 326,
+      "tgt": {
+        "z60": 1.9,
+        "et": 8.675,
+        "trap": 159,
+        "z60130": 3.87
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 8.894,
+          "trap": 158.8,
+          "z60": 1.897,
+          "z60130": 4.077
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.56,
+        "transmission": "DCT",
+        "loss": 2.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 8.917,
+          "trap": 160.3,
+          "z60": 1.9,
+          "z60130": 3.996
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Dodge Challenger Hellcat",
+      "gi": 4,
+      "tgt": {
+        "z60": 3.7,
+        "et": 11.6,
+        "trap": 126,
+        "z60130": 8.5
+      },
+      "fdOnly": true,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.589,
+          "trap": 127.1,
+          "z60": 3.745,
+          "z60130": 8.412
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 2.62,
+        "transmission": "Auto",
+        "loss": 3.5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.61,
+          "trap": 126,
+          "z60": 3.613,
+          "z60130": 8.744
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2015 Dodge Challenger Hellcat",
+      "gi": 9,
+      "tgt": {
+        "z60": 3.6,
+        "et": 11.7,
+        "trap": 125,
+        "z60130": 8.6
+      },
+      "fdOnly": true,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.633,
+          "trap": 126.2,
+          "z60": 3.763,
+          "z60130": 8.631
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 2.62,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.657,
+          "trap": 125,
+          "z60": 3.613,
+          "z60130": 9.003
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    }
+  ],
+  "n10": 9,
+  "fsBad": 0
+}

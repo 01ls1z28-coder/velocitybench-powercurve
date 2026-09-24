@@ -1,5 +1,5 @@
 {
-  "tip": "trap-miss-batch22",
+  "tip": "real-tx-batch1",
   "tol": {
     "z60": 0.25,
     "et": 0.25,
@@ -8,25 +8,29 @@
   },
   "stats": {
     "et": 328,
-    "trap": 302,
+    "trap": 301,
     "z60": 288,
     "z60130": 72,
     "nEt": 331,
     "nTrap": 331,
     "nZ60": 332,
     "n60130": 76,
+    "all4": 257
+  },
+  "changedN": 14,
+  "batchN": 14,
+  "baseline": {
+    "tip": "trap-miss-batch22@b8af352/5aefbea",
+    "et": 328,
+    "trap": 302,
+    "z60": 288,
+    "z60130": 72,
     "all4": 258
   },
-  "changedN": 20,
-  "batchN": 23,
-  "note": "Trap-miss batch22: loss/tire/launch only on 22 names; forceScale=1; Cd/wt/curve untouched; 14 honest-miss left alone; Peak HP wipe fix + VB_POWERCURVE_GARAGE bind intact",
+  "note": "Real-TX batch1: Ford_10R80/GM_10L90/Tremec_TR9080_8DCT + Hellcat FD 2.62; knobs loss/tire/launch only; forceScale=1; Cd/wt/curve untouched; Peak HP wipe fix + VB_POWERCURVE_GARAGE bind intact",
   "results": [
     {
       "name": "2020 Ford Mustang GT",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.8,
         "et": 12.1,
@@ -34,10 +38,10 @@
         "z60130": 11.1
       },
       "sim": {
-        "et": 12.083,
-        "trap": 118.3,
-        "z60": 3.907,
-        "z60130": 10.858,
+        "et": 12.09,
+        "trap": 117.7,
+        "z60": 3.881,
+        "z60130": 11.083,
         "vmax": 130
       },
       "hits": {
@@ -45,14 +49,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "Ford_10R80",
+      "nG": 10,
+      "fd": 3.15
     },
     {
       "name": "2018 Ford Mustang GT PP2",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.3,
         "et": 12.6,
@@ -60,10 +67,10 @@
         "z60130": 11.65
       },
       "sim": {
-        "et": 12.541,
-        "trap": 115.3,
-        "z60": 4.363,
-        "z60130": 11.785,
+        "et": 12.556,
+        "trap": 115.7,
+        "z60": 4.34,
+        "z60130": 12.318,
         "vmax": 130
       },
       "hits": {
@@ -71,14 +78,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "Ford_10R80",
+      "nG": 10,
+      "fd": 3.55
     },
     {
       "name": "2020 Chevrolet Camaro SS",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.9,
         "et": 12.2,
@@ -86,10 +96,10 @@
         "z60130": 11.25
       },
       "sim": {
-        "et": 12.086,
-        "trap": 118.3,
-        "z60": 3.91,
-        "z60130": 10.816,
+        "et": 12.134,
+        "trap": 117.9,
+        "z60": 3.838,
+        "z60130": 11.399,
         "vmax": 130
       },
       "hits": {
@@ -97,14 +107,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "GM_10L90",
+      "nG": 10,
+      "fd": 2.77
     },
     {
       "name": "2020 Dodge Challenger R/T Scat Pack",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.2,
         "et": 12.5,
@@ -123,14 +136,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2020 Dodge Challenger Hellcat",
-      "tireType": 3,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.7,
         "et": 11.6,
@@ -138,10 +154,10 @@
         "z60130": 8.5
       },
       "sim": {
-        "et": 11.589,
-        "trap": 127.1,
-        "z60": 3.745,
-        "z60130": 8.412,
+        "et": 11.61,
+        "trap": 126,
+        "z60": 3.613,
+        "z60130": 8.744,
         "vmax": 130
       },
       "hits": {
@@ -149,14 +165,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 2.62
     },
     {
       "name": "2024 Ford Mustang Dark Horse",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.7,
         "et": 12,
@@ -164,10 +183,10 @@
         "z60130": 11.07
       },
       "sim": {
-        "et": 12.074,
-        "trap": 118.3,
-        "z60": 3.888,
-        "z60130": 10.813,
+        "et": 11.965,
+        "trap": 118.4,
+        "z60": 3.715,
+        "z60130": 11.328,
         "vmax": 130
       },
       "hits": {
@@ -175,14 +194,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 4,
+      "launchRpm": 2600,
+      "forceScale": 1,
+      "txKey": "Ford_10R80",
+      "nG": 10,
+      "fd": 3.55
     },
     {
       "name": "2023 Chevrolet Camaro ZL1",
-      "tireType": 4,
-      "loss": 7,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.5,
@@ -190,10 +212,10 @@
         "z60130": 8.4
       },
       "sim": {
-        "et": 11.555,
-        "trap": 125.2,
-        "z60": 3.569,
-        "z60130": 9.087,
+        "et": 11.486,
+        "trap": 125,
+        "z60": 3.37,
+        "z60130": 9.083,
         "vmax": 130
       },
       "hits": {
@@ -201,14 +223,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7,
+      "tireType": 4,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "GM_10L90",
+      "nG": 10,
+      "fd": 2.85
     },
     {
       "name": "2021 Dodge Charger Hellcat Redeye",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2200,
       "tgt": {
         "z60": 3.6,
         "et": 11.5,
@@ -227,14 +252,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2200,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 2.62
     },
     {
       "name": "2016 Ford Mustang GT350R",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3.9,
         "et": 12.2,
@@ -253,14 +281,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2015 Dodge Challenger Hellcat",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.6,
         "et": 11.7,
@@ -268,10 +299,10 @@
         "z60130": 8.6
       },
       "sim": {
-        "et": 11.633,
-        "trap": 126.2,
-        "z60": 3.763,
-        "z60130": 8.631,
+        "et": 11.657,
+        "trap": 125,
+        "z60": 3.613,
+        "z60130": 9.003,
         "vmax": 130
       },
       "hits": {
@@ -279,14 +310,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4.5,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 2.62
     },
     {
       "name": "2014 Chevrolet Camaro Z/28",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.5,
         "et": 12.3,
@@ -305,14 +339,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2013 Ford Mustang Boss 302",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3200,
       "tgt": {
         "z60": 4.3,
         "et": 12.7,
@@ -330,14 +367,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3200,
+      "forceScale": 1,
+      "txKey": "Getrag_MT82",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2012 Chevrolet Corvette ZR1",
-      "tireType": 4,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.5,
@@ -355,14 +395,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 4,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Dodge Challenger SRT8",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.7,
         "et": 13.2,
@@ -380,14 +423,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2009 Pontiac G8 GXP",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.7,
         "et": 13.2,
@@ -405,14 +451,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2004 Pontiac GTO",
-      "tireType": 0,
-      "loss": 1.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 13.8,
@@ -430,14 +479,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2003 Ford Mustang Cobra (Terminator)",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.5,
         "et": 13,
@@ -455,14 +507,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2002 Chevrolet Camaro SS",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.2,
         "et": 13.7,
@@ -480,14 +535,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
-      "tireType": 2,
-      "loss": 3.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.2,
         "et": 11.6,
@@ -506,14 +564,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 2,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1996 Chevrolet Impala SS",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.1,
         "et": 15.4,
@@ -531,14 +592,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 Dodge Charger Scat Pack",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.1,
         "et": 12.4,
@@ -556,14 +620,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2020 Ford Mustang Shelby GT500",
-      "tireType": 4,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.4,
         "et": 11.3,
@@ -582,14 +649,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 4,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2012 Chevrolet Camaro ZL1",
-      "tireType": 3,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.9,
         "et": 12.1,
@@ -607,14 +677,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2011 Ford Mustang GT 5.0",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.4,
         "et": 12.8,
@@ -632,14 +705,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2008 Dodge Challenger SRT8",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.8,
         "et": 13.3,
@@ -657,14 +733,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2001 Pontiac Firebird Trans Am WS6",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -682,14 +761,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1996 Ford Mustang SVT Cobra",
-      "tireType": 0,
-      "loss": 2.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.5,
         "et": 14.1,
@@ -707,14 +789,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1993 Chevrolet Camaro Z28",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.4,
         "et": 14.1,
@@ -732,14 +817,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1987 Buick GNX",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.7,
         "et": 13.5,
@@ -757,14 +845,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1979 Pontiac Firebird Trans Am",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 8.5,
         "et": 16.5,
@@ -782,14 +873,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1985 Chevrolet Camaro IROC-Z",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7,
         "et": 15.5,
@@ -807,14 +901,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1987 Ford Mustang 5.0 LX",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.2,
         "et": 14.7,
@@ -832,14 +929,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1994 Pontiac Firebird Formula",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.5,
         "et": 14.1,
@@ -857,14 +957,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2000 Chevrolet Camaro SS",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.1,
         "et": 13.6,
@@ -882,14 +985,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2007 Ford Mustang GT",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.1,
         "et": 13.7,
@@ -907,14 +1013,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2010 Chevrolet Camaro LT",
-      "tireType": 0,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.1,
         "et": 14.7,
@@ -932,14 +1041,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1984 Chevrolet Corvette C4",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.6,
         "et": 15,
@@ -957,14 +1069,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1992 Ford Mustang LX 5.0",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6,
         "et": 14.6,
@@ -982,14 +1097,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1998 Pontiac Firebird Formula",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.2,
         "et": 13.8,
@@ -1007,14 +1125,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2006 Dodge Charger R/T",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 13.9,
@@ -1032,14 +1153,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Chevrolet Camaro LT",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6,
         "et": 14.6,
@@ -1057,14 +1181,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2013 Ford Mustang V6",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.1,
         "et": 13.8,
@@ -1082,14 +1209,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1982 Pontiac Firebird Trans Am",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2100,
       "tgt": {
         "z60": 9.2,
         "et": 17,
@@ -1107,14 +1237,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 2100,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1991 Chevrolet Camaro Z28",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.2,
         "et": 14.8,
@@ -1132,14 +1265,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1994 Ford Mustang GT",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.1,
         "et": 14.7,
@@ -1157,14 +1293,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2002 Pontiac Firebird WS6",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -1182,14 +1321,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2009 Dodge Challenger R/T",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 13.9,
@@ -1207,14 +1349,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2012 Ford Mustang Boss 302 Laguna Seca",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 4.3,
         "et": 12.7,
@@ -1232,14 +1377,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1981 Chevrolet Camaro Z28",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.8,
         "et": 16.7,
@@ -1257,14 +1405,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1989 Ford Mustang GT 5.0",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.2,
         "et": 14.7,
@@ -1282,14 +1433,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1993 Pontiac Firebird Formula",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.5,
         "et": 14.1,
@@ -1307,14 +1461,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2004 Ford Mustang Mach 1",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.2,
         "et": 13.8,
@@ -1332,14 +1489,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2007 Dodge Charger SRT8",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -1357,14 +1517,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2014 Chevrolet SS",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.5,
         "et": 13,
@@ -1383,14 +1546,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2022 Tesla Model S Plaid",
-      "tireType": 2,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 2.1,
         "et": 9.25,
@@ -1409,14 +1575,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 2,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 6.5
     },
     {
       "name": "2024 Tesla Model 3 Performance",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 2.9,
         "et": 11,
@@ -1435,14 +1604,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2022 Porsche Taycan Turbo S",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 2.4,
         "et": 10.5,
@@ -1461,14 +1633,17 @@
         "trap": false,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2024 Lucid Air Sapphire",
-      "tireType": 2,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 2.1,
         "et": 9,
@@ -1487,14 +1662,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 2,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 6.5
     },
     {
       "name": "2023 Hyundai Ioniq 5 N",
-      "tireType": 1,
-      "loss": 7,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 3.2,
         "et": 11,
@@ -1512,14 +1690,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7,
+      "tireType": 1,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2022 Ford F-150 Lightning",
-      "tireType": 4,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4,
         "et": 12.5,
@@ -1537,14 +1718,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Tesla Model Y Performance",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.5,
         "et": 11.8,
@@ -1562,14 +1746,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2022 Tesla Model X Plaid",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 2.5,
         "et": 9.8,
@@ -1587,14 +1774,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 6.5
     },
     {
       "name": "2023 Kia EV6 GT",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.2,
         "et": 11.4,
@@ -1612,14 +1802,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Polestar 2 Performance",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.1,
         "et": 12.6,
@@ -1637,14 +1830,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2022 BMW iX M60",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.6,
         "et": 12.1,
@@ -1662,14 +1858,17 @@
         "trap": false,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2023 Mercedes EQE AMG 53",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.2,
         "et": 11.6,
@@ -1687,14 +1886,17 @@
         "trap": false,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2024 Cadillac Lyriq AWD",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.6,
         "et": 13.3,
@@ -1712,14 +1914,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Tesla Cybertruck Tri-Motor",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 300,
       "tgt": {
         "z60": 2.6,
         "et": 11,
@@ -1737,14 +1942,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 300,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2023 Genesis GV60 Performance",
-      "tireType": 4,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.8,
         "et": 12.3,
@@ -1762,14 +1970,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Volvo EX90 Twin Motor",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.9,
         "et": 13.5,
@@ -1787,14 +1998,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Audi Q4 e-tron",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 5.8,
         "et": 14.5,
@@ -1812,14 +2026,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2022 Mercedes EQB 350",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 6,
         "et": 14.6,
@@ -1837,14 +2054,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Tesla Model X Long Range",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.6,
         "et": 11.4,
@@ -1862,14 +2082,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2023 Nissan Ariya e-4ORCE",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 5.1,
         "et": 13.8,
@@ -1887,14 +2110,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Subaru Solterra",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 6.5,
         "et": 15.1,
@@ -1912,14 +2138,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Toyota bZ4X AWD",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 6.5,
         "et": 15.1,
@@ -1937,14 +2166,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Fisker Ocean Extreme",
-      "tireType": 3,
-      "loss": 0.6,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.9,
         "et": 12.5,
@@ -1962,14 +2194,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0.6,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Hyundai Ioniq 6 AWD",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.8,
         "et": 13.4,
@@ -1987,14 +2222,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 VW ID.4 AWD Pro",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 5.7,
         "et": 14.4,
@@ -2012,14 +2250,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Chevrolet Blazer EV SS",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.4,
         "et": 11.7,
@@ -2037,14 +2278,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Ford Mustang Mach-E GT",
-      "tireType": 3,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.6,
         "et": 12.2,
@@ -2062,14 +2306,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 BMW i5 M60",
-      "tireType": 3,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.6,
         "et": 12.1,
@@ -2087,14 +2334,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Rivian R1S Quad Motor",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3,
         "et": 11.1,
@@ -2112,14 +2362,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2023 BMW i7 xDrive60",
-      "tireType": 3,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.3,
         "et": 12.8,
@@ -2137,14 +2390,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Mercedes EQS 450+",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 5.4,
         "et": 14,
@@ -2162,14 +2418,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Audi e-tron GT",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.6,
         "et": 12.1,
@@ -2187,14 +2446,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Lucid Air Touring",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3,
         "et": 11.2,
@@ -2212,14 +2474,17 @@
         "trap": false,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2024 Tesla Model S Long Range",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 3.1,
         "et": 10.8,
@@ -2237,14 +2502,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 7.8
     },
     {
       "name": "2023 Hyundai Kona Electric",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -2262,14 +2530,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Kia Niro EV",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 6.9,
         "et": 15.4,
@@ -2287,14 +2558,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2023 Mercedes EQS 580 SUV",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.5,
         "et": 13.1,
@@ -2312,14 +2586,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2024 Volvo XC40 Recharge",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 4.5,
         "et": 13.2,
@@ -2337,14 +2614,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 9.2
     },
     {
       "name": "2021 Ferrari SF90 Stradale",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2,
         "et": 9.5,
@@ -2362,14 +2642,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2021 Porsche 911 Turbo S",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 2.2,
         "et": 10.3,
@@ -2388,14 +2671,17 @@
         "trap": true,
         "z60": true,
         "z60130": false
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "PDK_7",
+      "nG": 7,
+      "fd": 3.09
     },
     {
       "name": "2020 Lamborghini Huracán EVO",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 2.5,
         "et": 10.6,
@@ -2414,14 +2700,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2020 McLaren 765LT",
-      "tireType": 2,
-      "loss": 17,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.6,
         "et": 10.2,
@@ -2440,14 +2729,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 17,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2017 Ferrari 812 Superfast",
-      "tireType": 2,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 2.8,
         "et": 10.5,
@@ -2466,14 +2758,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 2,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2018 McLaren 600LT",
-      "tireType": 1,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.7,
@@ -2492,14 +2787,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 Lamborghini Huracán Performante",
-      "tireType": 2,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 2.5,
         "et": 10.5,
@@ -2518,14 +2816,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 2,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2017 Porsche 911 GT2 RS",
-      "tireType": 1,
-      "loss": 15,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.7,
         "et": 10.6,
@@ -2544,14 +2845,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 15,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2016 Ferrari 488 GTB",
-      "tireType": 2,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.7,
@@ -2570,14 +2874,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2015 McLaren P1",
-      "tireType": 2,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.6,
         "et": 9.8,
@@ -2596,14 +2903,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2014 Ferrari F12 Berlinetta",
-      "tireType": 1,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 2.9,
         "et": 10.9,
@@ -2622,14 +2932,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 1,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2013 McLaren MP4-12C",
-      "tireType": 1,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.9,
         "et": 10.7,
@@ -2648,14 +2961,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2012 Lamborghini Gallardo LP570-4",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.2,
         "et": 11.2,
@@ -2673,14 +2989,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2010 Ferrari 458 Italia",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3,
         "et": 10.9,
@@ -2699,14 +3018,17 @@
         "trap": true,
         "z60": true,
         "z60130": false
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2006 Ford GT",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 11.2,
@@ -2724,14 +3046,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2004 Porsche Carrera GT",
-      "tireType": 4,
-      "loss": 3.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.5,
         "et": 11.2,
@@ -2750,14 +3075,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 4,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2002 Ferrari Enzo",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3.3,
         "et": 11.1,
@@ -2776,14 +3104,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2007 Lamborghini Murciélago LP640",
-      "tireType": 0,
-      "loss": 18,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.4,
@@ -2801,14 +3132,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 18,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2009 Nissan GT-R",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 11.5,
@@ -2826,14 +3160,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2012 Audi R8 V10",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 1500,
       "tgt": {
         "z60": 3.5,
         "et": 11.6,
@@ -2852,14 +3189,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 1500,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2001 Lamborghini Diablo VT 6.0",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 3.6,
         "et": 11.8,
@@ -2877,14 +3217,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2003 Ferrari 360 Modena",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 4.3,
         "et": 12.6,
@@ -2902,14 +3245,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2007 Porsche 911 Turbo",
-      "tireType": 0,
-      "loss": 7,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.6,
@@ -2927,14 +3273,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Aston Martin DBS",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.2,
         "et": 12.5,
@@ -2952,14 +3301,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Mercedes SLS AMG",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.5,
         "et": 11.7,
@@ -2977,14 +3329,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2005 Ferrari F430",
-      "tireType": 3,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3.9,
         "et": 12.1,
@@ -3002,14 +3357,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 3,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2009 Lamborghini Gallardo LP560-4",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 2100,
       "tgt": {
         "z60": 3.3,
         "et": 11.4,
@@ -3027,14 +3385,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 2100,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2010 Aston Martin V12 Vantage",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.1,
         "et": 12.4,
@@ -3053,14 +3414,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2013 SRT Viper GTS",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3.3,
         "et": 11.4,
@@ -3079,14 +3443,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2014 Porsche 911 Carrera S",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.7,
         "et": 12,
@@ -3104,14 +3471,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2002 Porsche 911 Turbo (996)",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 900,
       "tgt": {
         "z60": 3.9,
         "et": 12.2,
@@ -3129,14 +3499,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 900,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2006 Ferrari 612 Scaglietti",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 4.3,
         "et": 12.6,
@@ -3154,14 +3527,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2008 Lamborghini Reventón",
-      "tireType": 0,
-      "loss": 10.7,
-      "forceScale": 1,
-      "launchRpm": 1500,
       "tgt": {
         "z60": 3.3,
         "et": 11.3,
@@ -3179,14 +3555,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 10.7,
+      "tireType": 0,
+      "launchRpm": 1500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2011 McLaren MP4-12C HS",
-      "tireType": 1,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.9,
         "et": 10.7,
@@ -3204,14 +3583,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2015 Aston Martin V12 Vantage S",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.7,
         "et": 12,
@@ -3229,14 +3611,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2019 Bugatti Chiron",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.4,
         "et": 9.4,
@@ -3255,14 +3640,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2020 McLaren 720S",
-      "tireType": 2,
-      "loss": 3.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.5,
         "et": 10.1,
@@ -3281,14 +3669,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 Lamborghini Aventador SVJ",
-      "tireType": 2,
-      "loss": 3.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 2.6,
         "et": 10.3,
@@ -3307,14 +3698,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 2,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2021 Rimac Nevera",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 1.74,
         "z60130": 2.99
@@ -3331,14 +3725,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "EV_Single",
+      "nG": 1,
+      "fd": 6.5
     },
     {
       "name": "2015 Koenigsegg One:1",
-      "tireType": 2,
-      "loss": 34.7,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 9.9,
@@ -3357,14 +3754,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 34.7,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2019 Koenigsegg Jesko",
-      "tireType": 2,
-      "loss": 29.7,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.6,
         "et": 9.6,
@@ -3383,14 +3783,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 29.7,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2013 Bugatti Veyron Super Sport",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.4,
         "et": 9.9,
@@ -3409,14 +3812,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2005 Bugatti Veyron",
-      "tireType": 0,
-      "loss": 2.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.5,
         "et": 10.1,
@@ -3435,14 +3841,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2011 Koenigsegg Agera R",
-      "tireType": 2,
-      "loss": 29,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10,
@@ -3461,14 +3870,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 29,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2006 Saleen S7 Twin Turbo",
-      "tireType": 4,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 10.9,
@@ -3487,14 +3899,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 4,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2010 Pagani Zonda R",
-      "tireType": 2,
-      "loss": 24,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 2.7,
         "et": 10.1,
@@ -3513,14 +3928,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 24,
+      "tireType": 2,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2004 Maserati MC12",
-      "tireType": 4,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.7,
         "et": 11.3,
@@ -3539,14 +3957,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 4,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Gumpert Apollo Sport",
-      "tireType": 1,
-      "loss": 18,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3,
         "et": 10.8,
@@ -3565,14 +3986,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 18,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2014 Hennessey Venom GT",
-      "tireType": 2,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.7,
         "et": 9.8,
@@ -3591,14 +4015,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2018 Zenvo TSR-S",
-      "tireType": 2,
-      "loss": 34,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.4,
@@ -3617,14 +4044,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 34,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Koenigsegg CCX",
-      "tireType": 1,
-      "loss": 14,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.2,
         "et": 10.7,
@@ -3643,14 +4073,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 14,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2012 Pagani Huayra",
-      "tireType": 1,
-      "loss": 14,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3,
         "et": 10.6,
@@ -3669,14 +4102,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 14,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2017 Bugatti Chiron Sport",
-      "tireType": 0,
-      "loss": 11,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.4,
         "et": 9.4,
@@ -3695,14 +4131,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 11,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 McLaren Speedtail",
-      "tireType": 2,
-      "loss": 25.5,
-      "forceScale": 1,
-      "launchRpm": 1800,
       "tgt": {
         "z60": 2.5,
         "et": 10,
@@ -3721,14 +4160,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 25.5,
+      "tireType": 2,
+      "launchRpm": 1800,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2016 Koenigsegg Regera",
-      "tireType": 2,
-      "loss": 30.7,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.7,
         "et": 9.9,
@@ -3747,14 +4189,17 @@
         "trap": true,
         "z60": true,
         "z60130": false
-      }
+      },
+      "loss": 30.7,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2017 Pagani Huayra BC",
-      "tireType": 2,
-      "loss": 23,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.3,
@@ -3773,14 +4218,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 23,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2018 Bugatti Divo",
-      "tireType": 0,
-      "loss": 19,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.4,
         "et": 9.5,
@@ -3799,14 +4247,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 19,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2020 McLaren Elva",
-      "tireType": 1,
-      "loss": 32.3,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.6,
@@ -3825,14 +4276,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 32.3,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2014 Koenigsegg Agera S",
-      "tireType": 2,
-      "loss": 28,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.1,
@@ -3851,14 +4305,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 28,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2016 Bugatti Chiron",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.4,
         "et": 9.4,
@@ -3877,14 +4334,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 Pagani Huayra Roadster BC",
-      "tireType": 2,
-      "loss": 27.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.3,
@@ -3903,14 +4363,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 27.5,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2021 McLaren Sabre",
-      "tireType": 2,
-      "loss": 21,
-      "forceScale": 1,
-      "launchRpm": 1500,
       "tgt": {
         "z60": 2.7,
         "et": 10.4,
@@ -3929,14 +4392,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 21,
+      "tireType": 2,
+      "launchRpm": 1500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "1998 Toyota Supra Turbo (Mk4)",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.6,
         "et": 13.1,
@@ -3954,14 +4420,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2002 Nissan Skyline GT-R R34",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 4.8,
         "et": 13.3,
@@ -3979,14 +4448,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "Getrag_R34",
+      "nG": 6,
+      "fd": 3.545
     },
     {
       "name": "2020 Subaru WRX STI",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.6,
         "et": 13.2,
@@ -4004,14 +4476,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2018 Honda Civic Type R",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.9,
         "et": 13.5,
@@ -4029,14 +4504,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2008 Mitsubishi Lancer Evolution X",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -4054,14 +4532,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2006 Subaru WRX STI",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.7,
         "et": 13.3,
@@ -4079,14 +4560,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2005 Nissan 350Z",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 13.9,
@@ -4104,14 +4588,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2008 BMW 135i",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.8,
         "et": 13.4,
@@ -4129,14 +4616,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Mazda RX-8 R3",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.2,
         "et": 14.8,
@@ -4154,14 +4644,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2003 Mitsubishi Lancer Evolution VIII",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.8,
         "et": 13.4,
@@ -4179,14 +4672,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1999 Subaru Impreza 22B STI",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.7,
         "et": 13.3,
@@ -4204,14 +4700,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2001 Honda S2000",
-      "tireType": 3,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 5.8,
         "et": 14.4,
@@ -4229,14 +4728,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 3,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2004 Mazda RX-8",
-      "tireType": 0,
-      "loss": 13,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.4,
         "et": 15,
@@ -4254,14 +4756,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 13,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1995 Nissan Silvia S14",
-      "tireType": 0,
-      "loss": 12,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.4,
         "et": 15,
@@ -4279,14 +4784,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 12,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1991 Nissan 240SX (S13)",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.5,
         "et": 15.8,
@@ -4304,14 +4812,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1998 Honda Prelude Type SH",
-      "tireType": 2,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -4329,14 +4840,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 2,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2003 Acura RSX Type-S",
-      "tireType": 2,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.5,
         "et": 15.1,
@@ -4354,14 +4868,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2007 MazdaSpeed3",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.3,
         "et": 13.9,
@@ -4379,14 +4896,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2013 Scion FR-S",
-      "tireType": 3,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.2,
         "et": 14.8,
@@ -4404,14 +4924,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1990 Mazda Miata NA",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.1,
         "et": 16.3,
@@ -4429,14 +4952,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1997 Honda Civic Type R EK9",
-      "tireType": 2,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 2900,
       "tgt": {
         "z60": 6.7,
         "et": 15.2,
@@ -4454,14 +4980,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 2,
+      "launchRpm": 2900,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2002 Subaru WRX Wagon",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.8,
         "et": 14.4,
@@ -4479,14 +5008,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2005 Mitsubishi Eclipse GT",
-      "tireType": 2,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3600,
       "tgt": {
         "z60": 6.3,
         "et": 14.8,
@@ -4504,14 +5036,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 2,
+      "launchRpm": 3600,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2012 Scion tC",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.2,
         "et": 15.6,
@@ -4529,14 +5064,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1992 Nissan Pulsar GTI-R",
-      "tireType": 0,
-      "loss": 2.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.4,
         "et": 14,
@@ -4554,14 +5092,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1998 Toyota Celica GT-Four",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6,
         "et": 14.5,
@@ -4579,14 +5120,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2001 Mitsubishi Eclipse GSX",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.5,
         "et": 15,
@@ -4604,14 +5148,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2006 Honda Accord Euro R",
-      "tireType": 4,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 6.6,
         "et": 15.1,
@@ -4629,14 +5176,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 4,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2010 Hyundai Genesis Coupe 3.8",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.5,
         "et": 14.1,
@@ -4654,14 +5204,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1991 Toyota Soarer GT-T",
-      "tireType": 0,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.2,
         "et": 14.7,
@@ -4679,14 +5232,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1994 Nissan 180SX Type X",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.5,
         "et": 15,
@@ -4704,14 +5260,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1999 Honda Prelude SH",
-      "tireType": 2,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -4729,14 +5288,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 2,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2008 Subaru Legacy GT Spec.B",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.5,
         "et": 14.1,
@@ -4754,14 +5316,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2011 MazdaSpeed6",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.8,
         "et": 14.4,
@@ -4779,14 +5344,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2021 Kawasaki Ninja ZX-10R",
-      "tireType": 2,
-      "loss": 20,
-      "forceScale": 1,
-      "launchRpm": 4500,
       "tgt": {
         "z60": 3.1,
         "et": 10.2,
@@ -4805,14 +5373,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 20,
+      "tireType": 2,
+      "launchRpm": 4500,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2016 Kawasaki Ninja ZX-10R",
-      "tireType": 2,
-      "loss": 20,
-      "forceScale": 1,
-      "launchRpm": 5400,
       "tgt": {
         "z60": 3,
         "et": 10.2,
@@ -4831,14 +5402,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 20,
+      "tireType": 2,
+      "launchRpm": 5400,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2020 Suzuki GSX-R1000",
-      "tireType": 2,
-      "loss": 24,
-      "forceScale": 1,
-      "launchRpm": 5100,
       "tgt": {
         "z60": 3,
         "et": 10.2,
@@ -4857,14 +5431,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 24,
+      "tireType": 2,
+      "launchRpm": 5100,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2020 Suzuki GSX-R1000R",
-      "tireType": 2,
-      "loss": 20,
-      "forceScale": 1,
-      "launchRpm": 5100,
       "tgt": {
         "z60": 2.9,
         "et": 10.1,
@@ -4883,14 +5460,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 20,
+      "tireType": 2,
+      "launchRpm": 5100,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2020 Yamaha YZF-R1",
-      "tireType": 2,
-      "loss": 17,
-      "forceScale": 1,
-      "launchRpm": 6500,
       "tgt": {
         "z60": 2.9,
         "et": 10.1,
@@ -4909,14 +5489,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 17,
+      "tireType": 2,
+      "launchRpm": 6500,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2020 Yamaha YZF-R1M",
-      "tireType": 2,
-      "loss": 22,
-      "forceScale": 1,
-      "launchRpm": 6500,
       "tgt": {
         "z60": 2.9,
         "et": 10,
@@ -4935,14 +5518,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 22,
+      "tireType": 2,
+      "launchRpm": 6500,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2021 BMW S1000RR",
-      "tireType": 2,
-      "loss": 18,
-      "forceScale": 1,
-      "launchRpm": 4500,
       "tgt": {
         "z60": 3.1,
         "et": 10.12,
@@ -4961,14 +5547,17 @@
         "trap": false,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 18,
+      "tireType": 2,
+      "launchRpm": 4500,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2021 Honda CBR1000RR-R Fireblade",
-      "tireType": 2,
-      "loss": 20,
-      "forceScale": 1,
-      "launchRpm": 6500,
       "tgt": {
         "z60": 2.9,
         "et": 10,
@@ -4987,14 +5576,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 20,
+      "tireType": 2,
+      "launchRpm": 6500,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2022 Suzuki Hayabusa",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 4500,
       "tgt": {
         "z60": 2.5,
         "et": 9.7,
@@ -5013,14 +5605,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 4500,
+      "forceScale": 1,
+      "txKey": "Bike_Hyper_6",
+      "nG": 6,
+      "fd": 3.81
     },
     {
       "name": "2020 Kawasaki Ninja ZX-14R",
-      "tireType": 2,
-      "loss": 7.7,
-      "forceScale": 1,
-      "launchRpm": 4500,
       "tgt": {
         "z60": 2.6,
         "et": 9.7,
@@ -5039,14 +5634,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7.7,
+      "tireType": 2,
+      "launchRpm": 4500,
+      "forceScale": 1,
+      "txKey": "Bike_Hyper_6",
+      "nG": 6,
+      "fd": 3.81
     },
     {
       "name": "2021 Ducati Panigale V4",
-      "tireType": 2,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 5900,
       "tgt": {
         "z60": 2.8,
         "et": 10,
@@ -5065,14 +5663,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 2,
+      "launchRpm": 5900,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2021 Kawasaki Ninja H2",
-      "tireType": 2,
-      "loss": 8.1,
-      "forceScale": 1,
-      "launchRpm": 5000,
       "tgt": {
         "z60": 2.6,
         "et": 9.7,
@@ -5091,39 +5692,45 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8.1,
+      "tireType": 2,
+      "launchRpm": 5000,
+      "forceScale": 1,
+      "txKey": "Bike_Sport_6",
+      "nG": 6,
+      "fd": 3.96
     },
     {
       "name": "2020 Ford F-150 Raptor",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.1,
         "et": 13.8,
         "trap": 101
       },
       "sim": {
-        "et": 13.648,
-        "trap": 98.6,
-        "z60": 5.004,
-        "z60130": 26.362,
+        "et": 13.805,
+        "trap": 95.4,
+        "z60": 5.098,
+        "z60130": 33.664,
         "vmax": 130
       },
       "hits": {
         "et": true,
-        "trap": true,
+        "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 13,
+      "tireType": 0,
+      "launchRpm": 2000,
+      "forceScale": 1,
+      "txKey": "Ford_10R80",
+      "nG": 10,
+      "fd": 4.1
     },
     {
       "name": "2021 Ram TRX",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 1800,
       "tgt": {
         "z60": 4.1,
         "et": 12.3,
@@ -5141,24 +5748,27 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 1800,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 Chevrolet Silverado ZR2",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 1500,
       "tgt": {
         "z60": 6.2,
         "et": 14.8,
         "trap": 95
       },
       "sim": {
-        "et": 14.754,
-        "trap": 92.6,
-        "z60": 6.264,
-        "z60130": 42.522,
+        "et": 14.811,
+        "trap": 93.3,
+        "z60": 6.358,
+        "z60130": 40.096,
         "vmax": 130
       },
       "hits": {
@@ -5166,24 +5776,27 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 1100,
+      "forceScale": 1,
+      "txKey": "GM_10L90",
+      "nG": 10,
+      "fd": 3.23
     },
     {
       "name": "2020 Chevrolet Silverado 6.2",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.4,
         "et": 14,
         "trap": 99
       },
       "sim": {
-        "et": 14.008,
-        "trap": 98.4,
-        "z60": 5.425,
-        "z60130": 30.164,
+        "et": 13.992,
+        "trap": 98.9,
+        "z60": 5.437,
+        "z60130": 29.186,
         "vmax": 130
       },
       "hits": {
@@ -5191,14 +5804,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "GM_10L90",
+      "nG": 10,
+      "fd": 3.23
     },
     {
       "name": "2019 Ford F-250 6.7 PowerStroke",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 7.2,
         "et": 15.6,
@@ -5216,14 +5832,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2021 Toyota Tundra",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.1,
         "et": 14.7,
@@ -5241,39 +5860,45 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2018 Ford F-150 5.0",
-      "tireType": 0,
-      "loss": 13.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.1,
         "et": 14.7,
         "trap": 95
       },
       "sim": {
-        "et": 14.638,
-        "trap": 92.7,
-        "z60": 6.098,
-        "z60130": null,
-        "vmax": 129.3
+        "et": 14.599,
+        "trap": 93.7,
+        "z60": 6.102,
+        "z60130": 52.172,
+        "vmax": 130
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 13,
+      "tireType": 0,
+      "launchRpm": 2600,
+      "forceScale": 1,
+      "txKey": "Ford_10R80",
+      "nG": 10,
+      "fd": 3.31
     },
     {
       "name": "2017 Chevrolet Silverado 5.3",
-      "tireType": 0,
-      "loss": 12.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -5291,14 +5916,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 12.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2016 Ram 1500 5.7 Hemi",
-      "tireType": 0,
-      "loss": 11,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.4,
         "et": 15,
@@ -5316,14 +5944,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 11,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2014 Toyota Tacoma V6",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.6,
         "et": 16,
@@ -5341,14 +5972,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2012 Ford F-150 EcoBoost",
-      "tireType": 0,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.2,
         "et": 14.8,
@@ -5366,14 +6000,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2013 Ram 1500 5.7 Hemi",
-      "tireType": 0,
-      "loss": 11,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.5,
         "et": 15,
@@ -5391,14 +6028,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 11,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Chevrolet Avalanche 5.3",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.4,
         "et": 15.8,
@@ -5416,14 +6056,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Toyota Tundra 5.7",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.3,
         "et": 14.9,
@@ -5441,14 +6084,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Ford F-150 Harley-Davidson",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.4,
         "et": 15.8,
@@ -5466,14 +6112,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2009 GMC Sierra Denali 6.2",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6,
         "et": 14.6,
@@ -5491,14 +6140,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Nissan Titan 5.6",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -5516,14 +6168,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2013 Toyota Sequoia 5.7",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.6,
         "et": 15.1,
@@ -5541,14 +6196,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2007 Ford F-150 4.6 Triton",
-      "tireType": 0,
-      "loss": 1.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.5,
         "et": 16.6,
@@ -5566,14 +6224,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
-      "tireType": 0,
-      "loss": 2.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.4,
         "et": 15,
@@ -5591,14 +6252,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Toyota Tacoma 4.0 V6",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.6,
         "et": 16,
@@ -5616,14 +6280,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2015 Nissan Frontier 4.0",
-      "tireType": 0,
-      "loss": 10.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.8,
         "et": 16.1,
@@ -5641,14 +6308,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2005 Ford F-250 V10",
-      "tireType": 0,
-      "loss": 16,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.8,
         "et": 16.8,
@@ -5666,14 +6336,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 16,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2006 Chevrolet Silverado 2500HD 6.0",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.5,
         "et": 16.6,
@@ -5691,14 +6364,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2007 Toyota Tundra 4.7",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8,
         "et": 16.3,
@@ -5716,14 +6392,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2012 Nissan Titan Pro-4X",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7,
         "et": 15.4,
@@ -5741,14 +6420,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1969 Dodge Charger 440",
-      "tireType": 0,
-      "loss": 16,
-      "forceScale": 1,
-      "launchRpm": 1900,
       "tgt": {
         "z60": 6.1,
         "et": 14.3,
@@ -5766,14 +6448,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 16,
+      "tireType": 0,
+      "launchRpm": 1900,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1967 Ford Mustang GT 390",
-      "tireType": 0,
-      "loss": 31.5,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 6.8,
         "et": 15.2,
@@ -5791,14 +6476,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 31.5,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1970 Chevrolet Chevelle SS 454",
-      "tireType": 0,
-      "loss": 14,
-      "forceScale": 1,
-      "launchRpm": 1900,
       "tgt": {
         "z60": 5.8,
         "et": 13.9,
@@ -5816,14 +6504,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 14,
+      "tireType": 0,
+      "launchRpm": 1900,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1970 Dodge Challenger 426 Hemi",
-      "tireType": 0,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 1600,
       "tgt": {
         "z60": 5.8,
         "et": 13.8,
@@ -5841,14 +6532,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 0,
+      "launchRpm": 1600,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1969 Chevrolet Camaro SS 396",
-      "tireType": 0,
-      "loss": 19.5,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 6,
         "et": 14.4,
@@ -5866,14 +6560,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 19.5,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1971 Dodge Demon 340",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 6.4,
         "et": 14.8,
@@ -5891,14 +6588,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1966 Ford GT40 MkII",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 4.5,
         "et": 11.8,
@@ -5916,14 +6616,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1965 Shelby Cobra 427",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.3,
         "et": 12.2,
@@ -5941,14 +6644,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "Toploader_4",
+      "nG": 4,
+      "fd": 3.54
     },
     {
       "name": "1970 Plymouth Road Runner 440",
-      "tireType": 0,
-      "loss": 15,
-      "forceScale": 1,
-      "launchRpm": 1300,
       "tgt": {
         "z60": 6,
         "et": 14.2,
@@ -5966,14 +6672,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 15,
+      "tireType": 0,
+      "launchRpm": 1300,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1968 Dodge Dart GTS 383",
-      "tireType": 0,
-      "loss": 13,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 6.5,
         "et": 14.8,
@@ -5991,14 +6700,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 13,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1964 Pontiac GTO",
-      "tireType": 0,
-      "loss": 24,
-      "forceScale": 1,
-      "launchRpm": 1300,
       "tgt": {
         "z60": 6.6,
         "et": 14.8,
@@ -6016,14 +6728,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 24,
+      "tireType": 0,
+      "launchRpm": 1300,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1965 Chevrolet Chevelle SS396",
-      "tireType": 0,
-      "loss": 30,
-      "forceScale": 1,
-      "launchRpm": 2200,
       "tgt": {
         "z60": 6.4,
         "et": 14.7,
@@ -6041,14 +6756,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 30,
+      "tireType": 0,
+      "launchRpm": 2200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1963 Corvette Stingray 327",
-      "tireType": 0,
-      "loss": 29,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 5.9,
         "et": 14.4,
@@ -6066,14 +6784,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 29,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1972 Oldsmobile 442",
-      "tireType": 0,
-      "loss": 31,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 7.5,
         "et": 15.8,
@@ -6091,14 +6812,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 31,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1962 Chevrolet Impala SS 409",
-      "tireType": 0,
-      "loss": 28,
-      "forceScale": 1,
-      "launchRpm": 2200,
       "tgt": {
         "z60": 6.3,
         "et": 14.6,
@@ -6116,14 +6840,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 28,
+      "tireType": 0,
+      "launchRpm": 2200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1967 Plymouth GTX 440",
-      "tireType": 0,
-      "loss": 12,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 6,
         "et": 14.3,
@@ -6141,14 +6868,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 12,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1973 Ford Torino 351",
-      "tireType": 0,
-      "loss": 25,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 8.5,
         "et": 16.5,
@@ -6166,14 +6896,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 25,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1978 Dodge Magnum XE",
-      "tireType": 0,
-      "loss": 16,
-      "forceScale": 1,
-      "launchRpm": 1300,
       "tgt": {
         "z60": 9.5,
         "et": 17.2,
@@ -6191,14 +6924,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 16,
+      "tireType": 0,
+      "launchRpm": 1300,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1957 Chevrolet Bel Air 283",
-      "tireType": 0,
-      "loss": 21,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 8.5,
         "et": 16.6,
@@ -6216,14 +6952,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 21,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1960 Ford Galaxie 352",
-      "tireType": 0,
-      "loss": 35,
-      "forceScale": 1,
-      "launchRpm": 1300,
       "tgt": {
         "z60": 8.8,
         "et": 16.8,
@@ -6241,14 +6980,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 35,
+      "tireType": 0,
+      "launchRpm": 1300,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1974 Pontiac Firebird 400",
-      "tireType": 0,
-      "loss": 15,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 8.2,
         "et": 16.3,
@@ -6266,14 +7008,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 15,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1977 Chevrolet Monte Carlo",
-      "tireType": 0,
-      "loss": 9,
-      "forceScale": 1,
-      "launchRpm": 500,
       "tgt": {
         "z60": 10.5,
         "et": 17.8,
@@ -6291,14 +7036,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9,
+      "tireType": 0,
+      "launchRpm": 500,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1955 Ford Thunderbird",
-      "tireType": 0,
-      "loss": 25,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 9.5,
         "et": 17.2,
@@ -6316,14 +7064,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 25,
+      "tireType": 0,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1961 Chevrolet Corvette 283",
-      "tireType": 0,
-      "loss": 18,
-      "forceScale": 1,
-      "launchRpm": 1900,
       "tgt": {
         "z60": 6.6,
         "et": 15,
@@ -6341,14 +7092,17 @@
         "trap": true,
         "z60": false,
         "z60130": true
-      }
+      },
+      "loss": 18,
+      "tireType": 0,
+      "launchRpm": 1900,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1968 Mercury Cougar XR-7",
-      "tireType": 0,
-      "loss": 30,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 7.2,
         "et": 15.5,
@@ -6366,14 +7120,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 30,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1975 Chevrolet Nova 350",
-      "tireType": 0,
-      "loss": 6,
-      "forceScale": 1,
-      "launchRpm": 2200,
       "tgt": {
         "z60": 9.8,
         "et": 17.4,
@@ -6391,14 +7148,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 6,
+      "tireType": 0,
+      "launchRpm": 2200,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2022 Volkswagen Golf R",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 1500,
       "tgt": {
         "z60": 4.1,
         "et": 12.6,
@@ -6416,14 +7176,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 1500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2023 Toyota GR Corolla",
-      "tireType": 0,
-      "loss": 0.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.7,
         "et": 13.4,
@@ -6441,14 +7204,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0.5,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2021 BMW M5 Competition",
-      "tireType": 0,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 2.8,
         "et": 10.9,
@@ -6466,14 +7232,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2020 Audi RS7",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.1,
         "et": 11.4,
@@ -6491,14 +7260,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2018 BMW M3 Competition",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.8,
         "et": 11.9,
@@ -6516,14 +7288,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2017 Mercedes-AMG C63 S",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.8,
         "et": 11.8,
@@ -6541,14 +7316,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 Audi RS5 Sportback",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.5,
         "et": 11.9,
@@ -6566,14 +7344,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2021 Jeep Trackhawk",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 1800,
       "tgt": {
         "z60": 3.5,
         "et": 11.6,
@@ -6591,14 +7372,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 1800,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 BMW X5M Competition",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 11.8,
@@ -6616,14 +7400,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2020 Dodge Durango SRT",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.4,
         "et": 12.9,
@@ -6641,14 +7428,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2022 Cadillac Escalade V",
-      "tireType": 0,
-      "loss": 14,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.3,
         "et": 12.7,
@@ -6666,14 +7456,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 14,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2021 Range Rover Sport SVR",
-      "tireType": 0,
-      "loss": 16,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.3,
         "et": 12.8,
@@ -6691,14 +7484,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 16,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2019 Dodge Durango R/T",
-      "tireType": 0,
-      "loss": 1.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.3,
         "et": 14.8,
@@ -6716,14 +7512,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2018 Jeep Grand Cherokee SRT",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.5,
         "et": 13.1,
@@ -6741,14 +7540,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2017 BMW X6M",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.8,
         "et": 12.3,
@@ -6767,14 +7569,17 @@
         "trap": true,
         "z60": true,
         "z60130": false
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2012 Chevrolet Tahoe 5.3",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.6,
         "et": 16,
@@ -6792,14 +7597,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2013 Ford Expedition 5.4",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.8,
         "et": 16.1,
@@ -6817,14 +7625,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2014 Jeep Wrangler Rubicon",
-      "tireType": 3,
-      "loss": 22,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.1,
         "et": 16.4,
@@ -6842,14 +7653,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 22,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2009 Toyota 4Runner V8",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7,
         "et": 15.5,
@@ -6867,14 +7681,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Chevrolet Suburban 5.3",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.8,
         "et": 16.1,
@@ -6892,14 +7709,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Jeep Liberty 3.7",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.8,
         "et": 16.8,
@@ -6917,14 +7737,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Toyota Highlander V6",
-      "tireType": 0,
-      "loss": 12,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 7.2,
         "et": 15.6,
@@ -6942,14 +7765,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 12,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2009 Honda Pilot",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 7.8,
         "et": 16.1,
@@ -6967,14 +7793,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Jeep Commander 5.7",
-      "tireType": 0,
-      "loss": 11,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.8,
         "et": 15.3,
@@ -6992,14 +7821,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 11,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1994 Toyota Supra Twin Turbo",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2800,
       "tgt": {
         "z60": 4.6,
         "et": 13.1,
@@ -7017,14 +7849,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 2800,
+      "forceScale": 1,
+      "txKey": "Aisin_6",
+      "nG": 6,
+      "fd": 3.133
     },
     {
       "name": "1999 Nissan Skyline GT-R R34",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.8,
         "et": 13.3,
@@ -7042,14 +7877,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1992 Honda NSX",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 5.3,
         "et": 13.8,
@@ -7067,14 +7905,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1990 Nissan 300ZX NA",
-      "tireType": 0,
-      "loss": 7,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 6.7,
         "et": 15.2,
@@ -7092,14 +7933,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1989 Toyota MR2 Supercharged",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.6,
         "et": 15.2,
@@ -7117,14 +7961,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2009 BMW 335i",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.1,
         "et": 13.6,
@@ -7142,14 +7989,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Mercedes C63 AMG",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.1,
         "et": 12.2,
@@ -7167,14 +8017,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2008 Audi S5",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 4.9,
         "et": 13.4,
@@ -7192,14 +8045,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "1986 Toyota Corolla AE86",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.3,
         "et": 16.4,
@@ -7217,14 +8073,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1990 Mazda RX-7 FC Turbo",
-      "tireType": 0,
-      "loss": 4,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.3,
         "et": 14.8,
@@ -7242,14 +8101,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 4,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1995 Mitsubishi Eclipse GSX",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.3,
         "et": 14.8,
@@ -7267,14 +8129,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1985 Mazda RX-7 GSL-SE",
-      "tireType": 0,
-      "loss": 10,
-      "forceScale": 1,
-      "launchRpm": 5100,
       "tgt": {
         "z60": 7.8,
         "et": 16,
@@ -7292,14 +8157,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 10,
+      "tireType": 0,
+      "launchRpm": 5100,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1993 Honda Accord SiR",
-      "tireType": 2,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 7.2,
         "et": 15.6,
@@ -7317,14 +8185,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 2,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1997 Toyota Chaser Tourer V",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.8,
         "et": 14.4,
@@ -7342,14 +8213,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1983 Toyota Supra (Mk2)",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 8.5,
         "et": 16.5,
@@ -7367,14 +8241,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1987 Nissan Skyline GTS-R",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 6.2,
         "et": 14.6,
@@ -7392,14 +8269,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "1996 Honda Integra SiR",
-      "tireType": 1,
-      "loss": 7,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 7,
         "et": 15.4,
@@ -7417,14 +8297,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 7,
+      "tireType": 1,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2018 Mercedes-AMG GT R",
-      "tireType": 3,
-      "loss": 3.5,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.6,
@@ -7442,14 +8325,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3.5,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2019 Porsche 911 GT3",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3.2,
         "et": 11.4,
@@ -7467,14 +8353,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2016 Audi TT RS",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 11.7,
@@ -7492,14 +8381,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2015 BMW M4",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.9,
         "et": 12.1,
@@ -7517,14 +8409,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2014 Mercedes CLA45 AMG",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.1,
         "et": 12.6,
@@ -7542,14 +8437,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2012 BMW M5",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.7,
         "et": 12,
@@ -7567,14 +8465,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2013 Audi RS4 Avant",
-      "tireType": 0,
-      "loss": 8,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.1,
         "et": 12.6,
@@ -7592,14 +8493,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 8,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2011 Mercedes E63 AMG",
-      "tireType": 3,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.9,
         "et": 12.3,
@@ -7617,14 +8521,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2009 BMW 335i",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.1,
         "et": 13.6,
@@ -7642,14 +8549,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2010 Mercedes C63 AMG",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.1,
         "et": 12.2,
@@ -7667,14 +8577,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2008 Audi S5",
-      "tireType": 0,
-      "loss": 5,
-      "forceScale": 1,
-      "launchRpm": 200,
       "tgt": {
         "z60": 4.9,
         "et": 13.4,
@@ -7692,14 +8605,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5,
+      "tireType": 0,
+      "launchRpm": 200,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2007 BMW 550i",
-      "tireType": 0,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.2,
         "et": 13.7,
@@ -7717,14 +8633,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2009 Mercedes CLS550",
-      "tireType": 0,
-      "loss": 9.5,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.4,
         "et": 13.9,
@@ -7742,14 +8661,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 9.5,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2011 Audi A7 3.0T",
-      "tireType": 3,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.2,
         "et": 13.7,
@@ -7767,14 +8689,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2004 BMW 330Ci ZHP",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.6,
         "et": 14.2,
@@ -7792,14 +8717,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2006 Mercedes CLK55 AMG",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -7817,14 +8745,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2007 Audi S6 V10",
-      "tireType": 0,
-      "loss": 23,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.1,
         "et": 13.6,
@@ -7842,14 +8773,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 23,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2003 BMW M3 E46",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.8,
         "et": 13.3,
@@ -7867,14 +8801,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2005 Mercedes E55 AMG",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.3,
         "et": 12.6,
@@ -7892,14 +8829,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2008 Audi RS4",
-      "tireType": 0,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.5,
         "et": 13,
@@ -7917,14 +8857,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2024 Porsche 911 GT3 RS",
-      "tireType": 4,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 3,
         "et": 11.1,
@@ -7942,14 +8885,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 4,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2023 Porsche 718 Cayman GT4 RS",
-      "tireType": 4,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.1,
         "et": 11.3,
@@ -7967,14 +8913,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 4,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2023 Toyota GR Supra 3.0",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.9,
         "et": 12.3,
@@ -7992,14 +8941,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 Nissan Z Performance",
-      "tireType": 3,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.3,
         "et": 12.3,
@@ -8017,14 +8969,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 3,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2024 BMW M2",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.4,
         "et": 11.8,
@@ -8042,24 +8997,27 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2024 Chevrolet Corvette Stingray",
-      "tireType": 2,
-      "loss": 2,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3.3,
         "et": 11.2,
         "trap": 123
       },
       "sim": {
-        "et": 11.23,
-        "trap": 123.4,
-        "z60": 3.117,
-        "z60130": 9.389,
+        "et": 11.235,
+        "trap": 121.5,
+        "z60": 3.051,
+        "z60130": 10.072,
         "vmax": 130
       },
       "hits": {
@@ -8067,14 +9025,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 5.5,
+      "tireType": 2,
+      "launchRpm": 2600,
+      "forceScale": 1,
+      "txKey": "Tremec_TR9080_8DCT",
+      "nG": 8,
+      "fd": 5.2
     },
     {
       "name": "2023 Mazda MX-5 Miata Club",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3500,
       "tgt": {
         "z60": 5.7,
         "et": 14.3,
@@ -8092,14 +9053,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3500,
+      "forceScale": 1,
+      "txKey": "Aisin_6",
+      "nG": 6,
+      "fd": 2.866
     },
     {
       "name": "2024 Lexus LC 500 Coupe",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.4,
         "et": 12.8,
@@ -8117,14 +9081,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 Ford Bronco Raptor",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 5.6,
         "et": 14.2,
@@ -8142,14 +9109,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2024 Toyota GR86",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 14,
@@ -8167,14 +9137,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2024 Subaru BRZ",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 5.3,
         "et": 14,
@@ -8192,24 +9165,27 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2023 Chevrolet Corvette Z06",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 3,
         "et": 10.9,
         "trap": 131
       },
       "sim": {
-        "et": 10.822,
-        "trap": 129.7,
-        "z60": 2.881,
-        "z60130": 7.991,
+        "et": 10.808,
+        "trap": 129.1,
+        "z60": 2.858,
+        "z60130": 8.095,
         "vmax": 130
       },
       "hits": {
@@ -8217,14 +9193,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "Tremec_TR9080_8DCT",
+      "nG": 8,
+      "fd": 5.56
     },
     {
       "name": "2026 Chevrolet Corvette ZR1X",
-      "tireType": 1,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 1.9,
         "et": 8.675,
@@ -8232,25 +9211,28 @@
         "z60130": 3.87
       },
       "sim": {
-        "et": 8.894,
-        "trap": 158.8,
-        "z60": 1.897,
-        "z60130": 4.077,
-        "vmax": 158.8
+        "et": 8.917,
+        "trap": 160.3,
+        "z60": 1.9,
+        "z60130": 3.996,
+        "vmax": 160.3
       },
       "hits": {
         "et": true,
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 2.5,
+      "tireType": 1,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "Tremec_TR9080_8DCT",
+      "nG": 8,
+      "fd": 5.56
     },
     {
       "name": "2024 Acura Integra Type S",
-      "tireType": 2,
-      "loss": 3,
-      "forceScale": 1,
-      "launchRpm": 1800,
       "tgt": {
         "z60": 5,
         "et": 13.5,
@@ -8268,14 +9250,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 3,
+      "tireType": 2,
+      "launchRpm": 1800,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     },
     {
       "name": "2023 Acura TLX Type S",
-      "tireType": 3,
-      "loss": 1,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.7,
         "et": 13.2,
@@ -8293,14 +9278,17 @@
         "trap": false,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 1,
+      "tireType": 3,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2024 Lexus IS 500",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.4,
         "et": 12.8,
@@ -8318,14 +9306,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2024 Audi RS 3",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 3.3,
         "et": 11.7,
@@ -8343,14 +9334,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "DCT_7_AMG",
+      "nG": 7,
+      "fd": 3.73
     },
     {
       "name": "2024 Lexus RC F",
-      "tireType": 0,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 3000,
       "tgt": {
         "z60": 4.3,
         "et": 12.6,
@@ -8368,14 +9362,17 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 0,
+      "launchRpm": 3000,
+      "forceScale": 1,
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15
     },
     {
       "name": "2023 Honda Civic Type R",
-      "tireType": 2,
-      "loss": 0,
-      "forceScale": 1,
-      "launchRpm": 2400,
       "tgt": {
         "z60": 4.8,
         "et": 13.3,
@@ -8393,7 +9390,14 @@
         "trap": true,
         "z60": true,
         "z60130": true
-      }
+      },
+      "loss": 0,
+      "tireType": 2,
+      "launchRpm": 2400,
+      "forceScale": 1,
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73
     }
   ],
   "worst15Et": [
@@ -8478,6 +9482,12 @@
       "d": 5.6
     },
     {
+      "name": "2020 Ford F-150 Raptor",
+      "tgt": 101,
+      "sim": 95.4,
+      "d": -5.6
+    },
+    {
       "name": "2022 BMW iX M60",
       "tgt": 114,
       "sim": 119.5,
@@ -8500,230 +9510,107 @@
       "tgt": 124,
       "sim": 118.6,
       "d": -5.4
-    },
-    {
-      "name": "2002 Nissan Skyline GT-R R34",
-      "tgt": 107,
-      "sim": 101.6,
-      "d": -5.4
     }
   ],
-  "batch22": [
+  "batch": [
     {
-      "name": "2023 Hyundai Ioniq 5 N",
-      "gi": 58,
+      "name": "2020 Ford Mustang GT",
+      "gi": 0,
       "tgt": {
-        "z60": 3.2,
-        "et": 11,
-        "trap": 124.9
+        "z60": 3.8,
+        "et": 12.1,
+        "trap": 119,
+        "z60130": 11.1
       },
+      "fdOnly": false,
       "before": {
-        "loss": 5,
-        "tire": 4,
-        "launch": 500,
-        "sim": {
-          "et": 11.09,
-          "trap": 128.2,
-          "z60": 3.275,
-          "z60130": 8.2
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 7,
-        "tire": 1,
-        "launch": 200,
-        "sim": {
-          "et": 11.183,
-          "trap": 127.4,
-          "z60": 3.349,
-          "z60130": 8.409
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "2022 Tesla Model S Plaid",
-      "gi": 54,
-      "tgt": {
-        "z60": 2.1,
-        "et": 9.25,
-        "trap": 151,
-        "z60130": 4.8
-      },
-      "before": {
-        "loss": 6,
-        "tire": 2,
-        "launch": 500,
-        "sim": {
-          "et": 9.362,
-          "trap": 154.6,
-          "z60": 2.263,
-          "z60130": 4.412
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 9,
-        "tire": 2,
-        "launch": 500,
-        "sim": {
-          "et": 9.484,
-          "trap": 153.1,
-          "z60": 2.342,
-          "z60130": 4.567
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1978 Dodge Magnum XE",
-      "gi": 243,
-      "tgt": {
-        "z60": 9.5,
-        "et": 17.2,
-        "trap": 80
-      },
-      "before": {
-        "loss": 18,
-        "tire": 0,
-        "launch": 1900,
-        "sim": {
-          "et": 17.022,
-          "trap": 77.2,
-          "z60": 9.744,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 16,
-        "tire": 0,
-        "launch": 1300,
-        "sim": {
-          "et": 17.069,
-          "trap": 77.8,
-          "z60": 9.73,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "2023 Mercedes EQE AMG 53",
-      "gi": 65,
-      "tgt": {
-        "z60": 3.2,
-        "et": 11.6,
-        "trap": 120
-      },
-      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
         "loss": 0,
         "tire": 3,
-        "launch": 500,
-        "sim": {
-          "et": 11.747,
-          "trap": 123.3,
-          "z60": 3.875,
-          "z60130": 9.396
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 0,
-        "tire": 3,
-        "launch": 500,
-        "sim": {
-          "et": 11.747,
-          "trap": 123.3,
-          "z60": 3.875,
-          "z60130": 9.396
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true,
-      "knobsChanged": false
-    },
-    {
-      "name": "2007 Ford F-150 4.6 Triton",
-      "gi": 218,
-      "tgt": {
-        "z60": 8.5,
-        "et": 16.6,
-        "trap": 84
-      },
-      "before": {
-        "loss": 3,
-        "tire": 1,
         "launch": 3000,
         "sim": {
-          "et": 16.456,
-          "trap": 81,
-          "z60": 8.556,
-          "z60130": null
+          "et": 12.083,
+          "trap": 118.3,
+          "z60": 3.907,
+          "z60130": 10.858
         },
         "hits": {
           "et": true,
-          "trap": false,
+          "trap": true,
           "z60": true,
           "z60130": true
         }
       },
       "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.09,
+          "trap": 117.7,
+          "z60": 3.881,
+          "z60130": 11.083
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 Ford Mustang GT PP2",
+      "gi": 1,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.6,
+        "trap": 115,
+        "z60130": 11.65
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.541,
+          "trap": 115.3,
+          "z60": 4.363,
+          "z60130": 11.785
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.55,
+        "transmission": "Auto",
         "loss": 1.5,
         "tire": 0,
         "launch": 3000,
         "sim": {
-          "et": 16.367,
-          "trap": 81.5,
-          "z60": 8.418,
-          "z60130": null
+          "et": 12.556,
+          "trap": 115.7,
+          "z60": 4.34,
+          "z60130": 12.318
         },
         "hits": {
           "et": true,
@@ -8732,89 +9619,84 @@
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
+      "stillMiss": false
     },
     {
-      "name": "2019 McLaren Speedtail",
-      "gi": 145,
+      "name": "2024 Ford Mustang Dark Horse",
+      "gi": 5,
       "tgt": {
-        "z60": 2.5,
-        "et": 10,
-        "trap": 150,
-        "z60130": 5.2
+        "z60": 3.7,
+        "et": 12,
+        "trap": 118.4,
+        "z60130": 11.07
       },
+      "fdOnly": false,
       "before": {
-        "loss": 26,
-        "tire": 2,
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.074,
+          "trap": 118.3,
+          "z60": 3.888,
+          "z60130": 10.813
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.55,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 4,
+        "launch": 2600,
+        "sim": {
+          "et": 11.965,
+          "trap": 118.4,
+          "z60": 3.715,
+          "z60130": 11.328
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Ford F-150 Raptor",
+      "gi": 200,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.8,
+        "trap": 101
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 0,
         "launch": 2400,
         "sim": {
-          "et": 9.763,
-          "trap": 147.2,
-          "z60": 2.324,
-          "z60130": 5.327
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 25.5,
-        "tire": 2,
-        "launch": 1800,
-        "sim": {
-          "et": 9.75,
-          "trap": 147.5,
-          "z60": 2.324,
-          "z60130": 5.288
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true,
-      "knobsChanged": true
-    },
-    {
-      "name": "1985 Mazda RX-7 GSL-SE",
-      "gi": 287,
-      "tgt": {
-        "z60": 7.8,
-        "et": 16,
-        "trap": 86
-      },
-      "before": {
-        "loss": 5,
-        "tire": 0,
-        "launch": 3500,
-        "sim": {
-          "et": 15.991,
-          "trap": 89.2,
-          "z60": 7.849,
-          "z60130": 62.951
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 10,
-        "tire": 0,
-        "launch": 5100,
-        "sim": {
-          "et": 16.062,
-          "trap": 88.3,
-          "z60": 7.959,
-          "z60130": null
+          "et": 13.648,
+          "trap": 98.6,
+          "z60": 5.004,
+          "z60130": 26.362
         },
         "hits": {
           "et": true,
@@ -8823,133 +9705,19 @@
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1967 Plymouth GTX 440",
-      "gi": 241,
-      "tgt": {
-        "z60": 6,
-        "et": 14.3,
-        "trap": 100
-      },
-      "before": {
-        "loss": 20,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 14.381,
-          "trap": 94.5,
-          "z60": 5.787,
-          "z60130": 50.309
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
       "after": {
-        "loss": 12,
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 4.1,
+        "transmission": "Auto",
+        "loss": 13,
         "tire": 0,
-        "launch": 200,
+        "launch": 2000,
         "sim": {
-          "et": 14.126,
-          "trap": 97.5,
-          "z60": 5.544,
-          "z60130": 33.271
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1968 Mercury Cougar XR-7",
-      "gi": 250,
-      "tgt": {
-        "z60": 7.2,
-        "et": 15.5,
-        "trap": 91
-      },
-      "before": {
-        "loss": 35,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 15.416,
-          "trap": 87.3,
-          "z60": 6.998,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 30,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 15.454,
-          "trap": 88.5,
-          "z60": 7.006,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1963 Corvette Stingray 327",
-      "gi": 238,
-      "tgt": {
-        "z60": 5.9,
-        "et": 14.4,
-        "trap": 100
-      },
-      "before": {
-        "loss": 30,
-        "tire": 0,
-        "launch": 1300,
-        "sim": {
-          "et": 14.409,
-          "trap": 94.9,
-          "z60": 5.738,
-          "z60130": 42.774
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 29,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 14.386,
+          "et": 13.805,
           "trap": 95.4,
-          "z60": 5.719,
-          "z60130": 40.384
+          "z60": 5.098,
+          "z60130": 33.664
         },
         "hits": {
           "et": true,
@@ -8958,43 +9726,30 @@
           "z60130": true
         }
       },
-      "stillMiss": true,
-      "knobsChanged": true
+      "stillMiss": true
     },
     {
-      "name": "2001 Lamborghini Diablo VT 6.0",
-      "gi": 112,
+      "name": "2018 Ford F-150 5.0",
+      "gi": 206,
       "tgt": {
-        "z60": 3.6,
-        "et": 11.8,
-        "trap": 122
+        "z60": 6.1,
+        "et": 14.7,
+        "trap": 95
       },
+      "fdOnly": false,
       "before": {
-        "loss": 9,
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 13.5,
         "tire": 0,
         "launch": 3000,
         "sim": {
-          "et": 11.578,
-          "trap": 119.2,
-          "z60": 3.353,
-          "z60130": 10.578
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 2,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 11.669,
-          "trap": 121.9,
-          "z60": 3.607,
-          "z60130": 9.669
+          "et": 14.638,
+          "trap": 92.7,
+          "z60": 6.098,
+          "z60130": null
         },
         "hits": {
           "et": true,
@@ -9003,98 +9758,189 @@
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1969 Chevrolet Camaro SS 396",
-      "gi": 230,
-      "tgt": {
-        "z60": 6,
-        "et": 14.4,
-        "trap": 99
-      },
-      "before": {
-        "loss": 26,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 14.44,
-          "trap": 93.9,
-          "z60": 5.78,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
       "after": {
-        "loss": 19.5,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 14.207,
-          "trap": 96.6,
-          "z60": 5.561,
-          "z60130": 37.888
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1968 Dodge Dart GTS 383",
-      "gi": 235,
-      "tgt": {
-        "z60": 6.5,
-        "et": 14.8,
-        "trap": 96
-      },
-      "before": {
-        "loss": 22,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 14.878,
-          "trap": 90.2,
-          "z60": 6.295,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
+        "txKey": "Ford_10R80",
+        "nG": 10,
+        "fd": 3.31,
+        "transmission": "Auto",
         "loss": 13,
         "tire": 0,
-        "launch": 200,
+        "launch": 2600,
         "sim": {
-          "et": 14.624,
-          "trap": 93.5,
-          "z60": 6.01,
-          "z60130": null
+          "et": 14.599,
+          "trap": 93.7,
+          "z60": 6.102,
+          "z60130": 52.172
         },
         "hits": {
           "et": true,
           "trap": true,
-          "z60": false,
+          "z60": true,
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Chevrolet Camaro SS",
+      "gi": 2,
+      "tgt": {
+        "z60": 3.9,
+        "et": 12.2,
+        "trap": 118,
+        "z60130": 11.25
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.086,
+          "trap": 118.3,
+          "z60": 3.91,
+          "z60130": 10.816
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 2.77,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.134,
+          "trap": 117.9,
+          "z60": 3.838,
+          "z60130": 11.399
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Chevrolet Camaro ZL1",
+      "gi": 6,
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.5,
+        "trap": 125,
+        "z60130": 8.4
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 7,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.555,
+          "trap": 125.2,
+          "z60": 3.569,
+          "z60130": 9.087
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 2.85,
+        "transmission": "Auto",
+        "loss": 7,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.486,
+          "trap": 125,
+          "z60": 3.37,
+          "z60130": 9.083
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Chevrolet Silverado 6.2",
+      "gi": 203,
+      "tgt": {
+        "z60": 5.4,
+        "et": 14,
+        "trap": 99
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.008,
+          "trap": 98.4,
+          "z60": 5.425,
+          "z60130": 30.164
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.992,
+          "trap": 98.9,
+          "z60": 5.437,
+          "z60130": 29.186
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
     },
     {
       "name": "2023 Chevrolet Silverado ZR2",
@@ -9104,24 +9950,12 @@
         "et": 14.8,
         "trap": 95
       },
+      "fdOnly": false,
       "before": {
-        "loss": 5,
-        "tire": 0,
-        "launch": 3000,
-        "sim": {
-          "et": 14.705,
-          "trap": 91.1,
-          "z60": 6.192,
-          "z60130": 52.563
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
         "loss": 0,
         "tire": 0,
         "launch": 1500,
@@ -9138,88 +9972,19 @@
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "2022 BMW iX M60",
-      "gi": 64,
-      "tgt": {
-        "z60": 3.6,
-        "et": 12.1,
-        "trap": 114
-      },
-      "before": {
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 3.23,
+        "transmission": "Auto",
         "loss": 0,
-        "tire": 4,
-        "launch": 500,
-        "sim": {
-          "et": 12.134,
-          "trap": 119.5,
-          "z60": 4.095,
-          "z60130": 10.449
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 0,
-        "tire": 4,
-        "launch": 500,
-        "sim": {
-          "et": 12.134,
-          "trap": 119.5,
-          "z60": 4.095,
-          "z60130": 10.449
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true,
-      "knobsChanged": false
-    },
-    {
-      "name": "1979 Pontiac Firebird Trans Am",
-      "gi": 29,
-      "tgt": {
-        "z60": 8.5,
-        "et": 16.5,
-        "trap": 86
-      },
-      "before": {
-        "loss": 18,
-        "tire": 1,
-        "launch": 2800,
-        "sim": {
-          "et": 16.494,
-          "trap": 81.4,
-          "z60": 8.557,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 10,
         "tire": 0,
-        "launch": 500,
+        "launch": 1100,
         "sim": {
-          "et": 16.501,
-          "trap": 84.2,
-          "z60": 8.415,
-          "z60130": null
+          "et": 14.811,
+          "trap": 93.3,
+          "z60": 6.358,
+          "z60130": 40.096
         },
         "hits": {
           "et": true,
@@ -9228,324 +9993,275 @@
           "z60130": true
         }
       },
-      "stillMiss": false,
-      "knobsChanged": true
+      "stillMiss": false
     },
     {
-      "name": "2008 Audi S5",
-      "gi": 283,
+      "name": "2024 Chevrolet Corvette Stingray",
+      "gi": 319,
       "tgt": {
-        "z60": 4.9,
-        "et": 13.4,
-        "trap": 105
+        "z60": 3.3,
+        "et": 11.2,
+        "trap": 123
       },
+      "fdOnly": false,
       "before": {
-        "loss": 13,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 13.378,
-          "trap": 100.1,
-          "z60": 4.793,
-          "z60130": 22.025
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 5,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 13.341,
-          "trap": 102.7,
-          "z60": 4.861,
-          "z60130": 19.187
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "2008 Audi S5",
-      "gi": 303,
-      "tgt": {
-        "z60": 4.9,
-        "et": 13.4,
-        "trap": 105
-      },
-      "before": {
-        "loss": 13,
-        "tire": 0,
-        "launch": 2400,
-        "sim": {
-          "et": 13.378,
-          "trap": 100.1,
-          "z60": 4.793,
-          "z60130": 22.025
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 5,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 13.341,
-          "trap": 102.7,
-          "z60": 4.861,
-          "z60130": 19.187
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1971 Dodge Demon 340",
-      "gi": 231,
-      "tgt": {
-        "z60": 6.4,
-        "et": 14.8,
-        "trap": 96
-      },
-      "before": {
-        "loss": 18,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 14.804,
-          "trap": 90.7,
-          "z60": 6.194,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 10,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 14.604,
-          "trap": 93.5,
-          "z60": 5.979,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "2022 Porsche Taycan Turbo S",
-      "gi": 56,
-      "tgt": {
-        "z60": 2.4,
-        "et": 10.5,
-        "trap": 130,
-        "z60130": 6.5
-      },
-      "before": {
-        "loss": 0,
-        "tire": 1,
-        "launch": 500,
-        "sim": {
-          "et": 10.52,
-          "trap": 135.6,
-          "z60": 2.834,
-          "z60130": 6.775
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 0,
-        "tire": 1,
-        "launch": 500,
-        "sim": {
-          "et": 10.52,
-          "trap": 135.6,
-          "z60": 2.834,
-          "z60130": 6.775
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "stillMiss": true,
-      "knobsChanged": false
-    },
-    {
-      "name": "1977 Chevrolet Monte Carlo",
-      "gi": 247,
-      "tgt": {
-        "z60": 10.5,
-        "et": 17.8,
-        "trap": 78
-      },
-      "before": {
-        "loss": 14,
-        "tire": 0,
-        "launch": 1900,
-        "sim": {
-          "et": 17.609,
-          "trap": 74.1,
-          "z60": 10.87,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": false,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 9,
-        "tire": 0,
-        "launch": 500,
-        "sim": {
-          "et": 17.607,
-          "trap": 75.6,
-          "z60": 10.634,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": true,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": false,
-      "knobsChanged": true
-    },
-    {
-      "name": "1974 Pontiac Firebird 400",
-      "gi": 246,
-      "tgt": {
-        "z60": 8.2,
-        "et": 16.3,
-        "trap": 86
-      },
-      "before": {
-        "loss": 17,
-        "tire": 0,
-        "launch": 2800,
-        "sim": {
-          "et": 16.116,
-          "trap": 81.8,
-          "z60": 8.199,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "after": {
-        "loss": 15,
-        "tire": 0,
-        "launch": 200,
-        "sim": {
-          "et": 16.289,
-          "trap": 82.3,
-          "z60": 8.395,
-          "z60130": null
-        },
-        "hits": {
-          "et": true,
-          "trap": false,
-          "z60": true,
-          "z60130": true
-        }
-      },
-      "stillMiss": true,
-      "knobsChanged": true
-    },
-    {
-      "name": "2018 Jeep Grand Cherokee SRT",
-      "gi": 265,
-      "tgt": {
-        "z60": 4.5,
-        "et": 13.1,
-        "trap": 108
-      },
-      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
         "loss": 2,
-        "tire": 3,
+        "tire": 2,
         "launch": 3000,
         "sim": {
-          "et": 13.072,
-          "trap": 103.3,
-          "z60": 4.441,
-          "z60130": 20.355
+          "et": 11.23,
+          "trap": 123.4,
+          "z60": 3.117,
+          "z60130": 9.389
         },
         "hits": {
           "et": true,
-          "trap": false,
+          "trap": true,
           "z60": true,
           "z60130": true
         }
       },
       "after": {
-        "loss": 0,
-        "tire": 0,
-        "launch": 2400,
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.2,
+        "transmission": "DCT",
+        "loss": 5.5,
+        "tire": 2,
+        "launch": 2600,
         "sim": {
-          "et": 13.083,
-          "trap": 104,
-          "z60": 4.488,
-          "z60130": 19.686
+          "et": 11.235,
+          "trap": 121.5,
+          "z60": 3.051,
+          "z60130": 10.072
         },
         "hits": {
           "et": true,
-          "trap": false,
+          "trap": true,
           "z60": true,
           "z60130": true
         }
       },
-      "stillMiss": true,
-      "knobsChanged": true
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Chevrolet Corvette Z06",
+      "gi": 325,
+      "tgt": {
+        "z60": 3,
+        "et": 10.9,
+        "trap": 131
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.822,
+          "trap": 129.7,
+          "z60": 2.881,
+          "z60130": 7.991
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.56,
+        "transmission": "DCT",
+        "loss": 0,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 10.808,
+          "trap": 129.1,
+          "z60": 2.858,
+          "z60130": 8.095
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2026 Chevrolet Corvette ZR1X",
+      "gi": 326,
+      "tgt": {
+        "z60": 1.9,
+        "et": 8.675,
+        "trap": 159,
+        "z60130": 3.87
+      },
+      "fdOnly": false,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 8.894,
+          "trap": 158.8,
+          "z60": 1.897,
+          "z60130": 4.077
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR9080_8DCT",
+        "nG": 8,
+        "fd": 5.56,
+        "transmission": "DCT",
+        "loss": 2.5,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 8.917,
+          "trap": 160.3,
+          "z60": 1.9,
+          "z60130": 3.996
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Dodge Challenger Hellcat",
+      "gi": 4,
+      "tgt": {
+        "z60": 3.7,
+        "et": 11.6,
+        "trap": 126,
+        "z60130": 8.5
+      },
+      "fdOnly": true,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.589,
+          "trap": 127.1,
+          "z60": 3.745,
+          "z60130": 8.412
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 2.62,
+        "transmission": "Auto",
+        "loss": 3.5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.61,
+          "trap": 126,
+          "z60": 3.613,
+          "z60130": 8.744
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2015 Dodge Challenger Hellcat",
+      "gi": 9,
+      "tgt": {
+        "z60": 3.6,
+        "et": 11.7,
+        "trap": 125,
+        "z60130": 8.6
+      },
+      "fdOnly": true,
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.633,
+          "trap": 126.2,
+          "z60": 3.763,
+          "z60130": 8.631
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 2.62,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 3,
+        "launch": 2400,
+        "sim": {
+          "et": 11.657,
+          "trap": 125,
+          "z60": 3.613,
+          "z60130": 9.003
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
     }
   ]
 }
