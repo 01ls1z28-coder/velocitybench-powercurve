@@ -16,6 +16,8 @@
     this.unit = (opts && opts.unit) || '';
     this.redline = (opts && opts.redline) || this.max * 0.9;
     this.majorDiv = (opts && opts.majorDiv) || null;
+    // 'speed' → MPH face: bold majors every 20, smaller intermediates every 10
+    this.dial = (opts && opts.dial) || null;
     this._raf = null;
     this._running = false;
     this._resize();
@@ -143,44 +145,98 @@
     ctx.strokeStyle = 'rgba(220, 48, 48, 0.92)';
     ctx.lineWidth = 5; ctx.lineCap = 'butt'; ctx.stroke();
 
-    // Tick marks + numerals — prefer readable ×1000 steps on tach; 10% on power dials
+    // Tick marks + numerals — MPH: 20 major / 10 mid; tach ×1000; power 10%
     var span = this.max - this.min;
-    var majors = this.majorDiv;
-    if (majors == null) {
-      if (this.max <= 100 && this.unit === '%') majors = 10;
-      else if (this.max >= 12000) majors = Math.round(span / 2000); // 2k steps for superbikes / EV motor
-      else if (this.max >= 1000) majors = Math.round(span / 1000) || 8;
-      else majors = 10;
-    }
-    if (majors < 4) majors = 4;
-    if (majors > 16) majors = 16;
-    var majorStep = span / majors;
-    var minors = 5;
     ctx.lineCap = 'butt';
-    for (var i = 0; i <= majors * minors; i++) {
-      var val = this.min + (i / (majors * minors)) * span;
-      var a = rad(ang(val));
-      var isMajor = i % minors === 0;
-      var isHalf = i % Math.max(1, minors / 2) === 0;
-      var outer = R - 12;
-      var inner = isMajor ? R - 28 : (isHalf ? R - 22 : R - 18);
-      ctx.beginPath();
-      ctx.moveTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
-      ctx.lineTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
-      ctx.strokeStyle = isMajor ? '#e8d7b0' : 'rgba(232,215,176,0.40)';
-      ctx.lineWidth = isMajor ? 2.2 : 1;
-      ctx.stroke();
-      if (isMajor) {
-        var tx = cx + Math.cos(a) * (R - 40);
-        var ty = cy + Math.sin(a) * (R - 40);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    if (this.dial === 'speed') {
+      // Clean 5 mph ticks; bold numerals on 20s; smaller dimmer on odd tens (10/30/…)
+      var minorMph = 5;
+      var midMph = 10;
+      var majorMph = 20;
+      var v0 = Math.round(this.min);
+      var v1 = Math.round(this.max);
+      // Walk integer mph so float drift never skips a tick
+      for (var mph = v0; mph <= v1; mph += minorMph) {
+        // Always land the true max (e.g. 250) even if not on a 5-step after snap miss
+        var val = mph;
+        var a = rad(ang(val));
+        var onMajor = (val % majorMph === 0);
+        // Dial max (e.g. 250) stays large even when not on a 20 — keeps Vmax readable
+        var isMajorTick = onMajor || (val === v1);
+        var isMidTick = !isMajorTick && (val % midMph === 0);
+        var outer = R - 12;
+        var inner = isMajorTick ? R - 28 : (isMidTick ? R - 22 : R - 18);
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
+        ctx.lineTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
+        ctx.strokeStyle = isMajorTick ? '#e8d7b0' : (isMidTick ? 'rgba(232,215,176,0.55)' : 'rgba(232,215,176,0.40)');
+        ctx.lineWidth = isMajorTick ? 2.2 : 1;
+        ctx.stroke();
+        if (isMajorTick || isMidTick) {
+          var tx = cx + Math.cos(a) * (R - 40);
+          var ty = cy + Math.sin(a) * (R - 40);
+          if (isMajorTick) {
+            ctx.fillStyle = '#dce3ee';
+            ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
+          } else {
+            // Intermediate 10s: smaller + slightly dimmer so 20s dominate
+            ctx.fillStyle = 'rgba(220,227,238,0.62)';
+            ctx.font = '9.5px "Segoe UI", system-ui, sans-serif';
+          }
+          ctx.fillText(String(val), tx, ty);
+        }
+      }
+      // If max isn't on the 5-mph grid (shouldn't happen after snap), still mark Vmax
+      if ((v1 - v0) % minorMph !== 0) {
+        var aMax = rad(ang(v1));
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(aMax) * (R - 12), cy + Math.sin(aMax) * (R - 12));
+        ctx.lineTo(cx + Math.cos(aMax) * (R - 28), cy + Math.sin(aMax) * (R - 28));
+        ctx.strokeStyle = '#e8d7b0';
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
         ctx.fillStyle = '#dce3ee';
         ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        var label;
-        if (this.unit === '%' || this.unit === 'kW') label = String(Math.round(val));
-        else if (this.max >= 1000) label = String(Math.round(val / 1000));
-        else label = String(Math.round(val));
-        ctx.fillText(label, tx, ty);
+        ctx.fillText(String(v1), cx + Math.cos(aMax) * (R - 40), cy + Math.sin(aMax) * (R - 40));
+      }
+    } else {
+      var majors = this.majorDiv;
+      if (majors == null) {
+        if (this.max <= 100 && this.unit === '%') majors = 10;
+        else if (this.max >= 12000) majors = Math.round(span / 2000); // 2k steps for superbikes / EV motor
+        else if (this.max >= 1000) majors = Math.round(span / 1000) || 8;
+        else majors = 10;
+      }
+      if (majors < 4) majors = 4;
+      if (majors > 16) majors = 16;
+      var minors = 5;
+      for (var i = 0; i <= majors * minors; i++) {
+        var val2 = this.min + (i / (majors * minors)) * span;
+        var a2 = rad(ang(val2));
+        var isMajor = i % minors === 0;
+        var isHalf = i % Math.max(1, minors / 2) === 0;
+        var outer2 = R - 12;
+        var inner2 = isMajor ? R - 28 : (isHalf ? R - 22 : R - 18);
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(a2) * outer2, cy + Math.sin(a2) * outer2);
+        ctx.lineTo(cx + Math.cos(a2) * inner2, cy + Math.sin(a2) * inner2);
+        ctx.strokeStyle = isMajor ? '#e8d7b0' : 'rgba(232,215,176,0.40)';
+        ctx.lineWidth = isMajor ? 2.2 : 1;
+        ctx.stroke();
+        if (isMajor) {
+          var tx2 = cx + Math.cos(a2) * (R - 40);
+          var ty2 = cy + Math.sin(a2) * (R - 40);
+          ctx.fillStyle = '#dce3ee';
+          ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
+          var label;
+          if (this.unit === '%' || this.unit === 'kW') label = String(Math.round(val2));
+          else if (this.max >= 1000) label = String(Math.round(val2 / 1000));
+          else label = String(Math.round(val2));
+          ctx.fillText(label, tx2, ty2);
+        }
       }
     }
 

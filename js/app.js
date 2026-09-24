@@ -58,7 +58,7 @@
     min: 0, max: 8000, label: 'RPM', redline: 6500
   });
   var speedGauge = new window.VBPowerCurveGauges.BrassGauge($('speedGauge'), {
-    min: 0, max: 250, label: 'MPH', unit: '', redline: 200
+    min: 0, max: 260, label: 'MPH', unit: '', redline: 200, dial: 'speed'
   });
   rpmGauge.start();
   speedGauge.start();
@@ -1319,7 +1319,8 @@
     drawSpeedPath(result.timeline, result);
     // Scale speed gauge to cover Vmax
     if (result.topSpeedMph) {
-      speedGauge.setMax(Math.max(200, Math.ceil(result.topSpeedMph / 25) * 25 + 25));
+      // Snap MPH dial max to a clean 20 mph step (majors every 20, mids every 10)
+      speedGauge.setMax(Math.max(200, Math.ceil((result.topSpeedMph + 20) / 20) * 20));
     }
     animateRun(result);
   }
