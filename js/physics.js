@@ -762,7 +762,7 @@
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
            * - Post-upshift ONLY: unlock/slip hang with soft climb so tach does not
            *   dump to locked gear-ratio mechRpm or freeze flat; mph-gated extra
-           *   multiply under hang boosts trap/high-speed while keeping early accel.
+           *   multiply under hang boosts trap, with post-trap fade so 60-130 ~10.9.
            */
           var stall = Number(car.stallRpm) || 2800;
           // High-stall ATC flash ceiling scales with stall (Circle D 4400 → ~6400).
@@ -896,11 +896,12 @@
         }
         if (tcPostShiftHangRpm > 0) {
           // Mild parent unlock (preserves 60ft / 0-60) + mph-gated extra multiply
-          // while unlocked so trap / high-speed climb without early bake cheats.
+          // for trap; postFade softens past ~125 mph so 60-130 does not overshoot.
           var baseAdd = Math.min(0.055, slipR * 0.22);
           var speedGate = clamp((mph - 62.0) / 40.0, 0, 1);
-          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate;
-          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate;
+          var postFade = 0.05 + 0.95 * clamp((125.0 - mph) / 8.0, 0, 1);
+          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate * postFade;
+          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade;
           tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
         }
         whTQ *= tMult;

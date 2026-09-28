@@ -1,3 +1,15 @@
+# BUILD TIP — ATC mph-gated unlock postFade for 60–130 (Sati)
+
+Branch: `review/jorge-z28-converter-60-130` · Base `3f673cd` (ATC flash + trap multiply). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **ATC-only** — keep flash raise + mph-gated unlock; add **postFade** past ~125 mph so **60–130 ~10.9** without killing trap.
+- Std slick vs parent: 60–130 **10.66→10.89**; ET/trap **11.556 / 119.37** (was 119.42); 60′/0–60 flat; flash 5507 kept.
+- 1500 DA trap **118.17** (118+). Drops ~1200±300; soft climb; Mustang identical; forceScale=1; no bake cheats. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-converter-60-130-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC converter flash + mph-gated trap multiply (Sati)
 
 Branch: `review/jorge-z28-converter-trap` · Base `a7e6d83` (ATC post-upshift climb). **No Merovingian / no live Pages.**
