@@ -1,0 +1,52 @@
+{
+  "tip": "cybertruck-beast-trap-119",
+  "parent": "8e68a054ed16a43d460370a56b6cca48a3ab1acc",
+  "fd": 15.02,
+  "txKey": "Tesla_EV_Cybertruck",
+  "redline": 27000,
+  "shiftRpm": 27000,
+  "peakTqRpm": 3900,
+  "peakHpRpm": 15400,
+  "curvePeakHp": 1060.181984006093,
+  "knobs": {
+    "loss": 4,
+    "tire": 3,
+    "tireLabel": "Summer",
+    "launch": 200,
+    "Cd": 0.34,
+    "forceScale": 1,
+    "weightLbs": 6800
+  },
+  "before": {
+    "z60": 2.7279999999998106,
+    "et": 10.999999999999343,
+    "trap": 117.93371381359542,
+    "vmax": 130.000215488,
+    "reason": "ev_speed_limiter_130mph",
+    "z60130": 15.492999999999476,
+    "t0130": 18.220999999999286
+  },
+  "after": {
+    "z60": 2.7759999999998053,
+    "et": 11.00499999999934,
+    "trap": 118.98245307380976,
+    "vmax": 130.000215488,
+    "reason": "ev_speed_limiter_130mph",
+    "z60130": 13.61899999999725,
+    "t0130": 16.394999999997054
+  },
+  "hits": {
+    "z60": true,
+    "et": true,
+    "trap": true,
+    "lim": true
+  },
+  "targets": {
+    "z60": 2.6,
+    "et": 11,
+    "trap": 119,
+    "lim": 130
+  },
+  "mechanism": "Cd 0.425→0.34 (Tesla published) + tire UHP→Summer; loss/launch/curve/FD/fs unchanged",
+  "elapsedMs": 696
+}

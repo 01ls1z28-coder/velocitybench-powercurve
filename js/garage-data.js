@@ -5,8 +5,8 @@
  * Specs: Cd/area/loss/tire/drive/FI/EV/Hybrid/TX from VB where matched; gears/curves synthesized
  * or curated; loss+launch+tire calibrated toward Excel (forceScale retired = 1.0 always).
  * Excel source: /workspace/powercurve-garage-import.json
- * Cybertruck tip: curve re-span for OEM FD 15.02 (TQ÷span); loss/tire/launch; forceScale=1.
- * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-cybertruck-beast-curve-respan.js
+ * Cybertruck tip: OEM FD 15.02 + curve-respan; trap-119 via Cd→0.34 + Summer; forceScale=1.
+ * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-cybertruck-beast-trap-119.js
  */
 'use strict';
 
@@ -8198,7 +8198,7 @@ var GARAGE = [
     "category": "EV",
     "peakHp": 845,
     "weightLbs": 6800,
-    "dragCoefficient": 0.425,
+    "dragCoefficient": 0.34,
     "frontalAreaSqFt": 36,
     "tireRadiusInches": 15.2,
     "finalDriveRatio": 15.02,
@@ -8219,12 +8219,12 @@ var GARAGE = [
     "peakTqRpm": 3900,
     "peakHpRpm": 15400,
     "shiftTimeSeconds": 0.01,
-    "tireType": 4,
+    "tireType": 3,
     "forceScale": 1,
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200 | CT tip: C&D Beast 2.6 / 11.0@119 / 130gov; launch+curve taper+aero retune | fs=1 tip: absorb→curve; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 | ET-first tip: fs=1; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | ET-first tip: fs=1; Excel wt 6800 locked; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | Beast curve-respan tip: RPM×(15.02/7.8) TQ÷span; OEM FD 15.02 kept; loss/tire/launch; C&D 2.6 / 11.0@119 / lim 130",
+    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200 | CT tip: C&D Beast 2.6 / 11.0@119 / 130gov; launch+curve taper+aero retune | fs=1 tip: absorb→curve; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 | ET-first tip: fs=1; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | ET-first tip: fs=1; Excel wt 6800 locked; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | Beast curve-respan tip: RPM×(15.02/7.8) TQ÷span; OEM FD 15.02 kept; loss/tire/launch; C&D 2.6 / 11.0@119 / lim 130 | Beast trap-119 tip: Cd→0.34 (pub) + Summer; OEM FD 15.02 / fs=1 kept; C&D 2.6 / 11.0@119 / lim 130",
     "torqueCurve": {
       "500": 755.2773,
       "600": 755.2773,
