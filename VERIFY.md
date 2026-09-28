@@ -1,3 +1,16 @@
+# BUILD TIP — Real-TX Phase 7 blank-unsure (Jorge rule via Seraph)
+
+Branch: `review/real-tx-phase7-blank-unsure` · Base `f0e07ed` (Phase 7 OEM boxes). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Jorge rule: if OEM transmission identity is **not** known exactly → **blank** the factory TX display name (no speculative Tremec/ZF/Aisin labels).
+- Gear ratios + final drive **retained** on the car (`gearRatios` / `finalDriveRatio`); `txKey` kept for ratio provenance only.
+- UI: `txFactoryLabel: ''` → blank `#txFactoryLabel` + hide preset key chip; named OEM still uses `FactoryTransmissions[txKey].name`.
+- Counts: **75 blanked** · **258 named OEM kept** · forceScale=1 · no Cd/wt/curve · no knobs recalib (name-only).
+- Full write-up: `/workspace/powercurve-tip-phase7-blank-unsure-VERIFY.md`
+
+---
+
 # BUILD TIP — Gauge Start/Pause/Stop + SPIN lamp (Jorge via Seraph)
 
 Branch: `review/gauge-run-controls` · Base `8e3adff` (origin/main, shift-coast). **No Merovingian / no live Pages.** Seraph gates later.

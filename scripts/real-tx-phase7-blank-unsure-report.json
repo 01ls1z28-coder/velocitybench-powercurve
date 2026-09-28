@@ -1,0 +1,1137 @@
+{
+  "tip": "real-tx-phase7-blank-unsure",
+  "blankRequested": 74,
+  "blankAppliedRows": 75,
+  "blankUniqueNames": 74,
+  "missingBlankRequests": [],
+  "fleetBlankLabels": 75,
+  "fleetNamedLabels": 258,
+  "fleetTotal": 333,
+  "forceScaleAll1": true,
+  "blanked": [
+    {
+      "gi": 111,
+      "name": "2012 Audi R8 V10",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 114,
+      "name": "2007 Porsche 911 Turbo",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 115,
+      "name": "2008 Aston Martin DBS",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 122,
+      "name": "2002 Porsche 911 Turbo (996)",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 126,
+      "name": "2015 Aston Martin V12 Vantage S",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 131,
+      "name": "2015 Koenigsegg One:1",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 132,
+      "name": "2019 Koenigsegg Jesko",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 135,
+      "name": "2011 Koenigsegg Agera R",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 137,
+      "name": "2010 Pagani Zonda R",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 138,
+      "name": "2004 Maserati MC12",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 139,
+      "name": "2010 Gumpert Apollo Sport",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 140,
+      "name": "2014 Hennessey Venom GT",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 141,
+      "name": "2018 Zenvo TSR-S",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 143,
+      "name": "2012 Pagani Huayra",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 147,
+      "name": "2017 Pagani Huayra BC",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 150,
+      "name": "2014 Koenigsegg Agera S",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 152,
+      "name": "2019 Pagani Huayra Roadster BC",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 164,
+      "name": "1999 Subaru Impreza 22B STI",
+      "txKey": "Subaru_6MT",
+      "nG": 6,
+      "fd": 3.9,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9
+      }
+    },
+    {
+      "gi": 167,
+      "name": "1995 Nissan Silvia S14",
+      "txKey": "Nissan_FS5W71_5",
+      "nG": 5,
+      "fd": 4.083,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083
+      }
+    },
+    {
+      "gi": 168,
+      "name": "1991 Nissan 240SX (S13)",
+      "txKey": "Nissan_FS5W71_5",
+      "nG": 5,
+      "fd": 4.083,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083
+      }
+    },
+    {
+      "gi": 169,
+      "name": "1998 Honda Prelude Type SH",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.266,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266
+      }
+    },
+    {
+      "gi": 170,
+      "name": "2003 Acura RSX Type-S",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.388,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.388
+      }
+    },
+    {
+      "gi": 171,
+      "name": "2007 MazdaSpeed3",
+      "txKey": "Mazda_6MT",
+      "nG": 6,
+      "fd": 4.187,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 4.187
+      }
+    },
+    {
+      "gi": 174,
+      "name": "1997 Honda Civic Type R EK9",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.4,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.4
+      }
+    },
+    {
+      "gi": 175,
+      "name": "2002 Subaru WRX Wagon",
+      "txKey": "Subaru_6MT",
+      "nG": 6,
+      "fd": 3.9,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9
+      }
+    },
+    {
+      "gi": 176,
+      "name": "2005 Mitsubishi Eclipse GT",
+      "txKey": "Mitsubishi_5MT",
+      "nG": 5,
+      "fd": 3.727,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727
+      }
+    },
+    {
+      "gi": 177,
+      "name": "2012 Scion tC",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 178,
+      "name": "1992 Nissan Pulsar GTI-R",
+      "txKey": "Nissan_FS5W71_5",
+      "nG": 5,
+      "fd": 4.111,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.111
+      }
+    },
+    {
+      "gi": 179,
+      "name": "1998 Toyota Celica GT-Four",
+      "txKey": "Toyota_W58_5",
+      "nG": 5,
+      "fd": 4.285,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 4.285
+      }
+    },
+    {
+      "gi": 180,
+      "name": "2001 Mitsubishi Eclipse GSX",
+      "txKey": "Mitsubishi_5MT",
+      "nG": 5,
+      "fd": 3.727,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727
+      }
+    },
+    {
+      "gi": 181,
+      "name": "2006 Honda Accord Euro R",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.388,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.388
+      }
+    },
+    {
+      "gi": 183,
+      "name": "1991 Toyota Soarer GT-T",
+      "txKey": "Toyota_W58_5",
+      "nG": 5,
+      "fd": 3.727,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 3.727
+      }
+    },
+    {
+      "gi": 184,
+      "name": "1994 Nissan 180SX Type X",
+      "txKey": "Nissan_FS5W71_5",
+      "nG": 5,
+      "fd": 4.083,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083
+      }
+    },
+    {
+      "gi": 185,
+      "name": "1999 Honda Prelude SH",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.266,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266
+      }
+    },
+    {
+      "gi": 186,
+      "name": "2008 Subaru Legacy GT Spec.B",
+      "txKey": "Subaru_6MT",
+      "nG": 6,
+      "fd": 3.9,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9
+      }
+    },
+    {
+      "gi": 187,
+      "name": "2011 MazdaSpeed6",
+      "txKey": "Mazda_6MT",
+      "nG": 6,
+      "fd": 3.941,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 3.941
+      }
+    },
+    {
+      "gi": 204,
+      "name": "2019 Ford F-250 6.7 PowerStroke",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 205,
+      "name": "2021 Toyota Tundra",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 208,
+      "name": "2016 Ram 1500 5.7 Hemi",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 209,
+      "name": "2014 Toyota Tacoma V6",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 211,
+      "name": "2013 Ram 1500 5.7 Hemi",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 213,
+      "name": "2010 Toyota Tundra 5.7",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 214,
+      "name": "2008 Ford F-150 Harley-Davidson",
+      "txKey": "Ford_6R80",
+      "nG": 6,
+      "fd": 3.73,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.73
+      }
+    },
+    {
+      "gi": 216,
+      "name": "2010 Nissan Titan 5.6",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 217,
+      "name": "2013 Toyota Sequoia 5.7",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 218,
+      "name": "2007 Ford F-150 4.6 Triton",
+      "txKey": "Ford_6R80",
+      "nG": 6,
+      "fd": 3.73,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.73
+      }
+    },
+    {
+      "gi": 220,
+      "name": "2011 Toyota Tacoma 4.0 V6",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 221,
+      "name": "2015 Nissan Frontier 4.0",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 222,
+      "name": "2005 Ford F-250 V10",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 224,
+      "name": "2007 Toyota Tundra 4.7",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 225,
+      "name": "2012 Nissan Titan Pro-4X",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 245,
+      "name": "1960 Ford Galaxie 352",
+      "txKey": "Ford_C6",
+      "nG": 3,
+      "fd": 3,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "Ford_C6",
+        "nG": 3,
+        "fd": 3
+      }
+    },
+    {
+      "gi": 248,
+      "name": "1955 Ford Thunderbird",
+      "txKey": "Ford_C4",
+      "nG": 3,
+      "fd": 3.1,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "Ford_C4",
+        "nG": 3,
+        "fd": 3.1
+      }
+    },
+    {
+      "gi": 268,
+      "name": "2013 Ford Expedition 5.4",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 269,
+      "name": "2014 Jeep Wrangler Rubicon",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 270,
+      "name": "2009 Toyota 4Runner V8",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 272,
+      "name": "2011 Jeep Liberty 3.7",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 273,
+      "name": "2008 Toyota Highlander V6",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 274,
+      "name": "2009 Honda Pilot",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 275,
+      "name": "2010 Jeep Commander 5.7",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 279,
+      "name": "1990 Nissan 300ZX NA",
+      "txKey": "Nissan_FS5W71_5",
+      "nG": 5,
+      "fd": 4.083,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083
+      }
+    },
+    {
+      "gi": 283,
+      "name": "2008 Audi S5",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 286,
+      "name": "1995 Mitsubishi Eclipse GSX",
+      "txKey": "Mitsubishi_5MT",
+      "nG": 5,
+      "fd": 3.727,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727
+      }
+    },
+    {
+      "gi": 288,
+      "name": "1993 Honda Accord SiR",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.266,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266
+      }
+    },
+    {
+      "gi": 289,
+      "name": "1997 Toyota Chaser Tourer V",
+      "txKey": "Toyota_W58_5",
+      "nG": 5,
+      "fd": 3.727,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 3.727
+      }
+    },
+    {
+      "gi": 292,
+      "name": "1996 Honda Integra SiR",
+      "txKey": "Honda_5MT",
+      "nG": 5,
+      "fd": 4.4,
+      "transmission": "Manual",
+      "before": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.4
+      }
+    },
+    {
+      "gi": 298,
+      "name": "2012 BMW M5",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 303,
+      "name": "2008 Audi S5",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 305,
+      "name": "2009 Mercedes CLS550",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 306,
+      "name": "2011 Audi A7 3.0T",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 308,
+      "name": "2006 Mercedes CLK55 AMG",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 309,
+      "name": "2007 Audi S6 V10",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 311,
+      "name": "2005 Mercedes E55 AMG",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 322,
+      "name": "2023 Ford Bronco Raptor",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    },
+    {
+      "gi": 328,
+      "name": "2023 Acura TLX Type S",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "transmission": "Auto",
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15
+      }
+    }
+  ],
+  "keepNamedSpots": [
+    {
+      "name": "2004 Pontiac GTO",
+      "txKey": "Tremec_T56",
+      "nG": 6,
+      "fd": 3.46,
+      "blanked": false
+    },
+    {
+      "name": "2003 Ford Mustang Cobra (Terminator)",
+      "txKey": "Tremec_T56",
+      "nG": 6,
+      "fd": 3.55,
+      "blanked": false
+    },
+    {
+      "name": "2012 Chevrolet Camaro ZL1",
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73,
+      "blanked": false
+    },
+    {
+      "name": "2014 Chevrolet Camaro Z/28",
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73,
+      "blanked": false
+    },
+    {
+      "name": "2013 SRT Viper GTS",
+      "txKey": "TR6060_6",
+      "nG": 6,
+      "fd": 3.73,
+      "blanked": false
+    },
+    {
+      "name": "1984 Chevrolet Corvette C4",
+      "txKey": "GM_700R4",
+      "nG": 4,
+      "fd": 3.07,
+      "blanked": false
+    },
+    {
+      "name": "1985 Chevrolet Camaro IROC-Z",
+      "txKey": "GM_700R4",
+      "nG": 4,
+      "fd": 3.23,
+      "blanked": false
+    },
+    {
+      "name": "1996 Chevrolet Impala SS",
+      "txKey": "GM_4L60E",
+      "nG": 4,
+      "fd": 3.08,
+      "blanked": false
+    },
+    {
+      "name": "2011 Ford Mustang GT 5.0",
+      "txKey": "Getrag_MT82",
+      "nG": 6,
+      "fd": 3.31,
+      "blanked": false
+    },
+    {
+      "name": "1993 Chevrolet Camaro Z28",
+      "txKey": "Tremec_T56",
+      "nG": 6,
+      "fd": 3.23,
+      "blanked": false
+    },
+    {
+      "name": "2002 Chevrolet Camaro SS",
+      "txKey": "Tremec_T56",
+      "nG": 6,
+      "fd": 3.42,
+      "blanked": false
+    },
+    {
+      "name": "2016 Ford Mustang GT350R",
+      "txKey": "Tremec_TR3160",
+      "nG": 6,
+      "fd": 3.73,
+      "blanked": false
+    },
+    {
+      "name": "2018 Honda Civic Type R",
+      "txKey": "Honda_CTR_6",
+      "nG": 6,
+      "fd": 4.111,
+      "blanked": false
+    },
+    {
+      "name": "2005 Nissan 350Z",
+      "txKey": "Nissan_FS6R31A",
+      "nG": 6,
+      "fd": 3.538,
+      "blanked": false
+    },
+    {
+      "name": "2003 BMW M3 E46",
+      "txKey": "BMW_Getrag_6",
+      "nG": 6,
+      "fd": 3.62,
+      "blanked": false
+    },
+    {
+      "name": "2004 Porsche Carrera GT",
+      "txKey": "Porsche_CGT_6",
+      "nG": 6,
+      "fd": 4.44,
+      "blanked": false
+    },
+    {
+      "name": "2020 Subaru WRX STI",
+      "txKey": "Subaru_6MT",
+      "nG": 6,
+      "fd": 3.9,
+      "blanked": false
+    },
+    {
+      "name": "2003 Mitsubishi Lancer Evolution VIII",
+      "txKey": "Mitsubishi_5MT",
+      "nG": 5,
+      "fd": 4.529,
+      "blanked": false
+    },
+    {
+      "name": "2020 Dodge Challenger Hellcat",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 2.62,
+      "blanked": false
+    },
+    {
+      "name": "2021 BMW M5 Competition",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "blanked": false
+    },
+    {
+      "name": "2023 Toyota GR Supra 3.0",
+      "txKey": "ZF8HP",
+      "nG": 8,
+      "fd": 3.15,
+      "blanked": false
+    }
+  ]
+}

@@ -463,6 +463,8 @@ body {
   overflow-wrap: anywhere;
 }
 .tx-factory-label.is-unknown { color: var(--text-muted); font-weight: 500; }
+/* Jorge blank-unsure: empty label still reserves a row so layout does not jump */
+.tx-factory-label.is-unknown:empty::before { content: '—'; opacity: 0.55; }
 .tx-factory-key {
   margin-top: 2px;
   font-family: var(--mono);

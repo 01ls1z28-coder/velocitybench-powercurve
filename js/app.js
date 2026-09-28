@@ -154,9 +154,20 @@
     return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
   }
 
-  /** Human label for a car's baked factory TX (txKey → FactoryTransmissions.name). */
+  /**
+   * Human label for a car's baked factory TX.
+   * Jorge rule: if OEM box identity is unsure, car.txFactoryLabel === '' → blank
+   * (do not guess Tremec/ZF/Aisin names). Ratios/FD stay on the car object.
+   * When txFactoryLabel is undefined, fall back to FactoryTransmissions[txKey].name.
+   */
   function resolveTxDisplayName(car) {
-    if (!car || !car.txKey) return null;
+    if (!car) return null;
+    if (Object.prototype.hasOwnProperty.call(car, 'txFactoryLabel')) {
+      var forced = car.txFactoryLabel;
+      if (forced == null || forced === '') return null; // blank / hide
+      return String(forced);
+    }
+    if (!car.txKey) return null;
     var tx = Phys.FactoryTransmissions[car.txKey];
     if (!tx) return null;
     return tx.name || car.txKey;
@@ -177,6 +188,8 @@
       return;
     }
     var name = resolveTxDisplayName(car);
+    var blankForced = !!(car && Object.prototype.hasOwnProperty.call(car, 'txFactoryLabel') &&
+      (car.txFactoryLabel == null || car.txFactoryLabel === ''));
     if (name) {
       label.textContent = name;
       label.classList.remove('is-unknown');
@@ -184,6 +197,11 @@
         keyEl.hidden = false;
         keyEl.textContent = 'preset · ' + car.txKey;
       }
+    } else if (blankForced) {
+      // Jorge rule: unsure OEM identity → blank label (no guessed Tremec/ZF/Aisin name)
+      label.textContent = '';
+      label.classList.add('is-unknown');
+      if (keyEl) { keyEl.hidden = true; keyEl.textContent = ''; }
     } else {
       label.textContent = 'Custom / unknown gears';
       label.classList.add('is-unknown');
@@ -670,6 +688,8 @@
       flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
       forceScale: 1, // retired calib knob — physics ignores; garage bakes 1.0
       txKey: base.txKey || undefined, // keep baked factory TX key so gear-editor label survives RUN
+      // Preserve Jorge blank-name flag ('' = hide guessed OEM label; ratios/FD stay on car)
+      txFactoryLabel: Object.prototype.hasOwnProperty.call(base, 'txFactoryLabel') ? base.txFactoryLabel : undefined,
       tireType: parseInt($('tireType').value, 10) || 0,
       engineLayout: (ind === 'ev' && (base.driveType === 'AWD' || $('driveType').value === 'AWD'))
         ? (base.engineLayout === 'Mid' ? 'Mid' : 'Dual')

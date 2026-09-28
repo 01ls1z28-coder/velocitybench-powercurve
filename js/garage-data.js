@@ -1,17 +1,11 @@
 /**
- * VelocityBench PowerCurve — baked garage (Phase 6 EV + Hybrid powerSource).
+ * VelocityBench PowerCurve — baked garage (Phase 7 blank-unsure Jorge rule).
  * Motorcycle tip: published-leaning redline/shift/gears/powerband (Bike_Sport_6 / Bike_Hyper_6).
- * EV tip: speedLimiterMph = published electronic top-speed limiter (mph) for all garage EVs.
- * Specs: Cd/area/loss/tire/drive/FI/EV/Hybrid/TX from VB where matched; gears/curves synthesized
- * or curated; loss+launch+tire calibrated ET-first toward Excel (forceScale = 1.0 always).
- * Excel source: /workspace/powercurve-garage-import.json
- * ZR1X: published Cd 0.36 / wt 3978 locked — never search Cd/weight.
- * Tip: real-tx-phase7-oem-boxes — T56 vs TR-6060, TH350/700R4 vs 4L60-E, Ford MT82/TR3650/TR3160,
- *   JDM/Euro OEM manuals off TR6060 filler; knobs loss/tire/launch only after gear/FD; no Cd/wt/curve.
- * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-real-tx-phase7-oem-boxes.js
+ * EV tip: speedLimiterMph + EV_Single / Tesla / Taycan / KDD presets.
+ * Real-TX Phase 7: OEM boxes; blank-unsure: txFactoryLabel:'' when OEM name unknown.
+ * Do not edit by hand — regenerate via scripts/blank-unsure-tx-names.js / recalib tips.
  */
 'use strict';
-
 var GARAGE = [
   {
     "id": "2020-ford-mustang-gt",
@@ -14916,7 +14910,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2001-lamborghini-diablo-vt-6-0",
@@ -15257,7 +15252,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-aston-martin-dbs",
@@ -15371,7 +15367,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2011-mercedes-sls-amg",
@@ -16167,7 +16164,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2006-ferrari-612-scaglietti",
@@ -16622,7 +16620,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2019-bugatti-chiron",
@@ -17230,7 +17229,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2019-koenigsegg-jesko",
@@ -17336,7 +17336,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2013-bugatti-veyron-super-sport",
@@ -17652,7 +17653,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2006-saleen-s7-twin-turbo",
@@ -17870,7 +17872,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2004-maserati-mc12",
@@ -17984,7 +17987,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2010-gumpert-apollo-sport",
@@ -18094,7 +18098,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2014-hennessey-venom-gt",
@@ -18200,7 +18205,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2018-zenvo-tsr-s",
@@ -18306,7 +18312,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-koenigsegg-ccx",
@@ -18516,7 +18523,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2017-bugatti-chiron-sport",
@@ -18933,7 +18941,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2018-bugatti-divo",
@@ -19249,7 +19258,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2016-bugatti-chiron",
@@ -19460,7 +19470,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2021-mclaren-sabre",
@@ -20751,7 +20762,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2001-honda-s2000",
@@ -21086,7 +21098,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1991-nissan-240sx-s13",
@@ -21193,7 +21206,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1998-honda-prelude-type-sh",
@@ -21312,7 +21326,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2003-acura-rsx-type-s",
@@ -21419,7 +21434,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2007-mazdaspeed3",
@@ -21527,7 +21543,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2013-scion-fr-s",
@@ -21861,7 +21878,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2002-subaru-wrx-wagon",
@@ -21969,7 +21987,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2005-mitsubishi-eclipse-gt",
@@ -22076,7 +22095,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2012-scion-tc",
@@ -22186,7 +22206,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1992-nissan-pulsar-gti-r",
@@ -22293,7 +22314,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1998-toyota-celica-gt-four",
@@ -22400,7 +22422,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2001-mitsubishi-eclipse-gsx",
@@ -22507,7 +22530,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2006-honda-accord-euro-r",
@@ -22626,7 +22650,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2010-hyundai-genesis-coupe-3-8",
@@ -22841,7 +22866,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1994-nissan-180sx-type-x",
@@ -22948,7 +22974,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1999-honda-prelude-sh",
@@ -23067,7 +23094,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-subaru-legacy-gt-spec-b",
@@ -23175,7 +23203,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2011-mazdaspeed6",
@@ -23283,7 +23312,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2021-kawasaki-ninja-zx-10r",
@@ -25938,7 +25968,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2021-toyota-tundra",
@@ -26048,7 +26079,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2018-ford-f-150-5-0",
@@ -26378,7 +26410,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2014-toyota-tacoma-v6",
@@ -26488,7 +26521,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2012-ford-f-150-ecoboost",
@@ -26706,7 +26740,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2011-chevrolet-avalanche-5-3",
@@ -26924,7 +26959,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-ford-f-150-harley-davidson",
@@ -27032,7 +27068,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2009-gmc-sierra-denali-6-2",
@@ -27250,7 +27287,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2013-toyota-sequoia-5-7",
@@ -27360,7 +27398,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2007-ford-f-150-4-6-triton",
@@ -27468,7 +27507,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-chevrolet-silverado-6-0-vortec-max",
@@ -27686,7 +27726,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2015-nissan-frontier-4-0",
@@ -27796,7 +27837,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2005-ford-f-250-v10",
@@ -27906,7 +27948,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2006-chevrolet-silverado-2500hd-6-0",
@@ -28124,7 +28167,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2012-nissan-titan-pro-4x",
@@ -28234,7 +28278,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1969-dodge-charger-440",
@@ -30177,7 +30222,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1974-pontiac-firebird-400",
@@ -30462,7 +30508,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1961-chevrolet-corvette-283",
@@ -32614,7 +32661,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2014-jeep-wrangler-rubicon",
@@ -32724,7 +32772,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2009-toyota-4runner-v8",
@@ -32834,7 +32883,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2010-chevrolet-suburban-5-3",
@@ -33052,7 +33102,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-toyota-highlander-v6",
@@ -33162,7 +33213,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2009-honda-pilot",
@@ -33284,7 +33336,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2010-jeep-commander-5-7",
@@ -33394,7 +33447,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1994-toyota-supra-twin-turbo",
@@ -33826,7 +33880,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1989-toyota-mr2-supercharged",
@@ -34260,7 +34315,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1986-toyota-corolla-ae86",
@@ -34587,7 +34643,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1985-mazda-rx-7-gsl-se",
@@ -34825,7 +34882,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1997-toyota-chaser-tourer-v",
@@ -34932,7 +34990,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "1983-toyota-supra-mk2",
@@ -35265,7 +35324,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2018-mercedes-amg-gt-r",
@@ -35932,7 +35992,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2013-audi-rs4-avant",
@@ -36477,7 +36538,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2007-bmw-550i",
@@ -36695,7 +36757,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2011-audi-a7-3-0t",
@@ -36805,7 +36868,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2004-bmw-330ci-zhp",
@@ -37023,7 +37087,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2007-audi-s6-v10",
@@ -37133,7 +37198,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2003-bmw-m3-e46",
@@ -37351,7 +37417,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "supercharger",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2008-audi-rs4",
@@ -38574,7 +38641,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2024-toyota-gr86",
@@ -39230,7 +39298,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": ""
   },
   {
     "id": "2024-lexus-is-500",
@@ -39684,11 +39753,9 @@ var GARAGE = [
     "isHybrid": false
   }
 ];
-
 if (typeof module !== "undefined" && module.exports) {
   module.exports = GARAGE;
-}
-if (typeof window !== "undefined") {
+} else if (typeof window !== "undefined") {
   window.VB_POWERCURVE_GARAGE = GARAGE;
 } else if (typeof globalThis !== "undefined") {
   globalThis.VB_POWERCURVE_GARAGE = GARAGE;
