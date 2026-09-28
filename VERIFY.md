@@ -1,3 +1,15 @@
+# BUILD TIP — ATC converter flash + mph-gated trap multiply (Sati)
+
+Branch: `review/jorge-z28-converter-trap` · Base `a7e6d83` (ATC post-upshift climb). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **ATC-only** — raise high-stall flash (Circle D 4400 → ~6400 default) + mph-gated unlock multiply for trap/high-speed; keep mild parent unlock so **60′ / 0–60 flat** vs parent.
+- Std slick: ET ~11.66→~11.56 @ trap ~115.5→~119.4; flash peak ~4437→~5507; 60′/0–60 unchanged (1.690 / 3.294).
+- 1500 DA: tip trap **118.18** (118+). Drops still ~1200±300; soft climb present; Mustang 10R80 identical; forceScale=1; no bake cheats.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-converter-trap-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC post-upshift converter climb (Sati)
 
 Branch: `review/jorge-z28-converter-climb` · Base `1b0b695` (ATC unlock hang). **No Merovingian / no live Pages.**

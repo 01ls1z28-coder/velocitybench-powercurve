@@ -757,14 +757,18 @@
           /**
            * Aftermarket stall converter (realistic-lite):
            * - Stall RPM = engine speed against a stalled/near-stalled turbine (brake launch).
-           * - Flash RPM = brief free-rev peak as the converter unloads off the line.
+           * - Flash RPM = brief free-rev peak as the converter unloads off the line
+           *   (high-stall default scales well above stall — Circle D 4400 → ~6400).
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
            * - Post-upshift ONLY: unlock/slip hang with soft climb so tach does not
-           *   dump to locked gear-ratio mechRpm or freeze flat. Launch flash/stall/
-           *   mph-lockup above is unchanged whenever tcPostShiftHangRpm is inactive.
+           *   dump to locked gear-ratio mechRpm or freeze flat; mph-gated extra
+           *   multiply under hang boosts trap/high-speed while keeping early accel.
            */
           var stall = Number(car.stallRpm) || 2800;
-          var flash = Number(car.flashRpm) || Math.max(stall + 400, 3500);
+          // High-stall ATC flash ceiling scales with stall (Circle D 4400 → ~6400).
+          // Explicit car.flashRpm still wins; stock/non-ATC path never enters here.
+          var stallFacFlash = Math.max(0, Math.min(1, (stall - 2200) / 2800));
+          var flash = Number(car.flashRpm) || Math.max(stall + Math.round(400 + stallFacFlash * 2000), 3500);
           if (flash < stall) flash = stall;
           if (tcPostShiftHangRpm > 0) {
             // Inter-shift open-converter climb: seed floor keeps ~1200 drop, then soft
@@ -790,9 +794,9 @@
             var lockup = clamp(mphNow / 50.0, 0, 1);
             // Flash pulse: peaks in first ~0.20 s while still very slow
             var flashPulse = 0;
-            if (t < 0.35 && mphNow < 18) {
-              // Longer flash window so Flash RPM is audible in 60ft / 0-60
-              flashPulse = Math.sin((Math.min(t, 0.35) / 0.35) * Math.PI);
+            if (t < 0.55 && mphNow < 28) {
+              // High-stall ATC: wider flash window so Circle-D-class flash is visible on tach
+              flashPulse = Math.sin((Math.min(t, 0.55) / 0.55) * Math.PI);
             }
             var target = stall + (flash - stall) * flashPulse;
             // Blend toward mechanical RPM as converter couples / locks
@@ -891,10 +895,13 @@
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
         if (tcPostShiftHangRpm > 0) {
-          // Post-upshift unlock residual: converter open → small multiply from slip
-          // even after mph fade (launch path unchanged when hang inactive).
-          var unlockAdd = Math.min(0.055, slipR * 0.22);
-          tMult = 1.0 + Math.min(0.07, (tMult - 1.0) + unlockAdd);
+          // Mild parent unlock (preserves 60ft / 0-60) + mph-gated extra multiply
+          // while unlocked so trap / high-speed climb without early bake cheats.
+          var baseAdd = Math.min(0.055, slipR * 0.22);
+          var speedGate = clamp((mph - 62.0) / 40.0, 0, 1);
+          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate;
+          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate;
+          tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
         }
         whTQ *= tMult;
       }
