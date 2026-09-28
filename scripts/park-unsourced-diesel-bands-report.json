@@ -1,0 +1,91 @@
+{
+  "tip": "garage-park-unsourced-diesel-bands",
+  "elapsedMs": 5966,
+  "parkedNames": [
+    "2015 Koenigsegg One:1",
+    "2011 Koenigsegg Agera R",
+    "2014 Koenigsegg Agera S",
+    "2010 Pagani Zonda R",
+    "2012 Pagani Huayra",
+    "2017 Pagani Huayra BC",
+    "2019 Pagani Huayra Roadster BC",
+    "2010 Gumpert Apollo Sport",
+    "2018 Zenvo TSR-S",
+    "1995 Nissan Silvia S14",
+    "1991 Nissan 240SX (S13)",
+    "1994 Nissan 180SX Type X",
+    "1992 Nissan Pulsar GTI-R",
+    "1990 Nissan 300ZX NA",
+    "1998 Toyota Celica GT-Four",
+    "1991 Toyota Soarer GT-T",
+    "1997 Toyota Chaser Tourer V"
+  ],
+  "parkedN": 17,
+  "publicN": 316,
+  "dieselReport": [
+    {
+      "name": "2019 Ford F-250 6.7 PowerStroke",
+      "action": "RESHAPE",
+      "note": "OEM SAE 450hp@2800 / 935lb-ft@1800; redline ~4000 class (was gas-like 6800/6120)",
+      "before": {
+        "redline": 6800,
+        "shiftRpm": 6324,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "peakHp": 450,
+        "launchRpm": 2400,
+        "loss": 9,
+        "tireType": 0,
+        "forceScale": 1,
+        "curvePeak": {
+          "peakTq": 432.51764705882357,
+          "peakTqRpm": 3740,
+          "peakHp": 450,
+          "peakHpRpm": 6120
+        }
+      },
+      "after": {
+        "redline": 4000,
+        "shiftRpm": 3600,
+        "peakTqRpm": 1800,
+        "peakHpRpm": 2800,
+        "peakHp": 450,
+        "launchRpm": 1600,
+        "loss": 16,
+        "tireType": 0,
+        "forceScale": 1,
+        "curvePeak": {
+          "peakTq": 945.3600000000001,
+          "peakTqRpm": 1800,
+          "peakHp": 462.09375,
+          "peakHpRpm": 3100
+        }
+      },
+      "tgt": {
+        "z60": 7.2,
+        "et": 15.6,
+        "trap": 89
+      },
+      "sim": {
+        "et": 15.42599999999689,
+        "trap": 86.51648711192097,
+        "z60": 7.0820000000007,
+        "z60130": null,
+        "ft60": 2.2109999999998675,
+        "vmax": 121.19768538457656
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "knobs": {
+        "loss": 16,
+        "tireType": 0,
+        "launchRpm": 1600
+      }
+    }
+  ],
+  "fsBad": 0
+}

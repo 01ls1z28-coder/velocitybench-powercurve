@@ -10,7 +10,7 @@
     return;
   }
 
-  // Phase 4: fleet from js/garage-data.js (333 cars) + Custom Builder.
+  // Phase 4: fleet from js/garage-data.js (316 public cars; unsourced parked) + Custom Builder.
   // Curated torque curves / gearing baked in where available; rest synthesized.
   var CUSTOM_BUILDER = {
     id: 'custom',
