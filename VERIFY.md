@@ -1,3 +1,18 @@
+# BUILD TIP — Real-TX Phase 7b honest ratios/FD (Jorge via Seraph)
+
+Branch: `review/real-tx-phase7-honest-ratios` · Base `c60684d` (Phase 7 blank-unsure). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Jorge rule extended: blank unsure TX **names** (kept) **and** no fake **ratios/FD** — period OEM or best-sourced stock only.
+- **58** blanked/wrong-family rows: sourced `gearRatios` + `finalDriveRatio`; blank `txFactoryLabel` retained.
+- **17 flagged unsourced** (Pagani/Agera/One:1/Zenvo/Gumpert + contested S-chassis/W58) — prior gears left; **do not invent**.
+- Knobs-only after gear/FD: loss / launchRpm / tireType; forceScale=1; no Cd/wt/curve.
+- Hit-rate: BEFORE et 299/331 trap 284/331 z60 255/332 60-130 69/76 all4 211 → AFTER et 301/331 trap 277/331 z60 252/332 60-130 69/76 all4 208 (trap dip expected; honesty > inventing).
+- TR6060 leftovers OEM: ZL1 / Z/28 / Viper. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-phase7-honest-ratios-VERIFY.md`
+
+---
+
 # BUILD TIP — Real-TX Phase 7 blank-unsure (Jorge rule via Seraph)
 
 Branch: `review/real-tx-phase7-blank-unsure` · Base `f0e07ed` (Phase 7 OEM boxes). **No Merovingian / no live Pages.**
