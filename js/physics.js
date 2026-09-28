@@ -149,7 +149,7 @@
 
     // Manual / MT-like (explicit label, or bare txKey on empty transmission)
     if (/^manual\b|stick|h-?pattern|\bmt\b/.test(tx)) return 'manual';
-    if (!tx && /^(tr6060|mt82|muncie|toploader|a833|t5_|karkraft|toyota_t50|toyota_w58|mazda_5|nissan_fs5w71|mazda_miata|honda_s2000|toyota_fa86|getrag_r34|aisin_6)/i.test(key)) {
+    if (!tx && /^(tr6060|tremec_t56|tremec_tr3650|tremec_t45|tremec_tr3160|mt82|getrag_mt82|muncie|toploader|a833|t5_|karkraft|toyota_t50|toyota_w58|toyota_it6|mazda_5|mazda_6mt|nissan_fs5w71|nissan_fs6r31a|nissan_z_6|mazda_miata|honda_s2000|honda_ctr|honda_nsx|honda_5mt|toyota_fa86|getrag_r34|getrag_420g|bmw_getrag|aisin_6|aisin_ay6|subaru_6mt|mitsubishi_|porsche_cgt|ford_ricardo|lambo_manual|aston_graziano|cima_6|saleen_ricardo|hyundai_6mt)/i.test(key)) {
       return 'manual';
     }
 
@@ -160,7 +160,7 @@
     }
 
     // Automatic / AT / ZF / MCT / torque-converter
-    if (/auto|automatic|\bat\b|zf|mct|torque\s*converter|converter|10r80|10l90|4l60|6l80|nag1|th400|200-?4r|2004r/.test(blob)) {
+    if (/auto|automatic|\bat\b|zf|mct|torque\s*converter|converter|10r80|10l90|4l60|700r4|6l80|6r80|nag1|th400|th350|200-?4r|2004r|a340|chrysler_727|ford_c[46]|cruise/.test(blob)) {
       return 'automatic';
     }
 
@@ -230,7 +230,40 @@
     Chrysler_NAG1_5: { name: 'Chrysler NAG1/W5A580 5-spd Auto', gears: [3.59, 2.19, 1.41, 1.00, 0.83], finalDrive: 3.06, loss: 15 },
     Mazda_Miata_5: { name: 'Mazda Miata NA 5-spd', gears: [3.136, 1.888, 1.330, 1.000, 0.814], finalDrive: 4.30, loss: 13 },
     Honda_S2000_6: { name: 'Honda S2000 6-spd (AP1)', gears: [3.133, 2.045, 1.481, 1.161, 0.970, 0.810], finalDrive: 4.756, loss: 12 },
-    Toyota_FA86_6: { name: 'Toyota/Subaru FA86 6-spd', gears: [3.626, 2.188, 1.541, 1.213, 1.000, 0.767], finalDrive: 4.10, loss: 12 }
+    Toyota_FA86_6: { name: 'Toyota/Subaru FA86 6-spd', gears: [3.626, 2.188, 1.541, 1.213, 1.000, 0.767], finalDrive: 4.10, loss: 12 },
+    // Phase 7 OEM boxes — T56 vs TR-6060, classic GM autos, Ford MT era, JDM/Euro manuals
+    Tremec_T56: { name: 'Tremec T56 6-spd', gears: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50], finalDrive: 3.42, loss: 12 },
+    GM_TH350: { name: 'GM TH350 3-spd', gears: [2.52, 1.52, 1.00], finalDrive: 3.42, loss: 18 },
+    GM_700R4: { name: 'GM 700R4 4-spd Auto', gears: [3.06, 1.63, 1.00, 0.70], finalDrive: 3.42, loss: 16 },
+    Tremec_TR3650: { name: 'Tremec TR-3650 5-spd', gears: [3.38, 2.00, 1.32, 1.00, 0.68], finalDrive: 3.55, loss: 13 },
+    Tremec_T45: { name: 'Tremec T45 5-spd', gears: [3.37, 1.99, 1.33, 1.00, 0.67], finalDrive: 3.27, loss: 13 },
+    Tremec_TR3160: { name: 'Tremec TR-3160 6-spd', gears: [3.25, 2.23, 1.61, 1.24, 1.00, 0.63], finalDrive: 3.73, loss: 12 },
+    Aisin_AY6: { name: 'Aisin AY6 6-spd (Camaro V6)', gears: [4.48, 2.58, 1.63, 1.19, 1.00, 0.75], finalDrive: 3.27, loss: 12 },
+    Honda_CTR_6: { name: 'Honda Civic Type R 6-spd', gears: [3.625, 2.115, 1.529, 1.125, 0.911, 0.735], finalDrive: 4.111, loss: 12 },
+    Honda_NSX_5: { name: 'Honda NSX 5-spd', gears: [3.071, 1.727, 1.230, 0.967, 0.771], finalDrive: 4.062, loss: 12 },
+    Honda_5MT: { name: 'Honda 5-spd (Prelude/Integra era)', gears: [3.230, 1.900, 1.250, 0.909, 0.702], finalDrive: 4.40, loss: 13 },
+    Subaru_6MT: { name: 'Subaru 6MT (STI)', gears: [3.636, 2.235, 1.521, 1.137, 0.971, 0.756], finalDrive: 3.90, loss: 14 },
+    Mitsubishi_5MT: { name: 'Mitsubishi 5MT (Evo VIII)', gears: [2.928, 1.950, 1.407, 1.031, 0.720], finalDrive: 4.529, loss: 14 },
+    Mitsubishi_6MT: { name: 'Mitsubishi 6MT (Evo X)', gears: [2.909, 1.944, 1.434, 1.100, 0.868, 0.693], finalDrive: 4.583, loss: 14 },
+    Nissan_FS6R31A: { name: 'Nissan FS6R31A 6-spd (350Z)', gears: [3.794, 2.324, 1.624, 1.271, 1.000, 0.794], finalDrive: 3.538, loss: 12 },
+    Nissan_Z_6: { name: 'Nissan Z 6-spd (RZ34)', gears: [3.794, 2.324, 1.624, 1.271, 1.000, 0.794], finalDrive: 3.538, loss: 12 },
+    Mazda_6MT: { name: 'Mazda 6-spd (RX-8)', gears: [3.760, 2.269, 1.645, 1.187, 1.000, 0.843], finalDrive: 4.444, loss: 12 },
+    BMW_Getrag_6: { name: 'BMW Getrag 420G 6-spd', gears: [4.227, 2.528, 1.669, 1.226, 1.000, 0.828], finalDrive: 3.62, loss: 12 },
+    Porsche_CGT_6: { name: 'Porsche Carrera GT 6-spd', gears: [3.20, 1.87, 1.36, 1.07, 0.90, 0.75], finalDrive: 4.44, loss: 12 },
+    Ford_Ricardo_6: { name: 'Ford GT Ricardo 6-spd', gears: [2.611, 1.708, 1.233, 0.943, 0.767, 0.625], finalDrive: 3.36, loss: 12 },
+    Lambo_Manual_5: { name: 'Lamborghini Diablo 5-spd', gears: [2.31, 1.52, 1.12, 0.88, 0.68], finalDrive: 3.73, loss: 12 },
+    Aston_Graziano_6: { name: 'Aston Martin Graziano 6-spd', gears: [3.15, 1.94, 1.41, 1.09, 0.88, 0.70], finalDrive: 3.91, loss: 12 },
+    CIMA_6: { name: 'CIMA 6-spd (Koenigsegg CCX)', gears: [2.88, 1.77, 1.27, 1.00, 0.83, 0.69], finalDrive: 3.36, loss: 12 },
+    Saleen_Ricardo_6: { name: 'Saleen S7 Ricardo 6-spd', gears: [2.86, 1.76, 1.25, 0.96, 0.78, 0.64], finalDrive: 3.60, loss: 12 },
+    Toyota_iT6: { name: 'Toyota iT6 6-spd (GR Corolla)', gears: [3.538, 2.238, 1.535, 1.163, 0.878, 0.661], finalDrive: 4.294, loss: 12 },
+    Hyundai_6MT: { name: 'Hyundai/Kia 6MT (Genesis Coupe)', gears: [3.818, 2.294, 1.624, 1.271, 1.000, 0.794], finalDrive: 3.727, loss: 12 },
+    Audi_Getrag_6: { name: 'Audi/Getrag 6MT (RS4 B7)', gears: [3.667, 2.211, 1.520, 1.133, 0.919, 0.778], finalDrive: 3.82, loss: 12 },
+    Ford_6R80: { name: 'Ford 6R80 6-spd Auto', gears: [4.17, 2.34, 1.52, 1.14, 0.87, 0.69], finalDrive: 3.31, loss: 15 },
+    Ford_C6: { name: 'Ford C6 3-spd Auto', gears: [2.46, 1.46, 1.00], finalDrive: 3.00, loss: 18 },
+    Ford_C4: { name: 'Ford C4 3-spd Auto', gears: [2.46, 1.46, 1.00], finalDrive: 3.00, loss: 18 },
+    Chrysler_727: { name: 'Chrysler TorqueFlite 727 3-spd', gears: [2.45, 1.45, 1.00], finalDrive: 3.23, loss: 18 },
+    Toyota_A340E: { name: 'Toyota A340E 4-spd Auto', gears: [2.804, 1.531, 1.000, 0.705], finalDrive: 3.27, loss: 16 },
+    ZF_6HP: { name: 'ZF 6HP Auto', gears: [4.17, 2.34, 1.52, 1.14, 0.87, 0.69], finalDrive: 3.46, loss: 15 }
   };
 
   function clamp(v, lo, hi) {

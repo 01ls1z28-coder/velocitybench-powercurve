@@ -1,0 +1,4932 @@
+{
+  "tip": "real-tx-phase7-oem-boxes",
+  "elapsedMs": 1243227,
+  "stats": {
+    "et": 299,
+    "trap": 284,
+    "z60": 255,
+    "z60130": 69,
+    "nEt": 331,
+    "nTrap": 331,
+    "nZ60": 332,
+    "n60130": 76,
+    "all4": 211
+  },
+  "report": [
+    {
+      "name": "1993 Chevrolet Camaro Z28",
+      "gi": 27,
+      "tgt": {
+        "z60": 5.4,
+        "et": 14.1,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.983,
+          "trap": 100.1,
+          "z60": 5.512,
+          "z60130": 22.171
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.23,
+        "transmission": "Manual",
+        "loss": 1.5,
+        "tire": 1,
+        "launch": 3700,
+        "sim": {
+          "et": 14.114,
+          "trap": 98.3,
+          "z60": 5.633,
+          "z60130": 24.097
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1993 Pontiac Firebird Formula",
+      "gi": 50,
+      "tgt": {
+        "z60": 5.5,
+        "et": 14.1,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 13.998,
+          "trap": 97.3,
+          "z60": 5.38,
+          "z60130": 27.003
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.23,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 3400,
+        "sim": {
+          "et": 14.098,
+          "trap": 97.8,
+          "z60": 5.599,
+          "z60130": 24.863
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1994 Pontiac Firebird Formula",
+      "gi": 32,
+      "tgt": {
+        "z60": 5.5,
+        "et": 14.1,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 13.998,
+          "trap": 97.3,
+          "z60": 5.38,
+          "z60130": 27.003
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0.5,
+        "tire": 3,
+        "launch": 3200,
+        "sim": {
+          "et": 14.094,
+          "trap": 98,
+          "z60": 5.577,
+          "z60130": 26.61
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1998 Pontiac Firebird Formula",
+      "gi": 38,
+      "tgt": {
+        "z60": 5.2,
+        "et": 13.8,
+        "trap": 103
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.799,
+          "trap": 100.8,
+          "z60": 5.209,
+          "z60130": 22.317
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.809,
+          "trap": 100.6,
+          "z60": 5.305,
+          "z60130": 21.814
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2000 Chevrolet Camaro SS",
+      "gi": 33,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.6,
+        "trap": 105
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 13.495,
+          "trap": 103.1,
+          "z60": 4.999,
+          "z60130": 19.435
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 13.603,
+          "trap": 102.4,
+          "z60": 5.118,
+          "z60130": 20.084
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2001 Pontiac Firebird Trans Am WS6",
+      "gi": 25,
+      "tgt": {
+        "z60": 5,
+        "et": 13.5,
+        "trap": 106
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.606,
+          "trap": 103.5,
+          "z60": 5.147,
+          "z60130": 18.884
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 1,
+        "launch": 2800,
+        "sim": {
+          "et": 13.51,
+          "trap": 103.1,
+          "z60": 5.021,
+          "z60130": 19.502
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "gi": 18,
+      "tgt": {
+        "z60": 3.2,
+        "et": 11.6,
+        "trap": 119.72,
+        "z60130": 10.9
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": null,
+        "loss": 3.5,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 11.505,
+          "trap": 119.3,
+          "z60": 3.235,
+          "z60130": 10.719
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 2,
+        "launch": 3000,
+        "sim": {
+          "et": 11.592,
+          "trap": 119.6,
+          "z60": 3.328,
+          "z60130": 10.836
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2002 Chevrolet Camaro SS",
+      "gi": 17,
+      "tgt": {
+        "z60": 5.2,
+        "et": 13.7,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.62,
+          "trap": 103.5,
+          "z60": 5.161,
+          "z60130": 18.973
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.692,
+          "trap": 102.8,
+          "z60": 5.247,
+          "z60130": 19.594
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2002 Pontiac Firebird WS6",
+      "gi": 45,
+      "tgt": {
+        "z60": 5,
+        "et": 13.5,
+        "trap": 106
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.392,
+          "trap": 104.8,
+          "z60": 4.948,
+          "z60130": 17.281
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.456,
+          "trap": 105.3,
+          "z60": 5.028,
+          "z60130": 17.808
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2004 Pontiac GTO",
+      "gi": 15,
+      "tgt": {
+        "z60": 5.3,
+        "et": 13.8,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.66,
+          "trap": 103.2,
+          "z60": 5.198,
+          "z60130": 19.31
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Manual",
+        "loss": 2.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.76,
+          "trap": 102.1,
+          "z60": 5.31,
+          "z60130": 20.198
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2003 Ford Mustang Cobra (Terminator)",
+      "gi": 16,
+      "tgt": {
+        "z60": 4.5,
+        "et": 13,
+        "trap": 107
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.055,
+          "trap": 108.2,
+          "z60": 4.65,
+          "z60130": 15.053
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T56",
+        "nG": 6,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.07,
+          "trap": 108.4,
+          "z60": 4.685,
+          "z60130": 15.328
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1991 Chevrolet Camaro Z28",
+      "gi": 43,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.8,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.716,
+          "trap": 94.1,
+          "z60": 6.311,
+          "z60130": 30.114
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "T5_5",
+        "nG": 5,
+        "fd": 3.42,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 14.778,
+          "trap": 93.3,
+          "z60": 6.355,
+          "z60130": 32.223
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Chevrolet Camaro LT",
+      "gi": 35,
+      "tgt": {
+        "z60": 6.1,
+        "et": 14.7,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 9,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.618,
+          "trap": 94.9,
+          "z60": 6.201,
+          "z60130": 28.428
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Aisin_AY6",
+        "nG": 6,
+        "fd": 3.27,
+        "transmission": "Manual",
+        "loss": 9.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.699,
+          "trap": 94,
+          "z60": 6.238,
+          "z60130": 30.236
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 Chevrolet Camaro LT",
+      "gi": 40,
+      "tgt": {
+        "z60": 6,
+        "et": 14.6,
+        "trap": 97
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.543,
+          "trap": 95.5,
+          "z60": 6.116,
+          "z60130": 27.622
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Aisin_AY6",
+        "nG": 6,
+        "fd": 3.27,
+        "transmission": "Manual",
+        "loss": 9.5,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 14.596,
+          "trap": 94.7,
+          "z60": 6.122,
+          "z60130": 28.687
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1984 Chevrolet Corvette C4",
+      "gi": 36,
+      "tgt": {
+        "z60": 6.6,
+        "et": 15,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "GM_4L60E",
+        "nG": 4,
+        "fd": 3.07,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 4200,
+        "sim": {
+          "et": 15.681,
+          "trap": 87.5,
+          "z60": 7.549,
+          "z60130": 68.136
+        },
+        "hits": {
+          "et": false,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_700R4",
+        "nG": 4,
+        "fd": 3.07,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 4200,
+        "sim": {
+          "et": 15.661,
+          "trap": 87.5,
+          "z60": 7.522,
+          "z60130": 68.135
+        },
+        "hits": {
+          "et": false,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1985 Chevrolet Camaro IROC-Z",
+      "gi": 30,
+      "tgt": {
+        "z60": 7,
+        "et": 15.5,
+        "trap": 90
+      },
+      "before": {
+        "txKey": "GM_4L60E",
+        "nG": 4,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 4400,
+        "sim": {
+          "et": 15.477,
+          "trap": 88.5,
+          "z60": 7.409,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_700R4",
+        "nG": 4,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 1,
+        "launch": 4700,
+        "sim": {
+          "et": 15.495,
+          "trap": 88.5,
+          "z60": 7.433,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1981 Chevrolet Camaro Z28",
+      "gi": 48,
+      "tgt": {
+        "z60": 8.8,
+        "et": 16.7,
+        "trap": 83
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 8,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 16.425,
+          "trap": 80.8,
+          "z60": 8.784,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_TH350",
+        "nG": 3,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 4200,
+        "sim": {
+          "et": 17.087,
+          "trap": 80.7,
+          "z60": 9.28,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1982 Pontiac Firebird Trans Am",
+      "gi": 42,
+      "tgt": {
+        "z60": 9.2,
+        "et": 17,
+        "trap": 82
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 10,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 16.744,
+          "trap": 79.9,
+          "z60": 9.207,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_2004R",
+        "nG": 4,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 200,
+        "sim": {
+          "et": 17.216,
+          "trap": 79.6,
+          "z60": 9.554,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2016 Ford Mustang GT350R",
+      "gi": 8,
+      "tgt": {
+        "z60": 3.9,
+        "et": 12.2,
+        "trap": 119,
+        "z60130": 11.4
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 12.117,
+          "trap": 119.2,
+          "z60": 3.777,
+          "z60130": 11.119
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR3160",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5.5,
+        "tire": 3,
+        "launch": 3500,
+        "sim": {
+          "et": 12.189,
+          "trap": 116.6,
+          "z60": 3.921,
+          "z60130": 11.345
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 Ford Mustang GT 5.0",
+      "gi": 23,
+      "tgt": {
+        "z60": 4.4,
+        "et": 12.8,
+        "trap": 112
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.767,
+          "trap": 111.5,
+          "z60": 4.437,
+          "z60130": 13.415
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Getrag_MT82",
+        "nG": 6,
+        "fd": 3.31,
+        "transmission": "Manual",
+        "loss": 1.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.855,
+          "trap": 112,
+          "z60": 4.392,
+          "z60130": 14.335
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2012 Ford Mustang Boss 302 Laguna Seca",
+      "gi": 47,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.7,
+        "trap": 114
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 12.68,
+          "trap": 114.3,
+          "z60": 4.259,
+          "z60130": 12.775
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Getrag_MT82",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 12.691,
+          "trap": 113.8,
+          "z60": 4.362,
+          "z60130": 13.019
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2013 Ford Mustang V6",
+      "gi": 41,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.8,
+        "trap": 101
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.709,
+          "trap": 102.5,
+          "z60": 5.231,
+          "z60130": 20.417
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Getrag_MT82",
+        "nG": 6,
+        "fd": 3.31,
+        "transmission": "Manual",
+        "loss": 2.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.788,
+          "trap": 100.9,
+          "z60": 5.117,
+          "z60130": 22.616
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2007 Ford Mustang GT",
+      "gi": 34,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.7,
+        "trap": 103
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.685,
+          "trap": 102.7,
+          "z60": 5.208,
+          "z60130": 20.23
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR3650",
+        "nG": 5,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 2600,
+        "sim": {
+          "et": 13.664,
+          "trap": 101.5,
+          "z60": 5.086,
+          "z60130": 21.488
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2004 Ford Mustang Mach 1",
+      "gi": 51,
+      "tgt": {
+        "z60": 5.2,
+        "et": 13.8,
+        "trap": 103
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.768,
+          "trap": 102.1,
+          "z60": 5.294,
+          "z60130": 20.607
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_TR3650",
+        "nG": 5,
+        "fd": 3.55,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.873,
+          "trap": 101.2,
+          "z60": 5.334,
+          "z60130": 21.328
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1996 Ford Mustang SVT Cobra",
+      "gi": 26,
+      "tgt": {
+        "z60": 5.5,
+        "et": 14.1,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.953,
+          "trap": 100.2,
+          "z60": 5.469,
+          "z60130": 22.751
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Tremec_T45",
+        "nG": 5,
+        "fd": 3.27,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.016,
+          "trap": 98.9,
+          "z60": 5.546,
+          "z60130": 23.848
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1994 Ford Mustang GT",
+      "gi": 44,
+      "tgt": {
+        "z60": 6.1,
+        "et": 14.7,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.583,
+          "trap": 94.8,
+          "z60": 6.14,
+          "z60130": 31.221
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "T5_5",
+        "nG": 5,
+        "fd": 3.08,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 1,
+        "launch": 3400,
+        "sim": {
+          "et": 14.685,
+          "trap": 93.3,
+          "z60": 6.266,
+          "z60130": 36.673
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1992 Ford Mustang LX 5.0",
+      "gi": 37,
+      "tgt": {
+        "z60": 6,
+        "et": 14.6,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.568,
+          "trap": 94.4,
+          "z60": 6.084,
+          "z60130": 39.598
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "T5_5",
+        "nG": 5,
+        "fd": 3.08,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.605,
+          "trap": 93.7,
+          "z60": 6.153,
+          "z60130": 41.798
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2006 Ford GT",
+      "gi": 106,
+      "tgt": {
+        "z60": 3.3,
+        "et": 11.2,
+        "trap": 131
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 11.102,
+          "trap": 130.9,
+          "z60": 3.249,
+          "z60130": 7.702
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_Ricardo_6",
+        "nG": 6,
+        "fd": 3.36,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 11.241,
+          "trap": 129.1,
+          "z60": 3.437,
+          "z60130": 7.972
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2018 Honda Civic Type R",
+      "gi": 157,
+      "tgt": {
+        "z60": 4.9,
+        "et": 13.5,
+        "trap": 107
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.256,
+          "trap": 107.2,
+          "z60": 4.829,
+          "z60130": 16.767
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_CTR_6",
+        "nG": 6,
+        "fd": 4.111,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.479,
+          "trap": 104.6,
+          "z60": 4.856,
+          "z60130": 18.101
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Honda Civic Type R",
+      "gi": 332,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 108
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.25,
+          "trap": 107.3,
+          "z60": 4.826,
+          "z60130": 16.611
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_CTR_6",
+        "nG": 6,
+        "fd": 3.842,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.287,
+          "trap": 106.1,
+          "z60": 4.761,
+          "z60130": 16.791
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2024 Acura Integra Type S",
+      "gi": 327,
+      "tgt": {
+        "z60": 5,
+        "et": 13.5,
+        "trap": 106
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 2,
+        "launch": 1800,
+        "sim": {
+          "et": 13.361,
+          "trap": 105,
+          "z60": 4.905,
+          "z60130": 17.128
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_CTR_6",
+        "nG": 6,
+        "fd": 3.842,
+        "transmission": "Manual",
+        "loss": 4.5,
+        "tire": 2,
+        "launch": 1800,
+        "sim": {
+          "et": 13.489,
+          "trap": 104.6,
+          "z60": 4.869,
+          "z60130": 17.99
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1992 Honda NSX",
+      "gi": 278,
+      "tgt": {
+        "z60": 5.3,
+        "et": 13.8,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 13.756,
+          "trap": 103,
+          "z60": 5.314,
+          "z60130": 18.89
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_NSX_5",
+        "nG": 5,
+        "fd": 4.062,
+        "transmission": "Manual",
+        "loss": 2,
+        "tire": 0,
+        "launch": 3500,
+        "sim": {
+          "et": 13.614,
+          "trap": 103.9,
+          "z60": 5.305,
+          "z60130": 17.827
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1997 Honda Civic Type R EK9",
+      "gi": 174,
+      "tgt": {
+        "z60": 6.7,
+        "et": 15.2,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 2,
+        "launch": 2900,
+        "sim": {
+          "et": 15.122,
+          "trap": 92.9,
+          "z60": 6.791,
+          "z60130": 38.541
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.4,
+        "transmission": "Manual",
+        "loss": 12.5,
+        "tire": 2,
+        "launch": 2500,
+        "sim": {
+          "et": 15.187,
+          "trap": 89.5,
+          "z60": 6.736,
+          "z60130": 52.569
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1998 Honda Prelude Type SH",
+      "gi": 169,
+      "tgt": {
+        "z60": 6.8,
+        "et": 15.3,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 2,
+        "launch": 3500,
+        "sim": {
+          "et": 15.287,
+          "trap": 92.8,
+          "z60": 6.971,
+          "z60130": 34.242
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266,
+        "transmission": "Manual",
+        "loss": 14.5,
+        "tire": 2,
+        "launch": 3100,
+        "sim": {
+          "et": 15.255,
+          "trap": 88.9,
+          "z60": 6.971,
+          "z60130": 46.032
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1999 Honda Prelude SH",
+      "gi": 185,
+      "tgt": {
+        "z60": 6.8,
+        "et": 15.3,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 2,
+        "launch": 3500,
+        "sim": {
+          "et": 15.287,
+          "trap": 92.8,
+          "z60": 6.971,
+          "z60130": 34.242
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266,
+        "transmission": "Manual",
+        "loss": 14.5,
+        "tire": 2,
+        "launch": 3100,
+        "sim": {
+          "et": 15.255,
+          "trap": 88.9,
+          "z60": 6.971,
+          "z60130": 46.032
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2003 Acura RSX Type-S",
+      "gi": 170,
+      "tgt": {
+        "z60": 6.5,
+        "et": 15.1,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 15.005,
+          "trap": 92.2,
+          "z60": 6.619,
+          "z60130": 36.982
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.388,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 2,
+        "launch": 2800,
+        "sim": {
+          "et": 15.012,
+          "trap": 90.6,
+          "z60": 6.659,
+          "z60130": 45.303
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2006 Honda Accord Euro R",
+      "gi": 181,
+      "tgt": {
+        "z60": 6.6,
+        "et": 15.1,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 15.072,
+          "trap": 94.4,
+          "z60": 6.736,
+          "z60130": 28.575
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.388,
+        "transmission": "Manual",
+        "loss": 11,
+        "tire": 4,
+        "launch": 3500,
+        "sim": {
+          "et": 15.038,
+          "trap": 92.9,
+          "z60": 6.66,
+          "z60130": 30.904
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1993 Honda Accord SiR",
+      "gi": 288,
+      "tgt": {
+        "z60": 7.2,
+        "et": 15.6,
+        "trap": 89
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 2,
+        "launch": 3500,
+        "sim": {
+          "et": 15.56,
+          "trap": 91.4,
+          "z60": 7.303,
+          "z60130": 38.833
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.266,
+        "transmission": "Manual",
+        "loss": 15,
+        "tire": 2,
+        "launch": 3100,
+        "sim": {
+          "et": 15.572,
+          "trap": 86.9,
+          "z60": 7.399,
+          "z60130": 59.171
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1996 Honda Integra SiR",
+      "gi": 292,
+      "tgt": {
+        "z60": 7,
+        "et": 15.4,
+        "trap": 90
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 7,
+        "tire": 1,
+        "launch": 3500,
+        "sim": {
+          "et": 15.38,
+          "trap": 92.1,
+          "z60": 7.069,
+          "z60130": 41.62
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Honda_5MT",
+        "nG": 5,
+        "fd": 4.4,
+        "transmission": "Manual",
+        "loss": 11.5,
+        "tire": 4,
+        "launch": 3300,
+        "sim": {
+          "et": 15.352,
+          "trap": 89.7,
+          "z60": 7.018,
+          "z60130": 47.688
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2020 Subaru WRX STI",
+      "gi": 156,
+      "tgt": {
+        "z60": 4.6,
+        "et": 13.2,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.069,
+          "trap": 104.9,
+          "z60": 4.545,
+          "z60130": 17.214
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.181,
+          "trap": 102.5,
+          "z60": 4.614,
+          "z60130": 19.117
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2006 Subaru WRX STI",
+      "gi": 159,
+      "tgt": {
+        "z60": 4.7,
+        "et": 13.3,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.141,
+          "trap": 104.2,
+          "z60": 4.609,
+          "z60130": 17.891
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.248,
+          "trap": 101.8,
+          "z60": 4.672,
+          "z60130": 19.945
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1999 Subaru Impreza 22B STI",
+      "gi": 164,
+      "tgt": {
+        "z60": 4.7,
+        "et": 13.3,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.148,
+          "trap": 103.3,
+          "z60": 4.565,
+          "z60130": 20.021
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9,
+        "transmission": "Manual",
+        "loss": 10.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.209,
+          "trap": 101.8,
+          "z60": 4.629,
+          "z60130": 22.169
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2002 Subaru WRX Wagon",
+      "gi": 175,
+      "tgt": {
+        "z60": 5.8,
+        "et": 14.4,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.247,
+          "trap": 97,
+          "z60": 5.748,
+          "z60130": 26.414
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 14.249,
+          "trap": 93.7,
+          "z60": 5.734,
+          "z60130": 30.483
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Subaru Legacy GT Spec.B",
+      "gi": 186,
+      "tgt": {
+        "z60": 5.5,
+        "et": 14.1,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.932,
+          "trap": 99.7,
+          "z60": 5.428,
+          "z60130": 22.013
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Subaru_6MT",
+        "nG": 6,
+        "fd": 3.9,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.878,
+          "trap": 96.8,
+          "z60": 5.335,
+          "z60130": 24.057
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2003 Mitsubishi Lancer Evolution VIII",
+      "gi": 163,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.4,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.159,
+          "trap": 104.1,
+          "z60": 4.626,
+          "z60130": 18.032
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 4.529,
+        "transmission": "Manual",
+        "loss": 8.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.3,
+          "trap": 101.8,
+          "z60": 4.708,
+          "z60130": 22.715
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Mitsubishi Lancer Evolution X",
+      "gi": 158,
+      "tgt": {
+        "z60": 5,
+        "et": 13.5,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.408,
+          "trap": 102.6,
+          "z60": 4.885,
+          "z60130": 18.911
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mitsubishi_6MT",
+        "nG": 6,
+        "fd": 4.583,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 0,
+        "launch": 1700,
+        "sim": {
+          "et": 13.485,
+          "trap": 100,
+          "z60": 4.922,
+          "z60130": 22.113
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2005 Mitsubishi Eclipse GT",
+      "gi": 176,
+      "tgt": {
+        "z60": 6.3,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 2,
+        "launch": 3600,
+        "sim": {
+          "et": 14.673,
+          "trap": 93.9,
+          "z60": 6.265,
+          "z60130": 29.691
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 7.5,
+        "tire": 2,
+        "launch": 3200,
+        "sim": {
+          "et": 14.699,
+          "trap": 93.7,
+          "z60": 6.229,
+          "z60130": 31.929
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2001 Mitsubishi Eclipse GSX",
+      "gi": 180,
+      "tgt": {
+        "z60": 6.5,
+        "et": 15,
+        "trap": 92
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.834,
+          "trap": 93.1,
+          "z60": 6.433,
+          "z60130": 32.049
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 5.5,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 14.993,
+          "trap": 92,
+          "z60": 6.551,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1995 Mitsubishi Eclipse GSX",
+      "gi": 286,
+      "tgt": {
+        "z60": 6.3,
+        "et": 14.8,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.616,
+          "trap": 94.4,
+          "z60": 6.17,
+          "z60130": 30.257
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mitsubishi_5MT",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 14.804,
+          "trap": 93.1,
+          "z60": 6.318,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2005 Nissan 350Z",
+      "gi": 160,
+      "tgt": {
+        "z60": 5.3,
+        "et": 13.9,
+        "trap": 103
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.769,
+          "trap": 102.4,
+          "z60": 5.312,
+          "z60130": 19.59
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS6R31A",
+        "nG": 6,
+        "fd": 3.538,
+        "transmission": "Manual",
+        "loss": 3.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.89,
+          "trap": 100.9,
+          "z60": 5.251,
+          "z60130": 20.84
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Nissan Z Performance",
+      "gi": 317,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.3,
+        "trap": 116
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.342,
+          "trap": 114.5,
+          "z60": 4.031,
+          "z60130": 12.069
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_Z_6",
+        "nG": 6,
+        "fd": 3.538,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 3,
+        "launch": 3000,
+        "sim": {
+          "et": 12.366,
+          "trap": 115,
+          "z60": 3.961,
+          "z60130": 12.129
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1991 Nissan 240SX (S13)",
+      "gi": 168,
+      "tgt": {
+        "z60": 7.5,
+        "et": 15.8,
+        "trap": 88
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 4,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.734,
+          "trap": 87.2,
+          "z60": 7.567,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083,
+        "transmission": "Manual",
+        "loss": 8.5,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 15.775,
+          "trap": 86.1,
+          "z60": 7.505,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1995 Nissan Silvia S14",
+      "gi": 167,
+      "tgt": {
+        "z60": 6.4,
+        "et": 15,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 12,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.84,
+          "trap": 93.3,
+          "z60": 6.433,
+          "z60130": 36.451
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083,
+        "transmission": "Manual",
+        "loss": 16,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.995,
+          "trap": 91.2,
+          "z60": 6.472,
+          "z60130": 38.13
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1994 Nissan 180SX Type X",
+      "gi": 184,
+      "tgt": {
+        "z60": 6.5,
+        "et": 15,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.843,
+          "trap": 93.1,
+          "z60": 6.43,
+          "z60130": 39.28
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083,
+        "transmission": "Manual",
+        "loss": 14,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.995,
+          "trap": 91.1,
+          "z60": 6.466,
+          "z60130": 39.983
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1990 Nissan 300ZX NA",
+      "gi": 279,
+      "tgt": {
+        "z60": 6.7,
+        "et": 15.2,
+        "trap": 92
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 7,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.15,
+          "trap": 91.4,
+          "z60": 6.848,
+          "z60130": 33.174
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.083,
+        "transmission": "Manual",
+        "loss": 10.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.189,
+          "trap": 90.6,
+          "z60": 6.797,
+          "z60130": 37.548
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1992 Nissan Pulsar GTI-R",
+      "gi": 178,
+      "tgt": {
+        "z60": 5.4,
+        "et": 14,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 2.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.832,
+          "trap": 99.1,
+          "z60": 5.249,
+          "z60130": 28.87
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Nissan_FS5W71_5",
+        "nG": 5,
+        "fd": 4.111,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 1700,
+        "sim": {
+          "et": 14,
+          "trap": 95.2,
+          "z60": 5.231,
+          "z60130": 32.898
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2010 Mazda RX-8 R3",
+      "gi": 162,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.8,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.742,
+          "trap": 94,
+          "z60": 6.33,
+          "z60130": 30.867
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 4.444,
+        "transmission": "Manual",
+        "loss": 5.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.686,
+          "trap": 93.8,
+          "z60": 6.199,
+          "z60130": 30.507
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2004 Mazda RX-8",
+      "gi": 166,
+      "tgt": {
+        "z60": 6.4,
+        "et": 15,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 13,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.938,
+          "trap": 92.5,
+          "z60": 6.559,
+          "z60130": 34.084
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 4.444,
+        "transmission": "Manual",
+        "loss": 16,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.995,
+          "trap": 91.9,
+          "z60": 6.569,
+          "z60130": 37.338
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2007 MazdaSpeed3",
+      "gi": 171,
+      "tgt": {
+        "z60": 5.3,
+        "et": 13.9,
+        "trap": 101
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.867,
+          "trap": 101,
+          "z60": 5.38,
+          "z60130": 21.501
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 4.187,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.936,
+          "trap": 100.2,
+          "z60": 5.451,
+          "z60130": 21.637
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2011 MazdaSpeed6",
+      "gi": 187,
+      "tgt": {
+        "z60": 5.8,
+        "et": 14.4,
+        "trap": 97
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.24,
+          "trap": 97.5,
+          "z60": 5.763,
+          "z60130": 24.237
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Mazda_6MT",
+        "nG": 6,
+        "fd": 3.941,
+        "transmission": "Manual",
+        "loss": 9.5,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 14.32,
+          "trap": 94,
+          "z60": 5.818,
+          "z60130": 28.91
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1998 Toyota Celica GT-Four",
+      "gi": 179,
+      "tgt": {
+        "z60": 6,
+        "et": 14.5,
+        "trap": 97
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 6,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.315,
+          "trap": 96.5,
+          "z60": 5.824,
+          "z60130": 27.056
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 4.285,
+        "transmission": "Manual",
+        "loss": 15,
+        "tire": 0,
+        "launch": 1700,
+        "sim": {
+          "et": 14.501,
+          "trap": 92.7,
+          "z60": 5.81,
+          "z60130": 36.402
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "1991 Toyota Soarer GT-T",
+      "gi": 183,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.7,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 9,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.6,
+          "trap": 95.4,
+          "z60": 6.187,
+          "z60130": 26.852
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.654,
+          "trap": 94.1,
+          "z60": 6.213,
+          "z60130": 27.553
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1997 Toyota Chaser Tourer V",
+      "gi": 289,
+      "tgt": {
+        "z60": 5.8,
+        "et": 14.4,
+        "trap": 98
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.241,
+          "trap": 98.1,
+          "z60": 5.789,
+          "z60130": 23.662
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_W58_5",
+        "nG": 5,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.306,
+          "trap": 97.5,
+          "z60": 5.82,
+          "z60130": 23.598
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2023 Toyota GR Corolla",
+      "gi": 253,
+      "tgt": {
+        "z60": 4.7,
+        "et": 13.4,
+        "trap": 103
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.259,
+          "trap": 103.3,
+          "z60": 4.719,
+          "z60130": 18.853
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_iT6",
+        "nG": 6,
+        "fd": 4.294,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 13.297,
+          "trap": 100.7,
+          "z60": 4.74,
+          "z60130": 21.35
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2003 BMW M3 E46",
+      "gi": 310,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 107
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.258,
+          "trap": 106.3,
+          "z60": 4.834,
+          "z60130": 16.123
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "BMW_Getrag_6",
+        "nG": 6,
+        "fd": 3.62,
+        "transmission": "Manual",
+        "loss": 0.5,
+        "tire": 3,
+        "launch": 2600,
+        "sim": {
+          "et": 13.204,
+          "trap": 106.8,
+          "z60": 4.794,
+          "z60130": 16.317
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2004 BMW 330Ci ZHP",
+      "gi": 307,
+      "tgt": {
+        "z60": 5.6,
+        "et": 14.2,
+        "trap": 99
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.099,
+          "trap": 99.1,
+          "z60": 5.638,
+          "z60130": 22.78
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "BMW_Getrag_6",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.078,
+          "trap": 98.9,
+          "z60": 5.63,
+          "z60130": 22.181
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Audi RS4",
+      "gi": 312,
+      "tgt": {
+        "z60": 4.5,
+        "et": 13,
+        "trap": 109
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.892,
+          "trap": 107.9,
+          "z60": 4.424,
+          "z60130": 15.918
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Audi_Getrag_6",
+        "nG": 6,
+        "fd": 3.82,
+        "transmission": "Manual",
+        "loss": 10,
+        "tire": 0,
+        "launch": 2300,
+        "sim": {
+          "et": 12.986,
+          "trap": 104.3,
+          "z60": 4.264,
+          "z60130": 18.03
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2004 Porsche Carrera GT",
+      "gi": 107,
+      "tgt": {
+        "z60": 3.5,
+        "et": 11.2,
+        "trap": 130,
+        "z60130": 7.8
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3.5,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 11.246,
+          "trap": 130.2,
+          "z60": 3.425,
+          "z60130": 7.784
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Porsche_CGT_6",
+        "nG": 6,
+        "fd": 4.44,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 4,
+        "launch": 3000,
+        "sim": {
+          "et": 11.248,
+          "trap": 130,
+          "z60": 3.39,
+          "z60130": 7.854
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2001 Lamborghini Diablo VT 6.0",
+      "gi": 112,
+      "tgt": {
+        "z60": 3.6,
+        "et": 11.8,
+        "trap": 122
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3.5,
+        "tire": 0,
+        "launch": 6718,
+        "sim": {
+          "et": 11.515,
+          "trap": 121.5,
+          "z60": 3.422,
+          "z60130": 9.805
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Lambo_Manual_5",
+        "nG": 5,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 3.5,
+        "tire": 0,
+        "launch": 6718,
+        "sim": {
+          "et": 11.801,
+          "trap": 121.9,
+          "z60": 3.63,
+          "z60130": 10.133
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Aston Martin V12 Vantage",
+      "gi": 119,
+      "tgt": {
+        "z60": 4.1,
+        "et": 12.4,
+        "trap": 118,
+        "z60130": 10.5
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.402,
+          "trap": 117.1,
+          "z60": 4.279,
+          "z60130": 11.056
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Aston_Graziano_6",
+        "nG": 6,
+        "fd": 3.91,
+        "transmission": "Manual",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 12.443,
+          "trap": 118,
+          "z60": 4.274,
+          "z60130": 11.198
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2006 Saleen S7 Twin Turbo",
+      "gi": 136,
+      "tgt": {
+        "z60": 3.3,
+        "et": 10.9,
+        "trap": 140,
+        "z60130": 6.5
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 5,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 10.901,
+          "trap": 140.2,
+          "z60": 3.377,
+          "z60130": 6.217
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Saleen_Ricardo_6",
+        "nG": 6,
+        "fd": 3.6,
+        "transmission": "Manual",
+        "loss": 8,
+        "tire": 4,
+        "launch": 2400,
+        "sim": {
+          "et": 10.887,
+          "trap": 139.9,
+          "z60": 3.377,
+          "z60130": 6.038
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Koenigsegg CCX",
+      "gi": 142,
+      "tgt": {
+        "z60": 3.2,
+        "et": 10.7,
+        "trap": 137,
+        "z60130": 6.2
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 14,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.763,
+          "trap": 137.8,
+          "z60": 3.166,
+          "z60130": 6.488
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "CIMA_6",
+        "nG": 6,
+        "fd": 3.36,
+        "transmission": "Manual",
+        "loss": 17,
+        "tire": 1,
+        "launch": 2400,
+        "sim": {
+          "et": 10.782,
+          "trap": 137,
+          "z60": 3.168,
+          "z60130": 6.471
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Hyundai Genesis Coupe 3.8",
+      "gi": 182,
+      "tgt": {
+        "z60": 5.5,
+        "et": 14.1,
+        "trap": 101
+      },
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.904,
+          "trap": 101,
+          "z60": 5.437,
+          "z60130": 21.123
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Hyundai_6MT",
+        "nG": 6,
+        "fd": 3.727,
+        "transmission": "Manual",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.939,
+          "trap": 100.9,
+          "z60": 5.499,
+          "z60130": 21.016
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1973 Ford Torino 351",
+      "gi": 242,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.5,
+        "trap": 85
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 22,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 16.259,
+          "trap": 81.6,
+          "z60": 8.378,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_C6",
+        "nG": 3,
+        "fd": 3,
+        "transmission": "Auto",
+        "loss": 3,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 16.677,
+          "trap": 84.8,
+          "z60": 8.258,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1960 Ford Galaxie 352",
+      "gi": 245,
+      "tgt": {
+        "z60": 8.8,
+        "et": 16.8,
+        "trap": 82
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 35,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 16.477,
+          "trap": 79.7,
+          "z60": 8.682,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_C6",
+        "nG": 3,
+        "fd": 3,
+        "transmission": "Auto",
+        "loss": 22.5,
+        "tire": 0,
+        "launch": 1600,
+        "sim": {
+          "et": 16.862,
+          "trap": 82.3,
+          "z60": 8.597,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1955 Ford Thunderbird",
+      "gi": 248,
+      "tgt": {
+        "z60": 9.5,
+        "et": 17.2,
+        "trap": 80
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 22.5,
+        "tire": 1,
+        "launch": 1200,
+        "sim": {
+          "et": 16.935,
+          "trap": 77,
+          "z60": 9.526,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_C4",
+        "nG": 3,
+        "fd": 3.1,
+        "transmission": "Auto",
+        "loss": 3,
+        "tire": 1,
+        "launch": 1600,
+        "sim": {
+          "et": 17.211,
+          "trap": 80.5,
+          "z60": 9.448,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1978 Dodge Magnum XE",
+      "gi": 243,
+      "tgt": {
+        "z60": 9.5,
+        "et": 17.2,
+        "trap": 80
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 16,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 16.921,
+          "trap": 78,
+          "z60": 9.531,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Chrysler_727",
+        "nG": 3,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 0,
+        "launch": 2700,
+        "sim": {
+          "et": 17.173,
+          "trap": 79.9,
+          "z60": 9.496,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "1998 Toyota Supra Turbo (Mk4)",
+      "gi": 154,
+      "tgt": {
+        "z60": 4.6,
+        "et": 13.1,
+        "trap": 108
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.151,
+          "trap": 107.6,
+          "z60": 4.747,
+          "z60130": 15.959
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Toyota_A340E",
+        "nG": 4,
+        "fd": 3.27,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 2,
+        "launch": 2400,
+        "sim": {
+          "et": 13.101,
+          "trap": 105.2,
+          "z60": 4.566,
+          "z60130": 17.588
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2008 BMW 135i",
+      "gi": 161,
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.4,
+        "trap": 105
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.363,
+          "trap": 105.2,
+          "z60": 4.923,
+          "z60130": 17.714
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF_6HP",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 2000,
+        "sim": {
+          "et": 13.358,
+          "trap": 103.9,
+          "z60": 4.705,
+          "z60130": 18.525
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2009 BMW 335i",
+      "gi": 281,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.6,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.577,
+          "trap": 103.1,
+          "z60": 5.125,
+          "z60130": 18.989
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF_6HP",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 2000,
+        "sim": {
+          "et": 13.591,
+          "trap": 101.9,
+          "z60": 4.927,
+          "z60130": 19.862
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2009 BMW 335i",
+      "gi": 301,
+      "tgt": {
+        "z60": 5.1,
+        "et": 13.6,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 13.577,
+          "trap": 103.1,
+          "z60": 5.125,
+          "z60130": 18.989
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF_6HP",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 3,
+        "launch": 2000,
+        "sim": {
+          "et": 13.591,
+          "trap": 101.9,
+          "z60": 4.927,
+          "z60130": 19.862
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2007 BMW 550i",
+      "gi": 304,
+      "tgt": {
+        "z60": 5.2,
+        "et": 13.7,
+        "trap": 104
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.584,
+          "trap": 103.1,
+          "z60": 5.127,
+          "z60130": 18.517
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "ZF_6HP",
+        "nG": 6,
+        "fd": 3.46,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 13.692,
+          "trap": 102.8,
+          "z60": 5.13,
+          "z60130": 18.419
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2022 Cadillac Escalade V",
+      "gi": 262,
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.7,
+        "trap": 112
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 11,
+        "tire": 0,
+        "launch": 1200,
+        "sim": {
+          "et": 12.604,
+          "trap": 107,
+          "z60": 4.049,
+          "z60130": 16.313
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": false,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_10L90",
+        "nG": 10,
+        "fd": 3.23,
+        "transmission": "Auto",
+        "loss": 13.5,
+        "tire": 0,
+        "launch": 1000,
+        "sim": {
+          "et": 12.684,
+          "trap": 107.1,
+          "z60": 4.124,
+          "z60130": 16.939
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2011 - 2014 Ford F-150 Enrique's 3.5EB",
+      "gi": 313,
+      "tgt": {},
+      "before": {
+        "txKey": "TR6060_6",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": null,
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.588,
+          "trap": 96.8,
+          "z60": 6.036,
+          "z60130": 27.907
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.31,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.305,
+          "trap": 95.6,
+          "z60": 5.88,
+          "z60130": 28.807
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2012 Ford F-150 EcoBoost",
+      "gi": 210,
+      "tgt": {
+        "z60": 6.2,
+        "et": 14.8,
+        "trap": 94
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 9,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.639,
+          "trap": 92.6,
+          "z60": 6.07,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.31,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 2400,
+        "sim": {
+          "et": 14.673,
+          "trap": 92,
+          "z60": 6.201,
+          "z60130": 58.358
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2008 Ford F-150 Harley-Davidson",
+      "gi": 214,
+      "tgt": {
+        "z60": 7.4,
+        "et": 15.8,
+        "trap": 88
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.638,
+          "trap": 85.9,
+          "z60": 7.342,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2800,
+        "sim": {
+          "et": 15.8,
+          "trap": 84.1,
+          "z60": 7.548,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2007 Ford F-150 4.6 Triton",
+      "gi": 218,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.6,
+        "trap": 84
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 1.5,
+        "tire": 0,
+        "launch": 2100,
+        "sim": {
+          "et": 16.423,
+          "trap": 81.6,
+          "z60": 8.422,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "Ford_6R80",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 1300,
+        "sim": {
+          "et": 16.602,
+          "trap": 80.1,
+          "z60": 8.679,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2017 Chevrolet Silverado 5.3",
+      "gi": 207,
+      "tgt": {
+        "z60": 6.8,
+        "et": 15.3,
+        "trap": 91
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 12.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.073,
+          "trap": 88.8,
+          "z60": 6.576,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 9.5,
+        "tire": 0,
+        "launch": 1700,
+        "sim": {
+          "et": 15.259,
+          "trap": 87.9,
+          "z60": 6.832,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2011 Chevrolet Avalanche 5.3",
+      "gi": 212,
+      "tgt": {
+        "z60": 7.4,
+        "et": 15.8,
+        "trap": 88
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.514,
+          "trap": 85.8,
+          "z60": 7.307,
+          "z60130": null
+        },
+        "hits": {
+          "et": false,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 2000,
+        "sim": {
+          "et": 15.775,
+          "trap": 84.8,
+          "z60": 7.458,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2009 GMC Sierra Denali 6.2",
+      "gi": 215,
+      "tgt": {
+        "z60": 6,
+        "et": 14.6,
+        "trap": 96
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.47,
+          "trap": 94.2,
+          "z60": 5.95,
+          "z60130": 46.271
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 0,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.636,
+          "trap": 93,
+          "z60": 6.009,
+          "z60130": 47.778
+        },
+        "hits": {
+          "et": true,
+          "trap": false,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": true
+    },
+    {
+      "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+      "gi": 219,
+      "tgt": {
+        "z60": 6.4,
+        "et": 15,
+        "trap": 93
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 2.5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.811,
+          "trap": 90.9,
+          "z60": 6.254,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Auto",
+        "loss": 1,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 14.917,
+          "trap": 90.6,
+          "z60": 6.308,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2006 Chevrolet Silverado 2500HD 6.0",
+      "gi": 223,
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.6,
+        "trap": 83
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 5,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 16.488,
+          "trap": 81.2,
+          "z60": 8.596,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.73,
+        "transmission": "Auto",
+        "loss": 0.5,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 16.437,
+          "trap": 80.8,
+          "z60": 8.449,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2012 Chevrolet Tahoe 5.3",
+      "gi": 267,
+      "tgt": {
+        "z60": 7.6,
+        "et": 16,
+        "trap": 87
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 10,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.797,
+          "trap": 85,
+          "z60": 7.665,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 4.5,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 15.8,
+          "trap": 84.8,
+          "z60": 7.612,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    },
+    {
+      "name": "2010 Chevrolet Suburban 5.3",
+      "gi": 271,
+      "tgt": {
+        "z60": 7.8,
+        "et": 16.1,
+        "trap": 86
+      },
+      "before": {
+        "txKey": "ZF8HP",
+        "nG": 8,
+        "fd": 3.15,
+        "transmission": "Auto",
+        "loss": 8,
+        "tire": 0,
+        "launch": 3000,
+        "sim": {
+          "et": 15.986,
+          "trap": 84.2,
+          "z60": 7.935,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "after": {
+        "txKey": "GM_6L80",
+        "nG": 6,
+        "fd": 3.42,
+        "transmission": "Auto",
+        "loss": 2,
+        "tire": 0,
+        "launch": 2600,
+        "sim": {
+          "et": 15.966,
+          "trap": 83.7,
+          "z60": 7.85,
+          "z60130": null
+        },
+        "hits": {
+          "et": true,
+          "trap": true,
+          "z60": true,
+          "z60130": true
+        }
+      },
+      "stillMiss": false
+    }
+  ],
+  "leftover": {
+    "ZF8HP": 69,
+    "TR6060_6": 3,
+    "TR6060_names": [
+      "2014 Chevrolet Camaro Z/28",
+      "2012 Chevrolet Camaro ZL1",
+      "2013 SRT Viper GTS"
+    ]
+  },
+  "counts": {
+    "Tremec_T56": 11,
+    "GM_700R4": 2,
+    "GM_TH350": 1,
+    "Tremec_TR3160": 1,
+    "Tremec_TR3650": 2,
+    "Getrag_MT82": 4,
+    "remapped": 94
+  },
+  "fsBad": 0,
+  "stillWrong": [],
+  "tr9080": [
+    "2024 Chevrolet Corvette Stingray",
+    "2023 Chevrolet Corvette Z06",
+    "2026 Chevrolet Corvette ZR1X"
+  ]
+}
