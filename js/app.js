@@ -51,8 +51,17 @@
     cursorRpm: null,
     chartGeom: null,
     drag: null, // { rpm, pointerId }
-    curveEdited: false
+    curveEdited: false,
+    // Playback state machine (real-time scale=1 per Phase 4)
+    playbackPlaying: false,
+    playbackPaused: false,
+    playbackT0: 0,              // performance.now() when current play segment started
+    playbackElapsedOffset: 0,   // ms already elapsed before this play segment (pause resume)
+    playbackDurationMs: 0
   };
+
+  /** Wheelspin / traction-fight lamp: light ON when timeline sample slip ≥ this % */
+  var SPIN_WARN_THRESHOLD = 8;
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
     min: 0, max: 8000, label: 'RPM', redline: 6500
@@ -1294,49 +1303,169 @@
     }).join('');
   }
 
-  function animateRun(result) {
-    if (state.anim) cancelAnimationFrame(state.anim);
-    var tl = result.timeline || [];
-    if (!tl.length) {
-      rpmGauge.setValue(0);
-      speedGauge.setValue(0);
-      return;
-    }
-    var t0 = performance.now();
-    var duration = (tl[tl.length - 1].t || 1) * 1000;
-    // Phase 4: playback ALWAYS real-time (scale=1) so gauges match sim clock.
-    var scale = 1;
-    function frame(now) {
-      var elapsed = (now - t0) * scale;
-      var tSec = elapsed / 1000;
-      var pt = tl[0];
-      for (var i = 0; i < tl.length; i++) {
-        if (tl[i].t <= tSec) pt = tl[i];
-        else break;
-      }
-      // EV: left dial = power % from curve@RPM / peakHp; live strip still shows motor RPM
-      if (state.evGaugeMode) {
-        var peak = state.evPeakHp || 1;
-        var hpNow = hpAtRpm(state.car, pt.rpm);
-        var pct = Math.max(0, Math.min(100, (hpNow / peak) * 100));
-        rpmGauge.setValue(pct);
-      } else {
-        rpmGauge.setValue(pt.rpm);
-      }
-      speedGauge.setValue(pt.mph);
-      $('liveGear').textContent = String(pt.gear);
-      $('liveRpm').textContent = String(Math.round(pt.rpm));
-      $('liveMph').textContent = pt.mph.toFixed(1);
-      $('liveG').textContent = pt.g.toFixed(2);
-      // Scrub dyno cursor with live engine RPM during playback
-      if (state.powerCurve && state.powerCurve.length) {
-        drawPowerCurve(state.powerCurve, pt.rpm);
-      }
-      if (elapsed < duration + 200) state.anim = requestAnimationFrame(frame);
-    }
-    state.anim = requestAnimationFrame(frame);
+  function setSpinLamp(wheelspinPct) {
+    var el = $('spinLamp');
+    if (!el) return;
+    // Demo class (spin-lamp--demo) keeps lamp forced ON for screenshots / gates
+    if (el.classList.contains('spin-lamp--demo')) return;
+    var on = Number(wheelspinPct) >= SPIN_WARN_THRESHOLD;
+    el.classList.toggle('on', on);
+    el.setAttribute('aria-label', on
+      ? ('Wheelspin warning — ' + Number(wheelspinPct).toFixed(1) + '% slip')
+      : 'Wheelspin lamp off');
   }
 
+  function resetLiveReadoutIdle() {
+    rpmGauge.setValue(0);
+    speedGauge.setValue(0);
+    $('liveGear').textContent = '—';
+    $('liveRpm').textContent = '—';
+    $('liveMph').textContent = '—';
+    $('liveG').textContent = '—';
+    setSpinLamp(0);
+  }
+
+  function syncGaugeRunButtons() {
+    var startBtn = $('btnGaugeStart');
+    var pauseBtn = $('btnGaugePause');
+    var stopBtn = $('btnGaugeStop');
+    if (startBtn) {
+      startBtn.textContent = state.playbackPaused ? 'RESUME' : 'START';
+      startBtn.classList.toggle('is-active', state.playbackPlaying && !state.playbackPaused);
+      startBtn.title = state.playbackPaused
+        ? 'Resume playback from pause point'
+        : 'Run sim and play real-time (same as RUN TO TOP SPEED)';
+    }
+    if (pauseBtn) {
+      pauseBtn.disabled = !state.playbackPlaying || state.playbackPaused;
+      pauseBtn.classList.toggle('is-active', state.playbackPaused);
+    }
+    if (stopBtn) {
+      stopBtn.disabled = !state.playbackPlaying && !state.playbackPaused && !state.anim;
+    }
+  }
+
+  function cancelPlaybackRaf() {
+    if (state.anim) {
+      cancelAnimationFrame(state.anim);
+      state.anim = null;
+    }
+  }
+
+  /**
+   * Apply one timeline sample to gauges + live strip + SPIN lamp.
+   * Shared by play / pause (last frame kept) paths.
+   */
+  function applyTimelinePoint(pt) {
+    if (!pt) return;
+    if (state.evGaugeMode) {
+      var peak = state.evPeakHp || 1;
+      var hpNow = hpAtRpm(state.car, pt.rpm);
+      var pct = Math.max(0, Math.min(100, (hpNow / peak) * 100));
+      rpmGauge.setValue(pct);
+    } else {
+      rpmGauge.setValue(pt.rpm);
+    }
+    speedGauge.setValue(pt.mph);
+    $('liveGear').textContent = String(pt.gear);
+    $('liveRpm').textContent = String(Math.round(pt.rpm));
+    $('liveMph').textContent = pt.mph.toFixed(1);
+    $('liveG').textContent = pt.g.toFixed(2);
+    if (state.powerCurve && state.powerCurve.length) {
+      drawPowerCurve(state.powerCurve, pt.rpm);
+    }
+    setSpinLamp(pt.wheelspin != null ? pt.wheelspin : 0);
+  }
+
+  function timelinePointAt(tl, tSec) {
+    var pt = tl[0];
+    for (var i = 0; i < tl.length; i++) {
+      if (tl[i].t <= tSec) pt = tl[i];
+      else break;
+    }
+    return pt;
+  }
+
+  /** Phase 4: playback ALWAYS real-time (scale=1) so gauges match sim clock. */
+  function playbackFrame(now) {
+    var result = state.lastResult;
+    if (!result) return;
+    var tl = result.timeline || [];
+    if (!tl.length) return;
+    // Elapsed = prior pause offset + time since this play segment started
+    var elapsed = state.playbackElapsedOffset + (now - state.playbackT0);
+    var tSec = elapsed / 1000;
+    var pt = timelinePointAt(tl, tSec);
+    applyTimelinePoint(pt);
+    if (elapsed < state.playbackDurationMs + 200) {
+      state.anim = requestAnimationFrame(playbackFrame);
+    } else {
+      // Natural end of run — leave final gauges; clear playing flags
+      state.anim = null;
+      state.playbackPlaying = false;
+      state.playbackPaused = false;
+      state.playbackElapsedOffset = state.playbackDurationMs;
+      setSpinLamp(0);
+      syncGaugeRunButtons();
+    }
+  }
+
+  function startPlaybackFromBeginning(result) {
+    cancelPlaybackRaf();
+    var tl = (result && result.timeline) || [];
+    if (!tl.length) {
+      resetLiveReadoutIdle();
+      state.playbackPlaying = false;
+      state.playbackPaused = false;
+      syncGaugeRunButtons();
+      return;
+    }
+    state.playbackDurationMs = (tl[tl.length - 1].t || 1) * 1000;
+    state.playbackElapsedOffset = 0;
+    state.playbackT0 = performance.now();
+    state.playbackPlaying = true;
+    state.playbackPaused = false;
+    syncGaugeRunButtons();
+    state.anim = requestAnimationFrame(playbackFrame);
+  }
+
+  /** Resume from pause point (keeps gauges where they froze). */
+  function resumePlayback() {
+    if (!state.lastResult || !state.playbackPaused) return;
+    cancelPlaybackRaf();
+    state.playbackT0 = performance.now();
+    state.playbackPlaying = true;
+    state.playbackPaused = false;
+    syncGaugeRunButtons();
+    state.anim = requestAnimationFrame(playbackFrame);
+  }
+
+  function pausePlayback() {
+    if (!state.playbackPlaying || state.playbackPaused) return;
+    var now = performance.now();
+    state.playbackElapsedOffset += (now - state.playbackT0);
+    cancelPlaybackRaf();
+    state.playbackPlaying = false;
+    state.playbackPaused = true;
+    // Gauges / live readout / SPIN stay at last applied frame
+    syncGaugeRunButtons();
+  }
+
+  /**
+   * Stop: cancel RAF, reset gauges + live strip to idle (0 / —),
+   * clear SPIN lamp. Keep lastResult / slip / metrics / charts.
+   */
+  function stopPlayback() {
+    cancelPlaybackRaf();
+    state.playbackPlaying = false;
+    state.playbackPaused = false;
+    state.playbackElapsedOffset = 0;
+    state.playbackT0 = 0;
+    resetLiveReadoutIdle();
+    syncGaugeRunButtons();
+  }
+
+  /** Left-rail #btnRun and center START (when not paused) — run sim then play. */
   function runSim() {
     var car = readCarFromForm();
     var env = readEnv();
@@ -1364,7 +1493,16 @@
       // Snap MPH dial max to a clean 20 mph step (majors every 20, mids every 10)
       speedGauge.setMax(Math.max(200, Math.ceil((result.topSpeedMph + 20) / 20) * 20));
     }
-    animateRun(result);
+    startPlaybackFromBeginning(result);
+  }
+
+  /** Center START: resume if paused; otherwise full runSim (same as #btnRun). */
+  function onGaugeStart() {
+    if (state.playbackPaused) {
+      resumePlayback();
+      return;
+    }
+    runSim();
   }
 
   $('txPreset').addEventListener('change', function () {
@@ -1421,6 +1559,17 @@
   });
 
   $('btnRun').addEventListener('click', runSim);
+  if ($('btnGaugeStart')) $('btnGaugeStart').addEventListener('click', onGaugeStart);
+  if ($('btnGaugePause')) $('btnGaugePause').addEventListener('click', pausePlayback);
+  if ($('btnGaugeStop')) $('btnGaugeStop').addEventListener('click', stopPlayback);
+  syncGaugeRunButtons();
+  // Screenshot / gate helper: ?demoSpin=1 forces SPIN lamp ON (no physics change)
+  try {
+    if (/(?:^|[?&])demoSpin=1(?:&|$)/.test(location.search || '')) {
+      var lamp = $('spinLamp');
+      if (lamp) lamp.classList.add('spin-lamp--demo', 'on');
+    }
+  } catch (eDemo) { /* ignore */ }
   // Rescale ICE tach when redline / shift inputs change (bike high-redline support)
   ['redline', 'shiftRpm'].forEach(function (id) {
     var el = $(id);

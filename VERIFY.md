@@ -1,3 +1,16 @@
+# BUILD TIP — Gauge Start/Pause/Stop + SPIN lamp (Jorge via Seraph)
+
+Branch: `review/gauge-run-controls` · Base `8e3adff` (origin/main, shift-coast). **No Merovingian / no live Pages.** Seraph gates later.
+
+## VERIFY note (required)
+- Center column between tach & speedo: **START / PAUSE / STOP** (RESUME while paused); lime brass-suite buttons; same helpers as left-rail `#btnRun` → `runSim()`.
+- Playback state machine: start / pause (offset) / stop (idle gauges, keep slip/metrics). Real-time scale=1.
+- **SPIN** lamp under controls: lights + pulses when timeline `wheelspin ≥ 8%`; off when idle/below. UI-only — no traction physics change.
+- Screenshots: `/workspace/powercurve-gauge-controls.png`, `/workspace/powercurve-spin-warn.png`.
+- Full write-up: `/workspace/powercurve-tip-gauge-controls-VERIFY.md`
+
+---
+
 # BUILD TIP — Shift-coast physics (hard zero → TX residual)
 
 Branch: `review/shift-coast` · Base `9d5a269` (origin/main). **No Merovingian / no live Pages.** Seraph gates later.

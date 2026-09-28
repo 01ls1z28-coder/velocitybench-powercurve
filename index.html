@@ -191,6 +191,15 @@
         </div>
         <div class="gauges lfa-cluster" aria-label="LFA-style dual dial cluster">
           <div class="gauge-wrap"><canvas id="rpmGauge" width="280" height="280"></canvas></div>
+          <div class="gauge-run-controls" aria-label="Run playback controls">
+            <button type="button" class="btn-gauge-run" id="btnGaugeStart" title="Run sim and play (or resume if paused)">START</button>
+            <button type="button" class="btn-gauge-run" id="btnGaugePause" title="Pause playback at current gauges">PAUSE</button>
+            <button type="button" class="btn-gauge-run" id="btnGaugeStop" title="Stop playback; reset gauges to idle (keep slip/metrics)">STOP</button>
+            <div class="spin-lamp" id="spinLamp" role="status" aria-live="polite" title="Wheelspin / traction fight — lights when slip ≥ 8%">
+              <span class="spin-lamp-dot" aria-hidden="true"></span>
+              <span class="spin-lamp-label">SPIN</span>
+            </div>
+          </div>
           <div class="gauge-wrap"><canvas id="speedGauge" width="280" height="280"></canvas></div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
