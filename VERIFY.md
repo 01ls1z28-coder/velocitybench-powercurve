@@ -1,3 +1,16 @@
+# BUILD TIP — Shift-coast physics (hard zero → TX residual)
+
+Branch: `review/shift-coast` · Base `9d5a269` (origin/main). **No Merovingian / no live Pages.** Seraph gates later.
+
+## VERIFY note (required)
+- Bug: `whTQ = shifting ? 0 : …` dumped mid-shift accel while aero/roll still applied.
+- Fix (physics-only): `whTQ = lastDriveWhTQ * SHIFT_RESIDUAL_DRIVE[family]` while shifting.
+- Residuals: manual **0.10** · automatic **0.30** · dct **0.60** · ev **0.85**.
+- Spotcheck: mid-shift whTQ > 0; ET Δ ≈ −0.02…−0.07 s on ICE multi-speed (Plaid unchanged). forceScale=1; no garage knob mass-edit; Jorge credit only.
+- Full write-up: `/workspace/powercurve-tip-shift-coast-VERIFY.md`
+
+---
+
 # BUILD LOCK — Remove PowerCurve CALIB · SOURCE TRANSPARENCY panel (Jorge via Seraph)
 
 Branch: `review/pc-remove-calib-panel` · Base `b1f1329` (Phase 6 Euro supercar DCT).

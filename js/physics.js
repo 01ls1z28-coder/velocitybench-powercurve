@@ -120,6 +120,58 @@
   /** Global drive-force scale. Tuned via VERIFY spot-checks. */
   var CalibrationFactor = 0.95;
 
+  /**
+   * Shift-coast residual drive by transmission family.
+   * While shifting, wheel torque is NOT hard-zeroed — a TX-typed fraction of the
+   * last non-shift wheel torque carries through (clutch open / TC / DCT overlap / EV).
+   * Aero + rolling resistance still apply honestly; velocity integration unchanged.
+   */
+  var SHIFT_RESIDUAL_DRIVE = {
+    manual: 0.10,     // clutch open — mostly coast (0.05–0.15 band)
+    automatic: 0.30,  // TC / planetary fill (0.20–0.40)
+    dct: 0.60,        // dual-clutch overlap (0.45–0.75); also sequential / bike
+    ev: 0.85          // near-seamless (0.70–0.95); rare multi-speed EV shifts
+  };
+
+  /**
+   * Resolve shift-drive family from car.transmission, isEv, and txKey / preset hints.
+   * Returns: 'manual' | 'dct' | 'automatic' | 'ev'
+   */
+  function resolveShiftDriveFamily(car) {
+    if (!car) return 'automatic';
+    if (car.isEv || car.powerSource === 'ev') return 'ev';
+    var tx = String(car.transmission || '').trim().toLowerCase();
+    var key = String(car.txKey || '');
+    var keyL = key.toLowerCase();
+    var preset = FactoryTransmissions[key];
+    var pname = preset && preset.name ? String(preset.name).toLowerCase() : '';
+    var blob = tx + ' ' + keyL + ' ' + pname;
+
+    // Manual / MT-like (explicit label, or bare txKey on empty transmission)
+    if (/^manual\b|stick|h-?pattern|\bmt\b/.test(tx)) return 'manual';
+    if (!tx && /^(tr6060|mt82|muncie|toploader|a833|t5_|karkraft|toyota_t50|toyota_w58|mazda_5|nissan_fs5w71|mazda_miata|honda_s2000|toyota_fa86|getrag_r34|aisin_6)/i.test(key)) {
+      return 'manual';
+    }
+
+    // DCT / PDK / DSG / SSG / dual-clutch / sequential (bikes) / AMT e-gear
+    if (/dct|pdk|dsg|ssg|dual|sequential|ldf|isr|e-?gear|\bf1\b|stronic|speedshift\s*dct|tremec_tr90/.test(blob) ||
+        /^(pdk_|porsche_pdk|amg_speedshift_dct|vw_dq500|audi_stronic|gr6_dct|dct_7|tremec_tr9070|tremec_tr9080|ferrari_|mclaren_|lambo_|bugatti_|bmw_m_dct|bike_)/i.test(key)) {
+      return 'dct';
+    }
+
+    // Automatic / AT / ZF / MCT / torque-converter
+    if (/auto|automatic|\bat\b|zf|mct|torque\s*converter|converter|10r80|10l90|4l60|6l80|nag1|th400|200-?4r|2004r/.test(blob)) {
+      return 'automatic';
+    }
+
+    return 'automatic'; // fallback
+  }
+
+  function shiftResidualFraction(family) {
+    var f = SHIFT_RESIDUAL_DRIVE[family];
+    return f != null ? f : SHIFT_RESIDUAL_DRIVE.automatic;
+  }
+
   var FactoryTransmissions = {
     TH400_3: { name: 'GM TH400 3-spd', gears: [2.48, 1.48, 1.00], finalDrive: 3.73, loss: 18 },
     Muncie_M21: { name: 'Muncie M21 4-spd', gears: [2.20, 1.64, 1.28, 1.00], finalDrive: 3.70, loss: 12 },
@@ -624,6 +676,10 @@
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
     var launchLocked = false; // after first catch, always follow mechRpm (preserve shift drops)
     var shifting = false, shiftTimer = 0;
+    var shiftFamily = resolveShiftDriveFamily(car);
+    var shiftResidualFrac = shiftResidualFraction(shiftFamily);
+    var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
+    var shiftProbe = env.shiftCoastProbe ? { family: shiftFamily, residual: shiftResidualFrac, n: 0, sumA: 0, minA: Infinity, sumWhTQ: 0, minWhTQ: Infinity } : null;
     var spinSum = 0, spinN = 0, prevA = 0;
     var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
     var hitHalf = false, hitMile = false;
@@ -692,7 +748,7 @@
            *   shifts (new-gear mech may be below leave; must NOT re-hold leave).
            * - Manuals: short clutch fade (time ~0.55 s and/or ~28 mph).
            * - Autos / DCT / EV: lock as soon as mechRpm catches leaveRpm.
-           * - Shift RPM drop preserved via existing shift torque-cut + new-gear mechRpm.
+           * - Shift RPM drop preserved via shift-coast residual + new-gear mechRpm.
            */
           if (launchLocked) {
             rpm = mechRpm;
@@ -736,7 +792,16 @@
       engTQ *= (1.0 - loss);
 
       var gRatio = gears[Math.min(gear, gears.length) - 1];
-      var whTQ = shifting ? 0 : engTQ * gRatio * finalDrive;
+      var fullWhTQ = engTQ * gRatio * finalDrive;
+      var whTQ;
+      if (shifting) {
+        // TX-typed residual of pre-shift (last non-shift) wheel torque — not a hard zero-cut.
+        // Manual ≈ coast; auto/TC partial fill; DCT overlap; EV near-seamless.
+        whTQ = lastDriveWhTQ * shiftResidualFrac;
+      } else {
+        whTQ = fullWhTQ;
+        lastDriveWhTQ = fullWhTQ;
+      }
       var mph = v * MPS_TO_MPH;
 
       if (!shifting && car.hasAftermarketConverter) {
@@ -834,6 +899,13 @@
       // Allow negative net after launch so aero can balance at Vmax
       if (net < 0 && !hit1320 && v < 5.0) net = 0;
       var a = net / mass;
+      if (shiftProbe && shifting) {
+        shiftProbe.n++;
+        shiftProbe.sumA += a;
+        if (a < shiftProbe.minA) shiftProbe.minA = a;
+        shiftProbe.sumWhTQ += whTQ;
+        if (whTQ < shiftProbe.minWhTQ) shiftProbe.minWhTQ = whTQ;
+      }
       prevA = a;
 
       v += a * DT;
@@ -972,6 +1044,17 @@
     result.topSpeedFeet = peakMphFt;
     result.vmaxReached = vmaxDone && vmaxReason.indexOf('equilibrium') >= 0;
     result.vmaxReason = vmaxReason || (hit1320 ? 'incomplete' : 'did_not_finish_quarter');
+    if (shiftProbe) {
+      result.shiftCoastProbe = {
+        family: shiftProbe.family,
+        residual: shiftProbe.residual,
+        samples: shiftProbe.n,
+        minAccel: shiftProbe.n ? shiftProbe.minA : null,
+        avgAccel: shiftProbe.n ? shiftProbe.sumA / shiftProbe.n : null,
+        minWhTQ: shiftProbe.n ? shiftProbe.minWhTQ : null,
+        avgWhTQ: shiftProbe.n ? shiftProbe.sumWhTQ / shiftProbe.n : null
+      };
+    }
     return result;
   }
 
@@ -988,6 +1071,9 @@
     boostTorqueMult: boostTorqueMult,
     hybridAssistTorqueLbFt: hybridAssistTorqueLbFt,
     FactoryTransmissions: FactoryTransmissions,
+    SHIFT_RESIDUAL_DRIVE: SHIFT_RESIDUAL_DRIVE,
+    resolveShiftDriveFamily: resolveShiftDriveFamily,
+    shiftResidualFraction: shiftResidualFraction,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
     TIRE_LABELS: TIRE_LABELS,
