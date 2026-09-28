@@ -1,3 +1,16 @@
+# BUILD TIP — Jorge personal Camaro Z28 → GM 4L65-E (Sati)
+
+Branch: `review/jorge-camaro-z28-4l65e` · Base `b22aea2` (park unsourced + diesel bands). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Car (exact): `2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals`
+- Stated only: Modern Muscle · NA · **494 hp** · **3340 lb** · **GM 4L65-E** + **shift kit** · **Circle D 4400** stall (`hasAftermarketConverter: true`, `stallRpm: 4400`)
+- Preset `GM_4L65E` added (same family ratios as 4L60-E `[3.06, 1.63, 1.00, 0.70]`); period F-body A4 FD **3.23** (GU5); name baked via `txFactoryLabel`
+- forceScale=1; no Cd/FA/curve invent; park archive + diesel PowerStroke intact
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-VERIFY.md`
+
+---
+
 # BUILD TIP — Real-TX Phase 7b honest ratios/FD (Jorge via Seraph)
 
 Branch: `review/real-tx-phase7-honest-ratios` · Base `c60684d` (Phase 7 blank-unsure). **No Merovingian / no live Pages.**

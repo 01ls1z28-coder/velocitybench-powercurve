@@ -225,6 +225,7 @@
     Koenigsegg_KDD: { name: 'Koenigsegg Direct Drive', gears: [1.00], finalDrive: 2.73, loss: 8 },
     // Phase 5 residual ZF8/TR6060 filler — published-leaning OEM autos + JDM manuals
     GM_4L60E: { name: 'GM 4L60-E 4-spd Auto', gears: [3.06, 1.63, 1.00, 0.70], finalDrive: 3.42, loss: 16 },
+    GM_4L65E: { name: 'GM 4L65-E 4-spd Auto', gears: [3.06, 1.63, 1.00, 0.70], finalDrive: 3.23, loss: 16 },
     GM_2004R: { name: 'GM THM 200-4R 4-spd Auto', gears: [2.74, 1.57, 1.00, 0.67], finalDrive: 3.42, loss: 16 },
     GM_6L80: { name: 'GM 6L80 6-spd Auto', gears: [4.027, 2.364, 1.532, 1.152, 0.852, 0.667], finalDrive: 3.27, loss: 15 },
     Chrysler_NAG1_5: { name: 'Chrysler NAG1/W5A580 5-spd Auto', gears: [3.59, 2.19, 1.41, 1.00, 0.83], finalDrive: 3.06, loss: 15 },

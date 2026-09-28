@@ -7,11 +7,10 @@
  *   (archive: js/garage-parked-unsourced.json — NOT loaded by app).
  * Diesel tip: OEM-character redline/peakTQ/peakHP RPM + dense 100-RPM mesh; forceScale=1.
  * Standing rule: future unsourced / unrealistic cars stay OUT of public garage.
+ * Jorge Camaro tip: 2001 Z28 personal → GM_4L65E + Circle D 4400 + shift kit (stated).
  * Rebuild: node scripts/park-unsourced-diesel-bands.js
  * Credit: Jorge Guerra
  */
-'use strict';
-
 var GARAGE = [
   {
     "id": "2020-ford-mustang-gt",
@@ -2006,16 +2005,14 @@ var GARAGE = [
     "dragCoefficient": 0.34,
     "frontalAreaSqFt": 22.5,
     "tireRadiusInches": 13.2,
-    "finalDriveRatio": 3.42,
+    "finalDriveRatio": 3.23,
     "gearRatios": [
-      2.66,
-      1.78,
-      1.3,
+      3.06,
+      1.63,
       1,
-      0.74,
-      0.5
+      0.7
     ],
-    "txKey": "Tremec_T56",
+    "txKey": "GM_4L65E",
     "drivetrainLossPercent": 3,
     "driveType": "RWD",
     "isEv": false,
@@ -2031,10 +2028,10 @@ var GARAGE = [
     "shiftTimeSeconds": 0.1,
     "tireType": 2,
     "forceScale": 1,
-    "hasAftermarketConverter": false,
+    "hasAftermarketConverter": true,
     "engineLayout": "Front",
-    "transmission": "Manual",
-    "source": "heuristic+import",
+    "transmission": "Auto",
+    "source": "Jorge Guerra garage card: Modern Muscle · NA · 494 hp · 3340 lb · GM 4L65-E + shift kit · Circle D 4400 stall converter",
     "torqueCurve": {
       "1000": 294.66032798908304,
       "1100": 300.1967354102872,
@@ -2107,7 +2104,9 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "txFactoryLabel": "GM 4L65-E 4-spd Auto",
+    "stallRpm": 4400
   },
   {
     "id": "1996-chevrolet-impala-ss",
@@ -37815,7 +37814,6 @@ var GARAGE = [
     "isHybrid": false
   }
 ];
-
 if (typeof module !== "undefined" && module.exports) {
   module.exports = GARAGE;
 }
