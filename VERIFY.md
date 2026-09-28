@@ -1,3 +1,16 @@
+# BUILD TIP — Jorge Camaro Z28 FD 3.42 (Sati)
+
+Branch: `review/jorge-camaro-z28-fd-342` · Base `49e0f88` (GM 4L65-E + Circle D 4400). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Car (exact): `2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals`
+- **FD:** `finalDriveRatio` **3.23 → 3.42** — **Jorge-stated 3.42 rearend** (not GU5 inference). Preset `GM_4L65E.finalDrive` aligned to 3.42.
+- Kept: GM_4L65E · gears `[3.06, 1.63, 1.00, 0.70]` · Circle D 4400 · weight 3340 · peakHp 494 · forceScale=1
+- Knobs-only: targets exist in calib-meta (T56-era); trap still miss under 4L65E even at loss=0 — **no** Cd/wt/curve invent; knobs left as-is
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-fd342-VERIFY.md`
+
+---
+
 # BUILD TIP — Jorge personal Camaro Z28 → GM 4L65-E (Sati)
 
 Branch: `review/jorge-camaro-z28-4l65e` · Base `b22aea2` (park unsourced + diesel bands). **No Merovingian / no live Pages.**

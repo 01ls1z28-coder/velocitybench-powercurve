@@ -7,7 +7,7 @@
  *   (archive: js/garage-parked-unsourced.json — NOT loaded by app).
  * Diesel tip: OEM-character redline/peakTQ/peakHP RPM + dense 100-RPM mesh; forceScale=1.
  * Standing rule: future unsourced / unrealistic cars stay OUT of public garage.
- * Jorge Camaro tip: 2001 Z28 personal → GM_4L65E + Circle D 4400 + shift kit (stated).
+ * Jorge Camaro tip: 2001 Z28 personal → GM_4L65E + Circle D 4400 + shift kit; FD 3.42 (Jorge-stated).
  * Rebuild: node scripts/park-unsourced-diesel-bands.js
  * Credit: Jorge Guerra
  */
@@ -2005,7 +2005,7 @@ var GARAGE = [
     "dragCoefficient": 0.34,
     "frontalAreaSqFt": 22.5,
     "tireRadiusInches": 13.2,
-    "finalDriveRatio": 3.23,
+    "finalDriveRatio": 3.42,
     "gearRatios": [
       3.06,
       1.63,
