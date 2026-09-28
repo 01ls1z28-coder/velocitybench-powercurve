@@ -1,3 +1,15 @@
+# BUILD TIP — ATC post-upshift converter climb (Sati)
+
+Branch: `review/jorge-z28-converter-climb` · Base `1b0b695` (ATC unlock hang). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: replace flat hang-hold with **soft RPM climb** while unlocked/slipping + mild slip multiply → tach moves post-shift; slight trap tick.
+- Drops still ~1200±300 (1→2/2→3/3→4 ≈ 1279/1285/1289). Launch fingerprint identical to parent. Mustang 10R80 locked-ratio unchanged.
+- Trap ~115.08 → ~115.54 (+0.46 mph). forceScale=1; no gear/FD/Cd/wt/curve edits. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-converter-climb-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC inter-shift converter slip hang (Sati)
 
 Branch: `review/jorge-z28-converter-slip` · Base `f7bac2d` (Z28 FD 3.42). **No Merovingian / no live Pages.**

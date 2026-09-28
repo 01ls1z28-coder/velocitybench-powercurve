@@ -712,7 +712,9 @@
     var shifting = false, shiftTimer = 0;
     // ATC post-upshift hang: engine RPM floor after unlock-on-shift (0 = inactive).
     // Launch flash/stall/mph-lockup path is untouched when this is 0.
+    // Seed remembers the post-shift floor; hang RPM may soft-climb above it while slipping.
     var tcPostShiftHangRpm = 0;
+    var tcPostShiftHangSeed = 0;
     var shiftFamily = resolveShiftDriveFamily(car);
     var shiftResidualFrac = shiftResidualFraction(shiftFamily);
     var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
@@ -757,17 +759,28 @@
            * - Stall RPM = engine speed against a stalled/near-stalled turbine (brake launch).
            * - Flash RPM = brief free-rev peak as the converter unloads off the line.
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
-           * - Post-upshift ONLY: unlock/slip hang so tach does not dump to locked
-           *   gear-ratio mechRpm. Launch flash/stall/mph-lockup above is unchanged
-           *   whenever tcPostShiftHangRpm is inactive.
+           * - Post-upshift ONLY: unlock/slip hang with soft climb so tach does not
+           *   dump to locked gear-ratio mechRpm or freeze flat. Launch flash/stall/
+           *   mph-lockup above is unchanged whenever tcPostShiftHangRpm is inactive.
            */
           var stall = Number(car.stallRpm) || 2800;
           var flash = Number(car.flashRpm) || Math.max(stall + 400, 3500);
           if (flash < stall) flash = stall;
           if (tcPostShiftHangRpm > 0) {
-            // Inter-shift open-converter hang: hold above new-gear mech until turbine catches.
+            // Inter-shift open-converter climb: seed floor keeps ~1200 drop, then soft
+            // engine accel under slip so tach is not frozen flat; settle when turbine catches.
+            var hangSlip = tcPostShiftHangRpm > 0
+              ? Math.max(0, (tcPostShiftHangRpm - mechRpm) / tcPostShiftHangRpm)
+              : 0;
+            // Limited under-load climb (not free-rev): more slip → slightly freer rise.
+            var climbRate = 220 + hangSlip * 780; // ~220–1000 rpm/s
+            var climbCap = tcPostShiftHangSeed + 520; // slight post-shift rise only
+            var hangCeil = Math.min(shiftRpm - 40, climbCap);
+            if (hangCeil < tcPostShiftHangRpm) hangCeil = tcPostShiftHangRpm;
+            tcPostShiftHangRpm = Math.min(hangCeil, tcPostShiftHangRpm + climbRate * DT);
             if (mechRpm >= tcPostShiftHangRpm - 25) {
               tcPostShiftHangRpm = 0;
+              tcPostShiftHangSeed = 0;
               rpm = mechRpm;
             } else {
               rpm = Math.max(mechRpm, tcPostShiftHangRpm);
@@ -837,7 +850,8 @@
           var stallU = Number(car.stallRpm) || 2800;
           var stallFac = clamp((stallU - 2200) / 2800, 0, 1);
           var unload = 900 + stallFac * 500; // ~1293 at Circle D 4400 → ~1200-class drop
-          tcPostShiftHangRpm = Math.max(0, rpm - unload);
+          tcPostShiftHangSeed = Math.max(0, rpm - unload);
+          tcPostShiftHangRpm = tcPostShiftHangSeed;
         }
       }
 
@@ -871,10 +885,16 @@
         var stallN = Number(car.stallRpm) || 2800;
         var stallBoost = clamp((stallN - 2200) / 2800, 0, 1) * 0.25;
         var tMult = 1.0 + Math.min(1.35, slipR * (2.2 + stallBoost));
-        // Extra fade with road speed (mechanical lockup / coupling)
         if (mph > 15.0) {
+          // Extra fade with road speed (mechanical lockup / coupling)
           var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / 40.0));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
+        }
+        if (tcPostShiftHangRpm > 0) {
+          // Post-upshift unlock residual: converter open → small multiply from slip
+          // even after mph fade (launch path unchanged when hang inactive).
+          var unlockAdd = Math.min(0.055, slipR * 0.22);
+          tMult = 1.0 + Math.min(0.07, (tMult - 1.0) + unlockAdd);
         }
         whTQ *= tMult;
       }
