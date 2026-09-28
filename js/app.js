@@ -642,7 +642,7 @@
 
   function readCarFromForm() {
     var peakHp = clampNum($('peakHp').value, 1, 15000, 450);
-    var redline = clampNum($('redline').value, 2000, 16000, 6800);
+    var redline = clampNum($('redline').value, 2000, 28000, 6800); // EV tip: Cybertruck ~27k motor RPM @ FD 15.02
     var shiftRpm = clampNum($('shiftRpm').value, 1500, redline, 6500);
     var ind = inductionValue();
     var base = state.car || {};
@@ -1596,7 +1596,7 @@
     if (!el) return;
     el.addEventListener('change', function () {
       if (!state.car || state.evGaugeMode) return;
-      state.car.redline = clampNum($('redline').value, 2000, 16000, state.car.redline || 6800);
+      state.car.redline = clampNum($('redline').value, 2000, 28000, state.car.redline || 6800);
       state.car.shiftRpm = clampNum($('shiftRpm').value, 1500, state.car.redline, state.car.shiftRpm || 6500);
       configurePrimaryGauge(state.car);
     });

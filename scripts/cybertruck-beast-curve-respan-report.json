@@ -1,0 +1,53 @@
+{
+  "tip": "cybertruck-beast-curve-respan",
+  "base": "3f673cd5ffe593246440c5114e9746a524bd696b",
+  "span": 1.9256410256410257,
+  "oldFdRef": 7.8,
+  "fd": 15.02,
+  "txKey": "Tesla_EV_Cybertruck",
+  "redline": 27000,
+  "shiftRpm": 27000,
+  "peakTqRpm": 3900,
+  "peakHpRpm": 15400,
+  "curvePeakHp": 1060.181984006093,
+  "knobs": {
+    "loss": 4,
+    "tire": 4,
+    "tireLabel": "UHP",
+    "launch": 200,
+    "Cd": 0.425,
+    "forceScale": 1,
+    "weightLbs": 6800
+  },
+  "before": {
+    "z60": 2.45899999999984,
+    "et": 12.763999999998365,
+    "trap": 86.1375837307944,
+    "vmax": 124.03147642251841,
+    "reason": "aero_mech_equilibrium",
+    "z60130": null,
+    "t0130": null
+  },
+  "after": {
+    "z60": 2.7279999999998106,
+    "et": 10.999999999999343,
+    "trap": 117.93371381359542,
+    "vmax": 130.000215488,
+    "reason": "ev_speed_limiter_130mph",
+    "z60130": 15.492999999999476,
+    "t0130": 18.220999999999286
+  },
+  "hits": {
+    "z60": true,
+    "et": true,
+    "trap": true,
+    "lim": true
+  },
+  "targets": {
+    "z60": 2.6,
+    "et": 11,
+    "trap": 119,
+    "lim": 130
+  },
+  "elapsedMs": 55270
+}
