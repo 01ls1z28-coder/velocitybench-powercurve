@@ -1,3 +1,16 @@
+# BUILD TIP — ATC inter-shift converter slip hang (Sati)
+
+Branch: `review/jorge-z28-converter-slip` · Base `f7bac2d` (Z28 FD 3.42). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **post-upshift only** — ATC unlock/slip hang so tach does not dump to locked gear-ratio mechRpm.
+- Launch flash / stall / Circle D 4400 / mph-lockup curve: **unchanged** (launch RPM fingerprint identical to parent).
+- Z28 drops @ shiftRpm 6768: BEFORE ~3123 / 2609 / 2036 → AFTER ~1288 / 1293 / 1293 (target ~1200±300).
+- forceScale=1; gears/FD/Cd/wt/curve untouched; stock autos (no ATC) still locked-ratio.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-converter-VERIFY.md`
+
+---
+
 # BUILD TIP — Jorge Camaro Z28 FD 3.42 (Sati)
 
 Branch: `review/jorge-camaro-z28-fd-342` · Base `49e0f88` (GM 4L65-E + Circle D 4400). **No Merovingian / no live Pages.**

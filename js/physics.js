@@ -710,6 +710,9 @@
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
     var launchLocked = false; // after first catch, always follow mechRpm (preserve shift drops)
     var shifting = false, shiftTimer = 0;
+    // ATC post-upshift hang: engine RPM floor after unlock-on-shift (0 = inactive).
+    // Launch flash/stall/mph-lockup path is untouched when this is 0.
+    var tcPostShiftHangRpm = 0;
     var shiftFamily = resolveShiftDriveFamily(car);
     var shiftResidualFrac = shiftResidualFraction(shiftFamily);
     var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
@@ -754,25 +757,38 @@
            * - Stall RPM = engine speed against a stalled/near-stalled turbine (brake launch).
            * - Flash RPM = brief free-rev peak as the converter unloads off the line.
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
+           * - Post-upshift ONLY: unlock/slip hang so tach does not dump to locked
+           *   gear-ratio mechRpm. Launch flash/stall/mph-lockup above is unchanged
+           *   whenever tcPostShiftHangRpm is inactive.
            */
           var stall = Number(car.stallRpm) || 2800;
           var flash = Number(car.flashRpm) || Math.max(stall + 400, 3500);
           if (flash < stall) flash = stall;
-          // Lockup progress: 0 at standstill → 1 by ~50 mph
-          var lockup = clamp(mphNow / 50.0, 0, 1);
-          // Flash pulse: peaks in first ~0.20 s while still very slow
-          var flashPulse = 0;
-          if (t < 0.35 && mphNow < 18) {
-            // Longer flash window so Flash RPM is audible in 60ft / 0-60
-            flashPulse = Math.sin((Math.min(t, 0.35) / 0.35) * Math.PI);
+          if (tcPostShiftHangRpm > 0) {
+            // Inter-shift open-converter hang: hold above new-gear mech until turbine catches.
+            if (mechRpm >= tcPostShiftHangRpm - 25) {
+              tcPostShiftHangRpm = 0;
+              rpm = mechRpm;
+            } else {
+              rpm = Math.max(mechRpm, tcPostShiftHangRpm);
+            }
+          } else {
+            // Lockup progress: 0 at standstill → 1 by ~50 mph (LAUNCH path — do not retune)
+            var lockup = clamp(mphNow / 50.0, 0, 1);
+            // Flash pulse: peaks in first ~0.20 s while still very slow
+            var flashPulse = 0;
+            if (t < 0.35 && mphNow < 18) {
+              // Longer flash window so Flash RPM is audible in 60ft / 0-60
+              flashPulse = Math.sin((Math.min(t, 0.35) / 0.35) * Math.PI);
+            }
+            var target = stall + (flash - stall) * flashPulse;
+            // Blend toward mechanical RPM as converter couples / locks
+            rpm = target * (1 - lockup) + mechRpm * lockup;
+            // Never fall below stall while still heavily slipped (< ~25 mph)
+            if (mphNow < 25 && rpm < stall) rpm = stall;
+            // Soft ceiling: don't wildly exceed flash during flash window
+            if (flashPulse > 0.05 && rpm > flash) rpm = flash;
           }
-          var target = stall + (flash - stall) * flashPulse;
-          // Blend toward mechanical RPM as converter couples / locks
-          rpm = target * (1 - lockup) + mechRpm * lockup;
-          // Never fall below stall while still heavily slipped (< ~25 mph)
-          if (mphNow < 25 && rpm < stall) rpm = stall;
-          // Soft ceiling: don't wildly exceed flash during flash window
-          if (flashPulse > 0.05 && rpm > flash) rpm = flash;
         } else {
           /**
            * Stock slip→lockup (ATC off) — same idea as ATC without stall/flash:
@@ -814,6 +830,15 @@
         shifting = true;
         shiftTimer = shiftTime;
         result.totalShifts++;
+        // ATC only: unlock on upshift — seed hang floor so post-shift tach stays in
+        // powerband (~characteristic unload below shift RPM) instead of locked-ratio dump.
+        // Higher stall → slightly more unload (looser converter). Launch path untouched.
+        if (car.hasAftermarketConverter) {
+          var stallU = Number(car.stallRpm) || 2800;
+          var stallFac = clamp((stallU - 2200) / 2800, 0, 1);
+          var unload = 900 + stallFac * 500; // ~1293 at Circle D 4400 → ~1200-class drop
+          tcPostShiftHangRpm = Math.max(0, rpm - unload);
+        }
       }
 
       var engTQ = getTorqueAtRpm(curve, rpm);
