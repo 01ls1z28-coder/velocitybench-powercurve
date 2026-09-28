@@ -712,7 +712,7 @@
     var shifting = false, shiftTimer = 0;
     // ATC post-upshift hang: engine RPM floor after unlock-on-shift (0 = inactive).
     // Launch flash/stall/mph-lockup path is untouched when this is 0.
-    // Seed remembers the post-shift floor; hang RPM may soft-climb above it while slipping.
+    // Seed remembers the post-shift floor; hang soft-climbs continuously toward shiftRpm while slipping.
     var tcPostShiftHangRpm = 0;
     var tcPostShiftHangSeed = 0;
     var shiftFamily = resolveShiftDriveFamily(car);
@@ -760,9 +760,9 @@
            * - Flash RPM = brief free-rev peak as the converter unloads off the line
            *   (high-stall default scales well above stall — Circle D 4400 → ~6400).
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
-           * - Post-upshift ONLY: unlock/slip hang with soft climb so tach does not
-           *   dump to locked gear-ratio mechRpm or freeze flat; mph-gated extra
-           *   multiply under hang boosts trap, with post-trap fade so 60-130 ~10.9.
+           * - Post-upshift ONLY: unlock/slip hang with continuous soft climb toward
+           *   shiftRpm (no seed+520 tach plateau); mph-gated extra multiply under
+           *   hang boosts trap, with post-trap fade so 60-130 ~10.9.
            */
           var stall = Number(car.stallRpm) || 2800;
           // High-stall ATC flash ceiling scales with stall (Circle D 4400 → ~6400).
@@ -772,14 +772,20 @@
           if (flash < stall) flash = stall;
           if (tcPostShiftHangRpm > 0) {
             // Inter-shift open-converter climb: seed floor keeps ~1200 drop, then soft
-            // engine accel under slip so tach is not frozen flat; settle when turbine catches.
+            // continuous engine accel under slip toward shiftRpm (no seed+520 plateau).
+            // Early rate matches parent; past the old seed+520 freeze, soft ~90 rpm/s
+            // creep continues the tach rise until turbine/mech catches (then follow mech
+            // to shiftRpm). Avoids slip-proportional runaway that early-upshifted.
             var hangSlip = tcPostShiftHangRpm > 0
               ? Math.max(0, (tcPostShiftHangRpm - mechRpm) / tcPostShiftHangRpm)
               : 0;
             // Limited under-load climb (not free-rev): more slip → slightly freer rise.
-            var climbRate = 220 + hangSlip * 780; // ~220–1000 rpm/s
-            var climbCap = tcPostShiftHangSeed + 520; // slight post-shift rise only
-            var hangCeil = Math.min(shiftRpm - 40, climbCap);
+            var climbRate = 220 + hangSlip * 780; // ~220–1000 rpm/s (early, same as parent)
+            if (tcPostShiftHangRpm >= tcPostShiftHangSeed + 520) {
+              // Past old plateau: keep rising softly toward shift — do not freeze tach.
+              climbRate = 90;
+            }
+            var hangCeil = shiftRpm;
             if (hangCeil < tcPostShiftHangRpm) hangCeil = tcPostShiftHangRpm;
             tcPostShiftHangRpm = Math.min(hangCeil, tcPostShiftHangRpm + climbRate * DT);
             if (mechRpm >= tcPostShiftHangRpm - 25) {

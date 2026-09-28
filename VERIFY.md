@@ -1,3 +1,15 @@
+# BUILD TIP — ATC continuous soft climb past seed+520 (Sati)
+
+Branch: `review/jorge-z28-converter-continuous-climb` · Base `f1d694c` (ATC unlock postFade 60-130). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **ATC-only** — remove seed+520 hang plateau; early climb rate unchanged, then soft ~90 rpm/s continuous creep toward shiftRpm until mech catches.
+- Tach after upshift: rising past ~6000 (not flat); drops still ~1200±300; ET/trap ~11.556/@~119.45; 60′/0–60 flat; 60–130 **10.94** (~10.9); 1500 DA trap **118.25** (118+); flash 5507; Mustang identical.
+- forceScale=1; no gear/FD/Cd/wt invent. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-continuous-climb-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC mph-gated unlock postFade for 60–130 (Sati)
 
 Branch: `review/jorge-z28-converter-60-130` · Base `3f673cd` (ATC flash + trap multiply). **No Merovingian / no live Pages.**
