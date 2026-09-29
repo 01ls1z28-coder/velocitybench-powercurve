@@ -9702,11 +9702,11 @@
         "z60130": 3.87
       },
       "sim": {
-        "et": 8.632,
-        "trap": 160.8,
-        "z60": 1.56,
-        "z60130": 3.973,
-        "vmax": 160.8
+        "z60": 1.786999999999914,
+        "et": 8.792000000000566,
+        "trap": 161.42844661275697,
+        "z60130": 3.8840000000003148,
+        "vmax": 233.0003862208
       },
       "hits": {
         "et": true,
@@ -9715,14 +9715,18 @@
         "z60130": true
       },
       "knobs": {
-        "loss": 4.5,
-        "tire": 2,
-        "launch": 2400
+        "tireType": 1,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 1800,
+        "hybridAssistFrac": 0.28,
+        "forceScale": 1,
+        "dragCoefficient": 0.36
       },
       "txKey": "Tremec_TR9080_8DCT",
       "nG": 8,
       "fd": 5.56,
-      "blank": false
+      "blank": false,
+      "note": "review/zr1x-quarter-60-130: ET@trap+60-130 first; DragRadial/loss1/curve sc1.08+hi0.22"
     },
     {
       "name": "2024 Acura Integra Type S",
