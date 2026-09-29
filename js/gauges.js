@@ -1,6 +1,6 @@
 /**
  * VelocityBench PowerCurve — live BrassGauge twin-cluster (beauty tip / d5e3c63 era).
- * Thin brushed brass bezel · charcoal glass face · sharp white/red needle · brass hub.
+ * Refined brushed brass bezel · richer charcoal glass · sharp white/red needle · polished brass hub (beauty-v4).
  * Needle angle and hub digital share this.display every frame (needle≡digital).
  * NO snip wallpaper / NO dash-canonical-snip underlay — faces + bezels are canvas-drawn.
  */
@@ -131,39 +131,54 @@
 
     ctx.clearRect(0, 0, w, h);
 
-    // Outer brass bezel — thin brushed ring (not over-bronzed; beauty tip)
+    // Outer brass bezel — refined brushed gold (beauty-v4; geometry unchanged)
     var bezel = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
-    bezel.addColorStop(0, 'rgba(240,226,196,0.88)');
-    bezel.addColorStop(0.22, 'rgba(140,120,88,0.95)');
-    bezel.addColorStop(0.48, 'rgba(220,200,165,0.9)');
-    bezel.addColorStop(0.72, 'rgba(90,72,48,0.98)');
-    bezel.addColorStop(1, 'rgba(190,170,135,0.9)');
+    bezel.addColorStop(0, 'rgba(255,236,196,0.95)');
+    bezel.addColorStop(0.18, 'rgba(168,140,96,0.98)');
+    bezel.addColorStop(0.42, 'rgba(236,214,170,0.95)');
+    bezel.addColorStop(0.62, 'rgba(110,88,58,0.99)');
+    bezel.addColorStop(0.82, 'rgba(210,186,145,0.92)');
+    bezel.addColorStop(1, 'rgba(150,122,82,0.95)');
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
     ctx.fillStyle = bezel; ctx.fill();
 
+    // Soft outer ambient ring (subtle depth, still within dial clip)
+    ctx.beginPath(); ctx.arc(cx, cy, R - 1.2, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,246,224,0.22)';
+    ctx.lineWidth = 1.2; ctx.stroke();
+
     // Inner dark ring (slightly wider dark band → thinner visible brass)
     ctx.beginPath(); ctx.arc(cx, cy, R - 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#14110e'; ctx.fill();
+    ctx.fillStyle = '#12100e'; ctx.fill();
 
-    // Face — deep charcoal + soft glass radial
+    // Face — richer charcoal glass with warm brass undertone
     var face = ctx.createRadialGradient(cx, cy - R * 0.18, R * 0.04, cx, cy, R - 7);
-    face.addColorStop(0, '#222833');
-    face.addColorStop(0.45, '#10151c');
+    face.addColorStop(0, '#2a3140');
+    face.addColorStop(0.28, '#1a202c');
+    face.addColorStop(0.62, '#0e131a');
     face.addColorStop(1, '#050608');
     ctx.beginPath(); ctx.arc(cx, cy, R - 7, 0, Math.PI * 2);
     ctx.fillStyle = face; ctx.fill();
 
-    // Glass specular arc (upper face)
+    // Warm brass vignette at face rim (restrained)
+    var rimWash = ctx.createRadialGradient(cx, cy, R * 0.55, cx, cy, R - 7);
+    rimWash.addColorStop(0, 'rgba(0,0,0,0)');
+    rimWash.addColorStop(0.7, 'rgba(0,0,0,0)');
+    rimWash.addColorStop(1, 'rgba(40,28,12,0.35)');
+    ctx.beginPath(); ctx.arc(cx, cy, R - 7, 0, Math.PI * 2);
+    ctx.fillStyle = rimWash; ctx.fill();
+
+    // Glass specular arc (upper face) — slightly richer
     ctx.beginPath();
     ctx.arc(cx, cy, R - 10, (Math.PI * 1.15), (Math.PI * 1.85));
-    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
-    ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+    ctx.lineWidth = 6.5; ctx.lineCap = 'round'; ctx.stroke();
     ctx.lineCap = 'butt';
 
     // Fine brass inner rim
     ctx.beginPath(); ctx.arc(cx, cy, R - 8.5, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232,215,176,0.28)';
-    ctx.lineWidth = 1; ctx.stroke();
+    ctx.strokeStyle = 'rgba(240,220,180,0.38)';
+    ctx.lineWidth = 1.15; ctx.stroke();
 
     // Redline arc (thin, sharp — LFA style) — tach + speedo both live-drawn
     var redStart = ang(Math.min(this.redline, this.max));
@@ -345,15 +360,16 @@
     ctx.fill();
     ctx.restore();
 
-    // Hub
+    // Hub — polished brass cap
     var hub = ctx.createRadialGradient(cx - 2, cy - 2, 1, cx, cy, 11);
-    hub.addColorStop(0, '#f0e2c4');
-    hub.addColorStop(0.45, '#a89068');
-    hub.addColorStop(1, '#3a3020');
+    hub.addColorStop(0, '#fff2d4');
+    hub.addColorStop(0.35, '#d4b889');
+    hub.addColorStop(0.7, '#8a7048');
+    hub.addColorStop(1, '#2e2618');
     ctx.beginPath(); ctx.arc(cx, cy, 9, 0, Math.PI * 2);
     ctx.fillStyle = hub; ctx.fill();
     ctx.beginPath(); ctx.arc(cx, cy, 3.2, 0, Math.PI * 2);
-    ctx.fillStyle = '#0a0c10'; ctx.fill();
+    ctx.fillStyle = '#07090c'; ctx.fill();
   };
 
   global.VBPowerCurveGauges = { BrassGauge: BrassGauge };

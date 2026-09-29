@@ -47,6 +47,24 @@
     inset 0 0 0 2px var(--brass-inset),
     inset 0 1px 0 rgba(255,246,224,0.12),
     0 4px 14px rgba(0,0,0,0.4);
+
+  /* Instruments beauty palette — luxury OEM / high-end sim */
+  --inst-brass: rgba(224, 198, 148, 0.55);
+  --inst-brass-hi: rgba(255, 236, 196, 0.42);
+  --inst-brass-lo: rgba(92, 70, 42, 0.55);
+  --inst-brass-solid: #d4b889;
+  --inst-brass-text: #f0e2c4;
+  --inst-charcoal: #07090d;
+  --inst-charcoal-2: #0c1016;
+  --inst-face-mid: #161b24;
+  --inst-glow-amber: rgba(255, 196, 64, 0.38);
+  --inst-glow-green: rgba(70, 255, 120, 0.32);
+  --inst-glow-red: rgba(255, 72, 72, 0.28);
+  --inst-glow-brass: rgba(212, 184, 137, 0.22);
+  --inst-chrome:
+    linear-gradient(180deg, rgba(255,246,224,0.14) 0%, transparent 42%),
+    linear-gradient(165deg, rgba(240,226,196,0.08), transparent 55%),
+    linear-gradient(180deg, #12161e 0%, #080a0e 100%);
 }
 
 html {
@@ -334,19 +352,46 @@ body {
   box-sizing: border-box;
   container-type: size;
   padding: 0;
-  border: 1px solid rgba(215,196,160,0.22);
-  border-radius: var(--radius);
+  border: 1px solid var(--inst-brass);
+  border-radius: calc(var(--radius) + 2px);
   box-shadow:
-    inset 0 0 0 1px rgba(106,87,56,0.22),
-    inset 0 1px 0 rgba(255,246,224,0.06),
-    0 10px 28px rgba(0,0,0,0.35);
+    inset 0 0 0 1px var(--inst-brass-hi),
+    inset 0 0 0 3px var(--inst-brass-lo),
+    inset 0 1px 0 rgba(255,246,224,0.10),
+    inset 0 -40% 80px rgba(0,0,0,0.55),
+    0 14px 40px rgba(0,0,0,0.55),
+    0 0 48px var(--inst-glow-brass);
   overflow: hidden;
+  /* Deep charcoal plate + intentional vignette fills empty space around dials */
   background:
-    radial-gradient(ellipse at 50% 38%, rgba(215,196,160,0.10), transparent 58%),
-    radial-gradient(ellipse at 18% 70%, rgba(76,201,240,0.05), transparent 45%),
-    radial-gradient(ellipse at 82% 70%, rgba(200,255,74,0.04), transparent 45%),
-    linear-gradient(180deg, rgba(255,255,255,0.035), transparent 42%),
-    #05070a;
+    radial-gradient(ellipse 42% 58% at 25.5% 36%, rgba(212,184,137,0.09), transparent 62%),
+    radial-gradient(ellipse 42% 58% at 74.5% 36%, rgba(212,184,137,0.09), transparent 62%),
+    radial-gradient(ellipse 28% 70% at 50% 48%, rgba(255,246,224,0.045), transparent 70%),
+    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 42%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.045) 0%, transparent 28%),
+    linear-gradient(180deg, #0d1118 0%, var(--inst-charcoal) 48%, #030406 100%);
+}
+/* Soft ambient wash behind dials — fills voids without snip wallpaper */
+.gauges.lfa-cluster::before {
+  content: "";
+  position: absolute;
+  inset: 3.2% 2.4%;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid rgba(212,184,137,0.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.35),
+    inset 0 0 60px rgba(0,0,0,0.35);
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(212,184,137,0.03) 22%,
+      rgba(212,184,137,0.055) 50%,
+      rgba(212,184,137,0.03) 78%,
+      transparent 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(212,184,137,0.06), transparent 55%);
+  opacity: 1;
 }
 
 /* Gauge canvases — measured centers (tach 322,261 R220; speed 944,264 R220) on 1280×720 */
@@ -368,10 +413,13 @@ body {
   padding: 0;
   border-radius: 50%;
   overflow: hidden;
-  background: #05070a;
+  background:
+    radial-gradient(circle at 50% 42%, #1a1f28 0%, var(--inst-charcoal) 72%);
   /* Hard circular clip — never spill a rect into center gap / bezels */
   clip-path: circle(50% at 50% 50%);
   -webkit-clip-path: circle(50% at 50% 50%);
+  /* Soft bezel ambient — outside-feel glow via filter on wrap (clipped, so use parent) */
+  filter: drop-shadow(0 0 18px rgba(212,184,137,0.18)) drop-shadow(0 10px 22px rgba(0,0,0,0.55));
 }
 .gauge-wrap--tach {
   left: 7.969%;
@@ -432,6 +480,7 @@ body {
 }
 .gauge-center-stack {
   pointer-events: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,6 +494,35 @@ body {
   margin: 0;
   padding: 12% 0 0;
   box-sizing: border-box;
+  /* Layout geometry locked — chrome plate is decorative ::before only */
+}
+/* Polished center chrome plate — fills vertical gap without changing stack metrics */
+.gauge-center-stack::before {
+  content: "";
+  position: absolute;
+  /* Stay inside stack width — dial gap only has ~1% clearance each side */
+  left: 0;
+  right: 0;
+  top: 2%;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 14px;
+  border: 1px solid rgba(212,184,137,0.20);
+  background:
+    linear-gradient(180deg, rgba(255,246,224,0.09) 0%, transparent 14%),
+    linear-gradient(180deg, transparent 84%, rgba(255,246,224,0.06) 100%),
+    linear-gradient(90deg, rgba(212,184,137,0.04) 0%, rgba(212,184,137,0.11) 50%, rgba(212,184,137,0.04) 100%),
+    linear-gradient(180deg, rgba(14,18,24,0.68) 0%, rgba(6,8,12,0.82) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,246,224,0.10),
+    0 8px 24px rgba(0,0,0,0.32),
+    0 0 18px rgba(212,184,137,0.10);
+}
+.gauge-center-stack > * {
+  position: relative;
+  z-index: 1;
 }
 
 .gear-digit {
@@ -458,13 +536,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #050608;
-  border: 2.5px solid rgba(210,185,135,0.92);
+  background:
+    radial-gradient(circle at 50% 38%, #1a1f28 0%, #050608 78%);
+  border: 2.5px solid rgba(224,198,148,0.95);
   border-radius: 12px;
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.7),
-    inset 0 0 0 3px rgba(150,125,85,0.35),
-    inset 0 2px 6px rgba(0,0,0,0.65);
+    inset 0 0 0 1px rgba(70,55,35,0.75),
+    inset 0 0 0 3px rgba(160,130,88,0.42),
+    inset 0 2px 8px rgba(0,0,0,0.7),
+    0 0 16px rgba(212,184,137,0.18),
+    0 4px 14px rgba(0,0,0,0.4);
   padding: 0;
   margin-bottom: clamp(1px, 0.4cqh, 4px);
 }
@@ -472,10 +553,10 @@ body {
   font-family: "Courier New", ui-monospace, monospace;
   font-size: clamp(28px, 6.5cqh, 58px);
   font-weight: 700;
-  color: #f4f6fa;
+  color: #f7f9fc;
   line-height: 1;
   letter-spacing: -0.04em;
-  text-shadow: 0 0 12px rgba(255,255,255,0.9), 0 0 24px rgba(180,210,255,0.5);
+  text-shadow: 0 0 14px rgba(255,255,255,0.85), 0 0 28px rgba(212,184,137,0.35);
 }
 
 /* Wheel Spin logo — ON TOP of TRACTION % (not beside) */
@@ -488,23 +569,41 @@ body {
   gap: 2px;
   width: auto;
   min-width: 44px;
-  opacity: 0.34;
-  color: #5a4830;
-  background: transparent;
-  border-radius: 8px;
-  padding: 2px 3px;
+  opacity: 0.42;
+  color: #6a5638;
+  background:
+    linear-gradient(180deg, rgba(255,246,224,0.04), transparent 60%),
+    rgba(5,7,10,0.55);
+  border: 1px solid rgba(212,184,137,0.18);
+  border-radius: 10px;
+  padding: 4px 5px 3px;
+  box-shadow: inset 0 1px 0 rgba(255,246,224,0.05);
 }
 .wheel-spin.on,
 .wheel-spin.wheel-spin--demo {
   opacity: 1;
-  color: #ffd024;
-  background: #05070a;
-  filter: drop-shadow(0 0 8px rgba(255,200,40,0.75));
+  color: #ffd24a;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,196,64,0.18), transparent 65%),
+    linear-gradient(180deg, rgba(255,210,74,0.10), transparent 55%),
+    #080a0c;
+  border-color: rgba(255,196,64,0.55);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,210,74,0.18),
+    inset 0 1px 0 rgba(255,246,224,0.12),
+    0 0 14px var(--inst-glow-amber),
+    0 0 28px rgba(255,176,36,0.18);
+  filter: none;
 }
 .wheel-spin-mark {
   display: block;
   width: clamp(28px, 5.2cqh, 44px);
   height: clamp(24px, 4.4cqh, 36px);
+  filter: drop-shadow(0 0 4px rgba(255,196,64,0.0));
+}
+.wheel-spin.on .wheel-spin-mark,
+.wheel-spin.wheel-spin--demo .wheel-spin-mark {
+  filter: drop-shadow(0 0 6px rgba(255,196,64,0.55));
 }
 .wheel-spin-wordmark {
   display: flex;
@@ -526,7 +625,7 @@ body {
 }
 .wheel-spin.on .wheel-spin-line,
 .wheel-spin.wheel-spin--demo .wheel-spin-line {
-  text-shadow: 0 0 6px rgba(255,208,36,0.55);
+  text-shadow: 0 0 8px rgba(255,208,36,0.65);
 }
 
 .traction-meter {
@@ -536,11 +635,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 2px;
+  gap: 3px;
   justify-content: flex-start;
-  background: #05070a;
-  border-radius: 4px;
-  padding: 2px 2px;
+  background:
+    linear-gradient(180deg, rgba(255,246,224,0.05), transparent 70%),
+    rgba(5,7,10,0.85);
+  border-radius: 6px;
+  border: 1px solid rgba(212,184,137,0.22);
+  padding: 4px 4px 3px;
+  box-shadow: inset 0 1px 0 rgba(255,246,224,0.06);
 }
 .traction-meter-label {
   display: block;
@@ -548,15 +651,16 @@ body {
   font-size: clamp(7px, 1.35cqh, 11px);
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #f0ece4;
+  color: var(--inst-brass-text);
   line-height: 1;
   white-space: nowrap;
   text-align: left;
   opacity: 1;
-  background: #05070a;
-  padding: 1px 1px;
+  background: transparent;
+  padding: 0 1px;
   width: auto;
   max-width: 100%;
+  text-shadow: 0 0 8px rgba(212,184,137,0.25);
 }
 .traction-meter-segs {
   display: flex;
@@ -570,8 +674,11 @@ body {
   max-height: 18px;
   padding: 2px 3px;
   border-radius: 4px;
-  background: #050608;
-  box-shadow: inset 0 0 0 1.5px rgba(215,196,160,0.4);
+  background:
+    linear-gradient(180deg, #0a0c10, #050608);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(212,184,137,0.45),
+    inset 0 2px 4px rgba(0,0,0,0.55);
   border: none;
   box-sizing: border-box;
 }
@@ -585,16 +692,16 @@ body {
 }
 .trac-seg.is-on {
   opacity: 1;
-  background: #e8e4dc;
-  box-shadow: 0 0 4px rgba(232,228,220,0.35);
+  background: linear-gradient(180deg, #f4f0e8, #d8d2c6);
+  box-shadow: 0 0 5px rgba(232,228,220,0.4);
 }
 .traction-meter.is-low .trac-seg.is-on {
-  background: #ffb024;
-  box-shadow: 0 0 5px rgba(255,176,36,0.45);
+  background: linear-gradient(180deg, #ffc84a, #ffb024);
+  box-shadow: 0 0 6px rgba(255,176,36,0.5);
 }
 .traction-meter.is-critical .trac-seg.is-on {
-  background: #ff5a2a;
-  box-shadow: 0 0 6px rgba(255,80,40,0.55);
+  background: linear-gradient(180deg, #ff7a4a, #ff5a2a);
+  box-shadow: 0 0 7px rgba(255,80,40,0.55);
 }
 
 /* Option A round LED capsule — live-drawn */
@@ -610,14 +717,16 @@ body {
   justify-content: center;
   box-sizing: border-box;
   padding: 4px 7px;
-  border: 2.5px solid rgba(210,185,135,0.95);
+  border: 2.5px solid rgba(224,198,148,0.95);
   border-radius: 999px;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.14), transparent 50%),
-    #05070a;
+    linear-gradient(180deg, rgba(255,246,224,0.18), transparent 48%),
+    linear-gradient(180deg, #12151c, #05070a);
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.7),
-    inset 0 0 0 3px rgba(160,135,95,0.4);
+    inset 0 0 0 1px rgba(70,55,35,0.75),
+    inset 0 0 0 3px rgba(160,135,95,0.45),
+    inset 0 2px 6px rgba(0,0,0,0.55),
+    0 0 14px rgba(212,184,137,0.14);
   transform: none;
 }
 .shift-led-row {
@@ -633,30 +742,53 @@ body {
   width: clamp(11px, 2.2cqh, 18px);
   height: clamp(11px, 2.2cqh, 18px);
   border-radius: 50%;
-  background: #12100e;
-  box-shadow: inset 0 0 0 1.5px rgba(215,196,160,0.35);
-  opacity: 0.35;
+  background:
+    radial-gradient(circle at 35% 30%, #2a2620, #0c0a08);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(215,196,160,0.35),
+    inset 0 2px 3px rgba(0,0,0,0.55);
+  opacity: 0.4;
 }
 .shift-led.is-on.shift-led--g {
   opacity: 1;
-  background: #46ff72;
-  box-shadow: 0 0 14px rgba(61,255,106,0.95), 0 0 26px rgba(61,255,106,0.5);
+  background:
+    radial-gradient(circle at 35% 28%, #9dffb4, #2ae05a 55%, #0a8a30);
+  box-shadow:
+    0 0 10px rgba(61,255,106,0.85),
+    0 0 20px rgba(61,255,106,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .shift-led.is-on.shift-led--a {
   opacity: 1;
-  background: #ffc033;
-  box-shadow: 0 0 14px rgba(255,176,36,0.95), 0 0 26px rgba(255,176,36,0.45);
+  background:
+    radial-gradient(circle at 35% 28%, #ffe08a, #ffb024 55%, #b07010);
+  box-shadow:
+    0 0 10px rgba(255,176,36,0.85),
+    0 0 20px rgba(255,176,36,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.4);
 }
 .shift-led.is-on.shift-led--r {
   opacity: 1;
-  background: #ff4040;
-  box-shadow: 0 0 15px rgba(255,50,50,0.98), 0 0 28px rgba(255,40,40,0.5);
+  background:
+    radial-gradient(circle at 35% 28%, #ff9a9a, #ff4040 55%, #a01010);
+  box-shadow:
+    0 0 11px rgba(255,50,50,0.9),
+    0 0 22px rgba(255,40,40,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4);
 }
-.shift-led-bar.is-approaching,
+.shift-led-bar.is-approaching {
+  border-color: rgba(255, 180, 40, 0.7);
+  box-shadow:
+    inset 0 0 0 1px rgba(70,55,35,0.75),
+    inset 0 0 0 3px rgba(160,135,95,0.45),
+    0 0 16px rgba(255,176,36,0.28);
+}
 .shift-led-bar.is-shift {
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  border-color: rgba(255, 60, 60, 0.85);
+  box-shadow:
+    inset 0 0 0 1px rgba(70,55,35,0.75),
+    inset 0 0 0 3px rgba(160,135,95,0.45),
+    0 0 18px rgba(255,40,40,0.4);
 }
 @keyframes shift-led-flash {
   from { filter: brightness(0.7); }
@@ -686,6 +818,8 @@ body {
   z-index: 6;
   box-sizing: border-box;
   transform: none;
+  /* Soft floor rail under buttons — fills lower void tastefully */
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
 }
 .btn-gauge-run {
   appearance: none;
@@ -718,40 +852,49 @@ body {
 }
 .btn-gauge-run-label { flex: 0 0 auto; }
 .btn-gauge-run--start {
-  color: #5dff7a;
+  color: #6dff88;
   background:
-    linear-gradient(180deg, rgba(61,255,106,0.1), transparent 50%),
-    #0a0c0e;
+    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
+    linear-gradient(180deg, rgba(61,255,106,0.14), transparent 55%),
+    linear-gradient(180deg, #12161c, #07090c);
   box-shadow:
-    inset 0 0 0 3.5px rgba(220,198,150,0.98),
-    inset 0 0 0 6.5px rgba(100,78,48,0.7),
-    inset 0 2px 0 rgba(255,246,224,0.12),
-    0 0 14px rgba(61,255,106,0.22);
-  text-shadow: 0 0 10px rgba(61,255,106,0.65);
+    inset 0 0 0 2.5px rgba(230,206,160,0.95),
+    inset 0 0 0 5px rgba(100,78,48,0.72),
+    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 -2px 8px rgba(0,0,0,0.45),
+    0 0 18px var(--inst-glow-green),
+    0 4px 14px rgba(0,0,0,0.35);
+  text-shadow: 0 0 12px rgba(61,255,106,0.7);
 }
 .btn-gauge-run--pause {
-  color: #ffd24a;
+  color: #ffd85a;
   flex: 1.25 1 0;
   background:
-    linear-gradient(180deg, rgba(255,210,74,0.09), transparent 50%),
-    #0a0c0e;
+    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
+    linear-gradient(180deg, rgba(255,210,74,0.12), transparent 55%),
+    linear-gradient(180deg, #12161c, #07090c);
   box-shadow:
-    inset 0 0 0 3.5px rgba(220,198,150,0.98),
-    inset 0 0 0 6.5px rgba(100,78,48,0.7),
-    inset 0 2px 0 rgba(255,246,224,0.12),
-    0 0 12px rgba(255,210,74,0.18);
+    inset 0 0 0 2.5px rgba(230,206,160,0.95),
+    inset 0 0 0 5px rgba(100,78,48,0.72),
+    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 -2px 8px rgba(0,0,0,0.45),
+    0 0 14px rgba(255,210,74,0.22),
+    0 4px 14px rgba(0,0,0,0.35);
   text-shadow: 0 0 10px rgba(255,210,74,0.55);
 }
 .btn-gauge-run--stop {
-  color: #ff5a5a;
+  color: #ff6a6a;
   background:
-    linear-gradient(180deg, rgba(255,80,80,0.09), transparent 50%),
-    #0a0c0e;
+    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
+    linear-gradient(180deg, rgba(255,80,80,0.12), transparent 55%),
+    linear-gradient(180deg, #12161c, #07090c);
   box-shadow:
-    inset 0 0 0 3.5px rgba(220,198,150,0.98),
-    inset 0 0 0 6.5px rgba(100,78,48,0.7),
-    inset 0 2px 0 rgba(255,246,224,0.12),
-    0 0 12px rgba(255,60,60,0.18);
+    inset 0 0 0 2.5px rgba(230,206,160,0.95),
+    inset 0 0 0 5px rgba(100,78,48,0.72),
+    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 -2px 8px rgba(0,0,0,0.45),
+    0 0 14px var(--inst-glow-red),
+    0 4px 14px rgba(0,0,0,0.35);
   text-shadow: 0 0 10px rgba(255,80,80,0.55);
 }
 .btn-gauge-run:hover { filter: brightness(1.12); }
@@ -762,11 +905,12 @@ body {
   filter: none;
 }
 .btn-gauge-run.is-active {
-  filter: brightness(1.18);
+  filter: brightness(1.14);
   box-shadow:
-    inset 0 0 0 1px rgba(255,246,224,0.4),
-    inset 0 0 0 3px rgba(106,87,56,0.4),
-    0 0 16px rgba(255,255,255,0.12);
+    inset 0 0 0 2.5px rgba(255,246,224,0.55),
+    inset 0 0 0 5px rgba(106,87,56,0.45),
+    inset 0 2px 0 rgba(255,246,224,0.2),
+    0 0 20px rgba(255,246,224,0.16);
 }
 
 .chart-wrap {
@@ -1087,18 +1231,6 @@ body {
     letter-spacing: 0.06em;
   }
   .btn-gauge-ico { width: clamp(10px, 2.3cqh, 14px); height: clamp(10px, 2.3cqh, 14px); }
-}
-
-.dyno-readout { font-size: 11px; gap: 8px 12px; }
-}
-
-@media (max-width: 480px) {
-  .field-row,
-  .field-row-3 { grid-template-columns: 1fr; }
-  .gears-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .gauges-dials { grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr); gap: 4px; }
-  .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: 168px; }
-  .metrics { grid-template-columns: 1fr 1fr; }
 }
 
 .dyno-readout {
