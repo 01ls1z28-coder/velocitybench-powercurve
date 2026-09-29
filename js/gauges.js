@@ -157,7 +157,7 @@
   /** Draw one 7-segment digit; returns advance width. */
   BrassGauge.prototype._drawSeg7Digit = function (ctx, x, y, h, mask, color) {
     var w = h * 0.58;
-    var t = Math.max(1.6, h * 0.14); // segment thickness
+    var t = Math.max(2.0, h * 0.16); // segment thickness — snip bolder
     var g = t * 0.35; // gap from corners
     var hx = w - 2 * g;
     var vy = (h - 3 * g) / 2;
@@ -209,13 +209,13 @@
     var x = cx - total / 2;
     ctx.save();
     if (glow) {
-      ctx.shadowColor = 'rgba(60,190,255,0.95)';
-      ctx.shadowBlur = Math.max(6, digH * 0.35);
+      ctx.shadowColor = 'rgba(80,200,255,1)';
+      ctx.shadowBlur = Math.max(10, digH * 0.55);
     }
     for (i = 0; i < digits.length; i++) {
       var c = digits.charAt(i);
       if (c >= '0' && c <= '9') {
-        this._drawSeg7Digit(ctx, x, cy - digH / 2, digH, SEG7[c.charCodeAt(0) - 48], '#5ad4ff');
+        this._drawSeg7Digit(ctx, x, cy - digH / 2, digH, SEG7[c.charCodeAt(0) - 48], '#6adbff');
       }
       x += widths[i];
     }
@@ -225,7 +225,7 @@
     for (i = 0; i < digits.length; i++) {
       c = digits.charAt(i);
       if (c >= '0' && c <= '9') {
-        this._drawSeg7Digit(ctx, x, cy - digH / 2, digH, SEG7[c.charCodeAt(0) - 48], '#7ae0ff');
+        this._drawSeg7Digit(ctx, x, cy - digH / 2, digH, SEG7[c.charCodeAt(0) - 48], '#9aecff');
       }
       x += widths[i];
     }
@@ -468,7 +468,7 @@
 
     // Blue 7-seg hub digits at bottom of face
     var shown = Math.round(this.hubDisplay != null ? this.hubDisplay : this.display);
-    var digH = (this.dial === 'speed') ? Math.max(18, R * 0.125) : Math.max(17, R * 0.118);
+    var digH = (this.dial === 'speed') ? Math.max(22, R * 0.145) : Math.max(20, R * 0.138);
     this._drawSeg7Number(ctx, cx, cy + R * 0.32, String(shown), digH, true);
     ctx.fillStyle = 'rgba(200,208,220,0.9)';
     ctx.font = 'bold ' + Math.max(9, Math.round(R * 0.055)) + 'px "Segoe UI", sans-serif';
