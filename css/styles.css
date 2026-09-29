@@ -356,27 +356,32 @@ body {
 }
 .gauge-wrap {
   position: absolute;
-  width: 34.375%;  /* 440/1280 — covers snip dial fully */
-  height: 61.111%; /* 440/720 */
+  /* Square box → circle; 440px on 1280×720 snip dials */
+  width: 34.375%;
+  aspect-ratio: 1 / 1;
+  height: auto;
   margin: 0;
   padding: 0;
   border-radius: 50%;
   overflow: hidden;
-  background: #05070a; /* opaque under canvas — kill snip baked needle bleed */
+  background: #05070a;
+  /* Hard circular clip — never spill a rect into center gap / bezels */
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
 }
 .gauge-wrap--tach {
-  left: 7.969%;   /* (322-220)/1280 */
-  top: 5.694%;    /* (261-220)/720 */
+  left: 7.969%;
+  top: 5.694%;
 }
 .gauge-wrap--speedo {
-  left: 56.563%;  /* (944-220)/1280 */
-  top: 6.111%;    /* (264-220)/720 */
+  left: 56.563%;
+  top: 6.111%;
 }
 .gauge-wrap canvas {
   width: 100%;
   height: 100%;
   display: block;
-  background: #05070a; /* opaque face plate */
+  background: transparent; /* circle clip + BrassGauge opaque disk handle cover */
 }
 
 /* Live digit wells covering snip baked digits (snip cyan wells) */
@@ -417,20 +422,8 @@ body {
   margin: 0;
   padding: 0;
 }
-/* Kill snip baked gear/traction/slip/LED under live overlays */
-.gauge-center::before {
-  content: "";
-  position: absolute;
-  left: 35.5%;
-  top: 52%;
-  width: 29%;
-  height: 34%;
-  background: #05070a;
-  border-radius: 10px;
-  z-index: 0;
-  pointer-events: none;
-}
-.gauge-center > * { pointer-events: auto; position: relative; z-index: 1; }
+/* No full-bleed center plate — only per-widget opaque covers at snip boxes */
+.gauge-center > * { pointer-events: auto; }
 
 .gear-digit {
   position: absolute;
@@ -475,6 +468,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: transparent; /* no row plate */
 }
 .traction-meter {
   flex: 1 1 auto;
@@ -485,6 +479,9 @@ body {
   gap: 3px;
   height: 100%;
   justify-content: flex-start;
+  background: #05070a; /* widget-only cover — not a full center plate */
+  border-radius: 4px;
+  padding: 2px 3px;
 }
 .traction-meter-label {
   /* Snip already paints label — hide duplicate during freeze; show for live contrast */
@@ -499,7 +496,10 @@ body {
   text-align: left;
   width: 100%;
   opacity: 1;
-  background: #05070a; /* cover snip label */
+  background: #05070a;
+  padding: 1px 2px;
+  width: auto;
+  max-width: 100%;
 }
 .traction-meter-segs {
   display: flex;
@@ -548,9 +548,9 @@ body {
   gap: 3px;
   width: 22%;
   min-width: 48px;
-  opacity: 0.2;
+  opacity: 0; /* snip paints idle SLIP; show only when live .on */
   color: #5a4830;
-  background: #05070a; /* cover snip SLIP for live state */
+  background: transparent;
   border-radius: 6px;
   padding: 2px;
 }
@@ -558,6 +558,7 @@ body {
 .slip-light.slip-light--demo {
   opacity: 1;
   color: #ffd024;
+  background: #05070a; /* snip-sized cover under live SLIP only */
   filter: drop-shadow(0 0 8px rgba(255,200,40,0.75));
 }
 .slip-light-icon {
@@ -650,7 +651,6 @@ body {
   transform: translateX(-50%);
   width: 52%;
   height: 9.2%;
-  background: #05070a; /* cover snip painted buttons */
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -660,6 +660,7 @@ body {
   padding: 0;
   z-index: 6;
   box-sizing: border-box;
+  background: transparent; /* snip paints START/PAUSE/STOP — no cover plate */
 }
 .btn-gauge-run {
   appearance: none;
@@ -669,30 +670,32 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   height: 100%;
-  padding: 0 1.2%;
+  padding: 0;
   border-radius: 12px;
-  font-family: var(--sans);
-  font-weight: 800;
-  font-size: clamp(13px, 2.2cqh, 18px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background: #0a0c0e;
-  box-shadow:
-    inset 0 0 0 3.5px rgba(220,198,150,0.98),
-    inset 0 0 0 6.5px rgba(100,78,48,0.7);
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  font-size: 1px;
+  letter-spacing: 0;
 }
 .btn-gauge-run--pause { flex: 1.25 1 0; }
-.btn-gauge-run--start { color: #5dff7a; text-shadow: 0 0 8px rgba(61,255,106,0.55); }
-.btn-gauge-run--pause { color: #ffd24a; text-shadow: 0 0 8px rgba(255,210,74,0.45); }
-.btn-gauge-run--stop { color: #ff5a5a; text-shadow: 0 0 8px rgba(255,80,80,0.45); }
-.btn-gauge-ico { opacity: 1; display: block; width: clamp(16px, 2.8cqh, 22px); height: clamp(16px, 2.8cqh, 22px); }
-.btn-gauge-run-label { opacity: 1; }
-.btn-gauge-run:hover { filter: brightness(1.1); }
-.btn-gauge-run:active { filter: brightness(0.94); }
-.btn-gauge-run:disabled { opacity: 0.45; cursor: default; }
-.btn-gauge-run.is-active { filter: brightness(1.15); }
+.btn-gauge-run--start,
+.btn-gauge-run--pause,
+.btn-gauge-run--stop {
+  color: transparent;
+  text-shadow: none;
+}
+.btn-gauge-ico,
+.btn-gauge-run-label {
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-gauge-run:hover { background: rgba(255,246,224,0.05); filter: none; }
+.btn-gauge-run:active { background: rgba(255,246,224,0.08); }
+.btn-gauge-run:disabled { cursor: default; opacity: 1; }
+.btn-gauge-run.is-active { background: rgba(255,246,224,0.06); }
 
 /* snip-freeze removed — tip shots must be LIVE (opaque dials cover snip faces) */
 
