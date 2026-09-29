@@ -2758,7 +2758,7 @@ $('btnReset').addEventListener('click', function () {
   try {
     if (/(?:^|[?&])demoDash=1(?:&|$)/.test(location.search || '')) {
       // One source value per gauge → needle angle + digital; LEDs from same RPM
-      var DEMO_RPM = 6300;
+      var DEMO_RPM = 6400; /* mid-high approach → 7/8 stadium stages (G→A→R) for tip shots */
       var DEMO_MPH = 148;
       setGearDigit(3);
       var slipEl = $('slipLight');

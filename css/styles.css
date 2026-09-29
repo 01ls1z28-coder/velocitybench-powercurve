@@ -955,12 +955,12 @@ body {
   box-shadow: 0 0 7px rgba(255,80,40,0.55);
 }
 
-/* Option A round LED capsule — live-drawn */
+/* Progressive stadium shift-light — 8 grid cells always fit in brass pill (no clipped dots) */
 .shift-led-bar {
   position: relative;
   flex: 0 0 auto;
   align-self: center;
-  width: 90%;
+  width: 92%;
   max-width: 100%;
   height: auto;
   min-height: 0;
@@ -968,91 +968,97 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 4px 5px;
-  border: 1px solid rgba(212,184,137,0.38);
-  border-radius: 999px;
-  /* CRITICAL: clip LED glows so they never spill onto dials / TRACTION / buttons */
+  /* Rim pad keeps segment disks clear of brass chrome edge */
+  padding: 3px 4px;
+  border: 1px solid rgba(212,184,137,0.42);
+  border-radius: 6px;
+  /* Clip soft glow to pill chrome — segments themselves never overflow (CSS grid) */
   overflow: hidden;
   isolation: isolate;
-  /* LEDs size against THIS bar width (not the outer cluster) */
   container-type: inline-size;
   container-name: shiftled;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.10), transparent 48%),
-    linear-gradient(180deg, #12151c, #05070a);
+    linear-gradient(180deg, rgba(255,246,224,0.11), transparent 46%),
+    linear-gradient(180deg, #161820, #06080c);
   box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.45),
-    inset 0 1px 0 rgba(255,246,224,0.08),
-    inset 0 2px 6px rgba(0,0,0,0.50),
-    0 0 8px rgba(212,184,137,0.08);
+    inset 0 0 0 1px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,246,224,0.10),
+    inset 0 2px 5px rgba(0,0,0,0.55),
+    0 0 8px rgba(212,184,137,0.10);
   transform: none;
 }
 .shift-led-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(1px, 1.6cqw, 3px);
+  /* 8 equal columns → every stage fully inside content box at any corridor width */
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 2px;
   width: 100%;
   min-width: 0;
 }
 .shift-led {
-  /* Fit 8 LEDs + gaps inside bar content box; cqw = shiftled bar */
-  flex: 0 0 auto;
-  width: clamp(6px, 11.2cqw, 12px);
-  height: clamp(6px, 11.2cqw, 12px);
-  border-radius: 50%;
+  /* Stadium blade — fills its grid cell; height drives presence, width cannot overflow */
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: clamp(7px, 9cqw, 11px);
+  border-radius: 2.5px;
+  box-sizing: border-box;
   background:
-    radial-gradient(circle at 35% 30%, #2a2620, #0c0a08);
+    linear-gradient(180deg, #2c2820 0%, #12100c 55%, #080706 100%);
   box-shadow:
-    inset 0 0 0 1.5px rgba(215,196,160,0.35),
-    inset 0 2px 3px rgba(0,0,0,0.55);
-  opacity: 0.4;
+    inset 0 0 0 1px rgba(215,196,160,0.32),
+    inset 0 1px 2px rgba(0,0,0,0.55);
+  opacity: 0.42;
 }
 .shift-led.is-on.shift-led--g {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #b8ffc8, #2ae05a 55%, #0a8a30);
-  /* Bloom clipped by .shift-led-bar overflow:hidden — fills pill, never spills out */
+    linear-gradient(180deg, #c8ffd4 0%, #2ae05a 42%, #0a8a30 100%);
+  /* Contained glow — soft enough to keep rim clear under overflow:hidden */
   box-shadow:
-    0 0 3px rgba(61,255,106,1),
-    0 0 6px rgba(61,255,106,0.7),
-    inset 0 1px 0 rgba(255,255,255,0.5);
+    0 0 3px rgba(61,255,106,0.85),
+    0 0 6px rgba(61,255,106,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 2px rgba(0,60,20,0.35);
 }
 .shift-led.is-on.shift-led--a {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #ffe6a0, #ffb024 55%, #b07010);
+    linear-gradient(180deg, #ffe6a8 0%, #ffb024 42%, #a06808 100%);
   box-shadow:
-    0 0 3px rgba(255,176,36,1),
-    0 0 6px rgba(255,176,36,0.65),
-    inset 0 1px 0 rgba(255,255,255,0.45);
+    0 0 3px rgba(255,176,36,0.85),
+    0 0 6px rgba(255,176,36,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -1px 2px rgba(80,40,0,0.35);
 }
 .shift-led.is-on.shift-led--r {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #ffb0b0, #ff4040 55%, #a01010);
+    linear-gradient(180deg, #ffb8b8 0%, #ff4040 42%, #8a1010 100%);
   box-shadow:
-    0 0 3px rgba(255,50,50,1),
-    0 0 7px rgba(255,40,40,0.7),
-    inset 0 1px 0 rgba(255,255,255,0.45);
+    0 0 3px rgba(255,50,50,0.9),
+    0 0 7px rgba(255,40,40,0.42),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -1px 2px rgba(60,0,0,0.4);
 }
 .shift-led-bar.is-approaching {
-  border-color: rgba(255, 180, 40, 0.65);
+  border-color: rgba(255, 180, 40, 0.68);
   box-shadow:
     inset 0 0 0 1px rgba(0,0,0,0.45),
     inset 0 1px 0 rgba(255,246,224,0.08),
-    0 0 8px rgba(255,176,36,0.22);
+    0 0 8px rgba(255,176,36,0.24);
 }
 .shift-led-bar.is-shift {
-  border-color: rgba(255, 60, 60, 0.75);
+  border-color: rgba(255, 60, 60, 0.78);
   box-shadow:
     inset 0 0 0 1px rgba(0,0,0,0.45),
     inset 0 1px 0 rgba(255,246,224,0.08),
-    0 0 9px rgba(255,40,40,0.28);
+    0 0 10px rgba(255,40,40,0.32);
 }
 @keyframes shift-led-flash {
-  from { filter: brightness(0.7); }
-  to   { filter: brightness(1.4); }
+  from { filter: brightness(0.72); }
+  to   { filter: brightness(1.38); }
 }
 .shift-led-bar.is-shift .shift-led.is-on {
   animation: shift-led-flash 0.26s ease-in-out infinite alternate;
@@ -1414,105 +1420,135 @@ body {
     margin-top: 0;
     margin-bottom: clamp(1px, 0.25cqw, 3px);
   }
-  /* TRACTION — roughly double visual weight (taller bar, thicker ticks, more presence) */
+  /* TRACTION — premium brass/champagne fill (no neon white/amber/orange); weight held */
   .traction-meter {
     margin-top: 0;
     width: 88%;
     padding: 6px 5px 5px;
     gap: 4px;
-    border-color: rgba(212,184,137,0.40);
+    border-color: rgba(212,184,137,0.42);
+    background:
+      linear-gradient(180deg, rgba(255,246,224,0.09), transparent 62%),
+      rgba(6,8,11,0.88);
     box-shadow:
       inset 0 1px 0 rgba(255,246,224,0.12),
-      inset 0 0 0 1px rgba(0,0,0,0.35),
-      0 0 12px rgba(212,184,137,0.10),
+      inset 0 0 0 1px rgba(0,0,0,0.4),
+      0 0 10px rgba(212,184,137,0.08),
       0 3px 10px rgba(0,0,0,0.28);
   }
   .traction-meter-label {
     font-size: clamp(7px, 1.25cqh, 10px);
     letter-spacing: 0.14em;
     opacity: 1;
-    text-shadow: 0 0 10px rgba(212,184,137,0.35);
+    color: var(--inst-brass-text, #f0e2c4);
+    text-shadow: 0 0 8px rgba(212,184,137,0.28);
   }
   .traction-meter-segs {
-    height: 22px;
-    min-height: 18px;
-    max-height: 26px;
+    height: 20px;
+    min-height: 16px;
+    max-height: 24px;
     gap: 2px;
-    padding: 2px 3px;
+    padding: 3px 3px;
     border-radius: 5px;
+    background:
+      linear-gradient(180deg, #0c0e12 0%, #050608 100%);
     box-shadow:
-      inset 0 0 0 2px rgba(212,184,137,0.55),
-      inset 0 2px 6px rgba(0,0,0,0.65),
-      0 0 6px rgba(212,184,137,0.12);
+      inset 0 0 0 1.5px rgba(212,184,137,0.48),
+      inset 0 2px 6px rgba(0,0,0,0.7),
+      inset 0 -1px 0 rgba(255,246,224,0.04);
   }
   .trac-seg {
     border-radius: 2px;
-    border: 1px solid rgba(212,184,137,0.18);
+    border: 1px solid rgba(90,72,48,0.35);
+    background: linear-gradient(180deg, #1c1814, #0e0c0a);
+    opacity: 0.55;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.45);
   }
   .trac-seg.is-on {
-    box-shadow: 0 0 7px rgba(232,228,220,0.55), 0 0 12px rgba(232,228,220,0.22);
+    opacity: 1;
+    border-color: rgba(232,210,160,0.55);
+    /* Polished champagne brass — bright enough to read, still CF/brass (not neon white) */
+    background:
+      linear-gradient(180deg, #fff8e6 0%, #e8d2a0 38%, #c9a86a 100%);
+    box-shadow:
+      0 0 5px rgba(212,184,137,0.42),
+      inset 0 1px 0 rgba(255,252,240,0.7),
+      inset 0 -1px 1px rgba(80,55,20,0.28);
   }
   .traction-meter.is-low .trac-seg.is-on {
-    box-shadow: 0 0 8px rgba(255,176,36,0.65), 0 0 14px rgba(255,176,36,0.28);
+    border-color: rgba(210,170,90,0.55);
+    background:
+      linear-gradient(180deg, #ffe9b0 0%, #e0b050 42%, #a87828 100%);
+    box-shadow:
+      0 0 5px rgba(196,150,70,0.38),
+      inset 0 1px 0 rgba(255,246,210,0.6),
+      inset 0 -1px 1px rgba(70,45,8,0.35);
   }
   .traction-meter.is-critical .trac-seg.is-on {
-    box-shadow: 0 0 9px rgba(255,80,40,0.7), 0 0 16px rgba(255,80,40,0.3);
+    border-color: rgba(190,110,80,0.55);
+    background:
+      linear-gradient(180deg, #f0b090 0%, #c06042 42%, #8a3420 100%);
+    box-shadow:
+      0 0 5px rgba(168,80,55,0.4),
+      inset 0 1px 0 rgba(255,220,200,0.5),
+      inset 0 -1px 1px rgba(55,15,8,0.4);
   }
-  /* Shift LEDs — roughly triple weight (larger dots, stronger glow); still clipped in-pill */
+  /* Stadium shift-light — premium corridor strip; grid guarantees 8 stages + rim clear */
   .shift-led-bar {
     margin-top: 0;
-    width: 96%;
-    padding: 6px 7px;
+    width: 98%;
+    padding: 5px 7px;
     border-width: 1.5px;
-    border-color: rgba(212,184,137,0.48);
+    border-radius: 5px;
+    border-color: rgba(212,184,137,0.52);
     box-shadow:
-      inset 0 0 0 1px rgba(0,0,0,0.5),
-      inset 0 1px 0 rgba(255,246,224,0.12),
+      inset 0 0 0 1px rgba(0,0,0,0.52),
+      inset 0 1px 0 rgba(255,246,224,0.14),
       inset 0 3px 8px rgba(0,0,0,0.55),
-      0 0 12px rgba(212,184,137,0.14);
+      0 0 12px rgba(212,184,137,0.16);
   }
   .shift-led-row {
-    gap: clamp(2px, 2cqw, 4px);
+    gap: 2.5px;
   }
   .shift-led {
-    width: clamp(10px, 14.5cqw, 18px);
-    height: clamp(10px, 14.5cqw, 18px);
+    height: clamp(10px, 11.5cqw, 14px);
+    border-radius: 2.5px;
     box-shadow:
-      inset 0 0 0 1.5px rgba(215,196,160,0.42),
-      inset 0 2px 4px rgba(0,0,0,0.6);
+      inset 0 0 0 1px rgba(215,196,160,0.4),
+      inset 0 1px 3px rgba(0,0,0,0.6);
   }
   .shift-led.is-on.shift-led--g {
     box-shadow:
-      0 0 5px rgba(61,255,106,1),
-      0 0 12px rgba(61,255,106,0.85),
-      0 0 20px rgba(61,255,106,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.55);
+      0 0 3px rgba(61,255,106,0.95),
+      0 0 7px rgba(61,255,106,0.42),
+      inset 0 1px 0 rgba(255,255,255,0.58),
+      inset 0 -1px 2px rgba(0,60,20,0.35);
   }
   .shift-led.is-on.shift-led--a {
     box-shadow:
-      0 0 5px rgba(255,176,36,1),
-      0 0 12px rgba(255,176,36,0.8),
-      0 0 20px rgba(255,176,36,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.5);
+      0 0 3px rgba(255,176,36,0.95),
+      0 0 7px rgba(255,176,36,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.52),
+      inset 0 -1px 2px rgba(80,40,0,0.35);
   }
   .shift-led.is-on.shift-led--r {
     box-shadow:
-      0 0 5px rgba(255,50,50,1),
-      0 0 12px rgba(255,40,40,0.85),
-      0 0 22px rgba(255,40,40,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.5);
+      0 0 3px rgba(255,50,50,1),
+      0 0 8px rgba(255,40,40,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.52),
+      inset 0 -1px 2px rgba(60,0,0,0.4);
   }
   .shift-led-bar.is-approaching {
     box-shadow:
       inset 0 0 0 1px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,246,224,0.08),
-      0 0 14px rgba(255,176,36,0.35);
+      inset 0 1px 0 rgba(255,246,224,0.1),
+      0 0 12px rgba(255,176,36,0.32);
   }
   .shift-led-bar.is-shift {
     box-shadow:
       inset 0 0 0 1px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,246,224,0.08),
-      0 0 16px rgba(255,40,40,0.42);
+      inset 0 1px 0 rgba(255,246,224,0.1),
+      0 0 14px rgba(255,40,40,0.38);
   }
   /* START / PAUSE / STOP — premium CF weave + brass bevel depth; accent colors elevated */
   .gauge-run-row {
@@ -1638,13 +1674,16 @@ body {
     width: 100%;
     min-height: 0;
     padding: 2px 3px;
-    border-width: 2px;
+    border-width: 1.5px;
+    border-radius: 5px;
     overflow: hidden;
   }
+  .shift-led-row { gap: 1.5px; }
   .shift-led {
-    flex: 0 0 auto;
-    width: clamp(5px, 11cqw, 10px);
-    height: clamp(5px, 11cqw, 10px);
+    width: 100%;
+    min-width: 0;
+    height: clamp(5px, 8cqw, 9px);
+    border-radius: 2px;
   }
   .gauge-run-row {
     width: min(72%, 420px);
@@ -1709,13 +1748,16 @@ body {
     width: 100%;
     min-height: 0;
     padding: 2px 3px;
-    border-width: 2px;
+    border-width: 1.5px;
+    border-radius: 5px;
     overflow: hidden;
   }
+  .shift-led-row { gap: 1.5px; }
   .shift-led {
-    flex: 0 0 auto;
-    width: clamp(5px, 11.2cqw, 11px);
-    height: clamp(5px, 11.2cqw, 11px);
+    width: 100%;
+    min-width: 0;
+    height: clamp(5px, 7.5cqw, 9px);
+    border-radius: 2px;
   }
   .gauge-run-row {
     width: min(48%, 520px);
