@@ -1290,14 +1290,50 @@
       return;
     }
     // Room for MPH (L), g (R), ft + time (B), legend (T)
-    var pad = { l: 42, r: 38, t: 24, b: 40 };
-    var maxFt = timeline[timeline.length - 1].feet || 1320;
+    // Slightly deeper bottom pad so dual labels don't kiss the curve
+    var pad = { l: 42, r: 44, t: 24, b: 42 };
+    // Display cap: half-mile (2640 ft). Physics may run past Vmax; chart does not.
+    var DISPLAY_FT_CAP = 2640;
+    var runEndFt = timeline[timeline.length - 1].feet || 0;
+    var maxFt = Math.min(DISPLAY_FT_CAP, Math.max(runEndFt, 60));
+    // Prefer a full half-mile domain once the run reaches/exceeds ¼-mi so ticks stay classic
+    if (runEndFt >= 1320) maxFt = DISPLAY_FT_CAP;
+    else if (runEndFt > 0) maxFt = Math.min(DISPLAY_FT_CAP, Math.max(660, runEndFt * 1.05));
+
+    // Clip samples to the display window (keep one sample past the cap for clean line end)
+    var plot = [];
+    for (var ci = 0; ci < timeline.length; ci++) {
+      var cp = timeline[ci];
+      if (cp.feet <= maxFt) {
+        plot.push(cp);
+      } else {
+        if (plot.length) {
+          var prev = timeline[ci - 1] || plot[plot.length - 1];
+          var span = cp.feet - prev.feet;
+          if (span > 1e-6) {
+            var u = (maxFt - prev.feet) / span;
+            plot.push({
+              feet: maxFt,
+              mph: prev.mph + u * (cp.mph - prev.mph),
+              t: prev.t + u * (cp.t - prev.t),
+              gear: cp.gear,
+              g: (typeof prev.g === 'number' && typeof cp.g === 'number')
+                ? prev.g + u * (cp.g - prev.g)
+                : (typeof cp.g === 'number' ? cp.g : prev.g)
+            });
+          }
+        }
+        break;
+      }
+    }
+    if (!plot.length) plot = timeline.slice(0, 1);
+
     var maxMph = 0;
     var maxG = 0.01;
     var minG = 0;
     var hasStoredG = false;
-    for (var i = 0; i < timeline.length; i++) {
-      var p = timeline[i];
+    for (var i = 0; i < plot.length; i++) {
+      var p = plot[i];
       if (p.mph > maxMph) maxMph = p.mph;
       if (typeof p.g === 'number') {
         hasStoredG = true;
@@ -1305,18 +1341,21 @@
         if (p.g < minG) minG = p.g;
       }
     }
-    // Derive longitudinal g from Δv/Δt when samples lack g (fallback)
-    var gSeries = new Array(timeline.length);
-    for (var gi = 0; gi < timeline.length; gi++) {
-      if (hasStoredG && typeof timeline[gi].g === 'number') {
-        gSeries[gi] = timeline[gi].g;
+    // Also consider true Vmax MPH so the Y scale fits the red tip even when past the window
+    if (result && result.topSpeedMph && result.topSpeedMph > maxMph) {
+      maxMph = result.topSpeedMph;
+    }
+    // Derive longitudinal g from Δv/Δt when samples lack g (fallback) — over plot window
+    var gSeries = new Array(plot.length);
+    for (var gi = 0; gi < plot.length; gi++) {
+      if (hasStoredG && typeof plot[gi].g === 'number') {
+        gSeries[gi] = plot[gi].g;
       } else if (gi === 0) {
         gSeries[gi] = 0;
       } else {
-        var dt = timeline[gi].t - timeline[gi - 1].t;
+        var dt = plot[gi].t - plot[gi - 1].t;
         if (dt > 1e-6) {
-          var dvMph = timeline[gi].mph - timeline[gi - 1].mph;
-          // mph/s → ft/s² → g  (32.174 ft/s² = 1 g); 1 mph = 1.46667 ft/s
+          var dvMph = plot[gi].mph - plot[gi - 1].mph;
           gSeries[gi] = (dvMph * 1.46667 / dt) / 32.174;
         } else {
           gSeries[gi] = gSeries[gi - 1] || 0;
@@ -1326,7 +1365,6 @@
       }
     }
     maxMph = Math.max(60, maxMph * 1.08);
-    // Symmetric-ish g scale with headroom; keep 0 visible
     var gLo = Math.min(0, minG) - 0.05;
     var gHi = Math.max(0.5, maxG * 1.15);
     function x(ft) { return pad.l + (ft / maxFt) * (w - pad.l - pad.r); }
@@ -1341,18 +1379,12 @@
       ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
     }
 
-    // Distance markers — classic ¼-mi set + extras that fit the run
-    var marks = [0, 60, 330, 660, 1000, 1320, 2640, 5280];
-    // Also add evenly spaced extras for long Vmax runs beyond 1/4
-    if (maxFt > 1600) {
-      var step = maxFt > 8000 ? 1320 : (maxFt > 3500 ? 660 : 330);
-      for (var mf = 1320 + step; mf < maxFt * 0.98; mf += step) {
-        if (marks.indexOf(mf) < 0) marks.push(mf);
-      }
-    }
-    marks.sort(function (a, b) { return a - b; });
+    // Classic half-mile set only — no Vmax-crawl extras (3960…14520)
+    var marks = [0, 60, 330, 660, 1000, 1320, 2640].filter(function (ft) {
+      return ft <= maxFt + 0.5;
+    });
 
-    // Find elapsed time at a given distance via timeline
+    // Find elapsed time at a given distance via full timeline (accurate past clip)
     function timeAtFeet(ft) {
       if (!timeline.length) return null;
       if (ft <= timeline[0].feet) return timeline[0].t;
@@ -1370,8 +1402,7 @@
 
     ctx.setLineDash([4, 4]);
     marks.forEach(function (ft) {
-      if (ft > maxFt + 0.5) return;
-      if (ft === 0) return; // left edge — label only
+      if (ft === 0) return;
       var xx = x(ft);
       ctx.strokeStyle = 'rgba(76,201,240,0.32)';
       ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
@@ -1380,8 +1411,8 @@
 
     // g-force overlay (secondary) — drawn under speed so MPH stays primary
     ctx.beginPath();
-    for (var gj = 0; gj < timeline.length; gj++) {
-      var gx = x(timeline[gj].feet), gy = yG(gSeries[gj]);
+    for (var gj = 0; gj < plot.length; gj++) {
+      var gx = x(plot[gj].feet), gy = yG(gSeries[gj]);
       if (gj === 0) ctx.moveTo(gx, gy); else ctx.lineTo(gx, gy);
     }
     ctx.strokeStyle = 'rgba(90,200,255,0.85)';
@@ -1398,41 +1429,39 @@
       ctx.setLineDash([]);
     }
 
-    // Speed curve (primary green)
+    // Speed curve (primary green) — clipped to display window
     ctx.beginPath();
-    timeline.forEach(function (pt, idx) {
+    plot.forEach(function (pt, idx) {
       var px = x(pt.feet), py = yMph(pt.mph);
       if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.2; ctx.stroke();
 
-    // Shift MPH markers — prefer result.shifts; fall back to gear steps in timeline
+    // Shift MPH markers — only those inside the display window
     var shifts = (result && result.shifts && result.shifts.length) ? result.shifts.slice() : [];
     if (!shifts.length) {
-      var prevGear = timeline[0].gear;
-      for (var si = 1; si < timeline.length; si++) {
-        if (timeline[si].gear > prevGear) {
+      var prevGear = plot[0].gear;
+      for (var si = 1; si < plot.length; si++) {
+        if (plot[si].gear > prevGear) {
           shifts.push({
-            gear: timeline[si].gear,
-            mph: timeline[si].mph,
-            feet: timeline[si].feet,
-            t: timeline[si].t
+            gear: plot[si].gear,
+            mph: plot[si].mph,
+            feet: plot[si].feet,
+            t: plot[si].t
           });
-          prevGear = timeline[si].gear;
-        } else if (timeline[si].gear < prevGear) {
-          prevGear = timeline[si].gear;
+          prevGear = plot[si].gear;
+        } else if (plot[si].gear < prevGear) {
+          prevGear = plot[si].gear;
         }
       }
     }
     shifts.forEach(function (sh, sIdx) {
-      if (sh.feet == null || sh.feet > maxFt * 1.02) return;
+      if (sh.feet == null || sh.feet > maxFt + 0.5) return;
       var sx = x(sh.feet);
       var sy = yMph(sh.mph);
-      // Stem down to baseline
       ctx.strokeStyle = 'rgba(255,180,70,0.55)';
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx, h - pad.b); ctx.stroke();
-      // Marker on curve
       ctx.fillStyle = '#ffb347';
       ctx.beginPath();
       ctx.moveTo(sx, sy - 5);
@@ -1441,7 +1470,6 @@
       ctx.lineTo(sx - 4.5, sy);
       ctx.closePath();
       ctx.fill();
-      // Label: gear # + MPH (alternate above/below to reduce collisions)
       var label = 'G' + sh.gear + ' ' + Math.round(sh.mph);
       ctx.font = '9px ui-monospace, monospace';
       ctx.fillStyle = '#ffd089';
@@ -1454,53 +1482,105 @@
       ctx.fillText(label, lx, ly);
     });
 
-    // Vmax red end dot + label (preserved)
+    // Vmax: on-curve red tip if within window; else tip at right edge + beyond note
     if (result && result.topSpeedMph) {
-      var tx = x(result.topSpeedFeet || maxFt);
-      var ty = yMph(result.topSpeedMph);
+      var vmaxFt = result.topSpeedFeet;
+      var vmaxBeyond = !(vmaxFt != null) || vmaxFt > maxFt + 0.5;
+      var tx, ty;
       ctx.fillStyle = '#ff3355';
-      ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#e8d7b0';
-      ctx.font = '10px ui-monospace, monospace';
-      var vmaxLab = 'Vmax ' + result.topSpeedMph.toFixed(0);
-      ctx.fillText(vmaxLab, Math.min(tx + 6, w - 70), Math.max(ty - 6, 14));
+      if (vmaxBeyond) {
+        // Right-edge tip — do not invent a false Vmax location on the clipped curve
+        tx = w - pad.r;
+        ty = yMph(result.topSpeedMph);
+        ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
+        // Small arrow stem toward beyond
+        ctx.strokeStyle = '#ff3355';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(tx - 10, ty);
+        ctx.lineTo(tx - 2, ty);
+        ctx.stroke();
+        ctx.fillStyle = '#e8d7b0';
+        ctx.font = '10px ui-monospace, monospace';
+        ctx.textAlign = 'right';
+        var vmaxLab = 'Vmax ' + result.topSpeedMph.toFixed(0);
+        var labY = Math.max(ty - 8, pad.t + 10);
+        ctx.fillText(vmaxLab, tx - 6, labY);
+        ctx.fillStyle = '#9aa6b8';
+        ctx.font = '8px ui-monospace, monospace';
+        var beyondFt = (vmaxFt != null) ? Math.round(vmaxFt) : '—';
+        ctx.fillText('@ ' + beyondFt + ' ft', tx - 6, labY + 11);
+        ctx.textAlign = 'left';
+      } else {
+        tx = x(vmaxFt);
+        ty = yMph(result.topSpeedMph);
+        ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#e8d7b0';
+        ctx.font = '10px ui-monospace, monospace';
+        var vmaxLab2 = 'Vmax ' + result.topSpeedMph.toFixed(0);
+        ctx.fillText(vmaxLab2, Math.min(tx + 6, w - 70), Math.max(ty - 6, 14));
+      }
     }
 
-    // X-axis: distance (ft) numeric ticks + elapsed time under them
+    // X-axis: classic ft ticks + elapsed time — thinned on narrow/portrait to avoid overlap
+    var plotW = w - pad.l - pad.r;
+    var narrow = plotW < 420; // portrait / small phones
+    var minGap = narrow ? 52 : 42;
+    // On narrow: drop crowded early mid-ticks (keep 0, 60, 660, 1320, 2640)
+    var skipOnNarrow = { 330: 1, 1000: 1 };
+    var endFt = marks[marks.length - 1];
     ctx.font = '9px ui-monospace, monospace';
     ctx.textAlign = 'center';
-    var classicFt = { 0: 1, 60: 1, 330: 1, 660: 1, 1000: 1, 1320: 1 };
-    var lastLabelX = -999;
+    var shown = [];
     marks.forEach(function (ft) {
-      if (ft > maxFt + 0.5 && ft !== 0) return;
+      if (narrow && skipOnNarrow[ft]) return;
       var xx = x(Math.min(ft, maxFt));
-      var isClassic = !!classicFt[ft];
-      // Keep classic ¼-mi ticks; thin extras if they collide with neighbors
-      if (!isClassic && Math.abs(xx - lastLabelX) < 36) return;
-      if (!isClassic && ft > 0 && (w - pad.r - xx) < 22 && ft < maxFt - 1) return;
-      lastLabelX = xx;
+      var isAnchor = (ft === 0 || ft === endFt || ft === 1320 || ft === 660);
+      if (!isAnchor && shown.length) {
+        var prev = shown[shown.length - 1];
+        if (Math.abs(xx - prev.xx) < minGap) return;
+      }
+      // If an anchor collides with previous non-anchor, drop the previous
+      if (isAnchor && shown.length && ft !== 0) {
+        var prev2 = shown[shown.length - 1];
+        if (Math.abs(xx - prev2.xx) < minGap * 0.85 && prev2.ft !== 0 && prev2.ft !== 1320 && prev2.ft !== 660) {
+          shown.pop();
+        }
+      }
+      shown.push({ ft: ft, xx: xx });
+    });
+    // Final pass: drop any remaining overlaps preferring anchors
+    var cleaned = [];
+    shown.forEach(function (item) {
+      if (!cleaned.length) { cleaned.push(item); return; }
+      var prev = cleaned[cleaned.length - 1];
+      if (Math.abs(item.xx - prev.xx) < minGap * 0.8) {
+        var itemAnchor = (item.ft === 0 || item.ft === endFt || item.ft === 1320 || item.ft === 660);
+        var prevAnchor = (prev.ft === 0 || prev.ft === endFt || prev.ft === 1320 || prev.ft === 660);
+        if (itemAnchor && !prevAnchor) { cleaned.pop(); cleaned.push(item); return; }
+        if (!itemAnchor && prevAnchor) return;
+        // both anchors or both not — keep later (end)
+        if (item.ft === endFt) { cleaned.pop(); cleaned.push(item); }
+        return;
+      }
+      cleaned.push(item);
+    });
+    shown = cleaned;
+    shown.forEach(function (item, idx) {
+      var ft = item.ft, xx = item.xx;
       ctx.fillStyle = '#9aa6b8';
       ctx.fillText(String(ft), xx, h - pad.b + 12);
-      var tt = timeAtFeet(Math.min(ft, maxFt));
-      if (tt != null) {
-        ctx.fillStyle = '#6e7a8c';
-        ctx.fillText(tt.toFixed(1) + 's', xx, h - pad.b + 24);
+      // Time under tick: on narrow skip time on 60 to reduce early stacking
+      var showTime = !(narrow && ft === 60);
+      if (showTime) {
+        var tt = timeAtFeet(Math.min(ft, maxFt));
+        if (tt != null) {
+          ctx.fillStyle = '#6e7a8c';
+          var timeY = h - pad.b + 24;
+          ctx.fillText(tt.toFixed(1) + 's', xx, timeY);
+        }
       }
     });
-    // End-of-run time if last point isn't on a standard mark
-    var last = timeline[timeline.length - 1];
-    if (last && last.t != null) {
-      var endNearMark = marks.some(function (ft) {
-        return Math.abs(ft - last.feet) < maxFt * 0.04;
-      });
-      if (!endNearMark) {
-        var ex = x(last.feet);
-        ctx.fillStyle = '#9aa6b8';
-        ctx.fillText(Math.round(last.feet) + ' ft', ex, h - pad.b + 12);
-        ctx.fillStyle = '#6e7a8c';
-        ctx.fillText(last.t.toFixed(1) + 's', ex, h - pad.b + 24);
-      }
-    }
     ctx.textAlign = 'left';
 
     // Axis / legend labels
@@ -1536,9 +1616,14 @@
     ctx.fillStyle = '#7a8494';
     ctx.font = '8px ui-monospace, monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('ft  ·  elapsed s', (pad.l + w - pad.r) / 2, h - 2);
+    var hint = 'ft  ·  elapsed s';
+    if (result && result.topSpeedFeet != null && result.topSpeedFeet > DISPLAY_FT_CAP) {
+      hint = 'ft ≤ 2640  ·  Vmax beyond';
+    }
+    ctx.fillText(hint, (pad.l + w - pad.r) / 2, h - 2);
     ctx.textAlign = 'left';
   }
+
 
   function renderSlip(r, car) {
     var lines = [];
