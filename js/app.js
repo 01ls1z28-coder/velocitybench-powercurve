@@ -52,6 +52,8 @@
     chartGeom: null,
     drag: null, // { rpm, pointerId }
     curveEdited: false,
+    peakHpBaseline: null,   // Peak HP when curveAtBaseline was snapped (applyCar / commit)
+    curveAtBaseline: null,  // torqueCurve snapshot for uniform Peak HP scale (preserve shape)
     // Playback state machine (real-time scale=1 per Phase 4)
     playbackPlaying: false,
     playbackPaused: false,
@@ -153,6 +155,63 @@
   function isCustomBuilder(car) {
     return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
   }
+
+  /** Deep-copy numeric torqueCurve map (RPM→lb-ft). */
+  function cloneTorqueCurve(curve) {
+    if (!curve) return null;
+    var out = {};
+    Object.keys(curve).forEach(function (k) {
+      var v = Number(curve[k]);
+      if (isFinite(v)) out[k] = v;
+    });
+    return out;
+  }
+
+  /** Uniform proportional scale — preserves shape; floors at 5 lb-ft. */
+  function scaleTorqueCurveMap(curve, scale) {
+    if (!curve || !(scale > 0) || !isFinite(scale)) return curve || null;
+    var out = {};
+    Object.keys(curve).forEach(function (k) {
+      var v = Number(curve[k]);
+      if (!isFinite(v)) return;
+      out[k] = Math.max(5, v * scale);
+    });
+    return out;
+  }
+
+  /** Stash Peak HP baseline + curve snapshot (applyCar / dyno commit / synth). */
+  function stashPeakHpBaseline(car, peakHpOpt) {
+    var hp = peakHpOpt != null ? peakHpOpt
+      : (car && (car.peakHp || (Phys.peakHpFromCurve && Phys.peakHpFromCurve(car.torqueCurve || {})) || 450));
+    state.peakHpBaseline = Math.round(Number(hp) || 0);
+    state.curveAtBaseline = (car && car.torqueCurve) ? cloneTorqueCurve(car.torqueCurve) : null;
+  }
+
+  /**
+   * When Peak HP label moves vs baseline, uniformly scale the stashed garage/dyno
+   * curve (never wipe / resynthesize). Used by readCarFromForm + live #peakHp input.
+   * Returns scaled map or null if no scale applied.
+   */
+  function scaleCurveForPeakHpChange(peakHp, redline) {
+    var baseline = state.peakHpBaseline;
+    if (!(baseline > 0) || peakHp === baseline) return null;
+    var src = state.curveAtBaseline;
+    if (!src || !Object.keys(src).length) return null;
+    var scale = peakHp / baseline;
+    var scaled = scaleTorqueCurveMap(src, scale);
+    state.peakHpBaseline = peakHp;
+    state.curveAtBaseline = cloneTorqueCurve(scaled);
+    if (state.car) {
+      state.car.torqueCurve = scaled;
+      state.car.peakHp = peakHp;
+    }
+    if (!state.drag) {
+      state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+      drawPowerCurve(state.powerCurve, state.cursorRpm);
+    }
+    return scaled;
+  }
+
 
   /**
    * Human label for a car's baked factory TX.
@@ -322,6 +381,8 @@
       state.car.peakHp = Math.round(peak);
       var hpEl = $('peakHp');
       if (hpEl) hpEl.value = String(Math.round(peak));
+      // Dyno edit becomes the new Peak HP baseline (no accidental rescaling on RUN)
+      stashPeakHpBaseline(state.car, Math.round(peak));
     }
     state.curveEdited = true;
   }
@@ -602,6 +663,8 @@
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncEvChartMode(car);
     syncPowerCurveFromCar(car);
+    // Peak HP baseline for uniform curve scale (do not wipe garage shape)
+    stashPeakHpBaseline(car, Math.round(hp));
   }
 
   function highlightGarage(id) {
@@ -708,20 +771,18 @@
     car.rearWeightPercent = w.rearWeightPercent;
     car.leftWeightPercent = w.leftWeightPercent;
     car.rightWeightPercent = w.rightWeightPercent;
-    // Peak HP label must NEVER wipe garage / dyno torqueCurve on RUN.
-    // Garage hybrids/FI often have label peakHp (system) ≠ curve-only peak; the old
-    // |curveHp-peakHp|>12% path resynthesized ZR1X and fantasy-fast 8.39@175.
-    // Keep existing curve unless absent. Custom Builder may resynthesize only when
-    // there is no curve yet, or user has not dyno-edited and explicitly wants Peak HP.
+    // Peak HP must NEVER wipe garage / dyno torqueCurve (ZR1X anti-resynthesis).
+    // Missing curve → synthesize once (Custom Builder / blank). Existing curve →
+    // uniform proportional scale when Peak HP ≠ baseline (preserve shape).
     if (!car.torqueCurve) {
       car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
-    } else if (isCustomBuilder(car) && !state.curveEdited) {
-      var curveHp = Phys.peakHpFromCurve(car.torqueCurve);
-      if (curveHp > 0 && Math.abs(curveHp - peakHp) > peakHp * 0.12) {
-        car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
-      }
+      stashPeakHpBaseline(car, peakHp);
+    } else {
+      var scaled = scaleCurveForPeakHpChange(peakHp, redline);
+      if (scaled) car.torqueCurve = scaled;
+      // else: garage/dyno curve stays authoritative at baseline Peak HP
     }
-    // else: garage or dyno-edited curve stays authoritative; physics uses the curve
+    // physics force = getTorqueAtRpm(curve); peakHp label alone never drove ICE
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
     // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.
     if (base.torqueCurve && (car.boostPsi <= 0 || base.boostPsi === 0)) {
@@ -1335,6 +1396,35 @@
       : 'Wheelspin lamp off');
   }
 
+  /**
+   * Dash shift light (above Start/Pause/Stop): off → amber approaching → red/flash at shift.
+   * Cue = car.shiftRpm (fallback redline). Live during gauge playback for Soft/Agg/Auto alike.
+   */
+  function setShiftLamp(rpm) {
+    var el = $('shiftLamp');
+    if (!el) return;
+    el.classList.remove('approaching', 'shift');
+    var car = state.car;
+    var shiftRpm = car && car.shiftRpm != null ? Number(car.shiftRpm) : 0;
+    if (!(shiftRpm > 0)) shiftRpm = car && car.redline != null ? Number(car.redline) : 0;
+    if (!(shiftRpm > 0) || rpm == null || !isFinite(Number(rpm))) {
+      el.setAttribute('aria-label', 'Shift lamp off');
+      return;
+    }
+    rpm = Number(rpm);
+    // Amber band: last ~500 RPM before shift (or from 92% of shiftRpm, whichever wider)
+    var approachStart = Math.min(shiftRpm - 80, Math.max(shiftRpm - 500, shiftRpm * 0.92));
+    if (rpm >= shiftRpm) {
+      el.classList.add('shift');
+      el.setAttribute('aria-label', 'Shift now — ' + Math.round(rpm) + ' RPM');
+    } else if (rpm >= approachStart) {
+      el.classList.add('approaching');
+      el.setAttribute('aria-label', 'Approaching shift — ' + Math.round(rpm) + ' RPM');
+    } else {
+      el.setAttribute('aria-label', 'Shift lamp off');
+    }
+  }
+
   function resetLiveReadoutIdle() {
     rpmGauge.setValue(0);
     speedGauge.setValue(0);
@@ -1343,6 +1433,7 @@
     $('liveMph').textContent = '—';
     $('liveG').textContent = '—';
     setSpinLamp(0);
+    setShiftLamp(0);
   }
 
   function syncGaugeRunButtons() {
@@ -1395,6 +1486,7 @@
       drawPowerCurve(state.powerCurve, pt.rpm);
     }
     setSpinLamp(pt.wheelspin != null ? pt.wheelspin : 0);
+    setShiftLamp(pt.rpm);
   }
 
   function timelinePointAt(tl, tSec) {
@@ -1426,6 +1518,7 @@
       state.playbackPaused = false;
       state.playbackElapsedOffset = state.playbackDurationMs;
       setSpinLamp(0);
+      setShiftLamp(0);
       syncGaugeRunButtons();
     }
   }
@@ -1830,6 +1923,28 @@ $('btnReset').addEventListener('click', function () {
       updateWeightSumHints();
     });
   });
+  function livePreviewPeakHpScale() {
+    var baseline = state.peakHpBaseline;
+    var src = state.curveAtBaseline;
+    if (!(baseline > 0) || !src || !Object.keys(src).length) return;
+    if (state.drag) return;
+    var peakHp = clampNum($('peakHp').value, 1, 15000, baseline);
+    var redline = clampNum($('redline').value, 2000, 28000, (state.car && state.car.redline) || 6800);
+    var scaled = (peakHp === baseline) ? cloneTorqueCurve(src) : scaleTorqueCurveMap(src, peakHp / baseline);
+    if (state.car) {
+      state.car.torqueCurve = scaled;
+      state.car.peakHp = peakHp;
+    }
+    state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+    drawPowerCurve(state.powerCurve, state.cursorRpm);
+  }
+
+  var peakHpEl = $('peakHp');
+  if (peakHpEl) {
+    peakHpEl.addEventListener('input', livePreviewPeakHpScale);
+    peakHpEl.addEventListener('change', livePreviewPeakHpScale);
+  }
+
   var filterEl = $('garageFilter');
   if (filterEl) {
     filterEl.addEventListener('input', function () {

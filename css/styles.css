@@ -312,7 +312,7 @@ body {
 
 .gauges, .gauges.lfa-cluster {
   display: grid;
-  /* tach | Start/Pause/Stop + SPIN lamp | speedo */
+  /* tach | SHIFT + Start/Pause/Stop + SPIN | speedo */
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 10px;
   align-items: center;
@@ -334,7 +334,7 @@ body {
 }
 .gauge-wrap canvas { width: 100%; height: 100%; display: block; }
 
-/* Center column: stacked Start / Pause / Stop + traction SPIN lamp */
+/* Center column: SHIFT lamp + Start / Pause / Stop + traction SPIN lamp */
 .gauge-run-controls {
   display: flex;
   flex-direction: column;
@@ -376,6 +376,66 @@ body {
     linear-gradient(180deg, rgba(200,255,74,0.85), rgba(160,210,40,0.55)),
     #c8ff4a;
   box-shadow: var(--btn-brass-rim), 0 0 16px var(--lime-glow);
+}
+
+
+/* Dash shift light (above Start/Pause/Stop) — off → amber → red/flash */
+.shift-lamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 2px;
+  padding: 6px 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(215,196,160,0.22);
+  background: rgba(0,0,0,0.45);
+  opacity: 0.38;
+  transition: opacity 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.shift-lamp-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #2a2418;
+  box-shadow: inset 0 0 0 1px rgba(215,196,160,0.25);
+}
+.shift-lamp-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+}
+.shift-lamp.approaching {
+  opacity: 1;
+  border-color: rgba(255, 180, 40, 0.7);
+  box-shadow: 0 0 12px rgba(255, 170, 30, 0.4);
+  background: rgba(40, 28, 0, 0.72);
+}
+.shift-lamp.approaching .shift-lamp-dot {
+  background: #ffb024;
+  box-shadow: 0 0 10px rgba(255, 176, 36, 0.85), inset 0 0 0 1px rgba(255,230,160,0.55);
+}
+.shift-lamp.approaching .shift-lamp-label {
+  color: #ffd070;
+}
+.shift-lamp.shift {
+  opacity: 1;
+  border-color: rgba(255, 50, 50, 0.85);
+  box-shadow: 0 0 16px rgba(255, 40, 40, 0.55);
+  background: rgba(48, 0, 0, 0.78);
+}
+.shift-lamp.shift .shift-lamp-dot {
+  background: #ff2a2a;
+  box-shadow: 0 0 14px rgba(255, 40, 40, 0.95), inset 0 0 0 1px rgba(255,200,200,0.55);
+  animation: shift-lamp-flash 0.28s ease-in-out infinite alternate;
+}
+.shift-lamp.shift .shift-lamp-label {
+  color: #ff9090;
+}
+@keyframes shift-lamp-flash {
+  from { filter: brightness(0.75); transform: scale(0.9); }
+  to   { filter: brightness(1.35); transform: scale(1.12); }
 }
 
 /* Wheelspin / traction-fight warning lamp (threshold ≥ 8% slip) */

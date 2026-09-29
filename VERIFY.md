@@ -1,3 +1,15 @@
+# BUILD TIP — Peak HP uniform curve scale + dash shift light (Sati)
+
+Branch: `review/peak-hp-curve-scale` · Base `e539984` (LIVE). **No Merovingian / no live Pages / no push.**
+
+## VERIFY note (required)
+- Peak HP edit → uniform torqueCurve scale (preserve shape); Custom Builder >12% resynthesize removed; no-curve still synthesizes. ZR1X anti-resynthesis held.
+- Smoke: Z28 ATC stock **11.558@119.25** / 60–130 **10.933**; +100 scale ΔET **−0.617**; −50 **+0.375**; 1993 Z28 +100 **−1.477**; Mustang GT +100 **−0.571**; ZR1X unchanged until edit then scales; fs=1; no Cd/wt/FD/TX cheat.
+- Dash **SHIFT** lamp above Start/Pause/Stop: off → amber → red/flash at shiftRpm during live gauge play.
+- Full write-up: `/workspace/powercurve-tip-peak-hp-curve-scale-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC stall gap/slip invert (Sati)
 
 Branch: `review/jorge-z28-stall-slip-gap` · Base `aa8a04f` (LIVE smooth-slip+stall). **No Merovingian / no live Pages.**
