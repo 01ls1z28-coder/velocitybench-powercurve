@@ -112,6 +112,15 @@
   BrassGauge.prototype.draw = function () {
     var ctx = this.ctx, w = this.size, h = this.size;
     var cx = w / 2, cy = h / 2, R = Math.min(w, h) / 2 - 4;
+    // Font/tick scale. Original fixed px were tuned for typical desktop canvas (~280–440).
+    // Keep fs=1 on desktop so brass dial chrome is unchanged; scale down only on small mobile faces.
+    var fs;
+    if (this.size >= 280) fs = 1;
+    else {
+      fs = this.size / 280;
+      if (!isFinite(fs) || fs <= 0) fs = 1;
+      if (fs < 0.78) fs = 0.78; // floor so majors stay readable
+    }
     // LFA cluster: ~260° sweep, start lower-left
     var start = 140, sweep = 260;
     function rad(d) { return (d * Math.PI) / 180; }
@@ -173,33 +182,44 @@
       // Twin-equal speedo: bold 20 mph majors, quieter 10s, thin 5s — large readable numerals
       var minorMph = 5;
       var midMph = 10;
-      var majorMph = 20;
+      // Small faces: major numerals every 40 mph so 3-digit labels (100/120/…) don’t collide
+      var majorMph = this.size < 200 ? 40 : 20;
       var v0 = Math.round(this.min);
       var v1 = Math.round(this.max);
-      var labelMid = v1 <= 220; // high-range dials: ticks only on 10s (less clutter)
+      // Mid numerals only when dial is large enough — small mobile faces mash 10-mph labels
+      var labelMid = v1 <= 220 && this.size >= 280;
+      var spOuter = R - 11 * fs;
+      var spMajorIn = R - 30 * fs;
+      var spMidIn = R - 23 * fs;
+      var spMinorIn = R - 17 * fs;
+      // Closer-to-rim labels → longer chord between numerals on small R
+      var spLabelR = R - (this.size < 220 ? 34 : 42) * fs;
+      var spMajorFont = Math.max(8, Math.round(15 * fs * (this.size < 200 ? 0.92 : 1)));
+      var spMidFont = Math.max(7, Math.round(10 * fs));
+      var spMajorLw = Math.max(1.2, 2.4 * fs);
       for (var mph = v0; mph <= v1; mph += minorMph) {
         var val = mph;
         var a = rad(ang(val));
         var onMajor = (val % majorMph === 0);
         var isMajorTick = onMajor || (val === v1);
         var isMidTick = !isMajorTick && (val % midMph === 0);
-        var outer = R - 11;
-        var inner = isMajorTick ? R - 30 : (isMidTick ? R - 23 : R - 17);
+        var outer = spOuter;
+        var inner = isMajorTick ? spMajorIn : (isMidTick ? spMidIn : spMinorIn);
         ctx.beginPath();
         ctx.moveTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
         ctx.lineTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
         ctx.strokeStyle = isMajorTick ? '#f0e6d0' : (isMidTick ? 'rgba(232,215,176,0.58)' : 'rgba(232,215,176,0.32)');
-        ctx.lineWidth = isMajorTick ? 2.4 : 1;
+        ctx.lineWidth = isMajorTick ? spMajorLw : 1;
         ctx.stroke();
         if (isMajorTick || (isMidTick && labelMid)) {
-          var tx = cx + Math.cos(a) * (R - 42);
-          var ty = cy + Math.sin(a) * (R - 42);
+          var tx = cx + Math.cos(a) * spLabelR;
+          var ty = cy + Math.sin(a) * spLabelR;
           if (isMajorTick) {
             ctx.fillStyle = '#eef3fa';
-            ctx.font = 'bold 15px "Segoe UI", system-ui, sans-serif';
+            ctx.font = 'bold ' + spMajorFont + 'px "Segoe UI", system-ui, sans-serif';
           } else {
             ctx.fillStyle = 'rgba(220,227,238,0.55)';
-            ctx.font = '10px "Segoe UI", system-ui, sans-serif';
+            ctx.font = spMidFont + 'px "Segoe UI", system-ui, sans-serif';
           }
           ctx.fillText(String(val), tx, ty);
         }
@@ -207,14 +227,14 @@
       if ((v1 - v0) % minorMph !== 0) {
         var aMax = rad(ang(v1));
         ctx.beginPath();
-        ctx.moveTo(cx + Math.cos(aMax) * (R - 11), cy + Math.sin(aMax) * (R - 11));
-        ctx.lineTo(cx + Math.cos(aMax) * (R - 30), cy + Math.sin(aMax) * (R - 30));
+        ctx.moveTo(cx + Math.cos(aMax) * spOuter, cy + Math.sin(aMax) * spOuter);
+        ctx.lineTo(cx + Math.cos(aMax) * spMajorIn, cy + Math.sin(aMax) * spMajorIn);
         ctx.strokeStyle = '#f0e6d0';
-        ctx.lineWidth = 2.4;
+        ctx.lineWidth = spMajorLw;
         ctx.stroke();
         ctx.fillStyle = '#eef3fa';
-        ctx.font = 'bold 15px "Segoe UI", system-ui, sans-serif';
-        ctx.fillText(String(v1), cx + Math.cos(aMax) * (R - 42), cy + Math.sin(aMax) * (R - 42));
+        ctx.font = 'bold ' + spMajorFont + 'px "Segoe UI", system-ui, sans-serif';
+        ctx.fillText(String(v1), cx + Math.cos(aMax) * spLabelR, cy + Math.sin(aMax) * spLabelR);
       }
     } else {
       var majors = this.majorDiv;
@@ -227,24 +247,31 @@
       if (majors < 4) majors = 4;
       if (majors > 16) majors = 16;
       var minors = 5;
+      var tachOuter = R - 12 * fs;
+      var tachMajorIn = R - 28 * fs;
+      var tachHalfIn = R - 22 * fs;
+      var tachMinorIn = R - 18 * fs;
+      var tachLabelR = R - 40 * fs;
+      var tachFont = Math.max(9, Math.round(13 * fs));
+      var tachLw = Math.max(1.2, 2.2 * fs);
       for (var i = 0; i <= majors * minors; i++) {
         var val2 = this.min + (i / (majors * minors)) * span;
         var a2 = rad(ang(val2));
         var isMajor = i % minors === 0;
         var isHalf = i % Math.max(1, minors / 2) === 0;
-        var outer2 = R - 12;
-        var inner2 = isMajor ? R - 28 : (isHalf ? R - 22 : R - 18);
+        var outer2 = tachOuter;
+        var inner2 = isMajor ? tachMajorIn : (isHalf ? tachHalfIn : tachMinorIn);
         ctx.beginPath();
         ctx.moveTo(cx + Math.cos(a2) * outer2, cy + Math.sin(a2) * outer2);
         ctx.lineTo(cx + Math.cos(a2) * inner2, cy + Math.sin(a2) * inner2);
         ctx.strokeStyle = isMajor ? '#e8d7b0' : 'rgba(232,215,176,0.40)';
-        ctx.lineWidth = isMajor ? 2.2 : 1;
+        ctx.lineWidth = isMajor ? tachLw : 1;
         ctx.stroke();
         if (isMajor) {
-          var tx2 = cx + Math.cos(a2) * (R - 40);
-          var ty2 = cy + Math.sin(a2) * (R - 40);
+          var tx2 = cx + Math.cos(a2) * tachLabelR;
+          var ty2 = cy + Math.sin(a2) * tachLabelR;
           ctx.fillStyle = '#dce3ee';
-          ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
+          ctx.font = 'bold ' + tachFont + 'px "Segoe UI", system-ui, sans-serif';
           var label;
           if (this.unit === '%' || this.unit === 'kW') label = String(Math.round(val2));
           else if (this.max >= 1000) label = String(Math.round(val2 / 1000));
@@ -256,7 +283,7 @@
 
     // Unit / ×1000 hint (skip for % / kW dials)
     ctx.fillStyle = 'rgba(232,215,176,0.75)';
-    ctx.font = '10px "Segoe UI", sans-serif';
+    ctx.font = Math.max(7, Math.round(10 * fs)) + 'px "Segoe UI", sans-serif';
     ctx.textAlign = 'center';
     if (this.dial === 'speed') {
       ctx.fillText('MPH', cx, cy - R * 0.18);
@@ -270,11 +297,11 @@
 
     // Digital value well — SAME source as needle (this.display); hubDisplay ignored
     ctx.fillStyle = '#e8d7b0';
-    ctx.font = 'bold 11px "Segoe UI", sans-serif';
+    ctx.font = 'bold ' + Math.max(8, Math.round(11 * fs)) + 'px "Segoe UI", sans-serif';
     ctx.fillText(this.label, cx, cy + R * 0.20);
 
     ctx.fillStyle = '#f4f7fb';
-    var digSize = (this.dial === 'speed') ? 26 : 23;
+    var digSize = Math.max(14, Math.round(((this.dial === 'speed') ? 26 : 23) * fs));
     ctx.font = 'bold ' + digSize + 'px ui-monospace, "Cascadia Code", monospace';
     var shown = Math.round(this.display);
     var suffix = this.unit ? ((this.unit === '%') ? '%' : (' ' + this.unit)) : '';

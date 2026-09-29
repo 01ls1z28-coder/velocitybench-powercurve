@@ -201,35 +201,42 @@
             <span class="gauge-hub-value" id="speedHubValue">0</span>
           </div>
           <div class="gauge-center" aria-label="Gear traction shift">
+            <div class="gauge-center-stack">
               <div class="gear-digit" id="gearDigit" title="Current gear" aria-live="polite">
                 <strong class="gear-digit-value" id="gearDigitValue">—</strong>
               </div>
-              <div class="trac-slip-row" id="tracSlipRow" aria-label="Traction and slip">
-                <div class="traction-meter" id="tractionMeter" role="status" aria-live="polite" title="Traction remaining — 100% full grip; falls as timeline wheelspin rises">
-                  <span class="traction-meter-label">TRACTION %</span>
-                  <div class="traction-meter-segs" id="tractionMeterSegs" aria-hidden="true">
-                    <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
-                    <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
-                    <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
-                    <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
-                  </div>
-                </div>
-                <div class="slip-light" id="slipLight" role="status" aria-live="polite" title="Vehicle SLIP light — on when timeline wheelspin ≥ 8%">
-                  <svg class="slip-light-icon" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true" focusable="false">
-                    <path class="slip-tri" d="M12 3.2 L21.8 20.2 H2.2 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-                    <g class="slip-car" fill="currentColor" stroke="none">
-                      <rect x="8.0" y="10.6" width="8.0" height="3.4" rx="0.8"/>
-                      <circle cx="9.8" cy="14.8" r="1.2"/>
-                      <circle cx="14.2" cy="14.8" r="1.2"/>
-                    </g>
-                    <g class="slip-skid" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round">
-                      <path d="M7.6 17.2 q1.1 1.0 2.2 0.15 q1.1 -0.85 2.2 0.2"/>
-                      <path d="M12.2 17.35 q1.1 0.95 2.2 0.1 q1.1 -0.85 2.15 0.25"/>
-                      <path d="M7.2 18.85 q1.25 1.05 2.5 0.1 q1.25 -0.95 2.45 0.2" opacity="0.85"/>
-                      <path d="M12.0 18.95 q1.25 1.0 2.5 0.05 q1.2 -0.9 2.4 0.25" opacity="0.85"/>
-                    </g>
-                  </svg>
-                  <span class="slip-light-label">SLIP</span>
+              <div class="wheel-spin" id="slipLight" role="status" aria-live="polite" title="Wheel Spin logo — on when timeline wheelspin ≥ 8%">
+                <svg class="wheel-spin-mark" viewBox="0 0 48 40" width="48" height="40" aria-hidden="true" focusable="false">
+                  <!-- stylized spinning tire badge -->
+                  <ellipse class="ws-motion" cx="10" cy="18" rx="3.2" ry="7" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+                  <ellipse class="ws-motion" cx="38" cy="18" rx="3.2" ry="7" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+                  <circle class="ws-tire" cx="24" cy="18" r="13.2" fill="none" stroke="currentColor" stroke-width="3.4"/>
+                  <circle class="ws-rim" cx="24" cy="18" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <g class="ws-spokes" stroke="currentColor" stroke-width="1.55" stroke-linecap="round">
+                    <line x1="24" y1="18" x2="24" y2="11.2"/>
+                    <line x1="24" y1="18" x2="29.9" y2="14.6"/>
+                    <line x1="24" y1="18" x2="29.9" y2="21.4"/>
+                    <line x1="24" y1="18" x2="24" y2="24.8"/>
+                    <line x1="24" y1="18" x2="18.1" y2="21.4"/>
+                    <line x1="24" y1="18" x2="18.1" y2="14.6"/>
+                  </g>
+                  <circle class="ws-hub" cx="24" cy="18" r="2.6" fill="currentColor"/>
+                  <!-- motion arcs -->
+                  <path class="ws-arc" d="M7.5 11.5 A17 17 0 0 1 16 5.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity="0.85"/>
+                  <path class="ws-arc" d="M40.5 24.5 A17 17 0 0 1 32 32.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity="0.85"/>
+                </svg>
+                <span class="wheel-spin-wordmark" aria-hidden="true">
+                  <span class="wheel-spin-line">WHEEL</span>
+                  <span class="wheel-spin-line">SPIN</span>
+                </span>
+              </div>
+              <div class="traction-meter" id="tractionMeter" role="status" aria-live="polite" title="Traction remaining — 100% full grip; falls as timeline wheelspin rises">
+                <span class="traction-meter-label">TRACTION %</span>
+                <div class="traction-meter-segs" id="tractionMeterSegs" aria-hidden="true">
+                  <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
+                  <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
+                  <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
+                  <span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span><span class="trac-seg"></span>
                 </div>
               </div>
               <div class="shift-led-bar" id="shiftLedBar" role="status" aria-live="polite" title="Shift LEDs — green → amber → red as RPM approaches shift point; full red flash at shift">
@@ -244,20 +251,21 @@
                   <span class="shift-led shift-led--r" data-i="7"></span>
                 </div>
               </div>
+              <div class="gauge-run-row" aria-label="Run playback controls">
+                <button type="button" class="btn-gauge-run btn-gauge-run--start" id="btnGaugeStart" title="Run sim and play (or resume if paused)">
+                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.2 2.4c2.8 2.2 2.8 8.8 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                  <span class="btn-gauge-run-label">START</span>
+                </button>
+                <button type="button" class="btn-gauge-run btn-gauge-run--pause" id="btnGaugePause" title="Pause playback at current gauges">
+                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.2" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/><rect x="9.6" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/></svg>
+                  <span class="btn-gauge-run-label">PAUSE</span>
+                </button>
+                <button type="button" class="btn-gauge-run btn-gauge-run--stop" id="btnGaugeStop" title="Stop playback; reset gauges to idle (keep slip/metrics)">
+                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="9" height="9" rx="1.2" fill="currentColor"/></svg>
+                  <span class="btn-gauge-run-label">STOP</span>
+                </button>
+              </div>
             </div>
-            <div class="gauge-run-row" aria-label="Run playback controls">
-            <button type="button" class="btn-gauge-run btn-gauge-run--start" id="btnGaugeStart" title="Run sim and play (or resume if paused)">
-              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.2 2.4c2.8 2.2 2.8 8.8 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-              <span class="btn-gauge-run-label">START</span>
-            </button>
-            <button type="button" class="btn-gauge-run btn-gauge-run--pause" id="btnGaugePause" title="Pause playback at current gauges">
-              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.2" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/><rect x="9.6" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/></svg>
-              <span class="btn-gauge-run-label">PAUSE</span>
-            </button>
-            <button type="button" class="btn-gauge-run btn-gauge-run--stop" id="btnGaugeStop" title="Stop playback; reset gauges to idle (keep slip/metrics)">
-              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="9" height="9" rx="1.2" fill="currentColor"/></svg>
-              <span class="btn-gauge-run-label">STOP</span>
-            </button>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>

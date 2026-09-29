@@ -332,6 +332,7 @@ body {
   max-width: 1280px;
   aspect-ratio: 1280 / 720;
   box-sizing: border-box;
+  container-type: size;
   padding: 0;
   border: 1px solid rgba(215,196,160,0.22);
   border-radius: var(--radius);
@@ -416,7 +417,8 @@ body {
   display: none; /* canvas paints unit in well */
 }
 
-/* Center stack — live-drawn gear / traction / LEDs */
+/* Center stack — gear → Wheel Spin → TRACTION → LEDs → buttons
+   Narrow column clears twin dial faces; run-row pinned below dial bottoms. */
 .gauge-center {
   position: absolute;
   inset: 0;
@@ -424,16 +426,34 @@ body {
   pointer-events: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
-/* Per-widget opaque plates on charcoal panel */
-.gauge-center > * { pointer-events: auto; }
+.gauge-center-stack {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(3px, 0.9cqh, 8px);
+  /* Geometric dial gap ≈14.2% on desktop — stay inside it */
+  width: 12.2%;
+  max-width: 160px;
+  height: 92%;
+  align-self: center;
+  margin: 0;
+  padding: 12% 0 0;
+  box-sizing: border-box;
+}
 
 .gear-digit {
-  position: absolute;
-  left: 43.91%;
-  top: 54.03%;
-  width: 11.72%;
-  height: 11.94%;
+  position: relative;
+  flex: 0 0 auto;
+  width: 72%;
+  min-width: 52px;
+  aspect-ratio: 1.05 / 1;
+  height: auto;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -446,10 +466,11 @@ body {
     inset 0 0 0 3px rgba(150,125,85,0.35),
     inset 0 2px 6px rgba(0,0,0,0.65);
   padding: 0;
+  margin-bottom: clamp(1px, 0.4cqh, 4px);
 }
 .gear-digit-value {
   font-family: "Courier New", ui-monospace, monospace;
-  font-size: clamp(40px, 8cqh, 68px);
+  font-size: clamp(28px, 6.5cqh, 58px);
   font-weight: 700;
   color: #f4f6fa;
   line-height: 1;
@@ -457,49 +478,83 @@ body {
   text-shadow: 0 0 12px rgba(255,255,255,0.9), 0 0 24px rgba(180,210,255,0.5);
 }
 
-.trac-slip-row {
-  position: absolute;
-  left: 37.5%;
-  top: 66.0%;
-  width: 26.5%;
-  height: 9.0%;
+/* Wheel Spin logo — ON TOP of TRACTION % (not beside) */
+.wheel-spin {
+  flex: 0 0 auto;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2.5%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: transparent; /* no row plate */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: auto;
+  min-width: 44px;
+  opacity: 0.34;
+  color: #5a4830;
+  background: transparent;
+  border-radius: 8px;
+  padding: 2px 3px;
 }
+.wheel-spin.on,
+.wheel-spin.wheel-spin--demo {
+  opacity: 1;
+  color: #ffd024;
+  background: #05070a;
+  filter: drop-shadow(0 0 8px rgba(255,200,40,0.75));
+}
+.wheel-spin-mark {
+  display: block;
+  width: clamp(28px, 5.2cqh, 44px);
+  height: clamp(24px, 4.4cqh, 36px);
+}
+.wheel-spin-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1;
+}
+.wheel-spin-line {
+  font-family: var(--sans);
+  font-size: clamp(6px, 1.1cqh, 9px);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: inherit;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 0 transparent;
+}
+.wheel-spin.on .wheel-spin-line,
+.wheel-spin.wheel-spin--demo .wheel-spin-line {
+  text-shadow: 0 0 6px rgba(255,208,36,0.55);
+}
+
 .traction-meter {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
+  align-self: stretch;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 3px;
-  height: 100%;
+  gap: 2px;
   justify-content: flex-start;
-  background: #05070a; /* widget-only cover — not a full center plate */
+  background: #05070a;
   border-radius: 4px;
-  padding: 2px 3px;
+  padding: 2px 2px;
 }
 .traction-meter-label {
   display: block;
   font-family: var(--sans);
-  font-size: clamp(9px, 1.6cqh, 13px);
+  font-size: clamp(7px, 1.35cqh, 11px);
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: #f0ece4;
   line-height: 1;
   white-space: nowrap;
   text-align: left;
-  width: 100%;
   opacity: 1;
   background: #05070a;
-  padding: 1px 2px;
+  padding: 1px 1px;
   width: auto;
   max-width: 100%;
 }
@@ -508,12 +563,12 @@ body {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 2px;
+  gap: 1px;
   width: 100%;
-  height: 42%;
-  min-height: 14px;
-  max-height: 22px;
-  padding: 3px 4px;
+  height: 14px;
+  min-height: 12px;
+  max-height: 18px;
+  padding: 2px 3px;
   border-radius: 4px;
   background: #050608;
   box-shadow: inset 0 0 0 1.5px rgba(215,196,160,0.4);
@@ -523,7 +578,7 @@ body {
 .trac-seg {
   flex: 1 1 0;
   height: 100%;
-  min-width: 2px;
+  min-width: 1px;
   border-radius: 1px;
   background: #2a2620;
   opacity: 0.4;
@@ -541,76 +596,42 @@ body {
   background: #ff5a2a;
   box-shadow: 0 0 6px rgba(255,80,40,0.55);
 }
-.slip-light {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 3px;
-  width: 22%;
-  min-width: 48px;
-  opacity: 0.34; /* live idle dim; bright when .on */
-  color: #5a4830;
-  background: transparent;
-  border-radius: 6px;
-  padding: 2px;
-}
-.slip-light.on,
-.slip-light.slip-light--demo {
-  opacity: 1;
-  color: #ffd024;
-  background: #05070a;
-  filter: drop-shadow(0 0 8px rgba(255,200,40,0.75));
-}
-.slip-light-icon {
-  display: block;
-  width: clamp(36px, 6.5cqh, 52px);
-  height: clamp(36px, 6.5cqh, 52px);
-}
-.slip-light-label {
-  font-family: var(--sans);
-  font-size: clamp(9px, 1.55cqh, 12px);
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: inherit;
-  line-height: 1;
-}
 
 /* Option A round LED capsule — live-drawn */
 .shift-led-bar {
-  position: absolute;
-  left: 50%;
-  top: 76.5%;
-  transform: translateX(-50%);
-  width: 22%;
-  height: 7.2%;
+  position: relative;
+  flex: 0 0 auto;
+  align-self: center;
+  width: 96%;
+  height: auto;
+  min-height: clamp(24px, 4.6cqh, 36px);
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 0.8% 1.4%;
-  border: 3px solid rgba(210,185,135,0.95);
+  padding: 4px 7px;
+  border: 2.5px solid rgba(210,185,135,0.95);
   border-radius: 999px;
   background:
     linear-gradient(180deg, rgba(255,246,224,0.14), transparent 50%),
     #05070a;
   box-shadow:
     inset 0 0 0 1px rgba(70,55,35,0.7),
-    inset 0 0 0 4px rgba(160,135,95,0.4);
+    inset 0 0 0 3px rgba(160,135,95,0.4);
+  transform: none;
 }
 .shift-led-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4%;
+  gap: 3%;
   width: 100%;
   height: 100%;
 }
 .shift-led {
   flex: 0 0 auto;
-  width: clamp(14px, 2.6cqh, 22px);
-  height: clamp(14px, 2.6cqh, 22px);
+  width: clamp(11px, 2.2cqh, 18px);
+  height: clamp(11px, 2.2cqh, 18px);
   border-radius: 50%;
   background: #12100e;
   box-shadow: inset 0 0 0 1.5px rgba(215,196,160,0.35);
@@ -645,23 +666,26 @@ body {
   animation: shift-led-flash 0.26s ease-in-out infinite alternate;
 }
 
-/* Live-drawn START / PAUSE / STOP (no snip wallpaper) */
+/* START / PAUSE / STOP — pinned under dial bottoms (no rim overlap) */
 .gauge-run-row {
-  position: absolute;
-  left: 50%;
-  top: 85.5%;
-  transform: translateX(-50%);
-  width: 52%;
-  height: 9.2%;
+  position: relative;
+  flex: 0 0 auto;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: 1.2%;
+  /* 12.2% stack × 390% ≈ 47.5% of cluster — prior desktop button span */
+  width: 390%;
+  min-height: clamp(32px, 6.4cqh, 52px);
+  height: auto;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
   gap: 1.6%;
-  margin: 0;
   padding: 0;
   z-index: 6;
   box-sizing: border-box;
+  transform: none;
 }
 .btn-gauge-run {
   appearance: none;
@@ -672,23 +696,25 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--sans);
   font-weight: 800;
-  font-size: clamp(13px, 2.2cqh, 18px);
-  letter-spacing: 0.14em;
+  font-size: clamp(11px, 2cqh, 17px);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0 1.2%;
+  padding: 0 1%;
   border-radius: 12px;
-  height: 100%;
+  height: auto;
+  min-height: inherit;
+  align-self: stretch;
   line-height: 1.1;
   transition: filter 0.12s ease, box-shadow 0.12s ease, color 0.12s ease, opacity 0.12s ease;
 }
 .btn-gauge-ico {
   flex: 0 0 auto;
   display: block;
-  width: clamp(16px, 2.8cqh, 22px);
-  height: clamp(16px, 2.8cqh, 22px);
+  width: clamp(14px, 2.5cqh, 20px);
+  height: clamp(14px, 2.5cqh, 20px);
 }
 .btn-gauge-run-label { flex: 0 0 auto; }
 .btn-gauge-run--start {
@@ -892,7 +918,7 @@ body {
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* ---- Responsive: mobile ≤800px — no overflow, boxes stay in place ---- */
+/* ---- Responsive: mobile ≤800px — page chrome; dials stay absolute ---- */
 @media (max-width: 800px) {
   .app { padding: 8px 8px 20px; gap: 8px; }
   .header { padding: 10px 12px; gap: 8px; }
@@ -911,11 +937,17 @@ body {
   .gears-editor {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .gauges-dials {
-    grid-template-columns: minmax(140px, 1fr) auto minmax(140px, 1fr);
-    gap: 6px;
+  /* Never force legacy grid/max-width — it crushes absolute BrassGauge dials */
+  .gauges, .gauges.lfa-cluster {
+    max-width: 100%;
+    width: 100%;
+    container-type: size;
   }
-  .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: 200px; }
+  .gauges-dials {
+    grid-template-columns: unset;
+    gap: 0;
+  }
+  .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
   .chart-wrap { height: 170px; }
   .chart-wrap-speed { height: 130px; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
@@ -926,6 +958,138 @@ body {
   .live-readout { font-size: 11px; gap: 6px; }
   .garage-list { max-height: 140px; }
   .dyno-readout { font-size: 11px; gap: 8px 12px; }
+}
+
+@media (max-width: 480px) {
+  .field-row,
+  .field-row-3 { grid-template-columns: 1fr; }
+  .gears-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gauges-dials { grid-template-columns: unset; gap: 0; }
+  .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---- Instruments — phones/tablets PORTRAIT ----
+   Taller cluster → dials keep more CSS px for BrassGauge tick legibility;
+   narrow center stack clears both gauge faces; buttons pinned below dials. */
+@media (max-width: 900px) and (orientation: portrait) {
+  .gauges, .gauges.lfa-cluster {
+    /* taller cluster → more room under dials; dials sized for tick CSS px */
+    aspect-ratio: 1 / 0.95;
+    max-width: 100%;
+    container-type: size;
+  }
+  .gauge-wrap {
+    width: 42%;
+  }
+  .gauge-wrap--tach {
+    left: 1%;
+    top: 1.5%;
+  }
+  .gauge-wrap--speedo {
+    left: 57%;
+    top: 1.5%;
+  }
+  .gauge-center-stack {
+    width: 14.5%;
+    max-width: none;
+    height: auto;
+    max-height: 88%;
+    padding-top: 0;
+    align-self: center;
+    transform: translateY(-6%);
+    gap: clamp(2px, 0.9cqh, 6px);
+  }
+  .gear-digit {
+    width: 78%;
+    min-width: 40px;
+    margin-bottom: 0;
+  }
+  .gear-digit-value { font-size: clamp(22px, 7.5cqh, 44px); }
+  .wheel-spin-mark {
+    width: clamp(24px, 6cqh, 36px);
+    height: clamp(20px, 5cqh, 30px);
+  }
+  .wheel-spin-line { font-size: clamp(5px, 1.4cqh, 8px); letter-spacing: 0.12em; }
+  .traction-meter-label { font-size: clamp(6px, 1.55cqh, 9px); letter-spacing: 0.04em; white-space: nowrap; }
+  .traction-meter-segs { height: 12px; min-height: 10px; max-height: 14px; padding: 2px 2px; }
+  .shift-led-bar {
+    width: 100%;
+    min-height: clamp(18px, 4.2cqh, 28px);
+    padding: 3px 5px;
+    border-width: 2px;
+  }
+  .shift-led { width: clamp(8px, 2.4cqh, 12px); height: clamp(8px, 2.4cqh, 12px); }
+  .gauge-run-row {
+    width: 340%; /* ~40.8% of cluster */
+    min-height: clamp(28px, 5.8cqh, 40px);
+    margin-top: clamp(10px, 3.5cqh, 22px);
+    margin-bottom: 2%;
+  }
+  .btn-gauge-run {
+    font-size: clamp(8px, 2.1cqh, 11px);
+    gap: 2px;
+    letter-spacing: 0.05em;
+    border-radius: 9px;
+  }
+  .btn-gauge-ico { width: clamp(10px, 2.4cqh, 13px); height: clamp(10px, 2.4cqh, 13px); }
+  .btn-gauge-run-label { letter-spacing: 0.04em; }
+}
+
+/* ---- Instruments — phones/tablets LANDSCAPE ---- */
+@media (max-width: 1100px) and (orientation: landscape) {
+  .gauges, .gauges.lfa-cluster {
+    aspect-ratio: 1280 / 720;
+    max-width: min(100%, 980px);
+    /* Keep enough height under dials for START/PAUSE/STOP clearance */
+    max-height: min(82vh, calc(100vw * 720 / 1280));
+    margin-left: auto;
+    margin-right: auto;
+    container-type: size;
+  }
+  .gauges-dials { grid-template-columns: unset; gap: 0; }
+  .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
+  /* Short landscape viewports: dials must leave ≥ ~40px under bottoms for buttons */
+  .gauge-wrap { width: 28.5%; }
+  .gauge-wrap--tach { left: 5%; top: 3.5%; }
+  .gauge-wrap--speedo { left: 66.5%; top: 3.5%; }
+  .gauge-center-stack {
+    width: 16%;
+    max-width: 220px;
+    height: 94%;
+    padding-top: 6%;
+    gap: clamp(2px, 0.8cqh, 6px);
+  }
+  .gear-digit { width: 64%; min-width: 36px; margin-bottom: 0; }
+  .gear-digit-value { font-size: clamp(20px, 6.5cqh, 48px); }
+  .wheel-spin-mark {
+    width: clamp(22px, 5cqh, 34px);
+    height: clamp(18px, 4.2cqh, 28px);
+  }
+  .wheel-spin-line { font-size: clamp(5px, 1.2cqh, 8px); letter-spacing: 0.12em; }
+  .traction-meter-label { font-size: clamp(6px, 1.3cqh, 9px); letter-spacing: 0.06em; }
+  .traction-meter-segs { height: 11px; min-height: 10px; max-height: 14px; }
+  .shift-led-bar {
+    width: 96%;
+    min-height: clamp(18px, 4.2cqh, 30px);
+    padding: 3px 6px;
+    border-width: 2px;
+  }
+  .shift-led { width: clamp(8px, 2.2cqh, 13px); height: clamp(8px, 2.2cqh, 13px); }
+  .gauge-run-row {
+    width: 260%; /* ~41.6% of cluster */
+    min-height: clamp(26px, 5.5cqh, 40px);
+    margin-bottom: 2.5%;
+  }
+  .btn-gauge-run {
+    font-size: clamp(8px, 2cqh, 12px);
+    gap: 3px;
+    letter-spacing: 0.06em;
+  }
+  .btn-gauge-ico { width: clamp(10px, 2.3cqh, 14px); height: clamp(10px, 2.3cqh, 14px); }
+}
+
+.dyno-readout { font-size: 11px; gap: 8px 12px; }
 }
 
 @media (max-width: 480px) {

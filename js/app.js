@@ -62,7 +62,7 @@
     playbackDurationMs: 0
   };
 
-  /** Wheelspin / traction-fight lamp: light ON when timeline sample slip ≥ this % */
+  /** Wheel Spin logo ON when timeline sample wheelspin ≥ this % */
   var SPIN_WARN_THRESHOLD = 8;
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
@@ -1393,16 +1393,16 @@
     }).join('');
   }
 
-  /** Canonical snip SLIP triangle — ON when timeline wheelspin ≥ threshold. */
+  /** Wheel Spin logo badge — ON when timeline wheelspin ≥ threshold. */
   function setSlipLight(wheelspinPct) {
     var el = $('slipLight');
     if (!el) return;
-    if (el.classList.contains('slip-light--demo')) return;
+    if (el.classList.contains('wheel-spin--demo')) return;
     var on = Number(wheelspinPct) >= SPIN_WARN_THRESHOLD;
     el.classList.toggle('on', on);
     el.setAttribute('aria-label', on
-      ? ('SLIP light ON — ' + Number(wheelspinPct).toFixed(1) + '% wheelspin')
-      : 'SLIP light off');
+      ? ('Wheel Spin ON — ' + Number(wheelspinPct).toFixed(1) + '% wheelspin')
+      : 'Wheel Spin off');
   }
 
   /**
@@ -2037,7 +2037,7 @@ $('btnReset').addEventListener('click', function () {
       var DEMO_MPH = 148;
       setGearDigit(3);
       var slipEl = $('slipLight');
-      if (slipEl) slipEl.classList.add('slip-light--demo', 'on');
+      if (slipEl) slipEl.classList.add('wheel-spin--demo', 'on');
       setTractionMeter(18); // ~82% of 20 segs lit
       // Ensure shift cue so LED bar tracks DEMO_RPM (not a hardcoded all-on)
       if (!state.car) state.car = Object.assign({}, CUSTOM_BUILDER);
