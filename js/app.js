@@ -1833,6 +1833,45 @@
   }
 
 
+
+  /**
+   * Desktop G / Peak G — longitudinal g from timeline sample (same g as speed chart
+   * overlay / liveG). Peak = max g seen this run (resets on idle/STOP/new run clear).
+   * Format: current 0.82 + secondary "PK 0.91". Hidden on mobile via CSS.
+   */
+  var instrumentsPeakG = null;
+  function setGMeter(pt) {
+    var el = $('gMeter');
+    var val = $('gMeterValue');
+    var peakEl = $('gMeterPeak');
+    if (!el || !val || !peakEl) return;
+    var g = pt && pt.g != null ? Number(pt.g) : NaN;
+    if (!isFinite(g)) {
+      val.textContent = '—';
+      peakEl.textContent = 'PK —';
+      instrumentsPeakG = null;
+      el.setAttribute('aria-label', 'G idle');
+      return;
+    }
+    if (instrumentsPeakG == null || g > instrumentsPeakG) instrumentsPeakG = g;
+    // Fold timeline samples at/before t so scrub/seek still reports run peak correctly
+    var tl = state.lastResult && state.lastResult.timeline;
+    var t = pt.t != null ? Number(pt.t) : NaN;
+    if (tl && tl.length && isFinite(t)) {
+      for (var i = 0; i < tl.length; i++) {
+        if (tl[i].t != null && Number(tl[i].t) > t + 1e-9) break;
+        var tg = tl[i].g;
+        if (typeof tg === 'number' && isFinite(tg) && tg > instrumentsPeakG) {
+          instrumentsPeakG = tg;
+        }
+      }
+    }
+    val.textContent = g.toFixed(2);
+    peakEl.textContent = 'PK ' + instrumentsPeakG.toFixed(2);
+    el.setAttribute('aria-label',
+      'G ' + g.toFixed(2) + ', peak ' + instrumentsPeakG.toFixed(2) + ' this run');
+  }
+
   /**
    * Desktop ET / Elapsed — sim timeline seconds (same t as gauges/scrubber).
    * Not wall clock. Hidden on mobile via CSS (stack locks preserved).
@@ -1968,6 +2007,7 @@
     setGearDigit(null);
     setSlipLight(0);
     setTractionMeter(0);
+    setGMeter(null);
     setEtClock(null);
     setShiftMph(null);
     setShiftLamp(0);
@@ -2035,6 +2075,7 @@
     var ws = pt.wheelspin != null ? pt.wheelspin : 0;
     setSlipLight(ws);
     setTractionMeter(ws);
+    setGMeter(pt);
     setEtClock(pt);
     setShiftMph(pt);
     setShiftLamp(pt.rpm);
@@ -2085,7 +2126,8 @@
       state.playbackElapsedOffset = state.playbackDurationMs;
       setSlipLight(0);
       setTractionMeter(0);
-        setEtClock(null);
+      setGMeter(null);
+      setEtClock(null);
       setShiftMph(null);
       setShiftLamp(0);
       syncGaugeRunButtons();
@@ -2107,6 +2149,7 @@
     state.playbackT0 = performance.now();
     state.playbackPlaying = true;
     state.playbackPaused = false;
+    instrumentsPeakG = null; // new run — Peak G restarts
     syncGaugeRunButtons();
     state.anim = requestAnimationFrame(playbackFrame);
   }
@@ -2721,6 +2764,10 @@ $('btnReset').addEventListener('click', function () {
       var slipEl = $('slipLight');
       if (slipEl) slipEl.classList.add('wheel-spin--demo', 'on');
       setTractionMeter(18); // ~82% of 20 segs lit
+      // G / Peak G demo: current 0.82, peak this run 0.91 (seed peak then current)
+      instrumentsPeakG = null;
+      setGMeter({ t: 8.2, g: 0.91 });
+      setGMeter({ t: 8.2, g: 0.82 });
       setEtClock({ t: 8.2 });
       // Seed Shift MPH demo: pretend lastResult had an upshift at 79 mph before t=8.2
       state.lastResult = state.lastResult || {};

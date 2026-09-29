@@ -200,7 +200,7 @@
           <div class="gauge-hub-readout gauge-hub-readout--speedo" aria-hidden="true">
             <span class="gauge-hub-value" id="speedHubValue">0</span>
           </div>
-          <div class="gauge-center" aria-label="Gear traction shift">
+          <div class="gauge-center" aria-label="Gear traction g shift">
             <div class="gauge-center-stack">
               <div class="gear-digit" id="gearDigit" title="Current gear" aria-live="polite">
                 <strong class="gear-digit-value" id="gearDigitValue">—</strong>
@@ -229,6 +229,13 @@
                   <span class="wheel-spin-line">WHEEL</span>
                   <span class="wheel-spin-line">SPIN</span>
                 </span>
+              </div>
+              <div class="g-meter" id="gMeter" role="status" aria-live="polite" title="Longitudinal g — current + peak this run (same timeline g as speed chart overlay)">
+                <span class="g-meter-label">G</span>
+                <span class="g-meter-readout">
+                  <strong class="g-meter-value" id="gMeterValue">—</strong>
+                </span>
+                <span class="g-meter-peak" id="gMeterPeak">PK —</span>
               </div>
               <div class="et-meter" id="etClock" role="status" aria-live="polite" title="Sim elapsed time — same timeline t as gauges/scrubber during run/replay (desktop)">
                 <span class="et-meter-label">ET</span>
