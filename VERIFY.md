@@ -1,3 +1,15 @@
+# BUILD TIP — ATC stall gap/slip invert (Sati)
+
+Branch: `review/jorge-z28-stall-slip-gap` · Base `aa8a04f` (LIVE smooth-slip+stall). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **ATC-only** — invert post-upshift unload vs stall so **low stall = larger RPM gap + less slip**; **high stall = smaller gap + more slip + torque-multiply**. Circle D 4400 unload/lag identity (~1294 drop, lag=0). Continuous mech-progress climb preserved.
+- Z28 Auto Circle D 4400: ET/trap **11.558@119.25**; 60–130 **10.93**; drops ~1280; Soft/Agg order intact. Stall **1500→ drop~1848 / slip0~1305 / 11.664@116.38** vs **5500→ drop~1060 / slip0~2101 / 11.450@120.77**. Mustang/CT identical (non-ATC).
+- forceScale=1; no gear/FD/Cd/wt invent; no ZR1X garage edits. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-stall-slip-gap-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC smooth slip + stall 1500–5500 (Sati)
 
 Branch: `review/jorge-z28-smooth-slip-stall` · Base `3aae3e5` (LIVE climb+Soft/Agg+CT). **No Merovingian / no live Pages.**

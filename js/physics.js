@@ -786,7 +786,8 @@
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
            * - Post-upshift ONLY: unlock/slip hang lerps seed→shiftRpm with turbine
            *   progress (smooth tach all the way to next shift); stall 1500–5500
-           *   scales flash/slip/multiply; mph-gated unlock + postFade keep 60-130 ~10.9.
+           *   scales gap/slip/multiply (low=larger gap/less slip; high=smaller gap/more
+           *   slip + torque-multiply); mph-gated unlock + postFade keep 60-130 ~10.9.
            */
           var stall = Number(car.stallRpm) || 2800;
           stall = Math.max(1200, stall + launchStallBias);
@@ -811,10 +812,12 @@
             var prog = (mechSpan > 80)
               ? clamp((mechRpm - tcPostShiftMechSeed) / mechSpan, 0, 1)
               : 1;
-            // Mild stall ease: looser converter lags the lerp slightly (more slip)
+            // Stall slip ease: high stall lags lerp (tach hangs / more open-converter feel).
+            // Low stall lag=0 — less slip comes from larger unload (hang seed closer to mech).
+            // Circle D 4400 lag = 0 (identity with continuous-climb tip).
             var stallHang = Number(car.stallRpm) || 2800;
             var stallFacHang = clamp((stallHang - 1500) / 4000, 0, 1);
-            var lag = clamp(0.00 + (stallFacHang - 0.725) * 0.12, 0, 0.16); // 0@4400; high stall lags more
+            var lag = clamp(0.00 + (stallFacHang - 0.725) * 0.22, 0, 0.20); // 0@4400; high stall lags more
             var progEff = prog * (1.0 - lag);
             var targetHang = tcPostShiftHangSeed + Math.max(0, hangSpan) * progEff;
             if (targetHang < tcPostShiftHangRpm) targetHang = tcPostShiftHangRpm; // no mid-gear sag
@@ -909,13 +912,16 @@
         result.totalShifts++;
         // ATC only: unlock on upshift — seed hang floor so post-shift tach stays in
         // powerband (~characteristic unload below shift RPM) instead of locked-ratio dump.
-        // Higher stall → slightly more unload (looser converter). Launch path untouched.
+        // Stall gap/slip: low stall → larger RPM drop (less slip); high stall → smaller
+        // drop / higher hang (more slip + multiply). Circle D 4400 ~1200-class drop.
         if (car.hasAftermarketConverter) {
           var stallU = Number(car.stallRpm) || 2800;
-          // Wider stall band: tight ~1500 unloads less (more lock-like), loose ~5500 more.
-          // Circle D 4400 stays ~1200-class drop (1200±300).
+          // Anchor unload ~1294 @ 4400 (1200±300). Invert vs stallFac so:
+          //   1500 → larger gap / tighter couple; 5500 → smaller gap / looser hang.
           var stallFac = clamp((stallU - 1500) / 4000, 0, 1);
-          var unload = 750 + stallFac * 750; // ~750@1500, ~1294@4400, ~1500@5500
+          var unload = 1294 - (stallFac - 0.725) * 800; // ~1874@1500, ~1294@4400, ~1074@5500
+          if (unload < 850) unload = 850;
+          if (unload > 2100) unload = 2100;
           tcPostShiftHangSeed = Math.max(0, rpm - unload);
           tcPostShiftHangRpm = tcPostShiftHangSeed;
           var gNew = gears[Math.min(gear, gears.length) - 1];
