@@ -25,6 +25,7 @@
     this.majorDiv = (opts && opts.majorDiv) || null;
     this.dial = (opts && opts.dial) || null; // 'speed' → MPH face
     this.hubDisplay = null;
+    this.overlayOnly = !!(opts && opts.overlayOnly); // needle+hub only over snip chrome
     this._raf = null;
     this._running = false;
     this._brush = null;
@@ -231,6 +232,71 @@
     }
   };
 
+
+  /** Needle + hub only (for snip-chrome overlay). ang(v) maps value→degrees. */
+  BrassGauge.prototype._drawNeedleAndHub = function (ctx, cx, cy, R, faceR, ang) {
+    function rad(d) { return (d * Math.PI) / 180; }
+    var na = rad(ang(this.display));
+    var tipLen = faceR - Math.max(12, R * 0.075);
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(na);
+    ctx.beginPath();
+    ctx.moveTo(-R * 0.14, -2.4);
+    ctx.lineTo(-R * 0.14, 2.4);
+    ctx.lineTo(-5, 1.6);
+    ctx.lineTo(-5, -1.6);
+    ctx.closePath();
+    ctx.fillStyle = '#4a6078';
+    ctx.fill();
+    ctx.shadowColor = 'rgba(40,180,255,1)';
+    ctx.shadowBlur = 18;
+    ctx.beginPath();
+    ctx.moveTo(-3, -3.1);
+    ctx.lineTo(tipLen - 8, -1.45);
+    ctx.lineTo(tipLen + 2, 0);
+    ctx.lineTo(tipLen - 8, 1.45);
+    ctx.lineTo(-3, 3.1);
+    ctx.closePath();
+    var needleGrad = ctx.createLinearGradient(0, 0, tipLen, 0);
+    needleGrad.addColorStop(0, '#d0f4ff');
+    needleGrad.addColorStop(0.35, '#5ad4ff');
+    needleGrad.addColorStop(0.75, '#2ab0ff');
+    needleGrad.addColorStop(1, '#0088e8');
+    ctx.fillStyle = needleGrad;
+    ctx.fill();
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(tipLen - 14, -1.2);
+    ctx.lineTo(tipLen + 2, 0);
+    ctx.lineTo(tipLen - 14, 1.2);
+    ctx.closePath();
+    ctx.fillStyle = '#9ae8ff';
+    ctx.fill();
+    ctx.restore();
+
+    ctx.save();
+    ctx.shadowColor = 'rgba(50,190,255,0.95)';
+    ctx.shadowBlur = 14;
+    var metal = ctx.createRadialGradient(cx - 2, cy - 3, 1, cx, cy, 11);
+    metal.addColorStop(0, '#f0e4c4');
+    metal.addColorStop(0.45, '#c4a878');
+    metal.addColorStop(1, '#8a7048');
+    ctx.beginPath();
+    ctx.arc(cx, cy, 11, 0, Math.PI * 2);
+    ctx.fillStyle = metal;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 7, 0, Math.PI * 2);
+    ctx.fillStyle = '#2ec8ff';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 3.2, 0, Math.PI * 2);
+    ctx.fillStyle = '#e8f8ff';
+    ctx.fill();
+    ctx.restore();
+  };
+
   BrassGauge.prototype.draw = function () {
     var ctx = this.ctx, w = this.size, h = this.size;
     var cx = w / 2, cy = h / 2;
@@ -247,6 +313,11 @@
     }
 
     ctx.clearRect(0, 0, w, h);
+
+    if (this.overlayOnly) {
+      this._drawNeedleAndHub(ctx, cx, cy, R, faceR, ang);
+      return;
+    }
 
     // ——— Outer brass bezel (thick, brushed metallic) ———
     var bezel = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
