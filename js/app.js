@@ -1275,7 +1275,7 @@
     if (!canvas) return;
     var dpr = window.devicePixelRatio || 1;
     var w = canvas.clientWidth || 600;
-    var h = canvas.clientHeight || 160;
+    var h = canvas.clientHeight || 200;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     var ctx = canvas.getContext('2d');
@@ -1289,53 +1289,255 @@
       ctx.fillText('Speed vs distance appears after a run', 16, h / 2);
       return;
     }
-    var pad = { l: 44, r: 16, t: 18, b: 28 };
+    // Room for MPH (L), g (R), ft + time (B), legend (T)
+    var pad = { l: 42, r: 38, t: 24, b: 40 };
     var maxFt = timeline[timeline.length - 1].feet || 1320;
     var maxMph = 0;
-    timeline.forEach(function (p) { if (p.mph > maxMph) maxMph = p.mph; });
+    var maxG = 0.01;
+    var minG = 0;
+    var hasStoredG = false;
+    for (var i = 0; i < timeline.length; i++) {
+      var p = timeline[i];
+      if (p.mph > maxMph) maxMph = p.mph;
+      if (typeof p.g === 'number') {
+        hasStoredG = true;
+        if (p.g > maxG) maxG = p.g;
+        if (p.g < minG) minG = p.g;
+      }
+    }
+    // Derive longitudinal g from Δv/Δt when samples lack g (fallback)
+    var gSeries = new Array(timeline.length);
+    for (var gi = 0; gi < timeline.length; gi++) {
+      if (hasStoredG && typeof timeline[gi].g === 'number') {
+        gSeries[gi] = timeline[gi].g;
+      } else if (gi === 0) {
+        gSeries[gi] = 0;
+      } else {
+        var dt = timeline[gi].t - timeline[gi - 1].t;
+        if (dt > 1e-6) {
+          var dvMph = timeline[gi].mph - timeline[gi - 1].mph;
+          // mph/s → ft/s² → g  (32.174 ft/s² = 1 g); 1 mph = 1.46667 ft/s
+          gSeries[gi] = (dvMph * 1.46667 / dt) / 32.174;
+        } else {
+          gSeries[gi] = gSeries[gi - 1] || 0;
+        }
+        if (gSeries[gi] > maxG) maxG = gSeries[gi];
+        if (gSeries[gi] < minG) minG = gSeries[gi];
+      }
+    }
     maxMph = Math.max(60, maxMph * 1.08);
+    // Symmetric-ish g scale with headroom; keep 0 visible
+    var gLo = Math.min(0, minG) - 0.05;
+    var gHi = Math.max(0.5, maxG * 1.15);
     function x(ft) { return pad.l + (ft / maxFt) * (w - pad.l - pad.r); }
-    function y(mph) { return h - pad.b - (mph / maxMph) * (h - pad.t - pad.b); }
+    function yMph(mph) { return h - pad.b - (mph / maxMph) * (h - pad.t - pad.b); }
+    function yG(g) { return h - pad.b - ((g - gLo) / (gHi - gLo)) * (h - pad.t - pad.b); }
 
-    ctx.strokeStyle = 'rgba(215,196,160,0.2)';
+    // Horizontal grid
+    ctx.strokeStyle = 'rgba(215,196,160,0.18)';
     ctx.lineWidth = 1;
-    for (var i = 0; i < 4; i++) {
-      var yy = pad.t + ((h - pad.t - pad.b) * i) / 3;
+    for (var hi = 0; hi < 4; hi++) {
+      var yy = pad.t + ((h - pad.t - pad.b) * hi) / 3;
       ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
     }
 
-    // Quarter-mile markers
-    var marks = [60, 330, 660, 1000, 1320];
+    // Distance markers — classic ¼-mi set + extras that fit the run
+    var marks = [0, 60, 330, 660, 1000, 1320, 2640, 5280];
+    // Also add evenly spaced extras for long Vmax runs beyond 1/4
+    if (maxFt > 1600) {
+      var step = maxFt > 8000 ? 1320 : (maxFt > 3500 ? 660 : 330);
+      for (var mf = 1320 + step; mf < maxFt * 0.98; mf += step) {
+        if (marks.indexOf(mf) < 0) marks.push(mf);
+      }
+    }
+    marks.sort(function (a, b) { return a - b; });
+
+    // Find elapsed time at a given distance via timeline
+    function timeAtFeet(ft) {
+      if (!timeline.length) return null;
+      if (ft <= timeline[0].feet) return timeline[0].t;
+      for (var ti = 1; ti < timeline.length; ti++) {
+        if (timeline[ti].feet >= ft) {
+          var a = timeline[ti - 1], b = timeline[ti];
+          var span = b.feet - a.feet;
+          if (span < 1e-6) return b.t;
+          var u = (ft - a.feet) / span;
+          return a.t + u * (b.t - a.t);
+        }
+      }
+      return timeline[timeline.length - 1].t;
+    }
+
     ctx.setLineDash([4, 4]);
     marks.forEach(function (ft) {
-      if (ft > maxFt) return;
+      if (ft > maxFt + 0.5) return;
+      if (ft === 0) return; // left edge — label only
       var xx = x(ft);
-      ctx.strokeStyle = 'rgba(76,201,240,0.35)';
+      ctx.strokeStyle = 'rgba(76,201,240,0.32)';
       ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
     });
     ctx.setLineDash([]);
 
+    // g-force overlay (secondary) — drawn under speed so MPH stays primary
     ctx.beginPath();
-    timeline.forEach(function (p, i) {
-      var px = x(p.feet), py = y(p.mph);
-      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    for (var gj = 0; gj < timeline.length; gj++) {
+      var gx = x(timeline[gj].feet), gy = yG(gSeries[gj]);
+      if (gj === 0) ctx.moveTo(gx, gy); else ctx.lineTo(gx, gy);
+    }
+    ctx.strokeStyle = 'rgba(90,200,255,0.85)';
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+
+    // Zero-g reference
+    if (gLo < 0 && gHi > 0) {
+      ctx.strokeStyle = 'rgba(90,200,255,0.25)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([2, 3]);
+      var zgy = yG(0);
+      ctx.beginPath(); ctx.moveTo(pad.l, zgy); ctx.lineTo(w - pad.r, zgy); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Speed curve (primary green)
+    ctx.beginPath();
+    timeline.forEach(function (pt, idx) {
+      var px = x(pt.feet), py = yMph(pt.mph);
+      if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.2; ctx.stroke();
 
+    // Shift MPH markers — prefer result.shifts; fall back to gear steps in timeline
+    var shifts = (result && result.shifts && result.shifts.length) ? result.shifts.slice() : [];
+    if (!shifts.length) {
+      var prevGear = timeline[0].gear;
+      for (var si = 1; si < timeline.length; si++) {
+        if (timeline[si].gear > prevGear) {
+          shifts.push({
+            gear: timeline[si].gear,
+            mph: timeline[si].mph,
+            feet: timeline[si].feet,
+            t: timeline[si].t
+          });
+          prevGear = timeline[si].gear;
+        } else if (timeline[si].gear < prevGear) {
+          prevGear = timeline[si].gear;
+        }
+      }
+    }
+    shifts.forEach(function (sh, sIdx) {
+      if (sh.feet == null || sh.feet > maxFt * 1.02) return;
+      var sx = x(sh.feet);
+      var sy = yMph(sh.mph);
+      // Stem down to baseline
+      ctx.strokeStyle = 'rgba(255,180,70,0.55)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx, h - pad.b); ctx.stroke();
+      // Marker on curve
+      ctx.fillStyle = '#ffb347';
+      ctx.beginPath();
+      ctx.moveTo(sx, sy - 5);
+      ctx.lineTo(sx + 4.5, sy);
+      ctx.lineTo(sx, sy + 5);
+      ctx.lineTo(sx - 4.5, sy);
+      ctx.closePath();
+      ctx.fill();
+      // Label: gear # + MPH (alternate above/below to reduce collisions)
+      var label = 'G' + sh.gear + ' ' + Math.round(sh.mph);
+      ctx.font = '9px ui-monospace, monospace';
+      ctx.fillStyle = '#ffd089';
+      var lw = ctx.measureText(label).width;
+      var lx = Math.min(Math.max(sx - lw / 2, pad.l), w - pad.r - lw);
+      var above = (sIdx % 2 === 0);
+      var ly = above
+        ? Math.max(sy - 10, pad.t + 10)
+        : Math.min(sy + 14, h - pad.b - 28);
+      ctx.fillText(label, lx, ly);
+    });
+
+    // Vmax red end dot + label (preserved)
     if (result && result.topSpeedMph) {
       var tx = x(result.topSpeedFeet || maxFt);
-      var ty = y(result.topSpeedMph);
+      var ty = yMph(result.topSpeedMph);
       ctx.fillStyle = '#ff3355';
       ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = '#e8d7b0';
       ctx.font = '10px ui-monospace, monospace';
-      ctx.fillText('Vmax ' + result.topSpeedMph.toFixed(0), Math.min(tx + 6, w - 70), Math.max(ty - 6, 14));
+      var vmaxLab = 'Vmax ' + result.topSpeedMph.toFixed(0);
+      ctx.fillText(vmaxLab, Math.min(tx + 6, w - 70), Math.max(ty - 6, 14));
     }
 
-    ctx.fillStyle = '#9aa6b8';
+    // X-axis: distance (ft) numeric ticks + elapsed time under them
+    ctx.font = '9px ui-monospace, monospace';
+    ctx.textAlign = 'center';
+    var classicFt = { 0: 1, 60: 1, 330: 1, 660: 1, 1000: 1, 1320: 1 };
+    var lastLabelX = -999;
+    marks.forEach(function (ft) {
+      if (ft > maxFt + 0.5 && ft !== 0) return;
+      var xx = x(Math.min(ft, maxFt));
+      var isClassic = !!classicFt[ft];
+      // Keep classic ¼-mi ticks; thin extras if they collide with neighbors
+      if (!isClassic && Math.abs(xx - lastLabelX) < 36) return;
+      if (!isClassic && ft > 0 && (w - pad.r - xx) < 22 && ft < maxFt - 1) return;
+      lastLabelX = xx;
+      ctx.fillStyle = '#9aa6b8';
+      ctx.fillText(String(ft), xx, h - pad.b + 12);
+      var tt = timeAtFeet(Math.min(ft, maxFt));
+      if (tt != null) {
+        ctx.fillStyle = '#6e7a8c';
+        ctx.fillText(tt.toFixed(1) + 's', xx, h - pad.b + 24);
+      }
+    });
+    // End-of-run time if last point isn't on a standard mark
+    var last = timeline[timeline.length - 1];
+    if (last && last.t != null) {
+      var endNearMark = marks.some(function (ft) {
+        return Math.abs(ft - last.feet) < maxFt * 0.04;
+      });
+      if (!endNearMark) {
+        var ex = x(last.feet);
+        ctx.fillStyle = '#9aa6b8';
+        ctx.fillText(Math.round(last.feet) + ' ft', ex, h - pad.b + 12);
+        ctx.fillStyle = '#6e7a8c';
+        ctx.fillText(last.t.toFixed(1) + 's', ex, h - pad.b + 24);
+      }
+    }
+    ctx.textAlign = 'left';
+
+    // Axis / legend labels
+    ctx.fillStyle = '#c8ff4a';
     ctx.font = '10px ui-monospace, monospace';
-    ctx.fillText('ft →', w / 2, h - 6);
-    ctx.fillStyle = '#c8ff4a'; ctx.fillText('MPH', pad.l, 12);
+    ctx.fillText('MPH', pad.l, 14);
+    ctx.fillStyle = 'rgba(90,200,255,0.95)';
+    ctx.textAlign = 'right';
+    ctx.fillText('g', w - pad.r, 14);
+    ctx.textAlign = 'left';
+    // Right-side g scale ticks
+    ctx.fillStyle = 'rgba(90,200,255,0.7)';
+    ctx.font = '8px ui-monospace, monospace';
+    ctx.textAlign = 'left';
+    [0, 0.5, 1.0].forEach(function (gv) {
+      if (gv < gLo || gv > gHi) return;
+      var gy2 = yG(gv);
+      ctx.fillText(gv.toFixed(1), w - pad.r + 4, gy2 + 3);
+    });
+    if (maxG > 1.05) {
+      var gTop = Math.floor(maxG * 10) / 10;
+      if (gTop > 1.0 && gTop <= gHi) {
+        ctx.fillText(gTop.toFixed(1), w - pad.r + 4, yG(gTop) + 3);
+      }
+    }
+    // Left MPH scale (sparse)
+    ctx.fillStyle = '#8a9a6a';
+    var mphStep = maxMph > 180 ? 40 : 20;
+    for (var mv = mphStep; mv < maxMph; mv += mphStep) {
+      ctx.fillText(String(mv), 4, yMph(mv) + 3);
+    }
+    // Bottom axis hint
+    ctx.fillStyle = '#7a8494';
+    ctx.font = '8px ui-monospace, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('ft  ·  elapsed s', (pad.l + w - pad.r) / 2, h - 2);
+    ctx.textAlign = 'left';
   }
 
   function renderSlip(r, car) {

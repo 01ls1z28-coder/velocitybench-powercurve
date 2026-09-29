@@ -553,6 +553,7 @@
       peakTorque: 0,
       wheelspinPercent: 0,
       totalShifts: 0,
+      shifts: [],
       densityAltitudeFeet: 0,
       airTempF: (env && env.tempF) != null ? env.tempF : 70,
       launchRpm: 0,
@@ -910,6 +911,13 @@
         shifting = true;
         shiftTimer = shiftTime;
         result.totalShifts++;
+        // Record shift marker for SPEED VS DISTANCE chart (gear # + MPH @ distance/time)
+        result.shifts.push({
+          gear: gear,
+          mph: +(v * MPS_TO_MPH).toFixed(1),
+          feet: +(dist / FEET_TO_M).toFixed(1),
+          t: +t.toFixed(3)
+        });
         // ATC only: unlock on upshift — seed hang floor so post-shift tach stays in
         // powerband (~characteristic unload below shift RPM) instead of locked-ratio dump.
         // Stall gap/slip: low stall → larger RPM drop (less slip); high stall → smaller

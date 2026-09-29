@@ -934,7 +934,7 @@ body {
   min-width: 0;
   overflow: hidden;
 }
-.chart-wrap-speed { height: 148px; margin-top: 6px; }
+.chart-wrap-speed { height: 210px; margin-top: 6px; }
 .chart-wrap canvas { width: 100%; height: 100%; display: block; }
 
 /* Phase 5: Factory TX preset — Custom Builder only */
@@ -1101,7 +1101,7 @@ body {
   }
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
   .chart-wrap { height: 170px; }
-  .chart-wrap-speed { height: 130px; }
+  .chart-wrap-speed { height: 180px; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
   .metric { padding: 6px 8px; }
   .metric .v { font-size: 13px; }
