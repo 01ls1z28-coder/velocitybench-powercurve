@@ -237,7 +237,7 @@
     // Leave room for thick double bezel
     var R = Math.min(w, h) / 2 - 2;
     var bezelOuter = R;
-    var bezelInner = R - Math.max(11, R * 0.088); // snip double-ring — match brass thickness
+    var bezelInner = R - Math.max(13, R * 0.10); // thicker brass double-ring (snip depth)
     var faceR = bezelInner - Math.max(3.5, R * 0.028);
     var start = 140, sweep = 260;
     function rad(d) { return (d * Math.PI) / 180; }
