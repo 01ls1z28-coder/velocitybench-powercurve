@@ -1867,6 +1867,26 @@
     el.setAttribute('aria-label', 'Power ' + rounded + '% of peak');
   }
 
+
+  /**
+   * Desktop ET / Elapsed — sim timeline seconds (same t as gauges/scrubber).
+   * Not wall clock. Hidden on mobile via CSS (stack locks preserved).
+   * Format: 3-decimal ET feel (e.g. 12.046). Idle/stop → — like POWER.
+   */
+  function setEtClock(pt) {
+    var el = $('etClock');
+    var val = $('etClockValue');
+    if (!el || !val) return;
+    var t = pt && pt.t != null ? Number(pt.t) : NaN;
+    if (!isFinite(t) || t < 0) {
+      val.textContent = '—';
+      el.setAttribute('aria-label', 'Elapsed idle');
+      return;
+    }
+    val.textContent = t.toFixed(3);
+    el.setAttribute('aria-label', 'Elapsed ' + t.toFixed(3) + ' seconds');
+  }
+
   function setGearDigit(gear) {
     var el = $('gearDigitValue');
     if (!el) return;
@@ -1938,6 +1958,7 @@
     setSlipLight(0);
     setTractionMeter(0);
     setThrottleMeter(null);
+    setEtClock(null);
     setShiftLamp(0);
     state.speedChartCursor = null;
     if (state.lastResult && state.lastResult.timeline) {
@@ -2004,6 +2025,7 @@
     setSlipLight(ws);
     setTractionMeter(ws);
     setThrottleMeter(pt);
+    setEtClock(pt);
     setShiftLamp(pt.rpm);
     // Sync SPEED VS DISTANCE scrubber to the same sample
     var prevC = state.speedChartCursor;
@@ -2053,6 +2075,7 @@
       setSlipLight(0);
       setTractionMeter(0);
       setThrottleMeter(null);
+      setEtClock(null);
       setShiftLamp(0);
       syncGaugeRunButtons();
     }
@@ -2689,6 +2712,7 @@ $('btnReset').addEventListener('click', function () {
       setTractionMeter(18); // ~82% of 20 segs lit
       // Desktop POWER % gap fill — mid powerband demo
       setThrottleMeter({ rpm: DEMO_RPM, mph: DEMO_MPH, g: 0.55, t: 8.2, feet: 900 });
+      setEtClock({ t: 8.2 });
       // Ensure shift cue so LED bar tracks DEMO_RPM (not a hardcoded all-on)
       if (!state.car) state.car = Object.assign({}, CUSTOM_BUILDER);
       state.car.shiftRpm = 6500;
