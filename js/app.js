@@ -64,10 +64,11 @@
   var SPIN_WARN_THRESHOLD = 8;
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
+    overlayOnly: false, // opaque full dial covers snip face (no double needles)
     min: 0, max: 8000, label: 'RPM', redline: 6500
   });
   var speedGauge = new window.VBPowerCurveGauges.BrassGauge($('speedGauge'), {
-    overlayOnly: true,
+    overlayOnly: false,
     min: 0, max: 200, label: 'MPH', unit: '', redline: 180, dial: 'speed'
   });
   rpmGauge.start();
@@ -1701,11 +1702,12 @@
   if ($('btnGaugePause')) $('btnGaugePause').addEventListener('click', pausePlayback);
   if ($('btnGaugeStop')) $('btnGaugeStop').addEventListener('click', stopPlayback);
   syncGaugeRunButtons();
-  // Screenshot / gate helper: ?demoDash=1 freezes canonical snip mid-run look
+  // Screenshot / gate helper: ?demoDash=1 LIVE mid-run values (freeze OFF; opaque dials)
   try {
     if (/(?:^|[?&])demoDash=1(?:&|$)/.test(location.search || '')) {
+      // LIVE mid-run frame — freeze OFF (opaque dials cover snip faces; no wallpaper tip)
       var cluster = document.querySelector('.gauges.lfa-cluster');
-      if (cluster) cluster.classList.add('lfa-cluster--snip-freeze');
+      if (cluster) cluster.classList.remove('lfa-cluster--snip-freeze');
       setGearDigit(3);
       var slipEl = $('slipLight');
       if (slipEl) slipEl.classList.add('slip-light--demo', 'on');
@@ -1720,9 +1722,12 @@
       }
       rpmGauge.stop();
       speedGauge.stop();
+      rpmGauge.overlayOnly = false;
+      speedGauge.overlayOnly = false;
+      speedGauge.dial = 'speed';
       rpmGauge.configure({ mode: 'rpm', redline: 6500, max: 8000, label: 'RPM' });
       speedGauge.setMax(200);
-      speedGauge.redline = 200; // no visible red arc on speedo (gauges.js skips dial===speed)
+      speedGauge.redline = 200;
       // Match canonical snip: needle mid-high + blue hub digits
       rpmGauge.value = 6500; rpmGauge.display = 6500; rpmGauge.hubDisplay = 3280;
       speedGauge.value = 155; speedGauge.display = 155; speedGauge.hubDisplay = 104;

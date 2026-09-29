@@ -313,6 +313,11 @@
     }
 
     ctx.clearRect(0, 0, w, h);
+    // Opaque circular plate — fully covers snip baked face/needle under this dial
+    ctx.beginPath();
+    ctx.arc(cx, cy, Math.min(w, h) / 2, 0, Math.PI * 2);
+    ctx.fillStyle = '#05070a';
+    ctx.fill();
 
     if (this.overlayOnly) {
       this._drawNeedleAndHub(ctx, cx, cy, R, faceR, ang);
