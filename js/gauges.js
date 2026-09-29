@@ -111,32 +111,39 @@
 
     ctx.clearRect(0, 0, w, h);
 
-    // Outer brass bezel (brushed ring)
+    // Outer brass bezel — thin brushed ring (not over-bronzed)
     var bezel = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
-    bezel.addColorStop(0, '#f0e2c4');
-    bezel.addColorStop(0.22, '#a89068');
-    bezel.addColorStop(0.48, '#e8d7b0');
-    bezel.addColorStop(0.72, '#6a5738');
-    bezel.addColorStop(1, '#c4b08a');
+    bezel.addColorStop(0, 'rgba(240,226,196,0.88)');
+    bezel.addColorStop(0.22, 'rgba(140,120,88,0.95)');
+    bezel.addColorStop(0.48, 'rgba(220,200,165,0.9)');
+    bezel.addColorStop(0.72, 'rgba(90,72,48,0.98)');
+    bezel.addColorStop(1, 'rgba(190,170,135,0.9)');
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
     ctx.fillStyle = bezel; ctx.fill();
 
-    // Inner dark ring
-    ctx.beginPath(); ctx.arc(cx, cy, R - 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#1a1510'; ctx.fill();
+    // Inner dark ring (slightly wider dark band → thinner visible brass)
+    ctx.beginPath(); ctx.arc(cx, cy, R - 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#14110e'; ctx.fill();
 
-    // Face — deep charcoal with subtle radial
-    var face = ctx.createRadialGradient(cx, cy - R * 0.15, R * 0.05, cx, cy, R - 8);
-    face.addColorStop(0, '#1c222c');
-    face.addColorStop(0.55, '#0c0f14');
+    // Face — deep charcoal + soft glass radial
+    var face = ctx.createRadialGradient(cx, cy - R * 0.18, R * 0.04, cx, cy, R - 7);
+    face.addColorStop(0, '#222833');
+    face.addColorStop(0.45, '#10151c');
     face.addColorStop(1, '#050608');
-    ctx.beginPath(); ctx.arc(cx, cy, R - 8, 0, Math.PI * 2);
+    ctx.beginPath(); ctx.arc(cx, cy, R - 7, 0, Math.PI * 2);
     ctx.fillStyle = face; ctx.fill();
 
+    // Glass specular arc (upper face)
+    ctx.beginPath();
+    ctx.arc(cx, cy, R - 10, (Math.PI * 1.15), (Math.PI * 1.85));
+    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+    ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.lineCap = 'butt';
+
     // Fine brass inner rim
-    ctx.beginPath(); ctx.arc(cx, cy, R - 9, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(232,215,176,0.35)';
-    ctx.lineWidth = 1.25; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, R - 8.5, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(232,215,176,0.28)';
+    ctx.lineWidth = 1; ctx.stroke();
 
     // Redline arc (thin, sharp — LFA style)
     var redStart = ang(Math.min(this.redline, this.max));
@@ -152,55 +159,51 @@
     ctx.textBaseline = 'middle';
 
     if (this.dial === 'speed') {
-      // Clean 5 mph ticks; bold numerals on 20s; smaller dimmer on odd tens (10/30/…)
+      // Twin-equal speedo: bold 20 mph majors, quieter 10s, thin 5s — large readable numerals
       var minorMph = 5;
       var midMph = 10;
       var majorMph = 20;
       var v0 = Math.round(this.min);
       var v1 = Math.round(this.max);
-      // Walk integer mph so float drift never skips a tick
+      var labelMid = v1 <= 220; // high-range dials: ticks only on 10s (less clutter)
       for (var mph = v0; mph <= v1; mph += minorMph) {
-        // Always land the true max (e.g. 250) even if not on a 5-step after snap miss
         var val = mph;
         var a = rad(ang(val));
         var onMajor = (val % majorMph === 0);
-        // Dial max (e.g. 250) stays large even when not on a 20 — keeps Vmax readable
         var isMajorTick = onMajor || (val === v1);
         var isMidTick = !isMajorTick && (val % midMph === 0);
-        var outer = R - 12;
-        var inner = isMajorTick ? R - 28 : (isMidTick ? R - 22 : R - 18);
+        var outer = R - 11;
+        var inner = isMajorTick ? R - 30 : (isMidTick ? R - 23 : R - 17);
         ctx.beginPath();
         ctx.moveTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
         ctx.lineTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
-        ctx.strokeStyle = isMajorTick ? '#e8d7b0' : (isMidTick ? 'rgba(232,215,176,0.55)' : 'rgba(232,215,176,0.40)');
-        ctx.lineWidth = isMajorTick ? 2.2 : 1;
+        ctx.strokeStyle = isMajorTick ? '#f0e6d0' : (isMidTick ? 'rgba(232,215,176,0.58)' : 'rgba(232,215,176,0.32)');
+        ctx.lineWidth = isMajorTick ? 2.4 : 1;
         ctx.stroke();
-        if (isMajorTick || isMidTick) {
-          var tx = cx + Math.cos(a) * (R - 40);
-          var ty = cy + Math.sin(a) * (R - 40);
+        if (isMajorTick || (isMidTick && labelMid)) {
+          var tx = cx + Math.cos(a) * (R - 42);
+          var ty = cy + Math.sin(a) * (R - 42);
           if (isMajorTick) {
-            ctx.fillStyle = '#dce3ee';
-            ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
+            ctx.fillStyle = '#eef3fa';
+            ctx.font = 'bold 15px "Segoe UI", system-ui, sans-serif';
           } else {
-            // Intermediate 10s: smaller + slightly dimmer so 20s dominate
-            ctx.fillStyle = 'rgba(220,227,238,0.62)';
-            ctx.font = '9.5px "Segoe UI", system-ui, sans-serif';
+            ctx.fillStyle = 'rgba(220,227,238,0.55)';
+            ctx.font = '10px "Segoe UI", system-ui, sans-serif';
           }
           ctx.fillText(String(val), tx, ty);
         }
       }
-      // If max isn't on the 5-mph grid (shouldn't happen after snap), still mark Vmax
       if ((v1 - v0) % minorMph !== 0) {
         var aMax = rad(ang(v1));
         ctx.beginPath();
-        ctx.moveTo(cx + Math.cos(aMax) * (R - 12), cy + Math.sin(aMax) * (R - 12));
-        ctx.lineTo(cx + Math.cos(aMax) * (R - 28), cy + Math.sin(aMax) * (R - 28));
-        ctx.strokeStyle = '#e8d7b0';
-        ctx.lineWidth = 2.2;
+        ctx.moveTo(cx + Math.cos(aMax) * (R - 11), cy + Math.sin(aMax) * (R - 11));
+        ctx.lineTo(cx + Math.cos(aMax) * (R - 30), cy + Math.sin(aMax) * (R - 30));
+        ctx.strokeStyle = '#f0e6d0';
+        ctx.lineWidth = 2.4;
         ctx.stroke();
-        ctx.fillStyle = '#dce3ee';
-        ctx.font = 'bold 13px "Segoe UI", system-ui, sans-serif';
-        ctx.fillText(String(v1), cx + Math.cos(aMax) * (R - 40), cy + Math.sin(aMax) * (R - 40));
+        ctx.fillStyle = '#eef3fa';
+        ctx.font = 'bold 15px "Segoe UI", system-ui, sans-serif';
+        ctx.fillText(String(v1), cx + Math.cos(aMax) * (R - 42), cy + Math.sin(aMax) * (R - 42));
       }
     } else {
       var majors = this.majorDiv;
@@ -252,13 +255,14 @@
       ctx.fillText('kW', cx, cy - R * 0.18);
     }
 
-    // Digital value well (LFA-like center bottom)
+    // Digital value well (LFA-like center bottom) — larger on twin speedo
     ctx.fillStyle = '#e8d7b0';
     ctx.font = 'bold 11px "Segoe UI", sans-serif';
-    ctx.fillText(this.label, cx, cy + R * 0.22);
+    ctx.fillText(this.label, cx, cy + R * 0.20);
 
     ctx.fillStyle = '#f4f7fb';
-    ctx.font = 'bold 22px ui-monospace, "Cascadia Code", monospace';
+    var digSize = (this.dial === 'speed') ? 26 : 23;
+    ctx.font = 'bold ' + digSize + 'px ui-monospace, "Cascadia Code", monospace';
     var shown = Math.round(this.display);
     var suffix = this.unit ? ((this.unit === '%') ? '%' : (' ' + this.unit)) : '';
     ctx.fillText(String(shown) + suffix, cx, cy + R * 0.40);

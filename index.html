@@ -190,11 +190,24 @@
           <span>G <strong id="liveG">—</strong></span>
         </div>
         <div class="gauges lfa-cluster" aria-label="LFA-style dual dial cluster">
-          <div class="gauge-wrap"><canvas id="rpmGauge" width="280" height="280"></canvas></div>
+          <div class="gauge-wrap gauge-wrap--tach"><canvas id="rpmGauge" width="340" height="340"></canvas></div>
           <div class="gauge-run-controls" aria-label="Run playback controls">
-            <div class="shift-lamp" id="shiftLamp" role="status" aria-live="polite" title="Shift light — amber approaching shift RPM, bright red/flash at shift point">
-              <span class="shift-lamp-dot" aria-hidden="true"></span>
-              <span class="shift-lamp-label">SHIFT</span>
+            <div class="gear-digit" id="gearDigit" title="Current gear" aria-live="polite">
+              <span class="gear-digit-label">GEAR</span>
+              <strong class="gear-digit-value" id="gearDigitValue">—</strong>
+            </div>
+            <div class="shift-led-bar" id="shiftLedBar" role="status" aria-live="polite" title="Shift LEDs — green → amber → red as RPM approaches shift point; full red flash at shift">
+              <span class="shift-led-caption">SHIFT</span>
+              <div class="shift-led-row" aria-hidden="true">
+                <span class="shift-led shift-led--g" data-i="0"></span>
+                <span class="shift-led shift-led--g" data-i="1"></span>
+                <span class="shift-led shift-led--g" data-i="2"></span>
+                <span class="shift-led shift-led--a" data-i="3"></span>
+                <span class="shift-led shift-led--a" data-i="4"></span>
+                <span class="shift-led shift-led--a" data-i="5"></span>
+                <span class="shift-led shift-led--r" data-i="6"></span>
+                <span class="shift-led shift-led--r" data-i="7"></span>
+              </div>
             </div>
             <button type="button" class="btn-gauge-run" id="btnGaugeStart" title="Run sim and play (or resume if paused)">START</button>
             <button type="button" class="btn-gauge-run" id="btnGaugePause" title="Pause playback at current gauges">PAUSE</button>
@@ -204,7 +217,7 @@
               <span class="spin-lamp-label">SPIN</span>
             </div>
           </div>
-          <div class="gauge-wrap"><canvas id="speedGauge" width="280" height="280"></canvas></div>
+          <div class="gauge-wrap gauge-wrap--speedo"><canvas id="speedGauge" width="340" height="340"></canvas></div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
         <div class="dyno-readout" id="dynoReadout">
