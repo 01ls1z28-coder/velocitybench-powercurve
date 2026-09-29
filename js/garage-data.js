@@ -6,6 +6,7 @@
  * or curated; loss+launch+tire calibrated toward Excel (forceScale retired = 1.0 always).
  * Excel source: /workspace/powercurve-garage-import.json
  * Cybertruck tip: OEM FD 15.02 + curve-respan; trap-119 via Cd→0.34 + Summer; forceScale=1.
+ * ZR1X rebake: published Cd0.36/wt3978/FD5.56 locked — loss-only ET@trap toward Excel 8.675@159.
  * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-cybertruck-beast-trap-119.js
  */
 'use strict';
@@ -37183,7 +37184,7 @@ var GARAGE = [
       0.33
     ],
     "txKey": "Tremec_TR9080_8DCT",
-    "drivetrainLossPercent": 4.5,
+    "drivetrainLossPercent": 6.2,
     "driveType": "AWD",
     "isEv": false,
     "isHybrid": true,
@@ -37204,7 +37205,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "DCT",
-    "source": "2026 Chevrolet Corvette ZR1X | Phase 32 trap-first; tire AllSeason; loss 15.1; driver 200 | Excel lock 1.9 / 8.675@159 / 60-130 3.87; lim233; fs1.30 assist0.28 Cd0.42 taper5200→0.55 | fs=1 tip: absorb→curve; Cd restore; loss/tire/launch; Excel 1.9 / 8.675@159 / 3.87 | restore published Cd0.36/wt3978; knobs loss/tire/launch only; Excel 1.9 / 8.675@159 / 3.87 / lim 233",
+    "source": "2026 Chevrolet Corvette ZR1X | Excel lock 1.9 / 8.675@159 / 60-130 3.87; lim233 | tip review/zr1x-quarter-rebake @aa8a04f: fs=1; Cd0.36/wt3978/FD5.56/TR9080 locked; Slick kept; loss 4.5→6.2 (ET@trap → Excel); assist0.28 launch2400; credit Jorge Guerra",
     "torqueCurve": {
       "1000": 921.5438,
       "1100": 941.3206,
