@@ -1444,12 +1444,21 @@ body {
     text-shadow: 0 0 8px rgba(212,184,137,0.28);
   }
   .traction-meter-segs {
+    /* Fit fix: 20-col grid + rim inset — ticks never float past brass track */
+    display: grid;
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
     height: 20px;
     min-height: 16px;
     max-height: 24px;
-    gap: 2px;
-    padding: 3px 3px;
+    gap: 1px;
+    padding: 3px 6px;
     border-radius: 5px;
+    overflow: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
     background:
       linear-gradient(180deg, #0c0e12 0%, #050608 100%);
     box-shadow:
@@ -1458,38 +1467,45 @@ body {
       inset 0 -1px 0 rgba(255,246,224,0.04);
   }
   .trac-seg {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
     border-radius: 2px;
-    border: 1px solid rgba(90,72,48,0.35);
+    border: none;
+    box-sizing: border-box;
     background: linear-gradient(180deg, #1c1814, #0e0c0a);
     opacity: 0.55;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.45);
+    box-shadow:
+      inset 0 0 0 1px rgba(90,72,48,0.4),
+      inset 0 1px 1px rgba(0,0,0,0.45);
   }
   .trac-seg.is-on {
     opacity: 1;
-    border-color: rgba(232,210,160,0.55);
     /* Polished champagne brass — bright enough to read, still CF/brass (not neon white) */
     background:
       linear-gradient(180deg, #fff8e6 0%, #e8d2a0 38%, #c9a86a 100%);
     box-shadow:
-      0 0 5px rgba(212,184,137,0.42),
+      0 0 3px rgba(212,184,137,0.38),
+      inset 0 0 0 1px rgba(232,210,160,0.45),
       inset 0 1px 0 rgba(255,252,240,0.7),
       inset 0 -1px 1px rgba(80,55,20,0.28);
   }
   .traction-meter.is-low .trac-seg.is-on {
-    border-color: rgba(210,170,90,0.55);
     background:
       linear-gradient(180deg, #ffe9b0 0%, #e0b050 42%, #a87828 100%);
     box-shadow:
-      0 0 5px rgba(196,150,70,0.38),
+      0 0 3px rgba(196,150,70,0.34),
+      inset 0 0 0 1px rgba(210,170,90,0.45),
       inset 0 1px 0 rgba(255,246,210,0.6),
       inset 0 -1px 1px rgba(70,45,8,0.35);
   }
   .traction-meter.is-critical .trac-seg.is-on {
-    border-color: rgba(190,110,80,0.55);
     background:
       linear-gradient(180deg, #f0b090 0%, #c06042 42%, #8a3420 100%);
     box-shadow:
-      0 0 5px rgba(168,80,55,0.4),
+      0 0 3px rgba(168,80,55,0.36),
+      inset 0 0 0 1px rgba(190,110,80,0.45),
       inset 0 1px 0 rgba(255,220,200,0.5),
       inset 0 -1px 1px rgba(55,15,8,0.4);
   }
@@ -1742,21 +1758,110 @@ body {
     height: clamp(16px, 3.5cqw, 28px);
   }
   .wheel-spin-line { font-size: clamp(5px, 1.1cqw, 8px); letter-spacing: 0.12em; }
-  .traction-meter-label { font-size: clamp(5px, 1.2cqw, 9px); letter-spacing: 0.05em; white-space: nowrap; }
-  .traction-meter-segs { height: 10px; min-height: 9px; max-height: 13px; padding: 1px 2px; }
+  .traction-meter-label {
+    font-size: clamp(5px, 1.2cqw, 9px);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    color: var(--inst-brass-text, #f0e2c4);
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(212,184,137,0.25);
+  }
+  /* Landscape TRACTION — same champagne + rim-fit as desktop (portrait MQ untouched) */
+  .traction-meter {
+    width: 88%;
+    padding: 4px 4px 3px;
+    gap: 3px;
+    border-color: rgba(212,184,137,0.42);
+    background:
+      linear-gradient(180deg, rgba(255,246,224,0.09), transparent 62%),
+      rgba(6,8,11,0.88);
+    box-shadow:
+      inset 0 1px 0 rgba(255,246,224,0.12),
+      inset 0 0 0 1px rgba(0,0,0,0.4),
+      0 0 8px rgba(212,184,137,0.08),
+      0 2px 8px rgba(0,0,0,0.28);
+  }
+  .traction-meter-segs {
+    display: grid;
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    height: 12px;
+    min-height: 10px;
+    max-height: 14px;
+    gap: 1px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    overflow: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
+    background:
+      linear-gradient(180deg, #0c0e12 0%, #050608 100%);
+    box-shadow:
+      inset 0 0 0 1.5px rgba(212,184,137,0.48),
+      inset 0 2px 5px rgba(0,0,0,0.65),
+      inset 0 -1px 0 rgba(255,246,224,0.04);
+  }
+  .trac-seg {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    border-radius: 1.5px;
+    border: none;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #1c1814, #0e0c0a);
+    opacity: 0.55;
+    box-shadow:
+      inset 0 0 0 1px rgba(90,72,48,0.4),
+      inset 0 1px 1px rgba(0,0,0,0.45);
+  }
+  .trac-seg.is-on {
+    opacity: 1;
+    background:
+      linear-gradient(180deg, #fff8e6 0%, #e8d2a0 38%, #c9a86a 100%);
+    box-shadow:
+      0 0 2px rgba(212,184,137,0.36),
+      inset 0 0 0 1px rgba(232,210,160,0.45),
+      inset 0 1px 0 rgba(255,252,240,0.65);
+  }
+  .traction-meter.is-low .trac-seg.is-on {
+    background:
+      linear-gradient(180deg, #ffe9b0 0%, #e0b050 42%, #a87828 100%);
+    box-shadow:
+      0 0 2px rgba(196,150,70,0.32),
+      inset 0 0 0 1px rgba(210,170,90,0.45),
+      inset 0 1px 0 rgba(255,246,210,0.55);
+  }
+  .traction-meter.is-critical .trac-seg.is-on {
+    background:
+      linear-gradient(180deg, #f0b090 0%, #c06042 42%, #8a3420 100%);
+    box-shadow:
+      0 0 2px rgba(168,80,55,0.34),
+      inset 0 0 0 1px rgba(190,110,80,0.45),
+      inset 0 1px 0 rgba(255,220,200,0.45);
+  }
+  /* Landscape stadium shift-light — desktop polish scaled for corridor */
   .shift-led-bar {
     width: 100%;
     min-height: 0;
-    padding: 2px 3px;
+    padding: 3px 5px;
     border-width: 1.5px;
     border-radius: 5px;
+    border-color: rgba(212,184,137,0.52);
     overflow: hidden;
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.52),
+      inset 0 1px 0 rgba(255,246,224,0.14),
+      inset 0 2px 6px rgba(0,0,0,0.5),
+      0 0 8px rgba(212,184,137,0.14);
   }
-  .shift-led-row { gap: 1.5px; }
+  .shift-led-row { gap: 2px; }
   .shift-led {
     width: 100%;
     min-width: 0;
-    height: clamp(5px, 7.5cqw, 9px);
+    height: clamp(6px, 8cqw, 10px);
     border-radius: 2px;
   }
   .gauge-run-row {
