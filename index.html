@@ -251,21 +251,21 @@
                   <span class="shift-led shift-led--r" data-i="7"></span>
                 </div>
               </div>
-              <div class="gauge-run-row" aria-label="Run playback controls">
-                <button type="button" class="btn-gauge-run btn-gauge-run--start" id="btnGaugeStart" title="Run sim and play (or resume if paused)">
-                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.2 2.4c2.8 2.2 2.8 8.8 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-                  <span class="btn-gauge-run-label">START</span>
-                </button>
-                <button type="button" class="btn-gauge-run btn-gauge-run--pause" id="btnGaugePause" title="Pause playback at current gauges">
-                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.2" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/><rect x="9.6" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/></svg>
-                  <span class="btn-gauge-run-label">PAUSE</span>
-                </button>
-                <button type="button" class="btn-gauge-run btn-gauge-run--stop" id="btnGaugeStop" title="Stop playback; reset gauges to idle (keep slip/metrics)">
-                  <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="9" height="9" rx="1.2" fill="currentColor"/></svg>
-                  <span class="btn-gauge-run-label">STOP</span>
-                </button>
-              </div>
             </div>
+          </div>
+          <div class="gauge-run-row" aria-label="Run playback controls">
+            <button type="button" class="btn-gauge-run btn-gauge-run--start" id="btnGaugeStart" title="Run sim and play (or resume if paused)">
+              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.2 2.4c2.8 2.2 2.8 8.8 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+              <span class="btn-gauge-run-label">START</span>
+            </button>
+            <button type="button" class="btn-gauge-run btn-gauge-run--pause" id="btnGaugePause" title="Pause playback at current gauges">
+              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.2" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/><rect x="9.6" y="2.5" width="3.2" height="11" rx="0.6" fill="currentColor"/></svg>
+              <span class="btn-gauge-run-label">PAUSE</span>
+            </button>
+            <button type="button" class="btn-gauge-run btn-gauge-run--stop" id="btnGaugeStop" title="Stop playback; reset gauges to idle (keep slip/metrics)">
+              <svg class="btn-gauge-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="9" height="9" rx="1.2" fill="currentColor"/></svg>
+              <span class="btn-gauge-run-label">STOP</span>
+            </button>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="powerChart"></canvas></div>
