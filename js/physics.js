@@ -738,6 +738,7 @@
     // Seed remembers the post-shift floor; hang soft-climbs continuously toward shiftRpm while slipping.
     var tcPostShiftHangRpm = 0;
     var tcPostShiftHangSeed = 0;
+    var tcPostShiftMechSeed = 0; // turbine at unlock; hang lerps seed→shift with mech progress
     var shiftFamily = resolveShiftDriveFamily(car);
     var shiftResidualFrac = shiftResidualFraction(shiftFamily);
     var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
@@ -783,50 +784,63 @@
            * - Flash RPM = brief free-rev peak as the converter unloads off the line
            *   (high-stall default scales well above stall — Circle D 4400 → ~6400).
            * - Slip decays with road speed toward lockup (~1:1 by ~50 mph).
-           * - Post-upshift ONLY: unlock/slip hang with continuous soft climb toward
-           *   shiftRpm (no seed+520 tach plateau); mph-gated extra multiply under
-           *   hang boosts trap, with post-trap fade so 60-130 ~10.9.
+           * - Post-upshift ONLY: unlock/slip hang lerps seed→shiftRpm with turbine
+           *   progress (smooth tach all the way to next shift); stall 1500–5500
+           *   scales flash/slip/multiply; mph-gated unlock + postFade keep 60-130 ~10.9.
            */
           var stall = Number(car.stallRpm) || 2800;
-          stall = Math.max(1600, stall + launchStallBias);
-          // High-stall ATC flash ceiling scales with stall (Circle D 4400 → ~6400).
+          stall = Math.max(1200, stall + launchStallBias);
+          // Stall factor spans real converter band 1500→5500 (not clamped flat below 2200).
+          // High-stall ATC flash ceiling scales with stall; Circle D 4400 → ~6400-class.
           // Explicit car.flashRpm still wins; stock/non-ATC path never enters here.
           // Soft/Aggressive modulate stall + flash span; Auto bias0/span1 = prior path.
-          var stallFacFlash = Math.max(0, Math.min(1, (stall - 2200) / 2800));
-          var flash = Number(car.flashRpm) || Math.max(stall + Math.round(400 + stallFacFlash * 2000), 3500);
+          var stallFacFlash = clamp((stall - 1500) / 4000, 0, 1);
+          var flash = Number(car.flashRpm) || Math.max(stall + Math.round(400 + stallFacFlash * 2150), stall + 200);
           if (flash < stall) flash = stall;
           var flashSpan = Math.max(0, flash - stall);
           flash = stall + flashSpan * launchFlashSpanScale;
           if (flash > Math.max(shiftRpm, stall)) flash = Math.max(shiftRpm, stall);
           if (flash < stall) flash = stall;
           if (tcPostShiftHangRpm > 0) {
-            // Inter-shift open-converter climb: seed floor keeps ~1200 drop, then soft
-            // continuous engine accel under slip toward shiftRpm (no seed+520 plateau).
-            // Early rate matches parent; past the old seed+520 freeze, soft ~90 rpm/s
-            // creep continues the tach rise until turbine/mech catches (then follow mech
-            // to shiftRpm). Avoids slip-proportional runaway that early-upshifted.
-            var hangSlip = tcPostShiftHangRpm > 0
-              ? Math.max(0, (tcPostShiftHangRpm - mechRpm) / tcPostShiftHangRpm)
-              : 0;
-            // Limited under-load climb (not free-rev): more slip → slightly freer rise.
-            var climbRate = 220 + hangSlip * 780; // ~220–1000 rpm/s (early, same as parent)
-            if (tcPostShiftHangRpm >= tcPostShiftHangSeed + 520) {
-              // Past old plateau: keep rising softly toward shift — do not freeze tach.
-              climbRate = 90;
-            }
-            var hangCeil = shiftRpm;
-            if (hangCeil < tcPostShiftHangRpm) hangCeil = tcPostShiftHangRpm;
-            tcPostShiftHangRpm = Math.min(hangCeil, tcPostShiftHangRpm + climbRate * DT);
+            // Inter-shift open-converter climb: seed keeps ~1200-class drop, then hang
+            // RPM lerps seed→shiftRpm as turbine/mech progresses toward shiftRpm.
+            // Tach rises continuously/evenly all the way to the next shift (no
+            // fast-then-slow kink, no seed+520 plateau). Slip decays as mech catches.
+            var mechSpan = shiftRpm - tcPostShiftMechSeed;
+            var hangSpan = shiftRpm - tcPostShiftHangSeed;
+            var prog = (mechSpan > 80)
+              ? clamp((mechRpm - tcPostShiftMechSeed) / mechSpan, 0, 1)
+              : 1;
+            // Mild stall ease: looser converter lags the lerp slightly (more slip)
+            var stallHang = Number(car.stallRpm) || 2800;
+            var stallFacHang = clamp((stallHang - 1500) / 4000, 0, 1);
+            var lag = clamp(0.00 + (stallFacHang - 0.725) * 0.12, 0, 0.16); // 0@4400; high stall lags more
+            var progEff = prog * (1.0 - lag);
+            var targetHang = tcPostShiftHangSeed + Math.max(0, hangSpan) * progEff;
+            if (targetHang < tcPostShiftHangRpm) targetHang = tcPostShiftHangRpm; // no mid-gear sag
+            // Soft slew so discrete mech steps do not stair-step the gauge
+            var maxStep = (480 + stallFacHang * 60) * DT; // ~480–540 rpm/s slew cap
+            var delta = targetHang - tcPostShiftHangRpm;
+            if (delta > maxStep) delta = maxStep;
+            if (delta < 0) delta = 0;
+            tcPostShiftHangRpm = tcPostShiftHangRpm + delta;
+            if (tcPostShiftHangRpm > shiftRpm) tcPostShiftHangRpm = shiftRpm;
             if (mechRpm >= tcPostShiftHangRpm - 25) {
               tcPostShiftHangRpm = 0;
               tcPostShiftHangSeed = 0;
+              tcPostShiftMechSeed = 0;
               rpm = mechRpm;
             } else {
               rpm = Math.max(mechRpm, tcPostShiftHangRpm);
             }
           } else {
-            // Lockup progress: 0 at standstill → 1 by ~50 mph (LAUNCH path — do not retune)
-            var lockup = clamp(mphNow / 50.0, 0, 1);
+            // Lockup progress: 0 at standstill → 1 by stall-scaled mph.
+            // Anchored at ~50 mph for Circle D 4400 (Auto launch identity); low stall
+            // couples earlier, high stall stays open longer (real converter behavior).
+            var lockMph = 50 + (stallFacFlash - 0.725) * 28; // 50@4400; ~30@1500; ~58@5500
+            if (lockMph < 28) lockMph = 28;
+            if (lockMph > 70) lockMph = 70;
+            var lockup = clamp(mphNow / lockMph, 0, 1);
             // Flash pulse: peaks early while slow (window mode-scaled; Auto = 0.55s/28mph)
             var flashPulse = 0;
             var flashWinT = 0.55 * launchFlashTimeScale;
@@ -898,10 +912,14 @@
         // Higher stall → slightly more unload (looser converter). Launch path untouched.
         if (car.hasAftermarketConverter) {
           var stallU = Number(car.stallRpm) || 2800;
-          var stallFac = clamp((stallU - 2200) / 2800, 0, 1);
-          var unload = 900 + stallFac * 500; // ~1293 at Circle D 4400 → ~1200-class drop
+          // Wider stall band: tight ~1500 unloads less (more lock-like), loose ~5500 more.
+          // Circle D 4400 stays ~1200-class drop (1200±300).
+          var stallFac = clamp((stallU - 1500) / 4000, 0, 1);
+          var unload = 750 + stallFac * 750; // ~750@1500, ~1294@4400, ~1500@5500
           tcPostShiftHangSeed = Math.max(0, rpm - unload);
           tcPostShiftHangRpm = tcPostShiftHangSeed;
+          var gNew = gears[Math.min(gear, gears.length) - 1];
+          tcPostShiftMechSeed = Math.max(0, wheelRpm * gNew * finalDrive);
         }
       }
 
@@ -928,26 +946,37 @@
       var mph = v * MPS_TO_MPH;
 
       if (!shifting && car.hasAftermarketConverter) {
-        // Torque multiplication from converter slip: ~2.1× at stall → 1.0 at lockup
+        // Torque multiplication from converter slip: ~2.1× at stall → 1.0 at lockup.
+        // Stall 1500→5500 scales multiply; Circle D 4400 anchored to LIVE leave/unlock math.
         var mech = wheelRpm * gRatio * finalDrive;
         var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
-        // Higher stall → more slip capacity at leave → more multiply (capped)
         var stallN = Number(car.stallRpm) || 2800;
-        var stallBoost = clamp((stallN - 2200) / 2800, 0, 1) * 0.25;
+        var stallFacN = clamp((stallN - 1500) / 4000, 0, 1);
+        // LIVE used stallBoost≈0.196 @4400 ((4400-2200)/2800*0.25). Keep that at 4400;
+        // widen endpoints so 1500 is tighter and 5500 is looser.
+        var stallBoost = 0.196 + (stallFacN - 0.725) * 0.55; // ~0@1500, 0.196@4400, ~0.35@5500
+        if (stallBoost < 0) stallBoost = 0;
         var tMult = 1.0 + Math.min(1.35, slipR * (2.2 + stallBoost));
         if (mph > 15.0) {
-          // Extra fade with road speed (mechanical lockup / coupling)
-          var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / 40.0));
+          // Extra fade with road speed; high stall fades later, low stall earlier.
+          var fadeSpan = 40.0 + (stallFacN - 0.725) * 40.0; // 40@4400 identity
+          if (fadeSpan < 22) fadeSpan = 22;
+          if (fadeSpan > 62) fadeSpan = 62;
+          var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / fadeSpan));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
         if (tcPostShiftHangRpm > 0) {
           // Mild parent unlock (preserves 60ft / 0-60) + mph-gated extra multiply
           // for trap; postFade softens past ~125 mph so 60-130 does not overshoot.
+          // stallUnlock=1 exactly at Circle D 4400; scales endpoints only.
           var baseAdd = Math.min(0.055, slipR * 0.22);
           var speedGate = clamp((mph - 62.0) / 40.0, 0, 1);
           var postFade = 0.05 + 0.95 * clamp((125.0 - mph) / 8.0, 0, 1);
-          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate * postFade;
-          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade;
+          var stallUnlock = 1.06 + (stallFacN - 0.725) * 1.20; // ~1.06@4400 (trap nudge); endpoints diverge
+          if (stallUnlock < 0.12) stallUnlock = 0.12;
+          if (stallUnlock > 1.50) stallUnlock = 1.50;
+          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate * postFade * stallUnlock;
+          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade * stallUnlock;
           tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
         }
         whTQ *= tMult;

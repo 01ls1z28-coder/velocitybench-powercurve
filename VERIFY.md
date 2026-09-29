@@ -1,3 +1,15 @@
+# BUILD TIP — ATC smooth slip + stall 1500–5500 (Sati)
+
+Branch: `review/jorge-z28-smooth-slip-stall` · Base `3aae3e5` (LIVE climb+Soft/Agg+CT). **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Scope: **ATC-only** — hang RPM lerps seed→shiftRpm with turbine/mech progress (continuous smooth tach to next shift; no fast-then-slow kink). Stall factor spans **1500–5500** for flash/unload/lockup/multiply.
+- Z28 Auto Circle D 4400: ET/trap **11.558@119.25**; 60–130 **10.93**; 60′ **1.690**; drops ~1280; flash **5497**; 1→2 rate μ≈259 σ≈26 rpm/s (smooth). Stall **1500→11.758@115.35** vs **5500→11.446@120.22**. Soft/Agg sane. Mustang/CT identical (non-ATC).
+- forceScale=1; no gear/FD/Cd/wt invent. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-jorge-z28-smooth-slip-stall-VERIFY.md`
+
+---
+
 # BUILD TIP — Launch Soft/Auto/Aggressive intent rewrite (Sati)
 
 Branch: `review/launch-soft-aggressive-fix` · Base `f1d694c`. **No Merovingian / no live Pages.**
