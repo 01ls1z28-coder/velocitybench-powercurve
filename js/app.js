@@ -2766,13 +2766,14 @@ $('btnReset').addEventListener('click', function () {
       setTractionMeter(18); // ~82% of 20 segs lit
       // G / Peak G demo: current 0.82, peak this run 0.91 (seed peak then current)
       instrumentsPeakG = null;
-      setGMeter({ t: 8.2, g: 0.91 });
-      setGMeter({ t: 8.2, g: 0.82 });
-      setEtClock({ t: 8.2 });
-      // Seed Shift MPH demo: pretend lastResult had an upshift at 79 mph before t=8.2
+      setGMeter({ t: 18.19, g: 0.91 });
+      setGMeter({ t: 18.19, g: 0.82 });
+      // Multi-digit ET proves desktop fit (e.g. Jorge clip on 18.190s)
+      setEtClock({ t: 18.19 });
+      // Seed Shift MPH demo: pretend lastResult had an upshift at 79 mph before t=18.19
       state.lastResult = state.lastResult || {};
       state.lastResult.shifts = [{ gear: 2, mph: 42.0, feet: 120, t: 2.1 }, { gear: 3, mph: 79.0, feet: 480, t: 5.4 }];
-      setShiftMph({ t: 8.2, gear: 3, mph: DEMO_MPH });
+      setShiftMph({ t: 18.19, gear: 3, mph: DEMO_MPH });
       // Ensure shift cue so LED bar tracks DEMO_RPM (not a hardcoded all-on)
       if (!state.car) state.car = Object.assign({}, CUSTOM_BUILDER);
       state.car.shiftRpm = 6500;
