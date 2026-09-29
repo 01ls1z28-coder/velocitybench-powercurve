@@ -25,6 +25,52 @@
   --sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --carbon-fine: repeating-linear-gradient(45deg, rgba(255,255,255,0.028) 0 1px, transparent 1px 3px),
     repeating-linear-gradient(-45deg, rgba(0,0,0,0.28) 0 1px, transparent 1px 3px);
+  /* Premium woven CF — crisp CSS twill (no binary tile). Thin brass trim elsewhere. */
+  --cf-twill-a: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.045) 0px,
+    rgba(255,255,255,0.045) 1px,
+    transparent 1px,
+    transparent 3px,
+    rgba(0,0,0,0.55) 3px,
+    rgba(0,0,0,0.55) 4px,
+    transparent 4px,
+    transparent 6px
+  );
+  --cf-twill-b: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.032) 0px,
+    rgba(255,255,255,0.032) 1px,
+    transparent 1px,
+    transparent 3px,
+    rgba(0,0,0,0.62) 3px,
+    rgba(0,0,0,0.62) 4px,
+    transparent 4px,
+    transparent 6px
+  );
+  --cf-checker:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      #12151a 0deg 90deg,
+      #080a0e 90deg 180deg
+    );
+  --inst-cf-panel:
+    radial-gradient(ellipse 42% 58% at 25.5% 36%, rgba(212,184,137,0.07), transparent 62%),
+    radial-gradient(ellipse 42% 58% at 74.5% 36%, rgba(212,184,137,0.07), transparent 62%),
+    radial-gradient(ellipse 28% 70% at 50% 48%, rgba(255,246,224,0.035), transparent 70%),
+    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 42%, rgba(0,0,0,0.58) 100%),
+    linear-gradient(135deg, rgba(255,255,255,0.055) 0%, transparent 38%, rgba(255,255,255,0.02) 72%, transparent 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 26%),
+    var(--cf-twill-a),
+    var(--cf-twill-b),
+    var(--cf-checker),
+    linear-gradient(180deg, #10141a 0%, #07090d 52%, #030405 100%);
+  --inst-cf-btn:
+    linear-gradient(180deg, rgba(255,246,224,0.10) 0%, transparent 34%),
+    var(--cf-twill-a),
+    var(--cf-twill-b),
+    var(--cf-checker),
+    linear-gradient(180deg, #141820 0%, #080a0e 100%);
   --brass: rgba(215, 196, 160, 0.42);
   --brass-strong: rgba(240, 226, 196, 0.22);
   --brass-inset: rgba(106, 87, 56, 0.35);
@@ -371,13 +417,12 @@ body {
     0 14px 40px rgba(0,0,0,0.55),
     0 0 48px var(--inst-glow-brass);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 42% 58% at 25.5% 36%, rgba(212,184,137,0.09), transparent 62%),
-    radial-gradient(ellipse 42% 58% at 74.5% 36%, rgba(212,184,137,0.09), transparent 62%),
-    radial-gradient(ellipse 28% 70% at 50% 48%, rgba(255,246,224,0.045), transparent 70%),
-    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 42%, rgba(0,0,0,0.55) 100%),
-    linear-gradient(180deg, rgba(255,255,255,0.045) 0%, transparent 28%),
-    linear-gradient(180deg, #0d1118 0%, var(--inst-charcoal) 48%, #030406 100%);
+  background: var(--inst-cf-panel);
+  background-size:
+    auto, auto, auto, auto, auto, auto,
+    auto, auto,
+    8px 8px,
+    auto;
 }
 /* Soft ambient wash behind dials — fills voids without snip wallpaper */
 .gauges.lfa-cluster::before {
@@ -394,11 +439,11 @@ body {
   background:
     linear-gradient(90deg,
       transparent 0%,
-      rgba(212,184,137,0.03) 22%,
-      rgba(212,184,137,0.055) 50%,
-      rgba(212,184,137,0.03) 78%,
+      rgba(212,184,137,0.025) 22%,
+      rgba(212,184,137,0.04) 50%,
+      rgba(212,184,137,0.025) 78%,
       transparent 100%),
-    radial-gradient(ellipse at 50% 100%, rgba(212,184,137,0.06), transparent 55%);
+    radial-gradient(ellipse at 50% 100%, rgba(212,184,137,0.045), transparent 55%);
   opacity: 1;
 }
 
@@ -470,8 +515,8 @@ body {
   display: none; /* canvas paints unit in well */
 }
 
-/* Center stack — gear → Wheel Spin → POWER/ET/ShiftMPH (desktop) → TRACTION → LEDs (buttons are grid row 2)
-   Fills dial-row height; packed column in the corridor between dials. */
+/* Center stack — gear → Wheel Spin → ET/ShiftMPH (desktop) → TRACTION → LEDs (buttons are grid row 2)
+   Uniform card chrome; fills dial-row height in corridor between dials. */
 .gauge-center {
   display: contents;
 }
@@ -497,7 +542,7 @@ body {
   box-sizing: border-box;
   transform: none;
 }
-/* Polished center chrome plate — hugs full dial-row stack */
+/* Center corridor plate — light CF veil over cluster weave; thin brass trim */
 .gauge-center-stack::before {
   content: "";
   position: absolute;
@@ -507,18 +552,20 @@ body {
   bottom: 0;
   z-index: 0;
   pointer-events: none;
-  border-radius: 14px;
-  border: 1px solid rgba(212,184,137,0.20);
+  border-radius: 12px;
+  border: 1px solid rgba(212,184,137,0.22);
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.09) 0%, transparent 14%),
-    linear-gradient(180deg, transparent 84%, rgba(255,246,224,0.06) 100%),
-    linear-gradient(90deg, rgba(212,184,137,0.04) 0%, rgba(212,184,137,0.11) 50%, rgba(212,184,137,0.04) 100%),
-    linear-gradient(180deg, rgba(14,18,24,0.68) 0%, rgba(6,8,12,0.82) 100%);
+    linear-gradient(180deg, rgba(255,246,224,0.07) 0%, transparent 16%),
+    linear-gradient(180deg, transparent 82%, rgba(255,246,224,0.05) 100%),
+    var(--cf-twill-a),
+    var(--cf-twill-b),
+    linear-gradient(180deg, rgba(10,12,16,0.55) 0%, rgba(5,7,10,0.72) 100%);
+  background-size: auto, auto, auto, auto, auto;
   box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,246,224,0.10),
-    0 8px 24px rgba(0,0,0,0.32),
-    0 0 18px rgba(212,184,137,0.10);
+    inset 0 0 0 1px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,246,224,0.08),
+    0 6px 18px rgba(0,0,0,0.30),
+    0 0 14px rgba(212,184,137,0.08);
 }
 .gauge-center-stack > * {
   position: relative;
@@ -537,17 +584,19 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at 50% 38%, #1a1f28 0%, #050608 78%);
-  border: 2.5px solid rgba(224,198,148,0.95);
-  border-radius: 12px;
+    radial-gradient(circle at 50% 38%, #1c222c 0%, #06080c 78%),
+    var(--cf-checker);
+  background-size: auto, 6px 6px;
+  border: 1px solid rgba(212,184,137,0.38);
+  border-radius: 10px;
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.75),
-    inset 0 0 0 3px rgba(160,130,88,0.42),
-    inset 0 2px 8px rgba(0,0,0,0.7),
-    0 0 16px rgba(212,184,137,0.18),
-    0 4px 14px rgba(0,0,0,0.4);
+    inset 0 0 0 1px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,246,224,0.10),
+    inset 0 2px 8px rgba(0,0,0,0.55),
+    0 0 10px rgba(212,184,137,0.10),
+    0 3px 10px rgba(0,0,0,0.35);
   padding: 0;
-  margin-bottom: clamp(0px, 0.2cqh, 2px);
+  margin-bottom: 0;
 }
 .gear-digit-value {
   font-family: "Courier New", ui-monospace, monospace;
@@ -567,17 +616,20 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  width: auto;
+  width: 82%;
   min-width: 48px;
+  box-sizing: border-box;
   opacity: 0.42;
   color: #6a5638;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.04), transparent 60%),
-    rgba(5,7,10,0.55);
-  border: 1px solid rgba(212,184,137,0.18);
-  border-radius: 10px;
-  padding: 4px 4px 3px;
-  box-shadow: inset 0 1px 0 rgba(255,246,224,0.05);
+    linear-gradient(180deg, rgba(255,246,224,0.06), transparent 65%),
+    rgba(5,7,10,0.78);
+  border: 1px solid rgba(212,184,137,0.28);
+  border-radius: 8px;
+  padding: 5px 4px 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,246,224,0.08),
+    0 0 8px rgba(212,184,137,0.06);
 }
 .wheel-spin.on,
 .wheel-spin.wheel-spin--demo {
@@ -586,13 +638,13 @@ body {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(255,196,64,0.18), transparent 65%),
     linear-gradient(180deg, rgba(255,210,74,0.10), transparent 55%),
-    #080a0c;
-  border-color: rgba(255,196,64,0.55);
+    rgba(8,10,12,0.92);
+  border-color: rgba(255,196,64,0.50);
   box-shadow:
-    inset 0 0 0 1px rgba(255,210,74,0.18),
-    inset 0 1px 0 rgba(255,246,224,0.12),
-    0 0 14px var(--inst-glow-amber),
-    0 0 28px rgba(255,176,36,0.18);
+    inset 0 0 0 1px rgba(255,210,74,0.16),
+    inset 0 1px 0 rgba(255,246,224,0.10),
+    0 0 12px var(--inst-glow-amber),
+    0 0 22px rgba(255,176,36,0.14);
   filter: none;
 }
 .wheel-spin-mark {
@@ -629,9 +681,9 @@ body {
 }
 
 
-/* POWER % — desktop-only gap fill between Wheel Spin and TRACTION.
-   Hidden on mobile so gear→WS→TRACTION→LEDs→buttons order + locks stay intact. */
-.throttle-meter {
+/* ET / Elapsed — desktop-only under Wheel Spin, above SHIFT/TRACTION.
+   Hidden on mobile so gear→WS→TRACTION→LEDs stack locks stay intact. */
+.et-meter {
   display: none;
   flex: 0 0 auto;
   flex-direction: column;
@@ -649,75 +701,13 @@ body {
     rgba(5,7,10,0.78);
   box-shadow:
     inset 0 1px 0 rgba(255,246,224,0.08),
-    0 0 10px rgba(200,255,74,0.08);
-  color: var(--inst-brass-text, #e0c694);
-}
-.throttle-meter-label {
-  display: block;
-  font-family: var(--sans);
-  font-size: clamp(6px, 1.2cqh, 9px);
-  font-weight: 800;
-  letter-spacing: 0.10em;
-  line-height: 1;
-  color: var(--inst-brass-text, #e0c694);
-  opacity: 0.92;
-  text-shadow: 0 0 8px rgba(212,184,137,0.25);
-}
-.throttle-meter-readout {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 1px;
-  line-height: 1;
-}
-.throttle-meter-value {
-  font-family: "Courier New", ui-monospace, monospace;
-  font-size: clamp(14px, 3.2cqh, 26px);
-  font-weight: 700;
-  color: #c8ff4a;
-  letter-spacing: -0.03em;
-  text-shadow: 0 0 10px rgba(200,255,74,0.45), 0 0 18px rgba(200,255,74,0.2);
-}
-.throttle-meter-unit {
-  font-family: var(--sans);
-  font-size: clamp(8px, 1.5cqh, 11px);
-  font-weight: 700;
-  color: #a8c85a;
-  letter-spacing: 0.04em;
-}
-.throttle-meter.is-low .throttle-meter-value { color: #ffc84a; text-shadow: 0 0 10px rgba(255,200,74,0.45); }
-.throttle-meter.is-low .throttle-meter-unit { color: #e0a84a; }
-.throttle-meter.is-critical .throttle-meter-value { color: #ff7a4a; text-shadow: 0 0 10px rgba(255,100,60,0.5); }
-.throttle-meter.is-critical .throttle-meter-unit { color: #ff8a5a; }
-
-
-/* ET / Elapsed — desktop-only under POWER %, above TRACTION.
-   Same hide locks as POWER so mobile stack (gear→WS→TRACTION→LEDs) stays intact. */
-.et-meter {
-  display: none;
-  flex: 0 0 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  width: 82%;
-  min-width: 48px;
-  box-sizing: border-box;
-  padding: 4px 4px 3px;
-  border-radius: 8px;
-  border: 1px solid rgba(212,184,137,0.28);
-  background:
-    linear-gradient(180deg, rgba(255,246,224,0.07), transparent 65%),
-    rgba(5,7,10,0.78);
-  box-shadow:
-    inset 0 1px 0 rgba(255,246,224,0.08),
-    0 0 10px rgba(110,231,255,0.08);
+    0 0 8px rgba(110,231,255,0.06);
   color: var(--inst-brass-text, #e0c694);
 }
 .et-meter-label {
   display: block;
   font-family: var(--sans);
-  font-size: clamp(6px, 1.2cqh, 9px);
+  font-size: clamp(6px, 1.15cqh, 9px);
   font-weight: 800;
   letter-spacing: 0.12em;
   line-height: 1;
@@ -734,7 +724,7 @@ body {
 }
 .et-meter-value {
   font-family: "Courier New", ui-monospace, monospace;
-  font-size: clamp(12px, 2.8cqh, 22px);
+  font-size: clamp(13px, 2.9cqh, 22px);
   font-weight: 700;
   color: #6ee7ff;
   letter-spacing: -0.02em;
@@ -751,7 +741,7 @@ body {
 
 
 /* SHIFT MPH — desktop-only under ET, above TRACTION.
-   Same hide locks as POWER/ET so mobile stack (gear→WS→TRACTION→LEDs) stays intact. */
+   Same hide locks as ET so mobile stack (gear→WS→TRACTION→LEDs) stays intact. */
 .shift-mph-meter {
   display: none;
   flex: 0 0 auto;
@@ -762,7 +752,7 @@ body {
   width: 82%;
   min-width: 48px;
   box-sizing: border-box;
-  padding: 4px 4px 3px;
+  padding: 5px 4px 4px;
   border-radius: 8px;
   border: 1px solid rgba(212,184,137,0.28);
   background:
@@ -770,15 +760,15 @@ body {
     rgba(5,7,10,0.78);
   box-shadow:
     inset 0 1px 0 rgba(255,246,224,0.08),
-    0 0 10px rgba(255,179,71,0.10);
+    0 0 8px rgba(255,179,71,0.06);
   color: var(--inst-brass-text, #e0c694);
 }
 .shift-mph-meter-label {
   display: block;
   font-family: var(--sans);
-  font-size: clamp(6px, 1.2cqh, 9px);
+  font-size: clamp(6px, 1.15cqh, 9px);
   font-weight: 800;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.12em;
   line-height: 1;
   color: var(--inst-brass-text, #e0c694);
   opacity: 0.92;
@@ -793,7 +783,7 @@ body {
 }
 .shift-mph-meter-value {
   font-family: "Courier New", ui-monospace, monospace;
-  font-size: clamp(12px, 2.8cqh, 22px);
+  font-size: clamp(13px, 2.9cqh, 22px);
   font-weight: 700;
   color: #ffb347;
   letter-spacing: -0.02em;
@@ -811,34 +801,38 @@ body {
 
 .traction-meter {
   flex: 0 0 auto;
-  align-self: stretch;
-  min-width: 0;
+  width: 82%;
+  min-width: 48px;
+  align-self: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 3px;
   justify-content: flex-start;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.05), transparent 70%),
-    rgba(5,7,10,0.85);
-  border-radius: 6px;
-  border: 1px solid rgba(212,184,137,0.22);
-  padding: 4px 4px 3px;
-  box-shadow: inset 0 1px 0 rgba(255,246,224,0.06);
+    linear-gradient(180deg, rgba(255,246,224,0.07), transparent 65%),
+    rgba(5,7,10,0.78);
+  border-radius: 8px;
+  border: 1px solid rgba(212,184,137,0.28);
+  padding: 5px 4px 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,246,224,0.08),
+    0 0 8px rgba(212,184,137,0.05);
 }
 .traction-meter-label {
   display: block;
   font-family: var(--sans);
-  font-size: clamp(7px, 1.35cqh, 11px);
+  font-size: clamp(6px, 1.15cqh, 9px);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--inst-brass-text);
   line-height: 1;
   white-space: nowrap;
-  text-align: left;
-  opacity: 1;
+  text-align: center;
+  opacity: 0.92;
   background: transparent;
-  padding: 0 1px;
+  padding: 0;
   width: auto;
   max-width: 100%;
   text-shadow: 0 0 8px rgba(212,184,137,0.25);
@@ -889,8 +883,8 @@ body {
 .shift-led-bar {
   position: relative;
   flex: 0 0 auto;
-  align-self: stretch; /* full corridor width → max room for 8 LEDs */
-  width: 100%;
+  align-self: center;
+  width: 90%;
   max-width: 100%;
   height: auto;
   min-height: 0;
@@ -898,8 +892,8 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 3px 4px;
-  border: 2px solid rgba(224,198,148,0.95);
+  padding: 4px 5px;
+  border: 1px solid rgba(212,184,137,0.38);
   border-radius: 999px;
   /* CRITICAL: clip LED glows so they never spill onto dials / TRACTION / buttons */
   overflow: hidden;
@@ -908,13 +902,13 @@ body {
   container-type: inline-size;
   container-name: shiftled;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.18), transparent 48%),
+    linear-gradient(180deg, rgba(255,246,224,0.10), transparent 48%),
     linear-gradient(180deg, #12151c, #05070a);
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.75),
-    inset 0 0 0 3px rgba(160,135,95,0.45),
-    inset 0 2px 6px rgba(0,0,0,0.55),
-    0 0 10px rgba(212,184,137,0.12);
+    inset 0 0 0 1px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,246,224,0.08),
+    inset 0 2px 6px rgba(0,0,0,0.50),
+    0 0 8px rgba(212,184,137,0.08);
   transform: none;
 }
 .shift-led-row {
@@ -967,17 +961,17 @@ body {
     inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .shift-led-bar.is-approaching {
-  border-color: rgba(255, 180, 40, 0.7);
+  border-color: rgba(255, 180, 40, 0.65);
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.75),
-    inset 0 0 0 3px rgba(160,135,95,0.45),
+    inset 0 0 0 1px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,246,224,0.08),
     0 0 8px rgba(255,176,36,0.22);
 }
 .shift-led-bar.is-shift {
-  border-color: rgba(255, 60, 60, 0.85);
+  border-color: rgba(255, 60, 60, 0.75);
   box-shadow:
-    inset 0 0 0 1px rgba(70,55,35,0.75),
-    inset 0 0 0 3px rgba(160,135,95,0.45),
+    inset 0 0 0 1px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,246,224,0.08),
     0 0 9px rgba(255,40,40,0.28);
 }
 @keyframes shift-led-flash {
@@ -1043,47 +1037,47 @@ body {
 .btn-gauge-run--start {
   color: #6dff88;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
     linear-gradient(180deg, rgba(61,255,106,0.14), transparent 55%),
-    linear-gradient(180deg, #12161c, #07090c);
+    var(--inst-cf-btn);
+  background-size: auto, auto, auto, auto, 7px 7px, auto;
   box-shadow:
-    inset 0 0 0 2.5px rgba(230,206,160,0.95),
-    inset 0 0 0 5px rgba(100,78,48,0.72),
-    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 0 0 1px rgba(230,206,160,0.72),
+    inset 0 0 0 2px rgba(70,55,35,0.55),
+    inset 0 1px 0 rgba(255,246,224,0.12),
     inset 0 -2px 8px rgba(0,0,0,0.45),
-    0 0 18px var(--inst-glow-green),
-    0 4px 14px rgba(0,0,0,0.35);
+    0 0 14px var(--inst-glow-green),
+    0 4px 12px rgba(0,0,0,0.35);
   text-shadow: 0 0 12px rgba(61,255,106,0.7);
 }
 .btn-gauge-run--pause {
   color: #ffd85a;
   flex: 1.25 1 0;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
     linear-gradient(180deg, rgba(255,210,74,0.12), transparent 55%),
-    linear-gradient(180deg, #12161c, #07090c);
+    var(--inst-cf-btn);
+  background-size: auto, auto, auto, auto, 7px 7px, auto;
   box-shadow:
-    inset 0 0 0 2.5px rgba(230,206,160,0.95),
-    inset 0 0 0 5px rgba(100,78,48,0.72),
-    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 0 0 1px rgba(230,206,160,0.72),
+    inset 0 0 0 2px rgba(70,55,35,0.55),
+    inset 0 1px 0 rgba(255,246,224,0.12),
     inset 0 -2px 8px rgba(0,0,0,0.45),
-    0 0 14px rgba(255,210,74,0.22),
-    0 4px 14px rgba(0,0,0,0.35);
+    0 0 12px rgba(255,210,74,0.20),
+    0 4px 12px rgba(0,0,0,0.35);
   text-shadow: 0 0 10px rgba(255,210,74,0.55);
 }
 .btn-gauge-run--stop {
   color: #ff6a6a;
   background:
-    linear-gradient(180deg, rgba(255,246,224,0.12) 0%, transparent 36%),
     linear-gradient(180deg, rgba(255,80,80,0.12), transparent 55%),
-    linear-gradient(180deg, #12161c, #07090c);
+    var(--inst-cf-btn);
+  background-size: auto, auto, auto, auto, 7px 7px, auto;
   box-shadow:
-    inset 0 0 0 2.5px rgba(230,206,160,0.95),
-    inset 0 0 0 5px rgba(100,78,48,0.72),
-    inset 0 2px 0 rgba(255,246,224,0.16),
+    inset 0 0 0 1px rgba(230,206,160,0.72),
+    inset 0 0 0 2px rgba(70,55,35,0.55),
+    inset 0 1px 0 rgba(255,246,224,0.12),
     inset 0 -2px 8px rgba(0,0,0,0.45),
-    0 0 14px var(--inst-glow-red),
-    0 4px 14px rgba(0,0,0,0.35);
+    0 0 12px var(--inst-glow-red),
+    0 4px 12px rgba(0,0,0,0.35);
   text-shadow: 0 0 10px rgba(255,80,80,0.55);
 }
 .btn-gauge-run:hover { filter: brightness(1.12); }
@@ -1317,15 +1311,10 @@ body {
     gap: clamp(4px, 0.55cqw, 7px);
     padding: 2px 0 0;
   }
-  /* Pack: gear+WS top; POWER mid void; ET; Shift MPH; TRACTION+LEDs at dial bottoms */
-  .throttle-meter {
-    display: flex;
-    margin-top: auto;
-    margin-bottom: clamp(2px, 0.35cqw, 4px);
-  }
+  /* Pack: gear+WS top; ET owns mid void; Shift MPH; TRACTION+LEDs at dial bottoms */
   .et-meter {
     display: flex;
-    margin-top: 0;
+    margin-top: auto;
     margin-bottom: clamp(1px, 0.25cqw, 3px);
   }
   .shift-mph-meter {
@@ -1344,12 +1333,13 @@ body {
     min-height: clamp(26px, 3cqw, 36px);
   }
   .gear-digit { width: 78%; min-width: 52px; }
-  .wheel-spin { padding: 5px 5px 4px; }
+  .wheel-spin { padding: 5px 4px 4px; }
+  .traction-meter { width: 82%; }
+  .shift-led-bar { width: 90%; }
 }
 
 /* ---- Instruments — phones/tablets PORTRAIT (grid pack) ---- */
 @media (max-width: 900px) and (orientation: portrait) {
-  .throttle-meter { display: none !important; }
   .et-meter { display: none !important; }
   .shift-mph-meter { display: none !important; }
   .gauges, .gauges.lfa-cluster {
@@ -1407,7 +1397,6 @@ body {
 
 /* ---- Instruments — phones/tablets LANDSCAPE (grid pack, LARGE dials) ---- */
 @media (max-width: 1100px) and (orientation: landscape) {
-  .throttle-meter { display: none !important; }
   .et-meter { display: none !important; }
   .shift-mph-meter { display: none !important; }
   .gauges, .gauges.lfa-cluster {

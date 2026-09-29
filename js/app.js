@@ -1834,44 +1834,9 @@
 
 
   /**
-   * Desktop POWER % — fraction of peak HP at current RPM (curve), live in playback.
-   * Matches EV PWR gauge voice. Hidden on mobile via CSS (stack locks preserved).
-   */
-  function setThrottleMeter(pt) {
-    var el = $('throttleMeter');
-    var val = $('throttleMeterValue');
-    if (!el || !val) return;
-    if (!pt || pt.rpm == null || !isFinite(Number(pt.rpm))) {
-      val.textContent = '—';
-      el.classList.remove('is-low', 'is-critical');
-      el.setAttribute('aria-label', 'Power idle');
-      return;
-    }
-    var peak = 0;
-    if (state.lastResult && state.lastResult.peakHorsepower) {
-      peak = Number(state.lastResult.peakHorsepower);
-    }
-    if (!(peak > 0) && state.car && state.car.peakHp) peak = Number(state.car.peakHp);
-    if (!(peak > 0) && state.evPeakHp) peak = Number(state.evPeakHp);
-    if (!(peak > 0)) peak = 1;
-    var hp = hpAtRpm(state.car, Number(pt.rpm));
-    var pct = Math.max(0, Math.min(100, (hp / peak) * 100));
-    // Soften during near-coast / shift: very low g mid-run → show residual delivery
-    if (pt.g != null && isFinite(pt.g) && pt.g < 0.08 && pt.mph != null && pt.mph > 25) {
-      pct = Math.min(pct, Math.max(8, pct * 0.22));
-    }
-    var rounded = Math.round(pct);
-    val.textContent = String(rounded);
-    el.classList.toggle('is-low', rounded < 55 && rounded >= 25);
-    el.classList.toggle('is-critical', rounded < 25);
-    el.setAttribute('aria-label', 'Power ' + rounded + '% of peak');
-  }
-
-
-  /**
    * Desktop ET / Elapsed — sim timeline seconds (same t as gauges/scrubber).
    * Not wall clock. Hidden on mobile via CSS (stack locks preserved).
-   * Format: 3-decimal ET feel (e.g. 12.046). Idle/stop → — like POWER.
+   * Format: 3-decimal ET feel (e.g. 12.046). Idle/stop → —.
    */
   function setEtClock(pt) {
     var el = $('etClock');
@@ -2003,7 +1968,6 @@
     setGearDigit(null);
     setSlipLight(0);
     setTractionMeter(0);
-    setThrottleMeter(null);
     setEtClock(null);
     setShiftMph(null);
     setShiftLamp(0);
@@ -2071,7 +2035,6 @@
     var ws = pt.wheelspin != null ? pt.wheelspin : 0;
     setSlipLight(ws);
     setTractionMeter(ws);
-    setThrottleMeter(pt);
     setEtClock(pt);
     setShiftMph(pt);
     setShiftLamp(pt.rpm);
@@ -2122,8 +2085,7 @@
       state.playbackElapsedOffset = state.playbackDurationMs;
       setSlipLight(0);
       setTractionMeter(0);
-      setThrottleMeter(null);
-      setEtClock(null);
+        setEtClock(null);
       setShiftMph(null);
       setShiftLamp(0);
       syncGaugeRunButtons();
@@ -2759,8 +2721,6 @@ $('btnReset').addEventListener('click', function () {
       var slipEl = $('slipLight');
       if (slipEl) slipEl.classList.add('wheel-spin--demo', 'on');
       setTractionMeter(18); // ~82% of 20 segs lit
-      // Desktop POWER % gap fill — mid powerband demo
-      setThrottleMeter({ rpm: DEMO_RPM, mph: DEMO_MPH, g: 0.55, t: 8.2, feet: 900 });
       setEtClock({ t: 8.2 });
       // Seed Shift MPH demo: pretend lastResult had an upshift at 79 mph before t=8.2
       state.lastResult = state.lastResult || {};
