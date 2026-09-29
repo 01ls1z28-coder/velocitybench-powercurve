@@ -1671,6 +1671,8 @@ body {
     row-gap: clamp(4px, 1cqw, 7px);
     padding: clamp(3px, 0.9%, 6px) clamp(4px, 1.1%, 7px) clamp(4px, 1.1%, 7px);
     container-type: inline-size;
+    /* Portrait-only: shrink hub digitals under needles (canvas reads --gauge-dig-scale) */
+    --gauge-dig-scale: 0.70;
   }
   .gauge-center-stack {
     gap: clamp(2px, 0.7cqw, 4px);

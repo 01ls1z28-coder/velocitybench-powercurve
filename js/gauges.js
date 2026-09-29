@@ -316,7 +316,19 @@
     ctx.fillText(this.label, cx, cy + R * 0.20);
 
     ctx.fillStyle = '#f4f7fb';
-    var digSize = Math.max(14, Math.round(((this.dial === 'speed') ? 26 : 23) * fs));
+    // Visual dig size only — still painted from this.display (needle≡digital). Scale from CSS
+    // --gauge-dig-scale (portrait MQ sets 0.70; desktop/landscape omit → 1).
+    var digScale = 1;
+    try {
+      var digHost = this.canvas.closest('.gauges') || this.canvas.parentElement;
+      if (digHost) {
+        var digRaw = window.getComputedStyle(digHost).getPropertyValue('--gauge-dig-scale').trim();
+        var digN = parseFloat(digRaw);
+        if (isFinite(digN) && digN > 0) digScale = digN;
+      }
+    } catch (eDig) {}
+    var digFloor = digScale < 1 ? 10 : 14;
+    var digSize = Math.max(digFloor, Math.round(((this.dial === 'speed') ? 26 : 23) * fs * digScale));
     ctx.font = 'bold ' + digSize + 'px ui-monospace, "Cascadia Code", monospace';
     var shown = Math.round(this.display);
     var suffix = this.unit ? ((this.unit === '%') ? '%' : (' ' + this.unit)) : '';
