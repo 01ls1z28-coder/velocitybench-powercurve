@@ -1,3 +1,15 @@
+# BUILD TIP — Launch Soft/Auto/Aggressive intent rewrite (Sati)
+
+Branch: `review/launch-soft-aggressive-fix` · Base `f1d694c`. **No Merovingian / no live Pages.**
+
+## VERIFY note (required)
+- Seraph audit fix: Soft was fastest via µ×1.20 (inverted LC). Rewrite: Soft = cooler leave/flash (NOT µ-cheat); Aggressive = hotter ATC flash-stall + full drive (slicks often quicker).
+- Z28 slick Soft/Auto/Agg: 60′ **1.684 / 1.690 / 1.676**; 0–60 **3.359 / 3.294 / 3.207**; flashPk **4258 / 5507 / 6230**. Auto = parent ~11.56@119 / 60–130 **10.886**.
+- slipTarget live (mu Soft/Custom + Aggressive traction keep). forceScale=1. Credit: Jorge Guerra.
+- Full write-up: `/workspace/powercurve-tip-launch-modes-VERIFY.md`
+
+---
+
 # BUILD TIP — ATC continuous soft climb past seed+520 (Sati)
 
 Branch: `review/jorge-z28-converter-continuous-climb` · Base `f1d694c` (ATC unlock postFade 60-130). **No Merovingian / no live Pages.**
