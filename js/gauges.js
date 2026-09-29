@@ -25,7 +25,7 @@
     this.majorDiv = (opts && opts.majorDiv) || null;
     this.dial = (opts && opts.dial) || null; // 'speed' → MPH face
     this.hubDisplay = null;
-    this.overlayOnly = !!(opts && opts.overlayOnly); // needle+hub only over snip chrome
+    this.overlayOnly = !!(opts && opts.overlayOnly); // legacy; tip uses full live dial only
     this._raf = null;
     this._running = false;
     this._brush = null;
@@ -543,7 +543,8 @@
     ctx.stroke();
 
     // Blue 7-seg hub digits at bottom of face
-    var shown = Math.round(this.hubDisplay != null ? this.hubDisplay : this.display);
+    // Same source as needle angle (ang(this.display)) — never diverge via hubDisplay
+    var shown = Math.round(this.display);
     var digH = (this.dial === 'speed') ? Math.max(22, R * 0.145) : Math.max(20, R * 0.138);
     this._drawSeg7Number(ctx, cx, cy + R * 0.32, String(shown), digH, true);
     ctx.fillStyle = 'rgba(200,208,220,0.9)';
