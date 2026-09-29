@@ -662,20 +662,43 @@
 
     var launchMode = env.launchMode || 'auto';
     var slipTarget = 0.10;
-    var launchDriveMult = 1.0; // soft leaves cleaner; aggressive leans on tires
+    var launchDriveMult = 1.0;
+    // Soft = cooler leave/tach (NOT mu-cheat fastest). Aggressive = hotter ATC flash-stall
+    // + full drive (on slicks often quicker if grip holds — NOT systematically slowest).
+    // Auto = identity. slipTarget is live for Soft/Agg/Custom (mu + traction band).
+    var launchStallBias = 0;
+    var launchFlashSpanScale = 1.0;
+    var launchFlashTimeScale = 1.0;
+    var launchFlashMphScale = 1.0;
     if (launchMode === 'soft') {
-      // Clean leave: lower brake-launch RPM, more grip, slight torque ease
-      launchRpm = Math.max(car.isEv ? 200 : 1200, launchRpm - 700);
-      slipTarget = 0.04;
-      launchDriveMult = car.isEv ? 0.86 : 0.92;
+      // Lower leave, muted converter flash/stall, mild drive ease — cooler tach
+      launchRpm = Math.max(car.isEv ? 200 : 1100, launchRpm - 800);
+      slipTarget = 0.06;
+      launchDriveMult = car.isEv ? 0.86 : 0.875;
+      launchStallBias = -500;
+      launchFlashSpanScale = 0.40;
+      launchFlashTimeScale = 0.50;
+      launchFlashMphScale = 0.68;
     } else if (launchMode === 'aggressive') {
-      // Hot leave: higher RPM, more slip allowance, brief overdrive
-      launchRpm = Math.min(redline, launchRpm + (car.isEv ? 1200 : 800));
-      slipTarget = 0.18;
-      launchDriveMult = car.isEv ? 1.08 : 1.04;
+      // Higher leave, hotter flash-stall ceiling, full+ drive — slicks often quicker
+      launchRpm = Math.min(redline, launchRpm + (car.isEv ? 1400 : 1000));
+      slipTarget = 0.15;
+      launchDriveMult = car.isEv ? 1.12 : 1.11;
+      launchStallBias = 400;
+      launchFlashSpanScale = 1.52;
+      launchFlashTimeScale = 1.30;
+      launchFlashMphScale = 1.25;
     } else if (launchMode === 'custom') {
       if (env.customLaunchRpm > 0) launchRpm = env.customLaunchRpm;
       if (env.customSlipTarget > 0) slipTarget = env.customSlipTarget;
+    }
+    // slipTarget → narrow mu (Soft ~1.03 max). Aggressive forced to full grip (1.0)
+    // so hot leave is NOT systematically slowest via mu kneecap.
+    var launchMuMult = 1.0;
+    if (launchMode === 'soft' || launchMode === 'custom') {
+      launchMuMult = clamp(1.0 + (0.10 - slipTarget) * 0.6, 0.96, 1.04);
+    } else if (launchMode === 'aggressive') {
+      launchMuMult = 1.0; // full grip; slipTarget used in traction keep band
     }
 
     // Effective leave target (absurd ICE launchRpm → peak-TQ band)
@@ -765,10 +788,16 @@
            *   multiply under hang boosts trap, with post-trap fade so 60-130 ~10.9.
            */
           var stall = Number(car.stallRpm) || 2800;
+          stall = Math.max(1600, stall + launchStallBias);
           // High-stall ATC flash ceiling scales with stall (Circle D 4400 → ~6400).
           // Explicit car.flashRpm still wins; stock/non-ATC path never enters here.
+          // Soft/Aggressive modulate stall + flash span; Auto bias0/span1 = prior path.
           var stallFacFlash = Math.max(0, Math.min(1, (stall - 2200) / 2800));
           var flash = Number(car.flashRpm) || Math.max(stall + Math.round(400 + stallFacFlash * 2000), 3500);
+          if (flash < stall) flash = stall;
+          var flashSpan = Math.max(0, flash - stall);
+          flash = stall + flashSpan * launchFlashSpanScale;
+          if (flash > Math.max(shiftRpm, stall)) flash = Math.max(shiftRpm, stall);
           if (flash < stall) flash = stall;
           if (tcPostShiftHangRpm > 0) {
             // Inter-shift open-converter climb: seed floor keeps ~1200 drop, then soft
@@ -792,15 +821,26 @@
           } else {
             // Lockup progress: 0 at standstill → 1 by ~50 mph (LAUNCH path — do not retune)
             var lockup = clamp(mphNow / 50.0, 0, 1);
-            // Flash pulse: peaks in first ~0.20 s while still very slow
+            // Flash pulse: peaks early while slow (window mode-scaled; Auto = 0.55s/28mph)
             var flashPulse = 0;
-            if (t < 0.55 && mphNow < 28) {
+            var flashWinT = 0.55 * launchFlashTimeScale;
+            var flashWinMph = 28.0 * launchFlashMphScale;
+            if (flashWinT < 0.15) flashWinT = 0.15;
+            if (t < flashWinT && mphNow < flashWinMph) {
               // High-stall ATC: wider flash window so Circle-D-class flash is visible on tach
-              flashPulse = Math.sin((Math.min(t, 0.55) / 0.55) * Math.PI);
+              flashPulse = Math.sin((Math.min(t, flashWinT) / flashWinT) * Math.PI);
             }
             var target = stall + (flash - stall) * flashPulse;
-            // Blend toward mechanical RPM as converter couples / locks
-            rpm = target * (1 - lockup) + mechRpm * lockup;
+            // Soft couples earlier (cooler peak); Aggressive holds flash vs early lockup.
+            // Auto hold=0 → identical prior blend.
+            var lockEff = lockup;
+            if (flashPulse > 0.05) {
+              var hold = 0.0;
+              if (launchMode === 'aggressive') hold = 0.55 * flashPulse;
+              else if (launchMode === 'soft') hold = -0.30 * flashPulse;
+              lockEff = clamp(lockup * (1.0 - hold), 0, 1);
+            }
+            rpm = target * (1 - lockEff) + mechRpm * lockEff;
             // Never fall below stall while still heavily slipped (< ~25 mph)
             if (mphNow < 25 && rpm < stall) rpm = stall;
             // Soft ceiling: don't wildly exceed flash during flash window
@@ -925,12 +965,8 @@
       if (nRear < nMin) nRear = nMin;
 
       var mu = muBase;
-      if (inLaunch) {
-        if (launchMode === 'soft') mu = muBase * 1.20;
-        else if (launchMode === 'aggressive') mu = muBase * 0.78;
-        else if (launchMode === 'custom') {
-          mu = muBase * clamp(1.0 + (0.10 - slipTarget) * 1.5, 0.7, 1.3);
-        }
+      if (inLaunch && launchMuMult !== 1.0) {
+        mu = muBase * launchMuMult;
       }
       if (mph < 20.0) mu *= GRIP_LT20;
       else if (mph < 40.0) mu *= GRIP_20_40;
@@ -976,7 +1012,17 @@
         spinSum += slip;
         spinN++;
         spinPct = slip * 100.0;
-        applied = tracLim;
+        // slipTarget live: Soft clamps clean; Aggressive keeps a band of excess so
+        // full-drive hot leave still puts power down on slicks (not mu-starved slowest).
+        // Auto / outside band: hard clamp (prior behavior).
+        if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
+          // Keep more excess on slicks so hotter flash/drive actually accelerates
+          var band = Math.max(0.20, slipTarget * 1.6);
+          var keep = clamp(1.0 - slip / band, 0.40, 0.85);
+          applied = tracLim + (applied - tracLim) * keep;
+        } else {
+          applied = tracLim;
+        }
       }
 
       // forceScale is retired as a calibration knob — always 1.0 (garage must bake fs=1).
