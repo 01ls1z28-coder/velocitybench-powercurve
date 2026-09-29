@@ -1120,76 +1120,79 @@ body {
 }
 
 /* ---- Instruments — phones/tablets PORTRAIT ----
-   Taller cluster → dials keep more CSS px for BrassGauge tick legibility;
-   narrow center stack clears both gauge faces; buttons pinned below dials. */
+   Shorter packed cluster; buttons hugged tight under LEDs (no floor void);
+   dials sized for BrassGauge tick legibility; narrow center clears faces. */
 @media (max-width: 900px) and (orientation: portrait) {
   .gauges, .gauges.lfa-cluster {
-    /* Compressed — cut bottom emptiness while keeping dial CSS px readable */
-    aspect-ratio: 1 / 0.70;
+    /* Shorter still — pack LEDs→buttons; kill floor void (was 1/0.70) */
+    aspect-ratio: 1 / 0.445;
     max-width: 100%;
     container-type: size;
   }
   .gauge-wrap {
-    width: 42%;
+    /* Tighter dials so bottoms clear hugged buttons */
+    width: 36.5%;
   }
   .gauge-wrap--tach {
-    left: 1%;
-    top: 1%;
+    left: 3.2%;
+    top: 0.6%;
   }
   .gauge-wrap--speedo {
-    left: 57%;
-    top: 1%;
+    left: 60.3%;
+    top: 0.6%;
   }
   .gauge-center-stack {
-    width: 14.5%;
+    width: 14%;
     max-width: none;
-    /* Fill cluster height so margin-top:auto pins buttons to floor */
-    height: 96%;
-    max-height: none;
-    padding-top: 0.5%;
-    align-self: center;
-    /* Slight raise — keep buttons near cluster floor */
-    transform: translateY(-2%);
-    gap: clamp(1px, 0.45cqh, 3px);
+    /* Content-sized stack — no floor-pin; buttons hug LEDs */
+    height: auto;
+    max-height: 97%;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    align-self: flex-start;
+    margin-top: 1%;
+    transform: none;
+    gap: clamp(1px, 0.3cqh, 2px);
   }
-  /* Plate hugs content; buttons sit at/outside bottom edge */
+  /* Plate hugs gear→LEDs; ends above raised buttons */
   .gauge-center-stack::before {
     top: 0;
-    bottom: 28%;
+    bottom: 15%;
   }
   .gear-digit {
-    width: 78%;
-    min-width: 40px;
+    width: 80%;
+    min-width: 34px;
     margin-bottom: 0;
   }
-  .gear-digit-value { font-size: clamp(22px, 7.5cqh, 44px); }
+  .gear-digit-value { font-size: clamp(18px, 6.6cqh, 36px); }
   .wheel-spin-mark {
-    width: clamp(24px, 6cqh, 36px);
-    height: clamp(20px, 5cqh, 30px);
+    width: clamp(20px, 5cqh, 32px);
+    height: clamp(16px, 4cqh, 26px);
   }
-  .wheel-spin-line { font-size: clamp(5px, 1.4cqh, 8px); letter-spacing: 0.12em; }
-  .traction-meter-label { font-size: clamp(6px, 1.55cqh, 9px); letter-spacing: 0.04em; white-space: nowrap; }
-  .traction-meter-segs { height: 12px; min-height: 10px; max-height: 14px; padding: 2px 2px; }
+  .wheel-spin-line { font-size: clamp(5px, 1.2cqh, 7px); letter-spacing: 0.12em; }
+  .traction-meter-label { font-size: clamp(5px, 1.35cqh, 8px); letter-spacing: 0.04em; white-space: nowrap; }
+  .traction-meter-segs { height: 10px; min-height: 8px; max-height: 12px; padding: 1px 2px; }
   .shift-led-bar {
     width: 100%;
-    min-height: clamp(18px, 4.2cqh, 28px);
-    padding: 3px 5px;
+    min-height: clamp(14px, 3.4cqh, 22px);
+    padding: 2px 3px;
     border-width: 2px;
   }
-  .shift-led { width: clamp(8px, 2.4cqh, 12px); height: clamp(8px, 2.4cqh, 12px); }
+  .shift-led { width: clamp(6px, 1.9cqh, 10px); height: clamp(6px, 1.9cqh, 10px); }
   .gauge-run-row {
-    width: 340%; /* ~40.8% of cluster */
-    min-height: clamp(26px, 5.2cqh, 36px);
-    margin-top: auto; /* pin under dials in filled stack */
-    margin-bottom: 0.8%;
+    width: 360%; /* ~50% of cluster with 14% stack */
+    min-height: clamp(20px, 4.2cqh, 28px);
+    /* Kill LED→button void — tight under LEDs (was margin-top:auto) */
+    margin-top: clamp(5px, 1.2cqh, 8px);
+    margin-bottom: 0.3%;
   }
   .btn-gauge-run {
-    font-size: clamp(8px, 2.1cqh, 11px);
+    font-size: clamp(7px, 1.85cqh, 10px);
     gap: 2px;
-    letter-spacing: 0.05em;
-    border-radius: 9px;
+    letter-spacing: 0.04em;
+    border-radius: 8px;
   }
-  .btn-gauge-ico { width: clamp(10px, 2.4cqh, 13px); height: clamp(10px, 2.4cqh, 13px); }
+  .btn-gauge-ico { width: clamp(9px, 2cqh, 12px); height: clamp(9px, 2cqh, 12px); }
   .btn-gauge-run-label { letter-spacing: 0.04em; }
 }
 
