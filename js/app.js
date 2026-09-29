@@ -69,7 +69,7 @@
     min: 0, max: 8000, label: 'RPM', redline: 6500
   });
   var speedGauge = new window.VBPowerCurveGauges.BrassGauge($('speedGauge'), {
-    min: 0, max: 260, label: 'MPH', unit: '', redline: 200, dial: 'speed'
+    min: 0, max: 200, label: 'MPH', unit: '', redline: 180, dial: 'speed'
   });
   rpmGauge.start();
   speedGauge.start();
@@ -1384,16 +1384,43 @@
     }).join('');
   }
 
-  function setSpinLamp(wheelspinPct) {
-    var el = $('spinLamp');
+  /** Canonical snip SLIP triangle — ON when timeline wheelspin ≥ threshold. */
+  function setSlipLight(wheelspinPct) {
+    var el = $('slipLight');
     if (!el) return;
-    // Demo class (spin-lamp--demo) keeps lamp forced ON for screenshots / gates
-    if (el.classList.contains('spin-lamp--demo')) return;
+    if (el.classList.contains('slip-light--demo')) return;
     var on = Number(wheelspinPct) >= SPIN_WARN_THRESHOLD;
     el.classList.toggle('on', on);
     el.setAttribute('aria-label', on
-      ? ('Wheelspin warning — ' + Number(wheelspinPct).toFixed(1) + '% slip')
-      : 'Wheelspin lamp off');
+      ? ('SLIP light ON — ' + Number(wheelspinPct).toFixed(1) + '% wheelspin')
+      : 'SLIP light off');
+  }
+
+  /**
+   * Canonical snip TRACTION % segmented meter.
+   * Remaining grip = clamp(100 − timeline wheelspin, 0, 100). Soft/Agg/Auto alike.
+   */
+  function setTractionMeter(wheelspinPct) {
+    var meter = $('tractionMeter');
+    var segs = meter ? meter.querySelectorAll('.trac-seg') : [];
+    var slip = Number(wheelspinPct);
+    if (!isFinite(slip) || slip < 0) slip = 0;
+    var trac = 100 - slip;
+    if (trac < 0) trac = 0;
+    if (trac > 100) trac = 100;
+    var n = segs.length || 20;
+    var lit = Math.round((trac / 100) * n);
+    if (trac > 0 && lit < 1) lit = 1;
+    if (trac <= 0) lit = 0;
+    for (var i = 0; i < segs.length; i++) {
+      segs[i].classList.toggle('is-on', i < lit);
+    }
+    if (meter) {
+      meter.classList.toggle('is-low', trac < 70 && trac >= 40);
+      meter.classList.toggle('is-critical', trac < 40);
+      meter.setAttribute('aria-label',
+        'Traction ' + Math.round(trac) + '% remaining · slip ' + slip.toFixed(1) + '%');
+    }
   }
 
 
@@ -1462,7 +1489,8 @@
     $('liveMph').textContent = '—';
     $('liveG').textContent = '—';
     setGearDigit(null);
-    setSpinLamp(0);
+    setSlipLight(0);
+    setTractionMeter(0);
     setShiftLamp(0);
   }
 
@@ -1471,7 +1499,9 @@
     var pauseBtn = $('btnGaugePause');
     var stopBtn = $('btnGaugeStop');
     if (startBtn) {
-      startBtn.textContent = state.playbackPaused ? 'RESUME' : 'START';
+      var startLabel = startBtn.querySelector('.btn-gauge-run-label');
+      if (startLabel) startLabel.textContent = state.playbackPaused ? 'RESUME' : 'START';
+      else startBtn.textContent = state.playbackPaused ? 'RESUME' : 'START';
       startBtn.classList.toggle('is-active', state.playbackPlaying && !state.playbackPaused);
       startBtn.title = state.playbackPaused
         ? 'Resume playback from pause point'
@@ -1494,7 +1524,7 @@
   }
 
   /**
-   * Apply one timeline sample to gauges + live strip + SHIFT LED bar + SPIN lamp.
+   * Apply one timeline sample to gauges + live strip + TRACTION/SLIP + SHIFT LEDs.
    * Shared by play / pause (last frame kept) paths.
    */
   function applyTimelinePoint(pt) {
@@ -1516,7 +1546,9 @@
     if (state.powerCurve && state.powerCurve.length) {
       drawPowerCurve(state.powerCurve, pt.rpm);
     }
-    setSpinLamp(pt.wheelspin != null ? pt.wheelspin : 0);
+    var ws = pt.wheelspin != null ? pt.wheelspin : 0;
+    setSlipLight(ws);
+    setTractionMeter(ws);
     setShiftLamp(pt.rpm);
   }
 
@@ -1548,7 +1580,8 @@
       state.playbackPlaying = false;
       state.playbackPaused = false;
       state.playbackElapsedOffset = state.playbackDurationMs;
-      setSpinLamp(0);
+      setSlipLight(0);
+      setTractionMeter(0);
       setShiftLamp(0);
       syncGaugeRunButtons();
     }
@@ -1591,13 +1624,13 @@
     cancelPlaybackRaf();
     state.playbackPlaying = false;
     state.playbackPaused = true;
-    // Gauges / live readout / SPIN stay at last applied frame
+    // Gauges / live readout / TRACTION+SLIP stay at last applied frame
     syncGaugeRunButtons();
   }
 
   /**
    * Stop: cancel RAF, reset gauges + live strip to idle (0 / —),
-   * clear SPIN lamp. Keep lastResult / slip / metrics / charts.
+   * clear TRACTION/SLIP + SHIFT LEDs. Keep lastResult / slip / metrics / charts.
    */
   function stopPlayback() {
     cancelPlaybackRaf();
@@ -1707,11 +1740,50 @@
   if ($('btnGaugePause')) $('btnGaugePause').addEventListener('click', pausePlayback);
   if ($('btnGaugeStop')) $('btnGaugeStop').addEventListener('click', stopPlayback);
   syncGaugeRunButtons();
-  // Screenshot / gate helper: ?demoSpin=1 forces SPIN lamp ON (no physics change)
+  // Screenshot / gate helper: ?demoDash=1 freezes canonical snip mid-run look
   try {
-    if (/(?:^|[?&])demoSpin=1(?:&|$)/.test(location.search || '')) {
-      var lamp = $('spinLamp');
-      if (lamp) lamp.classList.add('spin-lamp--demo', 'on');
+    if (/(?:^|[?&])demoDash=1(?:&|$)/.test(location.search || '')) {
+      setGearDigit(3);
+      var slipEl = $('slipLight');
+      if (slipEl) slipEl.classList.add('slip-light--demo', 'on');
+      setTractionMeter(18); // ~82% of 20 segs lit
+      var ledBar = $('shiftLedBar');
+      if (ledBar) {
+        // Lit progressive colors (3g→2a→3r) — NOT is-shift all-red flash
+        ledBar.classList.remove('is-shift');
+        ledBar.classList.add('is-approaching');
+        var leds = ledBar.querySelectorAll('.shift-led');
+        for (var li = 0; li < leds.length; li++) leds[li].classList.add('is-on');
+      }
+      rpmGauge.stop();
+      speedGauge.stop();
+      rpmGauge.configure({ mode: 'rpm', redline: 6500, max: 8000, label: 'RPM' });
+      speedGauge.setMax(200);
+      speedGauge.redline = 200; // no visible red arc on speedo (gauges.js skips dial===speed)
+      // Match canonical snip: needle mid-high + blue hub digits
+      rpmGauge.value = 6500; rpmGauge.display = 6500; rpmGauge.hubDisplay = 3280;
+      speedGauge.value = 155; speedGauge.display = 155; speedGauge.hubDisplay = 104;
+      // Force paints after layout (canvas size may be 0 on first paint; headless needs delays)
+      function paintDash() {
+        try {
+          rpmGauge._resize();
+          speedGauge._resize();
+          rpmGauge.hubDisplay = 3280;
+          speedGauge.hubDisplay = 104;
+          rpmGauge.value = 6500; rpmGauge.display = 6500;
+          speedGauge.value = 155; speedGauge.display = 155;
+          rpmGauge.draw();
+          speedGauge.draw();
+        } catch (ePaint) { /* ignore */ }
+      }
+      paintDash();
+      requestAnimationFrame(function () {
+        paintDash();
+        setTimeout(paintDash, 40);
+        setTimeout(paintDash, 120);
+        setTimeout(paintDash, 280);
+        setTimeout(paintDash, 500);
+      });
     }
   } catch (eDemo) { /* ignore */ }
   // Rescale ICE tach when redline / shift inputs change (bike high-redline support)
