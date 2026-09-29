@@ -59,7 +59,13 @@
     playbackPaused: false,
     playbackT0: 0,              // performance.now() when current play segment started
     playbackElapsedOffset: 0,   // ms already elapsed before this play segment (pause resume)
-    playbackDurationMs: 0
+    playbackDurationMs: 0,
+    // SPEED VS DISTANCE chart view — default full run to Vmax; zoom sets window
+    speedChartView: { xMinFt: 0, xMaxFt: null }, // null xMax = full domain
+    speedChartCursor: null, // { feet, mph, t } synced to playback sample
+    speedChartGeom: null,   // last draw hit-test: { pad, xMin, xMax, w, h, plotW }
+    speedChartDrag: null,   // { pointerId, startX, originMin, originMax, moved }
+    speedChartLastTap: 0
   };
 
   /** Wheel Spin logo ON when timeline sample wheelspin ≥ this % */
@@ -1270,6 +1276,73 @@
     updateDynoReadout(powerCurve, cRpm);
   }
 
+  function resetSpeedChartView() {
+    state.speedChartView = { xMinFt: 0, xMaxFt: null };
+  }
+
+  /** Full-run X domain (feet) — path to Vmax, not a hard 2640-only window. */
+  function speedChartFullDomainFt(timeline, result) {
+    var runEnd = 0;
+    if (timeline && timeline.length) {
+      runEnd = Number(timeline[timeline.length - 1].feet) || 0;
+    }
+    var vmaxFt = (result && result.topSpeedFeet != null) ? Number(result.topSpeedFeet) : 0;
+    var maxFt = Math.max(runEnd, vmaxFt, 60);
+    // Small pad past end so Vmax tip isn't glued to the right edge
+    return Math.max(60, maxFt * 1.02);
+  }
+
+  function speedChartWindow(timeline, result) {
+    var full = speedChartFullDomainFt(timeline, result);
+    var v = state.speedChartView || { xMinFt: 0, xMaxFt: null };
+    var xMin = Math.max(0, Number(v.xMinFt) || 0);
+    var xMax = (v.xMaxFt == null || !isFinite(Number(v.xMaxFt))) ? full : Number(v.xMaxFt);
+    if (xMax <= xMin + 20) xMax = Math.min(full, xMin + 20);
+    if (xMax > full) xMax = full;
+    if (xMin > xMax - 20) xMin = Math.max(0, xMax - 20);
+    var zoomed = (xMin > 0.5) || (xMax < full - 1);
+    return { xMin: xMin, xMax: xMax, full: full, zoomed: zoomed };
+  }
+
+  /** Classic marks + denser early set when zoomed into ≤¼-mi detail. */
+  function speedChartTickMarks(xMin, xMax, zoomed) {
+    var classic = [0, 60, 330, 660, 1000, 1320, 2640, 3960, 5280, 7920, 10560, 14520];
+    var span = xMax - xMin;
+    var marks;
+    if (zoomed && span <= 1500) {
+      // Dense detail ticks for early ¼-mi zoom
+      marks = [];
+      var step = span <= 400 ? 50 : (span <= 800 ? 100 : 165);
+      var start = Math.floor(xMin / step) * step;
+      for (var t = start; t <= xMax + 0.5; t += step) {
+        if (t >= xMin - 0.5) marks.push(Math.round(t));
+      }
+      // Always include classic anchors that fall inside
+      classic.forEach(function (ft) {
+        if (ft >= xMin - 0.5 && ft <= xMax + 0.5 && marks.indexOf(ft) < 0) marks.push(ft);
+      });
+      marks.sort(function (a, b) { return a - b; });
+    } else if (!zoomed || span > 3000) {
+      // Full Vmax / wide view — classic + extras that fit without crowding
+      marks = classic.filter(function (ft) {
+        return ft >= xMin - 0.5 && ft <= xMax + 0.5;
+      });
+      if (marks.indexOf(0) < 0 && xMin <= 0) marks.unshift(0);
+      // Ensure end mark near domain
+      var endApprox = Math.round(xMax);
+      if (marks.length && Math.abs(marks[marks.length - 1] - endApprox) > span * 0.04) {
+        marks.push(endApprox);
+      }
+    } else {
+      marks = classic.filter(function (ft) {
+        return ft >= xMin - 0.5 && ft <= xMax + 0.5;
+      });
+      if (!marks.length || marks[0] > xMin + 1) marks.unshift(Math.round(xMin));
+      if (marks[marks.length - 1] < xMax - 1) marks.push(Math.round(xMax));
+    }
+    return marks;
+  }
+
   function drawSpeedPath(timeline, result) {
     var canvas = $('speedChart');
     if (!canvas) return;
@@ -1287,33 +1360,51 @@
       ctx.fillStyle = '#667084';
       ctx.font = '12px Segoe UI';
       ctx.fillText('Speed vs distance appears after a run', 16, h / 2);
+      state.speedChartGeom = null;
       return;
     }
     // Room for MPH (L), g (R), ft + time (B), legend (T)
-    // Slightly deeper bottom pad so dual labels don't kiss the curve
     var pad = { l: 42, r: 44, t: 24, b: 42 };
-    // Display cap: half-mile (2640 ft). Physics may run past Vmax; chart does not.
-    var DISPLAY_FT_CAP = 2640;
-    var runEndFt = timeline[timeline.length - 1].feet || 0;
-    var maxFt = Math.min(DISPLAY_FT_CAP, Math.max(runEndFt, 60));
-    // Prefer a full half-mile domain once the run reaches/exceeds ¼-mi so ticks stay classic
-    if (runEndFt >= 1320) maxFt = DISPLAY_FT_CAP;
-    else if (runEndFt > 0) maxFt = Math.min(DISPLAY_FT_CAP, Math.max(660, runEndFt * 1.05));
+    var win = speedChartWindow(timeline, result);
+    var xMin = win.xMin;
+    var xMax = win.xMax;
+    var spanFt = Math.max(20, xMax - xMin);
 
-    // Clip samples to the display window (keep one sample past the cap for clean line end)
+    // Clip / interpolate samples to the view window
     var plot = [];
     for (var ci = 0; ci < timeline.length; ci++) {
       var cp = timeline[ci];
-      if (cp.feet <= maxFt) {
+      var ft = cp.feet;
+      if (ft < xMin) {
+        // keep walking; may interpolate at xMin when we cross
+        if (ci + 1 < timeline.length && timeline[ci + 1].feet >= xMin) {
+          var nx = timeline[ci + 1];
+          var sp0 = nx.feet - cp.feet;
+          if (sp0 > 1e-6) {
+            var u0 = (xMin - cp.feet) / sp0;
+            plot.push({
+              feet: xMin,
+              mph: cp.mph + u0 * (nx.mph - cp.mph),
+              t: cp.t + u0 * (nx.t - cp.t),
+              gear: nx.gear,
+              g: (typeof cp.g === 'number' && typeof nx.g === 'number')
+                ? cp.g + u0 * (nx.g - cp.g)
+                : (typeof nx.g === 'number' ? nx.g : cp.g)
+            });
+          }
+        }
+        continue;
+      }
+      if (ft <= xMax) {
         plot.push(cp);
       } else {
         if (plot.length) {
           var prev = timeline[ci - 1] || plot[plot.length - 1];
           var span = cp.feet - prev.feet;
           if (span > 1e-6) {
-            var u = (maxFt - prev.feet) / span;
+            var u = (xMax - prev.feet) / span;
             plot.push({
-              feet: maxFt,
+              feet: xMax,
               mph: prev.mph + u * (cp.mph - prev.mph),
               t: prev.t + u * (cp.t - prev.t),
               gear: cp.gear,
@@ -1341,11 +1432,9 @@
         if (p.g < minG) minG = p.g;
       }
     }
-    // Also consider true Vmax MPH so the Y scale fits the red tip even when past the window
     if (result && result.topSpeedMph && result.topSpeedMph > maxMph) {
       maxMph = result.topSpeedMph;
     }
-    // Derive longitudinal g from Δv/Δt when samples lack g (fallback) — over plot window
     var gSeries = new Array(plot.length);
     for (var gi = 0; gi < plot.length; gi++) {
       if (hasStoredG && typeof plot[gi].g === 'number') {
@@ -1367,9 +1456,14 @@
     maxMph = Math.max(60, maxMph * 1.08);
     var gLo = Math.min(0, minG) - 0.05;
     var gHi = Math.max(0.5, maxG * 1.15);
-    function x(ft) { return pad.l + (ft / maxFt) * (w - pad.l - pad.r); }
+    function x(ft) { return pad.l + ((ft - xMin) / spanFt) * (w - pad.l - pad.r); }
     function yMph(mph) { return h - pad.b - (mph / maxMph) * (h - pad.t - pad.b); }
     function yG(g) { return h - pad.b - ((g - gLo) / (gHi - gLo)) * (h - pad.t - pad.b); }
+
+    state.speedChartGeom = {
+      pad: pad, xMin: xMin, xMax: xMax, full: win.full,
+      w: w, h: h, plotW: w - pad.l - pad.r, zoomed: win.zoomed
+    };
 
     // Horizontal grid
     ctx.strokeStyle = 'rgba(215,196,160,0.18)';
@@ -1379,22 +1473,18 @@
       ctx.beginPath(); ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy); ctx.stroke();
     }
 
-    // Classic half-mile set only — no Vmax-crawl extras (3960…14520)
-    var marks = [0, 60, 330, 660, 1000, 1320, 2640].filter(function (ft) {
-      return ft <= maxFt + 0.5;
-    });
+    var marks = speedChartTickMarks(xMin, xMax, win.zoomed);
 
-    // Find elapsed time at a given distance via full timeline (accurate past clip)
     function timeAtFeet(ft) {
       if (!timeline.length) return null;
       if (ft <= timeline[0].feet) return timeline[0].t;
       for (var ti = 1; ti < timeline.length; ti++) {
         if (timeline[ti].feet >= ft) {
           var a = timeline[ti - 1], b = timeline[ti];
-          var span = b.feet - a.feet;
-          if (span < 1e-6) return b.t;
-          var u = (ft - a.feet) / span;
-          return a.t + u * (b.t - a.t);
+          var spn = b.feet - a.feet;
+          if (spn < 1e-6) return b.t;
+          var uu = (ft - a.feet) / spn;
+          return a.t + uu * (b.t - a.t);
         }
       }
       return timeline[timeline.length - 1].t;
@@ -1402,14 +1492,15 @@
 
     ctx.setLineDash([4, 4]);
     marks.forEach(function (ft) {
-      if (ft === 0) return;
+      if (ft === 0 && xMin <= 0) return;
       var xx = x(ft);
+      if (xx < pad.l - 1 || xx > w - pad.r + 1) return;
       ctx.strokeStyle = 'rgba(76,201,240,0.32)';
       ctx.beginPath(); ctx.moveTo(xx, pad.t); ctx.lineTo(xx, h - pad.b); ctx.stroke();
     });
     ctx.setLineDash([]);
 
-    // g-force overlay (secondary) — drawn under speed so MPH stays primary
+    // g-force overlay
     ctx.beginPath();
     for (var gj = 0; gj < plot.length; gj++) {
       var gx = x(plot[gj].feet), gy = yG(gSeries[gj]);
@@ -1419,7 +1510,6 @@
     ctx.lineWidth = 1.4;
     ctx.stroke();
 
-    // Zero-g reference
     if (gLo < 0 && gHi > 0) {
       ctx.strokeStyle = 'rgba(90,200,255,0.25)';
       ctx.lineWidth = 1;
@@ -1429,7 +1519,7 @@
       ctx.setLineDash([]);
     }
 
-    // Speed curve (primary green) — clipped to display window
+    // Speed curve (primary green)
     ctx.beginPath();
     plot.forEach(function (pt, idx) {
       var px = x(pt.feet), py = yMph(pt.mph);
@@ -1437,7 +1527,7 @@
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.2; ctx.stroke();
 
-    // Shift MPH markers — only those inside the display window
+    // Shift MPH markers inside view
     var shifts = (result && result.shifts && result.shifts.length) ? result.shifts.slice() : [];
     if (!shifts.length) {
       var prevGear = plot[0].gear;
@@ -1456,7 +1546,7 @@
       }
     }
     shifts.forEach(function (sh, sIdx) {
-      if (sh.feet == null || sh.feet > maxFt + 0.5) return;
+      if (sh.feet == null || sh.feet < xMin - 0.5 || sh.feet > xMax + 0.5) return;
       var sx = x(sh.feet);
       var sy = yMph(sh.mph);
       ctx.strokeStyle = 'rgba(255,180,70,0.55)';
@@ -1482,18 +1572,16 @@
       ctx.fillText(label, lx, ly);
     });
 
-    // Vmax: on-curve red tip if within window; else tip at right edge + beyond note
+    // Vmax red tip — on-curve when inside view; edge cue when beyond window
     if (result && result.topSpeedMph) {
       var vmaxFt = result.topSpeedFeet;
-      var vmaxBeyond = !(vmaxFt != null) || vmaxFt > maxFt + 0.5;
+      var vmaxBeyond = !(vmaxFt != null) || vmaxFt > xMax + 0.5 || vmaxFt < xMin - 0.5;
       var tx, ty;
       ctx.fillStyle = '#ff3355';
-      if (vmaxBeyond) {
-        // Right-edge tip — do not invent a false Vmax location on the clipped curve
+      if (vmaxBeyond && vmaxFt != null && vmaxFt > xMax) {
         tx = w - pad.r;
         ty = yMph(result.topSpeedMph);
         ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
-        // Small arrow stem toward beyond
         ctx.strokeStyle = '#ff3355';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
@@ -1508,10 +1596,9 @@
         ctx.fillText(vmaxLab, tx - 6, labY);
         ctx.fillStyle = '#9aa6b8';
         ctx.font = '8px ui-monospace, monospace';
-        var beyondFt = (vmaxFt != null) ? Math.round(vmaxFt) : '—';
-        ctx.fillText('@ ' + beyondFt + ' ft', tx - 6, labY + 11);
+        ctx.fillText('@ ' + Math.round(vmaxFt) + ' ft', tx - 6, labY + 11);
         ctx.textAlign = 'left';
-      } else {
+      } else if (!vmaxBeyond && vmaxFt != null) {
         tx = x(vmaxFt);
         ty = yMph(result.topSpeedMph);
         ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
@@ -1522,25 +1609,61 @@
       }
     }
 
-    // X-axis: classic ft ticks + elapsed time — thinned on narrow/portrait to avoid overlap
+    // Playback progress scrubber — vertical cursor on green curve
+    var cur = state.speedChartCursor;
+    if (cur && cur.feet != null && isFinite(cur.feet)) {
+      var cFt = cur.feet;
+      if (cFt >= xMin - 1 && cFt <= xMax + 1) {
+        var cx = x(Math.min(Math.max(cFt, xMin), xMax));
+        var cMph = (cur.mph != null && isFinite(cur.mph)) ? cur.mph : null;
+        var cy = cMph != null ? yMph(cMph) : (h - pad.b);
+        ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+        ctx.lineWidth = 1.2;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(cx, pad.t); ctx.lineTo(cx, h - pad.b); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#c8ff4a';
+        ctx.strokeStyle = 'rgba(0,0,0,0.65)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        // HUD chip
+        var chip = (cMph != null ? Math.round(cMph) + ' mph' : '') +
+          (cMph != null ? ' · ' : '') + Math.round(cFt) + ' ft';
+        if (cur.t != null && isFinite(cur.t)) chip += ' · ' + cur.t.toFixed(1) + 's';
+        ctx.font = '9px ui-monospace, monospace';
+        var cw = ctx.measureText(chip).width + 10;
+        var chipX = Math.min(Math.max(cx - cw / 2, pad.l), w - pad.r - cw);
+        var chipY = Math.max(pad.t + 2, cy - 22);
+        ctx.fillStyle = 'rgba(8,10,14,0.82)';
+        ctx.strokeStyle = 'rgba(200,255,74,0.55)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(chipX, chipY, cw, 14, 3);
+        else ctx.rect(chipX, chipY, cw, 14);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#e8f5c0';
+        ctx.textAlign = 'left';
+        ctx.fillText(chip, chipX + 5, chipY + 10);
+      }
+    }
+
+    // X-axis labels
     var plotW = w - pad.l - pad.r;
-    var narrow = plotW < 420; // portrait / small phones
-    var minGap = narrow ? 52 : 42;
-    // On narrow: drop crowded early mid-ticks (keep 0, 60, 660, 1320, 2640)
+    var narrow = plotW < 420;
+    var minGap = narrow ? 52 : (win.zoomed && spanFt <= 1500 ? 36 : 42);
     var skipOnNarrow = { 330: 1, 1000: 1 };
-    var endFt = marks[marks.length - 1];
+    var endFt = marks.length ? marks[marks.length - 1] : Math.round(xMax);
     ctx.font = '9px ui-monospace, monospace';
     ctx.textAlign = 'center';
     var shown = [];
     marks.forEach(function (ft) {
-      if (narrow && skipOnNarrow[ft]) return;
-      var xx = x(Math.min(ft, maxFt));
-      var isAnchor = (ft === 0 || ft === endFt || ft === 1320 || ft === 660);
+      if (narrow && !win.zoomed && skipOnNarrow[ft]) return;
+      var xx = x(Math.min(Math.max(ft, xMin), xMax));
+      var isAnchor = (ft === 0 || ft === endFt || ft === 1320 || ft === 660 || ft === Math.round(xMin) || ft === Math.round(xMax));
       if (!isAnchor && shown.length) {
-        var prev = shown[shown.length - 1];
-        if (Math.abs(xx - prev.xx) < minGap) return;
+        var prevS = shown[shown.length - 1];
+        if (Math.abs(xx - prevS.xx) < minGap) return;
       }
-      // If an anchor collides with previous non-anchor, drop the previous
       if (isAnchor && shown.length && ft !== 0) {
         var prev2 = shown[shown.length - 1];
         if (Math.abs(xx - prev2.xx) < minGap * 0.85 && prev2.ft !== 0 && prev2.ft !== 1320 && prev2.ft !== 660) {
@@ -1549,41 +1672,37 @@
       }
       shown.push({ ft: ft, xx: xx });
     });
-    // Final pass: drop any remaining overlaps preferring anchors
     var cleaned = [];
     shown.forEach(function (item) {
       if (!cleaned.length) { cleaned.push(item); return; }
-      var prev = cleaned[cleaned.length - 1];
-      if (Math.abs(item.xx - prev.xx) < minGap * 0.8) {
+      var prevC = cleaned[cleaned.length - 1];
+      if (Math.abs(item.xx - prevC.xx) < minGap * 0.8) {
         var itemAnchor = (item.ft === 0 || item.ft === endFt || item.ft === 1320 || item.ft === 660);
-        var prevAnchor = (prev.ft === 0 || prev.ft === endFt || prev.ft === 1320 || prev.ft === 660);
+        var prevAnchor = (prevC.ft === 0 || prevC.ft === endFt || prevC.ft === 1320 || prevC.ft === 660);
         if (itemAnchor && !prevAnchor) { cleaned.pop(); cleaned.push(item); return; }
         if (!itemAnchor && prevAnchor) return;
-        // both anchors or both not — keep later (end)
         if (item.ft === endFt) { cleaned.pop(); cleaned.push(item); }
         return;
       }
       cleaned.push(item);
     });
     shown = cleaned;
-    shown.forEach(function (item, idx) {
+    shown.forEach(function (item) {
       var ft = item.ft, xx = item.xx;
       ctx.fillStyle = '#9aa6b8';
       ctx.fillText(String(ft), xx, h - pad.b + 12);
-      // Time under tick: on narrow skip time on 60 to reduce early stacking
-      var showTime = !(narrow && ft === 60);
+      var showTime = !(narrow && !win.zoomed && ft === 60);
       if (showTime) {
-        var tt = timeAtFeet(Math.min(ft, maxFt));
+        var tt = timeAtFeet(Math.min(Math.max(ft, xMin), xMax));
         if (tt != null) {
           ctx.fillStyle = '#6e7a8c';
-          var timeY = h - pad.b + 24;
-          ctx.fillText(tt.toFixed(1) + 's', xx, timeY);
+          ctx.fillText(tt.toFixed(1) + 's', xx, h - pad.b + 24);
         }
       }
     });
     ctx.textAlign = 'left';
 
-    // Axis / legend labels
+    // Axis / legend
     ctx.fillStyle = '#c8ff4a';
     ctx.font = '10px ui-monospace, monospace';
     ctx.fillText('MPH', pad.l, 14);
@@ -1591,14 +1710,11 @@
     ctx.textAlign = 'right';
     ctx.fillText('g', w - pad.r, 14);
     ctx.textAlign = 'left';
-    // Right-side g scale ticks
     ctx.fillStyle = 'rgba(90,200,255,0.7)';
     ctx.font = '8px ui-monospace, monospace';
-    ctx.textAlign = 'left';
     [0, 0.5, 1.0].forEach(function (gv) {
       if (gv < gLo || gv > gHi) return;
-      var gy2 = yG(gv);
-      ctx.fillText(gv.toFixed(1), w - pad.r + 4, gy2 + 3);
+      ctx.fillText(gv.toFixed(1), w - pad.r + 4, yG(gv) + 3);
     });
     if (maxG > 1.05) {
       var gTop = Math.floor(maxG * 10) / 10;
@@ -1606,20 +1722,17 @@
         ctx.fillText(gTop.toFixed(1), w - pad.r + 4, yG(gTop) + 3);
       }
     }
-    // Left MPH scale (sparse)
     ctx.fillStyle = '#8a9a6a';
     var mphStep = maxMph > 180 ? 40 : 20;
     for (var mv = mphStep; mv < maxMph; mv += mphStep) {
       ctx.fillText(String(mv), 4, yMph(mv) + 3);
     }
-    // Bottom axis hint
     ctx.fillStyle = '#7a8494';
     ctx.font = '8px ui-monospace, monospace';
     ctx.textAlign = 'center';
-    var hint = 'ft  ·  elapsed s';
-    if (result && result.topSpeedFeet != null && result.topSpeedFeet > DISPLAY_FT_CAP) {
-      hint = 'ft ≤ 2640  ·  Vmax beyond';
-    }
+    var hint = win.zoomed
+      ? ('zoom ' + Math.round(xMin) + '–' + Math.round(xMax) + ' ft  ·  dbl-click full  ·  drag pan')
+      : ('ft → Vmax  ·  click/wheel zoom  ·  scrub follows playback');
     ctx.fillText(hint, (pad.l + w - pad.r) / 2, h - 2);
     ctx.textAlign = 'left';
   }
@@ -1720,6 +1833,40 @@
   }
 
 
+  /**
+   * Desktop POWER % — fraction of peak HP at current RPM (curve), live in playback.
+   * Matches EV PWR gauge voice. Hidden on mobile via CSS (stack locks preserved).
+   */
+  function setThrottleMeter(pt) {
+    var el = $('throttleMeter');
+    var val = $('throttleMeterValue');
+    if (!el || !val) return;
+    if (!pt || pt.rpm == null || !isFinite(Number(pt.rpm))) {
+      val.textContent = '—';
+      el.classList.remove('is-low', 'is-critical');
+      el.setAttribute('aria-label', 'Power idle');
+      return;
+    }
+    var peak = 0;
+    if (state.lastResult && state.lastResult.peakHorsepower) {
+      peak = Number(state.lastResult.peakHorsepower);
+    }
+    if (!(peak > 0) && state.car && state.car.peakHp) peak = Number(state.car.peakHp);
+    if (!(peak > 0) && state.evPeakHp) peak = Number(state.evPeakHp);
+    if (!(peak > 0)) peak = 1;
+    var hp = hpAtRpm(state.car, Number(pt.rpm));
+    var pct = Math.max(0, Math.min(100, (hp / peak) * 100));
+    // Soften during near-coast / shift: very low g mid-run → show residual delivery
+    if (pt.g != null && isFinite(pt.g) && pt.g < 0.08 && pt.mph != null && pt.mph > 25) {
+      pct = Math.min(pct, Math.max(8, pct * 0.22));
+    }
+    var rounded = Math.round(pct);
+    val.textContent = String(rounded);
+    el.classList.toggle('is-low', rounded < 55 && rounded >= 25);
+    el.classList.toggle('is-critical', rounded < 25);
+    el.setAttribute('aria-label', 'Power ' + rounded + '% of peak');
+  }
+
   function setGearDigit(gear) {
     var el = $('gearDigitValue');
     if (!el) return;
@@ -1790,7 +1937,12 @@
     setGearDigit(null);
     setSlipLight(0);
     setTractionMeter(0);
+    setThrottleMeter(null);
     setShiftLamp(0);
+    state.speedChartCursor = null;
+    if (state.lastResult && state.lastResult.timeline) {
+      drawSpeedPath(state.lastResult.timeline, state.lastResult);
+    }
   }
 
   function syncGaugeRunButtons() {
@@ -1851,7 +2003,23 @@
     var ws = pt.wheelspin != null ? pt.wheelspin : 0;
     setSlipLight(ws);
     setTractionMeter(ws);
+    setThrottleMeter(pt);
     setShiftLamp(pt.rpm);
+    // Sync SPEED VS DISTANCE scrubber to the same sample
+    var prevC = state.speedChartCursor;
+    state.speedChartCursor = {
+      feet: pt.feet != null ? Number(pt.feet) : null,
+      mph: pt.mph != null ? Number(pt.mph) : null,
+      t: pt.t != null ? Number(pt.t) : null
+    };
+    var nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    var feetDelta = prevC && prevC.feet != null && state.speedChartCursor.feet != null
+      ? Math.abs(state.speedChartCursor.feet - prevC.feet) : 999;
+    var due = !state._speedChartLastDrawMs || (nowMs - state._speedChartLastDrawMs) >= 48 || feetDelta >= 4;
+    if (due && state.lastResult && state.lastResult.timeline) {
+      state._speedChartLastDrawMs = nowMs;
+      drawSpeedPath(state.lastResult.timeline, state.lastResult);
+    }
   }
 
   function timelinePointAt(tl, tSec) {
@@ -1884,6 +2052,7 @@
       state.playbackElapsedOffset = state.playbackDurationMs;
       setSlipLight(0);
       setTractionMeter(0);
+      setThrottleMeter(null);
       setShiftLamp(0);
       syncGaugeRunButtons();
     }
@@ -1966,6 +2135,8 @@
       commitEditedCurveToCar();
     }
     drawPowerCurve(state.powerCurve, state.cursorRpm);
+    resetSpeedChartView();
+    state.speedChartCursor = null;
     drawSpeedPath(result.timeline, result);
     // Scale speed gauge to cover Vmax
     if (result.topSpeedMph) {
@@ -2249,6 +2420,196 @@ $('btnReset').addEventListener('click', function () {
     });
   })();
 
+  // SPEED VS DISTANCE — zoom / pan / reset (touch-friendly)
+  (function bindSpeedChartInteraction() {
+    var canvas = $('speedChart');
+    if (!canvas) return;
+
+    function clientToFt(clientX) {
+      var g = state.speedChartGeom;
+      if (!g) return null;
+      var rect = canvas.getBoundingClientRect();
+      var localX = clientX - rect.left;
+      var u = (localX - g.pad.l) / Math.max(1, g.plotW);
+      u = Math.max(0, Math.min(1, u));
+      return g.xMin + u * (g.xMax - g.xMin);
+    }
+
+    function setView(xMin, xMax) {
+      var full = state.speedChartGeom ? state.speedChartGeom.full
+        : (state.lastResult ? speedChartFullDomainFt(state.lastResult.timeline, state.lastResult) : 2640);
+      var minSpan = Math.max(40, full * 0.04);
+      xMin = Math.max(0, xMin);
+      xMax = Math.min(full, xMax);
+      if (xMax - xMin < minSpan) {
+        var mid = (xMin + xMax) / 2;
+        xMin = Math.max(0, mid - minSpan / 2);
+        xMax = Math.min(full, xMin + minSpan);
+        xMin = Math.max(0, xMax - minSpan);
+      }
+      // Snap back to full when nearly covering domain
+      if (xMin <= 1 && xMax >= full - 1) {
+        resetSpeedChartView();
+      } else {
+        state.speedChartView = { xMinFt: xMin, xMaxFt: xMax };
+      }
+      if (state.lastResult) drawSpeedPath(state.lastResult.timeline, state.lastResult);
+    }
+
+    function zoomAt(ft, factor) {
+      var g = state.speedChartGeom;
+      if (!g || ft == null) return;
+      var span = g.xMax - g.xMin;
+      var newSpan = span * factor;
+      var full = g.full;
+      var minSpan = Math.max(40, full * 0.04);
+      if (newSpan < minSpan) newSpan = minSpan;
+      if (newSpan >= full * 0.98) {
+        resetSpeedChartView();
+        if (state.lastResult) drawSpeedPath(state.lastResult.timeline, state.lastResult);
+        return;
+      }
+      var u = (ft - g.xMin) / Math.max(1e-6, span);
+      var xMin = ft - u * newSpan;
+      var xMax = xMin + newSpan;
+      setView(xMin, xMax);
+    }
+
+    function onWheel(ev) {
+      if (!state.lastResult) return;
+      ev.preventDefault();
+      var ft = clientToFt(ev.clientX);
+      if (ft == null) return;
+      var factor = ev.deltaY > 0 ? 1.18 : (1 / 1.18);
+      zoomAt(ft, factor);
+    }
+
+    function pointerPos(ev) {
+      if (ev.touches && ev.touches.length) {
+        return { x: ev.touches[0].clientX, y: ev.touches[0].clientY, id: ev.touches[0].identifier };
+      }
+      if (ev.changedTouches && ev.changedTouches.length) {
+        return { x: ev.changedTouches[0].clientX, y: ev.changedTouches[0].clientY, id: ev.changedTouches[0].identifier };
+      }
+      return { x: ev.clientX, y: ev.clientY, id: ev.pointerId };
+    }
+
+    function onDown(ev) {
+      if (!state.lastResult || !state.speedChartGeom) return;
+      var p = pointerPos(ev);
+      var g = state.speedChartGeom;
+      state.speedChartDrag = {
+        pointerId: p.id,
+        startX: p.x,
+        originMin: g.xMin,
+        originMax: g.xMax,
+        moved: false,
+        zoomed: g.zoomed
+      };
+      if (canvas.setPointerCapture && ev.pointerId != null && ev.pointerType) {
+        try { canvas.setPointerCapture(ev.pointerId); } catch (e) {}
+      }
+      if (ev.cancelable && (ev.touches || g.zoomed)) ev.preventDefault();
+    }
+
+    function onMove(ev) {
+      var drag = state.speedChartDrag;
+      if (!drag || !state.speedChartGeom) return;
+      var p = pointerPos(ev);
+      var dx = p.x - drag.startX;
+      if (Math.abs(dx) > 4) drag.moved = true;
+      if (!drag.zoomed) return; // pan only when zoomed
+      var g = state.speedChartGeom;
+      var ftPerPx = (drag.originMax - drag.originMin) / Math.max(1, g.plotW);
+      var shift = -dx * ftPerPx;
+      setView(drag.originMin + shift, drag.originMax + shift);
+      // Keep origin for continuous pan from start
+      if (ev.cancelable) ev.preventDefault();
+    }
+
+    function onUp(ev) {
+      var drag = state.speedChartDrag;
+      if (!drag) return;
+      var p = pointerPos(ev);
+      var wasTap = !drag.moved;
+      var zoomed = drag.zoomed;
+      state.speedChartDrag = null;
+      if (canvas.releasePointerCapture && ev.pointerId != null) {
+        try { canvas.releasePointerCapture(ev.pointerId); } catch (e) {}
+      }
+      if (!wasTap || !state.lastResult) return;
+      var ft = clientToFt(p.x);
+      if (ft == null) return;
+      var now = Date.now();
+      var isDouble = (now - state.speedChartLastTap < 320);
+      state.speedChartLastTap = now;
+      // Double-tap / second click: reset to full Vmax when zoomed
+      if (isDouble && (zoomed || (state.speedChartGeom && state.speedChartGeom.zoomed))) {
+        resetSpeedChartView();
+        drawSpeedPath(state.lastResult.timeline, state.lastResult);
+        return;
+      }
+      // Single tap/click when full: zoom in for detail around click
+      if (!zoomed) {
+        var full = state.speedChartGeom.full;
+        var span = Math.max(330, Math.min(1320, full * 0.25));
+        setView(ft - span / 2, ft + span / 2);
+      }
+    }
+
+    function onDblClick(ev) {
+      if (!state.lastResult) return;
+      ev.preventDefault();
+      var g = state.speedChartGeom;
+      if (g && g.zoomed) {
+        resetSpeedChartView();
+        drawSpeedPath(state.lastResult.timeline, state.lastResult);
+      } else {
+        var ft = clientToFt(ev.clientX);
+        if (ft == null) return;
+        var full = g ? g.full : speedChartFullDomainFt(state.lastResult.timeline, state.lastResult);
+        var span = Math.max(330, Math.min(1320, full * 0.25));
+        setView(ft - span / 2, ft + span / 2);
+      }
+    }
+
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    canvas.addEventListener('dblclick', onDblClick);
+    if (window.PointerEvent) {
+      canvas.addEventListener('pointerdown', onDown);
+      canvas.addEventListener('pointermove', onMove);
+      canvas.addEventListener('pointerup', onUp);
+      canvas.addEventListener('pointercancel', onUp);
+    } else {
+      canvas.addEventListener('mousedown', onDown);
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+      canvas.addEventListener('touchstart', onDown, { passive: false });
+      canvas.addEventListener('touchmove', onMove, { passive: false });
+      canvas.addEventListener('touchend', onUp);
+    }
+    canvas.style.touchAction = 'none';
+    canvas.style.cursor = 'crosshair';
+    canvas.title = 'Click zoom · wheel zoom · drag pan (when zoomed) · double-click full Vmax';
+
+    // Gate / shot helper
+    try {
+      window.__pcSpeedChart = {
+        reset: function () {
+          resetSpeedChartView();
+          if (state.lastResult) drawSpeedPath(state.lastResult.timeline, state.lastResult);
+        },
+        setView: setView,
+        zoomAt: zoomAt,
+        setCursor: function (feet, mph, t) {
+          state.speedChartCursor = { feet: feet, mph: mph, t: t };
+          if (state.lastResult) drawSpeedPath(state.lastResult.timeline, state.lastResult);
+        },
+        getGeom: function () { return state.speedChartGeom; }
+      };
+    } catch (eEx) {}
+  })();
+
   window.addEventListener('resize', function () {
     rpmGauge._resize();
     speedGauge._resize();
@@ -2326,6 +2687,8 @@ $('btnReset').addEventListener('click', function () {
       var slipEl = $('slipLight');
       if (slipEl) slipEl.classList.add('wheel-spin--demo', 'on');
       setTractionMeter(18); // ~82% of 20 segs lit
+      // Desktop POWER % gap fill — mid powerband demo
+      setThrottleMeter({ rpm: DEMO_RPM, mph: DEMO_MPH, g: 0.55, t: 8.2, feet: 900 });
       // Ensure shift cue so LED bar tracks DEMO_RPM (not a hardcoded all-on)
       if (!state.car) state.car = Object.assign({}, CUSTOM_BUILDER);
       state.car.shiftRpm = 6500;

@@ -230,6 +230,12 @@
                   <span class="wheel-spin-line">SPIN</span>
                 </span>
               </div>
+              <div class="throttle-meter" id="throttleMeter" role="status" aria-live="polite" title="Live power delivery — % of peak HP at current RPM during run/replay (desktop)">
+                <span class="throttle-meter-label">POWER</span>
+                <span class="throttle-meter-readout">
+                  <strong class="throttle-meter-value" id="throttleMeterValue">—</strong><span class="throttle-meter-unit">%</span>
+                </span>
+              </div>
               <div class="traction-meter" id="tractionMeter" role="status" aria-live="polite" title="Traction remaining — 100% full grip; falls as timeline wheelspin rises">
                 <span class="traction-meter-label">TRACTION %</span>
                 <div class="traction-meter-segs" id="tractionMeterSegs" aria-hidden="true">
@@ -275,7 +281,7 @@
         </div>
         <div class="chart-label" id="powerChartLabel">HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
-        <div class="chart-label">Speed vs distance — MPH · g-force · ft ticks · shift MPH · elapsed time · path to Vmax</div>
+        <div class="chart-label" id="speedChartLabel">Speed vs distance — MPH · g · ft · shifts · time · full Vmax · scrub · click/wheel zoom · drag pan</div>
         <div class="metrics" id="metrics"></div>
 
         <!-- Time Slip: FULL WIDTH under dyno/speed graphs (center column). NOT a right-rail. -->
