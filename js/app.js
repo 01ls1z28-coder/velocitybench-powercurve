@@ -52,6 +52,8 @@
     chartGeom: null,
     drag: null, // { rpm, pointerId }
     curveEdited: false,
+    peakHpBaseline: null,   // Peak HP when curveAtBaseline was snapped (applyCar / commit)
+    curveAtBaseline: null,  // torqueCurve snapshot for uniform Peak HP scale (preserve shape)
     // Playback state machine (real-time scale=1 per Phase 4)
     playbackPlaying: false,
     playbackPaused: false,
@@ -64,13 +66,27 @@
   var SPIN_WARN_THRESHOLD = 8;
 
   var rpmGauge = new window.VBPowerCurveGauges.BrassGauge($('rpmGauge'), {
+    overlayOnly: false, // opaque full dial covers snip face (no double needles)
     min: 0, max: 8000, label: 'RPM', redline: 6500
   });
   var speedGauge = new window.VBPowerCurveGauges.BrassGauge($('speedGauge'), {
-    min: 0, max: 260, label: 'MPH', unit: '', redline: 200, dial: 'speed'
+    overlayOnly: false,
+    min: 0, max: 200, label: 'MPH', unit: '', redline: 180, dial: 'speed'
   });
   rpmGauge.start();
   speedGauge.start();
+  function syncHubReadouts() {
+    var rv = $('rpmHubValue');
+    var sv = $('speedHubValue');
+    if (rv) {
+      var r = Math.round(rpmGauge.hubDisplay != null ? rpmGauge.hubDisplay : rpmGauge.display);
+      rv.textContent = String(r);
+    }
+    if (sv) {
+      var s = Math.round(speedGauge.hubDisplay != null ? speedGauge.hubDisplay : speedGauge.display);
+      sv.textContent = String(s);
+    }
+  }
 
   /** True when active power source is full EV (not Hybrid). */
   function isEvMode(car) {
@@ -153,6 +169,63 @@
   function isCustomBuilder(car) {
     return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
   }
+
+  /** Deep-copy numeric torqueCurve map (RPM→lb-ft). */
+  function cloneTorqueCurve(curve) {
+    if (!curve) return null;
+    var out = {};
+    Object.keys(curve).forEach(function (k) {
+      var v = Number(curve[k]);
+      if (isFinite(v)) out[k] = v;
+    });
+    return out;
+  }
+
+  /** Uniform proportional scale — preserves shape; floors at 5 lb-ft. */
+  function scaleTorqueCurveMap(curve, scale) {
+    if (!curve || !(scale > 0) || !isFinite(scale)) return curve || null;
+    var out = {};
+    Object.keys(curve).forEach(function (k) {
+      var v = Number(curve[k]);
+      if (!isFinite(v)) return;
+      out[k] = Math.max(5, v * scale);
+    });
+    return out;
+  }
+
+  /** Stash Peak HP baseline + curve snapshot (applyCar / dyno commit / synth). */
+  function stashPeakHpBaseline(car, peakHpOpt) {
+    var hp = peakHpOpt != null ? peakHpOpt
+      : (car && (car.peakHp || (Phys.peakHpFromCurve && Phys.peakHpFromCurve(car.torqueCurve || {})) || 450));
+    state.peakHpBaseline = Math.round(Number(hp) || 0);
+    state.curveAtBaseline = (car && car.torqueCurve) ? cloneTorqueCurve(car.torqueCurve) : null;
+  }
+
+  /**
+   * When Peak HP label moves vs baseline, uniformly scale the stashed garage/dyno
+   * curve (never wipe / resynthesize). Used by readCarFromForm + live #peakHp input.
+   * Returns scaled map or null if no scale applied.
+   */
+  function scaleCurveForPeakHpChange(peakHp, redline) {
+    var baseline = state.peakHpBaseline;
+    if (!(baseline > 0) || peakHp === baseline) return null;
+    var src = state.curveAtBaseline;
+    if (!src || !Object.keys(src).length) return null;
+    var scale = peakHp / baseline;
+    var scaled = scaleTorqueCurveMap(src, scale);
+    state.peakHpBaseline = peakHp;
+    state.curveAtBaseline = cloneTorqueCurve(scaled);
+    if (state.car) {
+      state.car.torqueCurve = scaled;
+      state.car.peakHp = peakHp;
+    }
+    if (!state.drag) {
+      state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+      drawPowerCurve(state.powerCurve, state.cursorRpm);
+    }
+    return scaled;
+  }
+
 
   /**
    * Human label for a car's baked factory TX.
@@ -322,6 +395,8 @@
       state.car.peakHp = Math.round(peak);
       var hpEl = $('peakHp');
       if (hpEl) hpEl.value = String(Math.round(peak));
+      // Dyno edit becomes the new Peak HP baseline (no accidental rescaling on RUN)
+      stashPeakHpBaseline(state.car, Math.round(peak));
     }
     state.curveEdited = true;
   }
@@ -602,6 +677,8 @@
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncEvChartMode(car);
     syncPowerCurveFromCar(car);
+    // Peak HP baseline for uniform curve scale (do not wipe garage shape)
+    stashPeakHpBaseline(car, Math.round(hp));
   }
 
   function highlightGarage(id) {
@@ -1324,26 +1401,117 @@
     }).join('');
   }
 
-  function setSpinLamp(wheelspinPct) {
-    var el = $('spinLamp');
+  /** Canonical snip SLIP triangle — ON when timeline wheelspin ≥ threshold. */
+  function setSlipLight(wheelspinPct) {
+    var el = $('slipLight');
     if (!el) return;
-    // Demo class (spin-lamp--demo) keeps lamp forced ON for screenshots / gates
-    if (el.classList.contains('spin-lamp--demo')) return;
+    if (el.classList.contains('slip-light--demo')) return;
     var on = Number(wheelspinPct) >= SPIN_WARN_THRESHOLD;
     el.classList.toggle('on', on);
     el.setAttribute('aria-label', on
-      ? ('Wheelspin warning — ' + Number(wheelspinPct).toFixed(1) + '% slip')
-      : 'Wheelspin lamp off');
+      ? ('SLIP light ON — ' + Number(wheelspinPct).toFixed(1) + '% wheelspin')
+      : 'SLIP light off');
+  }
+
+  /**
+   * Canonical snip TRACTION % segmented meter.
+   * Remaining grip = clamp(100 − timeline wheelspin, 0, 100). Soft/Agg/Auto alike.
+   */
+  function setTractionMeter(wheelspinPct) {
+    var meter = $('tractionMeter');
+    var segs = meter ? meter.querySelectorAll('.trac-seg') : [];
+    var slip = Number(wheelspinPct);
+    if (!isFinite(slip) || slip < 0) slip = 0;
+    var trac = 100 - slip;
+    if (trac < 0) trac = 0;
+    if (trac > 100) trac = 100;
+    var n = segs.length || 20;
+    var lit = Math.round((trac / 100) * n);
+    if (trac > 0 && lit < 1) lit = 1;
+    if (trac <= 0) lit = 0;
+    for (var i = 0; i < segs.length; i++) {
+      segs[i].classList.toggle('is-on', i < lit);
+    }
+    if (meter) {
+      meter.classList.toggle('is-low', trac < 70 && trac >= 40);
+      meter.classList.toggle('is-critical', trac < 40);
+      meter.setAttribute('aria-label',
+        'Traction ' + Math.round(trac) + '% remaining · slip ' + slip.toFixed(1) + '%');
+    }
+  }
+
+
+  function setGearDigit(gear) {
+    var el = $('gearDigitValue');
+    if (!el) return;
+    if (gear == null || gear === '' || gear === '—') {
+      el.textContent = '—';
+      return;
+    }
+    el.textContent = String(gear);
+  }
+
+  /**
+   * Progressive SHIFT LED bar (above Start/Pause/Stop): green → amber → red as RPM
+   * approaches shiftRpm; full red flash at/above shift. Cue = car.shiftRpm (fallback
+   * redline). Driven from timeline RPM during Soft/Agg/Auto gauge playback alike.
+   */
+  function setShiftLamp(rpm) {
+    var el = $('shiftLedBar');
+    if (!el) return;
+    var leds = el.querySelectorAll('.shift-led');
+    var i;
+    el.classList.remove('is-approaching', 'is-shift');
+    for (i = 0; i < leds.length; i++) leds[i].classList.remove('is-on');
+
+    var car = state.car;
+    var shiftRpm = car && car.shiftRpm != null ? Number(car.shiftRpm) : 0;
+    if (!(shiftRpm > 0)) shiftRpm = car && car.redline != null ? Number(car.redline) : 0;
+    if (!(shiftRpm > 0) || rpm == null || !isFinite(Number(rpm))) {
+      el.setAttribute('aria-label', 'Shift LEDs off');
+      return;
+    }
+    rpm = Number(rpm);
+    var n = leds.length || 8;
+    // Approach band: last ~500 RPM before shift (or from 92% of shiftRpm, whichever wider)
+    var approachStart = Math.min(shiftRpm - 80, Math.max(shiftRpm - 500, shiftRpm * 0.92));
+    var span = Math.max(60, shiftRpm - approachStart);
+
+    if (rpm >= shiftRpm) {
+      el.classList.add('is-shift');
+      for (i = 0; i < n; i++) leds[i].classList.add('is-on');
+      el.setAttribute('aria-label', 'Shift now — ' + Math.round(rpm) + ' RPM');
+      return;
+    }
+    if (rpm < approachStart) {
+      el.setAttribute('aria-label', 'Shift LEDs off');
+      return;
+    }
+    // Progressive fill across the bar (green → amber → red segments in markup)
+    var progress = (rpm - approachStart) / span;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+    var lit = Math.max(1, Math.ceil(progress * n));
+    el.classList.add('is-approaching');
+    for (i = 0; i < lit; i++) leds[i].classList.add('is-on');
+    el.setAttribute('aria-label',
+      'Approaching shift — ' + Math.round(rpm) + ' RPM · ' + lit + '/' + n + ' LEDs');
   }
 
   function resetLiveReadoutIdle() {
     rpmGauge.setValue(0);
     speedGauge.setValue(0);
+    rpmGauge.hubDisplay = null;
+    speedGauge.hubDisplay = null;
+    if (typeof syncHubReadouts === 'function') syncHubReadouts();
     $('liveGear').textContent = '—';
     $('liveRpm').textContent = '—';
     $('liveMph').textContent = '—';
     $('liveG').textContent = '—';
-    setSpinLamp(0);
+    setGearDigit(null);
+    setSlipLight(0);
+    setTractionMeter(0);
+    setShiftLamp(0);
   }
 
   function syncGaugeRunButtons() {
@@ -1351,7 +1519,9 @@
     var pauseBtn = $('btnGaugePause');
     var stopBtn = $('btnGaugeStop');
     if (startBtn) {
-      startBtn.textContent = state.playbackPaused ? 'RESUME' : 'START';
+      var startLabel = startBtn.querySelector('.btn-gauge-run-label');
+      if (startLabel) startLabel.textContent = state.playbackPaused ? 'RESUME' : 'START';
+      else startBtn.textContent = state.playbackPaused ? 'RESUME' : 'START';
       startBtn.classList.toggle('is-active', state.playbackPlaying && !state.playbackPaused);
       startBtn.title = state.playbackPaused
         ? 'Resume playback from pause point'
@@ -1374,7 +1544,7 @@
   }
 
   /**
-   * Apply one timeline sample to gauges + live strip + SPIN lamp.
+   * Apply one timeline sample to gauges + live strip + TRACTION/SLIP + SHIFT LEDs.
    * Shared by play / pause (last frame kept) paths.
    */
   function applyTimelinePoint(pt) {
@@ -1388,14 +1558,21 @@
       rpmGauge.setValue(pt.rpm);
     }
     speedGauge.setValue(pt.mph);
+    rpmGauge.hubDisplay = null;
+    speedGauge.hubDisplay = null;
+    syncHubReadouts();
     $('liveGear').textContent = String(pt.gear);
+    setGearDigit(pt.gear);
     $('liveRpm').textContent = String(Math.round(pt.rpm));
     $('liveMph').textContent = pt.mph.toFixed(1);
     $('liveG').textContent = pt.g.toFixed(2);
     if (state.powerCurve && state.powerCurve.length) {
       drawPowerCurve(state.powerCurve, pt.rpm);
     }
-    setSpinLamp(pt.wheelspin != null ? pt.wheelspin : 0);
+    var ws = pt.wheelspin != null ? pt.wheelspin : 0;
+    setSlipLight(ws);
+    setTractionMeter(ws);
+    setShiftLamp(pt.rpm);
   }
 
   function timelinePointAt(tl, tSec) {
@@ -1426,7 +1603,9 @@
       state.playbackPlaying = false;
       state.playbackPaused = false;
       state.playbackElapsedOffset = state.playbackDurationMs;
-      setSpinLamp(0);
+      setSlipLight(0);
+      setTractionMeter(0);
+      setShiftLamp(0);
       syncGaugeRunButtons();
     }
   }
@@ -1468,13 +1647,13 @@
     cancelPlaybackRaf();
     state.playbackPlaying = false;
     state.playbackPaused = true;
-    // Gauges / live readout / SPIN stay at last applied frame
+    // Gauges / live readout / TRACTION+SLIP stay at last applied frame
     syncGaugeRunButtons();
   }
 
   /**
    * Stop: cancel RAF, reset gauges + live strip to idle (0 / —),
-   * clear SPIN lamp. Keep lastResult / slip / metrics / charts.
+   * clear TRACTION/SLIP + SHIFT LEDs. Keep lastResult / slip / metrics / charts.
    */
   function stopPlayback() {
     cancelPlaybackRaf();
@@ -1519,6 +1698,8 @@
 
   /** Center START: resume if paused; otherwise full runSim (same as #btnRun). */
   function onGaugeStart() {
+    var cluster = document.querySelector('.gauges.lfa-cluster');
+    if (cluster) cluster.classList.remove('lfa-cluster--snip-freeze');
     if (state.playbackPaused) {
       resumePlayback();
       return;
@@ -1584,11 +1765,57 @@
   if ($('btnGaugePause')) $('btnGaugePause').addEventListener('click', pausePlayback);
   if ($('btnGaugeStop')) $('btnGaugeStop').addEventListener('click', stopPlayback);
   syncGaugeRunButtons();
-  // Screenshot / gate helper: ?demoSpin=1 forces SPIN lamp ON (no physics change)
+  // Screenshot / gate helper: ?demoDash=1 LIVE mid-run values (freeze OFF; opaque dials)
   try {
-    if (/(?:^|[?&])demoSpin=1(?:&|$)/.test(location.search || '')) {
-      var lamp = $('spinLamp');
-      if (lamp) lamp.classList.add('spin-lamp--demo', 'on');
+    if (/(?:^|[?&])demoDash=1(?:&|$)/.test(location.search || '')) {
+      // LIVE mid-run frame — freeze OFF (opaque dials cover snip faces; no wallpaper tip)
+      var cluster = document.querySelector('.gauges.lfa-cluster');
+      if (cluster) cluster.classList.remove('lfa-cluster--snip-freeze');
+      setGearDigit(3);
+      var slipEl = $('slipLight');
+      if (slipEl) slipEl.classList.add('slip-light--demo', 'on');
+      setTractionMeter(18); // ~82% of 20 segs lit
+      var ledBar = $('shiftLedBar');
+      if (ledBar) {
+        // Lit progressive colors (3g→2a→3r) — NOT is-shift all-red flash
+        ledBar.classList.remove('is-shift');
+        ledBar.classList.add('is-approaching');
+        var leds = ledBar.querySelectorAll('.shift-led');
+        for (var li = 0; li < leds.length; li++) leds[li].classList.add('is-on');
+      }
+      rpmGauge.stop();
+      speedGauge.stop();
+      rpmGauge.overlayOnly = false;
+      speedGauge.overlayOnly = false;
+      speedGauge.dial = 'speed';
+      rpmGauge.configure({ mode: 'rpm', redline: 6500, max: 8000, label: 'RPM' });
+      speedGauge.setMax(200);
+      speedGauge.redline = 200;
+      // Match canonical snip: needle mid-high + blue hub digits
+      rpmGauge.value = 6500; rpmGauge.display = 6500; rpmGauge.hubDisplay = 3280;
+      speedGauge.value = 155; speedGauge.display = 155; speedGauge.hubDisplay = 104;
+      // Force paints after layout (canvas size may be 0 on first paint; headless needs delays)
+      function paintDash() {
+        try {
+          rpmGauge._resize();
+          speedGauge._resize();
+          rpmGauge.hubDisplay = 3280;
+          speedGauge.hubDisplay = 104;
+          rpmGauge.value = 6500; rpmGauge.display = 6500;
+          speedGauge.value = 155; speedGauge.display = 155;
+          rpmGauge.draw();
+          speedGauge.draw();
+          syncHubReadouts();
+        } catch (ePaint) { /* ignore */ }
+      }
+      paintDash();
+      requestAnimationFrame(function () {
+        paintDash();
+        setTimeout(paintDash, 40);
+        setTimeout(paintDash, 120);
+        setTimeout(paintDash, 280);
+        setTimeout(paintDash, 500);
+      });
     }
   } catch (eDemo) { /* ignore */ }
   // Rescale ICE tach when redline / shift inputs change (bike high-redline support)
@@ -1831,6 +2058,29 @@ $('btnReset').addEventListener('click', function () {
       updateWeightSumHints();
     });
   });
+  function livePreviewPeakHpScale() {
+    var baseline = state.peakHpBaseline;
+    var src = state.curveAtBaseline;
+    if (!(baseline > 0) || !src || !Object.keys(src).length) return;
+    if (state.drag) return;
+    var peakHp = clampNum($('peakHp').value, 1, 15000, baseline);
+    var redline = clampNum($('redline').value, 2000, 28000, (state.car && state.car.redline) || 6800);
+    var scaled = (peakHp === baseline) ? cloneTorqueCurve(src) : scaleTorqueCurveMap(src, peakHp / baseline);
+    if (state.car) {
+      state.car.torqueCurve = scaled;
+      state.car.peakHp = peakHp;
+    }
+    state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+    drawPowerCurve(state.powerCurve, state.cursorRpm);
+  }
+
+  var peakHpEl = $('peakHp');
+  if (peakHpEl) {
+    // Live uniform-scale preview disabled: Peak HP restore (57df055) is authoritative on RUN.
+    // peakHpEl.addEventListener('input', livePreviewPeakHpScale);
+    // peakHpEl.addEventListener('change', livePreviewPeakHpScale);
+  }
+
   var filterEl = $('garageFilter');
   if (filterEl) {
     filterEl.addEventListener('input', function () {
