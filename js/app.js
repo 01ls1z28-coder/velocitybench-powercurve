@@ -1336,6 +1336,64 @@
       : 'Wheelspin lamp off');
   }
 
+
+  function setGearDigit(gear) {
+    var el = $('gearDigitValue');
+    if (!el) return;
+    if (gear == null || gear === '' || gear === '—') {
+      el.textContent = '—';
+      return;
+    }
+    el.textContent = String(gear);
+  }
+
+  /**
+   * Progressive SHIFT LED bar (above Start/Pause/Stop): green → amber → red as RPM
+   * approaches shiftRpm; full red flash at/above shift. Cue = car.shiftRpm (fallback
+   * redline). Driven from timeline RPM during Soft/Agg/Auto gauge playback alike.
+   */
+  function setShiftLamp(rpm) {
+    var el = $('shiftLedBar');
+    if (!el) return;
+    var leds = el.querySelectorAll('.shift-led');
+    var i;
+    el.classList.remove('is-approaching', 'is-shift');
+    for (i = 0; i < leds.length; i++) leds[i].classList.remove('is-on');
+
+    var car = state.car;
+    var shiftRpm = car && car.shiftRpm != null ? Number(car.shiftRpm) : 0;
+    if (!(shiftRpm > 0)) shiftRpm = car && car.redline != null ? Number(car.redline) : 0;
+    if (!(shiftRpm > 0) || rpm == null || !isFinite(Number(rpm))) {
+      el.setAttribute('aria-label', 'Shift LEDs off');
+      return;
+    }
+    rpm = Number(rpm);
+    var n = leds.length || 8;
+    // Approach band: last ~500 RPM before shift (or from 92% of shiftRpm, whichever wider)
+    var approachStart = Math.min(shiftRpm - 80, Math.max(shiftRpm - 500, shiftRpm * 0.92));
+    var span = Math.max(60, shiftRpm - approachStart);
+
+    if (rpm >= shiftRpm) {
+      el.classList.add('is-shift');
+      for (i = 0; i < n; i++) leds[i].classList.add('is-on');
+      el.setAttribute('aria-label', 'Shift now — ' + Math.round(rpm) + ' RPM');
+      return;
+    }
+    if (rpm < approachStart) {
+      el.setAttribute('aria-label', 'Shift LEDs off');
+      return;
+    }
+    // Progressive fill across the bar (green → amber → red segments in markup)
+    var progress = (rpm - approachStart) / span;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+    var lit = Math.max(1, Math.ceil(progress * n));
+    el.classList.add('is-approaching');
+    for (i = 0; i < lit; i++) leds[i].classList.add('is-on');
+    el.setAttribute('aria-label',
+      'Approaching shift — ' + Math.round(rpm) + ' RPM · ' + lit + '/' + n + ' LEDs');
+  }
+
   function resetLiveReadoutIdle() {
     rpmGauge.setValue(0);
     speedGauge.setValue(0);
@@ -1343,7 +1401,9 @@
     $('liveRpm').textContent = '—';
     $('liveMph').textContent = '—';
     $('liveG').textContent = '—';
+    setGearDigit(null);
     setSpinLamp(0);
+    setShiftLamp(0);
   }
 
   function syncGaugeRunButtons() {
@@ -1374,7 +1434,7 @@
   }
 
   /**
-   * Apply one timeline sample to gauges + live strip + SPIN lamp.
+   * Apply one timeline sample to gauges + live strip + SHIFT LED bar + SPIN lamp.
    * Shared by play / pause (last frame kept) paths.
    */
   function applyTimelinePoint(pt) {
@@ -1389,6 +1449,7 @@
     }
     speedGauge.setValue(pt.mph);
     $('liveGear').textContent = String(pt.gear);
+    setGearDigit(pt.gear);
     $('liveRpm').textContent = String(Math.round(pt.rpm));
     $('liveMph').textContent = pt.mph.toFixed(1);
     $('liveG').textContent = pt.g.toFixed(2);
@@ -1396,6 +1457,7 @@
       drawPowerCurve(state.powerCurve, pt.rpm);
     }
     setSpinLamp(pt.wheelspin != null ? pt.wheelspin : 0);
+    setShiftLamp(pt.rpm);
   }
 
   function timelinePointAt(tl, tSec) {
@@ -1427,6 +1489,7 @@
       state.playbackPaused = false;
       state.playbackElapsedOffset = state.playbackDurationMs;
       setSpinLamp(0);
+      setShiftLamp(0);
       syncGaugeRunButtons();
     }
   }
