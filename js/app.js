@@ -52,8 +52,6 @@
     chartGeom: null,
     drag: null, // { rpm, pointerId }
     curveEdited: false,
-    peakHpBaseline: null,   // Peak HP when curveAtBaseline was snapped (applyCar / commit)
-    curveAtBaseline: null,  // torqueCurve snapshot for uniform Peak HP scale (preserve shape)
     // Playback state machine (real-time scale=1 per Phase 4)
     playbackPlaying: false,
     playbackPaused: false,
@@ -169,63 +167,6 @@
   function isCustomBuilder(car) {
     return !!(car && (car.id === 'custom' || /custom builder/i.test(car.name || '')));
   }
-
-  /** Deep-copy numeric torqueCurve map (RPM→lb-ft). */
-  function cloneTorqueCurve(curve) {
-    if (!curve) return null;
-    var out = {};
-    Object.keys(curve).forEach(function (k) {
-      var v = Number(curve[k]);
-      if (isFinite(v)) out[k] = v;
-    });
-    return out;
-  }
-
-  /** Uniform proportional scale — preserves shape; floors at 5 lb-ft. */
-  function scaleTorqueCurveMap(curve, scale) {
-    if (!curve || !(scale > 0) || !isFinite(scale)) return curve || null;
-    var out = {};
-    Object.keys(curve).forEach(function (k) {
-      var v = Number(curve[k]);
-      if (!isFinite(v)) return;
-      out[k] = Math.max(5, v * scale);
-    });
-    return out;
-  }
-
-  /** Stash Peak HP baseline + curve snapshot (applyCar / dyno commit / synth). */
-  function stashPeakHpBaseline(car, peakHpOpt) {
-    var hp = peakHpOpt != null ? peakHpOpt
-      : (car && (car.peakHp || (Phys.peakHpFromCurve && Phys.peakHpFromCurve(car.torqueCurve || {})) || 450));
-    state.peakHpBaseline = Math.round(Number(hp) || 0);
-    state.curveAtBaseline = (car && car.torqueCurve) ? cloneTorqueCurve(car.torqueCurve) : null;
-  }
-
-  /**
-   * When Peak HP label moves vs baseline, uniformly scale the stashed garage/dyno
-   * curve (never wipe / resynthesize). Used by readCarFromForm + live #peakHp input.
-   * Returns scaled map or null if no scale applied.
-   */
-  function scaleCurveForPeakHpChange(peakHp, redline) {
-    var baseline = state.peakHpBaseline;
-    if (!(baseline > 0) || peakHp === baseline) return null;
-    var src = state.curveAtBaseline;
-    if (!src || !Object.keys(src).length) return null;
-    var scale = peakHp / baseline;
-    var scaled = scaleTorqueCurveMap(src, scale);
-    state.peakHpBaseline = peakHp;
-    state.curveAtBaseline = cloneTorqueCurve(scaled);
-    if (state.car) {
-      state.car.torqueCurve = scaled;
-      state.car.peakHp = peakHp;
-    }
-    if (!state.drag) {
-      state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
-      drawPowerCurve(state.powerCurve, state.cursorRpm);
-    }
-    return scaled;
-  }
-
 
   /**
    * Human label for a car's baked factory TX.
@@ -395,8 +336,6 @@
       state.car.peakHp = Math.round(peak);
       var hpEl = $('peakHp');
       if (hpEl) hpEl.value = String(Math.round(peak));
-      // Dyno edit becomes the new Peak HP baseline (no accidental rescaling on RUN)
-      stashPeakHpBaseline(state.car, Math.round(peak));
     }
     state.curveEdited = true;
   }
@@ -677,8 +616,6 @@
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncEvChartMode(car);
     syncPowerCurveFromCar(car);
-    // Peak HP baseline for uniform curve scale (do not wipe garage shape)
-    stashPeakHpBaseline(car, Math.round(hp));
   }
 
   function highlightGarage(id) {
@@ -2058,29 +1995,6 @@ $('btnReset').addEventListener('click', function () {
       updateWeightSumHints();
     });
   });
-  function livePreviewPeakHpScale() {
-    var baseline = state.peakHpBaseline;
-    var src = state.curveAtBaseline;
-    if (!(baseline > 0) || !src || !Object.keys(src).length) return;
-    if (state.drag) return;
-    var peakHp = clampNum($('peakHp').value, 1, 15000, baseline);
-    var redline = clampNum($('redline').value, 2000, 28000, (state.car && state.car.redline) || 6800);
-    var scaled = (peakHp === baseline) ? cloneTorqueCurve(src) : scaleTorqueCurveMap(src, peakHp / baseline);
-    if (state.car) {
-      state.car.torqueCurve = scaled;
-      state.car.peakHp = peakHp;
-    }
-    state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
-    drawPowerCurve(state.powerCurve, state.cursorRpm);
-  }
-
-  var peakHpEl = $('peakHp');
-  if (peakHpEl) {
-    // Live uniform-scale preview disabled: Peak HP restore (57df055) is authoritative on RUN.
-    // peakHpEl.addEventListener('input', livePreviewPeakHpScale);
-    // peakHpEl.addEventListener('change', livePreviewPeakHpScale);
-  }
-
   var filterEl = $('garageFilter');
   if (filterEl) {
     filterEl.addEventListener('input', function () {
