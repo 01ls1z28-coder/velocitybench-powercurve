@@ -1,0 +1,951 @@
+{
+  "tip": "fleet-published-miss-batch",
+  "parent": "3aae3e5",
+  "branch": "review/fleet-published-miss-batch",
+  "credit": "Jorge Guerra",
+  "forceScale": 1,
+  "skipped": {
+    "2024-tesla-cybertruck-tri-motor": "already fixed on parent 3aae3e5",
+    "2026-chevrolet-corvette-zr1x": "separate ZR1X tip — do not include",
+    "2001-chevrolet-camaro-z28-hce-ms3-tsp53stage25-134lt-trueduals": "Z28 ATC — do not touch"
+  },
+  "wx": {
+    "tempF": 70,
+    "humidity": 45,
+    "pressureInHg": 29.92,
+    "windSpeedMph": 0,
+    "windDirDeg": 0,
+    "gustMph": 0,
+    "launchMode": "auto"
+  },
+  "tol": {
+    "z60": 0.25,
+    "et": 0.25,
+    "trap": 2.5
+  },
+  "applied": 18,
+  "hitCount": 6,
+  "residualCount": 8,
+  "partialCount": 4,
+  "ms": 13848,
+  "results": [
+    {
+      "id": "2005-mercedes-e55-amg",
+      "name": "2005 Mercedes E55 AMG",
+      "status": "PARTIAL",
+      "tgt": {
+        "z60": 4.5,
+        "et": 12.7,
+        "trap": 117
+      },
+      "src": "C&D W211 E55; OEM 469@6100 / 516@2650–4500; Cd~0.28; FD 2.65",
+      "note": "Trap-priority: published SC curve + Cd 0.28; loss0. 0–60/ET stay optimistic vs C&D (ET–trap conflict).",
+      "before": {
+        "z60": 4.224999999999746,
+        "et": 12.64799999999843,
+        "trap": 110.60570235837233,
+        "Cd": 0.31,
+        "FD": 2.65,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5"
+      },
+      "after": {
+        "z60": 3.9559999999996753,
+        "et": 12.259999999998644,
+        "trap": 116.02388244535932,
+        "Cd": 0.28,
+        "FD": 2.65,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 2650,
+        "peakHpRpm": 6100,
+        "redline": 6500,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5",
+        "curvePeakHp": 483.07000000000005
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.2690000000000703,
+        "dEt": -0.38799999999978496,
+        "dTrap": 5.418180086986993
+      }
+    },
+    {
+      "id": "1996-chevrolet-impala-ss",
+      "name": "1996 Chevrolet Impala SS",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 6.5,
+        "et": 15,
+        "trap": 92
+      },
+      "src": "C&D 1994 Impala SS 6.5 / 15.0@92; OEM LT1 260@5000 / 330@2400; FD 3.08",
+      "note": "Published LT1 powerband + Cd 0.34 + Drag Radial. Residual trap/0–60 short after honest bake — parked further knobs.",
+      "before": {
+        "z60": 7.804000000000941,
+        "et": 15.996999999996573,
+        "trap": 85.40321305780019,
+        "Cd": 0.37,
+        "FD": 3.08,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "GM_4L60E"
+      },
+      "after": {
+        "z60": 7.036000000000684,
+        "et": 15.180999999997026,
+        "trap": 89.14991154276558,
+        "Cd": 0.34,
+        "FD": 3.08,
+        "loss": 0,
+        "tire": 1,
+        "peakTqRpm": 2400,
+        "peakHpRpm": 5000,
+        "redline": 5700,
+        "fs": 1,
+        "txKey": "GM_4L60E",
+        "curvePeakHp": 260
+      },
+      "hits": {
+        "z60": false,
+        "et": true,
+        "trap": false
+      },
+      "delta": {
+        "d60": -0.7680000000002565,
+        "dEt": -0.8159999999995478,
+        "dTrap": 3.7466984849653926
+      }
+    },
+    {
+      "id": "1984-chevrolet-corvette-c4",
+      "name": "1984 Chevrolet Corvette C4",
+      "status": "HIT",
+      "tgt": {
+        "z60": 6.7,
+        "et": 15.2,
+        "trap": 90
+      },
+      "src": "C&D 1984 C4 6.7 / 15.2@90; OEM L83 205@4300 / 290@2800; FD 3.07; Cd 0.34",
+      "note": null,
+      "before": {
+        "z60": 7.522000000000847,
+        "et": 15.66099999999676,
+        "trap": 87.50532211750829,
+        "Cd": 0.34,
+        "FD": 3.07,
+        "loss": 0,
+        "tire": 1,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "GM_700R4"
+      },
+      "after": {
+        "z60": 6.646000000000554,
+        "et": 15.00899999999712,
+        "trap": 89.49248206634522,
+        "Cd": 0.34,
+        "FD": 3.07,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 2800,
+        "peakHpRpm": 4300,
+        "redline": 5200,
+        "fs": 1,
+        "txKey": "GM_700R4",
+        "curvePeakHp": 205
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.8760000000002925,
+        "dEt": -0.6519999999996386,
+        "dTrap": 1.9871599488369327
+      }
+    },
+    {
+      "id": "2008-dodge-challenger-srt8",
+      "name": "2008 Dodge Challenger SRT8",
+      "status": "HIT",
+      "tgt": {
+        "z60": 4.8,
+        "et": 13.3,
+        "trap": 108
+      },
+      "src": "C&D/MT 2008 SRT8 ~4.8 / 13.3@108; OEM 425@6200 / 420@4800; FD 3.06; Cd~0.36",
+      "note": null,
+      "before": {
+        "z60": 4.839999999999951,
+        "et": 13.343999999998044,
+        "trap": 104.89551850092859,
+        "Cd": 0.39,
+        "FD": 3.06,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5"
+      },
+      "after": {
+        "z60": 4.827999999999947,
+        "et": 13.309999999998062,
+        "trap": 106.09012834121538,
+        "Cd": 0.36,
+        "FD": 3.06,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4800,
+        "peakHpRpm": 6200,
+        "redline": 6400,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5",
+        "curvePeakHp": 427.38412538350235
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.012000000000004007,
+        "dEt": -0.033999999999981156,
+        "dTrap": 1.1946098402867875
+      }
+    },
+    {
+      "id": "2022-cadillac-escalade-v",
+      "name": "2022 Cadillac Escalade V",
+      "status": "PARTIAL",
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.7,
+        "trap": 111
+      },
+      "src": "C&D Escalade-V 4.3 / 12.7@111; OEM 682@6000 / 653@4400 (80% TQ@2000); FD 3.23; Cd~0.36",
+      "note": "Trap-priority published LT4 curve + Cd 0.36 + Summer + loss4. 0–60/ET optimistic vs C&D.",
+      "before": {
+        "z60": 4.123999999999712,
+        "et": 12.68399999999841,
+        "trap": 107.10917507969864,
+        "Cd": 0.38,
+        "FD": 3.23,
+        "loss": 13.5,
+        "tire": 0,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "GM_10L90"
+      },
+      "after": {
+        "z60": 3.6659999999997073,
+        "et": 12.1609999999987,
+        "trap": 110.68870986335293,
+        "Cd": 0.36,
+        "FD": 3.23,
+        "loss": 4,
+        "tire": 3,
+        "peakTqRpm": 4400,
+        "peakHpRpm": 6000,
+        "redline": 6300,
+        "fs": 1,
+        "txKey": "GM_10L90",
+        "curvePeakHp": 682.0000000000001
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.4580000000000046,
+        "dEt": -0.5229999999997101,
+        "dTrap": 3.5795347836542817
+      }
+    },
+    {
+      "id": "2021-range-rover-sport-svr",
+      "name": "2021 Range Rover Sport SVR",
+      "status": "PARTIAL",
+      "tgt": {
+        "z60": 4.3,
+        "et": 12.8,
+        "trap": 111
+      },
+      "src": "C&D RR Sport SVR class ~4.3 / 12.8@111; 575 hp / 516 lb-ft SC V8 band; FD 3.15",
+      "note": "Published SC powerband + Summer + loss0. Trap in tol; 0–60/ET optimistic.",
+      "before": {
+        "z60": 4.153999999999722,
+        "et": 12.71799999999839,
+        "trap": 106.07138982892948,
+        "Cd": 0.34,
+        "FD": 3.15,
+        "loss": 14,
+        "tire": 0,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "ZF8HP"
+      },
+      "after": {
+        "z60": 3.6549999999997085,
+        "et": 12.136999999998713,
+        "trap": 110.48150977818442,
+        "Cd": 0.34,
+        "FD": 3.15,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 3500,
+        "peakHpRpm": 6000,
+        "redline": 6500,
+        "fs": 1,
+        "txKey": "ZF8HP",
+        "curvePeakHp": 575
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.49900000000001343,
+        "dEt": -0.580999999999678,
+        "dTrap": 4.410119949254934
+      }
+    },
+    {
+      "id": "2023-acura-tlx-type-s",
+      "name": "2023 Acura TLX Type S",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 4.6,
+        "et": 13.3,
+        "trap": 105
+      },
+      "src": "C&D TLX Type S ~4.6 / 13.3@105; OEM 355@5500 / 354@1400–5000; FD 3.59",
+      "note": "Published turbo plateau curve + Summer. Residual trap short (~103–104) after honest bake — parked Cd invent.",
+      "before": {
+        "z60": 4.530999999999848,
+        "et": 13.190999999998128,
+        "trap": 101.51587005058097,
+        "Cd": 0.33,
+        "FD": 3.59,
+        "loss": 3,
+        "tire": 3,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Ford_10R80"
+      },
+      "after": {
+        "z60": 4.325999999999779,
+        "et": 13.037999999998213,
+        "trap": 102.36632736581687,
+        "Cd": 0.33,
+        "FD": 3.59,
+        "loss": 3,
+        "tire": 3,
+        "peakTqRpm": 1400,
+        "peakHpRpm": 5500,
+        "redline": 6500,
+        "fs": 1,
+        "txKey": "Ford_10R80",
+        "curvePeakHp": 355
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": false
+      },
+      "delta": {
+        "d60": -0.20500000000006846,
+        "dEt": -0.1529999999999152,
+        "dTrap": 0.8504573152359001
+      }
+    },
+    {
+      "id": "2021-bmw-s1000rr",
+      "name": "2021 BMW S1000RR",
+      "status": "HIT",
+      "tgt": {
+        "z60": 2.9,
+        "et": 10.1,
+        "trap": 152
+      },
+      "src": "Cycle World/class ~2.7–3.1 / ~9.9–10.3@150–156; OEM ~205@13500 / 83 lb-ft@11000",
+      "note": null,
+      "before": {
+        "z60": 2.861999999999796,
+        "et": 10.06699999999986,
+        "trap": 145.38681225791314,
+        "Cd": 0.45,
+        "FD": 3.96,
+        "loss": 27,
+        "tire": 2,
+        "peakTqRpm": 11000,
+        "peakHpRpm": 13750,
+        "redline": 14600,
+        "fs": 1,
+        "txKey": "Bike_Sport_6"
+      },
+      "after": {
+        "z60": 2.6669999999998173,
+        "et": 9.854999999999977,
+        "trap": 150.58929641056065,
+        "Cd": 0.45,
+        "FD": 3.96,
+        "loss": 15,
+        "tire": 2,
+        "peakTqRpm": 11000,
+        "peakHpRpm": 13500,
+        "redline": 14600,
+        "fs": 1,
+        "txKey": "Bike_Sport_6",
+        "curvePeakHp": 205
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.19499999999997852,
+        "dEt": -0.2119999999998825,
+        "dTrap": 5.202484152647514
+      }
+    },
+    {
+      "id": "2024-lucid-air-touring",
+      "name": "2024 Lucid Air Touring",
+      "status": "HIT",
+      "tgt": {
+        "z60": 3,
+        "et": 11,
+        "trap": 126
+      },
+      "src": "C&D Lucid Air Touring 3.0 / 11.0@126",
+      "note": null,
+      "before": {
+        "z60": 3.5659999999997183,
+        "et": 11.429999999999104,
+        "trap": 127.18070566328079,
+        "Cd": 0.21,
+        "FD": 7.8,
+        "loss": 3.5,
+        "tire": 3,
+        "peakTqRpm": 2000,
+        "peakHpRpm": 8000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single"
+      },
+      "after": {
+        "z60": 2.851999999999797,
+        "et": 11.018999999999332,
+        "trap": 123.95641278955594,
+        "Cd": 0.21,
+        "FD": 7.8,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 4000,
+        "peakHpRpm": 7000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single",
+        "curvePeakHp": 671.4284034985423
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.7139999999999214,
+        "dEt": -0.4109999999997722,
+        "dTrap": -3.224292873724849
+      }
+    },
+    {
+      "id": "2023-mercedes-eqe-amg-53",
+      "name": "2023 Mercedes EQE AMG 53",
+      "status": "HIT",
+      "tgt": {
+        "z60": 2.8,
+        "et": 11.2,
+        "trap": 119
+      },
+      "src": "C&D EQE AMG 53 ~2.8 / 11.2@119 (Excel peer ~3.2 / 11.6@120)",
+      "note": null,
+      "before": {
+        "z60": 3.9439999999996767,
+        "et": 11.795999999998902,
+        "trap": 123.22200910056951,
+        "Cd": 0.23,
+        "FD": 7.8,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 2000,
+        "peakHpRpm": 8000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single"
+      },
+      "after": {
+        "z60": 2.8289999999997995,
+        "et": 11.18399999999924,
+        "trap": 118.88430126257742,
+        "Cd": 0.23,
+        "FD": 7.8,
+        "loss": 4,
+        "tire": 3,
+        "peakTqRpm": 3500,
+        "peakHpRpm": 6000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single",
+        "curvePeakHp": 727.2914285714286
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -1.1149999999998772,
+        "dEt": -0.6119999999996608,
+        "dTrap": -4.337707837992085
+      }
+    },
+    {
+      "id": "2022-bmw-ix-m60",
+      "name": "2022 BMW iX M60",
+      "status": "HIT",
+      "tgt": {
+        "z60": 3.2,
+        "et": 11.5,
+        "trap": 120
+      },
+      "src": "C&D iX M60 3.2 / 11.5@120 (Excel 3.6 / 12.1@114 — prefer C&D)",
+      "note": null,
+      "before": {
+        "z60": 4.168999999999727,
+        "et": 12.185999999998685,
+        "trap": 119.3643810561354,
+        "Cd": 0.29,
+        "FD": 7.8,
+        "loss": 0,
+        "tire": 4,
+        "peakTqRpm": 2000,
+        "peakHpRpm": 8000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single"
+      },
+      "after": {
+        "z60": 3.168999999999762,
+        "et": 11.50899999999906,
+        "trap": 118.5115362011968,
+        "Cd": 0.29,
+        "FD": 7.8,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 3500,
+        "peakHpRpm": 6000,
+        "redline": 14000,
+        "fs": 1,
+        "txKey": "EV_Single",
+        "curvePeakHp": 710.8002125
+      },
+      "hits": {
+        "z60": true,
+        "et": true,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.9999999999999649,
+        "dEt": -0.6769999999996248,
+        "dTrap": -0.8528448549385956
+      }
+    },
+    {
+      "id": "1968-dodge-dart-gts-383",
+      "name": "1968 Dodge Dart GTS 383",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 6.5,
+        "et": 14.9,
+        "trap": 95
+      },
+      "src": "Peer card ~6.5 / 14.9@95 (no fresh C&D) — 383 band ~300 hp / ~390 lb-ft",
+      "note": "Peer-sourced powerband; trap improved. Residual 0–60/ET quick vs peer — no invent.",
+      "before": {
+        "z60": 6.242000000000419,
+        "et": 14.877999999997193,
+        "trap": 88.881902474663,
+        "Cd": 0.45,
+        "FD": 3.55,
+        "loss": 25.5,
+        "tire": 1,
+        "peakTqRpm": 3190,
+        "peakHpRpm": 5104,
+        "redline": 5800,
+        "fs": 1,
+        "txKey": "A833_4"
+      },
+      "after": {
+        "z60": 5.771000000000262,
+        "et": 14.484999999997411,
+        "trap": 93.17465140343774,
+        "Cd": 0.45,
+        "FD": 3.55,
+        "loss": 16,
+        "tire": 0,
+        "peakTqRpm": 2800,
+        "peakHpRpm": 4600,
+        "redline": 5500,
+        "fs": 1,
+        "txKey": "A833_4",
+        "curvePeakHp": 300.00000000000006
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.4710000000001573,
+        "dEt": -0.3929999999997822,
+        "dTrap": 4.292748928774742
+      }
+    },
+    {
+      "id": "1971-dodge-demon-340",
+      "name": "1971 Dodge Demon 340",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 6.5,
+        "et": 14.9,
+        "trap": 94
+      },
+      "src": "Peer ~6.5 / 14.9@94; OEM-era 275@5000 / 340@3200",
+      "note": "Published-era 340 curve; trap improved. Residual 0–60/ET quick vs peer.",
+      "before": {
+        "z60": 6.1290000000003815,
+        "et": 14.790999999997242,
+        "trap": 89.67941471617085,
+        "Cd": 0.46,
+        "FD": 3.55,
+        "loss": 20.5,
+        "tire": 2,
+        "peakTqRpm": 3190,
+        "peakHpRpm": 5104,
+        "redline": 5800,
+        "fs": 1,
+        "txKey": "A833_4"
+      },
+      "after": {
+        "z60": 5.778000000000264,
+        "et": 14.508999999997398,
+        "trap": 92.68830537232023,
+        "Cd": 0.46,
+        "FD": 3.55,
+        "loss": 14,
+        "tire": 0,
+        "peakTqRpm": 3200,
+        "peakHpRpm": 5000,
+        "redline": 5600,
+        "fs": 1,
+        "txKey": "A833_4",
+        "curvePeakHp": 275
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.3510000000001172,
+        "dEt": -0.2819999999998437,
+        "dTrap": 3.008890656149376
+      }
+    },
+    {
+      "id": "1965-chevrolet-chevelle-ss396",
+      "name": "1965 Chevrolet Chevelle SS396",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 6,
+        "et": 14.5,
+        "trap": 99
+      },
+      "src": "Peer ~6.0 / 14.5@99; 375 hp SS396 band ~415 lb-ft@3600",
+      "note": "Period powerband; trap near peer. Residual 0–60/ET quick.",
+      "before": {
+        "z60": 6.152000000000389,
+        "et": 14.676999999997305,
+        "trap": 93.53678734796551,
+        "Cd": 0.45,
+        "FD": 3.73,
+        "loss": 25,
+        "tire": 0,
+        "peakTqRpm": 3190,
+        "peakHpRpm": 5104,
+        "redline": 5800,
+        "fs": 1,
+        "txKey": "Muncie_M21"
+      },
+      "after": {
+        "z60": 5.519000000000178,
+        "et": 14.047999999997653,
+        "trap": 97.91162844175955,
+        "Cd": 0.45,
+        "FD": 3.73,
+        "loss": 18,
+        "tire": 0,
+        "peakTqRpm": 3600,
+        "peakHpRpm": 5600,
+        "redline": 6000,
+        "fs": 1,
+        "txKey": "Muncie_M21",
+        "curvePeakHp": 375
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.6330000000002114,
+        "dEt": -0.6289999999996514,
+        "dTrap": 4.374841093794032
+      }
+    },
+    {
+      "id": "2006-mercedes-clk55-amg",
+      "name": "2006 Mercedes CLK55 AMG",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 4.7,
+        "et": 13.2,
+        "trap": 107
+      },
+      "src": "C&D CLK55 4.7 / 13.2@107; 362 hp / ~376 lb-ft NA M113",
+      "note": "Published NA curve + Summer + loss6. Residual mild miss — parked aero invent.",
+      "before": {
+        "z60": 5.0720000000000285,
+        "et": 13.575999999997915,
+        "trap": 102.80659494455075,
+        "Cd": 0.32,
+        "FD": 3.06,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5"
+      },
+      "after": {
+        "z60": 4.936999999999983,
+        "et": 13.508999999997952,
+        "trap": 102.02988184570415,
+        "Cd": 0.32,
+        "FD": 3.06,
+        "loss": 6,
+        "tire": 3,
+        "peakTqRpm": 4000,
+        "peakHpRpm": 5750,
+        "redline": 6500,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5",
+        "curvePeakHp": 362
+      },
+      "hits": {
+        "z60": true,
+        "et": false,
+        "trap": false
+      },
+      "delta": {
+        "d60": -0.13500000000004508,
+        "dEt": -0.06699999999996287,
+        "dTrap": -0.7767130988465993
+      }
+    },
+    {
+      "id": "2007-porsche-911-turbo",
+      "name": "2007 Porsche 911 Turbo",
+      "status": "PARTIAL",
+      "tgt": {
+        "z60": 3.4,
+        "et": 11.6,
+        "trap": 122
+      },
+      "src": "C&D 997 Turbo Tip 3.4 / 11.6@122; OEM ~480@6000 / 460@1950–5000",
+      "note": "Trap-priority FI plateau + Summer + loss0. 0–60 optimistic vs C&D Tip; txKey kept.",
+      "before": {
+        "z60": 3.1829999999997605,
+        "et": 11.49199999999907,
+        "trap": 119.70533697410829,
+        "Cd": 0.31,
+        "FD": 3.06,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 3740,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5"
+      },
+      "after": {
+        "z60": 2.985999999999782,
+        "et": 11.271999999999192,
+        "trap": 120.61175767467923,
+        "Cd": 0.31,
+        "FD": 3.06,
+        "loss": 0,
+        "tire": 3,
+        "peakTqRpm": 1950,
+        "peakHpRpm": 6000,
+        "redline": 6750,
+        "fs": 1,
+        "txKey": "Chrysler_NAG1_5",
+        "curvePeakHp": 480
+      },
+      "hits": {
+        "z60": false,
+        "et": false,
+        "trap": true
+      },
+      "delta": {
+        "d60": -0.1969999999999783,
+        "dEt": -0.21999999999987807,
+        "dTrap": 0.9064207005709335
+      }
+    },
+    {
+      "id": "2007-ford-f-150-4-6-triton",
+      "name": "2007 Ford F-150 4.6 Triton",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 8.5,
+        "et": 16.6,
+        "trap": 84
+      },
+      "src": "Peer/Excel ~8.5 / 16.6@84 — 4.6 Triton ~248@4750 / 294@4000",
+      "note": "Powerband bake only. Residual slow vs peer (brick Cd×FA + weight) — parked further invent.",
+      "before": {
+        "z60": 9.865999999999971,
+        "et": 17.277999999998134,
+        "trap": 77.88129321983436,
+        "Cd": 0.48,
+        "FD": 3.73,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Ford_6R80"
+      },
+      "after": {
+        "z60": 9.584000000000128,
+        "et": 16.826999999997582,
+        "trap": 81.09961323981852,
+        "Cd": 0.48,
+        "FD": 3.73,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4000,
+        "peakHpRpm": 4750,
+        "redline": 5500,
+        "fs": 1,
+        "txKey": "Ford_6R80",
+        "curvePeakHp": 247.99999999999994
+      },
+      "hits": {
+        "z60": false,
+        "et": true,
+        "trap": false
+      },
+      "delta": {
+        "d60": -0.2819999999998437,
+        "dEt": -0.4510000000005512,
+        "dTrap": 3.218320019984162
+      }
+    },
+    {
+      "id": "2008-ford-f-150-harley-davidson",
+      "name": "2008 Ford F-150 Harley-Davidson",
+      "status": "RESIDUAL",
+      "tgt": {
+        "z60": 7.4,
+        "et": 15.8,
+        "trap": 88
+      },
+      "src": "Peer ~7.4 / 15.8@88 — 5.4 3V ~300@5000 / 365@3750",
+      "note": "Powerband bake. Residual vs peer — parked.",
+      "before": {
+        "z60": 8.512000000000722,
+        "et": 16.42299999999709,
+        "trap": 82.36569544815526,
+        "Cd": 0.48,
+        "FD": 3.73,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 4216,
+        "peakHpRpm": 6120,
+        "redline": 6800,
+        "fs": 1,
+        "txKey": "Ford_6R80"
+      },
+      "after": {
+        "z60": 8.033000000000987,
+        "et": 15.891999999996631,
+        "trap": 84.8859377054212,
+        "Cd": 0.48,
+        "FD": 3.73,
+        "loss": 0,
+        "tire": 0,
+        "peakTqRpm": 3750,
+        "peakHpRpm": 5000,
+        "redline": 5600,
+        "fs": 1,
+        "txKey": "Ford_6R80",
+        "curvePeakHp": 300.29179405940596
+      },
+      "hits": {
+        "z60": false,
+        "et": true,
+        "trap": false
+      },
+      "delta": {
+        "d60": -0.4789999999997345,
+        "dEt": -0.5310000000004571,
+        "dTrap": 2.5202422572659344
+      }
+    }
+  ]
+}
