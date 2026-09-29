@@ -708,20 +708,21 @@
     car.rearWeightPercent = w.rearWeightPercent;
     car.leftWeightPercent = w.leftWeightPercent;
     car.rightWeightPercent = w.rightWeightPercent;
-    // Peak HP label must NEVER wipe garage / dyno torqueCurve on RUN.
-    // Garage hybrids/FI often have label peakHp (system) ≠ curve-only peak; the old
-    // |curveHp-peakHp|>12% path resynthesized ZR1X and fantasy-fast 8.39@175.
-    // Keep existing curve unless absent. Custom Builder may resynthesize only when
-    // there is no curve yet, or user has not dyno-edited and explicitly wants Peak HP.
-    if (!car.torqueCurve) {
-      car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
-    } else if (isCustomBuilder(car) && !state.curveEdited) {
+    // RESTORE pre-da81539 Peak HP path (last Jorge-liked force behavior @ 1f53b39).
+    // When |curveHp − peakHp| > 12% of peakHp, resynthesize torqueCurve from Peak HP
+    // (same for garage + Custom Builder). This WAS the working path before the Peak HP
+    // wipe fix made garage Peak HP label-only (ΔET=0). Full curve replace is intentional
+    // here — NOT the later fc4a72b uniform-scale invention Jorge rejected.
+    // Dyno drag-edit: after commitEditedCurveToCar, peakHp tracks curve peak so the
+    // >12% gate does not immediately wipe an edited curve unless Peak HP moves again.
+    if (car.torqueCurve) {
       var curveHp = Phys.peakHpFromCurve(car.torqueCurve);
-      if (curveHp > 0 && Math.abs(curveHp - peakHp) > peakHp * 0.12) {
+      if (Math.abs(curveHp - peakHp) > peakHp * 0.12) {
         car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
       }
+    } else {
+      car.torqueCurve = Phys.synthesizeTorqueCurve(peakHp, car.peakTqRpm, redline, car.peakHpRpm);
     }
-    // else: garage or dyno-edited curve stays authoritative; physics uses the curve
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
     // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.
     if (base.torqueCurve && (car.boostPsi <= 0 || base.boostPsi === 0)) {
