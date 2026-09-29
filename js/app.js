@@ -1887,6 +1887,52 @@
     el.setAttribute('aria-label', 'Elapsed ' + t.toFixed(3) + ' seconds');
   }
 
+  /**
+   * Desktop SHIFT MPH — MPH at last upshift from sim result.shifts (same markers as
+   * SPEED VS DISTANCE chart). Updates as timeline t passes each upshift; idle/stop → —.
+   * Hidden on mobile via CSS (stack locks preserved).
+   */
+  function setShiftMph(pt) {
+    var el = $('shiftMphMeter');
+    var val = $('shiftMphValue');
+    if (!el || !val) return;
+    if (!pt || pt.t == null || !isFinite(Number(pt.t)) || Number(pt.t) < 0) {
+      val.textContent = '—';
+      el.setAttribute('aria-label', 'Shift MPH idle');
+      return;
+    }
+    var t = Number(pt.t);
+    var mph = null;
+    var shifts = state.lastResult && state.lastResult.shifts;
+    if (shifts && shifts.length) {
+      for (var i = 0; i < shifts.length; i++) {
+        var sh = shifts[i];
+        if (sh && sh.t != null && isFinite(Number(sh.t)) && Number(sh.t) <= t + 1e-9) {
+          if (sh.mph != null && isFinite(Number(sh.mph))) mph = Number(sh.mph);
+        }
+      }
+    } else if (state.lastResult && state.lastResult.timeline && state.lastResult.timeline.length) {
+      // Fallback if shifts[] empty: last gear-increase sample at or before t
+      var tl = state.lastResult.timeline;
+      var prevG = tl[0].gear;
+      for (var j = 1; j < tl.length; j++) {
+        if (tl[j].t != null && Number(tl[j].t) > t + 1e-9) break;
+        if (tl[j].gear > prevG && tl[j].mph != null && isFinite(Number(tl[j].mph))) {
+          mph = Number(tl[j].mph);
+        }
+        prevG = tl[j].gear;
+      }
+    }
+    if (mph == null || !isFinite(mph)) {
+      val.textContent = '—';
+      el.setAttribute('aria-label', 'Shift MPH — no upshift yet');
+      return;
+    }
+    var rounded = Math.round(mph);
+    val.textContent = String(rounded);
+    el.setAttribute('aria-label', 'Last upshift at ' + rounded + ' miles per hour');
+  }
+
   function setGearDigit(gear) {
     var el = $('gearDigitValue');
     if (!el) return;
@@ -1959,6 +2005,7 @@
     setTractionMeter(0);
     setThrottleMeter(null);
     setEtClock(null);
+    setShiftMph(null);
     setShiftLamp(0);
     state.speedChartCursor = null;
     if (state.lastResult && state.lastResult.timeline) {
@@ -2026,6 +2073,7 @@
     setTractionMeter(ws);
     setThrottleMeter(pt);
     setEtClock(pt);
+    setShiftMph(pt);
     setShiftLamp(pt.rpm);
     // Sync SPEED VS DISTANCE scrubber to the same sample
     var prevC = state.speedChartCursor;
@@ -2076,6 +2124,7 @@
       setTractionMeter(0);
       setThrottleMeter(null);
       setEtClock(null);
+      setShiftMph(null);
       setShiftLamp(0);
       syncGaugeRunButtons();
     }
@@ -2713,6 +2762,10 @@ $('btnReset').addEventListener('click', function () {
       // Desktop POWER % gap fill — mid powerband demo
       setThrottleMeter({ rpm: DEMO_RPM, mph: DEMO_MPH, g: 0.55, t: 8.2, feet: 900 });
       setEtClock({ t: 8.2 });
+      // Seed Shift MPH demo: pretend lastResult had an upshift at 79 mph before t=8.2
+      state.lastResult = state.lastResult || {};
+      state.lastResult.shifts = [{ gear: 2, mph: 42.0, feet: 120, t: 2.1 }, { gear: 3, mph: 79.0, feet: 480, t: 5.4 }];
+      setShiftMph({ t: 8.2, gear: 3, mph: DEMO_MPH });
       // Ensure shift cue so LED bar tracks DEMO_RPM (not a hardcoded all-on)
       if (!state.car) state.car = Object.assign({}, CUSTOM_BUILDER);
       state.car.shiftRpm = 6500;

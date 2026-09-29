@@ -470,7 +470,7 @@ body {
   display: none; /* canvas paints unit in well */
 }
 
-/* Center stack — gear → Wheel Spin → TRACTION → LEDs (buttons are grid row 2)
+/* Center stack — gear → Wheel Spin → POWER/ET/ShiftMPH (desktop) → TRACTION → LEDs (buttons are grid row 2)
    Fills dial-row height; packed column in the corridor between dials. */
 .gauge-center {
   display: contents;
@@ -746,6 +746,65 @@ body {
   font-size: clamp(8px, 1.5cqh, 11px);
   font-weight: 700;
   color: #7ab8c8;
+  letter-spacing: 0.04em;
+}
+
+
+/* SHIFT MPH — desktop-only under ET, above TRACTION.
+   Same hide locks as POWER/ET so mobile stack (gear→WS→TRACTION→LEDs) stays intact. */
+.shift-mph-meter {
+  display: none;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 82%;
+  min-width: 48px;
+  box-sizing: border-box;
+  padding: 4px 4px 3px;
+  border-radius: 8px;
+  border: 1px solid rgba(212,184,137,0.28);
+  background:
+    linear-gradient(180deg, rgba(255,246,224,0.07), transparent 65%),
+    rgba(5,7,10,0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255,246,224,0.08),
+    0 0 10px rgba(255,179,71,0.10);
+  color: var(--inst-brass-text, #e0c694);
+}
+.shift-mph-meter-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: clamp(6px, 1.2cqh, 9px);
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  line-height: 1;
+  color: var(--inst-brass-text, #e0c694);
+  opacity: 0.92;
+  text-shadow: 0 0 8px rgba(212,184,137,0.25);
+}
+.shift-mph-meter-readout {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1;
+}
+.shift-mph-meter-value {
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: clamp(12px, 2.8cqh, 22px);
+  font-weight: 700;
+  color: #ffb347;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 10px rgba(255,179,71,0.45), 0 0 18px rgba(255,179,71,0.2);
+  font-variant-numeric: tabular-nums;
+}
+.shift-mph-meter-unit {
+  font-family: var(--sans);
+  font-size: clamp(7px, 1.35cqh, 10px);
+  font-weight: 700;
+  color: #d4a05a;
   letter-spacing: 0.04em;
 }
 
@@ -1258,13 +1317,18 @@ body {
     gap: clamp(4px, 0.55cqw, 7px);
     padding: 2px 0 0;
   }
-  /* Pack: gear+WS top; POWER mid void; ET under POWER; TRACTION+LEDs at dial bottoms */
+  /* Pack: gear+WS top; POWER mid void; ET; Shift MPH; TRACTION+LEDs at dial bottoms */
   .throttle-meter {
     display: flex;
     margin-top: auto;
     margin-bottom: clamp(2px, 0.35cqw, 4px);
   }
   .et-meter {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: clamp(1px, 0.25cqw, 3px);
+  }
+  .shift-mph-meter {
     display: flex;
     margin-top: 0;
     margin-bottom: clamp(1px, 0.25cqw, 3px);
@@ -1287,6 +1351,7 @@ body {
 @media (max-width: 900px) and (orientation: portrait) {
   .throttle-meter { display: none !important; }
   .et-meter { display: none !important; }
+  .shift-mph-meter { display: none !important; }
   .gauges, .gauges.lfa-cluster {
     max-width: 100%;
     grid-template-columns: minmax(0, 1fr) minmax(56px, 0.22fr) minmax(0, 1fr);
@@ -1344,6 +1409,7 @@ body {
 @media (max-width: 1100px) and (orientation: landscape) {
   .throttle-meter { display: none !important; }
   .et-meter { display: none !important; }
+  .shift-mph-meter { display: none !important; }
   .gauges, .gauges.lfa-cluster {
     max-width: min(100%, 980px);
     max-height: min(72vh, 100%);
