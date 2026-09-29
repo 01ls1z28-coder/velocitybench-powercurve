@@ -340,7 +340,7 @@ body {
   text-shadow: 0 0 10px rgba(76,201,240,0.28);
 }
 
-/* ——— Live twin-gauge cluster 1280×720 (NO snip/wallpaper underlay) ——— */
+/* ——— Live twin-gauge cluster — compressed height (NO snip/wallpaper underlay) ——— */
 .gauges, .gauges.lfa-cluster {
   position: relative;
   display: block;
@@ -348,7 +348,8 @@ body {
   min-width: 0;
   width: 100%;
   max-width: 1280px;
-  aspect-ratio: 1280 / 720;
+  /* Shorter charcoal frame — cut bottom void under dials/buttons (was 1280/720) */
+  aspect-ratio: 1280 / 560;
   box-sizing: border-box;
   container-type: size;
   padding: 0;
@@ -423,11 +424,11 @@ body {
 }
 .gauge-wrap--tach {
   left: 7.969%;
-  top: 5.694%;
+  top: 2.2%;
 }
 .gauge-wrap--speedo {
   left: 56.563%;
-  top: 6.111%;
+  top: 2.4%;
 }
 .gauge-wrap canvas {
   width: 100%;
@@ -485,16 +486,20 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: clamp(3px, 0.9cqh, 8px);
+  /* Tighter pack — less dead air between gear→LEDs */
+  gap: clamp(2px, 0.5cqh, 4px);
   /* Geometric dial gap ≈14.2% on desktop — stay inside it */
   width: 12.2%;
   max-width: 160px;
-  height: 92%;
+  height: 98%;
   align-self: center;
   margin: 0;
-  padding: 12% 0 0;
+  /* Raise gear→LEDs toward dial midlines (was 12% pad); no translateY
+     so margin-top:auto buttons stay on the cluster floor (no bottom void) */
+  padding: 1% 0 0;
   box-sizing: border-box;
-  /* Layout geometry locked — chrome plate is decorative ::before only */
+  transform: none;
+  /* Chrome plate remains decorative ::before only */
 }
 /* Polished center chrome plate — hugs gear→Wheel Spin→TRACTION→LEDs (not the void below) */
 .gauge-center-stack::before {
@@ -503,9 +508,9 @@ body {
   /* Stay inside stack width — dial gap only has ~1% clearance each side */
   left: 0;
   right: 0;
-  /* Modest vertical shrink: tuck under padding void; end just below LEDs */
-  top: 14%;
-  bottom: 28%;
+  /* Hug packed content; end just below LEDs — no plate void */
+  top: 2%;
+  bottom: 38%;
   z-index: 0;
   pointer-events: none;
   border-radius: 14px;
@@ -548,7 +553,7 @@ body {
     0 0 16px rgba(212,184,137,0.18),
     0 4px 14px rgba(0,0,0,0.4);
   padding: 0;
-  margin-bottom: clamp(1px, 0.4cqh, 4px);
+  margin-bottom: clamp(0px, 0.2cqh, 2px);
 }
 .gear-digit-value {
   font-family: "Courier New", ui-monospace, monospace;
@@ -805,7 +810,7 @@ body {
   flex: 0 0 auto;
   align-self: center;
   margin-top: auto;
-  margin-bottom: 1.2%;
+  margin-bottom: 0.6%;
   /* 12.2% stack × 390% ≈ 47.5% of cluster — prior desktop button span */
   width: 390%;
   min-height: clamp(32px, 6.4cqh, 52px);
@@ -1119,8 +1124,8 @@ body {
    narrow center stack clears both gauge faces; buttons pinned below dials. */
 @media (max-width: 900px) and (orientation: portrait) {
   .gauges, .gauges.lfa-cluster {
-    /* taller cluster → more room under dials; dials sized for tick CSS px */
-    aspect-ratio: 1 / 0.95;
+    /* Compressed — cut bottom emptiness while keeping dial CSS px readable */
+    aspect-ratio: 1 / 0.70;
     max-width: 100%;
     container-type: size;
   }
@@ -1129,26 +1134,28 @@ body {
   }
   .gauge-wrap--tach {
     left: 1%;
-    top: 1.5%;
+    top: 1%;
   }
   .gauge-wrap--speedo {
     left: 57%;
-    top: 1.5%;
+    top: 1%;
   }
   .gauge-center-stack {
     width: 14.5%;
     max-width: none;
-    height: auto;
-    max-height: 88%;
-    padding-top: 0;
+    /* Fill cluster height so margin-top:auto pins buttons to floor */
+    height: 96%;
+    max-height: none;
+    padding-top: 0.5%;
     align-self: center;
-    transform: translateY(-6%);
-    gap: clamp(2px, 0.9cqh, 6px);
+    /* Slight raise — keep buttons near cluster floor */
+    transform: translateY(-2%);
+    gap: clamp(1px, 0.45cqh, 3px);
   }
-  /* Plate hugs content; buttons sit at/outside bottom edge (less void than desktop) */
+  /* Plate hugs content; buttons sit at/outside bottom edge */
   .gauge-center-stack::before {
     top: 0;
-    bottom: 18%;
+    bottom: 28%;
   }
   .gear-digit {
     width: 78%;
@@ -1172,9 +1179,9 @@ body {
   .shift-led { width: clamp(8px, 2.4cqh, 12px); height: clamp(8px, 2.4cqh, 12px); }
   .gauge-run-row {
     width: 340%; /* ~40.8% of cluster */
-    min-height: clamp(28px, 5.8cqh, 40px);
-    margin-top: clamp(10px, 3.5cqh, 22px);
-    margin-bottom: 2%;
+    min-height: clamp(26px, 5.2cqh, 36px);
+    margin-top: auto; /* pin under dials in filled stack */
+    margin-bottom: 0.8%;
   }
   .btn-gauge-run {
     font-size: clamp(8px, 2.1cqh, 11px);
@@ -1189,10 +1196,11 @@ body {
 /* ---- Instruments — phones/tablets LANDSCAPE ---- */
 @media (max-width: 1100px) and (orientation: landscape) {
   .gauges, .gauges.lfa-cluster {
-    aspect-ratio: 1280 / 720;
+    /* Compressed landscape frame — less bottom void (was 1280/720) */
+    aspect-ratio: 1280 / 500;
     max-width: min(100%, 980px);
     /* Keep enough height under dials for START/PAUSE/STOP clearance */
-    max-height: min(82vh, calc(100vw * 720 / 1280));
+    max-height: min(74vh, calc(100vw * 500 / 1280));
     margin-left: auto;
     margin-right: auto;
     container-type: size;
@@ -1201,18 +1209,19 @@ body {
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
   /* Short landscape viewports: dials must leave ≥ ~40px under bottoms for buttons */
   .gauge-wrap { width: 28.5%; }
-  .gauge-wrap--tach { left: 5%; top: 3.5%; }
-  .gauge-wrap--speedo { left: 66.5%; top: 3.5%; }
+  .gauge-wrap--tach { left: 5%; top: 1.5%; }
+  .gauge-wrap--speedo { left: 66.5%; top: 1.5%; }
   .gauge-center-stack {
     width: 16%;
     max-width: 220px;
-    height: 94%;
-    padding-top: 6%;
-    gap: clamp(2px, 0.8cqh, 6px);
+    height: 98%;
+    padding-top: 0.5%;
+    transform: translateY(-3%);
+    gap: clamp(1px, 0.4cqh, 3px);
   }
   .gauge-center-stack::before {
-    top: 4%;
-    bottom: 22%;
+    top: 0;
+    bottom: 28%;
   }
   .gear-digit { width: 64%; min-width: 36px; margin-bottom: 0; }
   .gear-digit-value { font-size: clamp(20px, 6.5cqh, 48px); }
@@ -1232,8 +1241,8 @@ body {
   .shift-led { width: clamp(8px, 2.2cqh, 13px); height: clamp(8px, 2.2cqh, 13px); }
   .gauge-run-row {
     width: 260%; /* ~41.6% of cluster */
-    min-height: clamp(26px, 5.5cqh, 40px);
-    margin-bottom: 2.5%;
+    min-height: clamp(24px, 5cqh, 36px);
+    margin-bottom: 1.2%;
   }
   .btn-gauge-run {
     font-size: clamp(8px, 2cqh, 12px);
