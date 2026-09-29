@@ -69,10 +69,23 @@
     min: 0, max: 8000, label: 'RPM', redline: 6500
   });
   var speedGauge = new window.VBPowerCurveGauges.BrassGauge($('speedGauge'), {
+    overlayOnly: true,
     min: 0, max: 200, label: 'MPH', unit: '', redline: 180, dial: 'speed'
   });
   rpmGauge.start();
   speedGauge.start();
+  function syncHubReadouts() {
+    var rv = $('rpmHubValue');
+    var sv = $('speedHubValue');
+    if (rv) {
+      var r = Math.round(rpmGauge.hubDisplay != null ? rpmGauge.hubDisplay : rpmGauge.display);
+      rv.textContent = String(r);
+    }
+    if (sv) {
+      var s = Math.round(speedGauge.hubDisplay != null ? speedGauge.hubDisplay : speedGauge.display);
+      sv.textContent = String(s);
+    }
+  }
 
   /** True when active power source is full EV (not Hybrid). */
   function isEvMode(car) {
@@ -1484,6 +1497,9 @@
   function resetLiveReadoutIdle() {
     rpmGauge.setValue(0);
     speedGauge.setValue(0);
+    rpmGauge.hubDisplay = null;
+    speedGauge.hubDisplay = null;
+    if (typeof syncHubReadouts === 'function') syncHubReadouts();
     $('liveGear').textContent = '—';
     $('liveRpm').textContent = '—';
     $('liveMph').textContent = '—';
@@ -1538,6 +1554,9 @@
       rpmGauge.setValue(pt.rpm);
     }
     speedGauge.setValue(pt.mph);
+    rpmGauge.hubDisplay = null;
+    speedGauge.hubDisplay = null;
+    syncHubReadouts();
     $('liveGear').textContent = String(pt.gear);
     setGearDigit(pt.gear);
     $('liveRpm').textContent = String(Math.round(pt.rpm));
@@ -1675,6 +1694,8 @@
 
   /** Center START: resume if paused; otherwise full runSim (same as #btnRun). */
   function onGaugeStart() {
+    var cluster = document.querySelector('.gauges.lfa-cluster');
+    if (cluster) cluster.classList.remove('lfa-cluster--snip-freeze');
     if (state.playbackPaused) {
       resumePlayback();
       return;
@@ -1743,6 +1764,8 @@
   // Screenshot / gate helper: ?demoDash=1 freezes canonical snip mid-run look
   try {
     if (/(?:^|[?&])demoDash=1(?:&|$)/.test(location.search || '')) {
+      var cluster = document.querySelector('.gauges.lfa-cluster');
+      if (cluster) cluster.classList.add('lfa-cluster--snip-freeze');
       setGearDigit(3);
       var slipEl = $('slipLight');
       if (slipEl) slipEl.classList.add('slip-light--demo', 'on');
@@ -1774,6 +1797,7 @@
           speedGauge.value = 155; speedGauge.display = 155;
           rpmGauge.draw();
           speedGauge.draw();
+          syncHubReadouts();
         } catch (ePaint) { /* ignore */ }
       }
       paintDash();

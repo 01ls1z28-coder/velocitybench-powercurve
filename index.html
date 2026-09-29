@@ -194,6 +194,12 @@
             <div class="gauge-wrap gauge-wrap--tach"><canvas id="rpmGauge" width="340" height="340"></canvas></div>
             <div class="gauge-wrap gauge-wrap--speedo"><canvas id="speedGauge" width="340" height="340"></canvas></div>
           </div>
+          <div class="gauge-hub-readout gauge-hub-readout--tach" aria-hidden="true">
+            <span class="gauge-hub-value" id="rpmHubValue">0</span>
+          </div>
+          <div class="gauge-hub-readout gauge-hub-readout--speedo" aria-hidden="true">
+            <span class="gauge-hub-value" id="speedHubValue">0</span>
+          </div>
           <div class="gauge-center" aria-label="Gear traction shift">
               <div class="gear-digit" id="gearDigit" title="Current gear" aria-live="polite">
                 <strong class="gear-digit-value" id="gearDigitValue">—</strong>
