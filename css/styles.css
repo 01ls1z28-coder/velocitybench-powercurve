@@ -1436,12 +1436,17 @@ body {
       0 0 10px rgba(212,184,137,0.08),
       0 3px 10px rgba(0,0,0,0.28);
   }
+  /* Label fit: TRACTION % must stay inside brass card (Jorge reject of 081a6a8) */
   .traction-meter-label {
-    font-size: clamp(7px, 1.25cqh, 10px);
-    letter-spacing: 0.14em;
+    font-size: clamp(6.5px, 1.12cqh, 9px);
+    letter-spacing: 0.05em;
     opacity: 1;
     color: var(--inst-brass-text, #f0e2c4);
     text-shadow: 0 0 8px rgba(212,184,137,0.28);
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 1px;
   }
   .traction-meter-segs {
     /* Fit fix: 20-col grid + rim inset — ticks never float past brass track */
@@ -1758,18 +1763,23 @@ body {
     height: clamp(16px, 3.5cqw, 28px);
   }
   .wheel-spin-line { font-size: clamp(5px, 1.1cqw, 8px); letter-spacing: 0.12em; }
+  /* Label fit: same class of overflow as desktop — shrink tracking/type + widen card a hair */
   .traction-meter-label {
-    font-size: clamp(5px, 1.2cqw, 9px);
-    letter-spacing: 0.08em;
+    font-size: clamp(5px, 1.05cqw, 7.5px);
+    letter-spacing: 0.04em;
     white-space: nowrap;
     color: var(--inst-brass-text, #f0e2c4);
     opacity: 1;
     text-shadow: 0 0 6px rgba(212,184,137,0.25);
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 1px;
   }
   /* Landscape TRACTION — same champagne + rim-fit as desktop (portrait MQ untouched) */
   .traction-meter {
-    width: 88%;
-    padding: 4px 4px 3px;
+    width: 94%;
+    padding: 4px 5px 3px;
     gap: 3px;
     border-color: rgba(212,184,137,0.42);
     background:
