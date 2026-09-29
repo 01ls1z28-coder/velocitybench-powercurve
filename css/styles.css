@@ -343,13 +343,14 @@ body {
 /* ——— Live twin-gauge cluster — dense CSS-grid pack (NO snip/wallpaper) ——— */
 .gauges, .gauges.lfa-cluster {
   position: relative;
-  /* Grid: max dials | center corridor | max dials, then full-width buttons */
+  /* Grid: max dials | tight center corridor | max dials, then full-width buttons
+     Desktop packs like mobile space-optimize — kill corridor voids. */
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(96px, 0.22fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(84px, 0.168fr) minmax(0, 1fr);
   grid-template-rows: auto auto;
   align-items: stretch;
-  column-gap: clamp(4px, 0.8%, 10px);
-  row-gap: clamp(5px, 0.8cqw, 8px);
+  column-gap: clamp(2px, 0.45%, 6px);
+  row-gap: clamp(3px, 0.55cqw, 6px);
   margin-bottom: 14px;
   min-width: 0;
   width: 100%;
@@ -359,7 +360,7 @@ body {
   height: auto;
   box-sizing: border-box;
   container-type: inline-size;
-  padding: clamp(4px, 0.6%, 8px) clamp(5px, 0.7%, 9px) clamp(5px, 0.7%, 9px);
+  padding: clamp(3px, 0.45%, 6px) clamp(3px, 0.5%, 6px) clamp(3px, 0.5%, 6px);
   border: 1px solid var(--inst-brass);
   border-radius: calc(var(--radius) + 2px);
   box-shadow:
@@ -485,14 +486,14 @@ body {
   align-items: center;
   /* Fill dial-row height: gear at top, LEDs at bottom → buttons flush under */
   justify-content: space-between;
-  gap: clamp(2px, 0.5cqw, 5px);
+  gap: clamp(2px, 0.4cqw, 4px);
   width: 100%;
   max-width: none;
   min-width: 0;
   height: auto;
   align-self: stretch;
   margin: 0;
-  padding: 0;
+  padding: 2px 0;
   box-sizing: border-box;
   transform: none;
 }
@@ -527,8 +528,8 @@ body {
 .gear-digit {
   position: relative;
   flex: 0 0 auto;
-  width: 86%;
-  min-width: 56px;
+  width: 82%;
+  min-width: 48px;
   aspect-ratio: 1 / 1;
   height: auto;
   box-sizing: border-box;
@@ -550,7 +551,7 @@ body {
 }
 .gear-digit-value {
   font-family: "Courier New", ui-monospace, monospace;
-  font-size: clamp(28px, 6.5cqh, 58px);
+  font-size: clamp(24px, 5.8cqh, 52px);
   font-weight: 700;
   color: #f7f9fc;
   line-height: 1;
@@ -575,7 +576,7 @@ body {
     rgba(5,7,10,0.55);
   border: 1px solid rgba(212,184,137,0.18);
   border-radius: 10px;
-  padding: 6px 6px 5px;
+  padding: 4px 4px 3px;
   box-shadow: inset 0 1px 0 rgba(255,246,224,0.05);
 }
 .wheel-spin.on,
@@ -596,8 +597,8 @@ body {
 }
 .wheel-spin-mark {
   display: block;
-  width: clamp(30px, 4.8cqw, 48px);
-  height: clamp(26px, 4cqw, 40px);
+  width: clamp(24px, 3.8cqw, 40px);
+  height: clamp(20px, 3.2cqw, 34px);
   filter: drop-shadow(0 0 4px rgba(255,196,64,0.0));
 }
 .wheel-spin.on .wheel-spin-mark,
@@ -634,14 +635,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 4px;
+  gap: 3px;
   justify-content: flex-start;
   background:
     linear-gradient(180deg, rgba(255,246,224,0.05), transparent 70%),
     rgba(5,7,10,0.85);
   border-radius: 6px;
   border: 1px solid rgba(212,184,137,0.22);
-  padding: 5px 5px 4px;
+  padding: 4px 4px 3px;
   box-shadow: inset 0 1px 0 rgba(255,246,224,0.06);
 }
 .traction-meter-label {
@@ -668,10 +669,10 @@ body {
   justify-content: space-between;
   gap: 1px;
   width: 100%;
-  height: 14px;
-  min-height: 12px;
-  max-height: 18px;
-  padding: 2px 3px;
+  height: 12px;
+  min-height: 10px;
+  max-height: 15px;
+  padding: 1px 2px;
   border-radius: 4px;
   background:
     linear-gradient(180deg, #0a0c10, #050608);
@@ -707,17 +708,24 @@ body {
 .shift-led-bar {
   position: relative;
   flex: 0 0 auto;
-  align-self: center;
-  width: 96%;
+  align-self: stretch; /* full corridor width → max room for 8 LEDs */
+  width: 100%;
+  max-width: 100%;
   height: auto;
-  min-height: clamp(24px, 4.6cqh, 36px);
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 4px 7px;
-  border: 2.5px solid rgba(224,198,148,0.95);
+  padding: 3px 4px;
+  border: 2px solid rgba(224,198,148,0.95);
   border-radius: 999px;
+  /* CRITICAL: clip LED glows so they never spill onto dials / TRACTION / buttons */
+  overflow: hidden;
+  isolation: isolate;
+  /* LEDs size against THIS bar width (not the outer cluster) */
+  container-type: inline-size;
+  container-name: shiftled;
   background:
     linear-gradient(180deg, rgba(255,246,224,0.18), transparent 48%),
     linear-gradient(180deg, #12151c, #05070a);
@@ -725,21 +733,22 @@ body {
     inset 0 0 0 1px rgba(70,55,35,0.75),
     inset 0 0 0 3px rgba(160,135,95,0.45),
     inset 0 2px 6px rgba(0,0,0,0.55),
-    0 0 14px rgba(212,184,137,0.14);
+    0 0 10px rgba(212,184,137,0.12);
   transform: none;
 }
 .shift-led-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3%;
+  gap: clamp(1px, 1.6cqw, 3px);
   width: 100%;
-  height: 100%;
+  min-width: 0;
 }
 .shift-led {
+  /* Fit 8 LEDs + gaps inside bar content box; cqw = shiftled bar */
   flex: 0 0 auto;
-  width: clamp(11px, 2.2cqh, 18px);
-  height: clamp(11px, 2.2cqh, 18px);
+  width: clamp(6px, 11.2cqw, 12px);
+  height: clamp(6px, 11.2cqw, 12px);
   border-radius: 50%;
   background:
     radial-gradient(circle at 35% 30%, #2a2620, #0c0a08);
@@ -751,43 +760,44 @@ body {
 .shift-led.is-on.shift-led--g {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #9dffb4, #2ae05a 55%, #0a8a30);
+    radial-gradient(circle at 35% 28%, #b8ffc8, #2ae05a 55%, #0a8a30);
+  /* Bloom clipped by .shift-led-bar overflow:hidden — fills pill, never spills out */
   box-shadow:
-    0 0 10px rgba(61,255,106,0.85),
-    0 0 20px rgba(61,255,106,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.45);
+    0 0 3px rgba(61,255,106,1),
+    0 0 6px rgba(61,255,106,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.5);
 }
 .shift-led.is-on.shift-led--a {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #ffe08a, #ffb024 55%, #b07010);
+    radial-gradient(circle at 35% 28%, #ffe6a0, #ffb024 55%, #b07010);
   box-shadow:
-    0 0 10px rgba(255,176,36,0.85),
-    0 0 20px rgba(255,176,36,0.38),
-    inset 0 1px 0 rgba(255,255,255,0.4);
+    0 0 3px rgba(255,176,36,1),
+    0 0 6px rgba(255,176,36,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .shift-led.is-on.shift-led--r {
   opacity: 1;
   background:
-    radial-gradient(circle at 35% 28%, #ff9a9a, #ff4040 55%, #a01010);
+    radial-gradient(circle at 35% 28%, #ffb0b0, #ff4040 55%, #a01010);
   box-shadow:
-    0 0 11px rgba(255,50,50,0.9),
-    0 0 22px rgba(255,40,40,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.4);
+    0 0 3px rgba(255,50,50,1),
+    0 0 7px rgba(255,40,40,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .shift-led-bar.is-approaching {
   border-color: rgba(255, 180, 40, 0.7);
   box-shadow:
     inset 0 0 0 1px rgba(70,55,35,0.75),
     inset 0 0 0 3px rgba(160,135,95,0.45),
-    0 0 16px rgba(255,176,36,0.28);
+    0 0 8px rgba(255,176,36,0.22);
 }
 .shift-led-bar.is-shift {
   border-color: rgba(255, 60, 60, 0.85);
   box-shadow:
     inset 0 0 0 1px rgba(70,55,35,0.75),
     inset 0 0 0 3px rgba(160,135,95,0.45),
-    0 0 18px rgba(255,40,40,0.4);
+    0 0 9px rgba(255,40,40,0.28);
 }
 @keyframes shift-led-flash {
   from { filter: brightness(0.7); }
@@ -806,8 +816,8 @@ body {
   justify-self: center;
   align-self: stretch;
   margin: 0;
-  width: min(56%, 580px);
-  min-height: clamp(30px, 3.8cqw, 44px);
+  width: min(52%, 520px);
+  min-height: clamp(26px, 3.2cqw, 38px);
   height: auto;
   display: flex;
   flex-direction: row;
@@ -1111,6 +1121,36 @@ body {
   .metrics { grid-template-columns: 1fr 1fr; }
 }
 
+
+/* ---- Instruments — DESKTOP pack (kill corridor voids; LEDs pinned to dial bottoms) ---- */
+@media (min-width: 901px) {
+  .gauges, .gauges.lfa-cluster {
+    /* Corridor tight enough for 8 in-pill LEDs; dials dominate remainder */
+    grid-template-columns: minmax(0, 1fr) minmax(84px, 0.168fr) minmax(0, 1fr);
+    column-gap: clamp(2px, 0.4%, 5px);
+    row-gap: clamp(3px, 0.5cqw, 5px);
+    padding: clamp(3px, 0.4%, 5px) clamp(3px, 0.45%, 5px) clamp(3px, 0.45%, 5px);
+  }
+  .gauge-center-stack {
+    justify-content: flex-start;
+    gap: clamp(4px, 0.55cqw, 7px);
+    padding: 2px 0 0;
+  }
+  /* Pack: gear+Wheel Spin at top; TRACTION+LEDs at dial bottoms (no mid void) */
+  .traction-meter {
+    margin-top: auto;
+  }
+  .shift-led-bar {
+    margin-top: 0;
+  }
+  .gauge-run-row {
+    width: min(50%, 500px);
+    min-height: clamp(26px, 3cqw, 36px);
+  }
+  .gear-digit { width: 78%; min-width: 52px; }
+  .wheel-spin { padding: 5px 5px 4px; }
+}
+
 /* ---- Instruments — phones/tablets PORTRAIT (grid pack) ---- */
 @media (max-width: 900px) and (orientation: portrait) {
   .gauges, .gauges.lfa-cluster {
@@ -1142,11 +1182,16 @@ body {
   .traction-meter-segs { height: 9px; min-height: 8px; max-height: 12px; padding: 1px 2px; }
   .shift-led-bar {
     width: 100%;
-    min-height: clamp(12px, 3.2cqw, 20px);
+    min-height: 0;
     padding: 2px 3px;
     border-width: 2px;
+    overflow: hidden;
   }
-  .shift-led { width: clamp(6px, 2cqw, 10px); height: clamp(6px, 2cqw, 10px); }
+  .shift-led {
+    flex: 0 0 auto;
+    width: clamp(5px, 11cqw, 10px);
+    height: clamp(5px, 11cqw, 10px);
+  }
   .gauge-run-row {
     width: min(72%, 420px);
     min-height: clamp(22px, 6cqw, 30px);
@@ -1205,11 +1250,16 @@ body {
   .traction-meter-segs { height: 10px; min-height: 9px; max-height: 13px; padding: 1px 2px; }
   .shift-led-bar {
     width: 100%;
-    min-height: clamp(14px, 2.8cqw, 24px);
-    padding: 2px 4px;
+    min-height: 0;
+    padding: 2px 3px;
     border-width: 2px;
+    overflow: hidden;
   }
-  .shift-led { width: clamp(7px, 1.8cqw, 12px); height: clamp(7px, 1.8cqw, 12px); }
+  .shift-led {
+    flex: 0 0 auto;
+    width: clamp(5px, 11.2cqw, 11px);
+    height: clamp(5px, 11.2cqw, 11px);
+  }
   .gauge-run-row {
     width: min(48%, 520px);
     min-height: clamp(22px, 3.6cqw, 32px);
