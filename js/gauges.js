@@ -422,12 +422,13 @@
       ctx.fillText(this.label || '', cx, cy - R * 0.20);
     }
 
-    // Recessed digital well (snip)
+    // Recessed digital well — more pronounced (snip)
     var wellY = cy + R * 0.32;
-    var wellW = Math.max(70, R * 0.52);
-    var wellH = Math.max(28, R * 0.20);
+    var wellW = Math.max(78, R * 0.56);
+    var wellH = Math.max(32, R * 0.22);
+    var wr = Math.max(5, wellH * 0.22);
+    // Outer bevel (lighter top edge)
     ctx.beginPath();
-    // rounded rect
     (function (x, y, w, h, r) {
       ctx.moveTo(x + r, y);
       ctx.arcTo(x + w, y, x + w, y + h, r);
@@ -435,11 +436,34 @@
       ctx.arcTo(x, y + h, x, y, r);
       ctx.arcTo(x, y, x + w, y, r);
       ctx.closePath();
-    })(cx - wellW / 2, wellY - wellH / 2, wellW, wellH, Math.max(4, wellH * 0.18));
-    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    })(cx - wellW / 2 - 1.5, wellY - wellH / 2 - 1.5, wellW + 3, wellH + 3, wr + 1);
+    ctx.fillStyle = 'rgba(40,36,28,0.85)';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(232,215,176,0.22)';
-    ctx.lineWidth = 1;
+    // Deep well fill
+    ctx.beginPath();
+    (function (x, y, w, h, r) {
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    })(cx - wellW / 2, wellY - wellH / 2, wellW, wellH, wr);
+    var wellGrad = ctx.createLinearGradient(cx, wellY - wellH / 2, cx, wellY + wellH / 2);
+    wellGrad.addColorStop(0, '#050608');
+    wellGrad.addColorStop(0.45, '#0a0c10');
+    wellGrad.addColorStop(1, '#12161c');
+    ctx.fillStyle = wellGrad;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(232,215,176,0.38)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    // Inner shadow lip
+    ctx.strokeStyle = 'rgba(0,0,0,0.65)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx - wellW / 2 + wr, wellY - wellH / 2 + 1.2);
+    ctx.lineTo(cx + wellW / 2 - wr, wellY - wellH / 2 + 1.2);
     ctx.stroke();
 
     // Blue 7-seg hub digits at bottom of face
