@@ -4,7 +4,8 @@
  * Faithful JS port of CarTestClone Physics/PhysicsEngine.cs:
  *   mechRpm = wheelRpm * gearRatio * finalDrive
  *   wheelTorque = engineTQ(rpm) * gear * FD * (1 - loss)
- *   shift at shiftRpm with delay; converter stall/flash; traction clamp
+ *   shift at shiftRpm with delay; converter stall/flash; soft traction +
+ *   driveline compliance (Dragy-like g); soft shift release/engage
  *
  * VB extensions: weather/DA, wind+gusts, FI boost models, EV + Hybrid power sources,
  * F/R + L/R weight distribution (axle normals, transfer, open/LSD traction), editable factory TX ratios.
@@ -121,14 +122,15 @@
   var CalibrationFactor = 0.95;
 
   /**
-   * Shift-coast residual drive by transmission family.
-   * While shifting, wheel torque is NOT hard-zeroed — a TX-typed fraction of the
-   * last non-shift wheel torque carries through (clutch open / TC / DCT overlap / EV).
+   * Shift-coast residual HOLE floor by transmission family.
+   * Soft release → hole hold → post-shift engage (optional tip overshoot).
+   * Automatic/ATC uses a SHALLOW residual (Dragy slight notch, not deep well).
+   * No decorative IMU noise — tip envelope from soft traction + driveline + ATC breath.
    * Aero + rolling resistance still apply honestly; velocity integration unchanged.
    */
   var SHIFT_RESIDUAL_DRIVE = {
     manual: 0.10,     // clutch open — mostly coast (0.05–0.15 band)
-    automatic: 0.30,  // TC / planetary fill (0.20–0.40)
+    automatic: 0.55,  // ATC/TC slight notch (Dragy ~0.25–0.35g dip, not cliff)
     dct: 0.60,        // dual-clutch overlap (0.45–0.75); also sequential / bike
     ev: 0.85          // near-seamless (0.70–0.95); rare multi-speed EV shifts
   };
@@ -170,6 +172,125 @@
   function shiftResidualFraction(family) {
     var f = SHIFT_RESIDUAL_DRIVE[family];
     return f != null ? f : SHIFT_RESIDUAL_DRIVE.automatic;
+  }
+
+  /**
+   * Fraction of shiftTime spent releasing into the residual hole.
+   * Remainder holds at hole; engagement is a post-shift ramp (+ optional tip).
+   */
+  var SHIFT_RELEASE_FRACTION = {
+    manual: 0.42,
+    automatic: 0.55,  // brief soft notch (little flat hold)
+    dct: 0.30,
+    ev: 0.25
+  };
+
+  /** Post-shift engagement ramp duration (seconds). */
+  var SHIFT_ENGAGE_TIME = {
+    manual: 0.070,
+    automatic: 0.048, // ATC TC fill + tip
+    dct: 0.035,
+    ev: 0.020
+  };
+
+  /**
+   * Engage tip overshoot vs engaged TQ. ATC: brief push above settle (Dragy spike).
+   * Half-sine shaped — real clutch/TC fill pulse, not random IMU paint.
+   */
+  var SHIFT_ENGAGE_OVERSHOOT = {
+    manual: 0.05,
+    automatic: 0.11,
+    dct: 0.04,
+    ev: 0.00
+  };
+
+  function shiftReleaseFraction(family) {
+    var f = SHIFT_RELEASE_FRACTION[family];
+    return f != null ? f : SHIFT_RELEASE_FRACTION.automatic;
+  }
+  function shiftEngageTime(family) {
+    var t = SHIFT_ENGAGE_TIME[family];
+    return t != null ? t : SHIFT_ENGAGE_TIME.automatic;
+  }
+  function shiftEngageOvershoot(family) {
+    var o = SHIFT_ENGAGE_OVERSHOOT[family];
+    return o != null ? o : SHIFT_ENGAGE_OVERSHOOT.automatic;
+  }
+
+  function smoothstep01(x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    return x * x * (3 - 2 * x);
+  }
+
+  function shiftReleaseTorque(p, lastDriveWhTQ, holeTQ, releaseEnd) {
+    var re = releaseEnd;
+    if (re < 0.12) re = 0.12;
+    if (re > 0.85) re = 0.85;
+    if (p >= re) return holeTQ;
+    var u = smoothstep01(p / re);
+    return lastDriveWhTQ + (holeTQ - lastDriveWhTQ) * u;
+  }
+
+  /** Engage blend with optional half-sine tip overshoot (peaks mid-ramp). */
+  function shiftEngageTorque(e, fromTQ, engagedWhTQ, overshoot) {
+    var u = smoothstep01(e);
+    var os = overshoot > 0 ? overshoot : 0;
+    var tip = os > 0 ? Math.sin(Math.PI * e) : 0;
+    var target = engagedWhTQ * (1 + os * tip);
+    return fromTQ + (target - fromTQ) * u;
+  }
+
+  /**
+   * Grip vs mph — same band anchors as LIVE, but blend ±4 mph across former cliffs
+   * so launch g does not stair-step at exactly 20/40/60 (Dragy continuous envelope).
+   */
+  function gripMultSmooth(mph) {
+    function blend(loMph, hiMph, loG, hiG) {
+      if (mph <= loMph) return loG;
+      if (mph >= hiMph) return hiG;
+      return loG + (hiG - loG) * smoothstep01((mph - loMph) / (hiMph - loMph));
+    }
+    // LIVE: <20 LT20, <40 20_40, <60 40_60, else 1. Soften only the boundaries.
+    if (mph < 16) return GRIP_LT20;
+    if (mph < 24) return blend(16, 24, GRIP_LT20, GRIP_20_40);
+    if (mph < 36) return GRIP_20_40;
+    if (mph < 44) return blend(36, 44, GRIP_20_40, GRIP_40_60);
+    if (mph < 56) return GRIP_40_60;
+    if (mph < 64) return blend(56, 64, GRIP_40_60, 1.0);
+    return 1.0;
+  }
+
+  /**
+   * Drive-force scale vs mph — LIVE FORCE_LT30 / FORCE_GT60 anchors with narrow
+   * blends at 30 and 60 so force does not cliff (keeps ET near LIVE).
+   */
+  function driveForceMultSmooth(mph) {
+    if (mph < 26) return FORCE_LT30;
+    if (mph < 34) {
+      return FORCE_LT30 + (1.0 - FORCE_LT30) * smoothstep01((mph - 26) / 8);
+    }
+    if (mph <= 56) return 1.0;
+    if (mph < 68) {
+      return 1.0 + (FORCE_GT60 - 1.0) * smoothstep01((mph - 56) / 12);
+    }
+    return FORCE_GT60;
+  }
+
+  /**
+   * Soft tire traction knee — asymptote above tracLim so launch tips then settles
+   * (Dragy sharp launch spike character) instead of a flat brick-wall g shelf.
+   */
+  function softTractionForce(driveF, tracLim, overshootFrac) {
+    if (tracLim <= 1e-9) return 0;
+    if (driveF <= tracLim) return driveF;
+    var over = overshootFrac != null ? overshootFrac : 0.12;
+    if (over < 0) over = 0;
+    if (over > 0.22) over = 0.22;
+    var ceil = tracLim * (1 + over);
+    var excess = driveF - tracLim;
+    var span = Math.max(tracLim * 0.55, 1);
+    return tracLim + (ceil - tracLim) * (excess / (excess + span));
   }
 
   var FactoryTransmissions = {
@@ -743,8 +864,33 @@
     var tcPostShiftMechSeed = 0; // turbine at unlock; hang lerps seed→shift with mech progress
     var shiftFamily = resolveShiftDriveFamily(car);
     var shiftResidualFrac = shiftResidualFraction(shiftFamily);
-    var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
-    var shiftProbe = env.shiftCoastProbe ? { family: shiftFamily, residual: shiftResidualFrac, n: 0, sumA: 0, minA: Infinity, sumWhTQ: 0, minWhTQ: Infinity } : null;
+    var shiftReleaseFrac = shiftReleaseFraction(shiftFamily);
+    var shiftEngageDur = shiftEngageTime(shiftFamily);
+    var shiftEngageOS = shiftEngageOvershoot(shiftFamily);
+    var lastDriveWhTQ = 0; // last applied (post-ATC) wheel torque — shift blend source
+    var engageTimer = 0;
+    var engageFromTQ = 0;
+    // Driveline compliance (half-shaft / converter) — underdamped force tracker
+    var dlForce = 0;
+    var dlVel = 0;
+    var DL_WN = 110.0;  // rad/s ≈ 17.5 Hz — snappy (ET honesty)
+    var DL_ZETA = 0.58; // tip on engage/launch, quick settle
+    var peakEngTQRef = 0;
+    if (curve) {
+      if (Array.isArray(curve)) {
+        for (var ci = 0; ci < curve.length; ci++) {
+          var ct = Number(curve[ci] && (curve[ci].torque != null ? curve[ci].torque : curve[ci].tq));
+          if (ct > peakEngTQRef) peakEngTQRef = ct;
+        }
+      } else {
+        Object.keys(curve).forEach(function (k) {
+          var ct = Number(curve[k]);
+          if (ct > peakEngTQRef) peakEngTQRef = ct;
+        });
+      }
+    }
+    if (peakEngTQRef < 50) peakEngTQRef = 400;
+    var shiftProbe = env.shiftCoastProbe ? { family: shiftFamily, residual: shiftResidualFrac, release: shiftReleaseFrac, engageS: shiftEngageDur, overshoot: shiftEngageOS, n: 0, sumA: 0, minA: Infinity, sumWhTQ: 0, minWhTQ: Infinity } : null;
     var spinSum = 0, spinN = 0, prevA = 0;
     var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
     var hitHalf = false, hitMile = false;
@@ -769,7 +915,11 @@
     while (!vmaxDone && t <= MAX_T) {
       if (shifting) {
         shiftTimer -= DT;
-        if (shiftTimer <= 0) shifting = false;
+        if (shiftTimer <= 0) {
+          shifting = false;
+          engageFromTQ = lastDriveWhTQ * shiftResidualFrac;
+          engageTimer = shiftEngageDur;
+        }
       }
 
       var inLaunch = (t < LAUNCH_HOLD && v < LAUNCH_V_THRESH) || (dist < LAUNCH_DIST_M && t < LAUNCH_HOLD + 0.4);
@@ -983,6 +1133,7 @@
         gear++;
         shifting = true;
         shiftTimer = shiftTime;
+        engageTimer = 0;
         result.totalShifts++;
         // Record shift marker for SPEED VS DISTANCE chart (gear # + MPH @ distance/time)
         result.shifts.push({
@@ -1021,57 +1172,70 @@
 
       var gRatio = gears[Math.min(gear, gears.length) - 1];
       var fullWhTQ = engTQ * gRatio * finalDrive;
-      var whTQ;
-      if (shifting) {
-        // TX-typed residual of pre-shift (last non-shift) wheel torque — not a hard zero-cut.
-        // Manual ≈ coast; auto/TC partial fill; DCT overlap; EV near-seamless.
-        whTQ = lastDriveWhTQ * shiftResidualFrac;
-      } else {
-        whTQ = fullWhTQ;
-        lastDriveWhTQ = fullWhTQ;
-      }
       var mph = v * MPS_TO_MPH;
 
-      if (!shifting && car.hasAftermarketConverter) {
+      // Engaged next-gear wheel torque (ATC multiply included for continuous engage end).
+      var engagedWhTQ = fullWhTQ;
+      if (car.hasAftermarketConverter) {
         // Torque multiplication from converter slip: ~2.1× at stall → 1.0 at lockup.
         // Stall 1500→5500 scales multiply; Circle D 4400 anchored to LIVE leave/unlock math.
         var mech = wheelRpm * gRatio * finalDrive;
         var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
+        // Load-breathing residual TC slip when coupled — deterministic from crank TQ
+        // load (not random). Tip-spike envelope between shifts as RPM climbs curve.
+        if (tcPostShiftHangRpm <= 0 && mph > 18) {
+          var load = clamp(engTQ / peakEngTQRef, 0.25, 1.15);
+          var breath = 0.010 + 0.032 * load * load; // ~1–4.5% slip
+          if (slipR < breath) slipR = breath;
+        }
         var stallN = Number(car.stallRpm) || 2800;
         var stallFacN = clamp((stallN - 1500) / 4000, 0, 1);
-        // LIVE used stallBoost≈0.196 @4400 ((4400-2200)/2800*0.25). Keep that at 4400;
-        // widen endpoints so 1500 is tighter and 5500 is looser.
-        var stallBoost = 0.196 + (stallFacN - 0.725) * 0.55; // ~0@1500, 0.196@4400, ~0.35@5500
+        var stallBoost = 0.196 + (stallFacN - 0.725) * 0.55;
         if (stallBoost < 0) stallBoost = 0;
         var tMult = 1.0 + Math.min(1.35, slipR * (2.2 + stallBoost));
         if (mph > 15.0) {
-          // Extra fade with road speed; high stall fades later, low stall earlier.
-          var fadeSpan = 40.0 + (stallFacN - 0.725) * 40.0; // 40@4400 identity
+          var fadeSpan = 40.0 + (stallFacN - 0.725) * 40.0;
           if (fadeSpan < 22) fadeSpan = 22;
           if (fadeSpan > 62) fadeSpan = 62;
           var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / fadeSpan));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
         if (tcPostShiftHangRpm > 0) {
-          // Mild parent unlock (preserves 60ft / 0-60) + mph-gated extra multiply
-          // for trap; postFade softens past ~125 mph so 60-130 does not overshoot.
-          // stallUnlock=1 exactly at Circle D 4400; scales endpoints only.
           var baseAdd = Math.min(0.055, slipR * 0.22);
           var speedGate = clamp((mph - 62.0) / 40.0, 0, 1);
           var postFade = 0.05 + 0.95 * clamp((125.0 - mph) / 8.0, 0, 1);
-          var stallUnlock = 1.06 + (stallFacN - 0.725) * 1.20; // ~1.06@4400 (trap nudge); endpoints diverge
+          var stallUnlock = 1.06 + (stallFacN - 0.725) * 1.20;
           if (stallUnlock < 0.12) stallUnlock = 0.12;
           if (stallUnlock > 1.50) stallUnlock = 1.50;
           var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate * postFade * stallUnlock;
           var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade * stallUnlock;
           tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
         }
-        whTQ *= tMult;
+        engagedWhTQ = fullWhTQ * tMult;
+      }
+
+      var whTQ;
+      if (shifting) {
+        var shiftDur = shiftTime > 1e-6 ? shiftTime : 1e-6;
+        var pShift = 1 - clamp(shiftTimer / shiftDur, 0, 1);
+        var holeTQ = lastDriveWhTQ * shiftResidualFrac;
+        whTQ = shiftReleaseTorque(pShift, lastDriveWhTQ, holeTQ, shiftReleaseFrac);
+      } else if (engageTimer > 0) {
+        var engDur = shiftEngageDur > 1e-6 ? shiftEngageDur : 1e-6;
+        var pEng = 1 - clamp(engageTimer / engDur, 0, 1);
+        whTQ = shiftEngageTorque(pEng, engageFromTQ, engagedWhTQ, shiftEngageOS);
+        engageTimer -= DT;
+        if (engageTimer <= 0) {
+          engageTimer = 0;
+          lastDriveWhTQ = engagedWhTQ;
+        }
+      } else {
+        whTQ = engagedWhTQ;
+        lastDriveWhTQ = engagedWhTQ;
       }
 
       var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
-      if (mph < 30.0) driveF *= FORCE_LT30;
-      if (mph > 60.0) driveF *= FORCE_GT60;
+      driveF *= driveForceMultSmooth(mph);
       if (inLaunch && launchDriveMult !== 1.0) driveF *= launchDriveMult;
 
       var airV = relativeAirspeedMps(v, windMph, windDir, gustMph, t);
@@ -1090,9 +1254,7 @@
       if (inLaunch && launchMuMult !== 1.0) {
         mu = muBase * launchMuMult;
       }
-      if (mph < 20.0) mu *= GRIP_LT20;
-      else if (mph < 40.0) mu *= GRIP_20_40;
-      else if (mph < 60.0) mu *= GRIP_40_60;
+      mu *= gripMultSmooth(mph);
 
       /**
        * Per-axle traction with L/R split.
@@ -1127,30 +1289,48 @@
         // RWD — drive axle is rear (gains load under accel)
         tracLim = axleTractionLimit(nRear, mu, leftPct);
       }
-      var applied = driveF;
+      var appliedCmd = driveF;
       var spinPct = 0;
-      if (applied > tracLim && tracLim > 0) {
-        var slip = (applied - tracLim) / applied;
-        spinSum += slip;
-        spinN++;
-        spinPct = slip * 100.0;
-        // slipTarget live: Soft clamps clean; Aggressive keeps a band of excess so
-        // full-drive hot leave still puts power down on slicks (not mu-starved slowest).
-        // Auto / outside band: hard clamp (prior behavior).
-        if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
-          // Keep more excess on slicks so hotter flash/drive actually accelerates
-          var band = Math.max(0.20, slipTarget * 1.6);
-          var keep = clamp(1.0 - slip / band, 0.40, 0.85);
-          applied = tracLim + (applied - tracLim) * keep;
-        } else {
-          applied = tracLim;
+      if (tracLim > 0 && driveF > 0) {
+        // Decaying launch tip (Dragy sharp spike → settle). Steady overshoot ~0
+        // so mean force ≈ LIVE hard-clamp when deep in limit (ET honesty).
+        var tip = t < 0.40 ? Math.exp(-t / 0.10) : 0;
+        var overshoot = 0.005 + 0.07 * tip; // peak ~0.075 early → settle ~0.005 (near LIVE)
+        if (launchMode === 'aggressive') overshoot = 0.01 + 0.10 * tip;
+        else if (launchMode === 'soft') overshoot = 0.0 + 0.05 * tip;
+        appliedCmd = softTractionForce(driveF, tracLim, overshoot);
+        if (driveF > tracLim) {
+          var slip = (driveF - tracLim) / driveF;
+          spinSum += slip;
+          spinN++;
+          spinPct = slip * 100.0;
+          if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
+            var band = Math.max(0.20, slipTarget * 1.6);
+            var keep = clamp(1.0 - slip / band, 0.35, 0.80);
+            var softCeil = tracLim * (1 + overshoot);
+            appliedCmd = appliedCmd + (Math.min(driveF, softCeil * 1.05) - appliedCmd) * keep * 0.35;
+          }
         }
       }
 
       prevSpinPct = spinPct;
 
       // forceScale is retired as a calibration knob — always 1.0 (garage must bake fs=1).
-      applied *= CalibrationFactor;
+      appliedCmd *= CalibrationFactor;
+
+      // Underdamped driveline — tip-spikes on launch/shift/ATC TQ changes (real compliance).
+      var dlErr = appliedCmd - dlForce;
+      var dlAcc = DL_WN * DL_WN * dlErr - 2.0 * DL_ZETA * DL_WN * dlVel;
+      dlVel += dlAcc * DT;
+      dlForce += dlVel * DT;
+      if (dlForce < 0 && appliedCmd >= 0) dlForce = 0;
+      // Cap tip overshoot (~8% above command) — Dragy tips without fantasy 2g peaks
+      var dlCap = appliedCmd >= 0 ? appliedCmd * 1.06 : appliedCmd;
+      if (appliedCmd >= 0 && dlForce > dlCap) {
+        dlForce = dlCap;
+        if (dlVel > 0) dlVel *= 0.45;
+      }
+      var applied = dlForce;
 
       var net = applied - dragF - rollF;
       // Allow negative net after launch so aero can balance at Vmax
@@ -1305,6 +1485,9 @@
       result.shiftCoastProbe = {
         family: shiftProbe.family,
         residual: shiftProbe.residual,
+        release: shiftProbe.release,
+        engageS: shiftProbe.engageS,
+        overshoot: shiftProbe.overshoot,
         samples: shiftProbe.n,
         minAccel: shiftProbe.n ? shiftProbe.minA : null,
         avgAccel: shiftProbe.n ? shiftProbe.sumA / shiftProbe.n : null,
@@ -1329,8 +1512,20 @@
     hybridAssistTorqueLbFt: hybridAssistTorqueLbFt,
     FactoryTransmissions: FactoryTransmissions,
     SHIFT_RESIDUAL_DRIVE: SHIFT_RESIDUAL_DRIVE,
+    SHIFT_RELEASE_FRACTION: SHIFT_RELEASE_FRACTION,
+    SHIFT_ENGAGE_TIME: SHIFT_ENGAGE_TIME,
+    SHIFT_ENGAGE_OVERSHOOT: SHIFT_ENGAGE_OVERSHOOT,
     resolveShiftDriveFamily: resolveShiftDriveFamily,
     shiftResidualFraction: shiftResidualFraction,
+    shiftReleaseFraction: shiftReleaseFraction,
+    shiftEngageTime: shiftEngageTime,
+    shiftEngageOvershoot: shiftEngageOvershoot,
+    smoothstep01: smoothstep01,
+    shiftReleaseTorque: shiftReleaseTorque,
+    shiftEngageTorque: shiftEngageTorque,
+    gripMultSmooth: gripMultSmooth,
+    driveForceMultSmooth: driveForceMultSmooth,
+    softTractionForce: softTractionForce,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
     TIRE_LABELS: TIRE_LABELS,
