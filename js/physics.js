@@ -733,6 +733,7 @@
 
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
     var launchLocked = false; // after first catch, always follow mechRpm (preserve shift drops)
+    var prevSpinPct = 0; // prior-step wheelspin % — shapes stock flash/dip (vehicle-varying)
     var shifting = false, shiftTimer = 0;
     // ATC post-upshift hang: engine RPM floor after unlock-on-shift (0 = inactive).
     // Launch flash/stall/mph-lockup path is untouched when this is 0.
@@ -872,35 +873,107 @@
           }
         } else {
           /**
-           * Stock slip→lockup (ATC off) — same idea as ATC without stall/flash:
-           * - Seed tach at leaveRpm (launchRpm; absurd ICE values seeded to peak-TQ band).
-           * - Blend leave → max(mech, leave) so tach never sags below leave while slipped.
-           * - After first lock (mech caught leave): always follow mechRpm — including after
-           *   shifts (new-gear mech may be below leave; must NOT re-hold leave).
-           * - Manuals: short clutch fade (time ~0.55 s and/or ~28 mph).
-           * - Autos / DCT / EV: lock as soon as mechRpm catches leaveRpm.
-           * - Shift RPM drop preserved via shift-coast residual + new-gear mechRpm.
+           * Stock slip→lockup (ATC off) — continuous launch tach (no couple=0 hard hold):
+           * - Seed at leaveRpm; once rolling, tach MUST move (flash / dip / crawl / flare).
+           * - AT: mild flash above leave (spin-scaled), then open-converter crawl with mph
+           *   while still slipping — matches stall→acceleration→coupling (not frozen leave).
+           * - MT: clutch-bite dip toward mech when hooked; wheelspin flares toward shift.
+           * - EV: fast couple to mech (no converter drama).
+           * - After first lock (mech caught leave / clutch fade): always follow mechRpm,
+           *   including post-shift (must NOT re-hold leave).
+           * - Shaped by prevSpin + leave/shift headroom so strong vs weak launchers differ.
+           * - ATC flash/stall path above is untouched.
            */
           if (launchLocked) {
             rpm = mechRpm;
           } else {
             var isManual = /^manual$/i.test(String(car.transmission || '').trim());
-            var couple;
-            if (isManual) {
-              couple = Math.max(clamp(mphNow / 28.0, 0, 1), clamp(t / 0.55, 0, 1));
-            } else if (mechRpm >= leaveRpm) {
-              couple = 1;
+            var isEvStock = !!(car.isEv || car.powerSource === 'ev');
+            var stall = leaveRpm;
+            var spinN = clamp((typeof prevSpinPct === 'number' ? prevSpinPct : 0) / 100.0, 0, 1);
+            var headroom = Math.max(200, shiftRpm - stall);
+
+            if (isEvStock) {
+              // EV: near-immediate mech follow once rolling
+              var evCouple = Math.max(
+                clamp(mphNow / 8.0, 0, 1),
+                clamp(mechRpm / Math.max(stall, 1), 0, 1)
+              );
+              rpm = stall * (1 - evCouple) + Math.max(mechRpm, stall) * evCouple;
+              if (evCouple >= 0.85 || mechRpm >= stall) {
+                launchLocked = true;
+                rpm = mechRpm;
+              }
             } else {
-              couple = 0; // hold leave until converter/road catches
-            }
-            var targetRpm = Math.max(mechRpm, leaveRpm);
-            rpm = leaveRpm * (1 - couple) + targetRpm * couple;
-            if (mechRpm >= leaveRpm && couple >= 0.85) {
-              launchLocked = true;
-              rpm = mechRpm;
-            } else if (couple >= 0.995 && mechRpm < leaveRpm) {
-              // Clutch dumped but road not caught yet — keep leave (no sag)
-              rpm = leaveRpm;
+              // Mild stock flash ceiling (well below ATC Circle-D class unless spinning hard)
+              var flashAdd;
+              if (isManual) {
+                flashAdd = headroom * (0.08 + 0.55 * spinN);
+              } else {
+                // Spin-scaled flash stall — stronger launchers (more wheelspin) flash higher
+                flashAdd = Math.min(headroom * 0.40, 280 + 720 * spinN);
+              }
+              var flash = Math.min(shiftRpm, stall + Math.max(120, flashAdd));
+
+              var lockMph = isManual ? 28.0 : 45.0;
+              var flashWinT = isManual ? 0.40 : 0.48;
+              var flashWinMph = isManual ? 20.0 : 26.0;
+              var flashPulse = 0;
+              if (flashWinT > 0.05 && t < flashWinT && mphNow < flashWinMph) {
+                flashPulse = Math.sin((Math.min(t, flashWinT) / flashWinT) * Math.PI);
+              }
+
+              // Open-converter / clutch-slip engine target (moves as soon as rolling)
+              var openRpm;
+              if (isManual && spinN < 0.15) {
+                // Bite dip under load when hooked (HPA) — modest street dip, recovers via crawl
+                var dipTo = Math.max(mechRpm, stall * 0.85);
+                openRpm = stall + (dipTo - stall) * (0.40 * flashPulse);
+              } else {
+                // AT flash / MT spin flare above leave
+                openRpm = stall + (flash - stall) * flashPulse;
+              }
+
+              // Acceleration-phase crawl with mph — continuous tach motion while slipped
+              // (no re-freeze at leave after flash). Weak cars crawl slower (same formula,
+              // less mph progress); strong cars flash higher via spinN then crawl.
+              var mphProg = clamp(mphNow / Math.max(lockMph, 1), 0, 1);
+              var crawlGain = isManual ? 0.24 : 0.42;
+              var crawl = stall + headroom * crawlGain * mphProg;
+              if (crawl > stall + headroom * 0.55) crawl = stall + headroom * 0.55;
+              openRpm = Math.max(openRpm, crawl);
+              if (openRpm > shiftRpm) openRpm = shiftRpm;
+              if (openRpm < 900) openRpm = 900;
+
+              if (mechRpm >= stall) {
+                // Turbine/road caught leave — lock and follow mech (shift drops preserved)
+                launchLocked = true;
+                rpm = mechRpm;
+              } else if (isManual) {
+                // Clutch fade: blend open → mech (allows real bog if dumped hard)
+                var clutch = Math.max(clamp(mphNow / 28.0, 0, 1), clamp(t / 0.55, 0, 1));
+                rpm = openRpm * (1 - clutch) + mechRpm * clutch;
+                if (rpm < 900) rpm = 900;
+                if (clutch >= 0.85 && mechRpm >= stall * 0.92) {
+                  launchLocked = true;
+                  rpm = mechRpm;
+                }
+              } else {
+                // AT open converter: tach tracks openRpm (flash/crawl) while slipped.
+                // Soft-blend toward mech as turbine nears leave (no cliff at catch).
+                var catchProg = clamp(mechRpm / Math.max(stall, 1), 0, 1);
+                var blend = catchProg > 0.65
+                  ? clamp((catchProg - 0.65) / 0.35, 0, 1)
+                  : 0;
+                var nearCouple = clamp(
+                  (mphNow - lockMph * 0.78) / Math.max(lockMph * 0.22, 1),
+                  0, 1
+                );
+                blend = Math.max(blend, nearCouple * 0.45);
+                rpm = openRpm * (1 - blend) + mechRpm * blend;
+                // Stall floor while still heavily open (fluid converter)
+                if (blend < 0.40 && rpm < stall) rpm = stall;
+              }
             }
           }
         }
@@ -1073,6 +1146,8 @@
           applied = tracLim;
         }
       }
+
+      prevSpinPct = spinPct;
 
       // forceScale is retired as a calibration knob — always 1.0 (garage must bake fs=1).
       applied *= CalibrationFactor;
