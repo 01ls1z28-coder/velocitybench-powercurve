@@ -121,14 +121,15 @@
   var CalibrationFactor = 0.95;
 
   /**
-   * Shift-coast residual drive by transmission family.
-   * While shifting, wheel torque is NOT hard-zeroed — a TX-typed fraction of the
-   * last non-shift wheel torque carries through (clutch open / TC / DCT overlap / EV).
+   * Shift-coast residual HOLE floor by transmission family.
+   * Soft release → brief floor → post-shift engage tip-spike. ATC uses a SHALLOW
+   * residual (slight notch, not a deep well) + mid-shift recover climb, then
+   * spikes up on engage (Dragy). No decorative IMU noise. forceScale=1 path.
    * Aero + rolling resistance still apply honestly; velocity integration unchanged.
    */
   var SHIFT_RESIDUAL_DRIVE = {
     manual: 0.10,     // clutch open — mostly coast (0.05–0.15 band)
-    automatic: 0.30,  // TC / planetary fill (0.20–0.40)
+    automatic: 0.52,  // ATC/TC slight notch (NOT deep 0.30 well) — Dragy soft dip
     dct: 0.60,        // dual-clutch overlap (0.45–0.75); also sequential / bike
     ev: 0.85          // near-seamless (0.70–0.95); rare multi-speed EV shifts
   };
@@ -170,6 +171,100 @@
   function shiftResidualFraction(family) {
     var f = SHIFT_RESIDUAL_DRIVE[family];
     return f != null ? f : SHIFT_RESIDUAL_DRIVE.automatic;
+  }
+
+  /**
+   * Fraction of shiftTime spent releasing into the residual hole.
+   * After release, torque HOLDS at the hole until shiftTime ends; engagement
+   * push is a separate post-shift smoothstep (clutch bite / TC fill / DCT lock).
+   * Keeps mid-shift impulse near the residual model (ET/trap honesty) while
+   * removing square a/g cliffs.
+   */
+  var SHIFT_RELEASE_FRACTION = {
+    manual: 0.42,     // clutch out
+    automatic: 0.55,  // ATC shifts fast — brief soft notch, little flat hold
+    dct: 0.30,        // overlap — quicker to hole
+    ev: 0.25          // near-seamless
+  };
+
+  /** Post-shift engagement ramp duration (seconds) by TX family. */
+  var SHIFT_ENGAGE_TIME = {
+    manual: 0.070,    // clutch bite
+    automatic: 0.040, // ATC TC / clutch-pack fill + tip spike
+    dct: 0.035,       // overlap complete
+    ev: 0.020         // inverter slew
+  };
+
+  /**
+   * Engage tip-spike overshoot vs engaged TQ (0 = none).
+   * ATC: brief push ABOVE next-gear settle (Dragy spike-on-engage), then settle.
+   */
+  var SHIFT_ENGAGE_OVERSHOOT = {
+    manual: 0.06,     // clutch bite tip
+    automatic: 0.22,  // ATC slam / TC fill spike (slight notch then SPIKE)
+    dct: 0.04,        // mild overlap tip
+    ev: 0.00          // seamless
+  };
+
+  function shiftReleaseFraction(family) {
+    var f = SHIFT_RELEASE_FRACTION[family];
+    return f != null ? f : SHIFT_RELEASE_FRACTION.automatic;
+  }
+
+  function shiftEngageTime(family) {
+    var t = SHIFT_ENGAGE_TIME[family];
+    return t != null ? t : SHIFT_ENGAGE_TIME.automatic;
+  }
+
+  function shiftEngageOvershoot(family) {
+    var o = SHIFT_ENGAGE_OVERSHOOT[family];
+    return o != null ? o : SHIFT_ENGAGE_OVERSHOOT.automatic;
+  }
+
+  /** Hermite smoothstep on [0,1] — C1 continuous clutch/TC blend. */
+  function smoothstep01(x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    return x * x * (3 - 2 * x);
+  }
+
+  /**
+   * Mid-shift release: p=0 → lastDrive; soft dip to hole at releaseEnd.
+   * Optional recoverStart/recoverTQ: ATC V-notch climbs off the floor before
+   * shift-end (no deep flat well). Post-shift tip spike via shiftEngageTorque.
+   */
+  function shiftReleaseTorque(p, lastDriveWhTQ, holeTQ, releaseEnd, recoverStart, recoverTQ) {
+    var re = releaseEnd;
+    if (re < 0.12) re = 0.12;
+    if (re > 0.85) re = 0.85;
+    var rs = recoverStart;
+    if (rs == null || !(rs > re) || rs >= 1) {
+      if (p >= re) return holeTQ;
+      var u0 = smoothstep01(p / re);
+      return lastDriveWhTQ + (holeTQ - lastDriveWhTQ) * u0;
+    }
+    if (p <= re) {
+      var u1 = smoothstep01(p / re);
+      return lastDriveWhTQ + (holeTQ - lastDriveWhTQ) * u1;
+    }
+    if (p < rs) return holeTQ;
+    var span = 1 - rs;
+    if (span < 1e-6) return holeTQ;
+    var u2 = smoothstep01((p - rs) / span);
+    return holeTQ + (recoverTQ - holeTQ) * u2;
+  }
+
+  /**
+   * Post-shift engagement: e=0 → fromTQ; e=1 → engagedWhTQ.
+   * Optional tip overshoot: half-sine peaks mid-engage ABOVE engaged TQ
+   * (ATC Dragy spike-on-engage), then settles to engaged at e=1.
+   */
+  function shiftEngageTorque(e, fromTQ, engagedWhTQ, overshoot) {
+    var u = smoothstep01(e);
+    var os = overshoot > 0 ? overshoot : 0;
+    var tip = os > 0 ? Math.sin(Math.PI * e) : 0;
+    var target = engagedWhTQ * (1 + os * tip);
+    return fromTQ + (target - fromTQ) * u;
   }
 
   var FactoryTransmissions = {
@@ -743,8 +838,13 @@
     var tcPostShiftMechSeed = 0; // turbine at unlock; hang lerps seed→shift with mech progress
     var shiftFamily = resolveShiftDriveFamily(car);
     var shiftResidualFrac = shiftResidualFraction(shiftFamily);
-    var lastDriveWhTQ = 0; // last non-shift wheel torque (coast residual source)
-    var shiftProbe = env.shiftCoastProbe ? { family: shiftFamily, residual: shiftResidualFrac, n: 0, sumA: 0, minA: Infinity, sumWhTQ: 0, minWhTQ: Infinity } : null;
+    var shiftReleaseFrac = shiftReleaseFraction(shiftFamily);
+    var shiftEngageDur = shiftEngageTime(shiftFamily);
+    var shiftEngageOS = shiftEngageOvershoot(shiftFamily);
+    var lastDriveWhTQ = 0; // last applied (post-ATC) wheel torque — shift blend source
+    var engageTimer = 0;   // post-shift soft engage countdown
+    var engageFromTQ = 0;  // TQ at shift-end (notch/recover) — engage blend start
+    var shiftProbe = env.shiftCoastProbe ? { family: shiftFamily, residual: shiftResidualFrac, release: shiftReleaseFrac, engageS: shiftEngageDur, overshoot: shiftEngageOS, n: 0, sumA: 0, minA: Infinity, sumWhTQ: 0, minWhTQ: Infinity } : null;
     var spinSum = 0, spinN = 0, prevA = 0;
     var hit60 = false, hit330 = false, hit660 = false, hit1000 = false, hit1320 = false;
     var hitHalf = false, hitMile = false;
@@ -769,7 +869,14 @@
     while (!vmaxDone && t <= MAX_T) {
       if (shifting) {
         shiftTimer -= DT;
-        if (shiftTimer <= 0) shifting = false;
+        if (shiftTimer <= 0) {
+          shifting = false;
+          // Arm post-shift engagement from torque at shift-end (ATC may have recovered above hole).
+          engageFromTQ = (shiftFamily === 'automatic')
+            ? (lastDriveWhTQ * Math.max(shiftResidualFrac, 0.70))
+            : (lastDriveWhTQ * shiftResidualFrac);
+          engageTimer = shiftEngageDur;
+        }
       }
 
       var inLaunch = (t < LAUNCH_HOLD && v < LAUNCH_V_THRESH) || (dist < LAUNCH_DIST_M && t < LAUNCH_HOLD + 0.4);
@@ -983,6 +1090,7 @@
         gear++;
         shifting = true;
         shiftTimer = shiftTime;
+        engageTimer = 0; // new shift preempts any in-flight engage ramp
         result.totalShifts++;
         // Record shift marker for SPEED VS DISTANCE chart (gear # + MPH @ distance/time)
         result.shifts.push({
@@ -1021,20 +1129,15 @@
 
       var gRatio = gears[Math.min(gear, gears.length) - 1];
       var fullWhTQ = engTQ * gRatio * finalDrive;
-      var whTQ;
-      if (shifting) {
-        // TX-typed residual of pre-shift (last non-shift) wheel torque — not a hard zero-cut.
-        // Manual ≈ coast; auto/TC partial fill; DCT overlap; EV near-seamless.
-        whTQ = lastDriveWhTQ * shiftResidualFrac;
-      } else {
-        whTQ = fullWhTQ;
-        lastDriveWhTQ = fullWhTQ;
-      }
       var mph = v * MPS_TO_MPH;
 
-      if (!shifting && car.hasAftermarketConverter) {
+      // Engaged (next-gear) wheel torque — includes ATC multiply so shift-end blend
+      // matches the first post-shift tick (no cliff when shifting clears).
+      var engagedWhTQ = fullWhTQ;
+      if (car.hasAftermarketConverter) {
         // Torque multiplication from converter slip: ~2.1× at stall → 1.0 at lockup.
         // Stall 1500→5500 scales multiply; Circle D 4400 anchored to LIVE leave/unlock math.
+        // Computed every tick (incl. mid-shift) so engagement endpoint stays continuous.
         var mech = wheelRpm * gRatio * finalDrive;
         var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
         var stallN = Number(car.stallRpm) || 2800;
@@ -1066,7 +1169,36 @@
           var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade * stallUnlock;
           tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
         }
-        whTQ *= tMult;
+        engagedWhTQ = fullWhTQ * tMult;
+      }
+
+      var whTQ;
+      if (shifting) {
+        // Soft release into residual; ATC V-notch recovers before shift-end (no deep flat well).
+        var shiftDur = shiftTime > 1e-6 ? shiftTime : 1e-6;
+        var pShift = 1 - clamp(shiftTimer / shiftDur, 0, 1);
+        var holeTQ = lastDriveWhTQ * shiftResidualFrac;
+        var recoverStart = null;
+        var recoverTQ = holeTQ;
+        if (shiftFamily === 'automatic') {
+          recoverStart = Math.min(0.92, Math.max(shiftReleaseFrac + 0.08, 0.72));
+          recoverTQ = lastDriveWhTQ * Math.max(shiftResidualFrac, 0.70);
+        }
+        whTQ = shiftReleaseTorque(pShift, lastDriveWhTQ, holeTQ, shiftReleaseFrac, recoverStart, recoverTQ);
+      } else if (engageTimer > 0) {
+        // Post-shift clutch/TC/DCT engage ramp + optional tip spike above engaged TQ.
+        var engDur = shiftEngageDur > 1e-6 ? shiftEngageDur : 1e-6;
+        var pEng = 1 - clamp(engageTimer / engDur, 0, 1);
+        whTQ = shiftEngageTorque(pEng, engageFromTQ, engagedWhTQ, shiftEngageOS);
+        engageTimer -= DT;
+        if (engageTimer <= 0) {
+          engageTimer = 0;
+          lastDriveWhTQ = engagedWhTQ;
+        }
+      } else {
+        whTQ = engagedWhTQ;
+        // Store *applied* drive (post-ATC) so the next shift starts continuous.
+        lastDriveWhTQ = engagedWhTQ;
       }
 
       var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
@@ -1305,6 +1437,8 @@
       result.shiftCoastProbe = {
         family: shiftProbe.family,
         residual: shiftProbe.residual,
+        release: shiftProbe.release,
+        engageS: shiftProbe.engageS,
         samples: shiftProbe.n,
         minAccel: shiftProbe.n ? shiftProbe.minA : null,
         avgAccel: shiftProbe.n ? shiftProbe.sumA / shiftProbe.n : null,
@@ -1329,8 +1463,17 @@
     hybridAssistTorqueLbFt: hybridAssistTorqueLbFt,
     FactoryTransmissions: FactoryTransmissions,
     SHIFT_RESIDUAL_DRIVE: SHIFT_RESIDUAL_DRIVE,
+    SHIFT_RELEASE_FRACTION: SHIFT_RELEASE_FRACTION,
+    SHIFT_ENGAGE_TIME: SHIFT_ENGAGE_TIME,
+    SHIFT_ENGAGE_OVERSHOOT: SHIFT_ENGAGE_OVERSHOOT,
     resolveShiftDriveFamily: resolveShiftDriveFamily,
     shiftResidualFraction: shiftResidualFraction,
+    shiftReleaseFraction: shiftReleaseFraction,
+    shiftEngageTime: shiftEngageTime,
+    shiftEngageOvershoot: shiftEngageOvershoot,
+    smoothstep01: smoothstep01,
+    shiftReleaseTorque: shiftReleaseTorque,
+    shiftEngageTorque: shiftEngageTorque,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
     TIRE_LABELS: TIRE_LABELS,
