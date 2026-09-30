@@ -1,0 +1,2042 @@
+[
+  {
+    "name": "2020 Ford Mustang GT",
+    "z60": 3.8,
+    "et": 12.1,
+    "trap": 119.0,
+    "z60130": 11.1
+  },
+  {
+    "name": "2018 Ford Mustang GT PP2",
+    "z60": 4.3,
+    "et": 12.6,
+    "trap": 115.0
+  },
+  {
+    "name": "2020 Chevrolet Camaro SS",
+    "z60": 3.9,
+    "et": 12.2,
+    "trap": 118.0,
+    "z60130": 11.25
+  },
+  {
+    "name": "2020 Dodge Challenger R/T Scat Pack",
+    "z60": 4.2,
+    "et": 12.6,
+    "trap": 114.0
+  },
+  {
+    "name": "2020 Dodge Challenger Hellcat",
+    "z60": 3.7,
+    "et": 11.8,
+    "trap": 125.0,
+    "z60130": 9.0
+  },
+  {
+    "name": "2024 Ford Mustang Dark Horse",
+    "z60": 3.7,
+    "et": 12.0,
+    "trap": 118.4
+  },
+  {
+    "name": "2023 Chevrolet Camaro ZL1",
+    "z60": 3.4,
+    "et": 11.5,
+    "trap": 125.0,
+    "z60130": 8.4
+  },
+  {
+    "name": "2021 Dodge Charger Hellcat Redeye",
+    "z60": 3.6,
+    "et": 11.5,
+    "trap": 128.0,
+    "z60130": 8.1
+  },
+  {
+    "name": "2016 Ford Mustang GT350R",
+    "z60": 3.9,
+    "et": 12.2,
+    "trap": 119.0,
+    "z60130": 11.4
+  },
+  {
+    "name": "2015 Dodge Challenger Hellcat",
+    "z60": 3.6,
+    "et": 11.7,
+    "trap": 126.0,
+    "z60130": 8.8
+  },
+  {
+    "name": "2014 Chevrolet Camaro Z/28",
+    "z60": 4.5,
+    "et": 12.7,
+    "trap": 116.0
+  },
+  {
+    "name": "2013 Ford Mustang Boss 302",
+    "z60": 4.3,
+    "et": 12.7,
+    "trap": 114.0
+  },
+  {
+    "name": "2012 Chevrolet Corvette ZR1",
+    "z60": 3.4,
+    "et": 11.5,
+    "trap": 128.0
+  },
+  {
+    "name": "2010 Dodge Challenger SRT8",
+    "z60": 4.7,
+    "et": 13.2,
+    "trap": 109.0
+  },
+  {
+    "name": "2009 Pontiac G8 GXP",
+    "z60": 4.7,
+    "et": 13.2,
+    "trap": 108.0
+  },
+  {
+    "name": "2004 Pontiac GTO",
+    "z60": 5.3,
+    "et": 13.8,
+    "trap": 104.0
+  },
+  {
+    "name": "2003 Ford Mustang Cobra (Terminator)",
+    "z60": 4.5,
+    "et": 13.0,
+    "trap": 107.0
+  },
+  {
+    "name": "2002 Chevrolet Camaro SS",
+    "z60": 5.2,
+    "et": 13.7,
+    "trap": 104.0
+  },
+  {
+    "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+    "z60": 3.2,
+    "et": 11.6,
+    "trap": 119.72,
+    "z60130": 10.9
+  },
+  {
+    "name": "1996 Chevrolet Impala SS",
+    "z60": 7.1,
+    "et": 15.4,
+    "trap": 91.0
+  },
+  {
+    "name": "2023 Dodge Charger Scat Pack",
+    "z60": 4.1,
+    "et": 12.4,
+    "trap": 116.0
+  },
+  {
+    "name": "2020 Ford Mustang Shelby GT500",
+    "z60": 3.4,
+    "et": 11.3,
+    "trap": 132.0,
+    "z60130": 7.6
+  },
+  {
+    "name": "2012 Chevrolet Camaro ZL1",
+    "z60": 3.9,
+    "et": 12.1,
+    "trap": 117.0
+  },
+  {
+    "name": "2011 Ford Mustang GT 5.0",
+    "z60": 4.4,
+    "et": 12.8,
+    "trap": 112.0
+  },
+  {
+    "name": "2008 Dodge Challenger SRT8",
+    "z60": 4.8,
+    "et": 13.3,
+    "trap": 108.0
+  },
+  {
+    "name": "2001 Pontiac Firebird Trans Am WS6",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 106.0
+  },
+  {
+    "name": "1996 Ford Mustang SVT Cobra",
+    "z60": 5.5,
+    "et": 14.1,
+    "trap": 99.0
+  },
+  {
+    "name": "1993 Chevrolet Camaro Z28",
+    "z60": 5.4,
+    "et": 14.1,
+    "trap": 98.0
+  },
+  {
+    "name": "1987 Buick GNX",
+    "z60": 4.7,
+    "et": 13.5,
+    "trap": 104.0
+  },
+  {
+    "name": "1979 Pontiac Firebird Trans Am",
+    "z60": 8.5,
+    "et": 16.5,
+    "trap": 86.0
+  },
+  {
+    "name": "1985 Chevrolet Camaro IROC-Z",
+    "z60": 7.0,
+    "et": 15.5,
+    "trap": 90.0
+  },
+  {
+    "name": "1987 Ford Mustang 5.0 LX",
+    "z60": 6.2,
+    "et": 14.7,
+    "trap": 94.0
+  },
+  {
+    "name": "1994 Pontiac Firebird Formula",
+    "z60": 5.5,
+    "et": 14.1,
+    "trap": 98.0
+  },
+  {
+    "name": "2000 Chevrolet Camaro SS",
+    "z60": 5.1,
+    "et": 13.6,
+    "trap": 105.0
+  },
+  {
+    "name": "2007 Ford Mustang GT",
+    "z60": 5.1,
+    "et": 13.7,
+    "trap": 103.0
+  },
+  {
+    "name": "2010 Chevrolet Camaro LT",
+    "z60": 6.1,
+    "et": 14.7,
+    "trap": 96.0
+  },
+  {
+    "name": "1984 Chevrolet Corvette C4",
+    "z60": 6.6,
+    "et": 15.0,
+    "trap": 91.0
+  },
+  {
+    "name": "1992 Ford Mustang LX 5.0",
+    "z60": 6.0,
+    "et": 14.6,
+    "trap": 94.0
+  },
+  {
+    "name": "1998 Pontiac Firebird Formula",
+    "z60": 5.2,
+    "et": 13.8,
+    "trap": 103.0
+  },
+  {
+    "name": "2006 Dodge Charger R/T",
+    "z60": 5.3,
+    "et": 13.9,
+    "trap": 101.0
+  },
+  {
+    "name": "2011 Chevrolet Camaro LT",
+    "z60": 6.0,
+    "et": 14.6,
+    "trap": 97.0
+  },
+  {
+    "name": "2013 Ford Mustang V6",
+    "z60": 5.1,
+    "et": 13.8,
+    "trap": 101.0
+  },
+  {
+    "name": "1982 Pontiac Firebird Trans Am",
+    "z60": 9.2,
+    "et": 17.0,
+    "trap": 82.0
+  },
+  {
+    "name": "1991 Chevrolet Camaro Z28",
+    "z60": 6.2,
+    "et": 14.8,
+    "trap": 94.0
+  },
+  {
+    "name": "1994 Ford Mustang GT",
+    "z60": 6.1,
+    "et": 14.7,
+    "trap": 94.0
+  },
+  {
+    "name": "2002 Pontiac Firebird WS6",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 106.0
+  },
+  {
+    "name": "2009 Dodge Challenger R/T",
+    "z60": 5.3,
+    "et": 13.9,
+    "trap": 102.0
+  },
+  {
+    "name": "2012 Ford Mustang Boss 302 Laguna Seca",
+    "z60": 4.3,
+    "et": 12.7,
+    "trap": 114.0
+  },
+  {
+    "name": "1981 Chevrolet Camaro Z28",
+    "z60": 8.8,
+    "et": 16.7,
+    "trap": 83.0
+  },
+  {
+    "name": "1989 Ford Mustang GT 5.0",
+    "z60": 6.2,
+    "et": 14.7,
+    "trap": 94.0
+  },
+  {
+    "name": "1993 Pontiac Firebird Formula",
+    "z60": 5.5,
+    "et": 14.1,
+    "trap": 98.0
+  },
+  {
+    "name": "2004 Ford Mustang Mach 1",
+    "z60": 5.2,
+    "et": 13.8,
+    "trap": 103.0
+  },
+  {
+    "name": "2007 Dodge Charger SRT8",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 106.0
+  },
+  {
+    "name": "2014 Chevrolet SS",
+    "z60": 4.5,
+    "et": 13.0,
+    "trap": 111.0,
+    "z60130": 13.8
+  },
+  {
+    "name": "2022 Tesla Model S Plaid",
+    "z60": 2.1,
+    "et": 9.25,
+    "trap": 151.0,
+    "z60130": 4.8
+  },
+  {
+    "name": "2024 Tesla Model 3 Performance",
+    "z60": 2.9,
+    "et": 11.0,
+    "trap": 123.0
+  },
+  {
+    "name": "2022 Porsche Taycan Turbo S",
+    "z60": 2.4,
+    "et": 10.5,
+    "trap": 130.0,
+    "z60130": 6.5
+  },
+  {
+    "name": "2024 Lucid Air Sapphire",
+    "z60": 2.1,
+    "et": 9.0,
+    "trap": 157.0,
+    "z60130": 4.6
+  },
+  {
+    "name": "2023 Hyundai Ioniq 5 N",
+    "z60": 3.2,
+    "et": 11.5,
+    "trap": 121.0
+  },
+  {
+    "name": "2022 Ford F-150 Lightning",
+    "z60": 4.0,
+    "et": 12.5,
+    "trap": 108.0
+  },
+  {
+    "name": "2023 Tesla Model Y Performance",
+    "z60": 3.5,
+    "et": 11.8,
+    "trap": 115.0
+  },
+  {
+    "name": "2022 Tesla Model X Plaid",
+    "z60": 2.5,
+    "et": 10.2,
+    "trap": 124.0
+  },
+  {
+    "name": "2023 Kia EV6 GT",
+    "z60": 3.2,
+    "et": 11.4,
+    "trap": 122.0
+  },
+  {
+    "name": "2023 Polestar 2 Performance",
+    "z60": 4.1,
+    "et": 12.6,
+    "trap": 111.0
+  },
+  {
+    "name": "2022 BMW iX M60",
+    "z60": 3.6,
+    "et": 12.1,
+    "trap": 114.0
+  },
+  {
+    "name": "2023 Mercedes EQE AMG 53",
+    "z60": 3.2,
+    "et": 11.6,
+    "trap": 120.0
+  },
+  {
+    "name": "2024 Cadillac Lyriq AWD",
+    "z60": 4.6,
+    "et": 13.3,
+    "trap": 104.0
+  },
+  {
+    "name": "2024 Tesla Cybertruck Tri-Motor",
+    "z60": 2.6,
+    "et": 11.0,
+    "trap": 119.0
+  },
+  {
+    "name": "2023 Genesis GV60 Performance",
+    "z60": 3.8,
+    "et": 12.3,
+    "trap": 113.0
+  },
+  {
+    "name": "2024 Volvo EX90 Twin Motor",
+    "z60": 4.9,
+    "et": 13.5,
+    "trap": 103.0
+  },
+  {
+    "name": "2023 Audi Q4 e-tron",
+    "z60": 5.8,
+    "et": 14.5,
+    "trap": 97.0
+  },
+  {
+    "name": "2022 Mercedes EQB 350",
+    "z60": 6.0,
+    "et": 14.6,
+    "trap": 96.0
+  },
+  {
+    "name": "2024 Tesla Model X Long Range",
+    "z60": 3.6,
+    "et": 11.4,
+    "trap": 127.0
+  },
+  {
+    "name": "2023 Nissan Ariya e-4ORCE",
+    "z60": 5.1,
+    "et": 13.8,
+    "trap": 101.0
+  },
+  {
+    "name": "2024 Subaru Solterra",
+    "z60": 6.5,
+    "et": 15.1,
+    "trap": 92.0
+  },
+  {
+    "name": "2023 Toyota bZ4X AWD",
+    "z60": 6.5,
+    "et": 15.1,
+    "trap": 92.0
+  },
+  {
+    "name": "2024 Fisker Ocean Extreme",
+    "z60": 3.9,
+    "et": 12.5,
+    "trap": 110.0
+  },
+  {
+    "name": "2024 Hyundai Ioniq 6 AWD",
+    "z60": 4.8,
+    "et": 13.4,
+    "trap": 104.0
+  },
+  {
+    "name": "2023 VW ID.4 AWD Pro",
+    "z60": 5.7,
+    "et": 14.4,
+    "trap": 97.0
+  },
+  {
+    "name": "2024 Chevrolet Blazer EV SS",
+    "z60": 3.4,
+    "et": 11.7,
+    "trap": 117.0
+  },
+  {
+    "name": "2023 Ford Mustang Mach-E GT",
+    "z60": 3.6,
+    "et": 12.2,
+    "trap": 114.0
+  },
+  {
+    "name": "2024 BMW i5 M60",
+    "z60": 3.6,
+    "et": 12.1,
+    "trap": 115.0
+  },
+  {
+    "name": "2024 Rivian R1S Quad Motor",
+    "z60": 3.0,
+    "et": 11.3,
+    "trap": 121.0
+  },
+  {
+    "name": "2023 BMW i7 xDrive60",
+    "z60": 4.3,
+    "et": 12.8,
+    "trap": 111.0
+  },
+  {
+    "name": "2024 Mercedes EQS 450+",
+    "z60": 5.4,
+    "et": 14.0,
+    "trap": 101.0
+  },
+  {
+    "name": "2023 Audi e-tron GT",
+    "z60": 3.6,
+    "et": 12.1,
+    "trap": 116.0
+  },
+  {
+    "name": "2024 Lucid Air Touring",
+    "z60": 3.0,
+    "et": 11.2,
+    "trap": 123.0
+  },
+  {
+    "name": "2024 Tesla Model S Long Range",
+    "z60": 3.1,
+    "et": 11.4,
+    "trap": 120.0
+  },
+  {
+    "name": "2023 Hyundai Kona Electric",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 90.0
+  },
+  {
+    "name": "2024 Kia Niro EV",
+    "z60": 6.9,
+    "et": 15.4,
+    "trap": 90.0
+  },
+  {
+    "name": "2023 Mercedes EQS 580 SUV",
+    "z60": 4.5,
+    "et": 13.1,
+    "trap": 108.0
+  },
+  {
+    "name": "2024 Volvo XC40 Recharge",
+    "z60": 4.5,
+    "et": 13.2,
+    "trap": 104.0
+  },
+  {
+    "name": "2021 Ferrari SF90 Stradale",
+    "z60": 2.0,
+    "et": 9.5,
+    "trap": 148.0
+  },
+  {
+    "name": "2021 Porsche 911 Turbo S",
+    "z60": 2.2,
+    "et": 10.3,
+    "trap": 137.0,
+    "z60130": 5.8
+  },
+  {
+    "name": "2020 Lamborghini Hurac\u00e1n EVO",
+    "z60": 2.5,
+    "et": 10.6,
+    "trap": 133.0,
+    "z60130": 6.8
+  },
+  {
+    "name": "2020 McLaren 765LT",
+    "z60": 2.6,
+    "et": 10.2,
+    "trap": 141.0,
+    "z60130": 6.0
+  },
+  {
+    "name": "2017 Ferrari 812 Superfast",
+    "z60": 2.8,
+    "et": 10.5,
+    "trap": 136.0,
+    "z60130": 6.5
+  },
+  {
+    "name": "2018 McLaren 600LT",
+    "z60": 2.8,
+    "et": 10.7,
+    "trap": 135.0,
+    "z60130": 6.8
+  },
+  {
+    "name": "2019 Lamborghini Hurac\u00e1n Performante",
+    "z60": 2.5,
+    "et": 10.5,
+    "trap": 134.0,
+    "z60130": 6.5
+  },
+  {
+    "name": "2017 Porsche 911 GT2 RS",
+    "z60": 2.7,
+    "et": 10.6,
+    "trap": 134.0,
+    "z60130": 6.2
+  },
+  {
+    "name": "2016 Ferrari 488 GTB",
+    "z60": 2.8,
+    "et": 10.7,
+    "trap": 133.0,
+    "z60130": 6.6
+  },
+  {
+    "name": "2015 McLaren P1",
+    "z60": 2.6,
+    "et": 9.8,
+    "trap": 148.0,
+    "z60130": 5.4
+  },
+  {
+    "name": "2014 Ferrari F12 Berlinetta",
+    "z60": 2.9,
+    "et": 10.9,
+    "trap": 131.0,
+    "z60130": 6.8
+  },
+  {
+    "name": "2013 McLaren MP4-12C",
+    "z60": 2.9,
+    "et": 10.7,
+    "trap": 134.0,
+    "z60130": 6.8
+  },
+  {
+    "name": "2012 Lamborghini Gallardo LP570-4",
+    "z60": 3.2,
+    "et": 11.2,
+    "trap": 127.0
+  },
+  {
+    "name": "2010 Ferrari 458 Italia",
+    "z60": 3.0,
+    "et": 10.9,
+    "trap": 127.0,
+    "z60130": 7.2
+  },
+  {
+    "name": "2006 Ford GT",
+    "z60": 3.3,
+    "et": 11.2,
+    "trap": 131.0
+  },
+  {
+    "name": "2004 Porsche Carrera GT",
+    "z60": 3.5,
+    "et": 11.2,
+    "trap": 130.0,
+    "z60130": 7.8
+  },
+  {
+    "name": "2002 Ferrari Enzo",
+    "z60": 3.3,
+    "et": 11.1,
+    "trap": 133.0,
+    "z60130": 7.2
+  },
+  {
+    "name": "2007 Lamborghini Murci\u00e9lago LP640",
+    "z60": 3.4,
+    "et": 11.4,
+    "trap": 129.0
+  },
+  {
+    "name": "2009 Nissan GT-R",
+    "z60": 3.3,
+    "et": 11.5,
+    "trap": 124.0
+  },
+  {
+    "name": "2012 Audi R8 V10",
+    "z60": 3.5,
+    "et": 11.6,
+    "trap": 124.0,
+    "z60130": 8.5
+  },
+  {
+    "name": "2001 Lamborghini Diablo VT 6.0",
+    "z60": 3.6,
+    "et": 11.8,
+    "trap": 122.0
+  },
+  {
+    "name": "2003 Ferrari 360 Modena",
+    "z60": 4.3,
+    "et": 12.6,
+    "trap": 114.0
+  },
+  {
+    "name": "2007 Porsche 911 Turbo",
+    "z60": 3.4,
+    "et": 11.6,
+    "trap": 124.0
+  },
+  {
+    "name": "2008 Aston Martin DBS",
+    "z60": 4.2,
+    "et": 12.5,
+    "trap": 117.0
+  },
+  {
+    "name": "2011 Mercedes SLS AMG",
+    "z60": 3.5,
+    "et": 11.7,
+    "trap": 125.0
+  },
+  {
+    "name": "2005 Ferrari F430",
+    "z60": 3.9,
+    "et": 12.1,
+    "trap": 118.0
+  },
+  {
+    "name": "2009 Lamborghini Gallardo LP560-4",
+    "z60": 3.3,
+    "et": 11.4,
+    "trap": 126.0
+  },
+  {
+    "name": "2010 Aston Martin V12 Vantage",
+    "z60": 4.1,
+    "et": 12.4,
+    "trap": 118.0,
+    "z60130": 10.5
+  },
+  {
+    "name": "2013 SRT Viper GTS",
+    "z60": 3.3,
+    "et": 11.4,
+    "trap": 129.0,
+    "z60130": 7.8
+  },
+  {
+    "name": "2014 Porsche 911 Carrera S",
+    "z60": 3.7,
+    "et": 12.0,
+    "trap": 117.0
+  },
+  {
+    "name": "2002 Porsche 911 Turbo (996)",
+    "z60": 3.9,
+    "et": 12.2,
+    "trap": 115.0
+  },
+  {
+    "name": "2006 Ferrari 612 Scaglietti",
+    "z60": 4.3,
+    "et": 12.6,
+    "trap": 116.0
+  },
+  {
+    "name": "2008 Lamborghini Revent\u00f3n",
+    "z60": 3.3,
+    "et": 11.3,
+    "trap": 128.0
+  },
+  {
+    "name": "2011 McLaren MP4-12C HS",
+    "z60": 2.9,
+    "et": 10.7,
+    "trap": 134.0
+  },
+  {
+    "name": "2015 Aston Martin V12 Vantage S",
+    "z60": 3.7,
+    "et": 12.0,
+    "trap": 122.0
+  },
+  {
+    "name": "2019 Bugatti Chiron",
+    "z60": 2.4,
+    "et": 9.4,
+    "trap": 158.0,
+    "z60130": 5.0
+  },
+  {
+    "name": "2020 McLaren 720S",
+    "z60": 2.5,
+    "et": 10.1,
+    "trap": 142.0,
+    "z60130": 5.6
+  },
+  {
+    "name": "2019 Lamborghini Aventador SVJ",
+    "z60": 2.6,
+    "et": 10.3,
+    "trap": 136.0,
+    "z60130": 5.8
+  },
+  {
+    "name": "2021 Rimac Nevera",
+    "z60": 1.74,
+    "z60130": 2.99
+  },
+  {
+    "name": "2015 Koenigsegg One:1",
+    "z60": 2.8,
+    "et": 9.9,
+    "trap": 150.0,
+    "z60130": 4.8
+  },
+  {
+    "name": "2019 Koenigsegg Jesko",
+    "z60": 2.6,
+    "et": 9.6,
+    "trap": 152.0,
+    "z60130": 4.5
+  },
+  {
+    "name": "2013 Bugatti Veyron Super Sport",
+    "z60": 2.4,
+    "et": 9.9,
+    "trap": 148.0,
+    "z60130": 4.8
+  },
+  {
+    "name": "2005 Bugatti Veyron",
+    "z60": 2.5,
+    "et": 10.1,
+    "trap": 142.0,
+    "z60130": 5.4
+  },
+  {
+    "name": "2011 Koenigsegg Agera R",
+    "z60": 2.8,
+    "et": 10.0,
+    "trap": 148.0,
+    "z60130": 5.0
+  },
+  {
+    "name": "2006 Saleen S7 Twin Turbo",
+    "z60": 3.3,
+    "et": 10.9,
+    "trap": 140.0,
+    "z60130": 6.5
+  },
+  {
+    "name": "2010 Pagani Zonda R",
+    "z60": 2.7,
+    "et": 10.1,
+    "trap": 140.0,
+    "z60130": 5.5
+  },
+  {
+    "name": "2004 Maserati MC12",
+    "z60": 3.7,
+    "et": 11.3,
+    "trap": 128.0,
+    "z60130": 8.0
+  },
+  {
+    "name": "2010 Gumpert Apollo Sport",
+    "z60": 3.0,
+    "et": 10.8,
+    "trap": 136.0,
+    "z60130": 6.2
+  },
+  {
+    "name": "2014 Hennessey Venom GT",
+    "z60": 2.7,
+    "et": 9.8,
+    "trap": 170.0,
+    "z60130": 4.5
+  },
+  {
+    "name": "2018 Zenvo TSR-S",
+    "z60": 2.8,
+    "et": 10.4,
+    "trap": 140.0,
+    "z60130": 6.0
+  },
+  {
+    "name": "2008 Koenigsegg CCX",
+    "z60": 3.2,
+    "et": 10.7,
+    "trap": 137.0,
+    "z60130": 6.2
+  },
+  {
+    "name": "2012 Pagani Huayra",
+    "z60": 3.0,
+    "et": 10.6,
+    "trap": 135.0,
+    "z60130": 6.5
+  },
+  {
+    "name": "2017 Bugatti Chiron Sport",
+    "z60": 2.4,
+    "et": 9.4,
+    "trap": 158.0,
+    "z60130": 5.0
+  },
+  {
+    "name": "2019 McLaren Speedtail",
+    "z60": 2.5,
+    "et": 10.0,
+    "trap": 150.0,
+    "z60130": 5.2
+  },
+  {
+    "name": "2016 Koenigsegg Regera",
+    "z60": 2.7,
+    "et": 9.9,
+    "trap": 150.0,
+    "z60130": 3.9
+  },
+  {
+    "name": "2017 Pagani Huayra BC",
+    "z60": 2.8,
+    "et": 10.3,
+    "trap": 138.0,
+    "z60130": 6.0
+  },
+  {
+    "name": "2018 Bugatti Divo",
+    "z60": 2.4,
+    "et": 9.5,
+    "trap": 155.0,
+    "z60130": 5.0
+  },
+  {
+    "name": "2020 McLaren Elva",
+    "z60": 2.8,
+    "et": 10.6,
+    "trap": 136.0,
+    "z60130": 6.2
+  },
+  {
+    "name": "2014 Koenigsegg Agera S",
+    "z60": 2.8,
+    "et": 10.1,
+    "trap": 145.0,
+    "z60130": 5.2
+  },
+  {
+    "name": "2016 Bugatti Chiron",
+    "z60": 2.4,
+    "et": 9.4,
+    "trap": 158.0,
+    "z60130": 5.0
+  },
+  {
+    "name": "2019 Pagani Huayra Roadster BC",
+    "z60": 2.8,
+    "et": 10.3,
+    "trap": 137.0,
+    "z60130": 6.0
+  },
+  {
+    "name": "2021 McLaren Sabre",
+    "z60": 2.7,
+    "et": 10.4,
+    "trap": 138.0,
+    "z60130": 6.0
+  },
+  {
+    "name": "1998 Toyota Supra Turbo (Mk4)",
+    "z60": 4.6,
+    "et": 13.1,
+    "trap": 108.0
+  },
+  {
+    "name": "2002 Nissan Skyline GT-R R34",
+    "z60": 4.8,
+    "et": 13.3,
+    "trap": 107.0
+  },
+  {
+    "name": "2020 Subaru WRX STI",
+    "z60": 4.6,
+    "et": 13.2,
+    "trap": 104.0
+  },
+  {
+    "name": "2018 Honda Civic Type R",
+    "z60": 4.9,
+    "et": 13.5,
+    "trap": 107.0
+  },
+  {
+    "name": "2008 Mitsubishi Lancer Evolution X",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 104.0
+  },
+  {
+    "name": "2006 Subaru WRX STI",
+    "z60": 4.7,
+    "et": 13.3,
+    "trap": 104.0
+  },
+  {
+    "name": "2005 Nissan 350Z",
+    "z60": 5.3,
+    "et": 13.9,
+    "trap": 103.0
+  },
+  {
+    "name": "2008 BMW 135i",
+    "z60": 4.8,
+    "et": 13.4,
+    "trap": 105.0
+  },
+  {
+    "name": "2010 Mazda RX-8 R3",
+    "z60": 6.2,
+    "et": 14.8,
+    "trap": 96.0
+  },
+  {
+    "name": "2003 Mitsubishi Lancer Evolution VIII",
+    "z60": 4.8,
+    "et": 13.4,
+    "trap": 104.0
+  },
+  {
+    "name": "1999 Subaru Impreza 22B STI",
+    "z60": 4.7,
+    "et": 13.3,
+    "trap": 104.0
+  },
+  {
+    "name": "2001 Honda S2000",
+    "z60": 5.8,
+    "et": 14.4,
+    "trap": 97.0
+  },
+  {
+    "name": "2004 Mazda RX-8",
+    "z60": 6.4,
+    "et": 15.0,
+    "trap": 94.0
+  },
+  {
+    "name": "1995 Nissan Silvia S14",
+    "z60": 6.4,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "1991 Nissan 240SX (S13)",
+    "z60": 7.5,
+    "et": 15.8,
+    "trap": 88.0
+  },
+  {
+    "name": "1998 Honda Prelude Type SH",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 91.0
+  },
+  {
+    "name": "2003 Acura RSX Type-S",
+    "z60": 6.5,
+    "et": 15.1,
+    "trap": 93.0
+  },
+  {
+    "name": "2007 MazdaSpeed3",
+    "z60": 5.3,
+    "et": 13.9,
+    "trap": 101.0
+  },
+  {
+    "name": "2013 Scion FR-S",
+    "z60": 6.2,
+    "et": 14.8,
+    "trap": 94.0
+  },
+  {
+    "name": "1990 Mazda Miata NA",
+    "z60": 8.1,
+    "et": 16.3,
+    "trap": 84.0
+  },
+  {
+    "name": "1997 Honda Civic Type R EK9",
+    "z60": 6.7,
+    "et": 15.2,
+    "trap": 91.0
+  },
+  {
+    "name": "2002 Subaru WRX Wagon",
+    "z60": 5.8,
+    "et": 14.4,
+    "trap": 96.0
+  },
+  {
+    "name": "2005 Mitsubishi Eclipse GT",
+    "z60": 6.3,
+    "et": 14.8,
+    "trap": 96.0
+  },
+  {
+    "name": "2012 Scion tC",
+    "z60": 7.2,
+    "et": 15.6,
+    "trap": 90.0
+  },
+  {
+    "name": "1992 Nissan Pulsar GTI-R",
+    "z60": 5.4,
+    "et": 14.0,
+    "trap": 99.0
+  },
+  {
+    "name": "1998 Toyota Celica GT-Four",
+    "z60": 6.0,
+    "et": 14.5,
+    "trap": 97.0
+  },
+  {
+    "name": "2001 Mitsubishi Eclipse GSX",
+    "z60": 6.5,
+    "et": 15.0,
+    "trap": 92.0
+  },
+  {
+    "name": "2006 Honda Accord Euro R",
+    "z60": 6.6,
+    "et": 15.1,
+    "trap": 93.0
+  },
+  {
+    "name": "2010 Hyundai Genesis Coupe 3.8",
+    "z60": 5.5,
+    "et": 14.1,
+    "trap": 101.0
+  },
+  {
+    "name": "1991 Toyota Soarer GT-T",
+    "z60": 6.2,
+    "et": 14.7,
+    "trap": 96.0
+  },
+  {
+    "name": "1994 Nissan 180SX Type X",
+    "z60": 6.5,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "1999 Honda Prelude SH",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 91.0
+  },
+  {
+    "name": "2008 Subaru Legacy GT Spec.B",
+    "z60": 5.5,
+    "et": 14.1,
+    "trap": 99.0
+  },
+  {
+    "name": "2011 MazdaSpeed6",
+    "z60": 5.8,
+    "et": 14.4,
+    "trap": 97.0
+  },
+  {
+    "name": "2021 Kawasaki Ninja ZX-10R",
+    "z60": 3.1,
+    "et": 10.2,
+    "trap": 147.0,
+    "z60130": 4.5
+  },
+  {
+    "name": "2016 Kawasaki Ninja ZX-10R",
+    "z60": 3.0,
+    "et": 10.2,
+    "trap": 147.0,
+    "z60130": 4.5
+  },
+  {
+    "name": "2020 Suzuki GSX-R1000",
+    "z60": 3.0,
+    "et": 10.2,
+    "trap": 148.0,
+    "z60130": 4.4
+  },
+  {
+    "name": "2020 Suzuki GSX-R1000R",
+    "z60": 2.9,
+    "et": 10.1,
+    "trap": 149.0,
+    "z60130": 4.3
+  },
+  {
+    "name": "2020 Yamaha YZF-R1",
+    "z60": 2.9,
+    "et": 10.1,
+    "trap": 148.0,
+    "z60130": 4.3
+  },
+  {
+    "name": "2020 Yamaha YZF-R1M",
+    "z60": 2.9,
+    "et": 10.0,
+    "trap": 149.0,
+    "z60130": 4.2
+  },
+  {
+    "name": "2021 BMW S1000RR",
+    "z60": 3.1,
+    "et": 10.12,
+    "trap": 156.0,
+    "z60130": 4.52
+  },
+  {
+    "name": "2021 Honda CBR1000RR-R Fireblade",
+    "z60": 2.9,
+    "et": 10.0,
+    "trap": 151.0,
+    "z60130": 4.2
+  },
+  {
+    "name": "2022 Suzuki Hayabusa",
+    "z60": 2.5,
+    "et": 9.7,
+    "trap": 148.0,
+    "z60130": 4.8
+  },
+  {
+    "name": "2020 Kawasaki Ninja ZX-14R",
+    "z60": 2.6,
+    "et": 9.7,
+    "trap": 149.0,
+    "z60130": 4.6
+  },
+  {
+    "name": "2021 Ducati Panigale V4",
+    "z60": 2.8,
+    "et": 10.0,
+    "trap": 152.0,
+    "z60130": 4.1
+  },
+  {
+    "name": "2021 Kawasaki Ninja H2",
+    "z60": 2.6,
+    "et": 9.7,
+    "trap": 152.0,
+    "z60130": 3.8
+  },
+  {
+    "name": "2020 Ford F-150 Raptor",
+    "z60": 5.1,
+    "et": 13.8,
+    "trap": 101.0
+  },
+  {
+    "name": "2021 Ram TRX",
+    "z60": 4.1,
+    "et": 12.3,
+    "trap": 110.0
+  },
+  {
+    "name": "2023 Chevrolet Silverado ZR2",
+    "z60": 6.2,
+    "et": 14.8,
+    "trap": 95.0
+  },
+  {
+    "name": "2020 Chevrolet Silverado 6.2",
+    "z60": 5.4,
+    "et": 14.0,
+    "trap": 99.0
+  },
+  {
+    "name": "2019 Ford F-250 6.7 PowerStroke",
+    "z60": 7.2,
+    "et": 15.6,
+    "trap": 89.0
+  },
+  {
+    "name": "2021 Toyota Tundra",
+    "z60": 6.1,
+    "et": 14.7,
+    "trap": 95.0
+  },
+  {
+    "name": "2018 Ford F-150 5.0",
+    "z60": 6.1,
+    "et": 14.7,
+    "trap": 95.0
+  },
+  {
+    "name": "2017 Chevrolet Silverado 5.3",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 91.0
+  },
+  {
+    "name": "2016 Ram 1500 5.7 Hemi",
+    "z60": 6.4,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "2014 Toyota Tacoma V6",
+    "z60": 7.6,
+    "et": 16.0,
+    "trap": 86.0
+  },
+  {
+    "name": "2012 Ford F-150 EcoBoost",
+    "z60": 6.2,
+    "et": 14.8,
+    "trap": 94.0
+  },
+  {
+    "name": "2013 Ram 1500 5.7 Hemi",
+    "z60": 6.5,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "2011 Chevrolet Avalanche 5.3",
+    "z60": 7.4,
+    "et": 15.8,
+    "trap": 88.0
+  },
+  {
+    "name": "2010 Toyota Tundra 5.7",
+    "z60": 6.3,
+    "et": 14.9,
+    "trap": 94.0
+  },
+  {
+    "name": "2008 Ford F-150 Harley-Davidson",
+    "z60": 7.4,
+    "et": 15.8,
+    "trap": 88.0
+  },
+  {
+    "name": "2009 GMC Sierra Denali 6.2",
+    "z60": 6.0,
+    "et": 14.6,
+    "trap": 96.0
+  },
+  {
+    "name": "2010 Nissan Titan 5.6",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 91.0
+  },
+  {
+    "name": "2013 Toyota Sequoia 5.7",
+    "z60": 6.6,
+    "et": 15.1,
+    "trap": 92.0
+  },
+  {
+    "name": "2007 Ford F-150 4.6 Triton",
+    "z60": 8.5,
+    "et": 16.6,
+    "trap": 84.0
+  },
+  {
+    "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+    "z60": 6.4,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "2011 Toyota Tacoma 4.0 V6",
+    "z60": 7.6,
+    "et": 16.0,
+    "trap": 86.0
+  },
+  {
+    "name": "2015 Nissan Frontier 4.0",
+    "z60": 7.8,
+    "et": 16.1,
+    "trap": 86.0
+  },
+  {
+    "name": "2005 Ford F-250 V10",
+    "z60": 8.8,
+    "et": 16.8,
+    "trap": 82.0
+  },
+  {
+    "name": "2006 Chevrolet Silverado 2500HD 6.0",
+    "z60": 8.5,
+    "et": 16.6,
+    "trap": 83.0
+  },
+  {
+    "name": "2007 Toyota Tundra 4.7",
+    "z60": 8.0,
+    "et": 16.3,
+    "trap": 85.0
+  },
+  {
+    "name": "2012 Nissan Titan Pro-4X",
+    "z60": 7.0,
+    "et": 15.4,
+    "trap": 90.0
+  },
+  {
+    "name": "1969 Dodge Charger 440",
+    "z60": 6.1,
+    "et": 14.3,
+    "trap": 99.0
+  },
+  {
+    "name": "1967 Ford Mustang GT 390",
+    "z60": 6.8,
+    "et": 15.2,
+    "trap": 93.0
+  },
+  {
+    "name": "1970 Chevrolet Chevelle SS 454",
+    "z60": 5.8,
+    "et": 13.9,
+    "trap": 103.0
+  },
+  {
+    "name": "1970 Dodge Challenger 426 Hemi",
+    "z60": 5.8,
+    "et": 13.8,
+    "trap": 104.0
+  },
+  {
+    "name": "1969 Chevrolet Camaro SS 396",
+    "z60": 6.0,
+    "et": 14.4,
+    "trap": 99.0
+  },
+  {
+    "name": "1971 Dodge Demon 340",
+    "z60": 6.4,
+    "et": 14.8,
+    "trap": 96.0
+  },
+  {
+    "name": "1966 Ford GT40 MkII",
+    "z60": 4.5,
+    "et": 11.8,
+    "trap": 131.0
+  },
+  {
+    "name": "1965 Shelby Cobra 427",
+    "z60": 4.3,
+    "et": 12.2,
+    "trap": 120.0
+  },
+  {
+    "name": "1970 Plymouth Road Runner 440",
+    "z60": 6.0,
+    "et": 14.2,
+    "trap": 100.0
+  },
+  {
+    "name": "1968 Dodge Dart GTS 383",
+    "z60": 6.5,
+    "et": 14.8,
+    "trap": 96.0
+  },
+  {
+    "name": "1964 Pontiac GTO",
+    "z60": 6.6,
+    "et": 14.8,
+    "trap": 98.0
+  },
+  {
+    "name": "1965 Chevrolet Chevelle SS396",
+    "z60": 6.4,
+    "et": 14.7,
+    "trap": 98.0
+  },
+  {
+    "name": "1963 Corvette Stingray 327",
+    "z60": 5.9,
+    "et": 14.4,
+    "trap": 100.0
+  },
+  {
+    "name": "1972 Oldsmobile 442",
+    "z60": 7.5,
+    "et": 15.8,
+    "trap": 90.0
+  },
+  {
+    "name": "1962 Chevrolet Impala SS 409",
+    "z60": 6.3,
+    "et": 14.6,
+    "trap": 99.0
+  },
+  {
+    "name": "1967 Plymouth GTX 440",
+    "z60": 6.0,
+    "et": 14.3,
+    "trap": 100.0
+  },
+  {
+    "name": "1973 Ford Torino 351",
+    "z60": 8.5,
+    "et": 16.5,
+    "trap": 85.0
+  },
+  {
+    "name": "1978 Dodge Magnum XE",
+    "z60": 9.5,
+    "et": 17.2,
+    "trap": 80.0
+  },
+  {
+    "name": "1957 Chevrolet Bel Air 283",
+    "z60": 8.5,
+    "et": 16.6,
+    "trap": 82.0
+  },
+  {
+    "name": "1960 Ford Galaxie 352",
+    "z60": 8.8,
+    "et": 16.8,
+    "trap": 82.0
+  },
+  {
+    "name": "1974 Pontiac Firebird 400",
+    "z60": 8.2,
+    "et": 16.3,
+    "trap": 86.0
+  },
+  {
+    "name": "1977 Chevrolet Monte Carlo",
+    "z60": 10.5,
+    "et": 17.8,
+    "trap": 78.0
+  },
+  {
+    "name": "1955 Ford Thunderbird",
+    "z60": 9.5,
+    "et": 17.2,
+    "trap": 80.0
+  },
+  {
+    "name": "1961 Chevrolet Corvette 283",
+    "z60": 6.6,
+    "et": 15.0,
+    "trap": 93.0
+  },
+  {
+    "name": "1968 Mercury Cougar XR-7",
+    "z60": 7.2,
+    "et": 15.5,
+    "trap": 91.0
+  },
+  {
+    "name": "1975 Chevrolet Nova 350",
+    "z60": 9.8,
+    "et": 17.4,
+    "trap": 79.0
+  },
+  {
+    "name": "2022 Volkswagen Golf R",
+    "z60": 4.1,
+    "et": 12.6,
+    "trap": 112.0
+  },
+  {
+    "name": "2023 Toyota GR Corolla",
+    "z60": 4.7,
+    "et": 13.4,
+    "trap": 103.0
+  },
+  {
+    "name": "2021 BMW M5 Competition",
+    "z60": 2.8,
+    "et": 10.9,
+    "trap": 128.5
+  },
+  {
+    "name": "2020 Audi RS7",
+    "z60": 3.1,
+    "et": 11.4,
+    "trap": 124.0
+  },
+  {
+    "name": "2018 BMW M3 Competition",
+    "z60": 3.8,
+    "et": 11.9,
+    "trap": 122.0
+  },
+  {
+    "name": "2017 Mercedes-AMG C63 S",
+    "z60": 3.8,
+    "et": 11.8,
+    "trap": 123.0
+  },
+  {
+    "name": "2019 Audi RS5 Sportback",
+    "z60": 3.5,
+    "et": 11.9,
+    "trap": 115.0
+  },
+  {
+    "name": "2021 Jeep Trackhawk",
+    "z60": 3.5,
+    "et": 11.6,
+    "trap": 118.0
+  },
+  {
+    "name": "2023 BMW X5M Competition",
+    "z60": 3.3,
+    "et": 11.8,
+    "trap": 118.0
+  },
+  {
+    "name": "2020 Dodge Durango SRT",
+    "z60": 4.4,
+    "et": 12.9,
+    "trap": 110.0
+  },
+  {
+    "name": "2022 Cadillac Escalade V",
+    "z60": 4.3,
+    "et": 12.7,
+    "trap": 112.0
+  },
+  {
+    "name": "2021 Range Rover Sport SVR",
+    "z60": 4.3,
+    "et": 12.8,
+    "trap": 111.0
+  },
+  {
+    "name": "2019 Dodge Durango R/T",
+    "z60": 6.3,
+    "et": 14.8,
+    "trap": 95.0
+  },
+  {
+    "name": "2018 Jeep Grand Cherokee SRT",
+    "z60": 4.5,
+    "et": 13.1,
+    "trap": 108.0
+  },
+  {
+    "name": "2017 BMW X6M",
+    "z60": 3.8,
+    "et": 12.3,
+    "trap": 114.0,
+    "z60130": 8.8
+  },
+  {
+    "name": "2012 Chevrolet Tahoe 5.3",
+    "z60": 7.6,
+    "et": 16.0,
+    "trap": 87.0
+  },
+  {
+    "name": "2013 Ford Expedition 5.4",
+    "z60": 7.8,
+    "et": 16.1,
+    "trap": 86.0
+  },
+  {
+    "name": "2014 Jeep Wrangler Rubicon",
+    "z60": 8.1,
+    "et": 16.4,
+    "trap": 85.0
+  },
+  {
+    "name": "2009 Toyota 4Runner V8",
+    "z60": 7.0,
+    "et": 15.5,
+    "trap": 90.0
+  },
+  {
+    "name": "2010 Chevrolet Suburban 5.3",
+    "z60": 7.8,
+    "et": 16.1,
+    "trap": 86.0
+  },
+  {
+    "name": "2011 Jeep Liberty 3.7",
+    "z60": 8.8,
+    "et": 16.8,
+    "trap": 82.0
+  },
+  {
+    "name": "2008 Toyota Highlander V6",
+    "z60": 7.2,
+    "et": 15.6,
+    "trap": 89.0
+  },
+  {
+    "name": "2009 Honda Pilot",
+    "z60": 7.8,
+    "et": 16.1,
+    "trap": 86.0
+  },
+  {
+    "name": "2010 Jeep Commander 5.7",
+    "z60": 6.8,
+    "et": 15.3,
+    "trap": 91.0
+  },
+  {
+    "name": "1994 Toyota Supra Twin Turbo",
+    "z60": 4.6,
+    "et": 13.1,
+    "trap": 108.0
+  },
+  {
+    "name": "1999 Nissan Skyline GT-R R34",
+    "z60": 4.8,
+    "et": 13.3,
+    "trap": 107.0
+  },
+  {
+    "name": "1992 Honda NSX",
+    "z60": 5.3,
+    "et": 13.8,
+    "trap": 104.0
+  },
+  {
+    "name": "1990 Nissan 300ZX NA",
+    "z60": 6.7,
+    "et": 15.2,
+    "trap": 92.0
+  },
+  {
+    "name": "1989 Toyota MR2 Supercharged",
+    "z60": 6.6,
+    "et": 15.2,
+    "trap": 90.0
+  },
+  {
+    "name": "2009 BMW 335i",
+    "z60": 5.1,
+    "et": 13.6,
+    "trap": 104.0
+  },
+  {
+    "name": "2010 Mercedes C63 AMG",
+    "z60": 4.1,
+    "et": 12.2,
+    "trap": 115.0
+  },
+  {
+    "name": "2008 Audi S5",
+    "z60": 4.9,
+    "et": 13.4,
+    "trap": 105.0
+  },
+  {
+    "name": "1986 Toyota Corolla AE86",
+    "z60": 8.3,
+    "et": 16.4,
+    "trap": 84.0
+  },
+  {
+    "name": "1990 Mazda RX-7 FC Turbo",
+    "z60": 6.3,
+    "et": 14.8,
+    "trap": 95.0
+  },
+  {
+    "name": "1995 Mitsubishi Eclipse GSX",
+    "z60": 6.3,
+    "et": 14.8,
+    "trap": 94.0
+  },
+  {
+    "name": "1985 Mazda RX-7 GSL-SE",
+    "z60": 7.8,
+    "et": 16.0,
+    "trap": 86.0
+  },
+  {
+    "name": "1993 Honda Accord SiR",
+    "z60": 7.2,
+    "et": 15.6,
+    "trap": 89.0
+  },
+  {
+    "name": "1997 Toyota Chaser Tourer V",
+    "z60": 5.8,
+    "et": 14.4,
+    "trap": 98.0
+  },
+  {
+    "name": "1983 Toyota Supra (Mk2)",
+    "z60": 8.5,
+    "et": 16.5,
+    "trap": 85.0
+  },
+  {
+    "name": "1987 Nissan Skyline GTS-R",
+    "z60": 6.2,
+    "et": 14.6,
+    "trap": 97.0
+  },
+  {
+    "name": "1996 Honda Integra SiR",
+    "z60": 7.0,
+    "et": 15.4,
+    "trap": 90.0
+  },
+  {
+    "name": "2018 Mercedes-AMG GT R",
+    "z60": 3.4,
+    "et": 11.6,
+    "trap": 125.0
+  },
+  {
+    "name": "2019 Porsche 911 GT3",
+    "z60": 3.2,
+    "et": 11.4,
+    "trap": 125.0
+  },
+  {
+    "name": "2016 Audi TT RS",
+    "z60": 3.3,
+    "et": 11.7,
+    "trap": 120.0
+  },
+  {
+    "name": "2015 BMW M4",
+    "z60": 3.9,
+    "et": 12.1,
+    "trap": 118.0
+  },
+  {
+    "name": "2014 Mercedes CLA45 AMG",
+    "z60": 4.1,
+    "et": 12.6,
+    "trap": 111.0
+  },
+  {
+    "name": "2012 BMW M5",
+    "z60": 3.7,
+    "et": 12.0,
+    "trap": 122.0
+  },
+  {
+    "name": "2013 Audi RS4 Avant",
+    "z60": 4.1,
+    "et": 12.6,
+    "trap": 114.0
+  },
+  {
+    "name": "2011 Mercedes E63 AMG",
+    "z60": 3.9,
+    "et": 12.3,
+    "trap": 117.0
+  },
+  {
+    "name": "2007 BMW 550i",
+    "z60": 5.2,
+    "et": 13.7,
+    "trap": 104.0
+  },
+  {
+    "name": "2009 Mercedes CLS550",
+    "z60": 5.4,
+    "et": 13.9,
+    "trap": 103.0
+  },
+  {
+    "name": "2011 Audi A7 3.0T",
+    "z60": 5.2,
+    "et": 13.7,
+    "trap": 103.0
+  },
+  {
+    "name": "2004 BMW 330Ci ZHP",
+    "z60": 5.6,
+    "et": 14.2,
+    "trap": 99.0
+  },
+  {
+    "name": "2006 Mercedes CLK55 AMG",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 106.0
+  },
+  {
+    "name": "2007 Audi S6 V10",
+    "z60": 5.1,
+    "et": 13.6,
+    "trap": 105.0
+  },
+  {
+    "name": "2003 BMW M3 E46",
+    "z60": 4.8,
+    "et": 13.3,
+    "trap": 107.0
+  },
+  {
+    "name": "2005 Mercedes E55 AMG",
+    "z60": 4.3,
+    "et": 12.6,
+    "trap": 114.0
+  },
+  {
+    "name": "2008 Audi RS4",
+    "z60": 4.5,
+    "et": 13.0,
+    "trap": 109.0
+  },
+  {
+    "name": "2024 Porsche 911 GT3 RS",
+    "z60": 3.0,
+    "et": 11.1,
+    "trap": 128.0
+  },
+  {
+    "name": "2023 Porsche 718 Cayman GT4 RS",
+    "z60": 3.1,
+    "et": 11.3,
+    "trap": 125.0
+  },
+  {
+    "name": "2023 Toyota GR Supra 3.0",
+    "z60": 3.9,
+    "et": 12.3,
+    "trap": 115.0
+  },
+  {
+    "name": "2023 Nissan Z Performance",
+    "z60": 4.3,
+    "et": 12.3,
+    "trap": 116.0
+  },
+  {
+    "name": "2024 BMW M2",
+    "z60": 3.4,
+    "et": 11.8,
+    "trap": 120.0
+  },
+  {
+    "name": "2024 Chevrolet Corvette Stingray",
+    "z60": 3.3,
+    "et": 11.2,
+    "trap": 123.0
+  },
+  {
+    "name": "2023 Mazda MX-5 Miata Club",
+    "z60": 5.7,
+    "et": 14.3,
+    "trap": 96.0
+  },
+  {
+    "name": "2024 Lexus LC 500 Coupe",
+    "z60": 4.4,
+    "et": 12.8,
+    "trap": 114.0
+  },
+  {
+    "name": "2023 Ford Bronco Raptor",
+    "z60": 5.6,
+    "et": 14.2,
+    "trap": 99.0
+  },
+  {
+    "name": "2024 Toyota GR86",
+    "z60": 5.3,
+    "et": 14.0,
+    "trap": 101.0
+  },
+  {
+    "name": "2024 Subaru BRZ",
+    "z60": 5.3,
+    "et": 14.0,
+    "trap": 101.0
+  },
+  {
+    "name": "2023 Chevrolet Corvette Z06",
+    "z60": 3.0,
+    "et": 10.9,
+    "trap": 131.0
+  },
+  {
+    "name": "2026 Chevrolet Corvette ZR1X",
+    "z60": 2.0
+  },
+  {
+    "name": "2024 Acura Integra Type S",
+    "z60": 5.0,
+    "et": 13.5,
+    "trap": 106.0
+  },
+  {
+    "name": "2023 Acura TLX Type S",
+    "z60": 4.7,
+    "et": 13.2,
+    "trap": 107.0
+  },
+  {
+    "name": "2024 Lexus IS 500",
+    "z60": 4.4,
+    "et": 12.8,
+    "trap": 114.0
+  },
+  {
+    "name": "2024 Audi RS 3",
+    "z60": 3.3,
+    "et": 11.7,
+    "trap": 119.0
+  },
+  {
+    "name": "2024 Lexus RC F",
+    "z60": 4.3,
+    "et": 12.6,
+    "trap": 115.0
+  },
+  {
+    "name": "2023 Honda Civic Type R",
+    "z60": 4.8,
+    "et": 13.3,
+    "trap": 108.0
+  }
+]
