@@ -1343,6 +1343,90 @@
     return marks;
   }
 
+  /**
+   * Display-only dense, shape-preserving stroke through TRUE physics g samples.
+   * Fritsch-Carlson monotone Hermite interpolation keeps every physics sample
+   * as an exact knot, preserves real launch/shift extrema, and cannot overshoot
+   * the adjacent true-sample envelope.
+   */
+  function densifyGStroke(feetArr, gArr, xs, ys, xFn, yGFn, factor) {
+    var n = gArr.length;
+    if (!n) return 0;
+    var fac = factor == null ? 32 : Math.max(1, factor);
+    var slopes = new Array(n);
+    var sec = new Array(Math.max(0, n - 1));
+    var i;
+    for (i = 0; i < n; i++) slopes[i] = 0;
+    for (i = 0; i < n - 1; i++) {
+      var dx = feetArr[i + 1] - feetArr[i];
+      sec[i] = Math.abs(dx) > 1e-9 ? (gArr[i + 1] - gArr[i]) / dx : 0;
+    }
+    if (n > 1) {
+      slopes[0] = sec[0];
+      slopes[n - 1] = sec[n - 2];
+    }
+    for (i = 1; i < n - 1; i++) {
+      if (sec[i - 1] * sec[i] <= 0) {
+        slopes[i] = 0;
+      } else {
+        var h0 = feetArr[i] - feetArr[i - 1];
+        var h1 = feetArr[i + 1] - feetArr[i];
+        slopes[i] = (3 * (h0 + h1)) /
+          ((2 * h1 + h0) / sec[i - 1] + (2 * h0 + h1) / sec[i]);
+      }
+    }
+    // Fritsch-Carlson limiter: every interval stays between its true knots.
+    for (i = 0; i < n - 1; i++) {
+      if (Math.abs(sec[i]) < 1e-12) {
+        slopes[i] = 0;
+        slopes[i + 1] = 0;
+        continue;
+      }
+      var a = slopes[i] / sec[i];
+      var b = slopes[i + 1] / sec[i];
+      var norm = a * a + b * b;
+      if (norm > 9) {
+        var scale = 3 / Math.sqrt(norm);
+        slopes[i] = scale * a * sec[i];
+        slopes[i + 1] = scale * b * sec[i];
+      }
+    }
+
+    var k = 0;
+    xs[k] = xFn(feetArr[0]);
+    ys[k] = yGFn(gArr[0]);
+    k++;
+    for (i = 0; i < n - 1; i++) {
+      var f0 = feetArr[i], f1 = feetArr[i + 1];
+      var g0 = gArr[i], g1 = gArr[i + 1];
+      var h = f1 - f0;
+      for (var step = 1; step <= fac; step++) {
+        var u = step / fac;
+        var g;
+        if (Math.abs(h) < 1e-9) {
+          g = g1;
+        } else {
+          var u2 = u * u, u3 = u2 * u;
+          var h00 = 2 * u3 - 3 * u2 + 1;
+          var h10 = u3 - 2 * u2 + u;
+          var h01 = -2 * u3 + 3 * u2;
+          var h11 = u3 - u2;
+          g = h00 * g0 + h10 * h * slopes[i] +
+            h01 * g1 + h11 * h * slopes[i + 1];
+          // Defensive clamp: no display-only peak beyond the local true envelope.
+          var lo = g0 < g1 ? g0 : g1;
+          var hi = g0 > g1 ? g0 : g1;
+          g = Math.max(lo, Math.min(hi, g));
+        }
+        var feet = f0 + u * h;
+        xs[k] = xFn(feet);
+        ys[k] = yGFn(g);
+        k++;
+      }
+    }
+    return k;
+  }
+
   function drawSpeedPath(timeline, result) {
     var canvas = $('speedChart');
     if (!canvas) return;
@@ -1500,18 +1584,28 @@
     });
     ctx.setLineDash([]);
 
-    // g-force overlay
+    // g-force overlay — dense orange Dragy-like stroke through TRUE samples.
+    // No Hann, jitter, or invented peaks: only shape-preserving interpolation.
+    var gFeet = new Array(plot.length);
+    for (var gf = 0; gf < plot.length; gf++) gFeet[gf] = plot[gf].feet;
+    var densFac = 32;
+    var gMaxPts = plot.length < 1 ? 0 : (plot.length - 1) * densFac + 1;
+    var gXs = new Array(gMaxPts);
+    var gYs = new Array(gMaxPts);
+    var gN = densifyGStroke(gFeet, gSeries, gXs, gYs, x, yG, densFac);
     ctx.beginPath();
-    for (var gj = 0; gj < plot.length; gj++) {
-      var gx = x(plot[gj].feet), gy = yG(gSeries[gj]);
-      if (gj === 0) ctx.moveTo(gx, gy); else ctx.lineTo(gx, gy);
+    if (gN > 0) {
+      ctx.moveTo(gXs[0], gYs[0]);
+      for (var gj = 1; gj < gN; gj++) ctx.lineTo(gXs[gj], gYs[gj]);
     }
-    ctx.strokeStyle = 'rgba(90,200,255,0.85)';
-    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = 'rgba(255,180,105,0.9)';
+    ctx.lineWidth = 1.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
     ctx.stroke();
 
     if (gLo < 0 && gHi > 0) {
-      ctx.strokeStyle = 'rgba(90,200,255,0.25)';
+      ctx.strokeStyle = 'rgba(255,180,105,0.28)';
       ctx.lineWidth = 1;
       ctx.setLineDash([2, 3]);
       var zgy = yG(0);
@@ -1706,11 +1800,11 @@
     ctx.fillStyle = '#c8ff4a';
     ctx.font = '10px ui-monospace, monospace';
     ctx.fillText('MPH', pad.l, 14);
-    ctx.fillStyle = 'rgba(90,200,255,0.95)';
+    ctx.fillStyle = 'rgba(255,180,105,0.95)';
     ctx.textAlign = 'right';
     ctx.fillText('g', w - pad.r, 14);
     ctx.textAlign = 'left';
-    ctx.fillStyle = 'rgba(90,200,255,0.7)';
+    ctx.fillStyle = 'rgba(255,180,105,0.78)';
     ctx.font = '8px ui-monospace, monospace';
     [0, 0.5, 1.0].forEach(function (gv) {
       if (gv < gLo || gv > gHi) return;
