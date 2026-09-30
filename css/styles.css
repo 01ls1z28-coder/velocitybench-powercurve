@@ -1814,19 +1814,66 @@ body {
 
 /* ---- Instruments — phones/tablets LANDSCAPE (grid pack, LARGE dials) ---- */
 @media (max-width: 1100px) and (orientation: landscape) {
-  .g-meter { display: none !important; }
-  .et-meter { display: none !important; }
-  .shift-mph-meter { display: none !important; }
+  /* Landscape MATCHES desktop center stack: gear→WS→G/PK→ET→SHIFT→TRACTION→LEDs→buttons.
+     Portrait MQ alone keeps G/ET/SHIFT hide freeze (byte-stable). */
+  .g-meter {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: clamp(1px, 0.2cqw, 2px);
+    width: 88%;
+    min-width: 40px;
+    padding: 3px 3px 2px;
+    gap: 1px;
+  }
+  .g-meter-label {
+    font-size: clamp(5px, 1.35cqw, 7px);
+    letter-spacing: 0.08em;
+  }
+  .g-meter-value { font-size: clamp(10px, 3.1cqw, 14px); }
+  .g-meter-peak { font-size: clamp(5px, 1.45cqw, 8px); }
+  .et-meter {
+    display: flex;
+    width: 96%;
+    min-width: 48px;
+    margin-top: 0;
+    margin-bottom: clamp(1px, 0.2cqw, 2px);
+    padding: 3px 2px 2px;
+    gap: 1px;
+  }
+  .et-meter-label {
+    font-size: clamp(5px, 1.35cqw, 7px);
+    letter-spacing: 0.08em;
+  }
+  .et-meter-value {
+    font-size: clamp(9px, 13.5cqw, 13px);
+    letter-spacing: -0.055em;
+  }
+  .et-meter-unit { font-size: clamp(6px, 9cqw, 8px); }
+  .shift-mph-meter {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: clamp(1px, 0.2cqw, 2px);
+    width: 88%;
+    min-width: 40px;
+    padding: 3px 3px 2px;
+    gap: 1px;
+  }
+  .shift-mph-meter-label {
+    font-size: clamp(5px, 1.35cqw, 7px);
+    letter-spacing: 0.08em;
+  }
+  .shift-mph-meter-value { font-size: clamp(10px, 3.1cqw, 14px); }
+  .shift-mph-meter-unit { font-size: clamp(5px, 1.45cqw, 8px); }
   .gauges, .gauges.lfa-cluster {
     max-width: min(100%, 980px);
     max-height: min(72vh, 100%);
     margin-left: auto;
     margin-right: auto;
-    /* Dial columns dominate; center corridor readable */
-    grid-template-columns: minmax(0, 1fr) minmax(68px, 0.17fr) minmax(0, 1fr);
-    column-gap: clamp(3px, 0.6%, 8px);
-    row-gap: clamp(3px, 0.5cqw, 6px);
-    padding: clamp(2px, 0.4%, 5px) clamp(3px, 0.5%, 6px) clamp(3px, 0.5%, 6px);
+    /* Corridor nudged toward desktop so G/ET/SHIFT + champagne TRACTION fit */
+    grid-template-columns: minmax(0, 1fr) minmax(74px, 0.185fr) minmax(0, 1fr);
+    column-gap: clamp(2px, 0.5%, 6px);
+    row-gap: clamp(2px, 0.4cqw, 5px);
+    padding: clamp(2px, 0.35%, 4px) clamp(2px, 0.45%, 5px) clamp(2px, 0.45%, 5px);
     container-type: inline-size;
   }
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
@@ -1839,8 +1886,9 @@ body {
     align-self: start;
   }
   .gauge-center-stack {
-    gap: clamp(2px, 0.5cqw, 4px);
-    padding: 0;
+    justify-content: flex-start;
+    gap: clamp(1px, 0.35cqw, 3px);
+    padding: 1px 0 0;
     align-self: stretch;
     height: auto;
   }
@@ -1848,13 +1896,13 @@ body {
     width: min(50%, 480px);
     min-height: clamp(20px, 3.2cqw, 28px);
   }
-  .gear-digit { width: 78%; min-width: 34px; margin-bottom: 0; }
-  .gear-digit-value { font-size: clamp(18px, 5.5cqw, 42px); }
+  .gear-digit { width: 78%; min-width: 32px; margin-bottom: 0; }
+  .gear-digit-value { font-size: clamp(16px, 5cqw, 36px); }
   .wheel-spin-mark {
-    width: clamp(20px, 4.2cqw, 34px);
-    height: clamp(16px, 3.5cqw, 28px);
+    width: clamp(18px, 3.8cqw, 30px);
+    height: clamp(14px, 3.2cqw, 24px);
   }
-  .wheel-spin-line { font-size: clamp(5px, 1.1cqw, 8px); letter-spacing: 0.12em; }
+  .wheel-spin-line { font-size: clamp(5px, 1cqw, 7px); letter-spacing: 0.1em; }
   /* Label fit: same class of overflow as desktop — shrink tracking/type + widen card a hair */
   .traction-meter-label {
     font-size: clamp(5px, 1.05cqw, 7.5px);
