@@ -882,6 +882,14 @@
 
   function readEnv() {
     var daRaw = $('daFt').value;
+    var tireType = parseInt($('tireType').value, 10) || 0;
+    var trackPrepEl = $('trackPrep');
+    var trackPrep = trackPrepEl ? trackPrepEl.value : 'unprepped';
+    if (Phys.normalizeTrackPrep) trackPrep = Phys.normalizeTrackPrep(trackPrep);
+    var tireLab = Phys.tireLabelForType
+      ? Phys.tireLabelForType(tireType)
+      : ['Street', 'Drag Radial', 'Slick'][tireType] || 'Street';
+    var prepLab = Phys.trackPrepLabel ? Phys.trackPrepLabel(trackPrep) : trackPrep;
     return {
       tempF: clampNum($('tempF').value, -40, 140, 70),
       humidity: clampNum($('humidity').value, 0, 100, 45),
@@ -890,11 +898,10 @@
       windSpeedMph: clampNum($('windMph').value, 0, 80, 0),
       windDirDeg: clampNum($('windDir').value, 0, 360, 0),
       gustMph: clampNum($('gustMph').value, 0, 60, 0),
-      tireType: parseInt($('tireType').value, 10) || 0,
+      tireType: tireType,
+      trackPrep: trackPrep,
       launchMode: $('launchMode').value,
-      tireLabel: (Phys.tireLabelForType
-        ? Phys.tireLabelForType(parseInt($('tireType').value, 10) || 0)
-        : ['Street', 'Drag Radial', 'Slick'][parseInt($('tireType').value, 10) || 0])
+      tireLabel: tireLab + ' · ' + prepLab
     };
   }
 

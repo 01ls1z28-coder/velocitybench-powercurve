@@ -767,17 +767,44 @@
     return Math.max(0, vMps + (wind + gustWave) * longFrac * MPH_TO_MPS);
   }
 
-  /** Tire ladder: 0 Street/AllSeason, 1 Drag Radial/Soft, 2 Slick,
-   *  3 Summer (between Street & Drag), 4 UHP (near Drag). VERIFY uses 0/1/2. */
-  function tireGripForType(tireType) {
-    switch (tireType | 0) {
-      case 0: return 0.95;  // Street / All-season
-      case 3: return 1.05;  // Summer
-      case 4: return 1.12;  // UHP
-      case 1: return 1.30;  // Drag Radial / Soft compound (was 1.18 — closer to slick)
-      case 2: return 1.38;  // Slick (was 1.45 — modest advantage over drag radial)
-      default: return DEFAULT_MU;
+  /**
+   * Tire µ ladder (Jorge Guerra track-prep realism).
+   * Prep mainly boosts DR/Slick; Street/Summer/UHP stay sensible.
+   * Default trackPrep = unprepped (garage Excel SOI / fleet verify).
+   * Ladder always: Street < Summer < UHP < Drag Radial < Slick.
+   *
+   *   Unprepped good surface: DR 1.38 / Slick 1.40
+   *   Prepped track:          DR 1.43 / Slick 1.45
+   */
+  var TIRE_MU_BY_PREP = {
+    unprepped: {
+      0: 0.95,  // Street / All-season
+      3: 1.05,  // Summer
+      4: 1.15,  // UHP
+      1: 1.38,  // Drag Radial
+      2: 1.40   // Slick
+    },
+    prepped: {
+      0: 0.98,  // Street — slight prep bump
+      3: 1.10,  // Summer
+      4: 1.22,  // UHP
+      1: 1.43,  // Drag Radial (prepped)
+      2: 1.45   // Slick (prepped)
     }
+  };
+
+  function normalizeTrackPrep(trackPrep) {
+    var p = String(trackPrep == null ? 'unprepped' : trackPrep).toLowerCase();
+    if (p === 'prepped' || p === 'prep' || p === '1' || p === 'true') return 'prepped';
+    return 'unprepped';
+  }
+
+  /** Tire ladder: 0 Street, 1 Drag Radial, 2 Slick, 3 Summer, 4 UHP. */
+  function tireGripForType(tireType, trackPrep) {
+    var prep = normalizeTrackPrep(trackPrep);
+    var table = TIRE_MU_BY_PREP[prep] || TIRE_MU_BY_PREP.unprepped;
+    var mu = table[tireType | 0];
+    return mu != null ? mu : DEFAULT_MU;
   }
 
   var TIRE_LABELS = {
@@ -789,6 +816,9 @@
   };
   function tireLabelForType(tireType) {
     return TIRE_LABELS[tireType | 0] || TIRE_LABELS[0];
+  }
+  function trackPrepLabel(trackPrep) {
+    return normalizeTrackPrep(trackPrep) === 'prepped' ? 'Prepped' : 'Unprepped';
   }
 
   function emptyResult(car, env) {
@@ -881,7 +911,7 @@
     var frontPct = wDist.frontWeightPercent;
     var rearPct = wDist.rearWeightPercent;
     var leftPct = wDist.leftWeightPercent;
-    var muBase = env.tireGrip != null ? Number(env.tireGrip) : tireGripForType(env.tireType);
+    var muBase = env.tireGrip != null ? Number(env.tireGrip) : tireGripForType(env.tireType, env.trackPrep);
     var driveType = String(car.driveType || 'RWD').toUpperCase();
     // AWD already sums BOTH axle traction limits — do NOT multiply µ again (old ×1.25 invented grip).
 
@@ -1732,7 +1762,10 @@
     softTractionForce: softTractionForce,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
+    trackPrepLabel: trackPrepLabel,
+    normalizeTrackPrep: normalizeTrackPrep,
     TIRE_LABELS: TIRE_LABELS,
+    TIRE_MU_BY_PREP: TIRE_MU_BY_PREP,
     get CalibrationFactor() { return CalibrationFactor; },
     set CalibrationFactor(v) { CalibrationFactor = Number(v) || CalibrationFactor; },
     constants: {
