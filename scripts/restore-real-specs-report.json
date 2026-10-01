@@ -1,0 +1,4113 @@
+{
+  "tip": "pc-restore-real-specs",
+  "parent": "c22cfdb",
+  "baseline": "21fb630",
+  "credit": "Jorge Guerra",
+  "hard": "Restore OEM/real card specs from pre-trap-first; strip Cd/FA/loss-as-fake-aero + co-optimized tire/launch. Never invent specs. Keep physics curve/tire-prep.",
+  "fields": [
+    "dragCoefficient",
+    "frontalAreaSqFt",
+    "drivetrainLossPercent",
+    "tireType",
+    "weightLbs",
+    "peakHp",
+    "launchRpm"
+  ],
+  "restored": [
+    {
+      "id": "2020-ford-mustang-gt",
+      "name": "2020 Ford Mustang GT",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 21.5,
+        "tireType": 4,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 24,
+        "tireType": 1,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2020-chevrolet-camaro-ss",
+      "name": "2020 Chevrolet Camaro SS",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2020-dodge-challenger-r-t-scat-pack",
+      "name": "2020 Dodge Challenger R/T Scat Pack",
+      "before": {
+        "dragCoefficient": 0.295,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.39,
+        "frontalAreaSqFt": 25,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2020-dodge-challenger-hellcat",
+      "name": "2020 Dodge Challenger Hellcat",
+      "before": {
+        "dragCoefficient": 0.39,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2024-ford-mustang-dark-horse",
+      "name": "2024 Ford Mustang Dark Horse",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 2,
+        "launchRpm": 3800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 2900
+      }
+    },
+    {
+      "id": "2023-chevrolet-camaro-zl1",
+      "name": "2023 Chevrolet Camaro ZL1",
+      "before": {
+        "dragCoefficient": 0.375,
+        "frontalAreaSqFt": 22.5,
+        "tireType": 4,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23.5,
+        "tireType": 1,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2016-ford-mustang-gt350r",
+      "name": "2016 Ford Mustang GT350R",
+      "before": {
+        "dragCoefficient": 0.32,
+        "tireType": 3,
+        "launchRpm": 3200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "tireType": 4,
+        "launchRpm": 4100
+      }
+    },
+    {
+      "id": "2014-chevrolet-camaro-z-28",
+      "name": "2014 Chevrolet Camaro Z/28",
+      "before": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2013-ford-mustang-boss-302",
+      "name": "2013 Ford Mustang Boss 302",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 20.2,
+        "launchRpm": 2000
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 22.7,
+        "launchRpm": 2300
+      }
+    },
+    {
+      "id": "2012-chevrolet-corvette-zr1",
+      "name": "2012 Chevrolet Corvette ZR1",
+      "before": {
+        "dragCoefficient": 0.38,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "2010-dodge-challenger-srt8",
+      "name": "2010 Dodge Challenger SRT8",
+      "before": {
+        "dragCoefficient": 0.295,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.39,
+        "frontalAreaSqFt": 25,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2004-pontiac-gto",
+      "name": "2004 Pontiac GTO",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1800
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2003-ford-mustang-cobra-terminator",
+      "name": "2003 Ford Mustang Cobra (Terminator)",
+      "before": {
+        "dragCoefficient": 0.405,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2002-chevrolet-camaro-ss",
+      "name": "2002 Chevrolet Camaro SS",
+      "before": {
+        "dragCoefficient": 0.27,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 2100
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "before": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 23
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5
+      }
+    },
+    {
+      "id": "1996-chevrolet-impala-ss",
+      "name": "1996 Chevrolet Impala SS",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 2
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 2.5
+      }
+    },
+    {
+      "id": "2023-dodge-charger-scat-pack",
+      "name": "2023 Dodge Charger Scat Pack",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 2100
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 1,
+        "tireType": 1,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2020-ford-mustang-shelby-gt500",
+      "name": "2020 Ford Mustang Shelby GT500",
+      "before": {
+        "dragCoefficient": 0.335,
+        "launchRpm": 1800
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2012-chevrolet-camaro-zl1",
+      "name": "2012 Chevrolet Camaro ZL1",
+      "before": {
+        "frontalAreaSqFt": 24,
+        "launchRpm": 800
+      },
+      "after": {
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2011-ford-mustang-gt-5-0",
+      "name": "2011 Ford Mustang GT 5.0",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 23,
+        "tireType": 3,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23.5,
+        "tireType": 4,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2008-dodge-challenger-srt8",
+      "name": "2008 Dodge Challenger SRT8",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 1000
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 25,
+        "launchRpm": 1300
+      }
+    },
+    {
+      "id": "2001-pontiac-firebird-trans-am-ws6",
+      "name": "2001 Pontiac Firebird Trans Am WS6",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "1993-chevrolet-camaro-z28",
+      "name": "1993 Chevrolet Camaro Z28",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 20,
+        "drivetrainLossPercent": 1,
+        "tireType": 1,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "1987-buick-gnx",
+      "name": "1987 Buick GNX",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "1979-pontiac-firebird-trans-am",
+      "name": "1979 Pontiac Firebird Trans Am",
+      "before": {
+        "dragCoefficient": 0.435,
+        "frontalAreaSqFt": 25.5,
+        "launchRpm": 4071
+      },
+      "after": {
+        "dragCoefficient": 0.42,
+        "frontalAreaSqFt": 25,
+        "launchRpm": 3171
+      }
+    },
+    {
+      "id": "1985-chevrolet-camaro-iroc-z",
+      "name": "1985 Chevrolet Camaro IROC-Z",
+      "before": {
+        "dragCoefficient": 0.29,
+        "tireType": 4,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "tireType": 3,
+        "launchRpm": 4500
+      }
+    },
+    {
+      "id": "1987-ford-mustang-5-0-lx",
+      "name": "1987 Ford Mustang 5.0 LX",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2000-chevrolet-camaro-ss",
+      "name": "2000 Chevrolet Camaro SS",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2007-ford-mustang-gt",
+      "name": "2007 Ford Mustang GT",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 21,
+        "tireType": 4,
+        "launchRpm": 2900
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23.5,
+        "tireType": 2,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "1984-chevrolet-corvette-c4",
+      "name": "1984 Chevrolet Corvette C4",
+      "before": {
+        "dragCoefficient": 0.26,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "1992-ford-mustang-lx-5-0",
+      "name": "1992 Ford Mustang LX 5.0",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "1998-pontiac-firebird-formula",
+      "name": "1998 Pontiac Firebird Formula",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2006-dodge-charger-r-t",
+      "name": "2006 Dodge Charger R/T",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 1,
+        "tireType": 3,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 1.5,
+        "tireType": 4,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2011-chevrolet-camaro-lt",
+      "name": "2011 Chevrolet Camaro LT",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2013-ford-mustang-v6",
+      "name": "2013 Ford Mustang V6",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1800
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "1982-pontiac-firebird-trans-am",
+      "name": "1982 Pontiac Firebird Trans Am",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "1991-chevrolet-camaro-z28",
+      "name": "1991 Chevrolet Camaro Z28",
+      "before": {
+        "dragCoefficient": 0.29,
+        "launchRpm": 3800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "launchRpm": 3200
+      }
+    },
+    {
+      "id": "1994-ford-mustang-gt",
+      "name": "1994 Ford Mustang GT",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2002-pontiac-firebird-ws6",
+      "name": "2002 Pontiac Firebird WS6",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20,
+        "tireType": 2,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "tireType": 1,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2009-dodge-challenger-r-t",
+      "name": "2009 Dodge Challenger R/T",
+      "before": {
+        "dragCoefficient": 0.295,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2012-ford-mustang-boss-302-laguna-seca",
+      "name": "2012 Ford Mustang Boss 302 Laguna Seca",
+      "before": {
+        "dragCoefficient": 0.27,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "1981-chevrolet-camaro-z28",
+      "name": "1981 Chevrolet Camaro Z28",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 21
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23.5
+      }
+    },
+    {
+      "id": "1989-ford-mustang-gt-5-0",
+      "name": "1989 Ford Mustang GT 5.0",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 4000
+      }
+    },
+    {
+      "id": "1993-pontiac-firebird-formula",
+      "name": "1993 Pontiac Firebird Formula",
+      "before": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2004-ford-mustang-mach-1",
+      "name": "2004 Ford Mustang Mach 1",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 2,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2007-dodge-charger-srt8",
+      "name": "2007 Dodge Charger SRT8",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 25,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2014-chevrolet-ss",
+      "name": "2014 Chevrolet SS",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 21.5,
+        "tireType": 3,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 24,
+        "tireType": 4,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2022-tesla-model-s-plaid",
+      "name": "2022 Tesla Model S Plaid",
+      "before": {
+        "frontalAreaSqFt": 25.5
+      },
+      "after": {
+        "frontalAreaSqFt": 25
+      }
+    },
+    {
+      "id": "2024-tesla-model-3-performance",
+      "name": "2024 Tesla Model 3 Performance",
+      "before": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 25.5,
+        "drivetrainLossPercent": 0.5
+      },
+      "after": {
+        "dragCoefficient": 0.23,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0
+      }
+    },
+    {
+      "id": "2022-porsche-taycan-turbo-s",
+      "name": "2022 Porsche Taycan Turbo S",
+      "before": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 27,
+        "drivetrainLossPercent": 10.5,
+        "tireType": 2
+      },
+      "after": {
+        "dragCoefficient": 0.26,
+        "frontalAreaSqFt": 24.5,
+        "drivetrainLossPercent": 9.5,
+        "tireType": 1
+      }
+    },
+    {
+      "id": "2024-lucid-air-sapphire",
+      "name": "2024 Lucid Air Sapphire",
+      "before": {
+        "dragCoefficient": 0.277,
+        "frontalAreaSqFt": 25.5
+      },
+      "after": {
+        "dragCoefficient": 0.197,
+        "frontalAreaSqFt": 25
+      }
+    },
+    {
+      "id": "2023-hyundai-ioniq-5-n",
+      "name": "2023 Hyundai Ioniq 5 N",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 15.5
+      },
+      "after": {
+        "dragCoefficient": 0.29,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 12.5
+      }
+    },
+    {
+      "id": "2022-ford-f-150-lightning",
+      "name": "2022 Ford F-150 Lightning",
+      "before": {
+        "dragCoefficient": 0.465,
+        "frontalAreaSqFt": 34.5,
+        "drivetrainLossPercent": 1.5
+      },
+      "after": {
+        "dragCoefficient": 0.44,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 2.5
+      }
+    },
+    {
+      "id": "2023-tesla-model-y-performance",
+      "name": "2023 Tesla Model Y Performance",
+      "before": {
+        "dragCoefficient": 0.325,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4
+      },
+      "after": {
+        "dragCoefficient": 0.23,
+        "frontalAreaSqFt": 27,
+        "drivetrainLossPercent": 0.5,
+        "tireType": 3
+      }
+    },
+    {
+      "id": "2022-tesla-model-x-plaid",
+      "name": "2022 Tesla Model X Plaid",
+      "before": {
+        "drivetrainLossPercent": 28
+      },
+      "after": {
+        "drivetrainLossPercent": 12
+      }
+    },
+    {
+      "id": "2023-kia-ev6-gt",
+      "name": "2023 Kia EV6 GT",
+      "before": {
+        "dragCoefficient": 0.32,
+        "tireType": 1
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "tireType": 4
+      }
+    },
+    {
+      "id": "2023-polestar-2-performance",
+      "name": "2023 Polestar 2 Performance",
+      "before": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 25.5
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 24.5
+      }
+    },
+    {
+      "id": "2023-mercedes-eqe-amg-53",
+      "name": "2023 Mercedes EQE AMG 53",
+      "before": {
+        "dragCoefficient": 0.2,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 3,
+        "tireType": 0
+      },
+      "after": {
+        "dragCoefficient": 0.23,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 8,
+        "tireType": 3
+      }
+    },
+    {
+      "id": "2024-cadillac-lyriq-awd",
+      "name": "2024 Cadillac Lyriq AWD",
+      "before": {
+        "dragCoefficient": 0.425,
+        "frontalAreaSqFt": 33
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 30.5
+      }
+    },
+    {
+      "id": "2023-genesis-gv60-performance",
+      "name": "2023 Genesis GV60 Performance",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 28.5,
+        "drivetrainLossPercent": 0
+      },
+      "after": {
+        "dragCoefficient": 0.29,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 1.5
+      }
+    },
+    {
+      "id": "2024-volvo-ex90-twin-motor",
+      "name": "2024 Volvo EX90 Twin Motor",
+      "before": {
+        "dragCoefficient": 0.425,
+        "frontalAreaSqFt": 35
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 32.5
+      }
+    },
+    {
+      "id": "2023-audi-q4-e-tron",
+      "name": "2023 Audi Q4 e-tron",
+      "before": {
+        "dragCoefficient": 0.415,
+        "frontalAreaSqFt": 30
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 27.5
+      }
+    },
+    {
+      "id": "2022-mercedes-eqb-350",
+      "name": "2022 Mercedes EQB 350",
+      "before": {
+        "dragCoefficient": 0.415,
+        "frontalAreaSqFt": 31
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 28.5
+      }
+    },
+    {
+      "id": "2023-nissan-ariya-e-4orce",
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "before": {
+        "dragCoefficient": 0.425,
+        "frontalAreaSqFt": 30
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 27.5
+      }
+    },
+    {
+      "id": "2024-subaru-solterra",
+      "name": "2024 Subaru Solterra",
+      "before": {
+        "dragCoefficient": 0.325
+      },
+      "after": {
+        "dragCoefficient": 0.32
+      }
+    },
+    {
+      "id": "2023-toyota-bz4x-awd",
+      "name": "2023 Toyota bZ4X AWD",
+      "before": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 28.5
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 27.5
+      }
+    },
+    {
+      "id": "2024-fisker-ocean-extreme",
+      "name": "2024 Fisker Ocean Extreme",
+      "before": {
+        "dragCoefficient": 0.415,
+        "frontalAreaSqFt": 31
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 28.5
+      }
+    },
+    {
+      "id": "2024-hyundai-ioniq-6-awd",
+      "name": "2024 Hyundai Ioniq 6 AWD",
+      "before": {
+        "dragCoefficient": 0.315,
+        "frontalAreaSqFt": 26.5
+      },
+      "after": {
+        "dragCoefficient": 0.22,
+        "frontalAreaSqFt": 24
+      }
+    },
+    {
+      "id": "2023-vw-id-4-awd-pro",
+      "name": "2023 VW ID.4 AWD Pro",
+      "before": {
+        "dragCoefficient": 0.415,
+        "frontalAreaSqFt": 30
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 27.5
+      }
+    },
+    {
+      "id": "2024-chevrolet-blazer-ev-ss",
+      "name": "2024 Chevrolet Blazer EV SS",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 32.5
+      },
+      "after": {
+        "dragCoefficient": 0.29,
+        "frontalAreaSqFt": 30
+      }
+    },
+    {
+      "id": "2023-ford-mustang-mach-e-gt",
+      "name": "2023 Ford Mustang Mach-E GT",
+      "before": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 30
+      },
+      "after": {
+        "dragCoefficient": 0.29,
+        "frontalAreaSqFt": 28
+      }
+    },
+    {
+      "id": "2024-bmw-i5-m60",
+      "name": "2024 BMW i5 M60",
+      "before": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 6
+      },
+      "after": {
+        "dragCoefficient": 0.23,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 4
+      }
+    },
+    {
+      "id": "2024-rivian-r1s-quad-motor",
+      "name": "2024 Rivian R1S Quad Motor",
+      "before": {
+        "dragCoefficient": 0.31
+      },
+      "after": {
+        "dragCoefficient": 0.3
+      }
+    },
+    {
+      "id": "2023-bmw-i7-xdrive60",
+      "name": "2023 BMW i7 xDrive60",
+      "before": {
+        "dragCoefficient": 0.315,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 1.5
+      },
+      "after": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 27,
+        "drivetrainLossPercent": 3
+      }
+    },
+    {
+      "id": "2024-mercedes-eqs-450",
+      "name": "2024 Mercedes EQS 450+",
+      "before": {
+        "dragCoefficient": 0.335,
+        "frontalAreaSqFt": 30,
+        "tireType": 3
+      },
+      "after": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 27.5,
+        "tireType": 1
+      }
+    },
+    {
+      "id": "2024-tesla-model-s-long-range",
+      "name": "2024 Tesla Model S Long Range",
+      "before": {
+        "dragCoefficient": 0.295,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 22
+      },
+      "after": {
+        "dragCoefficient": 0.21,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 9.5
+      }
+    },
+    {
+      "id": "2023-hyundai-kona-electric",
+      "name": "2023 Hyundai Kona Electric",
+      "before": {
+        "dragCoefficient": 0.34
+      },
+      "after": {
+        "dragCoefficient": 0.33
+      }
+    },
+    {
+      "id": "2024-kia-niro-ev",
+      "name": "2024 Kia Niro EV",
+      "before": {
+        "dragCoefficient": 0.435,
+        "frontalAreaSqFt": 28
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 25.5
+      }
+    },
+    {
+      "id": "2023-mercedes-eqs-580-suv",
+      "name": "2023 Mercedes EQS 580 SUV",
+      "before": {
+        "dragCoefficient": 0.395,
+        "frontalAreaSqFt": 36
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 34.5
+      }
+    },
+    {
+      "id": "2024-volvo-xc40-recharge",
+      "name": "2024 Volvo XC40 Recharge",
+      "before": {
+        "dragCoefficient": 0.425,
+        "frontalAreaSqFt": 31
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 28.5
+      }
+    },
+    {
+      "id": "2021-ferrari-sf90-stradale",
+      "name": "2021 Ferrari SF90 Stradale",
+      "before": {
+        "dragCoefficient": 0.355,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2021-porsche-911-turbo-s",
+      "name": "2021 Porsche 911 Turbo S",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2020-lamborghini-hurac-n-evo",
+      "name": "2020 Lamborghini Huracán EVO",
+      "before": {
+        "dragCoefficient": 0.35,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2020-mclaren-765lt",
+      "name": "2020 McLaren 765LT",
+      "before": {
+        "dragCoefficient": 0.31,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2019-lamborghini-hurac-n-performante",
+      "name": "2019 Lamborghini Huracán Performante",
+      "before": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2017-porsche-911-gt2-rs",
+      "name": "2017 Porsche 911 GT2 RS",
+      "before": {
+        "dragCoefficient": 0.42,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "2016-ferrari-488-gtb",
+      "name": "2016 Ferrari 488 GTB",
+      "before": {
+        "dragCoefficient": 0.41,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 1800
+      }
+    },
+    {
+      "id": "2015-mclaren-p1",
+      "name": "2015 McLaren P1",
+      "before": {
+        "launchRpm": 1200
+      },
+      "after": {
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2014-ferrari-f12-berlinetta",
+      "name": "2014 Ferrari F12 Berlinetta",
+      "before": {
+        "dragCoefficient": 0.39,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 9.5,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 8.5,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2012-lamborghini-gallardo-lp570-4",
+      "name": "2012 Lamborghini Gallardo LP570-4",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 7,
+        "tireType": 0,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 8,
+        "tireType": 4,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2010-ferrari-458-italia",
+      "name": "2010 Ferrari 458 Italia",
+      "before": {
+        "dragCoefficient": 0.41,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2006-ford-gt",
+      "name": "2006 Ford GT",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 19.5,
+        "tireType": 1,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 22,
+        "tireType": 2,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2004-porsche-carrera-gt",
+      "name": "2004 Porsche Carrera GT",
+      "before": {
+        "dragCoefficient": 0.405,
+        "drivetrainLossPercent": 2,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.39,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2002-ferrari-enzo",
+      "name": "2002 Ferrari Enzo",
+      "before": {
+        "dragCoefficient": 0.4,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2007-lamborghini-murci-lago-lp640",
+      "name": "2007 Lamborghini Murciélago LP640",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 5,
+        "launchRpm": 1048
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 5.5,
+        "launchRpm": 1648
+      }
+    },
+    {
+      "id": "2009-nissan-gt-r",
+      "name": "2009 Nissan GT-R",
+      "before": {
+        "dragCoefficient": 0.2,
+        "frontalAreaSqFt": 19.5,
+        "tireType": 4,
+        "launchRpm": 1800
+      },
+      "after": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 22,
+        "tireType": 1,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2012-audi-r8-v10",
+      "name": "2012 Audi R8 V10",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 19.5
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 21
+      }
+    },
+    {
+      "id": "2001-lamborghini-diablo-vt-6-0",
+      "name": "2001 Lamborghini Diablo VT 6.0",
+      "before": {
+        "dragCoefficient": 0.25,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2003-ferrari-360-modena",
+      "name": "2003 Ferrari 360 Modena",
+      "before": {
+        "dragCoefficient": 0.425,
+        "frontalAreaSqFt": 23,
+        "tireType": 3,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 20.5,
+        "tireType": 0,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2007-porsche-911-turbo",
+      "name": "2007 Porsche 911 Turbo",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 0,
+        "tireType": 0,
+        "launchRpm": 2200
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 4,
+        "tireType": 3,
+        "launchRpm": 1600
+      }
+    },
+    {
+      "id": "2011-mercedes-sls-amg",
+      "name": "2011 Mercedes SLS AMG",
+      "before": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2005-ferrari-f430",
+      "name": "2005 Ferrari F430",
+      "before": {
+        "dragCoefficient": 0.41,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 4200
+      }
+    },
+    {
+      "id": "2009-lamborghini-gallardo-lp560-4",
+      "name": "2009 Lamborghini Gallardo LP560-4",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 4.5,
+        "launchRpm": 2800
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 5.5,
+        "launchRpm": 1900
+      }
+    },
+    {
+      "id": "2010-aston-martin-v12-vantage",
+      "name": "2010 Aston Martin V12 Vantage",
+      "before": {
+        "dragCoefficient": 0.345,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2013-srt-viper-gts",
+      "name": "2013 SRT Viper GTS",
+      "before": {
+        "dragCoefficient": 0.38,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2002-porsche-911-turbo-996",
+      "name": "2002 Porsche 911 Turbo (996)",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19,
+        "launchRpm": 3200
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 2300
+      }
+    },
+    {
+      "id": "2006-ferrari-612-scaglietti",
+      "name": "2006 Ferrari 612 Scaglietti",
+      "before": {
+        "dragCoefficient": 0.435,
+        "frontalAreaSqFt": 24.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 3,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 0.5,
+        "tireType": 0,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2008-lamborghini-revent-n",
+      "name": "2008 Lamborghini Reventón",
+      "before": {
+        "drivetrainLossPercent": 4
+      },
+      "after": {
+        "drivetrainLossPercent": 4.5
+      }
+    },
+    {
+      "id": "2015-aston-martin-v12-vantage-s",
+      "name": "2015 Aston Martin V12 Vantage S",
+      "before": {
+        "launchRpm": 4500
+      },
+      "after": {
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2019-bugatti-chiron",
+      "name": "2019 Bugatti Chiron",
+      "before": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2020-mclaren-720s",
+      "name": "2020 McLaren 720S",
+      "before": {
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "frontalAreaSqFt": 20,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2019-lamborghini-aventador-svj",
+      "name": "2019 Lamborghini Aventador SVJ",
+      "before": {
+        "dragCoefficient": 0.41,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2021-rimac-nevera",
+      "name": "2021 Rimac Nevera",
+      "before": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 22.5
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 22
+      }
+    },
+    {
+      "id": "2019-koenigsegg-jesko",
+      "name": "2019 Koenigsegg Jesko",
+      "before": {
+        "dragCoefficient": 0.29,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2013-bugatti-veyron-super-sport",
+      "name": "2013 Bugatti Veyron Super Sport",
+      "before": {
+        "dragCoefficient": 0.38,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "2005-bugatti-veyron",
+      "name": "2005 Bugatti Veyron",
+      "before": {
+        "dragCoefficient": 0.41,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2006-saleen-s7-twin-turbo",
+      "name": "2006 Saleen S7 Twin Turbo",
+      "before": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 20,
+        "drivetrainLossPercent": 4,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2004-maserati-mc12",
+      "name": "2004 Maserati MC12",
+      "before": {
+        "dragCoefficient": 0.395,
+        "frontalAreaSqFt": 24.5,
+        "launchRpm": 4400
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 3500
+      }
+    },
+    {
+      "id": "2014-hennessey-venom-gt",
+      "name": "2014 Hennessey Venom GT",
+      "before": {
+        "dragCoefficient": 0.345,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.44,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 8,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2008-koenigsegg-ccx",
+      "name": "2008 Koenigsegg CCX",
+      "before": {
+        "dragCoefficient": 0.34,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2017-bugatti-chiron-sport",
+      "name": "2017 Bugatti Chiron Sport",
+      "before": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2019-mclaren-speedtail",
+      "name": "2019 McLaren Speedtail",
+      "before": {
+        "dragCoefficient": 0.28
+      },
+      "after": {
+        "dragCoefficient": 0.27
+      }
+    },
+    {
+      "id": "2016-koenigsegg-regera",
+      "name": "2016 Koenigsegg Regera",
+      "before": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 16,
+        "launchRpm": 2800
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 2.5,
+        "launchRpm": 2500
+      }
+    },
+    {
+      "id": "2018-bugatti-divo",
+      "name": "2018 Bugatti Divo",
+      "before": {
+        "dragCoefficient": 0.45,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2020-mclaren-elva",
+      "name": "2020 McLaren Elva",
+      "before": {
+        "dragCoefficient": 0.33
+      },
+      "after": {
+        "dragCoefficient": 0.32
+      }
+    },
+    {
+      "id": "2016-bugatti-chiron",
+      "name": "2016 Bugatti Chiron",
+      "before": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 23.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2021-mclaren-sabre",
+      "name": "2021 McLaren Sabre",
+      "before": {
+        "dragCoefficient": 0.33
+      },
+      "after": {
+        "dragCoefficient": 0.32
+      }
+    },
+    {
+      "id": "1998-toyota-supra-turbo-mk4",
+      "name": "1998 Toyota Supra Turbo (Mk4)",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19,
+        "drivetrainLossPercent": 2,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2002-nissan-skyline-gt-r-r34",
+      "name": "2002 Nissan Skyline GT-R R34",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2018-honda-civic-type-r",
+      "name": "2018 Honda Civic Type R",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2008-mitsubishi-lancer-evolution-x",
+      "name": "2008 Mitsubishi Lancer Evolution X",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2006-subaru-wrx-sti",
+      "name": "2006 Subaru WRX STI",
+      "before": {
+        "dragCoefficient": 0.26,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "2005-nissan-350z",
+      "name": "2005 Nissan 350Z",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2008-bmw-135i",
+      "name": "2008 BMW 135i",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "2010-mazda-rx-8-r3",
+      "name": "2010 Mazda RX-8 R3",
+      "before": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 18.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2003-mitsubishi-lancer-evolution-viii",
+      "name": "2003 Mitsubishi Lancer Evolution VIII",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19.5,
+        "tireType": 0
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22,
+        "tireType": 1
+      }
+    },
+    {
+      "id": "1999-subaru-impreza-22b-sti",
+      "name": "1999 Subaru Impreza 22B STI",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 7.5
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 8.5
+      }
+    },
+    {
+      "id": "2001-honda-s2000",
+      "name": "2001 Honda S2000",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 17.5,
+        "drivetrainLossPercent": 14.5,
+        "launchRpm": 2200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 20,
+        "drivetrainLossPercent": 13,
+        "launchRpm": 2800
+      }
+    },
+    {
+      "id": "2004-mazda-rx-8",
+      "name": "2004 Mazda RX-8",
+      "before": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 18.5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "1998-honda-prelude-type-sh",
+      "name": "1998 Honda Prelude Type SH",
+      "before": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2003-acura-rsx-type-s",
+      "name": "2003 Acura RSX Type-S",
+      "before": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 9.5,
+        "tireType": 1,
+        "launchRpm": 3700
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 11,
+        "tireType": 2,
+        "launchRpm": 2800
+      }
+    },
+    {
+      "id": "2007-mazdaspeed3",
+      "name": "2007 MazdaSpeed3",
+      "before": {
+        "dragCoefficient": 0.25,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2013-scion-fr-s",
+      "name": "2013 Scion FR-S",
+      "before": {
+        "dragCoefficient": 0.2,
+        "frontalAreaSqFt": 18.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 1800
+      }
+    },
+    {
+      "id": "1990-mazda-miata-na",
+      "name": "1990 Mazda Miata NA",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 16,
+        "drivetrainLossPercent": 5,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 6.5,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "1997-honda-civic-type-r-ek9",
+      "name": "1997 Honda Civic Type R EK9",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 17,
+        "tireType": 1,
+        "launchRpm": 1500
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 19,
+        "drivetrainLossPercent": 15.5,
+        "tireType": 2,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2002-subaru-wrx-wagon",
+      "name": "2002 Subaru WRX Wagon",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 2.5,
+        "launchRpm": 1300
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 1600
+      }
+    },
+    {
+      "id": "2005-mitsubishi-eclipse-gt",
+      "name": "2005 Mitsubishi Eclipse GT",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 20,
+        "drivetrainLossPercent": 3.5,
+        "tireType": 1
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 4,
+        "tireType": 2
+      }
+    },
+    {
+      "id": "2012-scion-tc",
+      "name": "2012 Scion tC",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 18.5,
+        "tireType": 4
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "tireType": 1
+      }
+    },
+    {
+      "id": "2001-mitsubishi-eclipse-gsx",
+      "name": "2001 Mitsubishi Eclipse GSX",
+      "before": {
+        "drivetrainLossPercent": 0
+      },
+      "after": {
+        "drivetrainLossPercent": 0.5
+      }
+    },
+    {
+      "id": "2010-hyundai-genesis-coupe-3-8",
+      "name": "2010 Hyundai Genesis Coupe 3.8",
+      "before": {
+        "dragCoefficient": 0.355,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "1999-honda-prelude-sh",
+      "name": "1999 Honda Prelude SH",
+      "before": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2008-subaru-legacy-gt-spec-b",
+      "name": "2008 Subaru Legacy GT Spec.B",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 2800
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1900
+      }
+    },
+    {
+      "id": "2011-mazdaspeed6",
+      "name": "2011 MazdaSpeed6",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 9
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 8.5
+      }
+    },
+    {
+      "id": "2021-kawasaki-ninja-zx-10r",
+      "name": "2021 Kawasaki Ninja ZX-10R",
+      "before": {
+        "dragCoefficient": 0.46,
+        "drivetrainLossPercent": 14.5,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 13.5,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "2016-kawasaki-ninja-zx-10r",
+      "name": "2016 Kawasaki Ninja ZX-10R",
+      "before": {
+        "drivetrainLossPercent": 11,
+        "launchRpm": 2400
+      },
+      "after": {
+        "drivetrainLossPercent": 11.5,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000",
+      "name": "2020 Suzuki GSX-R1000",
+      "before": {
+        "dragCoefficient": 0.42,
+        "drivetrainLossPercent": 15.5,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 13.5,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000r",
+      "name": "2020 Suzuki GSX-R1000R",
+      "before": {
+        "dragCoefficient": 0.4,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2020-yamaha-yzf-r1",
+      "name": "2020 Yamaha YZF-R1",
+      "before": {
+        "dragCoefficient": 0.43,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2020-yamaha-yzf-r1m",
+      "name": "2020 Yamaha YZF-R1M",
+      "before": {
+        "dragCoefficient": 0.4,
+        "drivetrainLossPercent": 17.5,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 16,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2021-bmw-s1000rr",
+      "name": "2021 BMW S1000RR",
+      "before": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 4.8,
+        "drivetrainLossPercent": 19.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "frontalAreaSqFt": 6.8,
+        "drivetrainLossPercent": 18.5,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2021-honda-cbr1000rr-r-fireblade",
+      "name": "2021 Honda CBR1000RR-R Fireblade",
+      "before": {
+        "dragCoefficient": 0.37,
+        "drivetrainLossPercent": 20.5,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 20,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2022-suzuki-hayabusa",
+      "name": "2022 Suzuki Hayabusa",
+      "before": {
+        "dragCoefficient": 0.39,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2020-kawasaki-ninja-zx-14r",
+      "name": "2020 Kawasaki Ninja ZX-14R",
+      "before": {
+        "dragCoefficient": 0.46,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2021-ducati-panigale-v4",
+      "name": "2021 Ducati Panigale V4",
+      "before": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 6.3,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "frontalAreaSqFt": 6.8,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2021-kawasaki-ninja-h2",
+      "name": "2021 Kawasaki Ninja H2",
+      "before": {
+        "dragCoefficient": 0.41,
+        "drivetrainLossPercent": 14.5,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "drivetrainLossPercent": 11,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2020-ford-f-150-raptor",
+      "name": "2020 Ford F-150 Raptor",
+      "before": {
+        "dragCoefficient": 0.355,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 0,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 10,
+        "tireType": 3,
+        "launchRpm": 1200
+      }
+    },
+    {
+      "id": "2021-ram-trx",
+      "name": "2021 Ram TRX",
+      "before": {
+        "dragCoefficient": 0.53
+      },
+      "after": {
+        "dragCoefficient": 0.52
+      }
+    },
+    {
+      "id": "2023-chevrolet-silverado-zr2",
+      "name": "2023 Chevrolet Silverado ZR2",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 30.5
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 33
+      }
+    },
+    {
+      "id": "2020-chevrolet-silverado-6-2",
+      "name": "2020 Chevrolet Silverado 6.2",
+      "before": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 30.5,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 33,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2019-ford-f-250-6-7-powerstroke",
+      "name": "2019 Ford F-250 6.7 PowerStroke",
+      "before": {
+        "dragCoefficient": 0.455,
+        "frontalAreaSqFt": 33.5,
+        "drivetrainLossPercent": 7
+      },
+      "after": {
+        "dragCoefficient": 0.55,
+        "frontalAreaSqFt": 36,
+        "drivetrainLossPercent": 9
+      }
+    },
+    {
+      "id": "2021-toyota-tundra",
+      "name": "2021 Toyota Tundra",
+      "before": {
+        "dragCoefficient": 0.335,
+        "frontalAreaSqFt": 29.5,
+        "tireType": 3,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 32,
+        "tireType": 1,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2018-ford-f-150-5-0",
+      "name": "2018 Ford F-150 5.0",
+      "before": {
+        "dragCoefficient": 0.345,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 15.5,
+        "launchRpm": 3800
+      },
+      "after": {
+        "dragCoefficient": 0.44,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 16,
+        "launchRpm": 2900
+      }
+    },
+    {
+      "id": "2017-chevrolet-silverado-5-3",
+      "name": "2017 Chevrolet Silverado 5.3",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 13,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 12.5,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2016-ram-1500-5-7-hemi",
+      "name": "2016 Ram 1500 5.7 Hemi",
+      "before": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 31.5,
+        "drivetrainLossPercent": 11.5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.49,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 14,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2014-toyota-tacoma-v6",
+      "name": "2014 Toyota Tacoma V6",
+      "before": {
+        "dragCoefficient": 0.325,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 6,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.42,
+        "frontalAreaSqFt": 30,
+        "drivetrainLossPercent": 7,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "2012-ford-f-150-ecoboost",
+      "name": "2012 Ford F-150 EcoBoost",
+      "before": {
+        "dragCoefficient": 0.355,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 4.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.44,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 6.5,
+        "launchRpm": 1000
+      }
+    },
+    {
+      "id": "2013-ram-1500-5-7-hemi",
+      "name": "2013 Ram 1500 5.7 Hemi",
+      "before": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 31.5,
+        "drivetrainLossPercent": 11.5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.49,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 14,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2011-chevrolet-avalanche-5-3",
+      "name": "2011 Chevrolet Avalanche 5.3",
+      "before": {
+        "dragCoefficient": 0.405,
+        "frontalAreaSqFt": 31.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 1400
+      },
+      "after": {
+        "dragCoefficient": 0.5,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "2010-toyota-tundra-5-7",
+      "name": "2010 Toyota Tundra 5.7",
+      "before": {
+        "dragCoefficient": 0.335,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2008-ford-f-150-harley-davidson",
+      "name": "2008 Ford F-150 Harley-Davidson",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 0
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 0.5
+      }
+    },
+    {
+      "id": "2009-gmc-sierra-denali-6-2",
+      "name": "2009 GMC Sierra Denali 6.2",
+      "before": {
+        "dragCoefficient": 0.395,
+        "frontalAreaSqFt": 31.5,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.49,
+        "frontalAreaSqFt": 34,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2010-nissan-titan-5-6",
+      "name": "2010 Nissan Titan 5.6",
+      "before": {
+        "dragCoefficient": 0.365,
+        "frontalAreaSqFt": 30.5
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 33
+      }
+    },
+    {
+      "id": "2013-toyota-sequoia-5-7",
+      "name": "2013 Toyota Sequoia 5.7",
+      "before": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 31.5,
+        "drivetrainLossPercent": 3,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 3.5,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2007-ford-f-150-4-6-triton",
+      "name": "2007 Ford F-150 4.6 Triton",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 30.5,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 33,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2008-chevrolet-silverado-6-0-vortec-max",
+      "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+      "before": {
+        "dragCoefficient": 0.395,
+        "frontalAreaSqFt": 31.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.49,
+        "frontalAreaSqFt": 34,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2011-toyota-tacoma-4-0-v6",
+      "name": "2011 Toyota Tacoma 4.0 V6",
+      "before": {
+        "dragCoefficient": 0.325,
+        "frontalAreaSqFt": 27.5,
+        "drivetrainLossPercent": 6,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.42,
+        "frontalAreaSqFt": 30,
+        "drivetrainLossPercent": 7,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "2015-nissan-frontier-4-0",
+      "name": "2015 Nissan Frontier 4.0",
+      "before": {
+        "dragCoefficient": 0.335,
+        "frontalAreaSqFt": 29,
+        "drivetrainLossPercent": 10
+      },
+      "after": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 31,
+        "drivetrainLossPercent": 7.5
+      }
+    },
+    {
+      "id": "2005-ford-f-250-v10",
+      "name": "2005 Ford F-250 V10",
+      "before": {
+        "dragCoefficient": 0.455,
+        "frontalAreaSqFt": 33.5,
+        "drivetrainLossPercent": 14
+      },
+      "after": {
+        "dragCoefficient": 0.55,
+        "frontalAreaSqFt": 36,
+        "drivetrainLossPercent": 13
+      }
+    },
+    {
+      "id": "2006-chevrolet-silverado-2500hd-6-0",
+      "name": "2006 Chevrolet Silverado 2500HD 6.0",
+      "before": {
+        "dragCoefficient": 0.405,
+        "frontalAreaSqFt": 32.5,
+        "launchRpm": 2000
+      },
+      "after": {
+        "dragCoefficient": 0.5,
+        "frontalAreaSqFt": 35,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2007-toyota-tundra-4-7",
+      "name": "2007 Toyota Tundra 4.7",
+      "before": {
+        "dragCoefficient": 0.335,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2012-nissan-titan-pro-4x",
+      "name": "2012 Nissan Titan Pro-4X",
+      "before": {
+        "dragCoefficient": 0.365,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 1
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 0
+      }
+    },
+    {
+      "id": "1969-dodge-charger-440",
+      "name": "1969 Dodge Charger 440",
+      "before": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 7
+      },
+      "after": {
+        "dragCoefficient": 0.51,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 12
+      }
+    },
+    {
+      "id": "1967-ford-mustang-gt-390",
+      "name": "1967 Ford Mustang GT 390",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 24.5,
+        "drivetrainLossPercent": 25,
+        "launchRpm": 2100
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 24,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "1970-chevrolet-chevelle-ss-454",
+      "name": "1970 Chevrolet Chevelle SS 454",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 13
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 10.5
+      }
+    },
+    {
+      "id": "1970-dodge-challenger-426-hemi",
+      "name": "1970 Dodge Challenger 426 Hemi",
+      "before": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 6,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 8.5,
+        "launchRpm": 4118
+      }
+    },
+    {
+      "id": "1969-chevrolet-camaro-ss-396",
+      "name": "1969 Chevrolet Camaro SS 396",
+      "before": {
+        "dragCoefficient": 0.375,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 24.5,
+        "tireType": 0,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.47,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 23.5,
+        "tireType": 3,
+        "launchRpm": 4500
+      }
+    },
+    {
+      "id": "1971-dodge-demon-340",
+      "name": "1971 Dodge Demon 340",
+      "before": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 16,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 20,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "1966-ford-gt40-mkii",
+      "name": "1966 Ford GT40 MkII",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 18,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "1970-plymouth-road-runner-440",
+      "name": "1970 Plymouth Road Runner 440",
+      "before": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 15.5,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 19,
+        "launchRpm": 3771
+      }
+    },
+    {
+      "id": "1968-dodge-dart-gts-383",
+      "name": "1968 Dodge Dart GTS 383",
+      "before": {
+        "dragCoefficient": 0.355,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 15,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 21.5,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "1964-pontiac-gto",
+      "name": "1964 Pontiac GTO",
+      "before": {
+        "dragCoefficient": 0.47,
+        "drivetrainLossPercent": 18.5
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "drivetrainLossPercent": 18
+      }
+    },
+    {
+      "id": "1965-chevrolet-chevelle-ss396",
+      "name": "1965 Chevrolet Chevelle SS396",
+      "before": {
+        "dragCoefficient": 0.415,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "1963-corvette-stingray-327",
+      "name": "1963 Corvette Stingray 327",
+      "before": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 24.5,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.43,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 30.5,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "1972-oldsmobile-442",
+      "name": "1972 Oldsmobile 442",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 22
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 20.5
+      }
+    },
+    {
+      "id": "1962-chevrolet-impala-ss-409",
+      "name": "1962 Chevrolet Impala SS 409",
+      "before": {
+        "dragCoefficient": 0.405,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 22,
+        "launchRpm": 1000
+      },
+      "after": {
+        "dragCoefficient": 0.5,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 21,
+        "launchRpm": 1300
+      }
+    },
+    {
+      "id": "1967-plymouth-gtx-440",
+      "name": "1967 Plymouth GTX 440",
+      "before": {
+        "dragCoefficient": 0.375,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 14,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 18,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "1973-ford-torino-351",
+      "name": "1973 Ford Torino 351",
+      "before": {
+        "dragCoefficient": 0.545,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 1300
+      },
+      "after": {
+        "dragCoefficient": 0.5,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 1000
+      }
+    },
+    {
+      "id": "1978-dodge-magnum-xe",
+      "name": "1978 Dodge Magnum XE",
+      "before": {
+        "dragCoefficient": 0.425,
+        "drivetrainLossPercent": 1
+      },
+      "after": {
+        "dragCoefficient": 0.47,
+        "drivetrainLossPercent": 0
+      }
+    },
+    {
+      "id": "1974-pontiac-firebird-400",
+      "name": "1974 Pontiac Firebird 400",
+      "before": {
+        "dragCoefficient": 0.395,
+        "drivetrainLossPercent": 2
+      },
+      "after": {
+        "dragCoefficient": 0.47,
+        "drivetrainLossPercent": 1
+      }
+    },
+    {
+      "id": "1977-chevrolet-monte-carlo",
+      "name": "1977 Chevrolet Monte Carlo",
+      "before": {
+        "dragCoefficient": 0.385,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 26,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "1961-chevrolet-corvette-283",
+      "name": "1961 Chevrolet Corvette 283",
+      "before": {
+        "dragCoefficient": 0.395,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 19,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.48,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 18,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "1975-chevrolet-nova-350",
+      "name": "1975 Chevrolet Nova 350",
+      "before": {
+        "dragCoefficient": 0.365,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 3000
+      },
+      "after": {
+        "dragCoefficient": 0.46,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2022-volkswagen-golf-r",
+      "name": "2022 Volkswagen Golf R",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 2800
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1900
+      }
+    },
+    {
+      "id": "2023-toyota-gr-corolla",
+      "name": "2023 Toyota GR Corolla",
+      "before": {
+        "dragCoefficient": 0.26,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 6,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 7,
+        "launchRpm": 1000
+      }
+    },
+    {
+      "id": "2021-bmw-m5-competition",
+      "name": "2021 BMW M5 Competition",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2020-audi-rs7",
+      "name": "2020 Audi RS7",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 22.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 2400
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 25,
+        "drivetrainLossPercent": 1.5,
+        "tireType": 1,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2018-bmw-m3-competition",
+      "name": "2018 BMW M3 Competition",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 2100
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 1800
+      }
+    },
+    {
+      "id": "2017-mercedes-amg-c63-s",
+      "name": "2017 Mercedes-AMG C63 S",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2019-audi-rs5-sportback",
+      "name": "2019 Audi RS5 Sportback",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 2100
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 0.5,
+        "tireType": 1,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2021-jeep-trackhawk",
+      "name": "2021 Jeep Trackhawk",
+      "before": {
+        "dragCoefficient": 0.41
+      },
+      "after": {
+        "dragCoefficient": 0.4
+      }
+    },
+    {
+      "id": "2023-bmw-x5m-competition",
+      "name": "2023 BMW X5M Competition",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 28.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 31,
+        "drivetrainLossPercent": 1.5,
+        "tireType": 1,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2020-dodge-durango-srt",
+      "name": "2020 Dodge Durango SRT",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 29.5,
+        "tireType": 0
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 32,
+        "tireType": 3
+      }
+    },
+    {
+      "id": "2022-cadillac-escalade-v",
+      "name": "2022 Cadillac Escalade V",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 32.5,
+        "drivetrainLossPercent": 6,
+        "tireType": 0,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 35,
+        "drivetrainLossPercent": 15,
+        "tireType": 3,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "2021-range-rover-sport-svr",
+      "name": "2021 Range Rover Sport SVR",
+      "before": {
+        "dragCoefficient": 0.25,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 2,
+        "tireType": 0,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 15,
+        "tireType": 3,
+        "launchRpm": 1200
+      }
+    },
+    {
+      "id": "2019-dodge-durango-r-t",
+      "name": "2019 Dodge Durango R/T",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 3,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.37,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 4.5,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2018-jeep-grand-cherokee-srt",
+      "name": "2018 Jeep Grand Cherokee SRT",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 0
+      },
+      "after": {
+        "dragCoefficient": 0.38,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 0.5,
+        "tireType": 3
+      }
+    },
+    {
+      "id": "2017-bmw-x6m",
+      "name": "2017 BMW X6M",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 28.5,
+        "launchRpm": 2800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 31,
+        "launchRpm": 1900
+      }
+    },
+    {
+      "id": "2012-chevrolet-tahoe-5-3",
+      "name": "2012 Chevrolet Tahoe 5.3",
+      "before": {
+        "dragCoefficient": 0.305,
+        "frontalAreaSqFt": 31.5
+      },
+      "after": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 34
+      }
+    },
+    {
+      "id": "2013-ford-expedition-5-4",
+      "name": "2013 Ford Expedition 5.4",
+      "before": {
+        "dragCoefficient": 0.325,
+        "frontalAreaSqFt": 32.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.42,
+        "frontalAreaSqFt": 35,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2014-jeep-wrangler-rubicon",
+      "name": "2014 Jeep Wrangler Rubicon",
+      "before": {
+        "dragCoefficient": 0.415,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 19
+      },
+      "after": {
+        "dragCoefficient": 0.51,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 19.5
+      }
+    },
+    {
+      "id": "2009-toyota-4runner-v8",
+      "name": "2009 Toyota 4Runner V8",
+      "before": {
+        "dragCoefficient": 0.305,
+        "frontalAreaSqFt": 29.5,
+        "tireType": 0,
+        "launchRpm": 2000
+      },
+      "after": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 32,
+        "tireType": 1,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2010-chevrolet-suburban-5-3",
+      "name": "2010 Chevrolet Suburban 5.3",
+      "before": {
+        "dragCoefficient": 0.325,
+        "frontalAreaSqFt": 32.5,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.42,
+        "frontalAreaSqFt": 35,
+        "launchRpm": 1400
+      }
+    },
+    {
+      "id": "2011-jeep-liberty-3-7",
+      "name": "2011 Jeep Liberty 3.7",
+      "before": {
+        "dragCoefficient": 0.355,
+        "frontalAreaSqFt": 28.5
+      },
+      "after": {
+        "dragCoefficient": 0.45,
+        "frontalAreaSqFt": 31
+      }
+    },
+    {
+      "id": "2008-toyota-highlander-v6",
+      "name": "2008 Toyota Highlander V6",
+      "before": {
+        "dragCoefficient": 0.285,
+        "frontalAreaSqFt": 30.5,
+        "launchRpm": 1400
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 31,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "2009-honda-pilot",
+      "name": "2009 Honda Pilot",
+      "before": {
+        "dragCoefficient": 0.28,
+        "frontalAreaSqFt": 30,
+        "drivetrainLossPercent": 0.5
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 0
+      }
+    },
+    {
+      "id": "2010-jeep-commander-5-7",
+      "name": "2010 Jeep Commander 5.7",
+      "before": {
+        "dragCoefficient": 0.305,
+        "frontalAreaSqFt": 30.5,
+        "drivetrainLossPercent": 6.5,
+        "launchRpm": 1700
+      },
+      "after": {
+        "dragCoefficient": 0.4,
+        "frontalAreaSqFt": 33,
+        "drivetrainLossPercent": 7,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "1994-toyota-supra-twin-turbo",
+      "name": "1994 Toyota Supra Twin Turbo",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 1900
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 2800
+      }
+    },
+    {
+      "id": "1999-nissan-skyline-gt-r-r34",
+      "name": "1999 Nissan Skyline GT-R R34",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 18.5,
+        "launchRpm": 2900
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 2000
+      }
+    },
+    {
+      "id": "1992-honda-nsx",
+      "name": "1992 Honda NSX",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 17.5,
+        "tireType": 3,
+        "launchRpm": 2600
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 20,
+        "tireType": 1,
+        "launchRpm": 3500
+      }
+    },
+    {
+      "id": "1989-toyota-mr2-supercharged",
+      "name": "1989 Toyota MR2 Supercharged",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 16.5,
+        "launchRpm": 4000
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 19,
+        "launchRpm": 3100
+      }
+    },
+    {
+      "id": "2009-bmw-335i",
+      "name": "2009 BMW 335i",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "2010-mercedes-c63-amg",
+      "name": "2010 Mercedes C63 AMG",
+      "before": {
+        "dragCoefficient": 0.25
+      },
+      "after": {
+        "dragCoefficient": 0.32
+      }
+    },
+    {
+      "id": "2008-audi-s5",
+      "name": "2008 Audi S5",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 6
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 9.5
+      }
+    },
+    {
+      "id": "1986-toyota-corolla-ae86",
+      "name": "1986 Toyota Corolla AE86",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 16.5,
+        "drivetrainLossPercent": 7
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 19,
+        "drivetrainLossPercent": 9
+      }
+    },
+    {
+      "id": "1990-mazda-rx-7-fc-turbo",
+      "name": "1990 Mazda RX-7 FC Turbo",
+      "before": {
+        "dragCoefficient": 0.25,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 3300
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "1995-mitsubishi-eclipse-gsx",
+      "name": "1995 Mitsubishi Eclipse GSX",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 1000
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1300
+      }
+    },
+    {
+      "id": "1985-mazda-rx-7-gsl-se",
+      "name": "1985 Mazda RX-7 GSL-SE",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 16.5,
+        "tireType": 3
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 19,
+        "tireType": 0
+      }
+    },
+    {
+      "id": "1993-honda-accord-sir",
+      "name": "1993 Honda Accord SiR",
+      "before": {
+        "dragCoefficient": 0.295,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "launchRpm": 1800
+      }
+    },
+    {
+      "id": "1983-toyota-supra-mk2",
+      "name": "1983 Toyota Supra (Mk2)",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 3
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 0.5
+      }
+    },
+    {
+      "id": "1987-nissan-skyline-gts-r",
+      "name": "1987 Nissan Skyline GTS-R",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 18.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 0,
+        "launchRpm": 1400
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 1.5,
+        "tireType": 3,
+        "launchRpm": 2300
+      }
+    },
+    {
+      "id": "1996-honda-integra-sir",
+      "name": "1996 Honda Integra SiR",
+      "before": {
+        "dragCoefficient": 0.335,
+        "drivetrainLossPercent": 7.5
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "drivetrainLossPercent": 7
+      }
+    },
+    {
+      "id": "2018-mercedes-amg-gt-r",
+      "name": "2018 Mercedes-AMG GT R",
+      "before": {
+        "dragCoefficient": 0.39,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2019-porsche-911-gt3",
+      "name": "2019 Porsche 911 GT3",
+      "before": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 1700
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 20.5,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2016-audi-tt-rs",
+      "name": "2016 Audi TT RS",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 18.5,
+        "tireType": 1,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 21,
+        "tireType": 2,
+        "launchRpm": 1800
+      }
+    },
+    {
+      "id": "2015-bmw-m4",
+      "name": "2015 BMW M4",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 0,
+        "tireType": 1,
+        "launchRpm": 3800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0.5,
+        "tireType": 2,
+        "launchRpm": 2900
+      }
+    },
+    {
+      "id": "2014-mercedes-cla45-amg",
+      "name": "2014 Mercedes CLA45 AMG",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 19.5,
+        "drivetrainLossPercent": 3,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22,
+        "drivetrainLossPercent": 4,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2012-bmw-m5",
+      "name": "2012 BMW M5",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 3000
+      }
+    },
+    {
+      "id": "2013-audi-rs4-avant",
+      "name": "2013 Audi RS4 Avant",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 6.5,
+        "launchRpm": 1000
+      }
+    },
+    {
+      "id": "2011-mercedes-e63-amg",
+      "name": "2011 Mercedes E63 AMG",
+      "before": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 23,
+        "launchRpm": 3900
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2009-bmw-335i",
+      "name": "2009 BMW 335i",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 1100
+      }
+    },
+    {
+      "id": "2010-mercedes-c63-amg",
+      "name": "2010 Mercedes C63 AMG",
+      "before": {
+        "dragCoefficient": 0.25
+      },
+      "after": {
+        "dragCoefficient": 0.32
+      }
+    },
+    {
+      "id": "2008-audi-s5",
+      "name": "2008 Audi S5",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 6
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 9.5
+      }
+    },
+    {
+      "id": "2007-bmw-550i",
+      "name": "2007 BMW 550i",
+      "before": {
+        "dragCoefficient": 0.23,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "drivetrainLossPercent": 1.5,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2009-mercedes-cls550",
+      "name": "2009 Mercedes CLS550",
+      "before": {
+        "dragCoefficient": 0.23,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 4200
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 24,
+        "launchRpm": 3300
+      }
+    },
+    {
+      "id": "2011-audi-a7-3-0t",
+      "name": "2011 Audi A7 3.0T",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 0.5
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 0
+      }
+    },
+    {
+      "id": "2004-bmw-330ci-zhp",
+      "name": "2004 BMW 330Ci ZHP",
+      "before": {
+        "dragCoefficient": 0.215,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.31,
+        "frontalAreaSqFt": 23,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2006-mercedes-clk55-amg",
+      "name": "2006 Mercedes CLK55 AMG",
+      "before": {
+        "dragCoefficient": 0.24,
+        "frontalAreaSqFt": 23
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24
+      }
+    },
+    {
+      "id": "2007-audi-s6-v10",
+      "name": "2007 Audi S6 V10",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 10,
+        "tireType": 0,
+        "launchRpm": 3200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 22,
+        "tireType": 1,
+        "launchRpm": 2300
+      }
+    },
+    {
+      "id": "2003-bmw-m3-e46",
+      "name": "2003 BMW M3 E46",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2008-audi-rs4",
+      "name": "2008 Audi RS4",
+      "before": {
+        "dragCoefficient": 0.25,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 4100
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "drivetrainLossPercent": 8,
+        "launchRpm": 3200
+      }
+    },
+    {
+      "id": "2024-porsche-911-gt3-rs",
+      "name": "2024 Porsche 911 GT3 RS",
+      "before": {
+        "dragCoefficient": 0.27,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 3500
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 21.5,
+        "launchRpm": 2600
+      }
+    },
+    {
+      "id": "2023-porsche-718-cayman-gt4-rs",
+      "name": "2023 Porsche 718 Cayman GT4 RS",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 22.4,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21.9,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2023-toyota-gr-supra-3-0",
+      "name": "2023 Toyota GR Supra 3.0",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 19,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3600
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 21.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 2700
+      }
+    },
+    {
+      "id": "2023-nissan-z-performance",
+      "name": "2023 Nissan Z Performance",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 19.5,
+        "tireType": 1,
+        "launchRpm": 1800
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "tireType": 2,
+        "launchRpm": 2100
+      }
+    },
+    {
+      "id": "2024-bmw-m2",
+      "name": "2024 BMW M2",
+      "before": {
+        "dragCoefficient": 0.255,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.35,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 1500
+      }
+    },
+    {
+      "id": "2024-chevrolet-corvette-stingray",
+      "name": "2024 Chevrolet Corvette Stingray",
+      "before": {
+        "dragCoefficient": 0.245,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 1100
+      },
+      "after": {
+        "dragCoefficient": 0.34,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1700
+      }
+    },
+    {
+      "id": "2023-mazda-mx-5-miata-club",
+      "name": "2023 Mazda MX-5 Miata Club",
+      "before": {
+        "dragCoefficient": 0.265,
+        "frontalAreaSqFt": 16.8,
+        "drivetrainLossPercent": 1.5,
+        "tireType": 3,
+        "launchRpm": 3200
+      },
+      "after": {
+        "dragCoefficient": 0.36,
+        "frontalAreaSqFt": 18.8,
+        "drivetrainLossPercent": 0,
+        "tireType": 4,
+        "launchRpm": 4100
+      }
+    },
+    {
+      "id": "2024-lexus-lc-500-coupe",
+      "name": "2024 Lexus LC 500 Coupe",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 21,
+        "drivetrainLossPercent": 0,
+        "tireType": 3,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 1,
+        "tireType": 4,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2023-ford-bronco-raptor",
+      "name": "2023 Ford Bronco Raptor",
+      "before": {
+        "dragCoefficient": 0.455,
+        "frontalAreaSqFt": 29.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 800
+      },
+      "after": {
+        "dragCoefficient": 0.55,
+        "frontalAreaSqFt": 32,
+        "drivetrainLossPercent": 9.5,
+        "launchRpm": 1600
+      }
+    },
+    {
+      "id": "2024-toyota-gr86",
+      "name": "2024 Toyota GR86",
+      "before": {
+        "dragCoefficient": 0.205,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 3800
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 2900
+      }
+    },
+    {
+      "id": "2024-subaru-brz",
+      "name": "2024 Subaru BRZ",
+      "before": {
+        "dragCoefficient": 0.205,
+        "frontalAreaSqFt": 18,
+        "drivetrainLossPercent": 0,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "frontalAreaSqFt": 20.5,
+        "drivetrainLossPercent": 0.5,
+        "launchRpm": 3600
+      }
+    },
+    {
+      "id": "2023-acura-tlx-type-s",
+      "name": "2023 Acura TLX Type S",
+      "before": {
+        "dragCoefficient": 0.275,
+        "frontalAreaSqFt": 23.5,
+        "drivetrainLossPercent": 1,
+        "launchRpm": 1300
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 24,
+        "drivetrainLossPercent": 2.5,
+        "launchRpm": 1000
+      }
+    },
+    {
+      "id": "2024-lexus-is-500",
+      "name": "2024 Lexus IS 500",
+      "before": {
+        "dragCoefficient": 0.295,
+        "launchRpm": 4500
+      },
+      "after": {
+        "dragCoefficient": 0.3,
+        "launchRpm": 3900
+      }
+    },
+    {
+      "id": "2024-audi-rs-3",
+      "name": "2024 Audi RS 3",
+      "before": {
+        "dragCoefficient": 0.235,
+        "frontalAreaSqFt": 20,
+        "launchRpm": 2700
+      },
+      "after": {
+        "dragCoefficient": 0.33,
+        "frontalAreaSqFt": 22.5,
+        "launchRpm": 2400
+      }
+    },
+    {
+      "id": "2024-lexus-rc-f",
+      "name": "2024 Lexus RC F",
+      "before": {
+        "dragCoefficient": 0.26
+      },
+      "after": {
+        "dragCoefficient": 0.33
+      }
+    },
+    {
+      "id": "2023-honda-civic-type-r",
+      "name": "2023 Honda Civic Type R",
+      "before": {
+        "dragCoefficient": 0.225,
+        "frontalAreaSqFt": 19.5,
+        "launchRpm": 1200
+      },
+      "after": {
+        "dragCoefficient": 0.32,
+        "frontalAreaSqFt": 22,
+        "launchRpm": 1500
+      }
+    }
+  ],
+  "unchanged": [
+    "2018-ford-mustang-gt-pp2",
+    "2021-dodge-charger-hellcat-redeye",
+    "2015-dodge-challenger-hellcat",
+    "2009-pontiac-g8-gxp",
+    "1996-ford-mustang-svt-cobra",
+    "1994-pontiac-firebird-formula",
+    "2010-chevrolet-camaro-lt",
+    "2022-bmw-ix-m60",
+    "2024-tesla-cybertruck-tri-motor",
+    "2024-tesla-model-x-long-range",
+    "2023-audi-e-tron-gt",
+    "2024-lucid-air-touring",
+    "2017-ferrari-812-superfast",
+    "2018-mclaren-600lt",
+    "2013-mclaren-mp4-12c",
+    "2008-aston-martin-dbs",
+    "2014-porsche-911-carrera-s",
+    "2011-mclaren-mp4-12c-hs",
+    "2020-subaru-wrx-sti",
+    "2006-honda-accord-euro-r",
+    "1965-shelby-cobra-427",
+    "1957-chevrolet-bel-air-283",
+    "1960-ford-galaxie-352",
+    "1955-ford-thunderbird",
+    "1968-mercury-cougar-xr-7",
+    "2005-mercedes-e55-amg",
+    "2011-2014-ford-f-150-enrique-s-3-5eb",
+    "2023-chevrolet-corvette-z06",
+    "2026-chevrolet-corvette-zr1x",
+    "2024-acura-integra-type-s"
+  ],
+  "missingInPre": [],
+  "forceScaleNonOne": [],
+  "tallies": {
+    "dragCoefficient": 277,
+    "frontalAreaSqFt": 226,
+    "drivetrainLossPercent": 125,
+    "tireType": 47,
+    "weightLbs": 0,
+    "peakHp": 0,
+    "launchRpm": 206
+  },
+  "restoredCount": 286,
+  "unchangedCount": 30
+}
