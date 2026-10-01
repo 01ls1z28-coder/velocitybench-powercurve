@@ -154,6 +154,7 @@ function writeGarage(cars) {
     ' * ZR1X rebake: published Cd0.36/wt3978/FD5.56 locked — loss-only ET@trap toward Excel 8.675@159.',
     ' * Fleet published-miss batch (c931e63): sourced curve/Cd/loss/tire; fs=1; no fake TX.',
     ' * Fleet ET-first accuracy: Corrected Excel SOI; closer residuals via loss/launch/tire; fs=1; credit Jorge Guerra.',
+    ' * Fleet realism pass: post AWD-µ de-dupe + ICE dyno sanitize/cap on sim; rebake loss/launch/tire.',
     ' * Rebuild: node scripts/build-garage.js · Recalib: node scripts/recalib-fleet-et-first-accuracy.js',
     ' */',
     "'use strict';",
@@ -180,8 +181,8 @@ function main() {
   TARGETS.forEach(function (t) { tgtByName[t.name] = t; });
   var t0 = Date.now();
   var report = {
-    tip: 'fleet-et-first-accuracy',
-    parent: 'e11f399 (c931e63 onto d102976)',
+    tip: 'pc-fleet-realism-pass',
+    parent: '79bef38 + fleet-realism physics',
     credit: 'Jorge Guerra',
     soi: 'VelocityBench_Garage_Corrected.xlsx + L_Fixes',
     tol: TOL,

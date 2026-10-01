@@ -600,19 +600,22 @@
         peakRpm = keys[i];
       }
     }
+    var redline = keys[keys.length - 1];
     var pinned = Number(peakHpRpmOpt);
     if (isFinite(pinned) && pinned > 0) {
       var pinHp = (Number(curve[pinned]) * pinned) / 5252;
       if (!isFinite(pinHp)) pinHp = (Number(curve[String(Math.round(pinned))]) * pinned) / 5252;
-      if (isFinite(pinHp) && pinHp >= peakHp * 0.97) {
+      // Pin only when there is room past the pin to fall (not peak==redline shelf)
+      if (isFinite(pinHp) && pinHp >= peakHp * 0.97 && pinned < redline - 80) {
         peakRpm = pinned;
         peakHp = pinHp;
       }
     }
-    var redline = keys[keys.length - 1];
     var span = Math.max(1, redline - peakRpm);
-    // Default fall ~25% of peak HP across peak→redline if no slope established yet
-    var fallPerRpm = -(peakHp * 0.25) / span;
+    // Target fall across peak→redline: ≥18% even on short spans (peak near redline),
+    // up to 28% on long spans — real dynos keep dropping; no flat tip.
+    var targetFallFrac = span < 800 ? 0.18 : (span < 1600 ? 0.22 : 0.28);
+    var fallPerRpm = -(peakHp * targetFallFrac) / span;
     var prevHp = peakHp;
     var prevR = peakRpm;
     var haveSlope = false;
@@ -627,8 +630,8 @@
       // Strictly decreasing: reject rise OR flat (within 0.15 hp)
       if (hp >= prevHp - 0.15) {
         var cont = prevHp + fallPerRpm * dr;
-        // Keep a meaningful drop (≥0.4 hp per 100 rpm) so tip never shelves
-        var minDrop = Math.max(0.004 * dr, peakHp * 0.00008 * dr);
+        // Keep a meaningful drop (≥0.5 hp per 100 rpm, or 0.012% of peak/rpm)
+        var minDrop = Math.max(0.005 * dr, peakHp * 0.00012 * dr);
         if (!(cont < prevHp - minDrop)) cont = prevHp - minDrop;
         // Floor: do not crater below ~55% of peak (still a real dyno fall)
         var floorHp = peakHp * 0.55;
@@ -637,11 +640,23 @@
         curve[r] = Math.max(5, (cont * 5252) / r);
         hp = (curve[r] * r) / 5252;
       } else {
-        // Honest declining sample — adopt its slope for later extrapolation
-        fallPerRpm = (hp - prevHp) / dr;
-        // Keep slope negative and not absurdly steep
-        if (fallPerRpm > -1e-6) fallPerRpm = -(peakHp * 0.25) / span;
-        if (fallPerRpm < -(peakHp * 0.55) / span) fallPerRpm = -(peakHp * 0.55) / span;
+        // Declining sample: if too shallow vs target tip fall, rewrite this knot too
+        var natSlope = (hp - prevHp) / dr;
+        var minSlope = -(peakHp * targetFallFrac) / span;
+        var maxSlope = -(peakHp * 0.55) / span; // steepest allowed
+        if (natSlope > minSlope * 0.85) {
+          // Too flat for a real dyno tip — continue at target slope from prev
+          var cont2 = prevHp + minSlope * dr;
+          var floorHp2 = peakHp * 0.55;
+          if (cont2 < floorHp2) cont2 = floorHp2;
+          if (cont2 >= prevHp - 0.15) cont2 = prevHp - Math.max(0.005 * dr, peakHp * 0.00012 * dr);
+          curve[r] = Math.max(5, (cont2 * 5252) / r);
+          hp = (curve[r] * r) / 5252;
+          fallPerRpm = minSlope;
+        } else {
+          fallPerRpm = natSlope;
+          if (fallPerRpm < maxSlope) fallPerRpm = maxSlope;
+        }
         haveSlope = true;
       }
       prevHp = hp;
@@ -868,11 +883,17 @@
     var leftPct = wDist.leftWeightPercent;
     var muBase = env.tireGrip != null ? Number(env.tireGrip) : tireGripForType(env.tireType);
     var driveType = String(car.driveType || 'RWD').toUpperCase();
-    if (driveType === 'AWD') muBase *= 1.25;
+    // AWD already sums BOTH axle traction limits — do NOT multiply µ again (old ×1.25 invented grip).
 
     var curve = car.torqueCurve;
     if (!curve || (typeof curve === 'object' && !Array.isArray(curve) && !Object.keys(curve).length)) {
       curve = synthesizeTorqueCurve(car.peakHp || car.horsepower, car.peakTqRpm, car.redline, car.peakHpRpm);
+    } else if (!car.isEv) {
+      // Shared sim path (ICE only): sanitize + cap so post-peak HP keeps falling; peakHp honesty.
+      // EVs keep their motor maps — dyno-fall sanitize is an ICE characteristic.
+      curve = Object.assign({}, curve);
+      sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
+      if (car.peakHp > 0) capTorqueCurveToPeakHp(curve, car.peakHp);
     }
 
     var tempF = env.tempF != null ? Number(env.tempF) : 70;
@@ -1170,7 +1191,8 @@
             var isManual = /^manual$/i.test(String(car.transmission || '').trim());
             var isEvStock = !!(car.isEv || car.powerSource === 'ev');
             var stall = leaveRpm;
-            var spinN = clamp((typeof prevSpinPct === 'number' ? prevSpinPct : 0) / 100.0, 0, 1);
+            // spinFrac 0..1 — do NOT name this spinN (that counter averages wheelspin%)
+            var spinFrac = clamp((typeof prevSpinPct === 'number' ? prevSpinPct : 0) / 100.0, 0, 1);
             var headroom = Math.max(200, shiftRpm - stall);
 
             if (isEvStock) {
@@ -1188,10 +1210,10 @@
               // Mild stock flash ceiling (well below ATC Circle-D class unless spinning hard)
               var flashAdd;
               if (isManual) {
-                flashAdd = headroom * (0.08 + 0.55 * spinN);
+                flashAdd = headroom * (0.08 + 0.55 * spinFrac);
               } else {
                 // Spin-scaled flash stall — stronger launchers (more wheelspin) flash higher
-                flashAdd = Math.min(headroom * 0.40, 280 + 720 * spinN);
+                flashAdd = Math.min(headroom * 0.40, 280 + 720 * spinFrac);
               }
               var flash = Math.min(shiftRpm, stall + Math.max(120, flashAdd));
 
@@ -1205,7 +1227,7 @@
 
               // Open-converter / clutch-slip engine target (moves as soon as rolling)
               var openRpm;
-              if (isManual && spinN < 0.15) {
+              if (isManual && spinFrac < 0.15) {
                 // Bite dip under load when hooked (HPA) — modest street dip, recovers via crawl
                 var dipTo = Math.max(mechRpm, stall * 0.85);
                 openRpm = stall + (dipTo - stall) * (0.40 * flashPulse);
