@@ -533,40 +533,54 @@
     return clamp(lr, 800, redline);
   }
 
+  /**
+   * Dyno-honest torque curve from peak HP (+ optional peak TQ/HP RPM).
+   * Jorge: HP+weight alone must yield believable trap/ET — post-peak HP fall
+   * is span-aware (~18–26%), not a crater. Peak TQ ~10–14% above TQ@peakHP.
+   */
   function synthesizeTorqueCurve(peakHp, peakTqRpm, redline, peakHpRpm) {
     peakHp = clamp(Number(peakHp) || 300, 1, 15000);
-    peakTqRpm = clamp(Number(peakTqRpm) || 4000, 800, 12000);
     redline = clamp(Number(redline) || 6500, 2000, 16000);
-    peakHpRpm = clamp(
-      Number(peakHpRpm) || Math.min(redline * 0.92, peakTqRpm + 1500),
-      peakTqRpm, redline
-    );
+    // Sane defaults when user only enters HP (and maybe redline)
+    if (!(Number(peakTqRpm) > 0)) {
+      peakTqRpm = redline > 9000 ? Math.round(redline * 0.72) : Math.round(redline * 0.58);
+    }
+    peakTqRpm = clamp(Number(peakTqRpm), 800, Math.min(12000, redline - 100));
+    if (!(Number(peakHpRpm) > 0)) {
+      peakHpRpm = Math.min(redline * 0.92, peakTqRpm + Math.max(1200, redline * 0.18));
+    }
+    peakHpRpm = clamp(Number(peakHpRpm), peakTqRpm, redline);
     // Peak TQ from published HP@RPM via HP = TQ*RPM/5252 (consistent by construction)
     var tqAtPeakHp = (peakHp * 5252) / peakHpRpm;
-    // Typical NA/FI engines make ~8–18% more TQ at peak-TQ RPM than at peak-HP RPM
+    // Typical NA/FI: ~10–14% more TQ at peak-TQ RPM than at peak-HP RPM
     var peakTq = tqAtPeakHp * 1.12;
+    var span = Math.max(1, redline - peakHpRpm);
+    // Target HP fall peak→redline — short spans (peak near limiter) only tip off gently
+    var hpFallFrac = span < 400 ? 0.08 : (span < 800 ? 0.14 : (span < 1400 ? 0.20 : (span < 2200 ? 0.24 : 0.26)));
     var curve = {};
     for (var r = 1000; r <= redline; r += 100) {
       var tq;
       if (r <= peakTqRpm) {
         var u = r / peakTqRpm;
         // Rising flank — soft start then fill (dyno-like, not a flat blob)
-        tq = peakTq * (0.48 + 0.52 * Math.pow(u, 0.72));
+        tq = peakTq * (0.50 + 0.50 * Math.pow(u, 0.70));
       } else if (r <= peakHpRpm) {
         var v = (r - peakTqRpm) / Math.max(1, peakHpRpm - peakTqRpm);
         // TQ falls gradually so HP keeps climbing to peakHpRpm
-        tq = peakTq + (tqAtPeakHp - peakTq) * (0.25 * v + 0.75 * v * v);
+        tq = peakTq + (tqAtPeakHp - peakTq) * (0.20 * v + 0.80 * v * v);
       } else {
-        var w = (r - peakHpRpm) / Math.max(1, redline - peakHpRpm);
-        // Past peak HP: stronger continuous fall so HP keeps dropping to redline
-        tq = tqAtPeakHp * (1.0 - 0.34 * w - 0.28 * w * w);
+        var w = (r - peakHpRpm) / span;
+        // Shape HP fall smoothly; convert to TQ so HP lands on target tip
+        var hpHere = peakHp * (1.0 - hpFallFrac * (0.75 * w + 0.25 * w * w));
+        tq = (hpHere * 5252) / r;
       }
       curve[r] = Math.max(10, tq);
     }
-    // Pin exact peaks — redline from fall formula (~0.38× tqAtPeakHp → HP well below peak)
+    // Pin exact peaks + redline HP tip
     curve[peakTqRpm] = peakTq;
     curve[peakHpRpm] = tqAtPeakHp;
-    curve[redline] = Math.max(10, tqAtPeakHp * (1.0 - 0.34 - 0.28));
+    var hpRed = peakHp * (1.0 - hpFallFrac);
+    curve[redline] = Math.max(10, (hpRed * 5252) / redline);
     return sanitizeTorqueCurvePostPeak(curve, peakHpRpm);
   }
 
@@ -612,13 +626,16 @@
       }
     }
     var span = Math.max(1, redline - peakRpm);
-    // Target fall across peak→redline: ≥18% even on short spans (peak near redline),
-    // up to 28% on long spans — real dynos keep dropping; no flat tip.
-    var targetFallFrac = span < 800 ? 0.18 : (span < 1600 ? 0.22 : 0.28);
+    // Tip fall: short spans (peak≈redline) tip gently; long spans ~20–26%.
+    // Steepest ~30% on long spans (was 45% cliff). Never invent a 16% drop in 200 rpm.
+    var targetFallFrac = span < 400 ? 0.08 : (span < 800 ? 0.14 : (span < 1600 ? 0.20 : 0.26));
+    var maxFallFrac = span < 400 ? 0.14 : (span < 800 ? 0.20 : (span < 1600 ? 0.28 : 0.30));
     var fallPerRpm = -(peakHp * targetFallFrac) / span;
+    var maxSlope = -(peakHp * maxFallFrac) / span; // steepest HP/rpm allowed
+    var minSlope = -(peakHp * targetFallFrac) / span;
+    var floorHp = peakHp * (1.0 - maxFallFrac);
     var prevHp = peakHp;
     var prevR = peakRpm;
-    var haveSlope = false;
     for (i = 0; i < keys.length; i++) {
       var r = keys[i];
       if (r <= peakRpm) continue;
@@ -627,37 +644,37 @@
       var hp = (tq * r) / 5252;
       var dr = r - prevR;
       if (dr <= 0) continue;
+      var minDrop = Math.max(0.005 * dr, peakHp * 0.00012 * dr);
       // Strictly decreasing: reject rise OR flat (within 0.15 hp)
       if (hp >= prevHp - 0.15) {
         var cont = prevHp + fallPerRpm * dr;
-        // Keep a meaningful drop (≥0.5 hp per 100 rpm, or 0.012% of peak/rpm)
-        var minDrop = Math.max(0.005 * dr, peakHp * 0.00012 * dr);
         if (!(cont < prevHp - minDrop)) cont = prevHp - minDrop;
-        // Floor: do not crater below ~55% of peak (still a real dyno fall)
-        var floorHp = peakHp * 0.55;
         if (cont < floorHp) cont = floorHp;
         if (cont >= prevHp) cont = prevHp - minDrop;
         curve[r] = Math.max(5, (cont * 5252) / r);
         hp = (curve[r] * r) / 5252;
+        fallPerRpm = minSlope;
       } else {
-        // Declining sample: if too shallow vs target tip fall, rewrite this knot too
         var natSlope = (hp - prevHp) / dr;
-        var minSlope = -(peakHp * targetFallFrac) / span;
-        var maxSlope = -(peakHp * 0.55) / span; // steepest allowed
         if (natSlope > minSlope * 0.85) {
-          // Too flat for a real dyno tip — continue at target slope from prev
+          // Too flat — continue at target slope
           var cont2 = prevHp + minSlope * dr;
-          var floorHp2 = peakHp * 0.55;
-          if (cont2 < floorHp2) cont2 = floorHp2;
-          if (cont2 >= prevHp - 0.15) cont2 = prevHp - Math.max(0.005 * dr, peakHp * 0.00012 * dr);
+          if (cont2 < floorHp) cont2 = floorHp;
+          if (cont2 >= prevHp - 0.15) cont2 = prevHp - minDrop;
           curve[r] = Math.max(5, (cont2 * 5252) / r);
           hp = (curve[r] * r) / 5252;
           fallPerRpm = minSlope;
+        } else if (natSlope < maxSlope) {
+          // Too steep / cratered tip — lift toward max allowed fall (trap honesty)
+          var cont3 = prevHp + maxSlope * dr;
+          if (cont3 < floorHp) cont3 = floorHp;
+          if (cont3 >= prevHp - 0.15) cont3 = prevHp - minDrop;
+          curve[r] = Math.max(5, (cont3 * 5252) / r);
+          hp = (curve[r] * r) / 5252;
+          fallPerRpm = maxSlope;
         } else {
           fallPerRpm = natSlope;
-          if (fallPerRpm < maxSlope) fallPerRpm = maxSlope;
         }
-        haveSlope = true;
       }
       prevHp = hp;
       prevR = r;
@@ -744,15 +761,17 @@
     if (opts.isEv) return 1.0;
     var df = rho / RHO0;
     var dak = daFt / 1000.0;
-    // Hybrid: ICE still density-sensitive; e-motor share softens DA vs pure NA (between NA and FI).
+    // Density-honest: wx → 1.0 at RHO0 / DA0 (no invented 0.985 / 1.015 fudge).
+    // Hybrid: ICE density-sensitive; e-motor share softens DA vs pure NA.
     if (opts.isHybrid) {
-      return (0.70 + 0.30 * df) * 1.00 * Math.max(0.35, 1.0 - 0.022 * Math.max(0, dak));
+      return (0.70 + 0.30 * df) * Math.max(0.35, 1.0 - 0.022 * Math.max(0, dak));
     }
     if (opts.isNA && !opts.isFI) {
-      return df * 0.985 * Math.max(0.30, 1.0 - 0.03 * Math.max(0, dak));
+      return df * Math.max(0.30, 1.0 - 0.03 * Math.max(0, dak));
     }
     if (opts.isFI && !opts.isNA) {
-      return (0.55 + 0.45 * df) * 1.015 * Math.max(0.40, 1.0 - 0.015 * Math.max(0, dak));
+      // FI less DA-sensitive than NA; identity at standard density
+      return (0.55 + 0.45 * df) * Math.max(0.40, 1.0 - 0.015 * Math.max(0, dak));
     }
     return df;
   }
