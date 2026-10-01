@@ -367,6 +367,38 @@
       prevTq = tq;
       out.push({ rpm: rpm, torque: tq, horsepower: (tq * rpm) / 5252 });
     }
+    // Ensure exact peakHpRpm knot is on the editable series (garage pins often off 100-grid)
+    var pinRpm = state.car && Number(state.car.peakHpRpm);
+    if (isFinite(pinRpm) && pinRpm >= minR && pinRpm <= maxR) {
+      var pinTq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(map, pinRpm) : Number(map[pinRpm]);
+      if (isFinite(pinTq) && pinTq > 0) {
+        var inserted = false;
+        for (var pi = 0; pi < out.length; pi++) {
+          if (Math.abs(out[pi].rpm - pinRpm) < 0.5) {
+            out[pi].torque = Math.max(5, pinTq);
+            out[pi].horsepower = (out[pi].torque * out[pi].rpm) / 5252;
+            inserted = true;
+            break;
+          }
+          if (out[pi].rpm > pinRpm) {
+            out.splice(pi, 0, {
+              rpm: Math.round(pinRpm),
+              torque: Math.max(5, pinTq),
+              horsepower: (Math.max(5, pinTq) * pinRpm) / 5252
+            });
+            inserted = true;
+            break;
+          }
+        }
+        if (!inserted) {
+          out.push({
+            rpm: Math.round(pinRpm),
+            torque: Math.max(5, pinTq),
+            horsepower: (Math.max(5, pinTq) * pinRpm) / 5252
+          });
+        }
+      }
+    }
     // Cap series peak to vehicle Peak HP parameter (tiny rounding slack)
     if (peakHpCap > 0) {
       var seriesPeak = 0;
