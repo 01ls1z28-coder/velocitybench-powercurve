@@ -558,15 +558,15 @@
         tq = peakTq + (tqAtPeakHp - peakTq) * (0.25 * v + 0.75 * v * v);
       } else {
         var w = (r - peakHpRpm) / Math.max(1, redline - peakHpRpm);
-        // Past peak HP: TQ falls so HP declines smoothly to redline (no end uptick)
-        tq = tqAtPeakHp * (1.0 - 0.30 * w - 0.22 * w * w);
+        // Past peak HP: stronger continuous fall so HP keeps dropping to redline
+        tq = tqAtPeakHp * (1.0 - 0.34 * w - 0.28 * w * w);
       }
       curve[r] = Math.max(10, tq);
     }
-    // Pin exact peaks for HP consistency — redline uses the fall formula (never 0.72× bump)
+    // Pin exact peaks — redline from fall formula (~0.38× tqAtPeakHp → HP well below peak)
     curve[peakTqRpm] = peakTq;
     curve[peakHpRpm] = tqAtPeakHp;
-    curve[redline] = Math.max(10, tqAtPeakHp * (1.0 - 0.30 - 0.22));
+    curve[redline] = Math.max(10, tqAtPeakHp * (1.0 - 0.34 - 0.28));
     return sanitizeTorqueCurvePostPeak(curve, peakHpRpm);
   }
 
@@ -581,8 +581,9 @@
   }
 
   /**
-   * Kill fake dyno end-spike: after peak-HP RPM, enforce non-increasing HP
-   * (clamp TQ so HP never rises toward redline). Surgical; preserves pre-peak shape.
+   * Real dyno past peak HP: HP must keep falling toward redline — no uptick and
+   * no flat plateau at the tip. Preserves natural declining samples; when the
+   * bake would rise or flatten, continue the established negative slope.
    */
   function sanitizeTorqueCurvePostPeak(curve, peakHpRpmOpt) {
     if (!curve || typeof curve !== 'object') return curve;
@@ -601,7 +602,6 @@
     }
     var pinned = Number(peakHpRpmOpt);
     if (isFinite(pinned) && pinned > 0) {
-      // Prefer explicit peakHpRpm when it is near the measured peak (garage bake)
       var pinHp = (Number(curve[pinned]) * pinned) / 5252;
       if (!isFinite(pinHp)) pinHp = (Number(curve[String(Math.round(pinned))]) * pinned) / 5252;
       if (isFinite(pinHp) && pinHp >= peakHp * 0.97) {
@@ -609,18 +609,43 @@
         peakHp = pinHp;
       }
     }
+    var redline = keys[keys.length - 1];
+    var span = Math.max(1, redline - peakRpm);
+    // Default fall ~25% of peak HP across peak→redline if no slope established yet
+    var fallPerRpm = -(peakHp * 0.25) / span;
     var prevHp = peakHp;
+    var prevR = peakRpm;
+    var haveSlope = false;
     for (i = 0; i < keys.length; i++) {
       var r = keys[i];
       if (r <= peakRpm) continue;
       var tq = Number(curve[r]);
       if (!isFinite(tq)) continue;
       var hp = (tq * r) / 5252;
-      if (hp > prevHp) {
-        curve[r] = Math.max(5, (prevHp * 5252) / r);
-        hp = prevHp;
+      var dr = r - prevR;
+      if (dr <= 0) continue;
+      // Strictly decreasing: reject rise OR flat (within 0.15 hp)
+      if (hp >= prevHp - 0.15) {
+        var cont = prevHp + fallPerRpm * dr;
+        // Keep a meaningful drop (≥0.4 hp per 100 rpm) so tip never shelves
+        var minDrop = Math.max(0.004 * dr, peakHp * 0.00008 * dr);
+        if (!(cont < prevHp - minDrop)) cont = prevHp - minDrop;
+        // Floor: do not crater below ~55% of peak (still a real dyno fall)
+        var floorHp = peakHp * 0.55;
+        if (cont < floorHp) cont = floorHp;
+        if (cont >= prevHp) cont = prevHp - minDrop;
+        curve[r] = Math.max(5, (cont * 5252) / r);
+        hp = (curve[r] * r) / 5252;
+      } else {
+        // Honest declining sample — adopt its slope for later extrapolation
+        fallPerRpm = (hp - prevHp) / dr;
+        // Keep slope negative and not absurdly steep
+        if (fallPerRpm > -1e-6) fallPerRpm = -(peakHp * 0.25) / span;
+        if (fallPerRpm < -(peakHp * 0.55) / span) fallPerRpm = -(peakHp * 0.55) / span;
+        haveSlope = true;
       }
       prevHp = hp;
+      prevR = r;
     }
     return curve;
   }
@@ -1422,37 +1447,43 @@
       var appliedCmd = driveF;
       var spinPct = 0;
       if (tracLim > 0 && driveF > 0) {
-        // Decaying launch tip overshoot (Dragy sharp spike → settle). Soft residual
-        // + spill keeps settle continuous (no brick shelf after tip dies).
+        // Pre-compute slip so launch tip cannot invent grip while already spinning.
+        var slipPre = driveF > tracLim ? (driveF - tracLim) / driveF : 0;
         var tip = Math.exp(-t / 0.080);
-        var overshoot = 0.008 + 0.090 * tip; // peak ~0.098 → settle ~0.008
-        if (launchMode === 'aggressive') overshoot = 0.012 + 0.115 * tip;
-        else if (launchMode === 'soft') overshoot = 0.003 + 0.050 * tip;
+        // Overshoot only when hooked; dies with slip (Dragy: spin → no tall g spike).
+        var overshoot = (0.006 + 0.055 * tip) * (1.0 - clamp(slipPre, 0, 1));
+        if (launchMode === 'aggressive') overshoot = (0.008 + 0.070 * tip) * (1.0 - 0.85 * clamp(slipPre, 0, 1));
+        else if (launchMode === 'soft') overshoot = (0.002 + 0.030 * tip) * (1.0 - clamp(slipPre, 0, 1));
         appliedCmd = softTractionForce(driveF, tracLim, overshoot);
         if (!driveFLpSeeded) { driveFLp = driveF; driveFLpSeeded = true; }
         driveFLp += (driveF - driveFLp) * Math.min(1, 16.0 * DT);
         if (driveF > tracLim) {
-          // TRACTION % from same driveF vs tracLim comparison as applied force.
-          var slip = (driveF - tracLim) / driveF;
+          var slip = slipPre;
           spinSum += slip;
           spinN++;
           spinPct = slip * 100.0;
-          // Kinetic friction while spinning: long. force drops below static peak so
-          // gSeries shows spin valleys (Dragy) instead of inventing grip at the ceil.
-          var kin = 1.0 - 0.16 * Math.pow(clamp(slip, 0, 1), 0.80);
+          // Kinetic µ: traction and g go together — heavy spin → lower long. force.
+          // ~65% slip → kin≈0.84 → launch peak ~1.15–1.25g (Dragy), not invented 1.37+.
+          var kin = 1.0 - 0.22 * Math.pow(clamp(slip, 0, 1), 0.75);
           appliedCmd *= kin;
-          // Mean-neutral AC: TQ/ATC tips pass through grip limit (no flat ceil shelf).
-          appliedCmd += 0.32 * (driveF - driveFLp) * kin;
-          var softCeilAc = tracLim * (1 + overshoot) * kin;
-          var acHi = Math.min(driveF, softCeilAc * 1.10);
-          var acLo = tracLim * 0.88 * kin;
+          // Traction-fight chatter (deterministic): noisy valleys while spinning.
+          var chatter = 0.048 * Math.sin(t * 78.0 + slip * 11.0)
+            + 0.026 * Math.sin(t * 143.0 - slip * 7.0);
+          appliedCmd *= (1.0 + chatter * kin);
+          // Hard ceiling at kinetic grip — never invent above tracLim*kin*(1+tiny tip).
+          var kinCeil = tracLim * kin * (1.0 + Math.min(0.05, overshoot + 0.02));
+          // Mean-neutral AC ripple inside the kinetic envelope only.
+          appliedCmd += 0.38 * (driveF - driveFLp) * kin;
+          var acHi = Math.min(driveF, kinCeil * 1.02);
+          var acLo = tracLim * kin * 0.82;
           if (appliedCmd > acHi) appliedCmd = acHi;
           if (appliedCmd < acLo) appliedCmd = acLo;
+          if (appliedCmd > kinCeil) appliedCmd = kinCeil;
           if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
             var band = Math.max(0.20, slipTarget * 1.6);
             var keep = clamp(1.0 - slip / band, 0.35, 0.80);
-            var softCeil = tracLim * (1 + overshoot) * kin;
-            appliedCmd = appliedCmd + (Math.min(driveF, softCeil * 1.05) - appliedCmd) * keep * 0.35;
+            appliedCmd = appliedCmd + (Math.min(driveF, kinCeil) - appliedCmd) * keep * 0.22;
+            if (appliedCmd > kinCeil) appliedCmd = kinCeil;
           }
         }
       }
@@ -1474,7 +1505,8 @@
       dlVel += dlAcc * DT;
       dlForce += dlVel * DT;
       if (dlForce < 0 && appliedCmd >= 0) dlForce = 0;
-      var dlCap = appliedCmd >= 0 ? appliedCmd * 1.10 : appliedCmd;
+      // Tight cap — driveline ring must not invent g above commanded tire force
+      var dlCap = appliedCmd >= 0 ? appliedCmd * 1.035 : appliedCmd;
       if (appliedCmd >= 0 && dlForce > dlCap) {
         dlForce = dlCap;
         if (dlVel > 0) dlVel *= 0.45;
