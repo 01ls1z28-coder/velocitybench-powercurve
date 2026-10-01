@@ -139,7 +139,7 @@
       state.car.peakHp = peakHp;
     }
     if (!state.drag) {
-      state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+      state.powerCurve = powerCurveFromTorqueCurve(scaled, redline, peakHp);
       drawPowerCurve(state.powerCurve, state.cursorRpm);
     }
     return scaled;
@@ -314,9 +314,21 @@
   var RPM_MAJOR = 200;  // major handles every 2 grid steps (250 not divisible by 100)
 
   /** Build editable HP/TQ series on a 100-RPM grid from a torque curve map. */
-  function powerCurveFromTorqueCurve(curve, redline) {
+  function powerCurveFromTorqueCurve(curve, redline, peakHpCap) {
     if (!curve) return [];
-    var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
+    // Work on a shallow copy so sanitize/cap do not surprise callers mid-edit
+    var map = {};
+    Object.keys(curve).forEach(function (k) {
+      var v = Number(curve[k]);
+      if (isFinite(v)) map[k] = v;
+    });
+    if (Phys.sanitizeTorqueCurvePostPeak) {
+      Phys.sanitizeTorqueCurvePostPeak(map, state.car && state.car.peakHpRpm);
+    }
+    if (peakHpCap > 0 && Phys.capTorqueCurveToPeakHp) {
+      Phys.capTorqueCurveToPeakHp(map, peakHpCap);
+    }
+    var keys = Object.keys(map).map(Number).filter(function (k) { return isFinite(k); });
     keys.sort(function (a, b) { return a - b; });
     if (!keys.length) return [];
     var minR = keys[0];
@@ -329,21 +341,21 @@
     var prevTq = null;
     for (var r = start; r <= maxR + 0.01; r += RPM_GRID) {
       var rpm = Math.round(r);
-      var tq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(curve, rpm) : null;
+      var tq = Phys.getTorqueAtRpm ? Phys.getTorqueAtRpm(map, rpm) : null;
       if (tq == null || !isFinite(tq) || tq <= 0) {
         // local interpolate fallback — never leave a hole that floors to ~5
-        tq = Number(curve[rpm]);
-        if (!isFinite(tq) || tq <= 0) tq = Number(curve[String(rpm)]);
+        tq = Number(map[rpm]);
+        if (!isFinite(tq) || tq <= 0) tq = Number(map[String(rpm)]);
         if (!isFinite(tq) || tq <= 0) {
           var lo = null, hi = null;
           for (var i = 0; i < keys.length; i++) {
             if (keys[i] <= rpm) lo = keys[i];
             if (keys[i] >= rpm) { hi = keys[i]; break; }
           }
-          if (lo == null) tq = Number(curve[keys[0]]);
-          else if (hi == null || hi === lo) tq = Number(curve[lo]);
+          if (lo == null) tq = Number(map[keys[0]]);
+          else if (hi == null || hi === lo) tq = Number(map[lo]);
           else {
-            var t1 = Number(curve[lo]), t2 = Number(curve[hi]);
+            var t1 = Number(map[lo]), t2 = Number(map[hi]);
             if (!isFinite(t1)) t1 = t2;
             if (!isFinite(t2)) t2 = t1;
             tq = t1 + (t2 - t1) * ((rpm - lo) / (hi - lo));
@@ -354,6 +366,18 @@
       tq = Math.max(5, tq);
       prevTq = tq;
       out.push({ rpm: rpm, torque: tq, horsepower: (tq * rpm) / 5252 });
+    }
+    // Cap series peak to vehicle Peak HP parameter (tiny rounding slack)
+    if (peakHpCap > 0) {
+      var seriesPeak = 0;
+      out.forEach(function (p) { if (p.horsepower > seriesPeak) seriesPeak = p.horsepower; });
+      if (seriesPeak > peakHpCap * 1.002) {
+        var s = peakHpCap / seriesPeak;
+        out.forEach(function (p) {
+          p.torque = Math.max(5, p.torque * s);
+          p.horsepower = (p.torque * p.rpm) / 5252;
+        });
+      }
     }
     return out;
   }
@@ -379,7 +403,13 @@
     }
     // Only rebuild the editable series from the car when not mid-drag
     if (state.drag) return;
-    state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
+    // Kill fake redline uptick on the live car curve (physics + dyno share this map)
+    if (Phys.sanitizeTorqueCurvePostPeak) {
+      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
+    }
+    var cap = Number(car.peakHp);
+    // Display series capped to Peak HP param; do not rescale fleet force curves here
+    state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline, cap);
     drawPowerCurve(state.powerCurve, state.cursorRpm);
   }
 
@@ -798,6 +828,9 @@
       var scaled = scaleCurveForPeakHpChange(peakHp, redline);
       if (scaled) car.torqueCurve = scaled;
     }
+    if (car.torqueCurve && Phys.sanitizeTorqueCurvePostPeak) {
+      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
+    }
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
     // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.
     if (base.torqueCurve && (car.boostPsi <= 0 || base.boostPsi === 0)) {
@@ -878,9 +911,13 @@
       curEl.textContent = '—';
       return;
     }
+    var cap = Number(state.car && state.car.peakHp);
+    if (!(cap > 0)) cap = null;
     var peakHp = 0, peakTq = 0, peakHpRpm = 0, peakTqRpm = 0;
     powerCurve.forEach(function (p) {
-      if (p.horsepower > peakHp) { peakHp = p.horsepower; peakHpRpm = p.rpm; }
+      var hp = p.horsepower;
+      if (cap != null && hp > cap) hp = cap;
+      if (hp > peakHp) { peakHp = hp; peakHpRpm = p.rpm; }
       if (p.torque > peakTq) { peakTq = p.torque; peakTqRpm = p.rpm; }
     });
     peakEl.textContent =
@@ -888,9 +925,11 @@
       ' · ' + Math.round(peakTq) + ' lb-ft @ ' + Math.round(peakTqRpm);
     var pt = samplePowerAtRpm(powerCurve, cursorRpm != null ? cursorRpm : peakHpRpm);
     if (!pt) { curEl.textContent = '—'; return; }
+    var curHp = pt.horsepower;
+    if (cap != null && curHp > cap) curHp = cap;
     curEl.textContent =
       Math.round(pt.rpm) + ' rpm · ' +
-      pt.horsepower.toFixed(0) + ' hp · ' +
+      curHp.toFixed(0) + ' hp · ' +
       pt.torque.toFixed(0) + ' lb-ft';
   }
 
@@ -1162,15 +1201,23 @@
     var minRpm = powerCurve[0].rpm;
     var maxRpm = powerCurve[powerCurve.length - 1].rpm;
     var maxHp = 0, maxTq = 0;
+    var peakCap = Number(state.car && state.car.peakHp);
     powerCurve.forEach(function (p) {
-      if (p.horsepower > maxHp) maxHp = p.horsepower;
+      var hpPlot = p.horsepower;
+      // Chart / peaks respect vehicle Peak HP (tiny rounding only)
+      if (peakCap > 0 && hpPlot > peakCap) hpPlot = peakCap;
+      if (hpPlot > maxHp) maxHp = hpPlot;
       if (p.torque > maxTq) maxTq = p.torque;
     });
-    maxHp = Math.max(50, maxHp * 1.12);
-    maxTq = Math.max(50, maxTq * 1.12);
+    // Shared numeric scale so HP = TQ×RPM/5252 crosses at ~5252 on the chart
+    var axisMax = Math.max(50, Math.max(maxHp, maxTq) * 1.12);
+    maxHp = axisMax;
+    maxTq = axisMax;
     if (state.drag && state.drag.axisMaxTq) {
-      maxTq = state.drag.axisMaxTq;
-      maxHp = state.drag.axisMaxHp || maxHp;
+      // Keep scrub axes locked + shared so crossover identity holds while editing
+      var dragAxis = Math.max(state.drag.axisMaxTq, state.drag.axisMaxHp || 0);
+      maxTq = dragAxis;
+      maxHp = dragAxis;
     }
     function x(rpm) {
       return pad.l + ((rpm - minRpm) / (maxRpm - minRpm || 1)) * (w - pad.l - pad.r);
@@ -1219,7 +1266,10 @@
 
     ctx.beginPath();
     powerCurve.forEach(function (p, i) {
-      var px = x(p.rpm), py = yHp(p.horsepower);
+      // Always plot HP from TQ identity; cap at vehicle Peak HP
+      var hpDraw = (p.torque * p.rpm) / 5252;
+      if (peakCap > 0 && hpDraw > peakCap) hpDraw = peakCap;
+      var px = x(p.rpm), py = yHp(hpDraw);
       if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     });
     ctx.strokeStyle = '#c8ff4a'; ctx.lineWidth = 2.5; ctx.stroke();
@@ -2300,7 +2350,7 @@
     renderMetrics(result);
     // Keep dense 100-RPM editable series authoritative — never replace with sparse result keys
     if (!state.curveEdited) {
-      state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline);
+      state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline, Number(car.peakHp) || null);
     } else {
       // Re-commit ensures car.torqueCurve stays dense after readCarFromForm
       commitEditedCurveToCar();
@@ -2826,7 +2876,7 @@ $('btnReset').addEventListener('click', function () {
       state.car.torqueCurve = scaled;
       state.car.peakHp = peakHp;
     }
-    state.powerCurve = powerCurveFromTorqueCurve(scaled, redline);
+    state.powerCurve = powerCurveFromTorqueCurve(scaled, redline, peakHp);
     drawPowerCurve(state.powerCurve, state.cursorRpm);
   }
 

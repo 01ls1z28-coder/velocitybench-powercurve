@@ -266,8 +266,9 @@
       var tachMajorIn = R - 28 * fs;
       var tachHalfIn = R - 22 * fs;
       var tachMinorIn = R - 18 * fs;
-      var tachLabelR = R - 40 * fs;
-      var tachFont = Math.max(9, Math.round(13 * fs));
+      // Larger major numerals; slightly tighter label radius so they clear on small faces
+      var tachLabelR = R - (this.size < 220 ? 35 : 37) * fs;
+      var tachFont = Math.max(10, Math.round(16 * fs * (this.size < 200 ? 0.94 : 1)));
       var tachLw = Math.max(1.2, 2.2 * fs);
       for (var i = 0; i <= majors * minors; i++) {
         var val2 = this.min + (i / (majors * minors)) * span;

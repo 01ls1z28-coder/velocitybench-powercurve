@@ -558,15 +558,16 @@
         tq = peakTq + (tqAtPeakHp - peakTq) * (0.25 * v + 0.75 * v * v);
       } else {
         var w = (r - peakHpRpm) / Math.max(1, redline - peakHpRpm);
-        tq = tqAtPeakHp * (1.0 - 0.22 * w - 0.28 * w * w);
+        // Past peak HP: TQ falls so HP declines smoothly to redline (no end uptick)
+        tq = tqAtPeakHp * (1.0 - 0.30 * w - 0.22 * w * w);
       }
       curve[r] = Math.max(10, tq);
     }
-    // Pin exact peaks for HP consistency
+    // Pin exact peaks for HP consistency — redline uses the fall formula (never 0.72× bump)
     curve[peakTqRpm] = peakTq;
     curve[peakHpRpm] = tqAtPeakHp;
-    if (curve[redline] == null) curve[redline] = Math.max(10, tqAtPeakHp * 0.72);
-    return curve;
+    curve[redline] = Math.max(10, tqAtPeakHp * (1.0 - 0.30 - 0.22));
+    return sanitizeTorqueCurvePostPeak(curve, peakHpRpm);
   }
 
   function peakHpFromCurve(curve) {
@@ -577,6 +578,69 @@
       if (hp > peak) peak = hp;
     }
     return peak;
+  }
+
+  /**
+   * Kill fake dyno end-spike: after peak-HP RPM, enforce non-increasing HP
+   * (clamp TQ so HP never rises toward redline). Surgical; preserves pre-peak shape.
+   */
+  function sanitizeTorqueCurvePostPeak(curve, peakHpRpmOpt) {
+    if (!curve || typeof curve !== 'object') return curve;
+    var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
+    keys.sort(function (a, b) { return a - b; });
+    if (keys.length < 3) return curve;
+    var peakHp = 0;
+    var peakRpm = keys[0];
+    var i;
+    for (i = 0; i < keys.length; i++) {
+      var hp0 = (Number(curve[keys[i]]) * keys[i]) / 5252;
+      if (hp0 > peakHp) {
+        peakHp = hp0;
+        peakRpm = keys[i];
+      }
+    }
+    var pinned = Number(peakHpRpmOpt);
+    if (isFinite(pinned) && pinned > 0) {
+      // Prefer explicit peakHpRpm when it is near the measured peak (garage bake)
+      var pinHp = (Number(curve[pinned]) * pinned) / 5252;
+      if (!isFinite(pinHp)) pinHp = (Number(curve[String(Math.round(pinned))]) * pinned) / 5252;
+      if (isFinite(pinHp) && pinHp >= peakHp * 0.97) {
+        peakRpm = pinned;
+        peakHp = pinHp;
+      }
+    }
+    var prevHp = peakHp;
+    for (i = 0; i < keys.length; i++) {
+      var r = keys[i];
+      if (r <= peakRpm) continue;
+      var tq = Number(curve[r]);
+      if (!isFinite(tq)) continue;
+      var hp = (tq * r) / 5252;
+      if (hp > prevHp) {
+        curve[r] = Math.max(5, (prevHp * 5252) / r);
+        hp = prevHp;
+      }
+      prevHp = hp;
+    }
+    return curve;
+  }
+
+  /**
+   * Scale torque map so curve peak HP cannot exceed peakHpCap (tiny rounding slack).
+   * Returns same object if already within cap or cap invalid.
+   */
+  function capTorqueCurveToPeakHp(curve, peakHpCap) {
+    if (!curve || !(peakHpCap > 0)) return curve;
+    var peak = peakHpFromCurve(curve);
+    if (!(peak > 0) || peak <= peakHpCap * 1.002) return curve;
+    var scale = peakHpCap / peak;
+    var keys = Object.keys(curve);
+    for (var i = 0; i < keys.length; i++) {
+      var v = Number(curve[keys[i]]);
+      if (!isFinite(v)) continue;
+      curve[keys[i]] = Math.max(5, v * scale);
+    }
+    return curve;
   }
 
   /** FI boost on torque. Use only when curve is NA baseline; dyno curves already include boost. */
@@ -670,8 +734,8 @@
       case 0: return 0.95;  // Street / All-season
       case 3: return 1.05;  // Summer
       case 4: return 1.12;  // UHP
-      case 1: return 1.18;  // Drag Radial / Soft compound
-      case 2: return 1.45;  // Slick
+      case 1: return 1.30;  // Drag Radial / Soft compound (was 1.18 — closer to slick)
+      case 2: return 1.38;  // Slick (was 1.45 — modest advantage over drag radial)
       default: return DEFAULT_MU;
     }
   }
@@ -1368,22 +1432,26 @@
         if (!driveFLpSeeded) { driveFLp = driveF; driveFLpSeeded = true; }
         driveFLp += (driveF - driveFLp) * Math.min(1, 16.0 * DT);
         if (driveF > tracLim) {
-          // Mean-neutral AC: TQ/ATC tips pass through grip limit (no flat ceil shelf).
-          appliedCmd += 0.28 * (driveF - driveFLp);
-          var softCeilAc = tracLim * (1 + overshoot);
-          var acHi = Math.min(driveF, softCeilAc * 1.10);
-          var acLo = tracLim * 0.94;
-          if (appliedCmd > acHi) appliedCmd = acHi;
-          if (appliedCmd < acLo) appliedCmd = acLo;
           // TRACTION % from same driveF vs tracLim comparison as applied force.
           var slip = (driveF - tracLim) / driveF;
           spinSum += slip;
           spinN++;
           spinPct = slip * 100.0;
+          // Kinetic friction while spinning: long. force drops below static peak so
+          // gSeries shows spin valleys (Dragy) instead of inventing grip at the ceil.
+          var kin = 1.0 - 0.16 * Math.pow(clamp(slip, 0, 1), 0.80);
+          appliedCmd *= kin;
+          // Mean-neutral AC: TQ/ATC tips pass through grip limit (no flat ceil shelf).
+          appliedCmd += 0.32 * (driveF - driveFLp) * kin;
+          var softCeilAc = tracLim * (1 + overshoot) * kin;
+          var acHi = Math.min(driveF, softCeilAc * 1.10);
+          var acLo = tracLim * 0.88 * kin;
+          if (appliedCmd > acHi) appliedCmd = acHi;
+          if (appliedCmd < acLo) appliedCmd = acLo;
           if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
             var band = Math.max(0.20, slipTarget * 1.6);
             var keep = clamp(1.0 - slip / band, 0.35, 0.80);
-            var softCeil = tracLim * (1 + overshoot);
+            var softCeil = tracLim * (1 + overshoot) * kin;
             appliedCmd = appliedCmd + (Math.min(driveF, softCeil * 1.05) - appliedCmd) * keep * 0.35;
           }
         }
@@ -1584,6 +1652,8 @@
     getTorqueAtRpm: getTorqueAtRpm,
     synthesizeTorqueCurve: synthesizeTorqueCurve,
     peakHpFromCurve: peakHpFromCurve,
+    sanitizeTorqueCurvePostPeak: sanitizeTorqueCurvePostPeak,
+    capTorqueCurveToPeakHp: capTorqueCurveToPeakHp,
     suggestedWeightDistribution: suggestedWeightDistribution,
     resolveWeightDistribution: resolveWeightDistribution,
     computeDensityAltitude: computeDensityAltitude,
