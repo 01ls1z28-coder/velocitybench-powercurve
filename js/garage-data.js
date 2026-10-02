@@ -261,7 +261,7 @@ var GARAGE = [
       0.64
     ],
     "txKey": "GM_10L90",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 15,
     "driveType": "RWD",
     "isEv": false,
     "isFI": false,
@@ -2007,7 +2007,7 @@ var GARAGE = [
       0.7
     ],
     "txKey": "GM_4L65E",
-    "drivetrainLossPercent": 1,
+    "drivetrainLossPercent": 16,
     "driveType": "RWD",
     "isEv": false,
     "isFI": false,
@@ -12620,7 +12620,7 @@ var GARAGE = [
       0.62
     ],
     "txKey": "Porsche_PDK_7",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 10,
     "driveType": "AWD",
     "isEv": false,
     "isFI": true,
@@ -16462,7 +16462,7 @@ var GARAGE = [
       0.8
     ],
     "txKey": "Bugatti_DSG_7",
-    "drivetrainLossPercent": 8,
+    "drivetrainLossPercent": 10,
     "driveType": "AWD",
     "isEv": false,
     "isFI": true,
@@ -29155,7 +29155,7 @@ var GARAGE = [
       0.67
     ],
     "txKey": "ZF8HP",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 15,
     "driveType": "AWD",
     "isEv": false,
     "isFI": true,
@@ -34757,7 +34757,7 @@ var GARAGE = [
       0.828
     ],
     "txKey": "BMW_Getrag_6",
-    "drivetrainLossPercent": 0,
+    "drivetrainLossPercent": 12,
     "driveType": "RWD",
     "isEv": false,
     "isFI": false,
