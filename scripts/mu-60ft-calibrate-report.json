@@ -1,0 +1,329 @@
+{
+  "credit": "Jorge Guerra only",
+  "base": "3a55f8d",
+  "branch": "review/mu-60ft-mustang-deltas",
+  "car": "2020-ford-mustang-gt",
+  "conditions": {
+    "driverWeightLbs": 200,
+    "forceScale": 1,
+    "launchMode": "auto",
+    "wx": "70F / 45% RH / 29.92 inHg, wind 0"
+  },
+  "deltas": {
+    "unprepped": {
+      "0": 0.7,
+      "1": 0.7,
+      "2": 0.13,
+      "3": 0.2,
+      "4": 0.12,
+      "5": 0.8
+    },
+    "prepped": {
+      "0": 0.3,
+      "1": -0.01,
+      "2": -0.05,
+      "3": 0.25,
+      "4": 0.2,
+      "5": 0.14
+    }
+  },
+  "before": {
+    "unprepped": {
+      "0": {
+        "mu": 1.2,
+        "sixty": 2.13,
+        "deltaReq": 0.7,
+        "target": 2.83
+      },
+      "1": {
+        "mu": 1.85,
+        "sixty": 1.739,
+        "deltaReq": 0.7,
+        "target": 2.439
+      },
+      "2": {
+        "mu": 1.47,
+        "sixty": 1.778,
+        "deltaReq": 0.13,
+        "target": 1.908
+      },
+      "3": {
+        "mu": 1.34,
+        "sixty": 1.903,
+        "deltaReq": 0.2,
+        "target": 2.103
+      },
+      "4": {
+        "mu": 1.44,
+        "sixty": 1.804,
+        "deltaReq": 0.12,
+        "target": 1.924
+      },
+      "5": {
+        "mu": 1.64,
+        "sixty": 1.745,
+        "deltaReq": 0.8,
+        "target": 2.545
+      }
+    },
+    "prepped": {
+      "0": {
+        "mu": 1.8,
+        "sixty": 1.74,
+        "deltaReq": 0.3,
+        "target": 2.04
+      },
+      "1": {
+        "mu": 1.9,
+        "sixty": 1.739,
+        "deltaReq": -0.01,
+        "target": 1.729
+      },
+      "2": {
+        "mu": 2.2,
+        "sixty": 1.738,
+        "deltaReq": -0.05,
+        "target": 1.688
+      },
+      "3": {
+        "mu": 1.95,
+        "sixty": 1.739,
+        "deltaReq": 0.25,
+        "target": 1.989
+      },
+      "4": {
+        "mu": 2.15,
+        "sixty": 1.738,
+        "deltaReq": 0.2,
+        "target": 1.938
+      },
+      "5": {
+        "mu": 2,
+        "sixty": 1.739,
+        "deltaReq": 0.14,
+        "target": 1.879
+      }
+    }
+  },
+  "targets": {
+    "unprepped": {
+      "0": 2.83,
+      "1": 2.439,
+      "2": 1.908,
+      "3": 2.103,
+      "4": 1.924,
+      "5": 2.545
+    },
+    "prepped": {
+      "0": 2.04,
+      "1": 1.729,
+      "2": 1.688,
+      "3": 1.989,
+      "4": 1.938,
+      "5": 1.879
+    }
+  },
+  "correctedMu": {
+    "unprepped": {
+      "0": 0.822,
+      "1": 0.929,
+      "2": 1.293,
+      "3": 1.196,
+      "4": 1.317,
+      "5": 0.894
+    },
+    "prepped": {
+      "0": 1.255,
+      "1": 1.9,
+      "2": 2.2,
+      "3": 1.273,
+      "4": 1.303,
+      "5": 1.338
+    }
+  },
+  "results": {
+    "unprepped": {
+      "0": {
+        "mu": 0.822,
+        "sixty": 2.828,
+        "floor": 1.738,
+        "floored": false,
+        "target": 2.83,
+        "effectiveTarget": 2.83,
+        "delta": -0.002,
+        "note": null
+      },
+      "1": {
+        "mu": 0.929,
+        "sixty": 2.439,
+        "floor": 1.738,
+        "floored": false,
+        "target": 2.439,
+        "effectiveTarget": 2.439,
+        "delta": 0,
+        "note": null
+      },
+      "2": {
+        "mu": 1.293,
+        "sixty": 1.908,
+        "floor": 1.738,
+        "floored": false,
+        "target": 1.908,
+        "effectiveTarget": 1.908,
+        "delta": 0,
+        "note": null
+      },
+      "3": {
+        "mu": 1.196,
+        "sixty": 2.103,
+        "floor": 1.738,
+        "floored": false,
+        "target": 2.103,
+        "effectiveTarget": 2.103,
+        "delta": 0,
+        "note": null
+      },
+      "4": {
+        "mu": 1.317,
+        "sixty": 1.923,
+        "floor": 1.738,
+        "floored": false,
+        "target": 1.924,
+        "effectiveTarget": 1.924,
+        "delta": -0.001,
+        "note": null
+      },
+      "5": {
+        "mu": 0.894,
+        "sixty": 2.545,
+        "floor": 1.738,
+        "floored": false,
+        "target": 2.545,
+        "effectiveTarget": 2.545,
+        "delta": 0,
+        "note": null
+      }
+    },
+    "prepped": {
+      "0": {
+        "mu": 1.255,
+        "sixty": 2.04,
+        "floor": 1.738,
+        "floored": false,
+        "target": 2.04,
+        "effectiveTarget": 2.04,
+        "delta": 0,
+        "note": null
+      },
+      "1": {
+        "mu": 1.9,
+        "sixty": 1.739,
+        "floor": 1.738,
+        "floored": true,
+        "target": 1.729,
+        "effectiveTarget": 1.7379999999999194,
+        "delta": 0.01,
+        "note": "power-floor: cannot reach target 1.729 (floor 1.738); kept LIVE µ 1.900"
+      },
+      "2": {
+        "mu": 2.2,
+        "sixty": 1.738,
+        "floor": 1.738,
+        "floored": true,
+        "target": 1.688,
+        "effectiveTarget": 1.7379999999999194,
+        "delta": 0.05,
+        "note": "power-floor: cannot reach target 1.688 (floor 1.738); kept LIVE µ 2.200"
+      },
+      "3": {
+        "mu": 1.273,
+        "sixty": 1.989,
+        "floor": 1.738,
+        "floored": false,
+        "target": 1.989,
+        "effectiveTarget": 1.989,
+        "delta": 0,
+        "note": null
+      },
+      "4": {
+        "mu": 1.303,
+        "sixty": 1.938,
+        "floor": 1.738,
+        "floored": false,
+        "target": 1.938,
+        "effectiveTarget": 1.938,
+        "delta": 0,
+        "note": null
+      },
+      "5": {
+        "mu": 1.338,
+        "sixty": 1.879,
+        "floor": 1.738,
+        "floored": false,
+        "target": 1.879,
+        "effectiveTarget": 1.879,
+        "delta": 0,
+        "note": null
+      }
+    }
+  },
+  "after": {
+    "unprepped": {
+      "0": {
+        "mu": 0.822,
+        "sixty": 2.828
+      },
+      "1": {
+        "mu": 0.929,
+        "sixty": 2.439
+      },
+      "2": {
+        "mu": 1.293,
+        "sixty": 1.908
+      },
+      "3": {
+        "mu": 1.196,
+        "sixty": 2.103
+      },
+      "4": {
+        "mu": 1.317,
+        "sixty": 1.923
+      },
+      "5": {
+        "mu": 0.894,
+        "sixty": 2.545
+      }
+    },
+    "prepped": {
+      "0": {
+        "mu": 1.255,
+        "sixty": 2.04
+      },
+      "1": {
+        "mu": 1.9,
+        "sixty": 1.739
+      },
+      "2": {
+        "mu": 2.2,
+        "sixty": 1.738
+      },
+      "3": {
+        "mu": 1.273,
+        "sixty": 1.989
+      },
+      "4": {
+        "mu": 1.303,
+        "sixty": 1.938
+      },
+      "5": {
+        "mu": 1.338,
+        "sixty": 1.879
+      }
+    }
+  },
+  "floorNotes": [
+    "prepped Drag Radial: power-floor: cannot reach target 1.729 (floor 1.738); kept LIVE µ 1.900",
+    "prepped Slick: power-floor: cannot reach target 1.688 (floor 1.738); kept LIVE µ 2.200"
+  ],
+  "powerFloorMustang": 1.738
+}
