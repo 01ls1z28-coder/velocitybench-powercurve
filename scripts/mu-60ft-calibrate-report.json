@@ -1,0 +1,841 @@
+{
+  "tip": "review/mu-60ft-calibrate",
+  "credit": "Jorge Guerra",
+  "conditions": {
+    "driverWeightLbs": 200,
+    "forceScale": 1,
+    "launchMode": "auto",
+    "wx": "70F/45%/29.92inHg",
+    "wind": 0
+  },
+  "refs": {
+    "unprepped": {
+      "0": "2020-dodge-challenger-hellcat",
+      "1": "2020-dodge-challenger-hellcat",
+      "2": "2020-dodge-challenger-hellcat",
+      "3": "2020-dodge-challenger-hellcat",
+      "4": "2020-dodge-challenger-hellcat",
+      "5": "2020-dodge-challenger-hellcat"
+    },
+    "prepped": {
+      "0": "2020-dodge-challenger-hellcat",
+      "1": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "2": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "3": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "4": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "5": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals"
+    }
+  },
+  "refMeta": {
+    "hellcat": {
+      "id": "2020-dodge-challenger-hellcat",
+      "name": "2020 Dodge Challenger Hellcat",
+      "weightLbs": 4449,
+      "launchRpm": 2300,
+      "rearShare": 0.43,
+      "powerFloor": 1.725
+    },
+    "z28": {
+      "id": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "weightLbs": 3340,
+      "launchRpm": 3000,
+      "rearShare": 0.55,
+      "powerFloor": 1.486
+    }
+  },
+  "targetsMid": {
+    "unprepped": {
+      "0": 2.2,
+      "1": 1.685,
+      "2": 1.85,
+      "3": 2,
+      "4": 1.875,
+      "5": 1.775
+    },
+    "prepped": {
+      "0": 1.725,
+      "1": 1.542,
+      "2": 1.475,
+      "3": 1.6,
+      "4": 1.475,
+      "5": 1.5
+    }
+  },
+  "targetsBand": {
+    "unprepped": {
+      "0": [
+        2.2,
+        2.2
+      ],
+      "1": [
+        1.65,
+        1.72
+      ],
+      "2": [
+        1.8,
+        1.9
+      ],
+      "3": [
+        2,
+        2
+      ],
+      "4": [
+        1.85,
+        1.9
+      ],
+      "5": [
+        1.75,
+        1.8
+      ]
+    },
+    "prepped": {
+      "0": [
+        1.7,
+        1.75
+      ],
+      "1": [
+        1.522,
+        1.562
+      ],
+      "2": [
+        1.45,
+        1.5
+      ],
+      "3": [
+        1.6,
+        1.6
+      ],
+      "4": [
+        1.45,
+        1.5
+      ],
+      "5": [
+        1.5,
+        1.5
+      ]
+    }
+  },
+  "currentOffTarget": {
+    "unprepped": {
+      "0": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.2,
+        "currentSixty": 2.251,
+        "targetMid": 2.2,
+        "band": [
+          2.2,
+          2.2
+        ],
+        "delta": 0.051,
+        "inBand": false
+      },
+      "1": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.85,
+        "currentSixty": 1.725,
+        "targetMid": 1.685,
+        "band": [
+          1.65,
+          1.72
+        ],
+        "delta": 0.04,
+        "inBand": true
+      },
+      "2": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.47,
+        "currentSixty": 1.823,
+        "targetMid": 1.85,
+        "band": [
+          1.8,
+          1.9
+        ],
+        "delta": -0.027,
+        "inBand": true
+      },
+      "3": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.34,
+        "currentSixty": 2.011,
+        "targetMid": 2,
+        "band": [
+          2,
+          2
+        ],
+        "delta": 0.011,
+        "inBand": false
+      },
+      "4": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.44,
+        "currentSixty": 1.868,
+        "targetMid": 1.875,
+        "band": [
+          1.85,
+          1.9
+        ],
+        "delta": -0.007,
+        "inBand": true
+      },
+      "5": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.64,
+        "currentSixty": 1.771,
+        "targetMid": 1.775,
+        "band": [
+          1.75,
+          1.8
+        ],
+        "delta": -0.004,
+        "inBand": true
+      }
+    },
+    "prepped": {
+      "0": {
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.8,
+        "currentSixty": 1.728,
+        "targetMid": 1.725,
+        "band": [
+          1.7,
+          1.75
+        ],
+        "delta": 0.003,
+        "inBand": true
+      },
+      "1": {
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.9,
+        "currentSixty": 1.492,
+        "targetMid": 1.542,
+        "band": [
+          1.522,
+          1.562
+        ],
+        "delta": -0.05,
+        "inBand": false
+      },
+      "2": {
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 2.2,
+        "currentSixty": 1.49,
+        "targetMid": 1.475,
+        "band": [
+          1.45,
+          1.5
+        ],
+        "delta": 0.015,
+        "inBand": true
+      },
+      "3": {
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.95,
+        "currentSixty": 1.493,
+        "targetMid": 1.6,
+        "band": [
+          1.6,
+          1.6
+        ],
+        "delta": -0.107,
+        "inBand": false
+      },
+      "4": {
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 2.15,
+        "currentSixty": 1.491,
+        "targetMid": 1.475,
+        "band": [
+          1.45,
+          1.5
+        ],
+        "delta": 0.016,
+        "inBand": true
+      },
+      "5": {
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 2,
+        "currentSixty": 1.491,
+        "targetMid": 1.5,
+        "band": [
+          1.5,
+          1.5
+        ],
+        "delta": -0.009,
+        "inBand": false
+      }
+    }
+  },
+  "corrected": {
+    "unprepped": {
+      "0": {
+        "mu": 1.233,
+        "sixty": 2.2,
+        "floor": 1.725,
+        "floored": false,
+        "target": 2.2,
+        "effectiveTarget": 2.2,
+        "delta": 0,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.233,
+        "currentSixty": 2.2,
+        "band": [
+          2.2,
+          2.2
+        ],
+        "label": "Street",
+        "idealized": 2.6523,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.4523
+      },
+      "1": {
+        "mu": 1.787,
+        "sixty": 1.73,
+        "floor": 1.725,
+        "floored": true,
+        "target": 1.685,
+        "effectiveTarget": 1.7299999999999207,
+        "delta": 0.045,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.787,
+        "currentSixty": 1.73,
+        "band": [
+          1.65,
+          1.72
+        ],
+        "label": "Drag Radial",
+        "idealized": 2.2031,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.4731
+      },
+      "2": {
+        "mu": 1.432,
+        "sixty": 1.85,
+        "floor": 1.725,
+        "floored": false,
+        "target": 1.85,
+        "effectiveTarget": 1.85,
+        "delta": 0,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.432,
+        "currentSixty": 1.85,
+        "band": [
+          1.8,
+          1.9
+        ],
+        "label": "Slick",
+        "idealized": 2.4611,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.6111
+      },
+      "3": {
+        "mu": 1.349,
+        "sixty": 1.999,
+        "floor": 1.725,
+        "floored": false,
+        "target": 2,
+        "effectiveTarget": 2,
+        "delta": -0.001,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.349,
+        "currentSixty": 1.999,
+        "band": [
+          2,
+          2
+        ],
+        "label": "Summer",
+        "idealized": 2.5357,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.5367
+      },
+      "4": {
+        "mu": 1.436,
+        "sixty": 1.876,
+        "floor": 1.725,
+        "floored": false,
+        "target": 1.875,
+        "effectiveTarget": 1.875,
+        "delta": 0.001,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.436,
+        "currentSixty": 1.876,
+        "band": [
+          1.85,
+          1.9
+        ],
+        "label": "UHP",
+        "idealized": 2.4577,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.5817
+      },
+      "5": {
+        "mu": 1.627,
+        "sixty": 1.775,
+        "floor": 1.725,
+        "floored": false,
+        "target": 1.775,
+        "effectiveTarget": 1.775,
+        "delta": 0,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.627,
+        "currentSixty": 1.775,
+        "band": [
+          1.75,
+          1.8
+        ],
+        "label": "R-Compound",
+        "idealized": 2.3089,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.5339
+      }
+    },
+    "prepped": {
+      "0": {
+        "mu": 1.803,
+        "sixty": 1.728,
+        "floor": 1.725,
+        "floored": true,
+        "target": 1.725,
+        "effectiveTarget": 1.725,
+        "delta": 0.003,
+        "ref": "2020 Dodge Challenger Hellcat",
+        "refId": "2020-dodge-challenger-hellcat",
+        "currentMu": 1.803,
+        "currentSixty": 1.728,
+        "band": [
+          1.7,
+          1.75
+        ],
+        "label": "Street",
+        "idealized": 2.1933,
+        "idealizedShare": 0.43,
+        "idealVsSim": 0.4653
+      },
+      "1": {
+        "mu": 1.715,
+        "sixty": 1.542,
+        "floor": 1.486,
+        "floored": false,
+        "target": 1.542,
+        "effectiveTarget": 1.542,
+        "delta": 0,
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.715,
+        "currentSixty": 1.542,
+        "band": [
+          1.522,
+          1.562
+        ],
+        "label": "Drag Radial",
+        "idealized": 1.9885,
+        "idealizedShare": 0.55,
+        "idealVsSim": 0.4465
+      },
+      "2": {
+        "mu": 1.9,
+        "sixty": 1.492,
+        "floor": 1.486,
+        "floored": true,
+        "target": 1.475,
+        "effectiveTarget": 1.4939999999999471,
+        "delta": 0.02,
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.9,
+        "currentSixty": 1.492,
+        "band": [
+          1.45,
+          1.5
+        ],
+        "label": "Slick",
+        "idealized": 1.9058,
+        "idealizedShare": 0.55,
+        "idealVsSim": 0.4108,
+        "note": "bumped >= UHP prep µ for race-tire ordering"
+      },
+      "3": {
+        "mu": 1.655,
+        "sixty": 1.601,
+        "floor": 1.486,
+        "floored": false,
+        "target": 1.6,
+        "effectiveTarget": 1.6,
+        "delta": 0.001,
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.655,
+        "currentSixty": 1.601,
+        "band": [
+          1.6,
+          1.6
+        ],
+        "label": "Summer",
+        "idealized": 2.0242,
+        "idealizedShare": 0.55,
+        "idealVsSim": 0.4232
+      },
+      "4": {
+        "mu": 1.88,
+        "sixty": 1.494,
+        "floor": 1.486,
+        "floored": true,
+        "target": 1.475,
+        "effectiveTarget": 1.4939999999999471,
+        "delta": 0.019,
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.88,
+        "currentSixty": 1.494,
+        "band": [
+          1.45,
+          1.5
+        ],
+        "label": "UHP",
+        "idealized": 1.8992,
+        "idealizedShare": 0.55,
+        "idealVsSim": 0.4052
+      },
+      "5": {
+        "mu": 1.823,
+        "sixty": 1.501,
+        "floor": 1.486,
+        "floored": false,
+        "target": 1.5,
+        "effectiveTarget": 1.5,
+        "delta": 0.001,
+        "ref": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "refId": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "currentMu": 1.823,
+        "currentSixty": 1.501,
+        "band": [
+          1.5,
+          1.5
+        ],
+        "label": "R-Compound",
+        "idealized": 1.9287,
+        "idealizedShare": 0.55,
+        "idealVsSim": 0.4277
+      }
+    }
+  },
+  "correctedMu": {
+    "unprepped": {
+      "0": 1.233,
+      "1": 1.787,
+      "2": 1.432,
+      "3": 1.349,
+      "4": 1.436,
+      "5": 1.627
+    },
+    "prepped": {
+      "0": 1.803,
+      "1": 1.715,
+      "2": 1.9,
+      "3": 1.655,
+      "4": 1.88,
+      "5": 1.823
+    }
+  },
+  "previousMu": {
+    "unprepped": {
+      "0": 1.2,
+      "1": 1.85,
+      "2": 1.47,
+      "3": 1.34,
+      "4": 1.44,
+      "5": 1.64
+    },
+    "prepped": {
+      "0": 1.8,
+      "1": 1.9,
+      "2": 2.2,
+      "3": 1.95,
+      "4": 2.15,
+      "5": 2
+    }
+  },
+  "ladders": {
+    "hellcat": {
+      "before": {
+        "unprepped": {
+          "Street": 2.2,
+          "Summer": 1.999,
+          "UHP": 1.876,
+          "R-Compound": 1.775,
+          "Drag Radial": 1.73,
+          "Slick": 1.85
+        },
+        "prepped": {
+          "Street": 1.728,
+          "Summer": 1.772,
+          "UHP": 1.725,
+          "R-Compound": 1.725,
+          "Drag Radial": 1.744,
+          "Slick": 1.725
+        }
+      },
+      "after": {
+        "unprepped": {
+          "Street": 2.2,
+          "Summer": 1.999,
+          "UHP": 1.876,
+          "R-Compound": 1.775,
+          "Drag Radial": 1.73,
+          "Slick": 1.85
+        },
+        "prepped": {
+          "Street": 1.728,
+          "Summer": 1.772,
+          "UHP": 1.725,
+          "R-Compound": 1.725,
+          "Drag Radial": 1.744,
+          "Slick": 1.725
+        }
+      }
+    },
+    "z28": {
+      "before": {
+        "unprepped": {
+          "Street": 2.013,
+          "Summer": 1.843,
+          "UHP": 1.751,
+          "R-Compound": 1.603,
+          "Drag Radial": 1.514,
+          "Slick": 1.702
+        },
+        "prepped": {
+          "Street": 1.515,
+          "Summer": 1.601,
+          "UHP": 1.494,
+          "R-Compound": 1.501,
+          "Drag Radial": 1.542,
+          "Slick": 1.492
+        }
+      },
+      "after": {
+        "unprepped": {
+          "Street": 2.013,
+          "Summer": 1.843,
+          "UHP": 1.751,
+          "R-Compound": 1.603,
+          "Drag Radial": 1.514,
+          "Slick": 1.702
+        },
+        "prepped": {
+          "Street": 1.515,
+          "Summer": 1.601,
+          "UHP": 1.494,
+          "R-Compound": 1.501,
+          "Drag Radial": 1.542,
+          "Slick": 1.492
+        }
+      }
+    }
+  },
+  "relationship": {
+    "note": "Engine has NO closed form. Idealized t=sqrt(2s/a) with a=µ*g*rearShare is a lower-bound sanity check; sim includes softTractionForce, gripMultSmooth, kinetic fall, launch, driveline.",
+    "hellcatUnprepUHP": [
+      {
+        "mu": 1,
+        "sim": 2.513,
+        "ideal": 2.945,
+        "delta": 0.432
+      },
+      {
+        "mu": 1.1,
+        "sim": 2.345,
+        "ideal": 2.808,
+        "delta": 0.463
+      },
+      {
+        "mu": 1.2,
+        "sim": 2.194,
+        "ideal": 2.689,
+        "delta": 0.495
+      },
+      {
+        "mu": 1.3,
+        "sim": 2.053,
+        "ideal": 2.583,
+        "delta": 0.53
+      },
+      {
+        "mu": 1.4,
+        "sim": 1.919,
+        "ideal": 2.489,
+        "delta": 0.57
+      },
+      {
+        "mu": 1.5,
+        "sim": 1.833,
+        "ideal": 2.405,
+        "delta": 0.572
+      },
+      {
+        "mu": 1.6,
+        "sim": 1.79,
+        "ideal": 2.328,
+        "delta": 0.538
+      },
+      {
+        "mu": 1.7,
+        "sim": 1.755,
+        "ideal": 2.259,
+        "delta": 0.504
+      },
+      {
+        "mu": 1.8,
+        "sim": 1.727,
+        "ideal": 2.195,
+        "delta": 0.468
+      },
+      {
+        "mu": 1.9,
+        "sim": 1.725,
+        "ideal": 2.137,
+        "delta": 0.412
+      },
+      {
+        "mu": 2,
+        "sim": 1.725,
+        "ideal": 2.083,
+        "delta": 0.358
+      },
+      {
+        "mu": 2.1,
+        "sim": 1.725,
+        "ideal": 2.032,
+        "delta": 0.307
+      },
+      {
+        "mu": 2.2,
+        "sim": 1.725,
+        "ideal": 1.986,
+        "delta": 0.261
+      },
+      {
+        "mu": 2.3,
+        "sim": 1.725,
+        "ideal": 1.942,
+        "delta": 0.217
+      },
+      {
+        "mu": 2.4,
+        "sim": 1.725,
+        "ideal": 1.901,
+        "delta": 0.176
+      }
+    ],
+    "z28PrepSlick": [
+      {
+        "mu": 1,
+        "sim": 2.145,
+        "ideal": 2.604,
+        "delta": 0.459
+      },
+      {
+        "mu": 1.1,
+        "sim": 2.013,
+        "ideal": 2.483,
+        "delta": 0.47
+      },
+      {
+        "mu": 1.2,
+        "sim": 1.896,
+        "ideal": 2.377,
+        "delta": 0.481
+      },
+      {
+        "mu": 1.3,
+        "sim": 1.796,
+        "ideal": 2.284,
+        "delta": 0.488
+      },
+      {
+        "mu": 1.4,
+        "sim": 1.715,
+        "ideal": 2.201,
+        "delta": 0.486
+      },
+      {
+        "mu": 1.5,
+        "sim": 1.651,
+        "ideal": 2.126,
+        "delta": 0.475
+      },
+      {
+        "mu": 1.6,
+        "sim": 1.595,
+        "ideal": 2.059,
+        "delta": 0.464
+      },
+      {
+        "mu": 1.7,
+        "sim": 1.544,
+        "ideal": 1.997,
+        "delta": 0.453
+      },
+      {
+        "mu": 1.8,
+        "sim": 1.505,
+        "ideal": 1.941,
+        "delta": 0.436
+      },
+      {
+        "mu": 1.9,
+        "sim": 1.492,
+        "ideal": 1.889,
+        "delta": 0.397
+      },
+      {
+        "mu": 2,
+        "sim": 1.491,
+        "ideal": 1.841,
+        "delta": 0.35
+      },
+      {
+        "mu": 2.1,
+        "sim": 1.49,
+        "ideal": 1.797,
+        "delta": 0.307
+      },
+      {
+        "mu": 2.2,
+        "sim": 1.49,
+        "ideal": 1.756,
+        "delta": 0.266
+      },
+      {
+        "mu": 2.3,
+        "sim": 1.489,
+        "ideal": 1.717,
+        "delta": 0.228
+      },
+      {
+        "mu": 2.4,
+        "sim": 1.489,
+        "ideal": 1.681,
+        "delta": 0.192
+      }
+    ]
+  }
+}

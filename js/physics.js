@@ -855,30 +855,40 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
    *   Prepped 60ft targets: Street 1.7–1.75 / Summer 1.6 / UHP 1.45–1.5 /
    *     R-comp 1.5 / Slick 1.45–1.50 / DR ≈ slick+0.05
    */
+  /** Explicit 60ft mid-band targets used to bake TIRE_MU_BY_PREP (Jorge). */
+  var TARGET_60FT_BY_PREP = {
+    unprepped: { 0: 2.20, 3: 2.00, 4: 1.875, 5: 1.775, 1: 1.685, 2: 1.85 },
+    prepped:   { 0: 1.725, 3: 1.60, 4: 1.475, 5: 1.50, 1: 1.542, 2: 1.475 }
+  };
+
   var TIRE_MU_BY_PREP = {
     /**
-     * Jorge Guerra FINAL 60ft character map (Hellcat / Z28 reference):
-     * Unprep: Street 2.2 · Summer 2.0 · UHP 1.85–1.90 · R-comp 1.75–1.80 ·
-     *         DR 1.65–1.72 · Slick 1.80–1.90 (slick needs prep — behind DR unprep).
-     * Prep:   Street 1.7–1.75 · Summer 1.6 · UHP 1.45–1.5 · R-comp 1.5 ·
-     *         Slick 1.45–1.50 · DR ~0.05 slower than slick.
+     * Jorge Guerra µ ↔ 60ft calibrate (tip review/mu-60ft-calibrate).
+     * TARGET_60FT mid-band (driver 200, forceScale=1, launch=auto):
+     *   Unprep: Street 2.2 · Summer 2.0 · UHP 1.875 · R-comp 1.775 ·
+     *           DR 1.685 · Slick 1.85
+     *   Prep:   Street 1.725 · Summer 1.6 · UHP 1.475 · R-comp 1.5 ·
+     *           Slick 1.475 · DR = slickSim+0.05
+     * Refs: Hellcat for ALL unprep + Street prep; Z28 for sticky prep classes.
+     * Unprep DR: Hellcat floors ~1.725 (band 1.65-1.72 needs stickier PW).
      * Absolute 60ft still depends on mass/launch; µ sets class traction character.
+     * Tunable: edit numbers below or re-run scripts/recalib-mu-60ft.js --apply.
      */
     unprepped: {
-      0: 1.20,  // Street / all-season → ~2.2s on Hellcat-class
-      3: 1.34,  // Summer street performance → ~2.0s
-      4: 1.44,  // UHP summers → ~1.85–1.90s (Hellcat mid-band pick 1.875)
-      2: 1.47,  // Slick cold/unprep → ~1.80–1.90s (behind DR)
-      5: 1.64,  // R-Compound → ~1.75–1.80s
-      1: 1.85   // Drag Radial → ~1.65–1.72s on sticky/quick cars
+      0: 1.233,  // Street / all-season → ~2.2s Hellcat
+      3: 1.349,  // Summer → ~2.0s Hellcat
+      4: 1.436,  // UHP → ~1.875s Hellcat
+      2: 1.432,  // Slick cold/unprep → ~1.85s Hellcat (behind DR)
+      5: 1.627,  // R-Compound → ~1.775s Hellcat
+      1: 1.787   // Drag Radial → Hellcat floor ~1.725 (band needs stickier PW)
     },
     prepped: {
-      0: 1.80,  // Street → ~1.7–1.75s when traction-limited
-      3: 1.95,  // Summer → ~1.6s on sticky/quick cars
-      1: 1.90,  // DR → ~0.05 behind slick
-      5: 2.00,  // R-Compound → 1.5 fixed character
-      4: 2.15,  // UHP summers → 1.45–1.5 on decently quick cars
-      2: 2.20   // Slick → 1.45–1.50 on decently quick cars
+      0: 1.803,  // Street → ~1.725s Hellcat
+      3: 1.655,  // Summer → ~1.6s Z28
+      1: 1.715,  // DR → slickSim+0.05 on Z28
+      5: 1.823,  // R-Compound → ~1.5s Z28
+      4: 1.880,  // UHP → ~1.475s Z28 (near power floor)
+      2: 1.900   // Slick → ~1.475s Z28 (near power floor)
     }
   };
 
@@ -1896,6 +1906,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     normalizeTrackPrep: normalizeTrackPrep,
     TIRE_LABELS: TIRE_LABELS,
     TIRE_MU_BY_PREP: TIRE_MU_BY_PREP,
+    TARGET_60FT_BY_PREP: TARGET_60FT_BY_PREP,
     TIRE_KINETIC_FALL: TIRE_KINETIC_FALL,
     TIRE_KINETIC_EXP: TIRE_KINETIC_EXP,
     get CalibrationFactor() { return CalibrationFactor; },
