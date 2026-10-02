@@ -2,7 +2,7 @@
 
 **Credit:** Jorge Guerra only
 **Branch:** `review/factory-tire-60ft-final`
-**Tip SHA:** `d0973a0` (`d0973a06e16a8891a52b55b9a2b168f848b0230f`)
+**Tip SHA:** `3b63f21` (`3b63f212e57358df4610df19976bd486ab6ed294`) — bake `d0973a0`
 **Repo:** `01ls1z28-coder/velocitybench-powercurve`
 **Pages / main:** HOLD for Seraph/Merovingian FF — tip only
 **Report JSON:** `scripts/factory-tire-60ft-report.json`
