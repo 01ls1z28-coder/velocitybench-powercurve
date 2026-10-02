@@ -1324,7 +1324,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
           stall = Math.max(1200, stall + launchStallBias);
           // Stall factor spans real converter band 1500→5500 (not clamped flat below 2200).
           // High-stall ATC flash ceiling scales with stall; Circle D 4400 → ~6400-class.
-          // Explicit car.flashRpm still wins; stock/non-ATC path never enters here.
+          // Optional car.flashRpm still wins if baked; UI no longer exposes it. Stock/non-ATC never enters here.
           // Soft/Aggressive modulate stall + flash span; Auto bias0/span1 = prior path.
           var stallFacFlash = clamp((stall - 1500) / 4000, 0, 1);
           var flash = Number(car.flashRpm) || Math.max(stall + Math.round(240 + stallFacFlash * 900), stall + 200);

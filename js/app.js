@@ -579,7 +579,7 @@
   }
 
   /**
-   * EV selected → lock/disable ICE induction (NA/Turbo/SC/Twin) + boost PSI.
+   * EV selected → lock/disable ICE induction (NA/Turbo/SC/Twin).
    * Garage EV/Hybrid cars also lock the power-source radios to the baked mode.
    */
   function syncInductionUi(opts) {
@@ -604,11 +604,6 @@
       inp.disabled = disable;
       if (inp.parentElement) inp.parentElement.classList.toggle('is-locked', disable);
     });
-    var boost = $('boostPsi');
-    if (boost) {
-      boost.disabled = isEv || (lockGarage && isEv);
-      if (isEv) boost.value = '0';
-    }
     var hint = $('inductionLockHint');
     if (hint) {
       if (isEv) {
@@ -641,7 +636,135 @@
     updateWeightSumHints();
   }
 
-  function updateWeightSumHints() {
+  var _weightVizSyncing = false;
+
+  function formatCornerPct(n) {
+    if (!isFinite(n)) return '—';
+    var r = Math.round(n * 10) / 10;
+    return (Math.abs(r - Math.round(r)) < 0.05) ? String(Math.round(r)) : r.toFixed(1);
+  }
+
+  function cornerPercentsFromAxes(front, left) {
+    var f = clampNum(front, 20, 80, 45);
+    var l = clampNum(left, 20, 80, 50);
+    var r = 100 - f;
+    var rt = 100 - l;
+    return {
+      fl: f * l / 100,
+      fr: f * rt / 100,
+      rl: r * l / 100,
+      rr: r * rt / 100,
+      front: f,
+      rear: r,
+      left: l,
+      right: rt
+    };
+  }
+
+  function setAxisWeightFields(front, left, opts) {
+    opts = opts || {};
+    var c = cornerPercentsFromAxes(front, left);
+    _weightVizSyncing = true;
+    try {
+      if ($('frontWeightPct')) $('frontWeightPct').value = String(Math.round(c.front));
+      if ($('rearWeightPct')) $('rearWeightPct').value = String(Math.round(c.rear));
+      if ($('leftWeightPct')) $('leftWeightPct').value = String(Math.round(c.left));
+      if ($('rightWeightPct')) $('rightWeightPct').value = String(Math.round(c.right));
+      syncWeightVisualFromAxes(c.front, c.left, { skipInputs: opts.skipCornerInputs });
+    } finally {
+      _weightVizSyncing = false;
+    }
+    updateWeightSumHints({ skipVisual: true });
+  }
+
+  function syncWeightVisualFromAxes(front, left, opts) {
+    opts = opts || {};
+    var c = cornerPercentsFromAxes(front, left);
+    var map = [
+      ['cornerFlPct', 'wheelFillFl', 'fl', c.fl],
+      ['cornerFrPct', 'wheelFillFr', 'fr', c.fr],
+      ['cornerRlPct', 'wheelFillRl', 'rl', c.rl],
+      ['cornerRrPct', 'wheelFillRr', 'rr', c.rr]
+    ];
+    map.forEach(function (row) {
+      var inp = $(row[0]);
+      var fill = $(row[1]);
+      var pad = document.querySelector('.wheel-pad.' + row[2]);
+      var pct = row[3];
+      if (inp && !opts.skipInputs) {
+        if (document.activeElement !== inp) inp.value = formatCornerPct(pct);
+      }
+      // Equal share is 25%; map ~10–40% into fill height 18–88%
+      var h = 18 + Math.max(0, Math.min(1, (pct - 10) / 30)) * 70;
+      if (fill) fill.style.height = h.toFixed(1) + '%';
+      if (pad) {
+        if (pct >= 27) pad.classList.add('is-heavy');
+        else pad.classList.remove('is-heavy');
+      }
+    });
+    var cg = $('weightCg');
+    var car = $('weightCar');
+    if (cg && car) {
+      // x: left-heavy → left side (left% 80 at 18%, left% 20 at 82%)
+      // y: front-heavy → top (front% 80 at 18%, front% 20 at 82%)
+      var xPct = 18 + ((80 - c.left) / 60) * 64;
+      var yPct = 18 + ((80 - c.front) / 60) * 64;
+      cg.style.left = xPct.toFixed(2) + '%';
+      cg.style.top = yPct.toFixed(2) + '%';
+      cg.setAttribute('aria-valuenow', String(Math.round(c.front)));
+      cg.setAttribute('aria-valuetext',
+        'Front ' + Math.round(c.front) + '%, Left ' + Math.round(c.left) + '%');
+    }
+  }
+
+  function syncWeightVisualFromForm() {
+    var f = Number($('frontWeightPct') && $('frontWeightPct').value);
+    var l = Number($('leftWeightPct') && $('leftWeightPct').value);
+    if (!isFinite(f)) f = 45;
+    if (!isFinite(l)) l = 50;
+    syncWeightVisualFromAxes(f, l);
+  }
+
+  function applyCornerEdit(corner, rawVal) {
+    var f = Number($('frontWeightPct') && $('frontWeightPct').value);
+    var l = Number($('leftWeightPct') && $('leftWeightPct').value);
+    if (!isFinite(f)) f = 45;
+    if (!isFinite(l)) l = 50;
+    var target = clampNum(rawVal, 4, 64, 25);
+    // Map corner edit onto the matching axle/side while keeping the other axis fixed.
+    if (corner === 'fl') {
+      // Prefer axle (front) when left is usable; else side.
+      if (l > 0.5) f = clampNum(target * 100 / l, 20, 80, f);
+      else l = clampNum(target * 100 / Math.max(f, 1), 20, 80, l);
+    } else if (corner === 'fr') {
+      var rt = 100 - l;
+      if (rt > 0.5) f = clampNum(target * 100 / rt, 20, 80, f);
+      else l = 100 - clampNum(target * 100 / Math.max(f, 1), 20, 80, 50);
+    } else if (corner === 'rl') {
+      var r = 100 - f;
+      if (l > 0.5) {
+        r = clampNum(target * 100 / l, 20, 80, r);
+        f = 100 - r;
+      } else {
+        l = clampNum(target * 100 / Math.max(r, 1), 20, 80, l);
+      }
+    } else if (corner === 'rr') {
+      var r2 = 100 - f;
+      var rt2 = 100 - l;
+      if (rt2 > 0.5) {
+        r2 = clampNum(target * 100 / rt2, 20, 80, r2);
+        f = 100 - r2;
+      } else {
+        l = 100 - clampNum(target * 100 / Math.max(r2, 1), 20, 80, 50);
+      }
+    }
+    f = clampNum(f, 20, 80, 45);
+    l = clampNum(l, 20, 80, 50);
+    setAxisWeightFields(f, l);
+  }
+
+  function updateWeightSumHints(opts) {
+    opts = opts || {};
     var f = Number($('frontWeightPct') && $('frontWeightPct').value);
     var r = Number($('rearWeightPct') && $('rearWeightPct').value);
     var l = Number($('leftWeightPct') && $('leftWeightPct').value);
@@ -658,6 +781,7 @@
       lr.textContent = 'L/R sum ' + Math.round(s2) + '%';
       lr.style.color = Math.abs(s2 - 100) < 0.6 ? '' : '#ff6b6b';
     }
+    if (!opts.skipVisual) syncWeightVisualFromForm();
   }
 
   function readWeightDistributionFromForm(base) {
@@ -711,7 +835,6 @@
     $('shiftRpm').value = car.shiftRpm || 6500;
     $('redline').value = car.redline || 6800;
     $('shiftTime').value = car.shiftTimeSeconds != null ? car.shiftTimeSeconds : 0.10;
-    $('boostPsi').value = car.boostPsi || 0;
     if ($('speedLimiterMph')) {
       var limV = car.speedLimiterMph != null ? car.speedLimiterMph : car.topSpeedMph;
       $('speedLimiterMph').value = (limV != null && Number(limV) > 0) ? Math.round(Number(limV)) : '';
@@ -736,7 +859,6 @@
     });
     $('converter').value = car.hasAftermarketConverter ? '1' : '0';
     $('stallRpm').value = car.stallRpm || 2800;
-    $('flashRpm').value = car.flashRpm || 3500;
     if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
     // Factory-reset: every new vehicle selection forces Unprepped (sticky prep across cars was the bug).
     if ($('trackPrep')) $('trackPrep').value = 'unprepped';
@@ -824,13 +946,13 @@
         if (ind === 'na') return 'na';
         return ind;
       })(),
-      boostPsi: (ind === 'na' || ind === 'ev') ? 0 : clampNum($('boostPsi').value, 0, 80, 0),
+      boostPsi: 0, // Boost PSI UI removed — garage dynos already include boost; multiplier was wiped on RUN
       hybridAssistFrac: ind === 'hybrid'
         ? (base.hybridAssistFrac != null ? Number(base.hybridAssistFrac) : 0.22)
         : undefined,
       hasAftermarketConverter: $('converter').value === '1',
       stallRpm: clampNum($('stallRpm').value, 1200, 7000, 2800),
-      flashRpm: clampNum($('flashRpm').value, 1500, 8000, 3500),
+      // Flash RPM UI removed — physics derives flash from stall when ATC is on
       forceScale: 1, // retired calib knob — physics ignores; garage bakes 1.0
       txKey: base.txKey || undefined, // keep baked factory TX key so gear-editor label survives RUN
       // Preserve Jorge blank-name flag ('' = hide guessed OEM label; ratios/FD stay on car)
@@ -2903,6 +3025,7 @@ $('btnReset').addEventListener('click', function () {
     var el = $(id);
     if (!el) return;
     el.addEventListener('input', function () {
+      if (_weightVizSyncing) return;
       // Keep pairs summing to 100 while typing
       if (id === 'frontWeightPct' && $('rearWeightPct')) {
         var f = clampNum(el.value, 20, 80, 45);
@@ -2920,6 +3043,158 @@ $('btnReset').addEventListener('click', function () {
       updateWeightSumHints();
     });
   });
+
+  (function wireWeightDistributionViz() {
+    var cornerIds = [
+      ['cornerFlPct', 'fl'],
+      ['cornerFrPct', 'fr'],
+      ['cornerRlPct', 'rl'],
+      ['cornerRrPct', 'rr']
+    ];
+    cornerIds.forEach(function (row) {
+      var el = $(row[0]);
+      if (!el) return;
+      el.addEventListener('input', function () {
+        if (_weightVizSyncing) return;
+        applyCornerEdit(row[1], el.value);
+      });
+      el.addEventListener('keydown', function (ev) {
+        // Allow arrows inside the number without starting a pad drag
+        ev.stopPropagation();
+      });
+    });
+
+    function pointerPos(ev) {
+      if (ev.touches && ev.touches[0]) return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+      if (ev.changedTouches && ev.changedTouches[0]) {
+        return { x: ev.changedTouches[0].clientX, y: ev.changedTouches[0].clientY };
+      }
+      return { x: ev.clientX, y: ev.clientY };
+    }
+
+    // Drag CG on car silhouette → front/left axes
+    var cg = $('weightCg');
+    var car = $('weightCar');
+    if (cg && car) {
+      var cgDrag = null;
+      function cgFromClient(clientX, clientY) {
+        var rect = car.getBoundingClientRect();
+        if (!(rect.width > 0) || !(rect.height > 0)) return null;
+        var nx = (clientX - rect.left) / rect.width;
+        var ny = (clientY - rect.top) / rect.height;
+        nx = Math.max(0.05, Math.min(0.95, nx));
+        ny = Math.max(0.05, Math.min(0.95, ny));
+        // Invert map used in syncWeightVisualFromAxes
+        var left = 80 - ((nx * 100 - 18) / 64) * 60;
+        var front = 80 - ((ny * 100 - 18) / 64) * 60;
+        return {
+          front: clampNum(front, 20, 80, 45),
+          left: clampNum(left, 20, 80, 50)
+        };
+      }
+      function onCgMove(ev) {
+        if (!cgDrag) return;
+        ev.preventDefault();
+        var p = pointerPos(ev);
+        var axes = cgFromClient(p.x, p.y);
+        if (!axes) return;
+        setAxisWeightFields(axes.front, axes.left);
+      }
+      function onCgUp() {
+        if (!cgDrag) return;
+        cgDrag = null;
+        cg.classList.remove('is-dragging');
+        window.removeEventListener('pointermove', onCgMove);
+        window.removeEventListener('pointerup', onCgUp);
+        window.removeEventListener('touchmove', onCgMove);
+        window.removeEventListener('touchend', onCgUp);
+      }
+      function onCgDown(ev) {
+        if (ev.target && ev.target.classList && ev.target.classList.contains('wheel-pct')) return;
+        ev.preventDefault();
+        cgDrag = true;
+        cg.classList.add('is-dragging');
+        var p = pointerPos(ev);
+        var axes = cgFromClient(p.x, p.y);
+        if (axes) setAxisWeightFields(axes.front, axes.left);
+        window.addEventListener('pointermove', onCgMove, { passive: false });
+        window.addEventListener('pointerup', onCgUp);
+        window.addEventListener('touchmove', onCgMove, { passive: false });
+        window.addEventListener('touchend', onCgUp);
+      }
+      cg.addEventListener('pointerdown', onCgDown);
+      car.addEventListener('pointerdown', function (ev) {
+        if (ev.target === cg) return;
+        onCgDown(ev);
+      });
+      cg.addEventListener('keydown', function (ev) {
+        var f = Number($('frontWeightPct') && $('frontWeightPct').value);
+        var l = Number($('leftWeightPct') && $('leftWeightPct').value);
+        if (!isFinite(f)) f = 45;
+        if (!isFinite(l)) l = 50;
+        var step = ev.shiftKey ? 5 : 1;
+        var handled = true;
+        if (ev.key === 'ArrowUp') f += step;
+        else if (ev.key === 'ArrowDown') f -= step;
+        else if (ev.key === 'ArrowLeft') l += step;
+        else if (ev.key === 'ArrowRight') l -= step;
+        else handled = false;
+        if (!handled) return;
+        ev.preventDefault();
+        setAxisWeightFields(f, l);
+      });
+    }
+
+    // Vertical drag on a wheel pad nudges that corner (→ axle/side via applyCornerEdit)
+    document.querySelectorAll('.wheel-pad').forEach(function (pad) {
+      var corner = pad.getAttribute('data-corner');
+      if (!corner) return;
+      var drag = null;
+      function onMove(ev) {
+        if (!drag) return;
+        ev.preventDefault();
+        var p = pointerPos(ev);
+        var dy = drag.y - p.y; // up = heavier
+        if (Math.abs(dy) < 1) return;
+        var next = drag.base + dy * 0.12;
+        drag.y = p.y;
+        drag.base = next;
+        applyCornerEdit(corner, next);
+      }
+      function onUp() {
+        if (!drag) return;
+        drag = null;
+        pad.classList.remove('is-active');
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('touchmove', onMove);
+        window.removeEventListener('touchend', onUp);
+      }
+      pad.addEventListener('pointerdown', function (ev) {
+        if (ev.target && ev.target.classList && ev.target.classList.contains('wheel-pct')) return;
+        ev.preventDefault();
+        var inp = pad.querySelector('.wheel-pct');
+        var base = Number(inp && inp.value);
+        if (!isFinite(base)) {
+          var cur = cornerPercentsFromAxes(
+            Number($('frontWeightPct') && $('frontWeightPct').value),
+            Number($('leftWeightPct') && $('leftWeightPct').value)
+          );
+          base = cur[corner];
+        }
+        var p = pointerPos(ev);
+        drag = { y: p.y, base: base };
+        pad.classList.add('is-active');
+        window.addEventListener('pointermove', onMove, { passive: false });
+        window.addEventListener('pointerup', onUp);
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onUp);
+      });
+    });
+
+    // Initial paint
+    syncWeightVisualFromForm();
+  })();
   function livePreviewPeakHpScale() {
     var baseline = state.peakHpBaseline;
     var srcCurve = state.curveAtBaseline;
