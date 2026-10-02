@@ -1,0 +1,609 @@
+{
+  "credit": "Jorge Guerra only",
+  "branch": "review/oem-tire-ev-power-batch",
+  "base": "c89db28",
+  "mustangBefore": {
+    "id": "2020-ford-mustang-gt",
+    "tireType": 3,
+    "label": "Summer",
+    "note": "Pirelli P Zero / Goodyear Eagle F1 summer"
+  },
+  "mustangAfter": {
+    "id": "2020-ford-mustang-gt",
+    "tireType": 0,
+    "label": "Street",
+    "oem": "P235/50R18 BSW all-season (base 10AT / non-PP)"
+  },
+  "tireTypeChanges": [
+    {
+      "id": "2020-ford-mustang-gt",
+      "old": "Summer",
+      "new": "Street",
+      "source": "Ford 2020 Mustang order guide / Tire Rack OE / mustangspecs"
+    }
+  ],
+  "sourceSyncOnly": [
+    {
+      "id": "2016-ford-mustang-gt350r",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2014-chevrolet-camaro-z-28",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2012-ford-mustang-boss-302-laguna-seca",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2020-mclaren-765lt",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2018-mclaren-600lt",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2019-lamborghini-hurac-n-performante",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2017-porsche-911-gt2-rs",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2015-mclaren-p1",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2004-porsche-carrera-gt",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2019-lamborghini-aventador-svj",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    },
+    {
+      "id": "2024-porsche-911-gt3-rs",
+      "oldClass": "UHP (stale source)",
+      "newClass": "R-Compound",
+      "tireTypeUnchanged": 5
+    }
+  ],
+  "challengersLeftUHP": [
+    "2007-dodge-charger-srt8",
+    "2008-dodge-challenger-srt8",
+    "2009-dodge-challenger-r-t",
+    "2010-dodge-challenger-srt8",
+    "2015-dodge-challenger-hellcat",
+    "2020-dodge-challenger-hellcat",
+    "2020-dodge-challenger-r-t-scat-pack",
+    "2021-dodge-charger-hellcat-redeye",
+    "2023-dodge-charger-scat-pack"
+  ],
+  "histAfter": {
+    "Street": 102,
+    "Slick": 1,
+    "Summer": 69,
+    "UHP": 132,
+    "R-Compound": 12
+  },
+  "familySeedsFlagged": [
+    {
+      "id": "2009-pontiac-g8-gxp",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2022-bmw-ix-m60",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2023-mercedes-eqe-amg-53",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-tesla-model-x-long-range",
+      "tire": "Street",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-chevrolet-blazer-ev-ss",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-bmw-i5-m60",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-lucid-air-touring",
+      "tire": "Street",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-tesla-model-s-long-range",
+      "tire": "Street",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2006-ford-gt",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-aston-martin-dbs",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2010-aston-martin-v12-vantage",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2015-aston-martin-v12-vantage-s",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-rimac-nevera",
+      "tire": "Street",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2006-saleen-s7-twin-turbo",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2004-maserati-mc12",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2014-hennessey-venom-gt",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-mitsubishi-lancer-evolution-x",
+      "tire": "Summer",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-bmw-135i",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2003-mitsubishi-lancer-evolution-viii",
+      "tire": "Summer",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2005-mitsubishi-eclipse-gt",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2001-mitsubishi-eclipse-gsx",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-subaru-legacy-gt-spec-b",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-kawasaki-ninja-zx-10r",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2016-kawasaki-ninja-zx-10r",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000r",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-yamaha-yzf-r1",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-yamaha-yzf-r1m",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-bmw-s1000rr",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-honda-cbr1000rr-r-fireblade",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2022-suzuki-hayabusa",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-kawasaki-ninja-zx-14r",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-ducati-panigale-v4",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-kawasaki-ninja-h2",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2019-ford-f-250-6-7-powerstroke",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2011-chevrolet-avalanche-5-3",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2010-nissan-titan-5-6",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2013-toyota-sequoia-5-7",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2005-ford-f-250-v10",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2012-nissan-titan-pro-4x",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1970-chevrolet-chevelle-ss-454",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1966-ford-gt40-mkii",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1965-shelby-cobra-427",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1970-plymouth-road-runner-440",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1968-dodge-dart-gts-383",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1965-chevrolet-chevelle-ss396",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1972-oldsmobile-442",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1962-chevrolet-impala-ss-409",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1967-plymouth-gtx-440",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1960-ford-galaxie-352",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1968-mercury-cougar-xr-7",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2022-volkswagen-golf-r",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-jeep-trackhawk",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2020-dodge-durango-srt",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2022-cadillac-escalade-v",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2021-range-rover-sport-svr",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2019-dodge-durango-r-t",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2018-jeep-grand-cherokee-srt",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2010-jeep-commander-5-7",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1994-toyota-supra-twin-turbo",
+      "tire": "Summer",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1999-nissan-skyline-gt-r-r34",
+      "tire": "Summer",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2009-bmw-335i",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-audi-s5",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1986-toyota-corolla-ae86",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1990-mazda-rx-7-fc-turbo",
+      "tire": "Summer",
+      "sourceClass": "UHP",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "1995-mitsubishi-eclipse-gsx",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2016-audi-tt-rs",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2009-bmw-335i",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2008-audi-s5",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2007-bmw-550i",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2009-mercedes-cls550",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2011-audi-a7-3-0t",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2007-audi-s6-v10",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-bmw-m2",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-lexus-lc-500-coupe",
+      "tire": "UHP",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-subaru-brz",
+      "tire": "Street",
+      "sourceClass": "Summer",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-acura-integra-type-s",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2023-acura-tlx-type-s",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-lexus-is-500",
+      "tire": "UHP",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    },
+    {
+      "id": "2024-audi-rs-3",
+      "tire": "Summer",
+      "sourceClass": "Street",
+      "note": "source/tag residual"
+    }
+  ],
+  "familySeedsFlaggedCount": 81,
+  "bakedFiles": [
+    "js/garage-data.js",
+    "index.html",
+    "scripts/recalib-factory-tire-60ft.js",
+    "scripts/oem-tire-class-sweep-report.json"
+  ],
+  "bindPreserved": true,
+  "cacheBust": "oem-tire-ev-batch",
+  "secrets": "none",
+  "disclaimer": "Factory tire classes are compiled estimates from OEM order guides, Tire Rack OE fitments, and manufacturer press \u2014 not lab-certified \u00b5 measurements. Simulated traction still depends on mass, gearing, and launch RPM.",
+  "sources": [
+    "Ford 2020 Mustang Order Guide \u2014 GT base Tires 235/50R18 BSW All-Season; GT Performance Package 255/40R19 F / 275/40R19 R Summer Only",
+    "Tire Rack / mustangspecs OE fitment for 2020 Mustang GT P235/50R18 A/S",
+    "Prior tip c89db28 factory-tire-60ft \u00b5 ladder + Challenger UHP Jorge overrides (left intact)"
+  ]
+}

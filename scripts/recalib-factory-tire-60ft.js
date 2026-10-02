@@ -258,8 +258,8 @@ var DOCUMENTED = {
 
   // ——— Summer (performance summer, not Cup/Trofeo) ———
   '2020-ford-mustang-gt': {
-    tire: 3, oem: 'Pirelli P Zero / Goodyear Eagle F1 summer',
-    source: 'S550 GT summer OE (not Cup)', conf: 'documented'
+    tire: 0, oem: 'P235/50R18 BSW all-season (base 10AT / non-PP)',
+    source: 'Ford 2020 Mustang order guide — base GT A/S; summer staggered = GT Performance Package only', conf: 'documented'
   },
   '2011-ford-mustang-gt-5-0': {
     tire: 3, oem: 'Pirelli P Zero Nero / summer',
