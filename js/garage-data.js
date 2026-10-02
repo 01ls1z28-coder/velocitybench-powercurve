@@ -37905,3 +37905,10 @@ var GARAGE = [
 if (typeof module !== "undefined" && module.exports) {
   module.exports = GARAGE;
 }
+
+if (typeof window !== "undefined") {
+  window.VB_POWERCURVE_GARAGE = GARAGE;
+} else if (typeof globalThis !== "undefined") {
+  globalThis.VB_POWERCURVE_GARAGE = GARAGE;
+}
+
