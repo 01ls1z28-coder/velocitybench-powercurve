@@ -2246,37 +2246,47 @@ body {
   text-transform: uppercase;
 }
 .weight-axis-inputs {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
 }
 .weight-mini {
   display: flex;
   align-items: center;
-  gap: 5px;
-  flex: 1 1 0;
+  gap: 3px;
   min-width: 0;
   color: var(--text-muted);
   font-size: 11px;
 }
 .weight-mini span {
-  flex: 0 0 auto;
-  width: 12px;
+  flex: 0 0 10px;
+  width: 10px;
   text-align: center;
   color: var(--text-dim);
   font-weight: 600;
 }
 .weight-mini input {
-  width: 100%;
-  min-width: 0;
+  flex: 1 1 42px;
+  width: 42px;
+  min-width: 42px;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: var(--radius-sm);
   color: var(--text);
-  padding: 5px 6px;
+  padding: 5px 4px;
   font-family: var(--mono);
   font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  /* The native spinner can cover the second digit in compact axis cards. */
+  appearance: textfield;
+}
+.weight-mini input::-webkit-inner-spin-button,
+.weight-mini input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
 }
 .weight-mini input:focus {
   outline: none;
