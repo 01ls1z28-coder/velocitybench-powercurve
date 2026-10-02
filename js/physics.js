@@ -11,6 +11,8 @@
  * VB extensions: weather/DA, wind+gusts, FI boost models, EV + Hybrid power sources,
  * F/R + L/R weight distribution (axle normals, transfer, open/LSD traction), editable factory TX ratios.
  * Hybrid: ICE crank TQ + separate electric-motor assist band (not cosmetic).
+ * Drive force is SI-honest: wheel TQ (lb·ft)×1.3558179483314 → N·m ÷ tireRadius_m → N
+ * (mass/drag/traction already SI). FORCE_LT30 / FORCE_GT60 retired to identity.
  * Estimates — not track certified.
  */
 (function (global) {
@@ -100,8 +102,8 @@
   var GRIP_LT20 = 1.35;
   var GRIP_20_40 = 1.15;
   var GRIP_40_60 = 1.05;
-  var FORCE_LT30 = 2.05;
-  var FORCE_GT60 = 1.10;
+  var FORCE_LT30 = 1.0; // retired invent (was 2.05 unit-mix crutch); identity with SI drive force
+  var FORCE_GT60 = 1.0;   // was 1.10 invented top-end boost; identity at speed
 
   var DEFAULT_LAUNCH_RPM = 3000;
   var DEFAULT_SHIFT_RPM = 6500;
@@ -119,8 +121,8 @@
   var VMAX_A_THRESH = 0.05;       // m/s^2 — equilibrium detect
   var VMAX_HOLD_S = 0.50;         // sustained low-a before declaring Vmax
 
-  /** Global drive-force scale. Tuned via VERIFY spot-checks. */
-  var CalibrationFactor = 0.95;
+  /** Global drive-force scale. Must stay 1.0 (forceScale honesty — no silent kneecap). */
+  var CalibrationFactor = 1.0;
 
   /**
    * Shift-coast residual HOLE floor by transmission family.
@@ -922,7 +924,7 @@
       totalShifts: 0,
       shifts: [],
       densityAltitudeFeet: 0,
-      airTempF: (env && env.tempF) != null ? env.tempF : 70,
+      airTempF: (env && env.tempF) != null ? env.tempF : 59,
       launchRpm: 0,
       shiftRpm: 0,
       tireDescription: (env && env.tireLabel) || '',
@@ -984,8 +986,14 @@
     var shiftTime = car.shiftTimeSeconds != null ? Number(car.shiftTimeSeconds) : DEFAULT_SHIFT_TIME;
     var shiftRpm = car.shiftRpm != null ? Number(car.shiftRpm) : DEFAULT_SHIFT_RPM;
     var launchRpm = car.launchRpm != null ? Number(car.launchRpm) : DEFAULT_LAUNCH_RPM;
-    var wheelbaseM = (Number(car.wheelbaseFeet) || DEFAULT_WB_FT) * FEET_TO_M;
-    var cgHeightM = (Number(car.cgHeightFeet) || DEFAULT_CG_FT) * FEET_TO_M;
+    // Motorcycles: car defaults (WB 8.5 ft / CG 1.5 ft) understate weight transfer and
+    // starve RWD traction — use sportbike + rider geometry when unset.
+    var isBikeChassis = !!(car.category === 'Motorcycle' ||
+      /ninja|hayabusa|yamaha yzf|suzuki gsx|honda cbr|ducati|bmw s1000|motorcycle|bike\b|panigale/i.test(String(car.name || '')));
+    var wbFtDefault = isBikeChassis ? 4.70 : DEFAULT_WB_FT;
+    var cgFtDefault = isBikeChassis ? 1.85 : DEFAULT_CG_FT;
+    var wheelbaseM = (Number(car.wheelbaseFeet) || wbFtDefault) * FEET_TO_M;
+    var cgHeightM = (Number(car.cgHeightFeet) || cgFtDefault) * FEET_TO_M;
     var wDist = resolveWeightDistribution(car);
     var frontPct = wDist.frontWeightPercent;
     var rearPct = wDist.rearWeightPercent;
@@ -997,15 +1005,15 @@
     var curve = car.torqueCurve;
     if (!curve || (typeof curve === 'object' && !Array.isArray(curve) && !Object.keys(curve).length)) {
       curve = synthesizeTorqueCurve(car.peakHp || car.horsepower, car.peakTqRpm, car.redline, car.peakHpRpm);
-    } else if (!car.isEv) {
-      // Shared sim path (ICE only): sanitize + cap so post-peak HP keeps falling; peakHp honesty.
-      // EVs keep their motor maps — dyno-fall sanitize is an ICE characteristic.
+    } else {
+      // peakHp honesty for ICE + EV. Post-peak dyno-fall sanitize is ICE-only;
+      // both are capped to published peakHp when set (no inflated motor-map cheat).
       curve = Object.assign({}, curve);
-      sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
+      if (!car.isEv) sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
       if (car.peakHp > 0) capTorqueCurveToPeakHp(curve, car.peakHp);
     }
 
-    var tempF = env.tempF != null ? Number(env.tempF) : 70;
+    var tempF = env.tempF != null ? Number(env.tempF) : 59;
     var humidity = env.humidity != null ? Number(env.humidity) : 50;
     var pressureInHg = env.pressureInHg != null ? Number(env.pressureInHg) : 29.92;
     var daFt;
@@ -1444,14 +1452,7 @@
         // Computed every tick (incl. mid-shift) so engagement endpoint stays continuous.
         var mech = wheelRpm * gRatio * finalDrive;
         var slipR = rpm > 0 ? Math.max(0, (rpm - mech) / rpm) : 0;
-        // Load-breathing residual TC slip when coupled — deterministic from crank TQ
-        // load (not random). Changes tMult → driveF → traction path → g tips with TQ.
-        if (tcPostShiftHangRpm <= 0 && mph > 12) {
-          // TQ load → tMult → driveF → g (continuous between-shift tips; tire path).
-          var load = clamp(engTQ / peakEngTQRef, 0.20, 1.20);
-          var breath = 0.018 + 0.055 * load * load; // ~1.8–8% slip floor
-          if (slipR < breath) slipR = breath;
-        }
+        // (retired) load-breathing slip floor — invented residual multiply when locked
         var stallN = Number(car.stallRpm) || 2800;
         var stallFacN = clamp((stallN - 1500) / 4000, 0, 1);
         // LIVE used stallBoost≈0.196 @4400 ((4400-2200)/2800*0.25). Keep that at 4400;
@@ -1467,20 +1468,7 @@
           var fade = Math.min(1.0, Math.max(0, (mph - 15.0) / fadeSpan));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
-        if (tcPostShiftHangRpm > 0) {
-          // Mild parent unlock (preserves 60ft / 0-60) + mph-gated extra multiply
-          // for trap; postFade softens past ~125 mph so 60-130 does not overshoot.
-          // stallUnlock=1 exactly at Circle D 4400; scales endpoints only.
-          var baseAdd = Math.min(0.055, slipR * 0.22);
-          var speedGate = clamp((mph - 62.0) / 40.0, 0, 1);
-          var postFade = 0.05 + 0.95 * clamp((125.0 - mph) / 8.0, 0, 1);
-          var stallUnlock = 1.06 + (stallFacN - 0.725) * 1.20; // ~1.06@4400 (trap nudge); endpoints diverge
-          if (stallUnlock < 0.12) stallUnlock = 0.12;
-          if (stallUnlock > 1.50) stallUnlock = 1.50;
-          var extraAdd = Math.min(0.28, slipR * 0.85) * speedGate * postFade * stallUnlock;
-          var unlockCeil = 0.07 + (0.36 - 0.07) * speedGate * postFade * stallUnlock;
-          tMult = 1.0 + Math.min(unlockCeil, (tMult - 1.0) + baseAdd + extraAdd);
-        }
+        // (retired) post-shift mph-gated trap-unlock multiply — Excel-chase invent
         engagedWhTQ = fullWhTQ * tMult;
       }
 
@@ -1514,7 +1502,10 @@
         lastDriveWhTQ = engagedWhTQ;
       }
 
-      var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
+      // SI drive force: F(N) = (whTQ_lbft × LBFT_TO_NM) / tireRadius_m
+      // LBFT_TO_NM = 1.3558179483314. Matches mass(kg)/drag(N)/traction(N).
+      var LBFT_TO_NM = 1.3558179483314;
+      var driveF = tireRadius > 0 ? (whTQ * LBFT_TO_NM) / tireRadius : 0;
       // Smooth FORCE bands — kill 30/60 square stairs; continuous taper with speed (A/E).
       driveF *= driveForceMultSmooth(mph);
       if (inLaunch && launchDriveMult !== 1.0) driveF *= launchDriveMult;
