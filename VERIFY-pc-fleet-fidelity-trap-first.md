@@ -1,7 +1,7 @@
 # VERIFY — PowerCurve fleet fidelity (trap-first / µ + tires)
 
 **Branch:** `review/fleet-fidelity-trap-first`  
-**Tip SHA:** `87174c24c09d80169cb55b02bfd0ee422fb00ed2` (`87174c2`)  
+**Tip SHA:** `497e76fbb9e2508a51b553ec5a62aa6a03637f39` (`497e76f`)  
 **Parent tip:** `3c37b84981672d67851841569a42978faf386d70` (`main` — garage bind + cachebust)  
 **Credit:** Jorge Guerra only  
 **Pages / main:** **NOT touched** (tip only; HOLD Merovingian)  
