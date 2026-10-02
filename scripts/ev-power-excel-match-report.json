@@ -1,0 +1,1758 @@
+{
+  "tip": "review/oem-tire-ev-power-batch",
+  "parentTireSha": "6464c65",
+  "soi": "VelocityBench_Garage_Corrected.xlsx + excel-corrected-targets.json",
+  "priority": [
+    "trap",
+    "et",
+    "z60130",
+    "z60",
+    "sixty(N/A in Excel)"
+  ],
+  "locks": [
+    "no weightLbs changes",
+    "forceScale=1",
+    "no TIRE_MU_BY_PREP edits",
+    "power=peakHp+torqueCurve scale"
+  ],
+  "credit": "Jorge Guerra only",
+  "disclaimer": "Compiled estimates from OEM specs + instrumented magazine tests — not lab-certified dyno/VBOX numbers.",
+  "secretsTracking": false,
+  "bakedPaths": [
+    "js/garage-data.js",
+    "js/physics.js (EV AWD/TC auto-launch only)"
+  ],
+  "remoteDb": false,
+  "cacheBustPreserve": true,
+  "garageBind": "window.VB_POWERCURVE_GARAGE",
+  "elapsedMs": 41905,
+  "changed": 33,
+  "hitRates": {
+    "trap": "38/38",
+    "et": "10/38",
+    "z60130": "3/4",
+    "z60": "6/39"
+  },
+  "rows": [
+    {
+      "name": "2021 Rimac Nevera",
+      "id": "2021-rimac-nevera",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 4,
+      "tireFix": {
+        "from": 0,
+        "to": 4
+      },
+      "weightLbs": 4750,
+      "weightLocked": true,
+      "beforeHp": 1914,
+      "afterHp": 1914,
+      "hpScale": 1,
+      "overOem15pct": false,
+      "excel": {
+        "trap": "N/A",
+        "et": "N/A",
+        "z60130": 2.99,
+        "z60": 1.74,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 180.5,
+        "et": 8.591,
+        "z60130": 2.999,
+        "z60": 2.149,
+        "sixty": 1.619
+      },
+      "after": {
+        "trap": 183.14,
+        "et": 7.957,
+        "z60130": 2.603,
+        "z60": 1.644,
+        "sixty": 1.435
+      },
+      "hits": {
+        "trap": null,
+        "et": null,
+        "z60130": true,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 0.87
+    },
+    {
+      "name": "2022 BMW iX M60",
+      "id": "2022-bmw-ix-m60",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5750,
+      "weightLocked": true,
+      "beforeHp": 610,
+      "afterHp": 561,
+      "hpScale": 0.9197,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 114,
+        "et": 12.1,
+        "z60130": "N/A",
+        "z60": 3.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 118.42,
+        "et": 11.922,
+        "z60130": 12.319,
+        "z60": 3.555,
+        "sixty": 2.062
+      },
+      "after": {
+        "trap": 115.42,
+        "et": 12.322,
+        "z60130": 13.779,
+        "z60": 3.884,
+        "sixty": 2.152
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 16.278
+    },
+    {
+      "name": "2022 Ford F-150 Lightning",
+      "id": "2022-ford-f-150-lightning",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 6500,
+      "weightLocked": true,
+      "beforeHp": 580,
+      "afterHp": 734,
+      "hpScale": 1.2655,
+      "overOem15pct": true,
+      "excel": {
+        "trap": 108,
+        "et": 12.5,
+        "z60130": "N/A",
+        "z60": 4,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 109.74,
+        "et": 13.711,
+        "z60130": null,
+        "z60": 5.515,
+        "sixty": 2.55
+      },
+      "after": {
+        "trap": 110,
+        "et": 12.459,
+        "z60130": null,
+        "z60": 4.287,
+        "sixty": 2.264
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 45.934
+    },
+    {
+      "name": "2022 Mercedes EQB 350",
+      "id": "2022-mercedes-eqb-350",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 4800,
+      "weightLocked": true,
+      "beforeHp": 288,
+      "afterHp": 305,
+      "hpScale": 1.059,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 96,
+        "et": 14.6,
+        "z60130": "N/A",
+        "z60": 6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 95.75,
+        "et": 16.021,
+        "z60130": null,
+        "z60": 7.982,
+        "sixty": 3.015
+      },
+      "after": {
+        "trap": 97.85,
+        "et": 15.603,
+        "z60130": null,
+        "z60": 7.494,
+        "sixty": 2.927
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 266.033
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "id": "2022-porsche-taycan-turbo-s",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5121,
+      "weightLocked": true,
+      "beforeHp": 750,
+      "afterHp": 701,
+      "hpScale": 0.9347,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 130,
+        "et": 10.5,
+        "z60130": 6.5,
+        "z60": 2.4,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 133.99,
+        "et": 10.153,
+        "z60130": 7.327,
+        "z60": 2.114,
+        "sixty": 1.534
+      },
+      "after": {
+        "trap": 131.21,
+        "et": 10.405,
+        "z60130": 7.907,
+        "z60": 2.271,
+        "sixty": 1.583
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": false,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 48.36
+    },
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "id": "2022-tesla-model-s-plaid",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4827,
+      "weightLocked": true,
+      "beforeHp": 1020,
+      "afterHp": 1156,
+      "hpScale": 1.1333,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 151,
+        "et": 9.25,
+        "z60130": 4.8,
+        "z60": 2.1,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 146.66,
+        "et": 9.811,
+        "z60130": 4.943,
+        "z60": 2.519,
+        "sixty": 1.791
+      },
+      "after": {
+        "trap": 151.59,
+        "et": 9.342,
+        "z60130": 4.323,
+        "z60": 2.207,
+        "sixty": 1.683
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": true,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 7.416
+    },
+    {
+      "name": "2022 Tesla Model X Plaid",
+      "id": "2022-tesla-model-x-plaid",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5328,
+      "weightLocked": true,
+      "beforeHp": 1020,
+      "afterHp": 683,
+      "hpScale": 0.6696,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 124,
+        "et": 10.2,
+        "z60130": "N/A",
+        "z60": 2.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 144.51,
+        "et": 10.148,
+        "z60130": 5.455,
+        "z60": 2.718,
+        "sixty": 1.842
+      },
+      "after": {
+        "trap": 126.4,
+        "et": 12.036,
+        "z60130": 8.557,
+        "z60": 4.154,
+        "sixty": 2.253
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 401.949
+    },
+    {
+      "name": "2023 Audi e-tron GT",
+      "id": "2023-audi-e-tron-gt",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5100,
+      "weightLocked": true,
+      "beforeHp": 522,
+      "afterHp": 488,
+      "hpScale": 0.9349,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 116,
+        "et": 12.1,
+        "z60130": "N/A",
+        "z60": 3.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 119.51,
+        "et": 11.585,
+        "z60130": 10.997,
+        "z60": 3.089,
+        "sixty": 1.814
+      },
+      "after": {
+        "trap": 116.8,
+        "et": 11.884,
+        "z60130": 11.913,
+        "z60": 3.317,
+        "sixty": 1.873
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 10.066
+    },
+    {
+      "name": "2023 Audi Q4 e-tron",
+      "id": "2023-audi-q4-e-tron",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 4800,
+      "weightLocked": true,
+      "beforeHp": 295,
+      "afterHp": 312,
+      "hpScale": 1.0576,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 97,
+        "et": 14.5,
+        "z60130": "N/A",
+        "z60": 5.8,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 96.77,
+        "et": 15.836,
+        "z60130": null,
+        "z60": 7.768,
+        "sixty": 2.978
+      },
+      "after": {
+        "trap": 98.83,
+        "et": 15.434,
+        "z60130": null,
+        "z60": 7.304,
+        "sixty": 2.892
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 248.892
+    },
+    {
+      "name": "2023 BMW i7 xDrive60",
+      "id": "2023-bmw-i7-xdrive60",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 5950,
+      "weightLocked": true,
+      "beforeHp": 536,
+      "afterHp": 536,
+      "hpScale": 1,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 111,
+        "et": 12.8,
+        "z60130": "N/A",
+        "z60": 4.3,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 112.97,
+        "et": 13.233,
+        "z60130": 13.434,
+        "z60": 5.054,
+        "sixty": 2.439
+      },
+      "after": {
+        "trap": 112.97,
+        "et": 13.233,
+        "z60130": 13.434,
+        "z60": 5.054,
+        "sixty": 2.439
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 69.283
+    },
+    {
+      "name": "2023 Ford Mustang Mach-E GT",
+      "id": "2023-ford-mustang-mach-e-gt",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4900,
+      "weightLocked": true,
+      "beforeHp": 480,
+      "afterHp": 504,
+      "hpScale": 1.05,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 114,
+        "et": 12.2,
+        "z60130": "N/A",
+        "z60": 3.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 114.52,
+        "et": 12.866,
+        "z60130": null,
+        "z60": 4.675,
+        "sixty": 2.347
+      },
+      "after": {
+        "trap": 116.34,
+        "et": 12.605,
+        "z60130": null,
+        "z60": 4.439,
+        "sixty": 2.29
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 109.338
+    },
+    {
+      "name": "2023 Genesis GV60 Performance",
+      "id": "2023-genesis-gv60-performance",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4750,
+      "weightLocked": true,
+      "beforeHp": 429,
+      "afterHp": 476,
+      "hpScale": 1.1096,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 113,
+        "et": 12.3,
+        "z60130": "N/A",
+        "z60": 3.8,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 111.61,
+        "et": 13.317,
+        "z60130": 14.627,
+        "z60": 5.102,
+        "sixty": 2.446
+      },
+      "after": {
+        "trap": 115.49,
+        "et": 12.742,
+        "z60130": 12.739,
+        "z60": 4.568,
+        "sixty": 2.321
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 149.318
+    },
+    {
+      "name": "2023 Hyundai Ioniq 5 N",
+      "id": "2023-hyundai-ioniq-5-n",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4700,
+      "weightLocked": true,
+      "beforeHp": 641,
+      "afterHp": 573,
+      "hpScale": 0.8939,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 121,
+        "et": 11.5,
+        "z60130": "N/A",
+        "z60": 3.2,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 127.29,
+        "et": 11.715,
+        "z60130": 8.406,
+        "z60": 3.894,
+        "sixty": 2.197
+      },
+      "after": {
+        "trap": 122.83,
+        "et": 12.295,
+        "z60130": 9.606,
+        "z60": 4.386,
+        "sixty": 2.325
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 151.139
+    },
+    {
+      "name": "2023 Hyundai Kona Electric",
+      "id": "2023-hyundai-kona-electric",
+      "drive": "FWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 3800,
+      "weightLocked": true,
+      "beforeHp": 201,
+      "afterHp": 211,
+      "hpScale": 1.0498,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 90,
+        "et": 15.3,
+        "z60130": "N/A",
+        "z60": 6.8,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 90.67,
+        "et": 16.977,
+        "z60130": null,
+        "z60": 9.101,
+        "sixty": 3.241
+      },
+      "after": {
+        "trap": 92.36,
+        "et": 16.602,
+        "z60130": null,
+        "z60": 8.631,
+        "sixty": 3.16
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 343.758
+    },
+    {
+      "name": "2023 Kia EV6 GT",
+      "id": "2023-kia-ev6-gt",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4780,
+      "weightLocked": true,
+      "beforeHp": 576,
+      "afterHp": 605,
+      "hpScale": 1.0503,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 122,
+        "et": 11.4,
+        "z60130": "N/A",
+        "z60": 3.2,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 122.65,
+        "et": 11.789,
+        "z60130": 9.951,
+        "z60": 3.743,
+        "sixty": 2.116
+      },
+      "after": {
+        "trap": 124.45,
+        "et": 11.556,
+        "z60130": 9.377,
+        "z60": 3.553,
+        "sixty": 2.065
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 42.659
+    },
+    {
+      "name": "2023 Mercedes EQE AMG 53",
+      "id": "2023-mercedes-eqe-amg-53",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5400,
+      "weightLocked": true,
+      "beforeHp": 677,
+      "afterHp": 607,
+      "hpScale": 0.8966,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 120,
+        "et": 11.6,
+        "z60130": "N/A",
+        "z60": 3.2,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 122.48,
+        "et": 11.011,
+        "z60130": 10.967,
+        "z60": 2.737,
+        "sixty": 1.82
+      },
+      "after": {
+        "trap": 119.16,
+        "et": 11.453,
+        "z60130": 12.573,
+        "z60": 3.071,
+        "sixty": 1.923
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 9.296
+    },
+    {
+      "name": "2023 Mercedes EQS 580 SUV",
+      "id": "2023-mercedes-eqs-580-suv",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 6200,
+      "weightLocked": true,
+      "beforeHp": 536,
+      "afterHp": 536,
+      "hpScale": 1,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 108,
+        "et": 13.1,
+        "z60130": "N/A",
+        "z60": 4.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 109.91,
+        "et": 13.739,
+        "z60130": 15.015,
+        "z60": 5.558,
+        "sixty": 2.558
+      },
+      "after": {
+        "trap": 109.91,
+        "et": 13.739,
+        "z60130": 15.015,
+        "z60": 5.558,
+        "sixty": 2.558
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 117.274
+    },
+    {
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "id": "2023-nissan-ariya-e-4orce",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 4800,
+      "weightLocked": true,
+      "beforeHp": 389,
+      "afterHp": 353,
+      "hpScale": 0.9075,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 101,
+        "et": 13.8,
+        "z60130": "N/A",
+        "z60": 5.1,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 106.89,
+        "et": 13.985,
+        "z60130": null,
+        "z60": 5.739,
+        "sixty": 2.584
+      },
+      "after": {
+        "trap": 103.28,
+        "et": 14.602,
+        "z60130": null,
+        "z60": 6.382,
+        "sixty": 2.715
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 191.706
+    },
+    {
+      "name": "2023 Polestar 2 Performance",
+      "id": "2023-polestar-2-performance",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4650,
+      "weightLocked": true,
+      "beforeHp": 476,
+      "afterHp": 436,
+      "hpScale": 0.916,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 111,
+        "et": 12.6,
+        "z60130": "N/A",
+        "z60": 4.1,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 116.52,
+        "et": 12.622,
+        "z60130": null,
+        "z60": 4.466,
+        "sixty": 2.298
+      },
+      "after": {
+        "trap": 113.25,
+        "et": 13.099,
+        "z60130": null,
+        "z60": 4.903,
+        "sixty": 2.401
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 104.859
+    },
+    {
+      "name": "2023 Tesla Model Y Performance",
+      "id": "2023-tesla-model-y-performance",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4416,
+      "weightLocked": true,
+      "beforeHp": 456,
+      "afterHp": 465,
+      "hpScale": 1.0197,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 115,
+        "et": 11.8,
+        "z60130": "N/A",
+        "z60": 3.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 116.74,
+        "et": 12.519,
+        "z60130": 12.126,
+        "z60": 4.353,
+        "sixty": 2.266
+      },
+      "after": {
+        "trap": 117.45,
+        "et": 12.418,
+        "z60130": 11.833,
+        "z60": 4.263,
+        "sixty": 2.244
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 127.663
+    },
+    {
+      "name": "2023 Toyota bZ4X AWD",
+      "id": "2023-toyota-bz4x-awd",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 4500,
+      "weightLocked": true,
+      "beforeHp": 214,
+      "afterHp": 257,
+      "hpScale": 1.2009,
+      "overOem15pct": true,
+      "excel": {
+        "trap": 92,
+        "et": 15.1,
+        "z60130": "N/A",
+        "z60": 6.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 87.74,
+        "et": 17.618,
+        "z60130": null,
+        "z60": 9.971,
+        "sixty": 3.334
+      },
+      "after": {
+        "trap": 94.15,
+        "et": 16.182,
+        "z60130": null,
+        "z60": 8.141,
+        "sixty": 3.029
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 341.467
+    },
+    {
+      "name": "2023 VW ID.4 AWD Pro",
+      "id": "2023-vw-id-4-awd-pro",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 4800,
+      "weightLocked": true,
+      "beforeHp": 295,
+      "afterHp": 312,
+      "hpScale": 1.0576,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 97,
+        "et": 14.4,
+        "z60130": "N/A",
+        "z60": 5.7,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 96.77,
+        "et": 15.836,
+        "z60130": null,
+        "z60": 7.768,
+        "sixty": 2.978
+      },
+      "after": {
+        "trap": 98.83,
+        "et": 15.434,
+        "z60130": null,
+        "z60": 7.304,
+        "sixty": 2.892
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 271.492
+    },
+    {
+      "name": "2024 BMW i5 M60",
+      "id": "2024-bmw-i5-m60",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5200,
+      "weightLocked": true,
+      "beforeHp": 590,
+      "afterHp": 523,
+      "hpScale": 0.8864,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 115,
+        "et": 12.1,
+        "z60130": "N/A",
+        "z60": 3.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 121.42,
+        "et": 12.036,
+        "z60130": 10.249,
+        "z60": 3.975,
+        "sixty": 2.177
+      },
+      "after": {
+        "trap": 116.91,
+        "et": 12.656,
+        "z60130": 11.83,
+        "z60": 4.519,
+        "sixty": 2.313
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 97.363
+    },
+    {
+      "name": "2024 Cadillac Lyriq AWD",
+      "id": "2024-cadillac-lyriq-awd",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 5600,
+      "weightLocked": true,
+      "beforeHp": 500,
+      "afterHp": 443,
+      "hpScale": 0.886,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 104,
+        "et": 13.3,
+        "z60130": "N/A",
+        "z60": 4.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 110.9,
+        "et": 13.37,
+        "z60130": null,
+        "z60": 5.139,
+        "sixty": 2.453
+      },
+      "after": {
+        "trap": 106.39,
+        "et": 14.089,
+        "z60130": null,
+        "z60": 5.851,
+        "sixty": 2.608
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 178.511
+    },
+    {
+      "name": "2024 Chevrolet Blazer EV SS",
+      "id": "2024-chevrolet-blazer-ev-ss",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5400,
+      "weightLocked": true,
+      "beforeHp": 557,
+      "afterHp": 588,
+      "hpScale": 1.0557,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 117,
+        "et": 11.7,
+        "z60130": "N/A",
+        "z60": 3.4,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 116.68,
+        "et": 12.567,
+        "z60130": null,
+        "z60": 4.407,
+        "sixty": 2.282
+      },
+      "after": {
+        "trap": 118.69,
+        "et": 12.287,
+        "z60130": null,
+        "z60": 4.161,
+        "sixty": 2.221
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 138.681
+    },
+    {
+      "name": "2024 Fisker Ocean Extreme",
+      "id": "2024-fisker-ocean-extreme",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 5400,
+      "weightLocked": true,
+      "beforeHp": 564,
+      "afterHp": 492,
+      "hpScale": 0.8723,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 110,
+        "et": 12.5,
+        "z60130": "N/A",
+        "z60": 3.9,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 116.95,
+        "et": 12.509,
+        "z60130": null,
+        "z60": 4.351,
+        "sixty": 2.268
+      },
+      "after": {
+        "trap": 111.87,
+        "et": 13.251,
+        "z60130": null,
+        "z60": 5.032,
+        "sixty": 2.43
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 141.385
+    },
+    {
+      "name": "2024 Hyundai Ioniq 6 AWD",
+      "id": "2024-hyundai-ioniq-6-awd",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 4400,
+      "weightLocked": true,
+      "beforeHp": 320,
+      "afterHp": 336,
+      "hpScale": 1.05,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 104,
+        "et": 13.4,
+        "z60130": "N/A",
+        "z60": 4.8,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 104.35,
+        "et": 14.432,
+        "z60130": null,
+        "z60": 6.206,
+        "sixty": 2.675
+      },
+      "after": {
+        "trap": 106.12,
+        "et": 14.126,
+        "z60130": null,
+        "z60": 5.884,
+        "sixty": 2.61
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 189.595
+    },
+    {
+      "name": "2024 Kia Niro EV",
+      "id": "2024-kia-niro-ev",
+      "drive": "FWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 3850,
+      "weightLocked": true,
+      "beforeHp": 201,
+      "afterHp": 211,
+      "hpScale": 1.0498,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 90,
+        "et": 15.4,
+        "z60130": "N/A",
+        "z60": 6.9,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 90.16,
+        "et": 17.08,
+        "z60130": null,
+        "z60": 9.23,
+        "sixty": 3.262
+      },
+      "after": {
+        "trap": 91.85,
+        "et": 16.702,
+        "z60130": null,
+        "z60": 8.753,
+        "sixty": 3.181
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 339.927
+    },
+    {
+      "name": "2024 Lucid Air Sapphire",
+      "id": "2024-lucid-air-sapphire",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 5345,
+      "weightLocked": true,
+      "beforeHp": 1234,
+      "afterHp": 1344,
+      "hpScale": 1.0891,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 157,
+        "et": 9,
+        "z60130": 4.6,
+        "z60": 2.1,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 154.45,
+        "et": 9.749,
+        "z60130": 4.455,
+        "z60": 2.644,
+        "sixty": 1.84
+      },
+      "after": {
+        "trap": 158.52,
+        "et": 9.405,
+        "z60130": 4.071,
+        "z60": 2.417,
+        "sixty": 1.763
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": true,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 85.939
+    },
+    {
+      "name": "2024 Lucid Air Touring",
+      "id": "2024-lucid-air-touring",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 4900,
+      "weightLocked": true,
+      "beforeHp": 620,
+      "afterHp": 587,
+      "hpScale": 0.9468,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 123,
+        "et": 11.2,
+        "z60130": "N/A",
+        "z60": 3,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 126.11,
+        "et": 11.121,
+        "z60130": 9.162,
+        "z60": 3.004,
+        "sixty": 1.949
+      },
+      "after": {
+        "trap": 124.26,
+        "et": 11.358,
+        "z60130": 9.764,
+        "z60": 3.183,
+        "sixty": 2.004
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 13.593
+    },
+    {
+      "name": "2024 Mercedes EQS 450+",
+      "id": "2024-mercedes-eqs-450",
+      "drive": "RWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 5600,
+      "weightLocked": true,
+      "beforeHp": 355,
+      "afterHp": 386,
+      "hpScale": 1.0873,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 101,
+        "et": 14,
+        "z60130": "N/A",
+        "z60": 5.4,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 99.42,
+        "et": 15.607,
+        "z60130": 21.832,
+        "z60": 7.546,
+        "sixty": 2.991
+      },
+      "after": {
+        "trap": 102.54,
+        "et": 15.027,
+        "z60130": 19.395,
+        "z60": 6.899,
+        "sixty": 2.865
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 264.097
+    },
+    {
+      "name": "2024 Rivian R1S Quad Motor",
+      "id": "2024-rivian-r1s-quad-motor",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 7100,
+      "weightLocked": true,
+      "beforeHp": 835,
+      "afterHp": 835,
+      "hpScale": 1,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 121,
+        "et": 11.3,
+        "z60130": "N/A",
+        "z60": 3,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 123.14,
+        "et": 12.337,
+        "z60130": null,
+        "z60": 4.383,
+        "sixty": 2.306
+      },
+      "after": {
+        "trap": 123.14,
+        "et": 12.337,
+        "z60130": null,
+        "z60": 4.383,
+        "sixty": 2.306
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 208.03
+    },
+    {
+      "name": "2024 Subaru Solterra",
+      "id": "2024-subaru-solterra",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 0,
+      "tireFix": null,
+      "weightLbs": 4650,
+      "weightLocked": true,
+      "beforeHp": 215,
+      "afterHp": 268,
+      "hpScale": 1.2465,
+      "overOem15pct": true,
+      "excel": {
+        "trap": 92,
+        "et": 15.1,
+        "z60130": "N/A",
+        "z60": 6.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 86.28,
+        "et": 18.123,
+        "z60130": null,
+        "z60": 10.672,
+        "sixty": 3.46
+      },
+      "after": {
+        "trap": 94.19,
+        "et": 16.335,
+        "z60130": null,
+        "z60": 8.358,
+        "sixty": 3.081
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 382.525
+    },
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "id": "2024-tesla-cybertruck-tri-motor",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 6800,
+      "weightLocked": true,
+      "beforeHp": 845,
+      "afterHp": 903,
+      "hpScale": 1.0686,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 119,
+        "et": 11,
+        "z60130": "N/A",
+        "z60": 2.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 118.18,
+        "et": 11.379,
+        "z60130": 14.206,
+        "z60": 3.087,
+        "sixty": 1.923
+      },
+      "after": {
+        "trap": 120.08,
+        "et": 11.113,
+        "z60130": 12.843,
+        "z60": 2.878,
+        "sixty": 1.86
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 12.189
+    },
+    {
+      "name": "2024 Tesla Model 3 Performance",
+      "id": "2024-tesla-model-3-performance",
+      "drive": "AWD",
+      "tireBefore": 4,
+      "tireAfter": 4,
+      "tireFix": null,
+      "weightLbs": 4072,
+      "weightLocked": true,
+      "beforeHp": 510,
+      "afterHp": 525,
+      "hpScale": 1.0294,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 123,
+        "et": 11,
+        "z60130": "N/A",
+        "z60": 2.9,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 123.85,
+        "et": 11.575,
+        "z60130": 9.504,
+        "z60": 3.55,
+        "sixty": 2.062
+      },
+      "after": {
+        "trap": 124.88,
+        "et": 11.444,
+        "z60130": 9.185,
+        "z60": 3.446,
+        "sixty": 2.032
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 85
+    },
+    {
+      "name": "2024 Tesla Model S Long Range",
+      "id": "2024-tesla-model-s-long-range",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 4760,
+      "weightLocked": true,
+      "beforeHp": 670,
+      "afterHp": 550,
+      "hpScale": 0.8209,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 120,
+        "et": 11.4,
+        "z60130": "N/A",
+        "z60": 3.1,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 130.05,
+        "et": 11.611,
+        "z60130": 7.733,
+        "z60": 3.87,
+        "sixty": 2.195
+      },
+      "after": {
+        "trap": 121.86,
+        "et": 12.659,
+        "z60130": 9.678,
+        "z60": 4.769,
+        "sixty": 2.426
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 282.036
+    },
+    {
+      "name": "2024 Tesla Model X Long Range",
+      "id": "2024-tesla-model-x-long-range",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 5185,
+      "weightLocked": true,
+      "beforeHp": 670,
+      "afterHp": 705,
+      "hpScale": 1.0522,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 127,
+        "et": 11.4,
+        "z60130": "N/A",
+        "z60": 3.6,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 126.87,
+        "et": 11.892,
+        "z60130": 8.481,
+        "z60": 4.009,
+        "sixty": 2.211
+      },
+      "after": {
+        "trap": 129.11,
+        "et": 11.63,
+        "z60130": 7.999,
+        "z60": 3.794,
+        "sixty": 2.155
+      },
+      "hits": {
+        "trap": true,
+        "et": true,
+        "z60130": null,
+        "z60": true,
+        "sixty": null
+      },
+      "score": 53.276
+    },
+    {
+      "name": "2024 Volvo EX90 Twin Motor",
+      "id": "2024-volvo-ex90-twin-motor",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 6100,
+      "weightLocked": true,
+      "beforeHp": 496,
+      "afterHp": 464,
+      "hpScale": 0.9355,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 103,
+        "et": 13.5,
+        "z60130": "N/A",
+        "z60": 4.9,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 107.6,
+        "et": 13.9,
+        "z60130": null,
+        "z60": 5.661,
+        "sixty": 2.568
+      },
+      "after": {
+        "trap": 105.11,
+        "et": 14.315,
+        "z60130": null,
+        "z60": 6.087,
+        "sixty": 2.657
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 191.426
+    },
+    {
+      "name": "2024 Volvo XC40 Recharge",
+      "id": "2024-volvo-xc40-recharge",
+      "drive": "AWD",
+      "tireBefore": 0,
+      "tireAfter": 3,
+      "tireFix": {
+        "from": 0,
+        "to": 3
+      },
+      "weightLbs": 4700,
+      "weightLocked": true,
+      "beforeHp": 402,
+      "afterHp": 385,
+      "hpScale": 0.9577,
+      "overOem15pct": false,
+      "excel": {
+        "trap": 104,
+        "et": 13.2,
+        "z60130": "N/A",
+        "z60": 4.5,
+        "sixty": "N/A"
+      },
+      "before": {
+        "trap": 107.43,
+        "et": 13.754,
+        "z60130": null,
+        "z60": 5.492,
+        "sixty": 2.564
+      },
+      "after": {
+        "trap": 105.97,
+        "et": 14.013,
+        "z60130": null,
+        "z60": 5.755,
+        "sixty": 2.621
+      },
+      "hits": {
+        "trap": true,
+        "et": false,
+        "z60130": null,
+        "z60": false,
+        "sixty": null
+      },
+      "score": 188.737
+    }
+  ],
+  "etRefinePass": 25
+}

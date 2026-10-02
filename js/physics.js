@@ -1139,6 +1139,16 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     } else if (launchMode === 'aggressive') {
       launchMuMult = 1.0; // full grip; slipTarget used in traction keep band
     }
+    // EV factory traction control / AWD launch (Jorge Guerra): stock EVs — especially
+    // AWD — leave hard with TC metering torque to available grip. Auto mode is not
+    // ICE-identity; give a mild drive + µ lift so 60ft/0-60 match real EV launches.
+    // Does not invent fleet-wide AWD µ×1.25 (axles already summed). Soft/Agg unchanged.
+    if (car.isEv && (launchMode === 'auto' || launchMode == null || launchMode === '')) {
+      var evAwd = driveType === 'AWD';
+      launchDriveMult = evAwd ? 1.10 : 1.05;
+      launchMuMult = evAwd ? 1.06 : 1.03;
+      slipTarget = evAwd ? 0.12 : 0.10;
+    }
 
     // Effective leave target (absurd ICE launchRpm → peak-TQ band)
     var leaveRpm = resolveLeaveRpm(car, launchRpm, redline, curve);
