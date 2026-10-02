@@ -1,0 +1,5597 @@
+{
+  "credit": "Jorge Guerra only",
+  "appliedIcePatches": 265,
+  "shardRows": 265,
+  "shardReportedFullOk": 18,
+  "hitRates": {
+    "ice": {
+      "trap": "274/276",
+      "et": "106/276",
+      "z60130": "6/62",
+      "z60": "55/276",
+      "fullOk": "29/276"
+    },
+    "ev": {
+      "trap": "38/38",
+      "et": "37/39",
+      "z60130": "1/5",
+      "z60": "21/39",
+      "fullOk": "18/39"
+    }
+  },
+  "missCounts": {
+    "ice": 247,
+    "ev": 21
+  },
+  "misses": {
+    "ice": [
+      {
+        "name": "2020 Ford Mustang GT",
+        "id": "2020-ford-mustang-gt",
+        "parts": [
+          "z60:3.851/3.8"
+        ],
+        "sim": {
+          "z60": 3.851,
+          "et": 12.072,
+          "trap": 118.74,
+          "z60130": 11.101,
+          "peakHP": 421
+        },
+        "tgt": {
+          "z60": 3.8,
+          "et": 12.1,
+          "trap": 119,
+          "z60130": 11.1
+        }
+      },
+      {
+        "name": "2018 Ford Mustang GT PP2",
+        "id": "2018-ford-mustang-gt-pp2",
+        "parts": [
+          "et:12.456/12.6",
+          "z60130:13.095/11.65",
+          "z60:4.05/4.3"
+        ],
+        "sim": {
+          "z60": 4.05,
+          "et": 12.456,
+          "trap": 114.53,
+          "z60130": 13.095,
+          "peakHP": 345
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.6,
+          "trap": 115,
+          "z60130": 11.65
+        }
+      },
+      {
+        "name": "2020 Dodge Challenger Hellcat",
+        "id": "2020-dodge-challenger-hellcat",
+        "parts": [
+          "z60130:8.603/8.5"
+        ],
+        "sim": {
+          "z60": 3.685,
+          "et": 11.609,
+          "trap": 126.48,
+          "z60130": 8.603,
+          "peakHP": 590
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 11.6,
+          "trap": 126,
+          "z60130": 8.5
+        }
+      },
+      {
+        "name": "2024 Ford Mustang Dark Horse",
+        "id": "2024-ford-mustang-dark-horse",
+        "parts": [
+          "z60130:11.274/11.07"
+        ],
+        "sim": {
+          "z60": 3.709,
+          "et": 11.992,
+          "trap": 118.86,
+          "z60130": 11.274,
+          "peakHP": 405
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 12,
+          "trap": 118.4,
+          "z60130": 11.07
+        }
+      },
+      {
+        "name": "2023 Chevrolet Camaro ZL1",
+        "id": "2023-chevrolet-camaro-zl1",
+        "parts": [
+          "z60130:9.122/8.4",
+          "z60:3.311/3.4"
+        ],
+        "sim": {
+          "z60": 3.311,
+          "et": 11.451,
+          "trap": 125.07,
+          "z60130": 9.122,
+          "peakHP": 460
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.5,
+          "trap": 125,
+          "z60130": 8.4
+        }
+      },
+      {
+        "name": "2021 Dodge Charger Hellcat Redeye",
+        "id": "2021-dodge-charger-hellcat-redeye",
+        "parts": [
+          "z60130:8.153/8.1"
+        ],
+        "sim": {
+          "z60": 3.645,
+          "et": 11.515,
+          "trap": 128.49,
+          "z60130": 8.153,
+          "peakHP": 647
+        },
+        "tgt": {
+          "z60": 3.6,
+          "et": 11.5,
+          "trap": 128,
+          "z60130": 8.1
+        }
+      },
+      {
+        "name": "2016 Ford Mustang GT350R",
+        "id": "2016-ford-mustang-gt350r",
+        "parts": [
+          "z60130:10.873/11.4"
+        ],
+        "sim": {
+          "z60": 3.908,
+          "et": 12.199,
+          "trap": 118.52,
+          "z60130": 10.873,
+          "peakHP": 406
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.2,
+          "trap": 119,
+          "z60130": 11.4
+        }
+      },
+      {
+        "name": "2015 Dodge Challenger Hellcat",
+        "id": "2015-dodge-challenger-hellcat",
+        "parts": [
+          "z60130:8.972/8.6"
+        ],
+        "sim": {
+          "z60": 3.619,
+          "et": 11.65,
+          "trap": 125.21,
+          "z60130": 8.972,
+          "peakHP": 553
+        },
+        "tgt": {
+          "z60": 3.6,
+          "et": 11.7,
+          "trap": 125,
+          "z60130": 8.6
+        }
+      },
+      {
+        "name": "2014 Chevrolet Camaro Z/28",
+        "id": "2014-chevrolet-camaro-z-28",
+        "parts": [
+          "et:12.431/12.3",
+          "z60130:10.946/10.4",
+          "z60:4.225/4.5"
+        ],
+        "sim": {
+          "z60": 4.225,
+          "et": 12.431,
+          "trap": 118.49,
+          "z60130": 10.946,
+          "peakHP": 432
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 12.3,
+          "trap": 118,
+          "z60130": 10.4
+        }
+      },
+      {
+        "name": "2013 Ford Mustang Boss 302",
+        "id": "2013-ford-mustang-boss-302",
+        "parts": [
+          "z60:4.175/4.3"
+        ],
+        "sim": {
+          "z60": 4.175,
+          "et": 12.705,
+          "trap": 113.59,
+          "z60130": 13.369,
+          "peakHP": 350
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.7,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Pontiac G8 GXP",
+        "id": "2009-pontiac-g8-gxp",
+        "parts": [
+          "z60:4.543/4.7"
+        ],
+        "sim": {
+          "z60": 4.543,
+          "et": 13.177,
+          "trap": 107.5,
+          "z60130": 15.964,
+          "peakHP": 315
+        },
+        "tgt": {
+          "z60": 4.7,
+          "et": 13.2,
+          "trap": 108,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2004 Pontiac GTO",
+        "id": "2004-pontiac-gto",
+        "parts": [
+          "et:14.507/13.8",
+          "z60:6.088/5.3"
+        ],
+        "sim": {
+          "z60": 6.088,
+          "et": 14.507,
+          "trap": 104.48,
+          "z60130": 18.698,
+          "peakHP": 286
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 13.8,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2003 Ford Mustang Cobra (Terminator)",
+        "id": "2003-ford-mustang-cobra-terminator",
+        "parts": [
+          "et:13.941/13",
+          "z60:5.496/4.5"
+        ],
+        "sim": {
+          "z60": 5.496,
+          "et": 13.941,
+          "trap": 107.45,
+          "z60130": 16.871,
+          "peakHP": 304
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 13,
+          "trap": 107,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2002 Chevrolet Camaro SS",
+        "id": "2002-chevrolet-camaro-ss",
+        "parts": [
+          "et:14.537/13.7",
+          "z60:6.125/5.2"
+        ],
+        "sim": {
+          "z60": 6.125,
+          "et": 14.537,
+          "trap": 104.45,
+          "z60130": 18.651,
+          "peakHP": 268
+        },
+        "tgt": {
+          "z60": 5.2,
+          "et": 13.7,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+        "id": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+        "parts": [
+          "z60130:10.719/10.9"
+        ],
+        "sim": {
+          "z60": 3.192,
+          "et": 11.555,
+          "trap": 119.29,
+          "z60130": 10.719,
+          "peakHP": 411
+        },
+        "tgt": {
+          "z60": 3.2,
+          "et": 11.6,
+          "trap": 119.72,
+          "z60130": 10.9
+        }
+      },
+      {
+        "name": "1996 Chevrolet Impala SS",
+        "id": "1996-chevrolet-impala-ss",
+        "parts": [
+          "et:15.637/15.4",
+          "z60:7.319/7.1"
+        ],
+        "sim": {
+          "z60": 7.319,
+          "et": 15.637,
+          "trap": 91.44,
+          "z60130": 35.399,
+          "peakHP": 215
+        },
+        "tgt": {
+          "z60": 7.1,
+          "et": 15.4,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Dodge Charger Scat Pack",
+        "id": "2023-dodge-charger-scat-pack",
+        "parts": [
+          "et:12.083/12.4",
+          "z60:3.642/4.1"
+        ],
+        "sim": {
+          "z60": 3.642,
+          "et": 12.083,
+          "trap": 115.57,
+          "z60130": 12.392,
+          "peakHP": 423
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.4,
+          "trap": 116,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2020 Ford Mustang Shelby GT500",
+        "id": "2020-ford-mustang-shelby-gt500",
+        "parts": [
+          "z60130:7.528/7.6",
+          "z60:3.523/3.4"
+        ],
+        "sim": {
+          "z60": 3.523,
+          "et": 11.3,
+          "trap": 131.51,
+          "z60130": 7.528,
+          "peakHP": 606
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.3,
+          "trap": 132,
+          "z60130": 7.6
+        }
+      },
+      {
+        "name": "2012 Chevrolet Camaro ZL1",
+        "id": "2012-chevrolet-camaro-zl1",
+        "parts": [
+          "et:12.369/12.1",
+          "z60:4.09/3.9"
+        ],
+        "sim": {
+          "z60": 4.09,
+          "et": 12.369,
+          "trap": 117.45,
+          "z60130": 11.169,
+          "peakHP": 445
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.1,
+          "trap": 117,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Ford Mustang GT 5.0",
+        "id": "2011-ford-mustang-gt-5-0",
+        "parts": [
+          "z60:4.221/4.4"
+        ],
+        "sim": {
+          "z60": 4.221,
+          "et": 12.844,
+          "trap": 111.66,
+          "z60130": 14.716,
+          "peakHP": 323
+        },
+        "tgt": {
+          "z60": 4.4,
+          "et": 12.8,
+          "trap": 112,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2001 Pontiac Firebird Trans Am WS6",
+        "id": "2001-pontiac-firebird-trans-am-ws6",
+        "parts": [
+          "et:14.173/13.5",
+          "z60:5.765/5"
+        ],
+        "sim": {
+          "z60": 5.765,
+          "et": 14.173,
+          "trap": 106.43,
+          "z60130": 17.316,
+          "peakHP": 281
+        },
+        "tgt": {
+          "z60": 5,
+          "et": 13.5,
+          "trap": 106,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1996 Ford Mustang SVT Cobra",
+        "id": "1996-ford-mustang-svt-cobra",
+        "parts": [
+          "et:14.6/14.1",
+          "z60:6.058/5.5"
+        ],
+        "sim": {
+          "z60": 6.058,
+          "et": 14.6,
+          "trap": 99.4,
+          "z60130": 24.356,
+          "peakHP": 240
+        },
+        "tgt": {
+          "z60": 5.5,
+          "et": 14.1,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1993 Chevrolet Camaro Z28",
+        "id": "1993-chevrolet-camaro-z28",
+        "parts": [
+          "et:15.211/14.1",
+          "z60:6.769/5.4"
+        ],
+        "sim": {
+          "z60": 6.769,
+          "et": 15.211,
+          "trap": 98.42,
+          "z60130": 24.996,
+          "peakHP": 225
+        },
+        "tgt": {
+          "z60": 5.4,
+          "et": 14.1,
+          "trap": 98,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1987 Buick GNX",
+        "id": "1987-buick-gnx",
+        "parts": [
+          "z60:4.929/4.7"
+        ],
+        "sim": {
+          "z60": 4.929,
+          "et": 13.52,
+          "trap": 104.5,
+          "z60130": 18.609,
+          "peakHP": 263
+        },
+        "tgt": {
+          "z60": 4.7,
+          "et": 13.5,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1979 Pontiac Firebird Trans Am",
+        "id": "1979-pontiac-firebird-trans-am",
+        "parts": [
+          "et:18.298/16.5",
+          "z60:10.211/8.5"
+        ],
+        "sim": {
+          "z60": 10.211,
+          "et": 18.298,
+          "trap": 86.36,
+          "z60130": null,
+          "peakHP": 178
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.5,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1985 Chevrolet Camaro IROC-Z",
+        "id": "1985-chevrolet-camaro-iroc-z",
+        "parts": [
+          "et:16.17/15.5",
+          "z60:7.841/7"
+        ],
+        "sim": {
+          "z60": 7.841,
+          "et": 16.17,
+          "trap": 90.48,
+          "z60130": null,
+          "peakHP": 181
+        },
+        "tgt": {
+          "z60": 7,
+          "et": 15.5,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1987 Ford Mustang 5.0 LX",
+        "id": "1987-ford-mustang-5-0-lx",
+        "parts": [
+          "et:15.584/14.7",
+          "z60:7.109/6.2"
+        ],
+        "sim": {
+          "z60": 7.109,
+          "et": 15.584,
+          "trap": 94.42,
+          "z60130": 43.469,
+          "peakHP": 194
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.7,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1994 Pontiac Firebird Formula",
+        "id": "1994-pontiac-firebird-formula",
+        "parts": [
+          "et:15.072/14.1",
+          "z60:6.584/5.5"
+        ],
+        "sim": {
+          "z60": 6.584,
+          "et": 15.072,
+          "trap": 98.4,
+          "z60130": 24.619,
+          "peakHP": 222
+        },
+        "tgt": {
+          "z60": 5.5,
+          "et": 14.1,
+          "trap": 98,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2000 Chevrolet Camaro SS",
+        "id": "2000-chevrolet-camaro-ss",
+        "parts": [
+          "et:14.337/13.6",
+          "z60:5.925/5.1"
+        ],
+        "sim": {
+          "z60": 5.925,
+          "et": 14.337,
+          "trap": 105.38,
+          "z60130": 17.998,
+          "peakHP": 274
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.6,
+          "trap": 105,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 Ford Mustang GT",
+        "id": "2007-ford-mustang-gt",
+        "parts": [
+          "et:14.05/13.7",
+          "z60:5.436/5.1"
+        ],
+        "sim": {
+          "z60": 5.436,
+          "et": 14.05,
+          "trap": 103.47,
+          "z60130": 20.024,
+          "peakHP": 264
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.7,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1984 Chevrolet Corvette C4",
+        "id": "1984-chevrolet-corvette-c4",
+        "parts": [
+          "et:15.061/15",
+          "z60:6.445/6.6"
+        ],
+        "sim": {
+          "z60": 6.445,
+          "et": 15.061,
+          "trap": 91.47,
+          "z60130": null,
+          "peakHP": 171
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 15,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1992 Ford Mustang LX 5.0",
+        "id": "1992-ford-mustang-lx-5-0",
+        "parts": [
+          "et:15.528/14.6",
+          "z60:7.036/6"
+        ],
+        "sim": {
+          "z60": 7.036,
+          "et": 15.528,
+          "trap": 94.49,
+          "z60130": 43.317,
+          "peakHP": 191
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.6,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1998 Pontiac Firebird Formula",
+        "id": "1998-pontiac-firebird-formula",
+        "parts": [
+          "et:14.144/13.8",
+          "z60:5.611/5.2"
+        ],
+        "sim": {
+          "z60": 5.611,
+          "et": 14.144,
+          "trap": 103.42,
+          "z60130": 19.616,
+          "peakHP": 261
+        },
+        "tgt": {
+          "z60": 5.2,
+          "et": 13.8,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Dodge Charger R/T",
+        "id": "2006-dodge-charger-r-t",
+        "parts": [
+          "et:13.974/13.9",
+          "z60:5.371/5.3"
+        ],
+        "sim": {
+          "z60": 5.371,
+          "et": 13.974,
+          "trap": 101.41,
+          "z60130": 20.742,
+          "peakHP": 290
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 13.9,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Ford Mustang V6",
+        "id": "2013-ford-mustang-v6",
+        "parts": [
+          "et:14.275/13.8",
+          "z60:5.542/5.1"
+        ],
+        "sim": {
+          "z60": 5.542,
+          "et": 14.275,
+          "trap": 101.46,
+          "z60130": 22.971,
+          "peakHP": 255
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.8,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1982 Pontiac Firebird Trans Am",
+        "id": "1982-pontiac-firebird-trans-am",
+        "parts": [
+          "et:18.074/17",
+          "z60:10.071/9.2"
+        ],
+        "sim": {
+          "z60": 10.071,
+          "et": 18.074,
+          "trap": 82.5,
+          "z60130": null,
+          "peakHP": 140
+        },
+        "tgt": {
+          "z60": 9.2,
+          "et": 17,
+          "trap": 82,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1991 Chevrolet Camaro Z28",
+        "id": "1991-chevrolet-camaro-z28",
+        "parts": [
+          "et:15.931/14.8",
+          "z60:7.527/6.2"
+        ],
+        "sim": {
+          "z60": 7.527,
+          "et": 15.931,
+          "trap": 94.48,
+          "z60130": 29.76,
+          "peakHP": 200
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.8,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1994 Ford Mustang GT",
+        "id": "1994-ford-mustang-gt",
+        "parts": [
+          "et:15.48/14.7",
+          "z60:6.938/6.1"
+        ],
+        "sim": {
+          "z60": 6.938,
+          "et": 15.48,
+          "trap": 94.27,
+          "z60130": 36.127,
+          "peakHP": 194
+        },
+        "tgt": {
+          "z60": 6.1,
+          "et": 14.7,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2002 Pontiac Firebird WS6",
+        "id": "2002-pontiac-firebird-ws6",
+        "parts": [
+          "et:14.184/13.5",
+          "z60:5.776/5"
+        ],
+        "sim": {
+          "z60": 5.776,
+          "et": 14.184,
+          "trap": 106.4,
+          "z60130": 17.348,
+          "peakHP": 280
+        },
+        "tgt": {
+          "z60": 5,
+          "et": 13.5,
+          "trap": 106,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1981 Chevrolet Camaro Z28",
+        "id": "1981-chevrolet-camaro-z28",
+        "parts": [
+          "et:18.087/16.7",
+          "z60:10.015/8.8"
+        ],
+        "sim": {
+          "z60": 10.015,
+          "et": 18.087,
+          "trap": 83.35,
+          "z60130": null,
+          "peakHP": 149
+        },
+        "tgt": {
+          "z60": 8.8,
+          "et": 16.7,
+          "trap": 83,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1989 Ford Mustang GT 5.0",
+        "id": "1989-ford-mustang-gt-5-0",
+        "parts": [
+          "et:15.737/14.7",
+          "z60:7.27/6.2"
+        ],
+        "sim": {
+          "z60": 7.27,
+          "et": 15.737,
+          "trap": 94.38,
+          "z60130": 39.304,
+          "peakHP": 194
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.7,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1993 Pontiac Firebird Formula",
+        "id": "1993-pontiac-firebird-formula",
+        "parts": [
+          "et:15.311/14.1",
+          "z60:6.873/5.5"
+        ],
+        "sim": {
+          "z60": 6.873,
+          "et": 15.311,
+          "trap": 98.48,
+          "z60130": 24.561,
+          "peakHP": 223
+        },
+        "tgt": {
+          "z60": 5.5,
+          "et": 14.1,
+          "trap": 98,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2004 Ford Mustang Mach 1",
+        "id": "2004-ford-mustang-mach-1",
+        "parts": [
+          "et:14.061/13.8",
+          "z60:5.445/5.2"
+        ],
+        "sim": {
+          "z60": 5.445,
+          "et": 14.061,
+          "trap": 103.42,
+          "z60130": 19.798,
+          "peakHP": 271
+        },
+        "tgt": {
+          "z60": 5.2,
+          "et": 13.8,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2014 Chevrolet SS",
+        "id": "2014-chevrolet-ss",
+        "parts": [
+          "z60130:14.099/13.8",
+          "z60:4.367/4.5"
+        ],
+        "sim": {
+          "z60": 4.367,
+          "et": 12.953,
+          "trap": 110.56,
+          "z60130": 14.099,
+          "peakHP": 333
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 13,
+          "trap": 111,
+          "z60130": 13.8
+        }
+      },
+      {
+        "name": "2021 Porsche 911 Turbo S",
+        "id": "2021-porsche-911-turbo-s",
+        "parts": [
+          "z60130:6.699/5.8",
+          "z60:2.449/2.2"
+        ],
+        "sim": {
+          "z60": 2.449,
+          "et": 10.251,
+          "trap": 137.43,
+          "z60130": 6.699,
+          "peakHP": 551
+        },
+        "tgt": {
+          "z60": 2.2,
+          "et": 10.3,
+          "trap": 137,
+          "z60130": 5.8
+        }
+      },
+      {
+        "name": "2020 Lamborghini Huracán EVO",
+        "id": "2020-lamborghini-hurac-n-evo",
+        "parts": [
+          "et:10.529/10.6",
+          "z60130:7.569/6.8"
+        ],
+        "sim": {
+          "z60": 2.542,
+          "et": 10.529,
+          "trap": 132.56,
+          "z60130": 7.569,
+          "peakHP": 475
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 10.6,
+          "trap": 133,
+          "z60130": 6.8
+        }
+      },
+      {
+        "name": "2020 McLaren 765LT",
+        "id": "2020-mclaren-765lt",
+        "parts": [
+          "z60:2.671/2.6"
+        ],
+        "sim": {
+          "z60": 2.671,
+          "et": 10.226,
+          "trap": 141.18,
+          "z60130": 6.024,
+          "peakHP": 509
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 10.2,
+          "trap": 141,
+          "z60130": 6
+        }
+      },
+      {
+        "name": "2017 Ferrari 812 Superfast",
+        "id": "2017-ferrari-812-superfast",
+        "parts": [
+          "z60130:6.791/6.5",
+          "z60:2.749/2.8"
+        ],
+        "sim": {
+          "z60": 2.749,
+          "et": 10.504,
+          "trap": 136.49,
+          "z60130": 6.791,
+          "peakHP": 570
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10.5,
+          "trap": 136,
+          "z60130": 6.5
+        }
+      },
+      {
+        "name": "2018 McLaren 600LT",
+        "id": "2018-mclaren-600lt",
+        "parts": [
+          "et:10.616/10.7",
+          "z60130:6.997/6.8"
+        ],
+        "sim": {
+          "z60": 2.849,
+          "et": 10.616,
+          "trap": 134.5,
+          "z60130": 6.997,
+          "peakHP": 445
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10.7,
+          "trap": 135,
+          "z60130": 6.8
+        }
+      },
+      {
+        "name": "2019 Lamborghini Huracán Performante",
+        "id": "2019-lamborghini-hurac-n-performante",
+        "parts": [
+          "z60130:7.015/6.5",
+          "z60:2.674/2.5"
+        ],
+        "sim": {
+          "z60": 2.674,
+          "et": 10.502,
+          "trap": 134.45,
+          "z60130": 7.015,
+          "peakHP": 482
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 10.5,
+          "trap": 134,
+          "z60130": 6.5
+        }
+      },
+      {
+        "name": "2017 Porsche 911 GT2 RS",
+        "id": "2017-porsche-911-gt2-rs",
+        "parts": [
+          "z60130:6.998/6.2",
+          "z60:2.81/2.7"
+        ],
+        "sim": {
+          "z60": 2.81,
+          "et": 10.592,
+          "trap": 134.44,
+          "z60130": 6.998,
+          "peakHP": 509
+        },
+        "tgt": {
+          "z60": 2.7,
+          "et": 10.6,
+          "trap": 134,
+          "z60130": 6.2
+        }
+      },
+      {
+        "name": "2016 Ferrari 488 GTB",
+        "id": "2016-ferrari-488-gtb",
+        "parts": [
+          "z60130:7.255/6.6"
+        ],
+        "sim": {
+          "z60": 2.823,
+          "et": 10.666,
+          "trap": 133.43,
+          "z60130": 7.255,
+          "peakHP": 493
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10.7,
+          "trap": 133,
+          "z60130": 6.6
+        }
+      },
+      {
+        "name": "2015 McLaren P1",
+        "id": "2015-mclaren-p1",
+        "parts": [
+          "z60130:5.182/5.4",
+          "z60:2.517/2.6"
+        ],
+        "sim": {
+          "z60": 2.517,
+          "et": 9.85,
+          "trap": 147.64,
+          "z60130": 5.182,
+          "peakHP": 686
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 9.8,
+          "trap": 148,
+          "z60130": 5.4
+        }
+      },
+      {
+        "name": "2014 Ferrari F12 Berlinetta",
+        "id": "2014-ferrari-f12-berlinetta",
+        "parts": [
+          "z60130:7.775/6.8"
+        ],
+        "sim": {
+          "z60": 2.88,
+          "et": 10.851,
+          "trap": 131.12,
+          "z60130": 7.775,
+          "peakHP": 549
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10.9,
+          "trap": 131,
+          "z60130": 6.8
+        }
+      },
+      {
+        "name": "2013 McLaren MP4-12C",
+        "id": "2013-mclaren-mp4-12c",
+        "parts": [
+          "z60130:7.022/6.8"
+        ],
+        "sim": {
+          "z60": 2.915,
+          "et": 10.677,
+          "trap": 134.44,
+          "z60130": 7.022,
+          "peakHP": 476
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10.7,
+          "trap": 134,
+          "z60130": 6.8
+        }
+      },
+      {
+        "name": "2012 Lamborghini Gallardo LP570-4",
+        "id": "2012-lamborghini-gallardo-lp570-4",
+        "parts": [
+          "et:11.25/11.2"
+        ],
+        "sim": {
+          "z60": 3.158,
+          "et": 11.25,
+          "trap": 126.89,
+          "z60130": 8.688,
+          "peakHP": 420
+        },
+        "tgt": {
+          "z60": 3.2,
+          "et": 11.2,
+          "trap": 127,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Ferrari 458 Italia",
+        "id": "2010-ferrari-458-italia",
+        "parts": [
+          "z60130:8.604/7.2",
+          "z60:2.797/3"
+        ],
+        "sim": {
+          "z60": 2.797,
+          "et": 10.928,
+          "trap": 127.48,
+          "z60130": 8.604,
+          "peakHP": 417
+        },
+        "tgt": {
+          "z60": 3,
+          "et": 10.9,
+          "trap": 127,
+          "z60130": 7.2
+        }
+      },
+      {
+        "name": "2006 Ford GT",
+        "id": "2006-ford-gt",
+        "parts": [
+          "z60:3.38/3.3"
+        ],
+        "sim": {
+          "z60": 3.38,
+          "et": 11.151,
+          "trap": 130.9,
+          "z60130": 7.63,
+          "peakHP": 509
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.2,
+          "trap": 131,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2004 Porsche Carrera GT",
+        "id": "2004-porsche-carrera-gt",
+        "parts": [
+          "z60:3.304/3.5"
+        ],
+        "sim": {
+          "z60": 3.304,
+          "et": 11.192,
+          "trap": 130.45,
+          "z60130": 7.81,
+          "peakHP": 476
+        },
+        "tgt": {
+          "z60": 3.5,
+          "et": 11.2,
+          "trap": 130,
+          "z60130": 7.8
+        }
+      },
+      {
+        "name": "2002 Ferrari Enzo",
+        "id": "2002-ferrari-enzo",
+        "parts": [
+          "et:10.867/11.1",
+          "z60130:7.449/7.2",
+          "z60:3.008/3.3"
+        ],
+        "sim": {
+          "z60": 3.008,
+          "et": 10.867,
+          "trap": 132.56,
+          "z60130": 7.449,
+          "peakHP": 479
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.1,
+          "trap": 133,
+          "z60130": 7.2
+        }
+      },
+      {
+        "name": "2007 Lamborghini Murciélago LP640",
+        "id": "2007-lamborghini-murci-lago-lp640",
+        "parts": [
+          "et:11.658/11.4",
+          "z60:3.751/3.4"
+        ],
+        "sim": {
+          "z60": 3.751,
+          "et": 11.658,
+          "trap": 129.46,
+          "z60130": 7.999,
+          "peakHP": 500
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.4,
+          "trap": 129,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Nissan GT-R",
+        "id": "2009-nissan-gt-r",
+        "parts": [
+          "et:11.344/11.5",
+          "z60:3.046/3.3"
+        ],
+        "sim": {
+          "z60": 3.046,
+          "et": 11.344,
+          "trap": 123.61,
+          "z60130": 9.564,
+          "peakHP": 407
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.5,
+          "trap": 124,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2012 Audi R8 V10",
+        "id": "2012-audi-r8-v10",
+        "parts": [
+          "et:11.307/11.6",
+          "z60130:9.569/8.5",
+          "z60:3.025/3.5"
+        ],
+        "sim": {
+          "z60": 3.025,
+          "et": 11.307,
+          "trap": 123.58,
+          "z60130": 9.569,
+          "peakHP": 418
+        },
+        "tgt": {
+          "z60": 3.5,
+          "et": 11.6,
+          "trap": 124,
+          "z60130": 8.5
+        }
+      },
+      {
+        "name": "2001 Lamborghini Diablo VT 6.0",
+        "id": "2001-lamborghini-diablo-vt-6-0",
+        "parts": [
+          "et:12.351/11.8",
+          "z60:4.089/3.6"
+        ],
+        "sim": {
+          "z60": 4.089,
+          "et": 12.351,
+          "trap": 122.47,
+          "z60130": 10.152,
+          "peakHP": 419
+        },
+        "tgt": {
+          "z60": 3.6,
+          "et": 11.8,
+          "trap": 122,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2003 Ferrari 360 Modena",
+        "id": "2003-ferrari-360-modena",
+        "parts": [
+          "z60:4.149/4.3"
+        ],
+        "sim": {
+          "z60": 4.149,
+          "et": 12.639,
+          "trap": 113.53,
+          "z60130": 13.03,
+          "peakHP": 282
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.6,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 Porsche 911 Turbo",
+        "id": "2007-porsche-911-turbo",
+        "parts": [
+          "et:11.333/11.6",
+          "z60:3.088/3.4"
+        ],
+        "sim": {
+          "z60": 3.088,
+          "et": 11.333,
+          "trap": 123.53,
+          "z60130": 9.621,
+          "peakHP": 399
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.6,
+          "trap": 124,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Aston Martin DBS",
+        "id": "2008-aston-martin-dbs",
+        "parts": [
+          "et:12.155/12.5",
+          "z60:3.722/4.2"
+        ],
+        "sim": {
+          "z60": 3.722,
+          "et": 12.155,
+          "trap": 116.55,
+          "z60130": 11.544,
+          "peakHP": 372
+        },
+        "tgt": {
+          "z60": 4.2,
+          "et": 12.5,
+          "trap": 117,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Mercedes SLS AMG",
+        "id": "2011-mercedes-sls-amg",
+        "parts": [
+          "et:11.414/11.7",
+          "z60:3.289/3.5"
+        ],
+        "sim": {
+          "z60": 3.289,
+          "et": 11.414,
+          "trap": 124.53,
+          "z60130": 9.201,
+          "peakHP": 459
+        },
+        "tgt": {
+          "z60": 3.5,
+          "et": 11.7,
+          "trap": 125,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2005 Ferrari F430",
+        "id": "2005-ferrari-f430",
+        "parts": [
+          "z60:3.659/3.9"
+        ],
+        "sim": {
+          "z60": 3.659,
+          "et": 12.056,
+          "trap": 117.6,
+          "z60130": 11.334,
+          "peakHP": 321
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.1,
+          "trap": 118,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Lamborghini Gallardo LP560-4",
+        "id": "2009-lamborghini-gallardo-lp560-4",
+        "parts": [
+          "et:11.471/11.4",
+          "z60:3.414/3.3"
+        ],
+        "sim": {
+          "z60": 3.414,
+          "et": 11.471,
+          "trap": 126.42,
+          "z60130": 8.767,
+          "peakHP": 448
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.4,
+          "trap": 126,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Aston Martin V12 Vantage",
+        "id": "2010-aston-martin-v12-vantage",
+        "parts": [
+          "et:12.34/12.4",
+          "z60130:11.517/10.5",
+          "z60:3.987/4.1"
+        ],
+        "sim": {
+          "z60": 3.987,
+          "et": 12.34,
+          "trap": 117.58,
+          "z60130": 11.517,
+          "peakHP": 379
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.4,
+          "trap": 118,
+          "z60130": 10.5
+        }
+      },
+      {
+        "name": "2013 SRT Viper GTS",
+        "id": "2013-srt-viper-gts",
+        "parts": [
+          "et:11.466/11.4",
+          "z60130:8.133/7.8",
+          "z60:3.439/3.3"
+        ],
+        "sim": {
+          "z60": 3.439,
+          "et": 11.466,
+          "trap": 129.45,
+          "z60130": 8.133,
+          "peakHP": 502
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.4,
+          "trap": 129,
+          "z60130": 7.8
+        }
+      },
+      {
+        "name": "2014 Porsche 911 Carrera S",
+        "id": "2014-porsche-911-carrera-s",
+        "parts": [
+          "z60:3.587/3.7"
+        ],
+        "sim": {
+          "z60": 3.587,
+          "et": 12.047,
+          "trap": 117.07,
+          "z60130": 11.555,
+          "peakHP": 308
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 12,
+          "trap": 117,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2002 Porsche 911 Turbo (996)",
+        "id": "2002-porsche-911-turbo-996",
+        "parts": [
+          "et:12.408/12.2",
+          "z60:3.967/3.9"
+        ],
+        "sim": {
+          "z60": 3.967,
+          "et": 12.408,
+          "trap": 115.47,
+          "z60130": 12.596,
+          "peakHP": 342
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.2,
+          "trap": 115,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Ferrari 612 Scaglietti",
+        "id": "2006-ferrari-612-scaglietti",
+        "parts": [
+          "et:12.465/12.6",
+          "z60:4.06/4.3"
+        ],
+        "sim": {
+          "z60": 4.06,
+          "et": 12.465,
+          "trap": 115.5,
+          "z60130": 12.332,
+          "peakHP": 386
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.6,
+          "trap": 116,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Lamborghini Reventón",
+        "id": "2008-lamborghini-revent-n",
+        "parts": [
+          "et:11.824/11.3",
+          "z60:3.894/3.3"
+        ],
+        "sim": {
+          "z60": 3.894,
+          "et": 11.824,
+          "trap": 128.47,
+          "z60130": 8.184,
+          "peakHP": 506
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.3,
+          "trap": 128,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2015 Aston Martin V12 Vantage S",
+        "id": "2015-aston-martin-v12-vantage-s",
+        "parts": [
+          "et:11.683/12",
+          "z60:3.437/3.7"
+        ],
+        "sim": {
+          "z60": 3.437,
+          "et": 11.683,
+          "trap": 121.5,
+          "z60130": 10.041,
+          "peakHP": 416
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 12,
+          "trap": 122,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2019 Bugatti Chiron",
+        "id": "2019-bugatti-chiron",
+        "parts": [
+          "z60130:4.206/5"
+        ],
+        "sim": {
+          "z60": 2.387,
+          "et": 9.393,
+          "trap": 157.52,
+          "z60130": 4.206,
+          "peakHP": 1199
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 9.4,
+          "trap": 158,
+          "z60130": 5
+        }
+      },
+      {
+        "name": "2020 McLaren 720S",
+        "id": "2020-mclaren-720s",
+        "parts": [
+          "z60130:5.986/5.6"
+        ],
+        "sim": {
+          "z60": 2.459,
+          "et": 10.052,
+          "trap": 141.77,
+          "z60130": 5.986,
+          "peakHP": 546
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 10.1,
+          "trap": 142,
+          "z60130": 5.6
+        }
+      },
+      {
+        "name": "2019 Lamborghini Aventador SVJ",
+        "id": "2019-lamborghini-aventador-svj",
+        "parts": [
+          "z60130:6.718/5.8"
+        ],
+        "sim": {
+          "z60": 2.564,
+          "et": 10.328,
+          "trap": 136.45,
+          "z60130": 6.718,
+          "peakHP": 559
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 10.3,
+          "trap": 136,
+          "z60130": 5.8
+        }
+      },
+      {
+        "name": "2019 Koenigsegg Jesko",
+        "id": "2019-koenigsegg-jesko",
+        "parts": [
+          "et:9.713/9.6",
+          "z60130:4.742/4.5",
+          "z60:2.532/2.6"
+        ],
+        "sim": {
+          "z60": 2.532,
+          "et": 9.713,
+          "trap": 152.49,
+          "z60130": 4.742,
+          "peakHP": 690
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 9.6,
+          "trap": 152,
+          "z60130": 4.5
+        }
+      },
+      {
+        "name": "2013 Bugatti Veyron Super Sport",
+        "id": "2013-bugatti-veyron-super-sport",
+        "parts": [
+          "et:9.727/9.9",
+          "z60130:5.298/4.8",
+          "z60:2.278/2.4"
+        ],
+        "sim": {
+          "z60": 2.278,
+          "et": 9.727,
+          "trap": 147.54,
+          "z60130": 5.298,
+          "peakHP": 912
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 9.9,
+          "trap": 148,
+          "z60130": 4.8
+        }
+      },
+      {
+        "name": "2005 Bugatti Veyron",
+        "id": "2005-bugatti-veyron",
+        "parts": [
+          "z60130:6.04/5.4",
+          "z60:2.376/2.5"
+        ],
+        "sim": {
+          "z60": 2.376,
+          "et": 10.051,
+          "trap": 141.81,
+          "z60130": 6.04,
+          "peakHP": 796
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 10.1,
+          "trap": 142,
+          "z60130": 5.4
+        }
+      },
+      {
+        "name": "2006 Saleen S7 Twin Turbo",
+        "id": "2006-saleen-s7-twin-turbo",
+        "parts": [
+          "z60130:5.999/6.5",
+          "z60:3.455/3.3"
+        ],
+        "sim": {
+          "z60": 3.455,
+          "et": 10.893,
+          "trap": 139.56,
+          "z60130": 5.999,
+          "peakHP": 547
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 10.9,
+          "trap": 140,
+          "z60130": 6.5
+        }
+      },
+      {
+        "name": "2004 Maserati MC12",
+        "id": "2004-maserati-mc12",
+        "parts": [
+          "et:11.188/11.3",
+          "z60130:8.533/8",
+          "z60:3.103/3.7"
+        ],
+        "sim": {
+          "z60": 3.103,
+          "et": 11.188,
+          "trap": 127.54,
+          "z60130": 8.533,
+          "peakHP": 438
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 11.3,
+          "trap": 128,
+          "z60130": 8
+        }
+      },
+      {
+        "name": "2014 Hennessey Venom GT",
+        "id": "2014-hennessey-venom-gt",
+        "parts": [
+          "et:9.707/9.8",
+          "z60130:4.253/4.5",
+          "z60:2.774/2.7"
+        ],
+        "sim": {
+          "z60": 2.774,
+          "et": 9.707,
+          "trap": 169.54,
+          "z60130": 4.253,
+          "peakHP": 1376
+        },
+        "tgt": {
+          "z60": 2.7,
+          "et": 9.8,
+          "trap": 170,
+          "z60130": 4.5
+        }
+      },
+      {
+        "name": "2008 Koenigsegg CCX",
+        "id": "2008-koenigsegg-ccx",
+        "parts": [
+          "z60130:6.505/6.2",
+          "z60:3.015/3.2"
+        ],
+        "sim": {
+          "z60": 3.015,
+          "et": 10.653,
+          "trap": 137.08,
+          "z60130": 6.505,
+          "peakHP": 535
+        },
+        "tgt": {
+          "z60": 3.2,
+          "et": 10.7,
+          "trap": 137,
+          "z60130": 6.2
+        }
+      },
+      {
+        "name": "2017 Bugatti Chiron Sport",
+        "id": "2017-bugatti-chiron-sport",
+        "parts": [
+          "z60130:4.206/5"
+        ],
+        "sim": {
+          "z60": 2.386,
+          "et": 9.392,
+          "trap": 157.5,
+          "z60130": 4.206,
+          "peakHP": 1268
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 9.4,
+          "trap": 158,
+          "z60130": 5
+        }
+      },
+      {
+        "name": "2019 McLaren Speedtail",
+        "id": "2019-mclaren-speedtail",
+        "parts": [
+          "z60130:5.072/5.2",
+          "z60:2.75/2.5"
+        ],
+        "sim": {
+          "z60": 2.75,
+          "et": 10.015,
+          "trap": 149.5,
+          "z60130": 5.072,
+          "peakHP": 640
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 10,
+          "trap": 150,
+          "z60130": 5.2
+        }
+      },
+      {
+        "name": "2016 Koenigsegg Regera",
+        "id": "2016-koenigsegg-regera",
+        "parts": [
+          "et:11.414/9.9",
+          "z60130:5.292/3.9",
+          "z60:4.229/2.7"
+        ],
+        "sim": {
+          "z60": 4.229,
+          "et": 11.414,
+          "trap": 150.47,
+          "z60130": 5.292,
+          "peakHP": 1009
+        },
+        "tgt": {
+          "z60": 2.7,
+          "et": 9.9,
+          "trap": 150,
+          "z60130": 3.9
+        }
+      },
+      {
+        "name": "2018 Bugatti Divo",
+        "id": "2018-bugatti-divo",
+        "parts": [
+          "z60130:4.537/5",
+          "z60:2.319/2.4"
+        ],
+        "sim": {
+          "z60": 2.319,
+          "et": 9.471,
+          "trap": 154.52,
+          "z60130": 4.537,
+          "peakHP": 987
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 9.5,
+          "trap": 155,
+          "z60130": 5
+        }
+      },
+      {
+        "name": "2020 McLaren Elva",
+        "id": "2020-mclaren-elva",
+        "parts": [
+          "z60130:6.748/6.2",
+          "z60:2.851/2.8"
+        ],
+        "sim": {
+          "z60": 2.851,
+          "et": 10.552,
+          "trap": 136.1,
+          "z60130": 6.748,
+          "peakHP": 443
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10.6,
+          "trap": 136,
+          "z60130": 6.2
+        }
+      },
+      {
+        "name": "2016 Bugatti Chiron",
+        "id": "2016-bugatti-chiron",
+        "parts": [
+          "z60130:4.208/5"
+        ],
+        "sim": {
+          "z60": 2.387,
+          "et": 9.393,
+          "trap": 157.5,
+          "z60130": 4.208,
+          "peakHP": 1199
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 9.4,
+          "trap": 158,
+          "z60130": 5
+        }
+      },
+      {
+        "name": "2021 McLaren Sabre",
+        "id": "2021-mclaren-sabre",
+        "parts": [
+          "z60130:6.337/6",
+          "z60:2.837/2.7"
+        ],
+        "sim": {
+          "z60": 2.837,
+          "et": 10.438,
+          "trap": 138.5,
+          "z60130": 6.337,
+          "peakHP": 534
+        },
+        "tgt": {
+          "z60": 2.7,
+          "et": 10.4,
+          "trap": 138,
+          "z60130": 6
+        }
+      },
+      {
+        "name": "2020 Subaru WRX STI",
+        "id": "2020-subaru-wrx-sti",
+        "parts": [
+          "et:13.41/13.2",
+          "z60:4.798/4.6"
+        ],
+        "sim": {
+          "z60": 4.798,
+          "et": 13.41,
+          "trap": 104.39,
+          "z60130": 18.563,
+          "peakHP": 255
+        },
+        "tgt": {
+          "z60": 4.6,
+          "et": 13.2,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2018 Honda Civic Type R",
+        "id": "2018-honda-civic-type-r",
+        "parts": [
+          "z60:4.85/4.9"
+        ],
+        "sim": {
+          "z60": 4.85,
+          "et": 13.507,
+          "trap": 106.52,
+          "z60130": 16.809,
+          "peakHP": 252
+        },
+        "tgt": {
+          "z60": 4.9,
+          "et": 13.5,
+          "trap": 107,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Mitsubishi Lancer Evolution X",
+        "id": "2008-mitsubishi-lancer-evolution-x",
+        "parts": [
+          "et:13.576/13.5"
+        ],
+        "sim": {
+          "z60": 5.008,
+          "et": 13.576,
+          "trap": 104.45,
+          "z60130": 18.476,
+          "peakHP": 267
+        },
+        "tgt": {
+          "z60": 5,
+          "et": 13.5,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Subaru WRX STI",
+        "id": "2006-subaru-wrx-sti",
+        "parts": [
+          "et:13.455/13.3",
+          "z60:4.853/4.7"
+        ],
+        "sim": {
+          "z60": 4.853,
+          "et": 13.455,
+          "trap": 104.49,
+          "z60130": 18.02,
+          "peakHP": 256
+        },
+        "tgt": {
+          "z60": 4.7,
+          "et": 13.3,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2005 Nissan 350Z",
+        "id": "2005-nissan-350z",
+        "parts": [
+          "z60:5.208/5.3"
+        ],
+        "sim": {
+          "z60": 5.208,
+          "et": 13.946,
+          "trap": 102.56,
+          "z60130": 19.604,
+          "peakHP": 233
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 13.9,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 BMW 135i",
+        "id": "2008-bmw-135i",
+        "parts": [
+          "z60:4.658/4.8"
+        ],
+        "sim": {
+          "z60": 4.658,
+          "et": 13.416,
+          "trap": 104.52,
+          "z60130": 18.15,
+          "peakHP": 245
+        },
+        "tgt": {
+          "z60": 4.8,
+          "et": 13.4,
+          "trap": 105,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Mazda RX-8 R3",
+        "id": "2010-mazda-rx-8-r3",
+        "parts": [
+          "z60:6.133/6.2"
+        ],
+        "sim": {
+          "z60": 6.133,
+          "et": 14.77,
+          "trap": 95.51,
+          "z60130": 26.721,
+          "peakHP": 180
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.8,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2003 Mitsubishi Lancer Evolution VIII",
+        "id": "2003-mitsubishi-lancer-evolution-viii",
+        "parts": [
+          "et:13.611/13.4",
+          "z60:5.021/4.8"
+        ],
+        "sim": {
+          "z60": 5.021,
+          "et": 13.611,
+          "trap": 104.43,
+          "z60130": 20.534,
+          "peakHP": 242
+        },
+        "tgt": {
+          "z60": 4.8,
+          "et": 13.4,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2001 Honda S2000",
+        "id": "2001-honda-s2000",
+        "parts": [
+          "et:14.863/14.4",
+          "z60:6.132/5.8"
+        ],
+        "sim": {
+          "z60": 6.132,
+          "et": 14.863,
+          "trap": 97.42,
+          "z60130": 27.093,
+          "peakHP": 179
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 14.4,
+          "trap": 97,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1998 Honda Prelude Type SH",
+        "id": "1998-honda-prelude-type-sh",
+        "parts": [
+          "et:16.113/15.3",
+          "z60:7.716/6.8"
+        ],
+        "sim": {
+          "z60": 7.716,
+          "et": 16.113,
+          "trap": 91.32,
+          "z60130": 38.355,
+          "peakHP": 163
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.3,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2003 Acura RSX Type-S",
+        "id": "2003-acura-rsx-type-s",
+        "parts": [
+          "et:15.304/15.1",
+          "z60:6.789/6.5"
+        ],
+        "sim": {
+          "z60": 6.789,
+          "et": 15.304,
+          "trap": 93.49,
+          "z60130": 41.514,
+          "peakHP": 156
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 15.1,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Scion FR-S",
+        "id": "2013-scion-fr-s",
+        "parts": [
+          "et:15.093/14.8",
+          "z60:6.623/6.2"
+        ],
+        "sim": {
+          "z60": 6.623,
+          "et": 15.093,
+          "trap": 94.5,
+          "z60130": 34.14,
+          "peakHP": 157
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.8,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1990 Mazda Miata NA",
+        "id": "1990-mazda-miata-na",
+        "parts": [
+          "et:16.829/16.3",
+          "z60:8.681/8.1"
+        ],
+        "sim": {
+          "z60": 8.681,
+          "et": 16.829,
+          "trap": 84.42,
+          "z60130": null,
+          "peakHP": 98
+        },
+        "tgt": {
+          "z60": 8.1,
+          "et": 16.3,
+          "trap": 84,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1997 Honda Civic Type R EK9",
+        "id": "1997-honda-civic-type-r-ek9",
+        "parts": [
+          "et:15.78/15.2",
+          "z60:7.097/6.7"
+        ],
+        "sim": {
+          "z60": 7.097,
+          "et": 15.78,
+          "trap": 91.38,
+          "z60130": null,
+          "peakHP": 132
+        },
+        "tgt": {
+          "z60": 6.7,
+          "et": 15.2,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2002 Subaru WRX Wagon",
+        "id": "2002-subaru-wrx-wagon",
+        "parts": [
+          "et:14.75/14.4",
+          "z60:6.004/5.8"
+        ],
+        "sim": {
+          "z60": 6.004,
+          "et": 14.75,
+          "trap": 96.47,
+          "z60130": 30.136,
+          "peakHP": 196
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 14.4,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2005 Mitsubishi Eclipse GT",
+        "id": "2005-mitsubishi-eclipse-gt",
+        "parts": [
+          "et:15.076/14.8",
+          "z60:6.411/6.3"
+        ],
+        "sim": {
+          "z60": 6.411,
+          "et": 15.076,
+          "trap": 96.5,
+          "z60130": 29.322,
+          "peakHP": 219
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.8,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2012 Scion tC",
+        "id": "2012-scion-tc",
+        "parts": [
+          "et:16.029/15.6",
+          "z60:7.64/7.2"
+        ],
+        "sim": {
+          "z60": 7.64,
+          "et": 16.029,
+          "trap": 90.38,
+          "z60130": null,
+          "peakHP": 154
+        },
+        "tgt": {
+          "z60": 7.2,
+          "et": 15.6,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2001 Mitsubishi Eclipse GSX",
+        "id": "2001-mitsubishi-eclipse-gsx",
+        "parts": [
+          "et:15.6/15",
+          "z60:7.135/6.5"
+        ],
+        "sim": {
+          "z60": 7.135,
+          "et": 15.6,
+          "trap": 92.38,
+          "z60130": 40.222,
+          "peakHP": 177
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 15,
+          "trap": 92,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Honda Accord Euro R",
+        "id": "2006-honda-accord-euro-r",
+        "parts": [
+          "et:15.966/15.1",
+          "z60:7.499/6.6"
+        ],
+        "sim": {
+          "z60": 7.499,
+          "et": 15.966,
+          "trap": 93.48,
+          "z60130": 31.705,
+          "peakHP": 163
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 15.1,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1999 Honda Prelude SH",
+        "id": "1999-honda-prelude-sh",
+        "parts": [
+          "et:16.113/15.3",
+          "z60:7.716/6.8"
+        ],
+        "sim": {
+          "z60": 7.716,
+          "et": 16.113,
+          "trap": 91.32,
+          "z60130": 38.355,
+          "peakHP": 163
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.3,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Subaru Legacy GT Spec.B",
+        "id": "2008-subaru-legacy-gt-spec-b",
+        "parts": [
+          "et:14.157/14.1",
+          "z60:5.577/5.5"
+        ],
+        "sim": {
+          "z60": 5.577,
+          "et": 14.157,
+          "trap": 99.34,
+          "z60130": 25.156,
+          "peakHP": 220
+        },
+        "tgt": {
+          "z60": 5.5,
+          "et": 14.1,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 MazdaSpeed6",
+        "id": "2011-mazdaspeed6",
+        "parts": [
+          "et:14.602/14.4",
+          "z60:6.045/5.8"
+        ],
+        "sim": {
+          "z60": 6.045,
+          "et": 14.602,
+          "trap": 97.41,
+          "z60130": 26.178,
+          "peakHP": 219
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 14.4,
+          "trap": 97,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2021 Kawasaki Ninja ZX-10R",
+        "id": "2021-kawasaki-ninja-zx-10r",
+        "parts": [
+          "et:10.73/10.2",
+          "z60130:4.779/4.5",
+          "z60:3.684/3.1"
+        ],
+        "sim": {
+          "z60": 3.684,
+          "et": 10.73,
+          "trap": 147,
+          "z60130": 4.779,
+          "peakHP": 154
+        },
+        "tgt": {
+          "z60": 3.1,
+          "et": 10.2,
+          "trap": 147,
+          "z60130": 4.5
+        }
+      },
+      {
+        "name": "2016 Kawasaki Ninja ZX-10R",
+        "id": "2016-kawasaki-ninja-zx-10r",
+        "parts": [
+          "et:10.564/10.2",
+          "z60130:4.735/4.5",
+          "z60:3.51/3"
+        ],
+        "sim": {
+          "z60": 3.51,
+          "et": 10.564,
+          "trap": 147.26,
+          "z60130": 4.735,
+          "peakHP": 156
+        },
+        "tgt": {
+          "z60": 3,
+          "et": 10.2,
+          "trap": 147,
+          "z60130": 4.5
+        }
+      },
+      {
+        "name": "2020 Suzuki GSX-R1000",
+        "id": "2020-suzuki-gsx-r1000",
+        "parts": [
+          "et:10.601/10.2",
+          "z60130:4.618/4.4",
+          "z60:3.584/3"
+        ],
+        "sim": {
+          "z60": 3.584,
+          "et": 10.601,
+          "trap": 148.43,
+          "z60130": 4.618,
+          "peakHP": 160
+        },
+        "tgt": {
+          "z60": 3,
+          "et": 10.2,
+          "trap": 148,
+          "z60130": 4.4
+        }
+      },
+      {
+        "name": "2020 Suzuki GSX-R1000R",
+        "id": "2020-suzuki-gsx-r1000r",
+        "parts": [
+          "et:10.527/10.1",
+          "z60130:4.525/4.3",
+          "z60:3.533/2.9"
+        ],
+        "sim": {
+          "z60": 3.533,
+          "et": 10.527,
+          "trap": 149.39,
+          "z60130": 4.525,
+          "peakHP": 163
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10.1,
+          "trap": 149,
+          "z60130": 4.3
+        }
+      },
+      {
+        "name": "2020 Yamaha YZF-R1",
+        "id": "2020-yamaha-yzf-r1",
+        "parts": [
+          "et:10.677/10.1",
+          "z60130:4.638/4.3",
+          "z60:3.665/2.9"
+        ],
+        "sim": {
+          "z60": 3.665,
+          "et": 10.677,
+          "trap": 148.3,
+          "z60130": 4.638,
+          "peakHP": 160
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10.1,
+          "trap": 148,
+          "z60130": 4.3
+        }
+      },
+      {
+        "name": "2020 Yamaha YZF-R1M",
+        "id": "2020-yamaha-yzf-r1m",
+        "parts": [
+          "et:10.591/10",
+          "z60130:4.529/4.2",
+          "z60:3.605/2.9"
+        ],
+        "sim": {
+          "z60": 3.605,
+          "et": 10.591,
+          "trap": 149.35,
+          "z60130": 4.529,
+          "peakHP": 160
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10,
+          "trap": 149,
+          "z60130": 4.2
+        }
+      },
+      {
+        "name": "2021 BMW S1000RR",
+        "id": "2021-bmw-s1000rr",
+        "parts": [
+          "z60130:4.321/4.52"
+        ],
+        "sim": {
+          "z60": 3.137,
+          "et": 10.155,
+          "trap": 156.4,
+          "z60130": 4.321,
+          "peakHP": 183
+        },
+        "tgt": {
+          "z60": 3.1,
+          "et": 10.12,
+          "trap": 156,
+          "z60130": 4.52
+        }
+      },
+      {
+        "name": "2021 Honda CBR1000RR-R Fireblade",
+        "id": "2021-honda-cbr1000rr-r-fireblade",
+        "parts": [
+          "et:10.583/10",
+          "z60130:4.412/4.2",
+          "z60:3.639/2.9"
+        ],
+        "sim": {
+          "z60": 3.639,
+          "et": 10.583,
+          "trap": 151.18,
+          "z60130": 4.412,
+          "peakHP": 170
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 10,
+          "trap": 151,
+          "z60130": 4.2
+        }
+      },
+      {
+        "name": "2022 Suzuki Hayabusa",
+        "id": "2022-suzuki-hayabusa",
+        "parts": [
+          "et:10.047/9.7",
+          "z60130:4.711/4.8",
+          "z60:2.889/2.5"
+        ],
+        "sim": {
+          "z60": 2.889,
+          "et": 10.047,
+          "trap": 148.41,
+          "z60130": 4.711,
+          "peakHP": 179
+        },
+        "tgt": {
+          "z60": 2.5,
+          "et": 9.7,
+          "trap": 148,
+          "z60130": 4.8
+        }
+      },
+      {
+        "name": "2020 Kawasaki Ninja ZX-14R",
+        "id": "2020-kawasaki-ninja-zx-14r",
+        "parts": [
+          "et:9.879/9.7",
+          "z60:2.714/2.6"
+        ],
+        "sim": {
+          "z60": 2.714,
+          "et": 9.879,
+          "trap": 149.36,
+          "z60130": 4.617,
+          "peakHP": 183
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 9.7,
+          "trap": 149,
+          "z60130": 4.6
+        }
+      },
+      {
+        "name": "2021 Ducati Panigale V4",
+        "id": "2021-ducati-panigale-v4",
+        "parts": [
+          "et:10.279/10",
+          "z60130:4.209/4.1",
+          "z60:3.363/2.8"
+        ],
+        "sim": {
+          "z60": 3.363,
+          "et": 10.279,
+          "trap": 152.37,
+          "z60130": 4.209,
+          "peakHP": 173
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10,
+          "trap": 152,
+          "z60130": 4.1
+        }
+      },
+      {
+        "name": "2021 Kawasaki Ninja H2",
+        "id": "2021-kawasaki-ninja-h2",
+        "parts": [
+          "et:10.19/9.7",
+          "z60130:4.218/3.8",
+          "z60:3.261/2.6"
+        ],
+        "sim": {
+          "z60": 3.261,
+          "et": 10.19,
+          "trap": 152.49,
+          "z60130": 4.218,
+          "peakHP": 181
+        },
+        "tgt": {
+          "z60": 2.6,
+          "et": 9.7,
+          "trap": 152,
+          "z60130": 3.8
+        }
+      },
+      {
+        "name": "2021 Ram TRX",
+        "id": "2021-ram-trx",
+        "parts": [
+          "z60:3.718/4.1"
+        ],
+        "sim": {
+          "z60": 3.718,
+          "et": 12.345,
+          "trap": 110.15,
+          "z60130": 15.675,
+          "peakHP": 553
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.3,
+          "trap": 110,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Chevrolet Silverado ZR2",
+        "id": "2023-chevrolet-silverado-zr2",
+        "parts": [
+          "et:14.968/14.8"
+        ],
+        "sim": {
+          "z60": 6.233,
+          "et": 14.968,
+          "trap": 95.42,
+          "z60130": 38.224,
+          "peakHP": 342
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.8,
+          "trap": 95,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2020 Chevrolet Silverado 6.2",
+        "id": "2020-chevrolet-silverado-6-2",
+        "parts": [
+          "et:14.089/14",
+          "z60:5.296/5.4"
+        ],
+        "sim": {
+          "z60": 5.296,
+          "et": 14.089,
+          "trap": 99.46,
+          "z60130": 29.576,
+          "peakHP": 336
+        },
+        "tgt": {
+          "z60": 5.4,
+          "et": 14,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2019 Ford F-250 6.7 PowerStroke",
+        "id": "2019-ford-f-250-6-7-powerstroke",
+        "parts": [
+          "et:14.872/15.6",
+          "z60:6.163/7.2"
+        ],
+        "sim": {
+          "z60": 6.163,
+          "et": 14.872,
+          "trap": 88.55,
+          "z60130": null,
+          "peakHP": 332
+        },
+        "tgt": {
+          "z60": 7.2,
+          "et": 15.6,
+          "trap": 89,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2021 Toyota Tundra",
+        "id": "2021-toyota-tundra",
+        "parts": [
+          "et:14.985/14.7",
+          "z60:6.394/6.1"
+        ],
+        "sim": {
+          "z60": 6.394,
+          "et": 14.985,
+          "trap": 95.44,
+          "z60130": 32.257,
+          "peakHP": 328
+        },
+        "tgt": {
+          "z60": 6.1,
+          "et": 14.7,
+          "trap": 95,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2018 Ford F-150 5.0",
+        "id": "2018-ford-f-150-5-0",
+        "parts": [
+          "z60:6.029/6.1"
+        ],
+        "sim": {
+          "z60": 6.029,
+          "et": 14.748,
+          "trap": 95.17,
+          "z60130": 45.001,
+          "peakHP": 275
+        },
+        "tgt": {
+          "z60": 6.1,
+          "et": 14.7,
+          "trap": 95,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2017 Chevrolet Silverado 5.3",
+        "id": "2017-chevrolet-silverado-5-3",
+        "parts": [
+          "z60:6.694/6.8"
+        ],
+        "sim": {
+          "z60": 6.694,
+          "et": 15.346,
+          "trap": 91.5,
+          "z60130": null,
+          "peakHP": 277
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.3,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2014 Toyota Tacoma V6",
+        "id": "2014-toyota-tacoma-v6",
+        "parts": [
+          "et:16.446/16",
+          "z60:8.096/7.6"
+        ],
+        "sim": {
+          "z60": 8.096,
+          "et": 16.446,
+          "trap": 86.43,
+          "z60130": null,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 7.6,
+          "et": 16,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Ram 1500 5.7 Hemi",
+        "id": "2013-ram-1500-5-7-hemi",
+        "parts": [
+          "z60:6.437/6.5"
+        ],
+        "sim": {
+          "z60": 6.437,
+          "et": 15.035,
+          "trap": 92.56,
+          "z60130": null,
+          "peakHP": 276
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 15,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Chevrolet Avalanche 5.3",
+        "id": "2011-chevrolet-avalanche-5-3",
+        "parts": [
+          "et:15.877/15.8",
+          "z60:7.258/7.4"
+        ],
+        "sim": {
+          "z60": 7.258,
+          "et": 15.877,
+          "trap": 88.44,
+          "z60130": null,
+          "peakHP": 283
+        },
+        "tgt": {
+          "z60": 7.4,
+          "et": 15.8,
+          "trap": 88,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Toyota Tundra 5.7",
+        "id": "2010-toyota-tundra-5-7",
+        "parts": [
+          "et:15.004/14.9",
+          "z60:6.4/6.3"
+        ],
+        "sim": {
+          "z60": 6.4,
+          "et": 15.004,
+          "trap": 94.44,
+          "z60130": 33.432,
+          "peakHP": 312
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.9,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Ford F-150 Harley-Davidson",
+        "id": "2008-ford-f-150-harley-davidson",
+        "parts": [
+          "et:15.94/15.8",
+          "z60:7.645/7.4"
+        ],
+        "sim": {
+          "z60": 7.645,
+          "et": 15.94,
+          "trap": 88.48,
+          "z60130": null,
+          "peakHP": 263
+        },
+        "tgt": {
+          "z60": 7.4,
+          "et": 15.8,
+          "trap": 88,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 GMC Sierra Denali 6.2",
+        "id": "2009-gmc-sierra-denali-6-2",
+        "parts": [
+          "z60:5.878/6"
+        ],
+        "sim": {
+          "z60": 5.878,
+          "et": 14.646,
+          "trap": 96.3,
+          "z60130": 33.944,
+          "peakHP": 330
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.6,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Toyota Sequoia 5.7",
+        "id": "2013-toyota-sequoia-5-7",
+        "parts": [
+          "et:15.55/15.1",
+          "z60:6.98/6.6"
+        ],
+        "sim": {
+          "z60": 6.98,
+          "et": 15.55,
+          "trap": 92.41,
+          "z60130": null,
+          "peakHP": 306
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 15.1,
+          "trap": 92,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 Ford F-150 4.6 Triton",
+        "id": "2007-ford-f-150-4-6-triton",
+        "parts": [
+          "et:16.711/16.6",
+          "z60:8.747/8.5"
+        ],
+        "sim": {
+          "z60": 8.747,
+          "et": 16.711,
+          "trap": 84.44,
+          "z60130": null,
+          "peakHP": 222
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.6,
+          "trap": 84,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+        "id": "2008-chevrolet-silverado-6-0-vortec-max",
+        "parts": [
+          "z60:6.27/6.4"
+        ],
+        "sim": {
+          "z60": 6.27,
+          "et": 15.042,
+          "trap": 93.34,
+          "z60130": 43.151,
+          "peakHP": 305
+        },
+        "tgt": {
+          "z60": 6.4,
+          "et": 15,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Toyota Tacoma 4.0 V6",
+        "id": "2011-toyota-tacoma-4-0-v6",
+        "parts": [
+          "et:16.446/16",
+          "z60:8.096/7.6"
+        ],
+        "sim": {
+          "z60": 8.096,
+          "et": 16.446,
+          "trap": 86.43,
+          "z60130": null,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 7.6,
+          "et": 16,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2015 Nissan Frontier 4.0",
+        "id": "2015-nissan-frontier-4-0",
+        "parts": [
+          "et:16.533/16.1",
+          "z60:7.967/7.8"
+        ],
+        "sim": {
+          "z60": 7.967,
+          "et": 16.533,
+          "trap": 86.45,
+          "z60130": null,
+          "peakHP": 207
+        },
+        "tgt": {
+          "z60": 7.8,
+          "et": 16.1,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2005 Ford F-250 V10",
+        "id": "2005-ford-f-250-v10",
+        "parts": [
+          "et:17.919/16.8",
+          "z60:9.812/8.8"
+        ],
+        "sim": {
+          "z60": 9.812,
+          "et": 17.919,
+          "trap": 82.47,
+          "z60130": null,
+          "peakHP": 259
+        },
+        "tgt": {
+          "z60": 8.8,
+          "et": 16.8,
+          "trap": 82,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Chevrolet Silverado 2500HD 6.0",
+        "id": "2006-chevrolet-silverado-2500hd-6-0",
+        "parts": [
+          "et:16.923/16.6",
+          "z60:8.616/8.5"
+        ],
+        "sim": {
+          "z60": 8.616,
+          "et": 16.923,
+          "trap": 83.48,
+          "z60130": null,
+          "peakHP": 259
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.6,
+          "trap": 83,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 Toyota Tundra 4.7",
+        "id": "2007-toyota-tundra-4-7",
+        "parts": [
+          "et:16.527/16.3",
+          "z60:8.313/8"
+        ],
+        "sim": {
+          "z60": 8.313,
+          "et": 16.527,
+          "trap": 85.48,
+          "z60130": null,
+          "peakHP": 232
+        },
+        "tgt": {
+          "z60": 8,
+          "et": 16.3,
+          "trap": 85,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2012 Nissan Titan Pro-4X",
+        "id": "2012-nissan-titan-pro-4x",
+        "parts": [
+          "et:15.543/15.4",
+          "z60:6.83/7"
+        ],
+        "sim": {
+          "z60": 6.83,
+          "et": 15.543,
+          "trap": 90.43,
+          "z60130": null,
+          "peakHP": 281
+        },
+        "tgt": {
+          "z60": 7,
+          "et": 15.4,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1969 Dodge Charger 440",
+        "id": "1969-dodge-charger-440",
+        "parts": [
+          "z60:5.643/6.1"
+        ],
+        "sim": {
+          "z60": 5.643,
+          "et": 14.347,
+          "trap": 98.95,
+          "z60130": 26.599,
+          "peakHP": 293
+        },
+        "tgt": {
+          "z60": 6.1,
+          "et": 14.3,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1967 Ford Mustang GT 390",
+        "id": "1967-ford-mustang-gt-390",
+        "parts": [
+          "et:16.076/15.2",
+          "z60:7.68/6.8"
+        ],
+        "sim": {
+          "z60": 7.68,
+          "et": 16.076,
+          "trap": 93.4,
+          "z60130": null,
+          "peakHP": 204
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.2,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1970 Chevrolet Chevelle SS 454",
+        "id": "1970-chevrolet-chevelle-ss-454",
+        "parts": [
+          "et:14.624/13.9",
+          "z60:5.964/5.8"
+        ],
+        "sim": {
+          "z60": 5.964,
+          "et": 14.624,
+          "trap": 103.49,
+          "z60130": 23.64,
+          "peakHP": 332
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 13.9,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1970 Dodge Challenger 426 Hemi",
+        "id": "1970-dodge-challenger-426-hemi",
+        "parts": [
+          "z60:5.294/5.8"
+        ],
+        "sim": {
+          "z60": 5.294,
+          "et": 13.846,
+          "trap": 104.17,
+          "z60130": 18.985,
+          "peakHP": 334
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 13.8,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1969 Chevrolet Camaro SS 396",
+        "id": "1969-chevrolet-camaro-ss-396",
+        "parts": [
+          "et:15.032/14.4",
+          "z60:6.571/6"
+        ],
+        "sim": {
+          "z60": 6.571,
+          "et": 15.032,
+          "trap": 99.4,
+          "z60130": 37.764,
+          "peakHP": 254
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.4,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1971 Dodge Demon 340",
+        "id": "1971-dodge-demon-340",
+        "parts": [
+          "et:14.708/14.8",
+          "z60:5.876/6.4"
+        ],
+        "sim": {
+          "z60": 5.876,
+          "et": 14.708,
+          "trap": 95.53,
+          "z60130": null,
+          "peakHP": 201
+        },
+        "tgt": {
+          "z60": 6.4,
+          "et": 14.8,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1966 Ford GT40 MkII",
+        "id": "1966-ford-gt40-mkii",
+        "parts": [
+          "et:11.594/11.8",
+          "z60:3.772/4.5"
+        ],
+        "sim": {
+          "z60": 3.772,
+          "et": 11.594,
+          "trap": 130.54,
+          "z60130": 7.729,
+          "peakHP": 402
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 11.8,
+          "trap": 131,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1965 Shelby Cobra 427",
+        "id": "1965-shelby-cobra-427",
+        "parts": [
+          "et:11.834/12.2",
+          "z60:3.449/4.3"
+        ],
+        "sim": {
+          "z60": 3.449,
+          "et": 11.834,
+          "trap": 119.6,
+          "z60130": 11.125,
+          "peakHP": 315
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.2,
+          "trap": 120,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1970 Plymouth Road Runner 440",
+        "id": "1970-plymouth-road-runner-440",
+        "parts": [
+          "z60:5.506/6"
+        ],
+        "sim": {
+          "z60": 5.506,
+          "et": 14.246,
+          "trap": 99.62,
+          "z60130": 26.98,
+          "peakHP": 271
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.2,
+          "trap": 100,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1968 Dodge Dart GTS 383",
+        "id": "1968-dodge-dart-gts-383",
+        "parts": [
+          "et:14.352/14.8",
+          "z60:5.517/6.5"
+        ],
+        "sim": {
+          "z60": 5.517,
+          "et": 14.352,
+          "trap": 95.53,
+          "z60130": null,
+          "peakHP": 211
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 14.8,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1964 Pontiac GTO",
+        "id": "1964-pontiac-gto",
+        "parts": [
+          "et:15.251/14.8",
+          "z60:6.807/6.6"
+        ],
+        "sim": {
+          "z60": 6.807,
+          "et": 15.251,
+          "trap": 98.45,
+          "z60130": null,
+          "peakHP": 251
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 14.8,
+          "trap": 98,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1965 Chevrolet Chevelle SS396",
+        "id": "1965-chevrolet-chevelle-ss396",
+        "parts": [
+          "et:15.253/14.7",
+          "z60:6.807/6.4"
+        ],
+        "sim": {
+          "z60": 6.807,
+          "et": 15.253,
+          "trap": 98.31,
+          "z60130": 42.392,
+          "peakHP": 250
+        },
+        "tgt": {
+          "z60": 6.4,
+          "et": 14.7,
+          "trap": 98,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1963 Corvette Stingray 327",
+        "id": "1963-corvette-stingray-327",
+        "parts": [
+          "et:14.475/14.4"
+        ],
+        "sim": {
+          "z60": 5.89,
+          "et": 14.475,
+          "trap": 100.44,
+          "z60130": 22.986,
+          "peakHP": 273
+        },
+        "tgt": {
+          "z60": 5.9,
+          "et": 14.4,
+          "trap": 100,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1972 Oldsmobile 442",
+        "id": "1972-oldsmobile-442",
+        "parts": [
+          "et:16.283/15.8",
+          "z60:7.827/7.5"
+        ],
+        "sim": {
+          "z60": 7.827,
+          "et": 16.283,
+          "trap": 90.48,
+          "z60130": null,
+          "peakHP": 204
+        },
+        "tgt": {
+          "z60": 7.5,
+          "et": 15.8,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1962 Chevrolet Impala SS 409",
+        "id": "1962-chevrolet-impala-ss-409",
+        "parts": [
+          "et:15.54/14.6",
+          "z60:7.004/6.3"
+        ],
+        "sim": {
+          "z60": 7.004,
+          "et": 15.54,
+          "trap": 99.4,
+          "z60130": 29.943,
+          "peakHP": 275
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.6,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1967 Plymouth GTX 440",
+        "id": "1967-plymouth-gtx-440",
+        "parts": [
+          "z60:5.65/6"
+        ],
+        "sim": {
+          "z60": 5.65,
+          "et": 14.337,
+          "trap": 99.55,
+          "z60130": 24.152,
+          "peakHP": 276
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.3,
+          "trap": 100,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1973 Ford Torino 351",
+        "id": "1973-ford-torino-351",
+        "parts": [
+          "et:18.035/16.5",
+          "z60:9.686/8.5"
+        ],
+        "sim": {
+          "z60": 9.686,
+          "et": 18.035,
+          "trap": 85.46,
+          "z60130": null,
+          "peakHP": 195
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.5,
+          "trap": 85,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1978 Dodge Magnum XE",
+        "id": "1978-dodge-magnum-xe",
+        "parts": [
+          "et:18.592/17.2",
+          "z60:10.831/9.5"
+        ],
+        "sim": {
+          "z60": 10.831,
+          "et": 18.592,
+          "trap": 80.45,
+          "z60130": null,
+          "peakHP": 157
+        },
+        "tgt": {
+          "z60": 9.5,
+          "et": 17.2,
+          "trap": 80,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1957 Chevrolet Bel Air 283",
+        "id": "1957-chevrolet-bel-air-283",
+        "parts": [
+          "et:18.637/16.6",
+          "z60:10.774/8.5"
+        ],
+        "sim": {
+          "z60": 10.774,
+          "et": 18.637,
+          "trap": 82.41,
+          "z60130": null,
+          "peakHP": 149
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.6,
+          "trap": 82,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1960 Ford Galaxie 352",
+        "id": "1960-ford-galaxie-352",
+        "parts": [
+          "et:17.902/16.8",
+          "z60:9.974/8.8"
+        ],
+        "sim": {
+          "z60": 9.974,
+          "et": 17.902,
+          "trap": 82.37,
+          "z60130": null,
+          "peakHP": 156
+        },
+        "tgt": {
+          "z60": 8.8,
+          "et": 16.8,
+          "trap": 82,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1974 Pontiac Firebird 400",
+        "id": "1974-pontiac-firebird-400",
+        "parts": [
+          "et:17.271/16.3",
+          "z60:9.041/8.2"
+        ],
+        "sim": {
+          "z60": 9.041,
+          "et": 17.271,
+          "trap": 86.49,
+          "z60130": null,
+          "peakHP": 186
+        },
+        "tgt": {
+          "z60": 8.2,
+          "et": 16.3,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1977 Chevrolet Monte Carlo",
+        "id": "1977-chevrolet-monte-carlo",
+        "parts": [
+          "et:19.058/17.8",
+          "z60:11.434/10.5"
+        ],
+        "sim": {
+          "z60": 11.434,
+          "et": 19.058,
+          "trap": 78.36,
+          "z60130": null,
+          "peakHP": 144
+        },
+        "tgt": {
+          "z60": 10.5,
+          "et": 17.8,
+          "trap": 78,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1955 Ford Thunderbird",
+        "id": "1955-ford-thunderbird",
+        "parts": [
+          "et:18.51/17.2",
+          "z60:10.84/9.5"
+        ],
+        "sim": {
+          "z60": 10.84,
+          "et": 18.51,
+          "trap": 80.44,
+          "z60130": null,
+          "peakHP": 141
+        },
+        "tgt": {
+          "z60": 9.5,
+          "et": 17.2,
+          "trap": 80,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1961 Chevrolet Corvette 283",
+        "id": "1961-chevrolet-corvette-283",
+        "parts": [
+          "et:15.936/15",
+          "z60:7.41/6.6"
+        ],
+        "sim": {
+          "z60": 7.41,
+          "et": 15.936,
+          "trap": 93.46,
+          "z60130": null,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 15,
+          "trap": 93,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1968 Mercury Cougar XR-7",
+        "id": "1968-mercury-cougar-xr-7",
+        "parts": [
+          "et:16.79/15.5",
+          "z60:8.502/7.2"
+        ],
+        "sim": {
+          "z60": 8.502,
+          "et": 16.79,
+          "trap": 91.42,
+          "z60130": null,
+          "peakHP": 197
+        },
+        "tgt": {
+          "z60": 7.2,
+          "et": 15.5,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1975 Chevrolet Nova 350",
+        "id": "1975-chevrolet-nova-350",
+        "parts": [
+          "et:18.415/17.4",
+          "z60:10.961/9.8"
+        ],
+        "sim": {
+          "z60": 10.961,
+          "et": 18.415,
+          "trap": 79.49,
+          "z60130": null,
+          "peakHP": 124
+        },
+        "tgt": {
+          "z60": 9.8,
+          "et": 17.4,
+          "trap": 79,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2022 Volkswagen Golf R",
+        "id": "2022-volkswagen-golf-r",
+        "parts": [
+          "et:12.467/12.6",
+          "z60:3.783/4.1"
+        ],
+        "sim": {
+          "z60": 3.783,
+          "et": 12.467,
+          "trap": 111.61,
+          "z60130": 14.292,
+          "peakHP": 290
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.6,
+          "trap": 112,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Toyota GR Corolla",
+        "id": "2023-toyota-gr-corolla",
+        "parts": [
+          "z60:4.751/4.7"
+        ],
+        "sim": {
+          "z60": 4.751,
+          "et": 13.356,
+          "trap": 103.48,
+          "z60130": 18.741,
+          "peakHP": 245
+        },
+        "tgt": {
+          "z60": 4.7,
+          "et": 13.4,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2021 BMW M5 Competition",
+        "id": "2021-bmw-m5-competition",
+        "parts": [
+          "et:10.819/10.9",
+          "z60:2.698/2.8"
+        ],
+        "sim": {
+          "z60": 2.698,
+          "et": 10.819,
+          "trap": 128.21,
+          "z60130": 8.531,
+          "peakHP": 521
+        },
+        "tgt": {
+          "z60": 2.8,
+          "et": 10.9,
+          "trap": 128.5,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2020 Audi RS7",
+        "id": "2020-audi-rs7",
+        "parts": [
+          "et:11.225/11.4",
+          "z60:2.94/3.1"
+        ],
+        "sim": {
+          "z60": 2.94,
+          "et": 11.225,
+          "trap": 123.5,
+          "z60130": 9.699,
+          "peakHP": 484
+        },
+        "tgt": {
+          "z60": 3.1,
+          "et": 11.4,
+          "trap": 124,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2018 BMW M3 Competition",
+        "id": "2018-bmw-m3-competition",
+        "parts": [
+          "et:11.715/11.9",
+          "z60:3.508/3.8"
+        ],
+        "sim": {
+          "z60": 3.508,
+          "et": 11.715,
+          "trap": 121.71,
+          "z60130": 10.005,
+          "peakHP": 389
+        },
+        "tgt": {
+          "z60": 3.8,
+          "et": 11.9,
+          "trap": 122,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2017 Mercedes-AMG C63 S",
+        "id": "2017-mercedes-amg-c63-s",
+        "parts": [
+          "et:11.678/11.8",
+          "z60:3.429/3.8"
+        ],
+        "sim": {
+          "z60": 3.429,
+          "et": 11.678,
+          "trap": 122.51,
+          "z60130": 9.809,
+          "peakHP": 437
+        },
+        "tgt": {
+          "z60": 3.8,
+          "et": 11.8,
+          "trap": 123,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2021 Jeep Trackhawk",
+        "id": "2021-jeep-trackhawk",
+        "parts": [
+          "z60:3.233/3.5"
+        ],
+        "sim": {
+          "z60": 3.233,
+          "et": 11.648,
+          "trap": 118.35,
+          "z60130": 11.468,
+          "peakHP": 547
+        },
+        "tgt": {
+          "z60": 3.5,
+          "et": 11.6,
+          "trap": 118,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2020 Dodge Durango SRT",
+        "id": "2020-dodge-durango-srt",
+        "parts": [
+          "et:12.669/12.9",
+          "z60:4.056/4.4"
+        ],
+        "sim": {
+          "z60": 4.056,
+          "et": 12.669,
+          "trap": 109.72,
+          "z60130": 15.235,
+          "peakHP": 416
+        },
+        "tgt": {
+          "z60": 4.4,
+          "et": 12.9,
+          "trap": 110,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2022 Cadillac Escalade V",
+        "id": "2022-cadillac-escalade-v",
+        "parts": [
+          "et:12.477/12.7",
+          "z60:3.938/4.3"
+        ],
+        "sim": {
+          "z60": 3.938,
+          "et": 12.477,
+          "trap": 111.5,
+          "z60130": 14.328,
+          "peakHP": 519
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.7,
+          "trap": 112,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2021 Range Rover Sport SVR",
+        "id": "2021-range-rover-sport-svr",
+        "parts": [
+          "z60:4.214/4.3"
+        ],
+        "sim": {
+          "z60": 4.214,
+          "et": 12.752,
+          "trap": 110.52,
+          "z60130": 14.091,
+          "peakHP": 459
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.8,
+          "trap": 111,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2019 Dodge Durango R/T",
+        "id": "2019-dodge-durango-r-t",
+        "parts": [
+          "et:14.852/14.8"
+        ],
+        "sim": {
+          "z60": 6.259,
+          "et": 14.852,
+          "trap": 95.45,
+          "z60130": 31.975,
+          "peakHP": 292
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.8,
+          "trap": 95,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2017 BMW X6M",
+        "id": "2017-bmw-x6m",
+        "parts": [
+          "et:12.129/12.3",
+          "z60130:12.913/8.8",
+          "z60:3.603/3.8"
+        ],
+        "sim": {
+          "z60": 3.603,
+          "et": 12.129,
+          "trap": 113.54,
+          "z60130": 12.913,
+          "peakHP": 454
+        },
+        "tgt": {
+          "z60": 3.8,
+          "et": 12.3,
+          "trap": 114,
+          "z60130": 8.8
+        }
+      },
+      {
+        "name": "2012 Chevrolet Tahoe 5.3",
+        "id": "2012-chevrolet-tahoe-5-3",
+        "parts": [
+          "et:16.49/16",
+          "z60:8.071/7.6"
+        ],
+        "sim": {
+          "z60": 8.071,
+          "et": 16.49,
+          "trap": 87.49,
+          "z60130": null,
+          "peakHP": 258
+        },
+        "tgt": {
+          "z60": 7.6,
+          "et": 16,
+          "trap": 87,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Ford Expedition 5.4",
+        "id": "2013-ford-expedition-5-4",
+        "parts": [
+          "et:16.494/16.1",
+          "z60:8.145/7.8"
+        ],
+        "sim": {
+          "z60": 8.145,
+          "et": 16.494,
+          "trap": 86.47,
+          "z60130": null,
+          "peakHP": 265
+        },
+        "tgt": {
+          "z60": 7.8,
+          "et": 16.1,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2014 Jeep Wrangler Rubicon",
+        "id": "2014-jeep-wrangler-rubicon",
+        "parts": [
+          "et:16.53/16.4",
+          "z60:7.858/8.1"
+        ],
+        "sim": {
+          "z60": 7.858,
+          "et": 16.53,
+          "trap": 85.37,
+          "z60130": null,
+          "peakHP": 209
+        },
+        "tgt": {
+          "z60": 8.1,
+          "et": 16.4,
+          "trap": 85,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Toyota 4Runner V8",
+        "id": "2009-toyota-4runner-v8",
+        "parts": [
+          "et:15.708/15.5",
+          "z60:7.187/7"
+        ],
+        "sim": {
+          "z60": 7.187,
+          "et": 15.708,
+          "trap": 90.4,
+          "z60130": null,
+          "peakHP": 228
+        },
+        "tgt": {
+          "z60": 7,
+          "et": 15.5,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Chevrolet Suburban 5.3",
+        "id": "2010-chevrolet-suburban-5-3",
+        "parts": [
+          "et:16.602/16.1",
+          "z60:8.227/7.8"
+        ],
+        "sim": {
+          "z60": 8.227,
+          "et": 16.602,
+          "trap": 86.48,
+          "z60130": null,
+          "peakHP": 265
+        },
+        "tgt": {
+          "z60": 7.8,
+          "et": 16.1,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Jeep Liberty 3.7",
+        "id": "2011-jeep-liberty-3-7",
+        "parts": [
+          "et:17.912/16.8",
+          "z60:10.192/8.8"
+        ],
+        "sim": {
+          "z60": 10.192,
+          "et": 17.912,
+          "trap": 82.44,
+          "z60130": null,
+          "peakHP": 177
+        },
+        "tgt": {
+          "z60": 8.8,
+          "et": 16.8,
+          "trap": 82,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Toyota Highlander V6",
+        "id": "2008-toyota-highlander-v6",
+        "parts": [
+          "et:15.682/15.6",
+          "z60:7.013/7.2"
+        ],
+        "sim": {
+          "z60": 7.013,
+          "et": 15.682,
+          "trap": 89.42,
+          "z60130": null,
+          "peakHP": 207
+        },
+        "tgt": {
+          "z60": 7.2,
+          "et": 15.6,
+          "trap": 89,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Honda Pilot",
+        "id": "2009-honda-pilot",
+        "parts": [
+          "et:17.166/16.1",
+          "z60:8.948/7.8"
+        ],
+        "sim": {
+          "z60": 8.948,
+          "et": 17.166,
+          "trap": 86.43,
+          "z60130": null,
+          "peakHP": 209
+        },
+        "tgt": {
+          "z60": 7.8,
+          "et": 16.1,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Jeep Commander 5.7",
+        "id": "2010-jeep-commander-5-7",
+        "parts": [
+          "et:15.655/15.3",
+          "z60:7.188/6.8"
+        ],
+        "sim": {
+          "z60": 7.188,
+          "et": 15.655,
+          "trap": 91.48,
+          "z60130": null,
+          "peakHP": 285
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.3,
+          "trap": 91,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1994 Toyota Supra Twin Turbo",
+        "id": "1994-toyota-supra-twin-turbo",
+        "parts": [
+          "et:13.252/13.1"
+        ],
+        "sim": {
+          "z60": 4.609,
+          "et": 13.252,
+          "trap": 108.45,
+          "z60130": 16.335,
+          "peakHP": 289
+        },
+        "tgt": {
+          "z60": 4.6,
+          "et": 13.1,
+          "trap": 108,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1999 Nissan Skyline GT-R R34",
+        "id": "1999-nissan-skyline-gt-r-r34",
+        "parts": [
+          "z60:4.72/4.8"
+        ],
+        "sim": {
+          "z60": 4.72,
+          "et": 13.346,
+          "trap": 106.62,
+          "z60130": 16.503,
+          "peakHP": 272
+        },
+        "tgt": {
+          "z60": 4.8,
+          "et": 13.3,
+          "trap": 107,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1992 Honda NSX",
+        "id": "1992-honda-nsx",
+        "parts": [
+          "et:14.193/13.8",
+          "z60:5.816/5.3"
+        ],
+        "sim": {
+          "z60": 5.816,
+          "et": 14.193,
+          "trap": 104.5,
+          "z60130": 17.905,
+          "peakHP": 240
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 13.8,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1989 Toyota MR2 Supercharged",
+        "id": "1989-toyota-mr2-supercharged",
+        "parts": [
+          "et:15.457/15.2",
+          "z60:7.033/6.6"
+        ],
+        "sim": {
+          "z60": 7.033,
+          "et": 15.457,
+          "trap": 90.48,
+          "z60130": 41.918,
+          "peakHP": 133
+        },
+        "tgt": {
+          "z60": 6.6,
+          "et": 15.2,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 BMW 335i",
+        "id": "2009-bmw-335i",
+        "parts": [
+          "et:13.484/13.6",
+          "z60:4.736/5.1"
+        ],
+        "sim": {
+          "z60": 4.736,
+          "et": 13.484,
+          "trap": 104.3,
+          "z60130": 18.285,
+          "peakHP": 254
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.6,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Mercedes C63 AMG",
+        "id": "2010-mercedes-c63-amg",
+        "parts": [
+          "trap:118.15/115",
+          "et:11.947/12.2",
+          "z60:3.502/4.1"
+        ],
+        "sim": {
+          "z60": 3.502,
+          "et": 11.947,
+          "trap": 118.15,
+          "z60130": 11.113,
+          "peakHP": 396
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.2,
+          "trap": 115,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Audi S5",
+        "id": "2008-audi-s5",
+        "parts": [
+          "trap:107.34/105",
+          "et:13.02/13.4",
+          "z60:4.366/4.9"
+        ],
+        "sim": {
+          "z60": 4.366,
+          "et": 13.02,
+          "trap": 107.34,
+          "z60130": 16.525,
+          "peakHP": 300
+        },
+        "tgt": {
+          "z60": 4.9,
+          "et": 13.4,
+          "trap": 105,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1986 Toyota Corolla AE86",
+        "id": "1986-toyota-corolla-ae86",
+        "parts": [
+          "et:16.539/16.4",
+          "z60:8.399/8.3"
+        ],
+        "sim": {
+          "z60": 8.399,
+          "et": 16.539,
+          "trap": 84.42,
+          "z60130": null,
+          "peakHP": 107
+        },
+        "tgt": {
+          "z60": 8.3,
+          "et": 16.4,
+          "trap": 84,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1990 Mazda RX-7 FC Turbo",
+        "id": "1990-mazda-rx-7-fc-turbo",
+        "parts": [
+          "et:15.106/14.8"
+        ],
+        "sim": {
+          "z60": 6.327,
+          "et": 15.106,
+          "trap": 95.35,
+          "z60130": 31.823,
+          "peakHP": 167
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.8,
+          "trap": 95,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1995 Mitsubishi Eclipse GSX",
+        "id": "1995-mitsubishi-eclipse-gsx",
+        "parts": [
+          "et:15.082/14.8",
+          "z60:6.546/6.3"
+        ],
+        "sim": {
+          "z60": 6.546,
+          "et": 15.082,
+          "trap": 94.5,
+          "z60130": 32.098,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 6.3,
+          "et": 14.8,
+          "trap": 94,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1985 Mazda RX-7 GSL-SE",
+        "id": "1985-mazda-rx-7-gsl-se",
+        "parts": [
+          "et:16.854/16",
+          "z60:8.48/7.8"
+        ],
+        "sim": {
+          "z60": 8.48,
+          "et": 16.854,
+          "trap": 86.47,
+          "z60130": null,
+          "peakHP": 121
+        },
+        "tgt": {
+          "z60": 7.8,
+          "et": 16,
+          "trap": 86,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1993 Honda Accord SiR",
+        "id": "1993-honda-accord-sir",
+        "parts": [
+          "et:16.582/15.6",
+          "z60:8.263/7.2"
+        ],
+        "sim": {
+          "z60": 8.263,
+          "et": 16.582,
+          "trap": 89.47,
+          "z60130": 45.233,
+          "peakHP": 150
+        },
+        "tgt": {
+          "z60": 7.2,
+          "et": 15.6,
+          "trap": 89,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1983 Toyota Supra (Mk2)",
+        "id": "1983-toyota-supra-mk2",
+        "parts": [
+          "et:17.043/16.5",
+          "z60:8.849/8.5"
+        ],
+        "sim": {
+          "z60": 8.849,
+          "et": 17.043,
+          "trap": 85.37,
+          "z60130": null,
+          "peakHP": 139
+        },
+        "tgt": {
+          "z60": 8.5,
+          "et": 16.5,
+          "trap": 85,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1987 Nissan Skyline GTS-R",
+        "id": "1987-nissan-skyline-gts-r",
+        "parts": [
+          "et:14.536/14.6",
+          "z60:5.771/6.2"
+        ],
+        "sim": {
+          "z60": 5.771,
+          "et": 14.536,
+          "trap": 96.63,
+          "z60130": 25.978,
+          "peakHP": 178
+        },
+        "tgt": {
+          "z60": 6.2,
+          "et": 14.6,
+          "trap": 97,
+          "z60130": null
+        }
+      },
+      {
+        "name": "1996 Honda Integra SiR",
+        "id": "1996-honda-integra-sir",
+        "parts": [
+          "et:16.164/15.4",
+          "z60:7.707/7"
+        ],
+        "sim": {
+          "z60": 7.707,
+          "et": 16.164,
+          "trap": 90.38,
+          "z60130": 52.63,
+          "peakHP": 144
+        },
+        "tgt": {
+          "z60": 7,
+          "et": 15.4,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2018 Mercedes-AMG GT R",
+        "id": "2018-mercedes-amg-gt-r",
+        "parts": [
+          "et:11.531/11.6"
+        ],
+        "sim": {
+          "z60": 3.376,
+          "et": 11.531,
+          "trap": 124.53,
+          "z60130": 9.238,
+          "peakHP": 428
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.6,
+          "trap": 125,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2016 Audi TT RS",
+        "id": "2016-audi-tt-rs",
+        "parts": [
+          "et:11.631/11.7",
+          "z60:3.151/3.3"
+        ],
+        "sim": {
+          "z60": 3.151,
+          "et": 11.631,
+          "trap": 119.56,
+          "z60130": 11.031,
+          "peakHP": 347
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.7,
+          "trap": 120,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2015 BMW M4",
+        "id": "2015-bmw-m4",
+        "parts": [
+          "et:11.951/12.1",
+          "z60:3.595/3.9"
+        ],
+        "sim": {
+          "z60": 3.595,
+          "et": 11.951,
+          "trap": 117.59,
+          "z60130": 11.466,
+          "peakHP": 359
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.1,
+          "trap": 118,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2014 Mercedes CLA45 AMG",
+        "id": "2014-mercedes-cla45-amg",
+        "parts": [
+          "z60:4.035/4.1"
+        ],
+        "sim": {
+          "z60": 4.035,
+          "et": 12.614,
+          "trap": 110.54,
+          "z60130": 14.607,
+          "peakHP": 285
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.6,
+          "trap": 111,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2012 BMW M5",
+        "id": "2012-bmw-m5",
+        "parts": [
+          "et:11.767/12",
+          "z60:3.48/3.7"
+        ],
+        "sim": {
+          "z60": 3.48,
+          "et": 11.767,
+          "trap": 121.51,
+          "z60130": 10.132,
+          "peakHP": 470
+        },
+        "tgt": {
+          "z60": 3.7,
+          "et": 12,
+          "trap": 122,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2013 Audi RS4 Avant",
+        "id": "2013-audi-rs4-avant",
+        "parts": [
+          "et:12.499/12.6",
+          "z60:3.908/4.1"
+        ],
+        "sim": {
+          "z60": 3.908,
+          "et": 12.499,
+          "trap": 113.57,
+          "z60130": 13.042,
+          "peakHP": 357
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.6,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Mercedes E63 AMG",
+        "id": "2011-mercedes-e63-amg",
+        "parts": [
+          "et:12.129/12.3",
+          "z60:3.699/3.9"
+        ],
+        "sim": {
+          "z60": 3.699,
+          "et": 12.129,
+          "trap": 116.52,
+          "z60130": 11.617,
+          "peakHP": 419
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.3,
+          "trap": 117,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 BMW 335i",
+        "id": "2009-bmw-335i",
+        "parts": [
+          "z60:4.855/5.1"
+        ],
+        "sim": {
+          "z60": 4.855,
+          "et": 13.609,
+          "trap": 103.55,
+          "z60130": 18.843,
+          "peakHP": 249
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.6,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2010 Mercedes C63 AMG",
+        "id": "2010-mercedes-c63-amg",
+        "parts": [
+          "z60:3.74/4.1"
+        ],
+        "sim": {
+          "z60": 3.74,
+          "et": 12.249,
+          "trap": 115.4,
+          "z60130": 12.063,
+          "peakHP": 371
+        },
+        "tgt": {
+          "z60": 4.1,
+          "et": 12.2,
+          "trap": 115,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Audi S5",
+        "id": "2008-audi-s5",
+        "parts": [
+          "z60:4.76/4.9"
+        ],
+        "sim": {
+          "z60": 4.76,
+          "et": 13.436,
+          "trap": 104.53,
+          "z60130": 18.312,
+          "peakHP": 280
+        },
+        "tgt": {
+          "z60": 4.9,
+          "et": 13.4,
+          "trap": 105,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 BMW 550i",
+        "id": "2007-bmw-550i",
+        "parts": [
+          "z60:5.071/5.2"
+        ],
+        "sim": {
+          "z60": 5.071,
+          "et": 13.749,
+          "trap": 103.68,
+          "z60130": 17.808,
+          "peakHP": 285
+        },
+        "tgt": {
+          "z60": 5.2,
+          "et": 13.7,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2009 Mercedes CLS550",
+        "id": "2009-mercedes-cls550",
+        "parts": [
+          "z60:5.317/5.4"
+        ],
+        "sim": {
+          "z60": 5.317,
+          "et": 13.948,
+          "trap": 103.16,
+          "z60130": 19.207,
+          "peakHP": 274
+        },
+        "tgt": {
+          "z60": 5.4,
+          "et": 13.9,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2011 Audi A7 3.0T",
+        "id": "2011-audi-a7-3-0t",
+        "parts": [
+          "z60:5.052/5.2"
+        ],
+        "sim": {
+          "z60": 5.052,
+          "et": 13.736,
+          "trap": 103.28,
+          "z60130": 19.487,
+          "peakHP": 282
+        },
+        "tgt": {
+          "z60": 5.2,
+          "et": 13.7,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2006 Mercedes CLK55 AMG",
+        "id": "2006-mercedes-clk55-amg",
+        "parts": [
+          "z60:4.94/5"
+        ],
+        "sim": {
+          "z60": 4.94,
+          "et": 13.549,
+          "trap": 105.81,
+          "z60130": 17.856,
+          "peakHP": 288
+        },
+        "tgt": {
+          "z60": 5,
+          "et": 13.5,
+          "trap": 106,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2007 Audi S6 V10",
+        "id": "2007-audi-s6-v10",
+        "parts": [
+          "et:13.466/13.6",
+          "z60:4.751/5.1"
+        ],
+        "sim": {
+          "z60": 4.751,
+          "et": 13.466,
+          "trap": 104.57,
+          "z60130": 17.53,
+          "peakHP": 312
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.6,
+          "trap": 105,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2003 BMW M3 E46",
+        "id": "2003-bmw-m3-e46",
+        "parts": [
+          "z60:4.714/4.8"
+        ],
+        "sim": {
+          "z60": 4.714,
+          "et": 13.271,
+          "trap": 106.58,
+          "z60130": 16.596,
+          "peakHP": 267
+        },
+        "tgt": {
+          "z60": 4.8,
+          "et": 13.3,
+          "trap": 107,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2005 Mercedes E55 AMG",
+        "id": "2005-mercedes-e55-amg",
+        "parts": [
+          "z60:4.191/4.3"
+        ],
+        "sim": {
+          "z60": 4.191,
+          "et": 12.632,
+          "trap": 113.67,
+          "z60130": 12.482,
+          "peakHP": 365
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.6,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2008 Audi RS4",
+        "id": "2008-audi-rs4",
+        "parts": [
+          "z60:4.385/4.5"
+        ],
+        "sim": {
+          "z60": 4.385,
+          "et": 13.046,
+          "trap": 109.44,
+          "z60130": 15.089,
+          "peakHP": 345
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 13,
+          "trap": 109,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Porsche 718 Cayman GT4 RS",
+        "id": "2023-porsche-718-cayman-gt4-rs",
+        "parts": [
+          "et:11.226/11.3",
+          "z60:3.043/3.1"
+        ],
+        "sim": {
+          "z60": 3.043,
+          "et": 11.226,
+          "trap": 124.59,
+          "z60130": 9.285,
+          "peakHP": 393
+        },
+        "tgt": {
+          "z60": 3.1,
+          "et": 11.3,
+          "trap": 125,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Toyota GR Supra 3.0",
+        "id": "2023-toyota-gr-supra-3-0",
+        "parts": [
+          "et:12.219/12.3",
+          "z60:3.755/3.9"
+        ],
+        "sim": {
+          "z60": 3.755,
+          "et": 12.219,
+          "trap": 114.51,
+          "z60130": 12.836,
+          "peakHP": 316
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.3,
+          "trap": 115,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Nissan Z Performance",
+        "id": "2023-nissan-z-performance",
+        "parts": [
+          "et:12.187/12.3",
+          "z60:3.711/4.3"
+        ],
+        "sim": {
+          "z60": 3.711,
+          "et": 12.187,
+          "trap": 115.89,
+          "z60130": 11.829,
+          "peakHP": 351
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.3,
+          "trap": 116,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 BMW M2",
+        "id": "2024-bmw-m2",
+        "parts": [
+          "z60:3.47/3.4"
+        ],
+        "sim": {
+          "z60": 3.47,
+          "et": 11.756,
+          "trap": 120.31,
+          "z60130": 10.755,
+          "peakHP": 395
+        },
+        "tgt": {
+          "z60": 3.4,
+          "et": 11.8,
+          "trap": 120,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Chevrolet Corvette Stingray",
+        "id": "2024-chevrolet-corvette-stingray",
+        "parts": [
+          "z60:3.008/3.3"
+        ],
+        "sim": {
+          "z60": 3.008,
+          "et": 11.246,
+          "trap": 123.01,
+          "z60130": 9.788,
+          "peakHP": 402
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.2,
+          "trap": 123,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Mazda MX-5 Miata Club",
+        "id": "2023-mazda-mx-5-miata-club",
+        "parts": [
+          "z60:5.511/5.7"
+        ],
+        "sim": {
+          "z60": 5.511,
+          "et": 14.338,
+          "trap": 96.32,
+          "z60130": 34.668,
+          "peakHP": 147
+        },
+        "tgt": {
+          "z60": 5.7,
+          "et": 14.3,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Lexus LC 500 Coupe",
+        "id": "2024-lexus-lc-500-coupe",
+        "parts": [
+          "et:12.218/12.8",
+          "z60:3.727/4.4"
+        ],
+        "sim": {
+          "z60": 3.727,
+          "et": 12.218,
+          "trap": 113.82,
+          "z60130": 12.843,
+          "peakHP": 386
+        },
+        "tgt": {
+          "z60": 4.4,
+          "et": 12.8,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Ford Bronco Raptor",
+        "id": "2023-ford-bronco-raptor",
+        "parts": [
+          "et:13.675/14.2",
+          "z60:4.882/5.6"
+        ],
+        "sim": {
+          "z60": 4.882,
+          "et": 13.675,
+          "trap": 98.56,
+          "z60130": 31.771,
+          "peakHP": 362
+        },
+        "tgt": {
+          "z60": 5.6,
+          "et": 14.2,
+          "trap": 99,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Toyota GR86",
+        "id": "2024-toyota-gr86",
+        "parts": [
+          "z60:5.414/5.3"
+        ],
+        "sim": {
+          "z60": 5.414,
+          "et": 13.965,
+          "trap": 100.8,
+          "z60130": 21.235,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 14,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Subaru BRZ",
+        "id": "2024-subaru-brz",
+        "parts": [
+          "et:13.95/14",
+          "z60:5.376/5.3"
+        ],
+        "sim": {
+          "z60": 5.376,
+          "et": 13.95,
+          "trap": 100.51,
+          "z60130": 21.94,
+          "peakHP": 189
+        },
+        "tgt": {
+          "z60": 5.3,
+          "et": 14,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Chevrolet Corvette Z06",
+        "id": "2023-chevrolet-corvette-z06",
+        "parts": [
+          "z60:2.93/3"
+        ],
+        "sim": {
+          "z60": 2.93,
+          "et": 10.852,
+          "trap": 130.85,
+          "z60130": 7.778,
+          "peakHP": 529
+        },
+        "tgt": {
+          "z60": 3,
+          "et": 10.9,
+          "trap": 131,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2026 Chevrolet Corvette ZR1X",
+        "id": "2026-chevrolet-corvette-zr1x",
+        "parts": [
+          "et:8.959/8.675",
+          "z60130:4.069/3.87"
+        ],
+        "sim": {
+          "z60": 1.898,
+          "et": 8.959,
+          "trap": 159.48,
+          "z60130": 4.069,
+          "peakHP": 990
+        },
+        "tgt": {
+          "z60": 1.9,
+          "et": 8.675,
+          "trap": 159,
+          "z60130": 3.87
+        }
+      },
+      {
+        "name": "2024 Acura Integra Type S",
+        "id": "2024-acura-integra-type-s",
+        "parts": [
+          "z60:4.919/5"
+        ],
+        "sim": {
+          "z60": 4.919,
+          "et": 13.544,
+          "trap": 106.36,
+          "z60130": 16.728,
+          "peakHP": 259
+        },
+        "tgt": {
+          "z60": 5,
+          "et": 13.5,
+          "trap": 106,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Acura TLX Type S",
+        "id": "2023-acura-tlx-type-s",
+        "parts": [
+          "et:12.807/13.2",
+          "z60:4.086/4.7"
+        ],
+        "sim": {
+          "z60": 4.086,
+          "et": 12.807,
+          "trap": 106.58,
+          "z60130": 17.177,
+          "peakHP": 307
+        },
+        "tgt": {
+          "z60": 4.7,
+          "et": 13.2,
+          "trap": 107,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Lexus IS 500",
+        "id": "2024-lexus-is-500",
+        "parts": [
+          "et:12.398/12.8",
+          "z60:3.9/4.4"
+        ],
+        "sim": {
+          "z60": 3.9,
+          "et": 12.398,
+          "trap": 113.5,
+          "z60130": 12.83,
+          "peakHP": 354
+        },
+        "tgt": {
+          "z60": 4.4,
+          "et": 12.8,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Audi RS 3",
+        "id": "2024-audi-rs-3",
+        "parts": [
+          "et:11.59/11.7",
+          "z60:3.108/3.3"
+        ],
+        "sim": {
+          "z60": 3.108,
+          "et": 11.59,
+          "trap": 118.69,
+          "z60130": 11.245,
+          "peakHP": 363
+        },
+        "tgt": {
+          "z60": 3.3,
+          "et": 11.7,
+          "trap": 119,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Lexus RC F",
+        "id": "2024-lexus-rc-f",
+        "parts": [
+          "et:12.298/12.6",
+          "z60:3.833/4.3"
+        ],
+        "sim": {
+          "z60": 3.833,
+          "et": 12.298,
+          "trap": 114.56,
+          "z60130": 12.475,
+          "peakHP": 364
+        },
+        "tgt": {
+          "z60": 4.3,
+          "et": 12.6,
+          "trap": 115,
+          "z60130": null
+        }
+      }
+    ],
+    "ev": [
+      {
+        "name": "2022 Tesla Model S Plaid",
+        "id": "2022-tesla-model-s-plaid",
+        "parts": [
+          "z60130:4.441/4.8"
+        ],
+        "sim": {
+          "z60": 2.069,
+          "et": 9.26,
+          "trap": 150.68,
+          "z60130": 4.441,
+          "peakHP": 1039
+        },
+        "tgt": {
+          "z60": 2.1,
+          "et": 9.25,
+          "trap": 151,
+          "z60130": 4.8
+        }
+      },
+      {
+        "name": "2024 Tesla Model 3 Performance",
+        "id": "2024-tesla-model-3-performance",
+        "parts": [
+          "z60130:9.288/9.2"
+        ],
+        "sim": {
+          "z60": 2.917,
+          "et": 11.034,
+          "trap": 124.99,
+          "z60130": 9.288,
+          "peakHP": 481
+        },
+        "tgt": {
+          "z60": 2.9,
+          "et": 11,
+          "trap": 124.5,
+          "z60130": 9.2
+        }
+      },
+      {
+        "name": "2022 Porsche Taycan Turbo S",
+        "id": "2022-porsche-taycan-turbo-s",
+        "parts": [
+          "z60130:8.045/6.5"
+        ],
+        "sim": {
+          "z60": 2.352,
+          "et": 10.493,
+          "trap": 130.5,
+          "z60130": 8.045,
+          "peakHP": 641
+        },
+        "tgt": {
+          "z60": 2.4,
+          "et": 10.5,
+          "trap": 130,
+          "z60130": 6.5
+        }
+      },
+      {
+        "name": "2024 Lucid Air Sapphire",
+        "id": "2024-lucid-air-sapphire",
+        "parts": [
+          "et:9.05/9",
+          "z60130:4.299/4.6",
+          "z60:1.866/2.1"
+        ],
+        "sim": {
+          "z60": 1.866,
+          "et": 9.05,
+          "trap": 156.6,
+          "z60130": 4.299,
+          "peakHP": 1183
+        },
+        "tgt": {
+          "z60": 2.1,
+          "et": 9,
+          "trap": 157,
+          "z60130": 4.6
+        }
+      },
+      {
+        "name": "2024 Cadillac Lyriq AWD",
+        "id": "2024-cadillac-lyriq-awd",
+        "parts": [
+          "z60:4.813/4.6"
+        ],
+        "sim": {
+          "z60": 4.813,
+          "et": 13.251,
+          "trap": 104.4,
+          "z60130": null,
+          "peakHP": 411
+        },
+        "tgt": {
+          "z60": 4.6,
+          "et": 13.3,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Volvo EX90 Twin Motor",
+        "id": "2024-volvo-ex90-twin-motor",
+        "parts": [
+          "z60:5.026/4.9"
+        ],
+        "sim": {
+          "z60": 5.026,
+          "et": 13.454,
+          "trap": 103.4,
+          "z60130": null,
+          "peakHP": 431
+        },
+        "tgt": {
+          "z60": 4.9,
+          "et": 13.5,
+          "trap": 103,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Audi Q4 e-tron",
+        "id": "2023-audi-q4-e-tron",
+        "parts": [
+          "z60:6.14/5.8"
+        ],
+        "sim": {
+          "z60": 6.14,
+          "et": 14.462,
+          "trap": 97.4,
+          "z60130": null,
+          "peakHP": 302
+        },
+        "tgt": {
+          "z60": 5.8,
+          "et": 14.5,
+          "trap": 97,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2022 Mercedes EQB 350",
+        "id": "2022-mercedes-eqb-350",
+        "parts": [
+          "z60:6.226/6"
+        ],
+        "sim": {
+          "z60": 6.226,
+          "et": 14.563,
+          "trap": 96.4,
+          "z60130": null,
+          "peakHP": 285
+        },
+        "tgt": {
+          "z60": 6,
+          "et": 14.6,
+          "trap": 96,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Nissan Ariya e-4ORCE",
+        "id": "2023-nissan-ariya-e-4orce",
+        "parts": [
+          "z60:5.341/5.1"
+        ],
+        "sim": {
+          "z60": 5.341,
+          "et": 13.751,
+          "trap": 101.4,
+          "z60130": null,
+          "peakHP": 325
+        },
+        "tgt": {
+          "z60": 5.1,
+          "et": 13.8,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Subaru Solterra",
+        "id": "2024-subaru-solterra",
+        "parts": [
+          "z60:6.77/6.5"
+        ],
+        "sim": {
+          "z60": 6.77,
+          "et": 15.05,
+          "trap": 92.4,
+          "z60130": null,
+          "peakHP": 258
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 15.1,
+          "trap": 92,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Toyota bZ4X AWD",
+        "id": "2023-toyota-bz4x-awd",
+        "parts": [
+          "z60:6.749/6.5"
+        ],
+        "sim": {
+          "z60": 6.749,
+          "et": 15.053,
+          "trap": 92.4,
+          "z60130": null,
+          "peakHP": 242
+        },
+        "tgt": {
+          "z60": 6.5,
+          "et": 15.1,
+          "trap": 92,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Fisker Ocean Extreme",
+        "id": "2024-fisker-ocean-extreme",
+        "parts": [
+          "et:12.45/12.5",
+          "z60:4.015/3.9"
+        ],
+        "sim": {
+          "z60": 4.015,
+          "et": 12.45,
+          "trap": 110.4,
+          "z60130": null,
+          "peakHP": 462
+        },
+        "tgt": {
+          "z60": 3.9,
+          "et": 12.5,
+          "trap": 110,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Hyundai Ioniq 6 AWD",
+        "id": "2024-hyundai-ioniq-6-awd",
+        "parts": [
+          "z60:4.989/4.8"
+        ],
+        "sim": {
+          "z60": 4.989,
+          "et": 13.362,
+          "trap": 104.4,
+          "z60130": null,
+          "peakHP": 320
+        },
+        "tgt": {
+          "z60": 4.8,
+          "et": 13.4,
+          "trap": 104,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 VW ID.4 AWD Pro",
+        "id": "2023-vw-id-4-awd-pro",
+        "parts": [
+          "z60:6.012/5.7"
+        ],
+        "sim": {
+          "z60": 6.012,
+          "et": 14.353,
+          "trap": 97.4,
+          "z60130": null,
+          "peakHP": 307
+        },
+        "tgt": {
+          "z60": 5.7,
+          "et": 14.4,
+          "trap": 97,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Ford Mustang Mach-E GT",
+        "id": "2023-ford-mustang-mach-e-gt",
+        "parts": [
+          "z60:3.743/3.6"
+        ],
+        "sim": {
+          "z60": 3.743,
+          "et": 12.151,
+          "trap": 113.91,
+          "z60130": null,
+          "peakHP": 449
+        },
+        "tgt": {
+          "z60": 3.6,
+          "et": 12.2,
+          "trap": 114,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 BMW i5 M60",
+        "id": "2024-bmw-i5-m60",
+        "parts": [
+          "z60:3.743/3.6"
+        ],
+        "sim": {
+          "z60": 3.743,
+          "et": 12.055,
+          "trap": 115.4,
+          "z60130": null,
+          "peakHP": 472
+        },
+        "tgt": {
+          "z60": 3.6,
+          "et": 12.1,
+          "trap": 115,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Mercedes EQS 450+",
+        "id": "2024-mercedes-eqs-450",
+        "parts": [
+          "z60:5.636/5.4"
+        ],
+        "sim": {
+          "z60": 5.636,
+          "et": 13.951,
+          "trap": 101.4,
+          "z60130": null,
+          "peakHP": 375
+        },
+        "tgt": {
+          "z60": 5.4,
+          "et": 14,
+          "trap": 101,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Hyundai Kona Electric",
+        "id": "2023-hyundai-kona-electric",
+        "parts": [
+          "z60:6.929/6.8"
+        ],
+        "sim": {
+          "z60": 6.929,
+          "et": 15.252,
+          "trap": 90.4,
+          "z60130": null,
+          "peakHP": 212
+        },
+        "tgt": {
+          "z60": 6.8,
+          "et": 15.3,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Kia Niro EV",
+        "id": "2024-kia-niro-ev",
+        "parts": [
+          "z60:7.096/6.9"
+        ],
+        "sim": {
+          "z60": 7.096,
+          "et": 15.359,
+          "trap": 90.4,
+          "z60130": null,
+          "peakHP": 201
+        },
+        "tgt": {
+          "z60": 6.9,
+          "et": 15.4,
+          "trap": 90,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2023 Mercedes EQS 580 SUV",
+        "id": "2023-mercedes-eqs-580-suv",
+        "parts": [
+          "z60:4.759/4.5"
+        ],
+        "sim": {
+          "z60": 4.759,
+          "et": 13.056,
+          "trap": 108.4,
+          "z60130": null,
+          "peakHP": 504
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 13.1,
+          "trap": 108,
+          "z60130": null
+        }
+      },
+      {
+        "name": "2024 Volvo XC40 Recharge",
+        "id": "2024-volvo-xc40-recharge",
+        "parts": [
+          "z60:4.712/4.5"
+        ],
+        "sim": {
+          "z60": 4.712,
+          "et": 13.15,
+          "trap": 104.4,
+          "z60130": null,
+          "peakHP": 357
+        },
+        "tgt": {
+          "z60": 4.5,
+          "et": 13.2,
+          "trap": 104,
+          "z60130": null
+        }
+      }
+    ]
+  }
+}

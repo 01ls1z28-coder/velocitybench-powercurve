@@ -1,0 +1,1701 @@
+[
+  {
+    "phase": "ev",
+    "name": "2023 Hyundai Ioniq 5 N",
+    "id": "2023-hyundai-ioniq-5-n",
+    "tuned": false,
+    "excel": {
+      "z60": 3.2,
+      "et": 11,
+      "trap": 124.9,
+      "z60130": null,
+      "excelHp": 641,
+      "excelWt": 4700
+    },
+    "beforeSim": {
+      "z60": 3.169,
+      "et": 11.041,
+      "trap": 125.3,
+      "z60130": null,
+      "peakHP": 625
+    },
+    "afterSim": {
+      "z60": 3.169,
+      "et": 11.041,
+      "trap": 125.3,
+      "z60130": null,
+      "peakHP": 625
+    },
+    "after": {
+      "hp": 679,
+      "wt": 4700,
+      "tire": 4,
+      "drag": 0.29,
+      "loss": 8,
+      "launchDrive": 1.363,
+      "launchMu": 1.21
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 Ford F-150 Lightning",
+    "id": "2022-ford-f-150-lightning",
+    "tuned": false,
+    "excel": {
+      "z60": 4,
+      "et": 12.5,
+      "trap": 108,
+      "z60130": null,
+      "excelHp": 580,
+      "excelWt": 6500
+    },
+    "beforeSim": {
+      "z60": 4.038,
+      "et": 12.455,
+      "trap": 108.3,
+      "z60130": null,
+      "peakHP": 589
+    },
+    "afterSim": {
+      "z60": 4.038,
+      "et": 12.455,
+      "trap": 108.3,
+      "z60130": null,
+      "peakHP": 589
+    },
+    "after": {
+      "hp": 640,
+      "wt": 6500,
+      "tire": 0,
+      "drag": 0.5503387034702162,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Tesla Model Y Performance",
+    "id": "2023-tesla-model-y-performance",
+    "tuned": false,
+    "excel": {
+      "z60": 3.5,
+      "et": 11.8,
+      "trap": 115,
+      "z60130": null,
+      "excelHp": 456,
+      "excelWt": 4416
+    },
+    "beforeSim": {
+      "z60": 3.493,
+      "et": 11.77,
+      "trap": 115.4,
+      "z60130": null,
+      "peakHP": 438
+    },
+    "afterSim": {
+      "z60": 3.493,
+      "et": 11.77,
+      "trap": 115.4,
+      "z60130": null,
+      "peakHP": 438
+    },
+    "after": {
+      "hp": 476,
+      "wt": 4416,
+      "tire": 4,
+      "drag": 0.23,
+      "loss": 8,
+      "launchDrive": 1.45,
+      "launchMu": 1.217
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 Tesla Model X Plaid",
+    "id": "2022-tesla-model-x-plaid",
+    "tuned": false,
+    "excel": {
+      "z60": 2.5,
+      "et": 9.8,
+      "trap": 145,
+      "z60130": null,
+      "excelHp": 1020,
+      "excelWt": 5328
+    },
+    "beforeSim": {
+      "z60": 2.472,
+      "et": 9.836,
+      "trap": 145.4,
+      "z60130": 5.104,
+      "peakHP": 997
+    },
+    "afterSim": {
+      "z60": 2.472,
+      "et": 9.836,
+      "trap": 145.4,
+      "z60130": 5.104,
+      "peakHP": 997
+    },
+    "after": {
+      "hp": 1084,
+      "wt": 5328,
+      "tire": 4,
+      "drag": 0.25,
+      "loss": 8,
+      "launchDrive": 1.145,
+      "launchMu": 1.11
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Kia EV6 GT",
+    "id": "2023-kia-ev6-gt",
+    "tuned": false,
+    "excel": {
+      "z60": 3.2,
+      "et": 11.4,
+      "trap": 122,
+      "z60130": null,
+      "excelHp": 576,
+      "excelWt": 4780
+    },
+    "beforeSim": {
+      "z60": 3.24,
+      "et": 11.416,
+      "trap": 122.21,
+      "z60130": 10.253,
+      "peakHP": 517
+    },
+    "afterSim": {
+      "z60": 3.24,
+      "et": 11.416,
+      "trap": 122.21,
+      "z60130": 10.253,
+      "peakHP": 517
+    },
+    "after": {
+      "hp": 562,
+      "wt": 4780,
+      "tire": 4,
+      "drag": 0.28,
+      "loss": 8,
+      "launchDrive": 1.431,
+      "launchMu": 1.228
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Polestar 2 Performance",
+    "id": "2023-polestar-2-performance",
+    "tuned": false,
+    "excel": {
+      "z60": 4.1,
+      "et": 12.6,
+      "trap": 111,
+      "z60130": null,
+      "excelHp": 476,
+      "excelWt": 4650
+    },
+    "beforeSim": {
+      "z60": 4.147,
+      "et": 12.567,
+      "trap": 111.3,
+      "z60130": null,
+      "peakHP": 386
+    },
+    "afterSim": {
+      "z60": 4.147,
+      "et": 12.567,
+      "trap": 111.3,
+      "z60130": null,
+      "peakHP": 386
+    },
+    "after": {
+      "hp": 420,
+      "wt": 4650,
+      "tire": 4,
+      "drag": 0.34405475410487657,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 BMW iX M60",
+    "id": "2022-bmw-ix-m60",
+    "tuned": false,
+    "excel": {
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 114,
+      "z60130": null,
+      "excelHp": 610,
+      "excelWt": 5750
+    },
+    "beforeSim": {
+      "z60": 3.587,
+      "et": 12.148,
+      "trap": 114.19,
+      "z60130": 14.632,
+      "peakHP": 494
+    },
+    "afterSim": {
+      "z60": 3.587,
+      "et": 12.148,
+      "trap": 114.19,
+      "z60130": 14.632,
+      "peakHP": 494
+    },
+    "after": {
+      "hp": 537,
+      "wt": 5750,
+      "tire": 4,
+      "drag": 0.29,
+      "loss": 8,
+      "launchDrive": 1.351,
+      "launchMu": 1.176
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Mercedes EQE AMG 53",
+    "id": "2023-mercedes-eqe-amg-53",
+    "tuned": false,
+    "excel": {
+      "z60": 3.2,
+      "et": 11.6,
+      "trap": 120,
+      "z60130": null,
+      "excelHp": 677,
+      "excelWt": 5400
+    },
+    "beforeSim": {
+      "z60": 3.246,
+      "et": 11.567,
+      "trap": 119.61,
+      "z60130": 12.264,
+      "peakHP": 570
+    },
+    "afterSim": {
+      "z60": 3.246,
+      "et": 11.567,
+      "trap": 119.61,
+      "z60130": 12.264,
+      "peakHP": 570
+    },
+    "after": {
+      "hp": 619,
+      "wt": 5400,
+      "tire": 4,
+      "drag": 0.23,
+      "loss": 8,
+      "launchDrive": 0.979,
+      "launchMu": 1.007
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Tesla Cybertruck Tri-Motor",
+    "id": "2024-tesla-cybertruck-tri-motor",
+    "tuned": false,
+    "excel": {
+      "z60": 2.6,
+      "et": 11,
+      "trap": 119,
+      "z60130": null,
+      "excelHp": 845,
+      "excelWt": 6800
+    },
+    "beforeSim": {
+      "z60": 2.638,
+      "et": 10.97,
+      "trap": 119.39,
+      "z60130": 13.465,
+      "peakHP": 805
+    },
+    "afterSim": {
+      "z60": 2.638,
+      "et": 10.97,
+      "trap": 119.39,
+      "z60130": 13.465,
+      "peakHP": 805
+    },
+    "after": {
+      "hp": 875,
+      "wt": 6800,
+      "tire": 3,
+      "drag": 0.34,
+      "loss": 8,
+      "launchDrive": 1.298,
+      "launchMu": 1.17
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Tesla Model X Long Range",
+    "id": "2024-tesla-model-x-long-range",
+    "tuned": false,
+    "excel": {
+      "z60": 3.6,
+      "et": 11.4,
+      "trap": 127,
+      "z60130": null,
+      "excelHp": 670,
+      "excelWt": 5185
+    },
+    "beforeSim": {
+      "z60": 3.568,
+      "et": 11.449,
+      "trap": 127.4,
+      "z60130": null,
+      "peakHP": 647
+    },
+    "afterSim": {
+      "z60": 3.568,
+      "et": 11.449,
+      "trap": 127.4,
+      "z60130": null,
+      "peakHP": 647
+    },
+    "after": {
+      "hp": 703,
+      "wt": 5185,
+      "tire": 3,
+      "drag": 0.24,
+      "loss": 8,
+      "launchDrive": 1.214,
+      "launchMu": 1.142
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Chevrolet Blazer EV SS",
+    "id": "2024-chevrolet-blazer-ev-ss",
+    "tuned": false,
+    "excel": {
+      "z60": 3.4,
+      "et": 11.7,
+      "trap": 117,
+      "z60130": null,
+      "excelHp": 557,
+      "excelWt": 5400
+    },
+    "beforeSim": {
+      "z60": 3.426,
+      "et": 11.67,
+      "trap": 117.4,
+      "z60130": null,
+      "peakHP": 550
+    },
+    "afterSim": {
+      "z60": 3.426,
+      "et": 11.67,
+      "trap": 117.4,
+      "z60130": null,
+      "peakHP": 550
+    },
+    "after": {
+      "hp": 598,
+      "wt": 5400,
+      "tire": 4,
+      "drag": 0.29,
+      "loss": 8,
+      "launchDrive": 1.45,
+      "launchMu": 1.25
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Rivian R1S Quad Motor",
+    "id": "2024-rivian-r1s-quad-motor",
+    "tuned": false,
+    "excel": {
+      "z60": 3,
+      "et": 11.1,
+      "trap": 121,
+      "z60130": null,
+      "excelHp": 835,
+      "excelWt": 7100
+    },
+    "beforeSim": {
+      "z60": 3.047,
+      "et": 11.056,
+      "trap": 121.3,
+      "z60130": null,
+      "peakHP": 890
+    },
+    "afterSim": {
+      "z60": 3.047,
+      "et": 11.056,
+      "trap": 121.3,
+      "z60130": null,
+      "peakHP": 890
+    },
+    "after": {
+      "hp": 967,
+      "wt": 7100,
+      "tire": 3,
+      "drag": 0.3,
+      "loss": 8,
+      "launchDrive": 1.49,
+      "launchMu": 1.25
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 BMW i7 xDrive60",
+    "id": "2023-bmw-i7-xdrive60",
+    "tuned": false,
+    "excel": {
+      "z60": 4.3,
+      "et": 12.8,
+      "trap": 111,
+      "z60130": null,
+      "excelHp": 536,
+      "excelWt": 5950
+    },
+    "beforeSim": {
+      "z60": 4.349,
+      "et": 12.751,
+      "trap": 111.12,
+      "z60130": null,
+      "peakHP": 469
+    },
+    "afterSim": {
+      "z60": 4.349,
+      "et": 12.751,
+      "trap": 111.12,
+      "z60130": null,
+      "peakHP": 469
+    },
+    "after": {
+      "hp": 510,
+      "wt": 5950,
+      "tire": 3,
+      "drag": 0.3082,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Audi e-tron GT",
+    "id": "2023-audi-e-tron-gt",
+    "tuned": false,
+    "excel": {
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 116,
+      "z60130": null,
+      "excelHp": 522,
+      "excelWt": 5100
+    },
+    "beforeSim": {
+      "z60": 3.551,
+      "et": 12.108,
+      "trap": 115.84,
+      "z60130": 12.212,
+      "peakHP": 440
+    },
+    "afterSim": {
+      "z60": 3.551,
+      "et": 12.108,
+      "trap": 115.84,
+      "z60130": 12.212,
+      "peakHP": 440
+    },
+    "after": {
+      "hp": 478,
+      "wt": 5100,
+      "tire": 4,
+      "drag": 0.24,
+      "loss": 8,
+      "launchDrive": 1.016,
+      "launchMu": 1.015
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Lucid Air Touring",
+    "id": "2024-lucid-air-touring",
+    "tuned": false,
+    "excel": {
+      "z60": 3,
+      "et": 11.2,
+      "trap": 123,
+      "z60130": null,
+      "excelHp": 620,
+      "excelWt": 4900
+    },
+    "beforeSim": {
+      "z60": 2.975,
+      "et": 11.245,
+      "trap": 123.31,
+      "z60130": 10.17,
+      "peakHP": 522
+    },
+    "afterSim": {
+      "z60": 2.975,
+      "et": 11.245,
+      "trap": 123.31,
+      "z60130": 10.17,
+      "peakHP": 522
+    },
+    "after": {
+      "hp": 567,
+      "wt": 4900,
+      "tire": 3,
+      "drag": 0.21,
+      "loss": 8,
+      "launchDrive": 1.277,
+      "launchMu": 1.138
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Tesla Model S Long Range",
+    "id": "2024-tesla-model-s-long-range",
+    "tuned": false,
+    "excel": {
+      "z60": 3.1,
+      "et": 10.8,
+      "trap": 129,
+      "z60130": null,
+      "excelHp": 670,
+      "excelWt": 4760
+    },
+    "beforeSim": {
+      "z60": 3.062,
+      "et": 10.85,
+      "trap": 129.4,
+      "z60130": null,
+      "peakHP": 656
+    },
+    "afterSim": {
+      "z60": 3.062,
+      "et": 10.85,
+      "trap": 129.4,
+      "z60130": null,
+      "peakHP": 656
+    },
+    "after": {
+      "hp": 713,
+      "wt": 4760,
+      "tire": 3,
+      "drag": 0.21,
+      "loss": 8,
+      "launchDrive": 1.405,
+      "launchMu": 1.23
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2021 Rimac Nevera",
+    "id": "2021-rimac-nevera",
+    "tuned": false,
+    "excel": {
+      "z60": 1.74,
+      "et": 8.25,
+      "trap": null,
+      "z60130": 2.99,
+      "excelHp": 1914,
+      "excelWt": 4750
+    },
+    "beforeSim": {
+      "z60": 1.738,
+      "et": 8.286,
+      "trap": 173.23,
+      "z60130": 2.949,
+      "peakHP": 1818
+    },
+    "afterSim": {
+      "z60": 1.738,
+      "et": 8.286,
+      "trap": 173.23,
+      "z60130": 2.949,
+      "peakHP": 1818
+    },
+    "after": {
+      "hp": 1851,
+      "wt": 4750,
+      "tire": 4,
+      "drag": 0.7608,
+      "loss": 8,
+      "launchDrive": 1.3800000000000001,
+      "launchMu": 1.2
+    },
+    "hits": {
+      "trap": null,
+      "et": true,
+      "z60130": true,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 Tesla Model S Plaid",
+    "id": "2022-tesla-model-s-plaid",
+    "tuned": true,
+    "excel": {
+      "z60": 2.1,
+      "et": 9.25,
+      "trap": 151,
+      "z60130": 4.8,
+      "excelHp": 1020,
+      "excelWt": 4827
+    },
+    "beforeSim": {
+      "z60": 2.089,
+      "et": 9.286,
+      "trap": 150.52,
+      "z60130": 4.436,
+      "peakHP": 1046
+    },
+    "afterSim": {
+      "z60": 2.069,
+      "et": 9.26,
+      "trap": 150.68,
+      "z60130": 4.441,
+      "peakHP": 1039
+    },
+    "after": {
+      "hp": 1129,
+      "wt": 4827,
+      "tire": 5,
+      "drag": 0.2154,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 0.95,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": false,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Tesla Model 3 Performance",
+    "id": "2024-tesla-model-3-performance",
+    "tuned": true,
+    "excel": {
+      "z60": 2.9,
+      "et": 11,
+      "trap": 124.5,
+      "z60130": 9.2,
+      "excelHp": 510,
+      "excelWt": 4072
+    },
+    "beforeSim": {
+      "z60": 2.909,
+      "et": 11.027,
+      "trap": 124.94,
+      "z60130": 9.309,
+      "peakHP": 482
+    },
+    "afterSim": {
+      "z60": 2.917,
+      "et": 11.034,
+      "trap": 124.99,
+      "z60130": 9.288,
+      "peakHP": 481
+    },
+    "after": {
+      "hp": 496,
+      "wt": 4072,
+      "tire": 4,
+      "drag": 0.22,
+      "loss": 4,
+      "launchDrive": 1.433,
+      "launchMu": 1.217,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": false,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 Porsche Taycan Turbo S",
+    "id": "2022-porsche-taycan-turbo-s",
+    "tuned": true,
+    "excel": {
+      "z60": 2.4,
+      "et": 10.5,
+      "trap": 130,
+      "z60130": 6.5,
+      "excelHp": 750,
+      "excelWt": 5121
+    },
+    "beforeSim": {
+      "z60": 2.375,
+      "et": 10.519,
+      "trap": 130.49,
+      "z60130": 8.051,
+      "peakHP": 635
+    },
+    "afterSim": {
+      "z60": 2.352,
+      "et": 10.493,
+      "trap": 130.5,
+      "z60130": 8.045,
+      "peakHP": 641
+    },
+    "after": {
+      "hp": 697,
+      "wt": 5121,
+      "tire": 0,
+      "drag": 0.29,
+      "loss": 8,
+      "launchDrive": 1.058,
+      "launchMu": 1.034,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": false,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Lucid Air Sapphire",
+    "id": "2024-lucid-air-sapphire",
+    "tuned": true,
+    "excel": {
+      "z60": 2.1,
+      "et": 9,
+      "trap": 157,
+      "z60130": 4.6,
+      "excelHp": 1234,
+      "excelWt": 5345
+    },
+    "beforeSim": {
+      "z60": 1.866,
+      "et": 9.05,
+      "trap": 156.6,
+      "z60130": 4.299,
+      "peakHP": 1183
+    },
+    "afterSim": {
+      "z60": 1.866,
+      "et": 9.05,
+      "trap": 156.6,
+      "z60130": 4.299,
+      "peakHP": 1183
+    },
+    "after": {
+      "hp": 1286,
+      "wt": 5345,
+      "tire": 4,
+      "drag": 0.2435,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": false,
+      "z60130": false,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Cadillac Lyriq AWD",
+    "id": "2024-cadillac-lyriq-awd",
+    "tuned": true,
+    "excel": {
+      "z60": 4.6,
+      "et": 13.3,
+      "trap": 104,
+      "z60130": null,
+      "excelHp": 500,
+      "excelWt": 5600
+    },
+    "beforeSim": {
+      "z60": 4.813,
+      "et": 13.251,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 411
+    },
+    "afterSim": {
+      "z60": 4.813,
+      "et": 13.251,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 411
+    },
+    "after": {
+      "hp": 447,
+      "wt": 5600,
+      "tire": 3,
+      "drag": 0.3465,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Genesis GV60 Performance",
+    "id": "2023-genesis-gv60-performance",
+    "tuned": true,
+    "excel": {
+      "z60": 3.8,
+      "et": 12.3,
+      "trap": 113,
+      "z60130": null,
+      "excelHp": 429,
+      "excelWt": 4750
+    },
+    "beforeSim": {
+      "z60": 3.891,
+      "et": 12.254,
+      "trap": 113.4,
+      "z60130": null,
+      "peakHP": 419
+    },
+    "afterSim": {
+      "z60": 3.849,
+      "et": 12.251,
+      "trap": 113.4,
+      "z60130": null,
+      "peakHP": 425
+    },
+    "after": {
+      "hp": 452,
+      "wt": 4750,
+      "tire": 4,
+      "drag": 0.4004,
+      "loss": 6,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": true
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Volvo EX90 Twin Motor",
+    "id": "2024-volvo-ex90-twin-motor",
+    "tuned": true,
+    "excel": {
+      "z60": 4.9,
+      "et": 13.5,
+      "trap": 103,
+      "z60130": null,
+      "excelHp": 496,
+      "excelWt": 6100
+    },
+    "beforeSim": {
+      "z60": 5.022,
+      "et": 13.45,
+      "trap": 103.4,
+      "z60130": null,
+      "peakHP": 431
+    },
+    "afterSim": {
+      "z60": 5.026,
+      "et": 13.454,
+      "trap": 103.4,
+      "z60130": null,
+      "peakHP": 431
+    },
+    "after": {
+      "hp": 440,
+      "wt": 6100,
+      "tire": 0,
+      "drag": 0.3465,
+      "loss": 2,
+      "launchDrive": 1.55,
+      "launchMu": 1.05,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Audi Q4 e-tron",
+    "id": "2023-audi-q4-e-tron",
+    "tuned": true,
+    "excel": {
+      "z60": 5.8,
+      "et": 14.5,
+      "trap": 97,
+      "z60130": null,
+      "excelHp": 295,
+      "excelWt": 4800
+    },
+    "beforeSim": {
+      "z60": 6.146,
+      "et": 14.462,
+      "trap": 97.4,
+      "z60130": null,
+      "peakHP": 306
+    },
+    "afterSim": {
+      "z60": 6.14,
+      "et": 14.462,
+      "trap": 97.4,
+      "z60130": null,
+      "peakHP": 302
+    },
+    "after": {
+      "hp": 328,
+      "wt": 4800,
+      "tire": 0,
+      "drag": 0.3002,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2022 Mercedes EQB 350",
+    "id": "2022-mercedes-eqb-350",
+    "tuned": true,
+    "excel": {
+      "z60": 6,
+      "et": 14.6,
+      "trap": 96,
+      "z60130": null,
+      "excelHp": 288,
+      "excelWt": 4800
+    },
+    "beforeSim": {
+      "z60": 6.226,
+      "et": 14.563,
+      "trap": 96.4,
+      "z60130": null,
+      "peakHP": 285
+    },
+    "afterSim": {
+      "z60": 6.226,
+      "et": 14.563,
+      "trap": 96.4,
+      "z60130": null,
+      "peakHP": 285
+    },
+    "after": {
+      "hp": 310,
+      "wt": 4800,
+      "tire": 0,
+      "drag": 0.3002,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Nissan Ariya e-4ORCE",
+    "id": "2023-nissan-ariya-e-4orce",
+    "tuned": true,
+    "excel": {
+      "z60": 5.1,
+      "et": 13.8,
+      "trap": 101,
+      "z60130": null,
+      "excelHp": 389,
+      "excelWt": 4800
+    },
+    "beforeSim": {
+      "z60": 5.341,
+      "et": 13.751,
+      "trap": 101.4,
+      "z60130": null,
+      "peakHP": 325
+    },
+    "afterSim": {
+      "z60": 5.341,
+      "et": 13.751,
+      "trap": 101.4,
+      "z60130": null,
+      "peakHP": 325
+    },
+    "after": {
+      "hp": 353,
+      "wt": 4800,
+      "tire": 3,
+      "drag": 0.3058,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Subaru Solterra",
+    "id": "2024-subaru-solterra",
+    "tuned": true,
+    "excel": {
+      "z60": 6.5,
+      "et": 15.1,
+      "trap": 92,
+      "z60130": null,
+      "excelHp": 215,
+      "excelWt": 4650
+    },
+    "beforeSim": {
+      "z60": 6.77,
+      "et": 15.05,
+      "trap": 92.4,
+      "z60130": null,
+      "peakHP": 258
+    },
+    "afterSim": {
+      "z60": 6.77,
+      "et": 15.05,
+      "trap": 92.4,
+      "z60130": null,
+      "peakHP": 258
+    },
+    "after": {
+      "hp": 280,
+      "wt": 4650,
+      "tire": 0,
+      "drag": 0.2965,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Toyota bZ4X AWD",
+    "id": "2023-toyota-bz4x-awd",
+    "tuned": true,
+    "excel": {
+      "z60": 6.5,
+      "et": 15.1,
+      "trap": 92,
+      "z60130": null,
+      "excelHp": 214,
+      "excelWt": 4500
+    },
+    "beforeSim": {
+      "z60": 6.75,
+      "et": 15.054,
+      "trap": 92.4,
+      "z60130": null,
+      "peakHP": 242
+    },
+    "afterSim": {
+      "z60": 6.749,
+      "et": 15.053,
+      "trap": 92.4,
+      "z60130": null,
+      "peakHP": 242
+    },
+    "after": {
+      "hp": 275,
+      "wt": 4500,
+      "tire": 3,
+      "drag": 0.2949,
+      "loss": 12,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Fisker Ocean Extreme",
+    "id": "2024-fisker-ocean-extreme",
+    "tuned": true,
+    "excel": {
+      "z60": 3.9,
+      "et": 12.5,
+      "trap": 110,
+      "z60130": null,
+      "excelHp": 564,
+      "excelWt": 5400
+    },
+    "beforeSim": {
+      "z60": 4.043,
+      "et": 12.454,
+      "trap": 110.4,
+      "z60130": null,
+      "peakHP": 457
+    },
+    "afterSim": {
+      "z60": 4.015,
+      "et": 12.45,
+      "trap": 110.4,
+      "z60130": null,
+      "peakHP": 462
+    },
+    "after": {
+      "hp": 563,
+      "wt": 5400,
+      "tire": 3,
+      "drag": 0.4215,
+      "loss": 18,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": false,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Hyundai Ioniq 6 AWD",
+    "id": "2024-hyundai-ioniq-6-awd",
+    "tuned": true,
+    "excel": {
+      "z60": 4.8,
+      "et": 13.4,
+      "trap": 104,
+      "z60130": null,
+      "excelHp": 320,
+      "excelWt": 4400
+    },
+    "beforeSim": {
+      "z60": 4.933,
+      "et": 13.353,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 307
+    },
+    "afterSim": {
+      "z60": 4.989,
+      "et": 13.362,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 320
+    },
+    "after": {
+      "hp": 348,
+      "wt": 4400,
+      "tire": 3,
+      "drag": 0.2003,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 VW ID.4 AWD Pro",
+    "id": "2023-vw-id-4-awd-pro",
+    "tuned": true,
+    "excel": {
+      "z60": 5.7,
+      "et": 14.4,
+      "trap": 97,
+      "z60130": null,
+      "excelHp": 295,
+      "excelWt": 4800
+    },
+    "beforeSim": {
+      "z60": 5.991,
+      "et": 14.352,
+      "trap": 97.4,
+      "z60130": null,
+      "peakHP": 294
+    },
+    "afterSim": {
+      "z60": 6.012,
+      "et": 14.353,
+      "trap": 97.4,
+      "z60130": null,
+      "peakHP": 307
+    },
+    "after": {
+      "hp": 334,
+      "wt": 4800,
+      "tire": 0,
+      "drag": 0.2965,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Ford Mustang Mach-E GT",
+    "id": "2023-ford-mustang-mach-e-gt",
+    "tuned": true,
+    "excel": {
+      "z60": 3.6,
+      "et": 12.2,
+      "trap": 114,
+      "z60130": null,
+      "excelHp": 480,
+      "excelWt": 4900
+    },
+    "beforeSim": {
+      "z60": 3.791,
+      "et": 12.154,
+      "trap": 114.4,
+      "z60130": null,
+      "peakHP": 443
+    },
+    "afterSim": {
+      "z60": 3.743,
+      "et": 12.151,
+      "trap": 113.91,
+      "z60130": null,
+      "peakHP": 449
+    },
+    "after": {
+      "hp": 499,
+      "wt": 4900,
+      "tire": 4,
+      "drag": 0.4294,
+      "loss": 10,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 BMW i5 M60",
+    "id": "2024-bmw-i5-m60",
+    "tuned": true,
+    "excel": {
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 115,
+      "z60130": null,
+      "excelHp": 590,
+      "excelWt": 5200
+    },
+    "beforeSim": {
+      "z60": 3.74,
+      "et": 12.051,
+      "trap": 115.4,
+      "z60130": null,
+      "peakHP": 472
+    },
+    "afterSim": {
+      "z60": 3.743,
+      "et": 12.055,
+      "trap": 115.4,
+      "z60130": null,
+      "peakHP": 472
+    },
+    "after": {
+      "hp": 524,
+      "wt": 5200,
+      "tire": 4,
+      "drag": 0.2303,
+      "loss": 10,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Mercedes EQS 450+",
+    "id": "2024-mercedes-eqs-450",
+    "tuned": true,
+    "excel": {
+      "z60": 5.4,
+      "et": 14,
+      "trap": 101,
+      "z60130": null,
+      "excelHp": 355,
+      "excelWt": 5600
+    },
+    "beforeSim": {
+      "z60": 5.602,
+      "et": 13.951,
+      "trap": 101.4,
+      "z60130": null,
+      "peakHP": 360
+    },
+    "afterSim": {
+      "z60": 5.636,
+      "et": 13.951,
+      "trap": 101.4,
+      "z60130": null,
+      "peakHP": 375
+    },
+    "after": {
+      "hp": 408,
+      "wt": 5600,
+      "tire": 0,
+      "drag": 0.2258,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Hyundai Kona Electric",
+    "id": "2023-hyundai-kona-electric",
+    "tuned": true,
+    "excel": {
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 90,
+      "z60130": null,
+      "excelHp": 201,
+      "excelWt": 3800
+    },
+    "beforeSim": {
+      "z60": 6.961,
+      "et": 15.259,
+      "trap": 90.4,
+      "z60130": null,
+      "peakHP": 201
+    },
+    "afterSim": {
+      "z60": 6.929,
+      "et": 15.252,
+      "trap": 90.4,
+      "z60130": null,
+      "peakHP": 212
+    },
+    "after": {
+      "hp": 230,
+      "wt": 3800,
+      "tire": 0,
+      "drag": 0.37,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Kia Niro EV",
+    "id": "2024-kia-niro-ev",
+    "tuned": true,
+    "excel": {
+      "z60": 6.9,
+      "et": 15.4,
+      "trap": 90,
+      "z60130": null,
+      "excelHp": 201,
+      "excelWt": 3850
+    },
+    "beforeSim": {
+      "z60": 7.096,
+      "et": 15.359,
+      "trap": 90.4,
+      "z60130": null,
+      "peakHP": 201
+    },
+    "afterSim": {
+      "z60": 7.096,
+      "et": 15.359,
+      "trap": 90.4,
+      "z60130": null,
+      "peakHP": 201
+    },
+    "after": {
+      "hp": 218,
+      "wt": 3850,
+      "tire": 0,
+      "drag": 0.323,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.1
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2023 Mercedes EQS 580 SUV",
+    "id": "2023-mercedes-eqs-580-suv",
+    "tuned": true,
+    "excel": {
+      "z60": 4.5,
+      "et": 13.1,
+      "trap": 108,
+      "z60130": null,
+      "excelHp": 536,
+      "excelWt": 6200
+    },
+    "beforeSim": {
+      "z60": 4.693,
+      "et": 13.051,
+      "trap": 108.4,
+      "z60130": null,
+      "peakHP": 483
+    },
+    "afterSim": {
+      "z60": 4.759,
+      "et": 13.056,
+      "trap": 108.4,
+      "z60130": null,
+      "peakHP": 504
+    },
+    "after": {
+      "hp": 548,
+      "wt": 6200,
+      "tire": 3,
+      "drag": 0.2917,
+      "loss": 8,
+      "launchDrive": 1.4,
+      "launchMu": 0.95,
+      "slip": 0.06
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  },
+  {
+    "phase": "ev",
+    "name": "2024 Volvo XC40 Recharge",
+    "id": "2024-volvo-xc40-recharge",
+    "tuned": true,
+    "excel": {
+      "z60": 4.5,
+      "et": 13.2,
+      "trap": 104,
+      "z60130": null,
+      "excelHp": 402,
+      "excelWt": 4700
+    },
+    "beforeSim": {
+      "z60": 4.712,
+      "et": 13.15,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 357
+    },
+    "afterSim": {
+      "z60": 4.712,
+      "et": 13.15,
+      "trap": 104.4,
+      "z60130": null,
+      "peakHP": 357
+    },
+    "after": {
+      "hp": 388,
+      "wt": 4700,
+      "tire": 0,
+      "drag": 0.295,
+      "loss": 8,
+      "launchDrive": 1.55,
+      "launchMu": 1.25,
+      "slip": 0.12
+    },
+    "hits": {
+      "trap": true,
+      "et": true,
+      "z60130": null,
+      "z60": false
+    }
+  }
+]

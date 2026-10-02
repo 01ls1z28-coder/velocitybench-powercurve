@@ -322,7 +322,9 @@
       var v = Number(curve[k]);
       if (isFinite(v)) map[k] = v;
     });
-    if (Phys.sanitizeTorqueCurvePostPeak) {
+    // EV motor curves are flat/shelf shaped — ICE post-peak sanitize pins peakHpRpm
+    // and crushes high-rpm HP (M3P Peak 466 bug). Physics already skips sanitize for isEv.
+    if (Phys.sanitizeTorqueCurvePostPeak && !(state.car && (state.car.isEv || state.car.powerSource === 'ev'))) {
       Phys.sanitizeTorqueCurvePostPeak(map, state.car && state.car.peakHpRpm);
     }
     if (peakHpCap > 0 && Phys.capTorqueCurveToPeakHp) {
@@ -435,8 +437,9 @@
     }
     // Only rebuild the editable series from the car when not mid-drag
     if (state.drag) return;
-    // Kill fake redline uptick on the live car curve (physics + dyno share this map)
-    if (Phys.sanitizeTorqueCurvePostPeak) {
+    // Kill fake redline uptick on ICE curves only. EV: do NOT mutate torqueCurve —
+    // sanitize + wrong peakHpRpm pin crushed Model 3 Perf 519→507 shelf (Peak 466).
+    if (Phys.sanitizeTorqueCurvePostPeak && !(car.isEv || car.powerSource === 'ev')) {
       Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
     }
     var cap = Number(car.peakHp);
@@ -849,7 +852,15 @@
         var n = Number(el.value);
         if (!(n > 0) || !isFinite(n)) return undefined;
         return Math.min(300, Math.max(1, Math.round(n)));
-      })()
+      })(),
+      // Preserve per-car EV factory TC / AWD launch bake (garage Excel match).
+      // Dropping these made Pages RUN ignore evLaunch* → M3P ~3.49/11.9 vs Excel 2.9/11.0.
+      evLaunchDriveMult: base.evLaunchDriveMult,
+      evLaunchMuMult: base.evLaunchMuMult,
+      evLaunchSlipTarget: base.evLaunchSlipTarget,
+      category: base.category,
+      cgHeightFeet: base.cgHeightFeet,
+      cgHeightPublished: base.cgHeightPublished
     };
     var w = readWeightDistributionFromForm(base);
     car.frontWeightPercent = w.frontWeightPercent;
@@ -868,7 +879,8 @@
       var scaled = scaleCurveForPeakHpChange(peakHp, redline);
       if (scaled) car.torqueCurve = scaled;
     }
-    if (car.torqueCurve && Phys.sanitizeTorqueCurvePostPeak) {
+    // ICE only — EV shelf curves must not be post-peak sanitized (see syncPowerCurveFromCar).
+    if (car.torqueCurve && Phys.sanitizeTorqueCurvePostPeak && !car.isEv) {
       Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
     }
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set

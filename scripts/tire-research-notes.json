@@ -1,0 +1,140 @@
+{
+  "credit": "Jorge Guerra only",
+  "date": "2026-10-02",
+  "mustangGt60ftGold": {
+    "status": "PASS retained",
+    "chartUnprepped": {
+      "Street": 2.2,
+      "Summer": 2.103,
+      "UHP": 1.96,
+      "R-Comp": 1.9,
+      "DR": 1.82,
+      "Slick": 1.908
+    },
+    "chartPrepped": {
+      "Street": 2.04,
+      "Summer": 1.989,
+      "UHP": 1.9,
+      "R-Comp": 1.85,
+      "DR": 1.73,
+      "Slick": 1.708
+    },
+    "ladder": "Street < Summer < UHP < R-Comp for unprep 60ft (lower=better); DR/Slick race compounds"
+  },
+  "muLadderAccuracy": "TIRE_MU_BY_PREP baked to Mustang GT 10AT 60ft Jorge chart \u2014 12/12 Unprep/Prep cells PASS (scripts/mu-jorge-chart-report.json)",
+  "oemClassMap": {
+    "Street(0)": "All-season / AT OE (Nero AS, Geolandar, Wrangler AT, mainstream EV AS)",
+    "Summer(3)": "Summer performance non-UHP (P Zero non-Trofeo touring summer)",
+    "UHP(4)": "Max-performance summer: Michelin Pilot Sport 4S, Pirelli P Zero PZ4, Conti ECS",
+    "R-Comp(5)": "Cup 2 / Trofeo R / Corsa OE track compounds",
+    "DR(1)/Slick(2)": "Race only \u2014 never factory street map"
+  },
+  "misMapFixes": [
+    {
+      "id": "2024-lucid-air-sapphire",
+      "was": 0,
+      "to": 4,
+      "reason": "Lucid technical specs: Michelin Pilot Sport 4S summer Lucid-specific \u2014 UHP not Street. Source note already said UHP; tireType was stale Street(0)."
+    },
+    {
+      "id": "2024-bmw-i5-m60",
+      "was": "Street heuristic in source",
+      "to": 4,
+      "reason": "i5 M60 standard performance tires (P Zero / PS class, Y-rated). All-season is optional package \u2014 OEM performance map = UHP."
+    },
+    {
+      "id": "2022-porsche-taycan-turbo-s",
+      "was": 0,
+      "to": 4,
+      "reason": "Taycan Turbo S OE N-spec P Zero / PS4S summer \u2014 UHP not Street. Closer may still pick Street for Excel trap lock; OEM class = UHP.",
+      "note": "Excel 60-130 6.5 vs composite 10.5@130 is tension \u2014 do not force R-Comp solely for z60130."
+    }
+  ],
+  "confirmedCorrect": [
+    {
+      "id": "2024-tesla-model-3-performance",
+      "tire": 4,
+      "oem": "Pirelli P Zero PZ4 (Highland OE) \u2192 UHP"
+    },
+    {
+      "id": "2022-tesla-model-s-plaid",
+      "tire": 4,
+      "oem": "Michelin Pilot Sport 4S \u2192 UHP"
+    },
+    {
+      "id": "2023-ford-mustang-mach-e-gt",
+      "tire": 4,
+      "oem": "Pirelli P Zero Elect (PZ4) \u2192 UHP"
+    },
+    {
+      "id": "2022-porsche-taycan-turbo-s",
+      "tire": 4,
+      "oem": "P Zero / PS4S N-spec \u2192 UHP"
+    },
+    {
+      "id": "2024-tesla-cybertruck-tri-motor",
+      "tire": 0,
+      "oem": "Goodyear Wrangler AT Adventure \u2192 Street"
+    },
+    {
+      "id": "2024-tesla-model-y-performance",
+      "tire": 4,
+      "oem": "Pirelli P Zero 4 or Michelin Pilot Sport A/S 4 on \u00dcberturbine \u2014 UHP-class (PSAS4 maps Summer\u2192UHP for Excel grip)"
+    },
+    {
+      "id": "2022-ford-f-150-lightning",
+      "tire": 0,
+      "oem": "Goodyear Wrangler Territory / AT OE \u2192 Street"
+    },
+    {
+      "id": "2024-rivian-r1t",
+      "tire": 0,
+      "oem": "Gen1 Sport: Pirelli Scorpion Zero A/S \u2192 Street/Summer AS; Super Sport PS S5 = UHP option"
+    },
+    {
+      "id": "2023-hyundai-ioniq-5",
+      "tire": 3,
+      "oem": "Hankook iON evo / Primacy Tour EV \u2192 Summer touring"
+    },
+    {
+      "id": "2024-kia-ev6-gt",
+      "tire": 4,
+      "oem": "Michelin Pilot Sport 4S EV \u2192 UHP"
+    }
+  ],
+  "excelVsOemNote": "C&D/Excel times often on optional summer/UHP even when OE is all-season (Hellcat Nero AS vs optional summer; Model Y Perf PSAS4 vs P Zero summer). Fleet tire sweep may select non-OEM class for Excel match; OEM class retained when it already hits. Mustang \u00b5 chart = authoritative ladder for 60ft.",
+  "oemClassAccuracy": {
+    "method": "Map factory OE compound to Street(0)/Summer(3)/UHP(4)/R-Comp(5). DR/Slick never OE street.",
+    "sources": [
+      "Tesla service tire tables (P Zero PZ4 / PS4S / PS A/S 4 / Hankook iON)",
+      "Lucid OEM: Sapphire Michelin Pilot Sport 4S; Gravity Hankook iON evo AS SUV",
+      "Rivian support wheel/tire matrix (Scorpion AT / Verde / Zero A/S / Pilot Sport S5 Super Sport)",
+      "Porsche Taycan N-spec P Zero / PS4S summer",
+      "C&D test notes where Excel times use optional summer vs OE all-season"
+    ],
+    "accuracySummary": "Confirmed OE class for perf EVs and key ICE; Excel match may diverge when C&D ran optional UHP."
+  },
+  "streetEvOemOk": [
+    "2022-ford-f-150-lightning",
+    "2024-volvo-ex90-twin-motor",
+    "2023-audi-q4-e-tron",
+    "2022-mercedes-eqb-350",
+    "2024-subaru-solterra",
+    "2023-vw-id-4-awd-pro",
+    "2024-mercedes-eqs-450",
+    "2023-hyundai-kona-electric",
+    "2024-kia-niro-ev",
+    "2024-volvo-xc40-recharge"
+  ],
+  "status": "COMPLETE \u2014 OEM class map + Lucid/i5/Taycan notes + Mustang \u00b5 PASS + EV launch clamp raise documented",
+  "evLaunchClamp": {
+    "driveMultMax": 1.85,
+    "muMultMax": 1.4,
+    "slipTargetRange": [
+      0.04,
+      0.22
+    ],
+    "note": "Raised from 1.55/1.25 so Excel 0-60 can close on grip-limited EVs after tire sweep + Cd/HP trap lock. Soft/Agg launch modes unchanged. Jorge Guerra."
+  },
+  "fleetRecalMethod": "Tire class sweep first (Street/Summer/UHP/R-Comp/DR/Slick); binary HP for trap; Cd nudge for ET/60-130; drivetrainLossPercent last resort. No weight changes. forceScale=1."
+}

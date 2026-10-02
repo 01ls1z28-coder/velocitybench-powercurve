@@ -1155,10 +1155,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       // Per-car OEM/TC launch bake (Jorge Guerra EV Excel full-match). Optional overrides
       // on top of AWD/FWD stock TC — not Soft/Agg. forceScale stays 1.
       if (car.evLaunchDriveMult != null && isFinite(Number(car.evLaunchDriveMult))) {
-        launchDriveMult = clamp(Number(car.evLaunchDriveMult), 0.70, 1.55);
+        launchDriveMult = clamp(Number(car.evLaunchDriveMult), 0.70, 1.85);
       }
       if (car.evLaunchMuMult != null && isFinite(Number(car.evLaunchMuMult))) {
-        launchMuMult = clamp(Number(car.evLaunchMuMult), 0.85, 1.25);
+        launchMuMult = clamp(Number(car.evLaunchMuMult), 0.85, 1.40);
       }
       if (car.evLaunchSlipTarget != null && isFinite(Number(car.evLaunchSlipTarget))) {
         slipTarget = clamp(Number(car.evLaunchSlipTarget), 0.04, 0.22);
