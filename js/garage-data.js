@@ -806,7 +806,7 @@ var GARAGE = [
     "name": "2021 Dodge Charger Hellcat Redeye",
     "category": "Modern Muscle",
     "peakHp": 797,
-    "weightLbs": 4451,
+    "weightLbs": 4591,
     "dragCoefficient": 0.382,
     "frontalAreaSqFt": 24.2,
     "tireRadiusInches": 14.3,
@@ -840,7 +840,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Hellcat Redeye ~3.6 / 11.8@125 (loss 26.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Pirelli P Zero Nero All Season (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D Hellcat Redeye ~3.6 / 11.8@125 (loss 26.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Pirelli P Zero Nero All Season (documented; credit Jorge Guerra) | WD OEM 57/43 + curb 4591 lb (Chrysler Charger SRT Hellcat/Redeye product info; was wrong default 45/55 + 4451; credit Jorge Guerra)",
     "torqueCurve": {
       "1500": 420,
       "1600": 440,
@@ -894,8 +894,8 @@ var GARAGE = [
       "6400": 652.5,
       "6500": 640
     },
-    "frontWeightPercent": 45,
-    "rearWeightPercent": 55,
+    "frontWeightPercent": 57,
+    "rearWeightPercent": 43,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "supercharger",
