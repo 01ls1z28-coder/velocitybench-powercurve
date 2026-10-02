@@ -1,0 +1,5336 @@
+{
+  "credit": "Jorge Guerra only",
+  "source": "/workspace/VelocityBench_Garage_Corrected.xlsx#Garage",
+  "acceptance": "exact to sheet decimal places",
+  "count": 333,
+  "targets": [
+    {
+      "name": "2020 Ford Mustang GT",
+      "excelHp": 460,
+      "weightLbs": 3705,
+      "raw": "0-60: 3.8s | 1/4: 12.1s @ 119 mph | 60-130: 11.1s",
+      "z60": 3.8,
+      "et": 12.1,
+      "trap": 119.0,
+      "z60130": 11.1,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2018 Ford Mustang GT PP2",
+      "excelHp": 460,
+      "weightLbs": 3705,
+      "raw": "0-60: 4.3s | 1/4: 12.6s @ 115 mph | 60-130: 11.65s",
+      "z60": 4.3,
+      "et": 12.6,
+      "trap": 115.0,
+      "z60130": 11.65,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2020 Chevrolet Camaro SS",
+      "excelHp": 455,
+      "weightLbs": 3685,
+      "raw": "0-60: 3.9s | 1/4: 12.2s @ 118 mph | 60-130: 11.25s",
+      "z60": 3.9,
+      "et": 12.2,
+      "trap": 118.0,
+      "z60130": 11.25,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2020 Dodge Challenger R/T Scat Pack",
+      "excelHp": 485,
+      "weightLbs": 4232,
+      "raw": "0-60: 4.2s | 1/4: 12.5s @ 114 mph | 60-130: 12.7s",
+      "z60": 4.2,
+      "et": 12.5,
+      "trap": 114.0,
+      "z60130": 12.7,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Dodge Challenger Hellcat",
+      "excelHp": 717,
+      "weightLbs": 4449,
+      "raw": "0-60: 3.7s | 1/4: 11.6s @ 126 mph | 60-130: 8.5s",
+      "z60": 3.7,
+      "et": 11.6,
+      "trap": 126.0,
+      "z60130": 8.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2024 Ford Mustang Dark Horse",
+      "excelHp": 500,
+      "weightLbs": 3900,
+      "raw": "0-60: 3.7s | 1/4: 12.0s @ 118.4 mph | 60-130: 11.07s",
+      "z60": 3.7,
+      "et": 12.0,
+      "trap": 118.4,
+      "z60130": 11.07,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 1,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2023 Chevrolet Camaro ZL1",
+      "excelHp": 650,
+      "weightLbs": 3886,
+      "raw": "0-60: 3.4s | 1/4: 11.5s @ 125 mph | 60-130: 8.4s",
+      "z60": 3.4,
+      "et": 11.5,
+      "trap": 125.0,
+      "z60130": 8.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 Dodge Charger Hellcat Redeye",
+      "excelHp": 797,
+      "weightLbs": 4590,
+      "raw": "0-60: 3.6s | 1/4: 11.5s @ 128 mph | 60-130: 8.1s",
+      "z60": 3.6,
+      "et": 11.5,
+      "trap": 128.0,
+      "z60130": 8.1,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2016 Ford Mustang GT350R",
+      "excelHp": 526,
+      "weightLbs": 3650,
+      "raw": "0-60: 3.9s | 1/4: 12.2s @ 119 mph | 60-130: 11.4s",
+      "z60": 3.9,
+      "et": 12.2,
+      "trap": 119.0,
+      "z60130": 11.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2015 Dodge Challenger Hellcat",
+      "excelHp": 707,
+      "weightLbs": 4449,
+      "raw": "0-60: 3.6s | 1/4: 11.7s @ 125 mph | 60-130: 8.6s",
+      "z60": 3.6,
+      "et": 11.7,
+      "trap": 125.0,
+      "z60130": 8.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2014 Chevrolet Camaro Z/28",
+      "excelHp": 505,
+      "weightLbs": 3850,
+      "raw": "0-60: 4.5s | 1/4: 12.3s @ 118 mph | 60-130: 10.40",
+      "z60": 4.5,
+      "et": 12.3,
+      "trap": 118.0,
+      "z60130": 10.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2013 Ford Mustang Boss 302",
+      "excelHp": 444,
+      "weightLbs": 3632,
+      "raw": "0-60: 4.3s | 1/4: 12.7s @ 114 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.7,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Chevrolet Corvette ZR1",
+      "excelHp": 638,
+      "weightLbs": 3333,
+      "raw": "0-60: 3.4s | 1/4: 11.5s @ 128 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.5,
+      "trap": 128.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Dodge Challenger SRT8",
+      "excelHp": 425,
+      "weightLbs": 4140,
+      "raw": "0-60: 4.7s | 1/4: 13.2s @ 109 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.2,
+      "trap": 109.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Pontiac G8 GXP",
+      "excelHp": 415,
+      "weightLbs": 3995,
+      "raw": "0-60: 4.7s | 1/4: 13.2s @ 108 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.2,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2004 Pontiac GTO",
+      "excelHp": 350,
+      "weightLbs": 3725,
+      "raw": "0-60: 5.3s | 1/4: 13.8s @ 104 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.8,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2003 Ford Mustang Cobra (Terminator)",
+      "excelHp": 390,
+      "weightLbs": 3665,
+      "raw": "0-60: 4.5s | 1/4: 13.0s @ 107 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 13.0,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2002 Chevrolet Camaro SS",
+      "excelHp": 325,
+      "weightLbs": 3475,
+      "raw": "0-60: 5.2s | 1/4: 13.7s @ 104 mph | 60-130: n/a",
+      "z60": 5.2,
+      "et": 13.7,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "excelHp": 494,
+      "weightLbs": 3340,
+      "raw": "0-60: 3.2 | 1/4: 11.6 @ 119.72mph | 60-130: 10.9",
+      "z60": 3.2,
+      "et": 11.6,
+      "trap": 119.72,
+      "z60130": 10.9,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 2,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "1996 Chevrolet Impala SS",
+      "excelHp": 260,
+      "weightLbs": 4218,
+      "raw": "0-60: 7.1s | 1/4: 15.4s @ 91 mph | 60-130: n/a",
+      "z60": 7.1,
+      "et": 15.4,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Dodge Charger Scat Pack",
+      "excelHp": 485,
+      "weightLbs": 4350,
+      "raw": "0-60: 4.1s | 1/4: 12.4s @ 116 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.4,
+      "trap": 116.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2020 Ford Mustang Shelby GT500",
+      "excelHp": 760,
+      "weightLbs": 4171,
+      "raw": "0-60: 3.4s | 1/4: 11.3s @ 132 mph | 60-130: 7.6s",
+      "z60": 3.4,
+      "et": 11.3,
+      "trap": 132.0,
+      "z60130": 7.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2012 Chevrolet Camaro ZL1",
+      "excelHp": 580,
+      "weightLbs": 4120,
+      "raw": "0-60: 3.9s | 1/4: 12.1s @ 117 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.1,
+      "trap": 117.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Ford Mustang GT 5.0",
+      "excelHp": 412,
+      "weightLbs": 3605,
+      "raw": "0-60: 4.4s | 1/4: 12.8s @ 112 mph | 60-130: n/a",
+      "z60": 4.4,
+      "et": 12.8,
+      "trap": 112.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Dodge Challenger SRT8",
+      "excelHp": 425,
+      "weightLbs": 4140,
+      "raw": "0-60: 4.8s | 1/4: 13.3s @ 108 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.3,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2001 Pontiac Firebird Trans Am WS6",
+      "excelHp": 325,
+      "weightLbs": 3460,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 106 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 106.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1996 Ford Mustang SVT Cobra",
+      "excelHp": 305,
+      "weightLbs": 3450,
+      "raw": "0-60: 5.5s | 1/4: 14.1s @ 99 mph | 60-130: n/a",
+      "z60": 5.5,
+      "et": 14.1,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1993 Chevrolet Camaro Z28",
+      "excelHp": 275,
+      "weightLbs": 3460,
+      "raw": "0-60: 5.4s | 1/4: 14.1s @ 98 mph | 60-130: n/a",
+      "z60": 5.4,
+      "et": 14.1,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1987 Buick GNX",
+      "excelHp": 276,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.7s | 1/4: 13.5s @ 104 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.5,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1979 Pontiac Firebird Trans Am",
+      "excelHp": 220,
+      "weightLbs": 3660,
+      "raw": "0-60: 8.5s | 1/4: 16.5s @ 86 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.5,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1985 Chevrolet Camaro IROC-Z",
+      "excelHp": 215,
+      "weightLbs": 3300,
+      "raw": "0-60: 7.0s | 1/4: 15.5s @ 90 mph | 60-130: n/a",
+      "z60": 7.0,
+      "et": 15.5,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1987 Ford Mustang 5.0 LX",
+      "excelHp": 225,
+      "weightLbs": 3080,
+      "raw": "0-60: 6.2s | 1/4: 14.7s @ 94 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.7,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1994 Pontiac Firebird Formula",
+      "excelHp": 275,
+      "weightLbs": 3450,
+      "raw": "0-60: 5.5s | 1/4: 14.1s @ 98 mph | 60-130: n/a",
+      "z60": 5.5,
+      "et": 14.1,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2000 Chevrolet Camaro SS",
+      "excelHp": 320,
+      "weightLbs": 3475,
+      "raw": "0-60: 5.1s | 1/4: 13.6s @ 105 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.6,
+      "trap": 105.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Ford Mustang GT",
+      "excelHp": 300,
+      "weightLbs": 3500,
+      "raw": "0-60: 5.1s | 1/4: 13.7s @ 103 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.7,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Chevrolet Camaro LT",
+      "excelHp": 304,
+      "weightLbs": 3750,
+      "raw": "0-60: 6.1s | 1/4: 14.7s @ 96 mph | 60-130: n/a",
+      "z60": 6.1,
+      "et": 14.7,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1984 Chevrolet Corvette C4",
+      "excelHp": 205,
+      "weightLbs": 3200,
+      "raw": "0-60: 6.6s | 1/4: 15.0s @ 91 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 15.0,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1992 Ford Mustang LX 5.0",
+      "excelHp": 225,
+      "weightLbs": 3080,
+      "raw": "0-60: 6.0s | 1/4: 14.6s @ 94 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.6,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1998 Pontiac Firebird Formula",
+      "excelHp": 305,
+      "weightLbs": 3450,
+      "raw": "0-60: 5.2s | 1/4: 13.8s @ 103 mph | 60-130: n/a",
+      "z60": 5.2,
+      "et": 13.8,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Dodge Charger R/T",
+      "excelHp": 340,
+      "weightLbs": 4020,
+      "raw": "0-60: 5.3s | 1/4: 13.9s @ 101 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.9,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Chevrolet Camaro LT",
+      "excelHp": 312,
+      "weightLbs": 3750,
+      "raw": "0-60: 6.0s | 1/4: 14.6s @ 97 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.6,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Ford Mustang V6",
+      "excelHp": 305,
+      "weightLbs": 3510,
+      "raw": "0-60: 5.1s | 1/4: 13.8s @ 101 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.8,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1982 Pontiac Firebird Trans Am",
+      "excelHp": 165,
+      "weightLbs": 3200,
+      "raw": "0-60: 9.2s | 1/4: 17.0s @ 82 mph | 60-130: n/a",
+      "z60": 9.2,
+      "et": 17.0,
+      "trap": 82.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1991 Chevrolet Camaro Z28",
+      "excelHp": 245,
+      "weightLbs": 3400,
+      "raw": "0-60: 6.2s | 1/4: 14.8s @ 94 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.8,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1994 Ford Mustang GT",
+      "excelHp": 215,
+      "weightLbs": 3300,
+      "raw": "0-60: 6.1s | 1/4: 14.7s @ 94 mph | 60-130: n/a",
+      "z60": 6.1,
+      "et": 14.7,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2002 Pontiac Firebird WS6",
+      "excelHp": 325,
+      "weightLbs": 3450,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 106 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 106.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Dodge Challenger R/T",
+      "excelHp": 372,
+      "weightLbs": 4100,
+      "raw": "0-60: 5.3s | 1/4: 13.9s @ 102 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.9,
+      "trap": 102.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Ford Mustang Boss 302 Laguna Seca",
+      "excelHp": 444,
+      "weightLbs": 3632,
+      "raw": "0-60: 4.3s | 1/4: 12.7s @ 114 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.7,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1981 Chevrolet Camaro Z28",
+      "excelHp": 175,
+      "weightLbs": 3400,
+      "raw": "0-60: 8.8s | 1/4: 16.7s @ 83 mph | 60-130: n/a",
+      "z60": 8.8,
+      "et": 16.7,
+      "trap": 83.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1989 Ford Mustang GT 5.0",
+      "excelHp": 225,
+      "weightLbs": 3150,
+      "raw": "0-60: 6.2s | 1/4: 14.7s @ 94 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.7,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1993 Pontiac Firebird Formula",
+      "excelHp": 275,
+      "weightLbs": 3450,
+      "raw": "0-60: 5.5s | 1/4: 14.1s @ 98 mph | 60-130: n/a",
+      "z60": 5.5,
+      "et": 14.1,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2004 Ford Mustang Mach 1",
+      "excelHp": 305,
+      "weightLbs": 3650,
+      "raw": "0-60: 5.2s | 1/4: 13.8s @ 103 mph | 60-130: n/a",
+      "z60": 5.2,
+      "et": 13.8,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Dodge Charger SRT8",
+      "excelHp": 425,
+      "weightLbs": 4250,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 106 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 106.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2014 Chevrolet SS",
+      "excelHp": 415,
+      "weightLbs": 3995,
+      "raw": "0-60: 4.5s | 1/4: 13.0s @ 111 mph | 60-130: 13.8s",
+      "z60": 4.5,
+      "et": 13.0,
+      "trap": 111.0,
+      "z60130": 13.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "excelHp": 1020,
+      "weightLbs": 4827,
+      "raw": "0-60: 2.1s | 1/4: 9.25s @ 151 mph | 60-130: 4.8s",
+      "z60": 2.1,
+      "et": 9.25,
+      "trap": 151.0,
+      "z60130": 4.8,
+      "decs": {
+        "z60": 1,
+        "et": 2,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2024 Tesla Model 3 Performance",
+      "excelHp": 510,
+      "weightLbs": 4072,
+      "raw": "0-60: 2.9s | 1/4: 11.0s @ 124.5 mph | 60-130: 9.2",
+      "z60": 2.9,
+      "et": 11.0,
+      "trap": 124.5,
+      "z60130": 9.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 1,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "excelHp": 750,
+      "weightLbs": 5121,
+      "raw": "0-60: 2.4s | 1/4: 10.5s @ 130 mph | 60-130: 6.5s",
+      "z60": 2.4,
+      "et": 10.5,
+      "trap": 130.0,
+      "z60130": 6.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2024 Lucid Air Sapphire",
+      "excelHp": 1234,
+      "weightLbs": 5345,
+      "raw": "0-60: 2.1s | 1/4: 9.0s @ 157 mph | 60-130: 4.6s",
+      "z60": 2.1,
+      "et": 9.0,
+      "trap": 157.0,
+      "z60130": 4.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2023 Hyundai Ioniq 5 N",
+      "excelHp": 641,
+      "weightLbs": 4700,
+      "raw": "0-60: 3.2s | 1/4: 11.0s @ 124.9 mph | 60-130: n/a",
+      "z60": 3.2,
+      "et": 11.0,
+      "trap": 124.9,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 1,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 Ford F-150 Lightning",
+      "excelHp": 580,
+      "weightLbs": 6500,
+      "raw": "0-60: 4.0s | 1/4: 12.5s @ 108 mph | 60-130: n/a",
+      "z60": 4.0,
+      "et": 12.5,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Tesla Model Y Performance",
+      "excelHp": 456,
+      "weightLbs": 4416,
+      "raw": "0-60: 3.5s | 1/4: 11.8s @ 115 mph | 60-130: n/a",
+      "z60": 3.5,
+      "et": 11.8,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 Tesla Model X Plaid",
+      "excelHp": 1020,
+      "weightLbs": 5328,
+      "raw": "0-60: 2.5s | 1/4: 9.8s @ 145 mph | 60-130: n/a",
+      "z60": 2.5,
+      "et": 9.8,
+      "trap": 145.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Kia EV6 GT",
+      "excelHp": 576,
+      "weightLbs": 4780,
+      "raw": "0-60: 3.2s | 1/4: 11.4s @ 122 mph | 60-130: n/a",
+      "z60": 3.2,
+      "et": 11.4,
+      "trap": 122.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Polestar 2 Performance",
+      "excelHp": 476,
+      "weightLbs": 4650,
+      "raw": "0-60: 4.1s | 1/4: 12.6s @ 111 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.6,
+      "trap": 111.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 BMW iX M60",
+      "excelHp": 610,
+      "weightLbs": 5750,
+      "raw": "0-60: 3.6s | 1/4: 12.1s @ 114 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Mercedes EQE AMG 53",
+      "excelHp": 677,
+      "weightLbs": 5400,
+      "raw": "0-60: 3.2s | 1/4: 11.6s @ 120 mph | 60-130: n/a",
+      "z60": 3.2,
+      "et": 11.6,
+      "trap": 120.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Cadillac Lyriq AWD",
+      "excelHp": 500,
+      "weightLbs": 5600,
+      "raw": "0-60: 4.6s | 1/4: 13.3s @ 104 mph | 60-130: n/a",
+      "z60": 4.6,
+      "et": 13.3,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "excelHp": 845,
+      "weightLbs": 6800,
+      "raw": "0-60: 2.6s | 1/4: 11.0s @ 119 mph | 60-130: n/a",
+      "z60": 2.6,
+      "et": 11.0,
+      "trap": 119.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Genesis GV60 Performance",
+      "excelHp": 429,
+      "weightLbs": 4750,
+      "raw": "0-60: 3.8s | 1/4: 12.3s @ 113 mph | 60-130: n/a",
+      "z60": 3.8,
+      "et": 12.3,
+      "trap": 113.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Volvo EX90 Twin Motor",
+      "excelHp": 496,
+      "weightLbs": 6100,
+      "raw": "0-60: 4.9s | 1/4: 13.5s @ 103 mph | 60-130: n/a",
+      "z60": 4.9,
+      "et": 13.5,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Audi Q4 e-tron",
+      "excelHp": 295,
+      "weightLbs": 4800,
+      "raw": "0-60: 5.8s | 1/4: 14.5s @ 97 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 14.5,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 Mercedes EQB 350",
+      "excelHp": 288,
+      "weightLbs": 4800,
+      "raw": "0-60: 6.0s | 1/4: 14.6s @ 96 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.6,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Tesla Model X Long Range",
+      "excelHp": 670,
+      "weightLbs": 5185,
+      "raw": "0-60: 3.6s | 1/4: 11.4s @ 127 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 11.4,
+      "trap": 127.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "excelHp": 389,
+      "weightLbs": 4800,
+      "raw": "0-60: 5.1s | 1/4: 13.8s @ 101 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.8,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Subaru Solterra",
+      "excelHp": 215,
+      "weightLbs": 4650,
+      "raw": "0-60: 6.5s | 1/4: 15.1s @ 92 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.1,
+      "trap": 92.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Toyota bZ4X AWD",
+      "excelHp": 214,
+      "weightLbs": 4500,
+      "raw": "0-60: 6.5s | 1/4: 15.1s @ 92 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.1,
+      "trap": 92.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Fisker Ocean Extreme",
+      "excelHp": 564,
+      "weightLbs": 5400,
+      "raw": "0-60: 3.9s | 1/4: 12.5s @ 110 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.5,
+      "trap": 110.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Hyundai Ioniq 6 AWD",
+      "excelHp": 320,
+      "weightLbs": 4400,
+      "raw": "0-60: 4.8s | 1/4: 13.4s @ 104 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.4,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 VW ID.4 AWD Pro",
+      "excelHp": 295,
+      "weightLbs": 4800,
+      "raw": "0-60: 5.7s | 1/4: 14.4s @ 97 mph | 60-130: n/a",
+      "z60": 5.7,
+      "et": 14.4,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Chevrolet Blazer EV SS",
+      "excelHp": 557,
+      "weightLbs": 5400,
+      "raw": "0-60: 3.4s | 1/4: 11.7s @ 117 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.7,
+      "trap": 117.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Ford Mustang Mach-E GT",
+      "excelHp": 480,
+      "weightLbs": 4900,
+      "raw": "0-60: 3.6s | 1/4: 12.2s @ 114 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 12.2,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 BMW i5 M60",
+      "excelHp": 590,
+      "weightLbs": 5200,
+      "raw": "0-60: 3.6s | 1/4: 12.1s @ 115 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Rivian R1S Quad Motor",
+      "excelHp": 835,
+      "weightLbs": 7100,
+      "raw": "0-60: 3.0s | 1/4: 11.1s @ 121 mph | 60-130: n/a",
+      "z60": 3.0,
+      "et": 11.1,
+      "trap": 121.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 BMW i7 xDrive60",
+      "excelHp": 536,
+      "weightLbs": 5950,
+      "raw": "0-60: 4.3s | 1/4: 12.8s @ 111 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.8,
+      "trap": 111.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Mercedes EQS 450+",
+      "excelHp": 355,
+      "weightLbs": 5600,
+      "raw": "0-60: 5.4s | 1/4: 14.0s @ 101 mph | 60-130: n/a",
+      "z60": 5.4,
+      "et": 14.0,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Audi e-tron GT",
+      "excelHp": 522,
+      "weightLbs": 5100,
+      "raw": "0-60: 3.6s | 1/4: 12.1s @ 116 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 12.1,
+      "trap": 116.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Lucid Air Touring",
+      "excelHp": 620,
+      "weightLbs": 4900,
+      "raw": "0-60: 3.0s | 1/4: 11.2s @ 123 mph | 60-130: n/a",
+      "z60": 3.0,
+      "et": 11.2,
+      "trap": 123.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Tesla Model S Long Range",
+      "excelHp": 670,
+      "weightLbs": 4760,
+      "raw": "0-60: 3.1s | 1/4: 10.8s @ 129 mph | 60-130: n/a",
+      "z60": 3.1,
+      "et": 10.8,
+      "trap": 129.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Hyundai Kona Electric",
+      "excelHp": 201,
+      "weightLbs": 3800,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 90 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Kia Niro EV",
+      "excelHp": 201,
+      "weightLbs": 3850,
+      "raw": "0-60: 6.9s | 1/4: 15.4s @ 90 mph | 60-130: n/a",
+      "z60": 6.9,
+      "et": 15.4,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Mercedes EQS 580 SUV",
+      "excelHp": 536,
+      "weightLbs": 6200,
+      "raw": "0-60: 4.5s | 1/4: 13.1s @ 108 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 13.1,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Volvo XC40 Recharge",
+      "excelHp": 402,
+      "weightLbs": 4700,
+      "raw": "0-60: 4.5s | 1/4: 13.2s @ 104 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 13.2,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Ferrari SF90 Stradale",
+      "excelHp": 986,
+      "weightLbs": 3461,
+      "raw": "0-60: 2.0s | 1/4: 9.5s @ 148 mph | 60-130: n/a",
+      "z60": 2.0,
+      "et": 9.5,
+      "trap": 148.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Porsche 911 Turbo S",
+      "excelHp": 640,
+      "weightLbs": 3616,
+      "raw": "0-60: 2.2s | 1/4: 10.3s @ 137 mph | 60-130: 5.8s",
+      "z60": 2.2,
+      "et": 10.3,
+      "trap": 137.0,
+      "z60130": 5.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Lamborghini Hurac\u00e1n EVO",
+      "excelHp": 631,
+      "weightLbs": 3400,
+      "raw": "0-60: 2.5s | 1/4: 10.6s @ 133 mph | 60-130: 6.8s",
+      "z60": 2.5,
+      "et": 10.6,
+      "trap": 133.0,
+      "z60130": 6.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 McLaren 765LT",
+      "excelHp": 755,
+      "weightLbs": 2950,
+      "raw": "0-60: 2.6s | 1/4: 10.2s @ 141 mph | 60-130: 6.0s",
+      "z60": 2.6,
+      "et": 10.2,
+      "trap": 141.0,
+      "z60130": 6.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2017 Ferrari 812 Superfast",
+      "excelHp": 789,
+      "weightLbs": 3593,
+      "raw": "0-60: 2.8s | 1/4: 10.5s @ 136 mph | 60-130: 6.5s",
+      "z60": 2.8,
+      "et": 10.5,
+      "trap": 136.0,
+      "z60130": 6.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2018 McLaren 600LT",
+      "excelHp": 592,
+      "weightLbs": 2844,
+      "raw": "0-60: 2.8s | 1/4: 10.7s @ 135 mph | 60-130: 6.8s",
+      "z60": 2.8,
+      "et": 10.7,
+      "trap": 135.0,
+      "z60130": 6.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2019 Lamborghini Hurac\u00e1n Performante",
+      "excelHp": 631,
+      "weightLbs": 3047,
+      "raw": "0-60: 2.5s | 1/4: 10.5s @ 134 mph | 60-130: 6.5s",
+      "z60": 2.5,
+      "et": 10.5,
+      "trap": 134.0,
+      "z60130": 6.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2017 Porsche 911 GT2 RS",
+      "excelHp": 700,
+      "weightLbs": 3241,
+      "raw": "0-60: 2.7s | 1/4: 10.6s @ 134 mph | 60-130: 6.2s",
+      "z60": 2.7,
+      "et": 10.6,
+      "trap": 134.0,
+      "z60130": 6.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2016 Ferrari 488 GTB",
+      "excelHp": 661,
+      "weightLbs": 3252,
+      "raw": "0-60: 2.8s | 1/4: 10.7s @ 133 mph | 60-130: 6.6s",
+      "z60": 2.8,
+      "et": 10.7,
+      "trap": 133.0,
+      "z60130": 6.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2015 McLaren P1",
+      "excelHp": 903,
+      "weightLbs": 3470,
+      "raw": "0-60: 2.6s | 1/4: 9.8s @ 148 mph | 60-130: 5.4s",
+      "z60": 2.6,
+      "et": 9.8,
+      "trap": 148.0,
+      "z60130": 5.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2014 Ferrari F12 Berlinetta",
+      "excelHp": 731,
+      "weightLbs": 3593,
+      "raw": "0-60: 2.9s | 1/4: 10.9s @ 131 mph | 60-130: 6.8s",
+      "z60": 2.9,
+      "et": 10.9,
+      "trap": 131.0,
+      "z60130": 6.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2013 McLaren MP4-12C",
+      "excelHp": 616,
+      "weightLbs": 3161,
+      "raw": "0-60: 2.9s | 1/4: 10.7s @ 134 mph | 60-130: 6.8s",
+      "z60": 2.9,
+      "et": 10.7,
+      "trap": 134.0,
+      "z60130": 6.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2012 Lamborghini Gallardo LP570-4",
+      "excelHp": 562,
+      "weightLbs": 3296,
+      "raw": "0-60: 3.2s | 1/4: 11.2s @ 127 mph | 60-130: n/a",
+      "z60": 3.2,
+      "et": 11.2,
+      "trap": 127.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Ferrari 458 Italia",
+      "excelHp": 562,
+      "weightLbs": 3274,
+      "raw": "0-60: 3.0s | 1/4: 10.9s @ 127 mph | 60-130: 7.2s",
+      "z60": 3.0,
+      "et": 10.9,
+      "trap": 127.0,
+      "z60130": 7.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2006 Ford GT",
+      "excelHp": 550,
+      "weightLbs": 3485,
+      "raw": "0-60: 3.3s | 1/4: 11.2s @ 131 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.2,
+      "trap": 131.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2004 Porsche Carrera GT",
+      "excelHp": 605,
+      "weightLbs": 3043,
+      "raw": "0-60: 3.5s | 1/4: 11.2s @ 130 mph | 60-130: 7.8s",
+      "z60": 3.5,
+      "et": 11.2,
+      "trap": 130.0,
+      "z60130": 7.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2002 Ferrari Enzo",
+      "excelHp": 651,
+      "weightLbs": 3263,
+      "raw": "0-60: 3.3s | 1/4: 11.1s @ 133 mph | 60-130: 7.2s",
+      "z60": 3.3,
+      "et": 11.1,
+      "trap": 133.0,
+      "z60130": 7.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2007 Lamborghini Murci\u00e9lago LP640",
+      "excelHp": 631,
+      "weightLbs": 3671,
+      "raw": "0-60: 3.4s | 1/4: 11.4s @ 129 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.4,
+      "trap": 129.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Nissan GT-R",
+      "excelHp": 480,
+      "weightLbs": 3800,
+      "raw": "0-60: 3.3s | 1/4: 11.5s @ 124 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.5,
+      "trap": 124.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Audi R8 V10",
+      "excelHp": 525,
+      "weightLbs": 3571,
+      "raw": "0-60: 3.5s | 1/4: 11.6s @ 124 mph | 60-130: 8.5s",
+      "z60": 3.5,
+      "et": 11.6,
+      "trap": 124.0,
+      "z60130": 8.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2001 Lamborghini Diablo VT 6.0",
+      "excelHp": 550,
+      "weightLbs": 3470,
+      "raw": "0-60: 3.6s | 1/4: 11.8s @ 122 mph | 60-130: n/a",
+      "z60": 3.6,
+      "et": 11.8,
+      "trap": 122.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2003 Ferrari 360 Modena",
+      "excelHp": 400,
+      "weightLbs": 3064,
+      "raw": "0-60: 4.3s | 1/4: 12.6s @ 114 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.6,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Porsche 911 Turbo",
+      "excelHp": 480,
+      "weightLbs": 3500,
+      "raw": "0-60: 3.4s | 1/4: 11.6s @ 124 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.6,
+      "trap": 124.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Aston Martin DBS",
+      "excelHp": 510,
+      "weightLbs": 3737,
+      "raw": "0-60: 4.2s | 1/4: 12.5s @ 117 mph | 60-130: n/a",
+      "z60": 4.2,
+      "et": 12.5,
+      "trap": 117.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Mercedes SLS AMG",
+      "excelHp": 563,
+      "weightLbs": 3924,
+      "raw": "0-60: 3.5s | 1/4: 11.7s @ 125 mph | 60-130: n/a",
+      "z60": 3.5,
+      "et": 11.7,
+      "trap": 125.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2005 Ferrari F430",
+      "excelHp": 483,
+      "weightLbs": 3197,
+      "raw": "0-60: 3.9s | 1/4: 12.1s @ 118 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.1,
+      "trap": 118.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Lamborghini Gallardo LP560-4",
+      "excelHp": 552,
+      "weightLbs": 3400,
+      "raw": "0-60: 3.3s | 1/4: 11.4s @ 126 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.4,
+      "trap": 126.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Aston Martin V12 Vantage",
+      "excelHp": 510,
+      "weightLbs": 3700,
+      "raw": "0-60: 4.1s | 1/4: 12.4s @ 118 mph | 60-130: 10.5s",
+      "z60": 4.1,
+      "et": 12.4,
+      "trap": 118.0,
+      "z60130": 10.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2013 SRT Viper GTS",
+      "excelHp": 640,
+      "weightLbs": 3354,
+      "raw": "0-60: 3.3s | 1/4: 11.4s @ 129 mph | 60-130: 7.8s",
+      "z60": 3.3,
+      "et": 11.4,
+      "trap": 129.0,
+      "z60130": 7.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2014 Porsche 911 Carrera S",
+      "excelHp": 400,
+      "weightLbs": 3150,
+      "raw": "0-60: 3.7s | 1/4: 12.0s @ 117 mph | 60-130: n/a",
+      "z60": 3.7,
+      "et": 12.0,
+      "trap": 117.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2002 Porsche 911 Turbo (996)",
+      "excelHp": 415,
+      "weightLbs": 3400,
+      "raw": "0-60: 3.9s | 1/4: 12.2s @ 115 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.2,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Ferrari 612 Scaglietti",
+      "excelHp": 533,
+      "weightLbs": 4050,
+      "raw": "0-60: 4.3s | 1/4: 12.6s @ 116 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.6,
+      "trap": 116.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Lamborghini Revent\u00f3n",
+      "excelHp": 650,
+      "weightLbs": 3700,
+      "raw": "0-60: 3.3s | 1/4: 11.3s @ 128 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.3,
+      "trap": 128.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 McLaren MP4-12C HS",
+      "excelHp": 616,
+      "weightLbs": 3161,
+      "raw": "0-60: 2.9s | 1/4: 10.7s @ 134 mph | 60-130: n/a",
+      "z60": 2.9,
+      "et": 10.7,
+      "trap": 134.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2015 Aston Martin V12 Vantage S",
+      "excelHp": 565,
+      "weightLbs": 3700,
+      "raw": "0-60: 3.7s | 1/4: 12.0s @ 122 mph | 60-130: /na",
+      "z60": 3.7,
+      "et": 12.0,
+      "trap": 122.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2019 Bugatti Chiron",
+      "excelHp": 1479,
+      "weightLbs": 4398,
+      "raw": "0-60: 2.4s | 1/4: 9.4s @ 158 mph | 60-130: 5.0s",
+      "z60": 2.4,
+      "et": 9.4,
+      "trap": 158.0,
+      "z60130": 5.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 McLaren 720S",
+      "excelHp": 710,
+      "weightLbs": 3228,
+      "raw": "0-60: 2.5s | 1/4: 10.1s @ 142 mph | 60-130: 5.6s",
+      "z60": 2.5,
+      "et": 10.1,
+      "trap": 142.0,
+      "z60130": 5.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2019 Lamborghini Aventador SVJ",
+      "excelHp": 759,
+      "weightLbs": 3472,
+      "raw": "0-60: 2.6s | 1/4: 10.3s @ 136 mph | 60-130: 5.8s",
+      "z60": 2.6,
+      "et": 10.3,
+      "trap": 136.0,
+      "z60130": 5.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 Rimac Nevera",
+      "excelHp": 1914,
+      "weightLbs": 4750,
+      "raw": "0-60: 1.74s | 1/4: 8.25s | 60-130: 2.99s",
+      "z60": 1.74,
+      "et": null,
+      "trap": null,
+      "z60130": 2.99,
+      "decs": {
+        "z60": 2,
+        "et": null,
+        "trap": null,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2015 Koenigsegg One:1",
+      "excelHp": 1341,
+      "weightLbs": 2998,
+      "raw": "0-60: 2.8s | 1/4: 9.9s @ 150 mph | 60-130: 4.8s",
+      "z60": 2.8,
+      "et": 9.9,
+      "trap": 150.0,
+      "z60130": 4.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2019 Koenigsegg Jesko",
+      "excelHp": 1281,
+      "weightLbs": 3131,
+      "raw": "0-60: 2.6s | 1/4: 9.6s @ 152 mph | 60-130: 4.5s",
+      "z60": 2.6,
+      "et": 9.6,
+      "trap": 152.0,
+      "z60130": 4.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2013 Bugatti Veyron Super Sport",
+      "excelHp": 1200,
+      "weightLbs": 4387,
+      "raw": "0-60: 2.4s | 1/4: 9.9s @ 148 mph | 60-130: 4.8s",
+      "z60": 2.4,
+      "et": 9.9,
+      "trap": 148.0,
+      "z60130": 4.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2005 Bugatti Veyron",
+      "excelHp": 1001,
+      "weightLbs": 4480,
+      "raw": "0-60: 2.5s | 1/4: 10.1s @ 142 mph | 60-130: 5.4s",
+      "z60": 2.5,
+      "et": 10.1,
+      "trap": 142.0,
+      "z60130": 5.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2011 Koenigsegg Agera R",
+      "excelHp": 1140,
+      "weightLbs": 3130,
+      "raw": "0-60: 2.8s | 1/4: 10.0s @ 148 mph | 60-130: 5.0s",
+      "z60": 2.8,
+      "et": 10.0,
+      "trap": 148.0,
+      "z60130": 5.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2006 Saleen S7 Twin Turbo",
+      "excelHp": 750,
+      "weightLbs": 2950,
+      "raw": "0-60: 3.3s | 1/4: 10.9s @ 140 mph | 60-130: 6.5s",
+      "z60": 3.3,
+      "et": 10.9,
+      "trap": 140.0,
+      "z60130": 6.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2010 Pagani Zonda R",
+      "excelHp": 740,
+      "weightLbs": 2350,
+      "raw": "0-60: 2.7s | 1/4: 10.1s @ 140 mph | 60-130: 5.5s",
+      "z60": 2.7,
+      "et": 10.1,
+      "trap": 140.0,
+      "z60130": 5.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2004 Maserati MC12",
+      "excelHp": 621,
+      "weightLbs": 3263,
+      "raw": "0-60: 3.7s | 1/4: 11.3s @ 128 mph | 60-130: 8.0s",
+      "z60": 3.7,
+      "et": 11.3,
+      "trap": 128.0,
+      "z60130": 8.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2010 Gumpert Apollo Sport",
+      "excelHp": 690,
+      "weightLbs": 2635,
+      "raw": "0-60: 3.0s | 1/4: 10.8s @ 136 mph | 60-130: 6.2s",
+      "z60": 3.0,
+      "et": 10.8,
+      "trap": 136.0,
+      "z60130": 6.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2014 Hennessey Venom GT",
+      "excelHp": 1244,
+      "weightLbs": 2743,
+      "raw": "0-60: 2.7s | 1/4: 9.8s @ 170 mph | 60-130: 4.5s",
+      "z60": 2.7,
+      "et": 9.8,
+      "trap": 170.0,
+      "z60130": 4.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2018 Zenvo TSR-S",
+      "excelHp": 1177,
+      "weightLbs": 3300,
+      "raw": "0-60: 2.8s | 1/4: 10.4s @ 140 mph | 60-130: 6.0s",
+      "z60": 2.8,
+      "et": 10.4,
+      "trap": 140.0,
+      "z60130": 6.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2008 Koenigsegg CCX",
+      "excelHp": 806,
+      "weightLbs": 3130,
+      "raw": "0-60: 3.2s | 1/4: 10.7s @ 137 mph | 60-130: 6.2s",
+      "z60": 3.2,
+      "et": 10.7,
+      "trap": 137.0,
+      "z60130": 6.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2012 Pagani Huayra",
+      "excelHp": 720,
+      "weightLbs": 2970,
+      "raw": "0-60: 3.0s | 1/4: 10.6s @ 135 mph | 60-130: 6.5s",
+      "z60": 3.0,
+      "et": 10.6,
+      "trap": 135.0,
+      "z60130": 6.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2017 Bugatti Chiron Sport",
+      "excelHp": 1500,
+      "weightLbs": 4400,
+      "raw": "0-60: 2.4s | 1/4: 9.4s @ 158 mph | 60-130: 5.0s",
+      "z60": 2.4,
+      "et": 9.4,
+      "trap": 158.0,
+      "z60130": 5.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "excelHp": 1035,
+      "weightLbs": 3150,
+      "raw": "0-60: 2.5s | 1/4: 10.0s @ 150 mph | 60-130: 5.2s",
+      "z60": 2.5,
+      "et": 10.0,
+      "trap": 150.0,
+      "z60130": 5.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "excelHp": 1500,
+      "weightLbs": 3515,
+      "raw": "0-60: 2.7s | 1/4: 9.9s @ 150 mph | 60-130: 3.9s",
+      "z60": 2.7,
+      "et": 9.9,
+      "trap": 150.0,
+      "z60130": 3.9,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2017 Pagani Huayra BC",
+      "excelHp": 745,
+      "weightLbs": 2685,
+      "raw": "0-60: 2.8s | 1/4: 10.3s @ 138 mph | 60-130: 6.0s",
+      "z60": 2.8,
+      "et": 10.3,
+      "trap": 138.0,
+      "z60130": 6.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2018 Bugatti Divo",
+      "excelHp": 1500,
+      "weightLbs": 4300,
+      "raw": "0-60: 2.4s | 1/4: 9.5s @ 155 mph | 60-130: 5.0s",
+      "z60": 2.4,
+      "et": 9.5,
+      "trap": 155.0,
+      "z60130": 5.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 McLaren Elva",
+      "excelHp": 804,
+      "weightLbs": 2800,
+      "raw": "0-60: 2.8s | 1/4: 10.6s @ 136 mph | 60-130: 6.2s",
+      "z60": 2.8,
+      "et": 10.6,
+      "trap": 136.0,
+      "z60130": 6.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2014 Koenigsegg Agera S",
+      "excelHp": 1030,
+      "weightLbs": 3130,
+      "raw": "0-60: 2.8s | 1/4: 10.1s @ 145 mph | 60-130: 5.2s",
+      "z60": 2.8,
+      "et": 10.1,
+      "trap": 145.0,
+      "z60130": 5.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2016 Bugatti Chiron",
+      "excelHp": 1479,
+      "weightLbs": 4400,
+      "raw": "0-60: 2.4s | 1/4: 9.4s @ 158 mph | 60-130: 5.0s",
+      "z60": 2.4,
+      "et": 9.4,
+      "trap": 158.0,
+      "z60130": 5.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2019 Pagani Huayra Roadster BC",
+      "excelHp": 791,
+      "weightLbs": 2750,
+      "raw": "0-60: 2.8s | 1/4: 10.3s @ 137 mph | 60-130: 6.0s",
+      "z60": 2.8,
+      "et": 10.3,
+      "trap": 137.0,
+      "z60130": 6.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 McLaren Sabre",
+      "excelHp": 824,
+      "weightLbs": 3200,
+      "raw": "0-60: 2.7s | 1/4: 10.4s @ 138 mph | 60-130: 6.0s",
+      "z60": 2.7,
+      "et": 10.4,
+      "trap": 138.0,
+      "z60130": 6.0,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "1998 Toyota Supra Turbo (Mk4)",
+      "excelHp": 320,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.6s | 1/4: 13.1s @ 108 mph | 60-130: n/a",
+      "z60": 4.6,
+      "et": 13.1,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2002 Nissan Skyline GT-R R34",
+      "excelHp": 276,
+      "weightLbs": 3439,
+      "raw": "0-60: 4.8s | 1/4: 13.3s @ 107 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.3,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2020 Subaru WRX STI",
+      "excelHp": 310,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.6s | 1/4: 13.2s @ 104 mph | 60-130: n/a",
+      "z60": 4.6,
+      "et": 13.2,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2018 Honda Civic Type R",
+      "excelHp": 306,
+      "weightLbs": 3117,
+      "raw": "0-60: 4.9s | 1/4: 13.5s @ 107 mph | 60-130: n/a",
+      "z60": 4.9,
+      "et": 13.5,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Mitsubishi Lancer Evolution X",
+      "excelHp": 291,
+      "weightLbs": 3550,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 104 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Subaru WRX STI",
+      "excelHp": 300,
+      "weightLbs": 3380,
+      "raw": "0-60: 4.7s | 1/4: 13.3s @ 104 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.3,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2005 Nissan 350Z",
+      "excelHp": 287,
+      "weightLbs": 3400,
+      "raw": "0-60: 5.3s | 1/4: 13.9s @ 103 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.9,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 BMW 135i",
+      "excelHp": 300,
+      "weightLbs": 3400,
+      "raw": "0-60: 4.8s | 1/4: 13.4s @ 105 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.4,
+      "trap": 105.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Mazda RX-8 R3",
+      "excelHp": 232,
+      "weightLbs": 3064,
+      "raw": "0-60: 6.2s | 1/4: 14.8s @ 96 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.8,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2003 Mitsubishi Lancer Evolution VIII",
+      "excelHp": 271,
+      "weightLbs": 3263,
+      "raw": "0-60: 4.8s | 1/4: 13.4s @ 104 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.4,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1999 Subaru Impreza 22B STI",
+      "excelHp": 276,
+      "weightLbs": 2800,
+      "raw": "0-60: 4.7s | 1/4: 13.3s @ 104 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.3,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2001 Honda S2000",
+      "excelHp": 240,
+      "weightLbs": 2835,
+      "raw": "0-60: 5.8s | 1/4: 14.4s @ 97 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 14.4,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2004 Mazda RX-8",
+      "excelHp": 238,
+      "weightLbs": 3020,
+      "raw": "0-60: 6.4s | 1/4: 15.0s @ 94 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 15.0,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1995 Nissan Silvia S14",
+      "excelHp": 217,
+      "weightLbs": 2800,
+      "raw": "0-60: 6.4s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1991 Nissan 240SX (S13)",
+      "excelHp": 155,
+      "weightLbs": 2700,
+      "raw": "0-60: 7.5s | 1/4: 15.8s @ 88 mph | 60-130: n/a",
+      "z60": 7.5,
+      "et": 15.8,
+      "trap": 88.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1998 Honda Prelude Type SH",
+      "excelHp": 200,
+      "weightLbs": 3000,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 91 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2003 Acura RSX Type-S",
+      "excelHp": 200,
+      "weightLbs": 2770,
+      "raw": "0-60: 6.5s | 1/4: 15.1s @ 93 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.1,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 MazdaSpeed3",
+      "excelHp": 263,
+      "weightLbs": 3200,
+      "raw": "0-60: 5.3s | 1/4: 13.9s @ 101 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.9,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Scion FR-S",
+      "excelHp": 200,
+      "weightLbs": 2760,
+      "raw": "0-60: 6.2s | 1/4: 14.8s @ 94 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.8,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1990 Mazda Miata NA",
+      "excelHp": 116,
+      "weightLbs": 2100,
+      "raw": "0-60: 8.1s | 1/4: 16.3s @ 84 mph | 60-130: n/a",
+      "z60": 8.1,
+      "et": 16.3,
+      "trap": 84.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1997 Honda Civic Type R EK9",
+      "excelHp": 182,
+      "weightLbs": 2380,
+      "raw": "0-60: 6.7s | 1/4: 15.2s @ 91 mph | 60-130: n/a",
+      "z60": 6.7,
+      "et": 15.2,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2002 Subaru WRX Wagon",
+      "excelHp": 227,
+      "weightLbs": 3200,
+      "raw": "0-60: 5.8s | 1/4: 14.4s @ 96 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 14.4,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2005 Mitsubishi Eclipse GT",
+      "excelHp": 263,
+      "weightLbs": 3500,
+      "raw": "0-60: 6.3s | 1/4: 14.8s @ 96 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.8,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Scion tC",
+      "excelHp": 180,
+      "weightLbs": 3100,
+      "raw": "0-60: 7.2s | 1/4: 15.6s @ 90 mph | 60-130: n/a",
+      "z60": 7.2,
+      "et": 15.6,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1992 Nissan Pulsar GTI-R",
+      "excelHp": 227,
+      "weightLbs": 2700,
+      "raw": "0-60: 5.4s | 1/4: 14.0s @ 99 mph | 60-130: n/a",
+      "z60": 5.4,
+      "et": 14.0,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1998 Toyota Celica GT-Four",
+      "excelHp": 255,
+      "weightLbs": 3200,
+      "raw": "0-60: 6.0s | 1/4: 14.5s @ 97 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.5,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2001 Mitsubishi Eclipse GSX",
+      "excelHp": 210,
+      "weightLbs": 3300,
+      "raw": "0-60: 6.5s | 1/4: 15.0s @ 92 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.0,
+      "trap": 92.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Honda Accord Euro R",
+      "excelHp": 220,
+      "weightLbs": 3000,
+      "raw": "0-60: 6.6s | 1/4: 15.1s @ 93 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 15.1,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Hyundai Genesis Coupe 3.8",
+      "excelHp": 306,
+      "weightLbs": 3500,
+      "raw": "0-60: 5.5s | 1/4: 14.1s @ 101 mph | 60-130: n/a",
+      "z60": 5.5,
+      "et": 14.1,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1991 Toyota Soarer GT-T",
+      "excelHp": 276,
+      "weightLbs": 3500,
+      "raw": "0-60: 6.2s | 1/4: 14.7s @ 96 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.7,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1994 Nissan 180SX Type X",
+      "excelHp": 205,
+      "weightLbs": 2700,
+      "raw": "0-60: 6.5s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1999 Honda Prelude SH",
+      "excelHp": 200,
+      "weightLbs": 3000,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 91 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Subaru Legacy GT Spec.B",
+      "excelHp": 243,
+      "weightLbs": 3500,
+      "raw": "0-60: 5.5s | 1/4: 14.1s @ 99 mph | 60-130: n/a",
+      "z60": 5.5,
+      "et": 14.1,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 MazdaSpeed6",
+      "excelHp": 274,
+      "weightLbs": 3600,
+      "raw": "0-60: 5.8s | 1/4: 14.4s @ 97 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 14.4,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Kawasaki Ninja ZX-10R",
+      "excelHp": 203,
+      "weightLbs": 454,
+      "raw": "0-60: 3.1s | 1/4: 10.2s @ 147 mph | 60-130: 4.5s",
+      "z60": 3.1,
+      "et": 10.2,
+      "trap": 147.0,
+      "z60130": 4.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2016 Kawasaki Ninja ZX-10R",
+      "excelHp": 197,
+      "weightLbs": 449,
+      "raw": "0-60: 3.0s | 1/4: 10.2s @ 147 mph | 60-130: 4.5s",
+      "z60": 3.0,
+      "et": 10.2,
+      "trap": 147.0,
+      "z60130": 4.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Suzuki GSX-R1000",
+      "excelHp": 199,
+      "weightLbs": 445,
+      "raw": "0-60: 3.0s | 1/4: 10.2s @ 148 mph | 60-130: 4.4s",
+      "z60": 3.0,
+      "et": 10.2,
+      "trap": 148.0,
+      "z60130": 4.4,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Suzuki GSX-R1000R",
+      "excelHp": 202,
+      "weightLbs": 443,
+      "raw": "0-60: 2.9s | 1/4: 10.1s @ 149 mph | 60-130: 4.3s",
+      "z60": 2.9,
+      "et": 10.1,
+      "trap": 149.0,
+      "z60130": 4.3,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Yamaha YZF-R1",
+      "excelHp": 197,
+      "weightLbs": 448,
+      "raw": "0-60: 2.9s | 1/4: 10.1s @ 148 mph | 60-130: 4.3s",
+      "z60": 2.9,
+      "et": 10.1,
+      "trap": 148.0,
+      "z60130": 4.3,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Yamaha YZF-R1M",
+      "excelHp": 200,
+      "weightLbs": 443,
+      "raw": "0-60: 2.9s | 1/4: 10.0s @ 149 mph | 60-130: 4.2s",
+      "z60": 2.9,
+      "et": 10.0,
+      "trap": 149.0,
+      "z60130": 4.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 BMW S1000RR",
+      "excelHp": 205,
+      "weightLbs": 434,
+      "raw": "0-60: 3.1s | 1/4: 10.12s @ 156 mph | 60-130: 4.52s",
+      "z60": 3.1,
+      "et": 10.12,
+      "trap": 156.0,
+      "z60130": 4.52,
+      "decs": {
+        "z60": 1,
+        "et": 2,
+        "trap": 0,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2021 Honda CBR1000RR-R Fireblade",
+      "excelHp": 214,
+      "weightLbs": 443,
+      "raw": "0-60: 2.9s | 1/4: 10.0s @ 151 mph | 60-130: 4.2s",
+      "z60": 2.9,
+      "et": 10.0,
+      "trap": 151.0,
+      "z60130": 4.2,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2022 Suzuki Hayabusa",
+      "excelHp": 187,
+      "weightLbs": 582,
+      "raw": "0-60: 2.5s | 1/4: 9.7s @ 148 mph | 60-130: 4.8s",
+      "z60": 2.5,
+      "et": 9.7,
+      "trap": 148.0,
+      "z60130": 4.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Kawasaki Ninja ZX-14R",
+      "excelHp": 208,
+      "weightLbs": 593,
+      "raw": "0-60: 2.6s | 1/4: 9.7s @ 149 mph | 60-130: 4.6s",
+      "z60": 2.6,
+      "et": 9.7,
+      "trap": 149.0,
+      "z60130": 4.6,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 Ducati Panigale V4",
+      "excelHp": 214,
+      "weightLbs": 436,
+      "raw": "0-60: 2.8s | 1/4: 10.0s @ 152 mph | 60-130: 4.1s",
+      "z60": 2.8,
+      "et": 10.0,
+      "trap": 152.0,
+      "z60130": 4.1,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2021 Kawasaki Ninja H2",
+      "excelHp": 228,
+      "weightLbs": 525,
+      "raw": "0-60: 2.6s | 1/4: 9.7s @ 152 mph | 60-130: 3.8s",
+      "z60": 2.6,
+      "et": 9.7,
+      "trap": 152.0,
+      "z60130": 3.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2020 Ford F-150 Raptor",
+      "excelHp": 450,
+      "weightLbs": 5697,
+      "raw": "0-60: 5.1s | 1/4: 13.8s @ 101 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.8,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Ram TRX",
+      "excelHp": 702,
+      "weightLbs": 6350,
+      "raw": "0-60: 4.1s | 1/4: 12.3s @ 110 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.3,
+      "trap": 110.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Chevrolet Silverado ZR2",
+      "excelHp": 420,
+      "weightLbs": 5950,
+      "raw": "0-60: 6.2s | 1/4: 14.8s @ 95 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.8,
+      "trap": 95.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2020 Chevrolet Silverado 6.2",
+      "excelHp": 420,
+      "weightLbs": 5200,
+      "raw": "0-60: 5.4s | 1/4: 14.0s @ 99 mph | 60-130: n/a",
+      "z60": 5.4,
+      "et": 14.0,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2019 Ford F-250 6.7 PowerStroke",
+      "excelHp": 450,
+      "weightLbs": 7300,
+      "raw": "0-60: 7.2s | 1/4: 15.6s @ 89 mph | 60-130: n/a",
+      "z60": 7.2,
+      "et": 15.6,
+      "trap": 89.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Toyota Tundra",
+      "excelHp": 381,
+      "weightLbs": 5800,
+      "raw": "0-60: 6.1s | 1/4: 14.7s @ 95 mph | 60-130: n/a",
+      "z60": 6.1,
+      "et": 14.7,
+      "trap": 95.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2018 Ford F-150 5.0",
+      "excelHp": 395,
+      "weightLbs": 4700,
+      "raw": "0-60: 6.1s | 1/4: 14.7s @ 95 mph | 60-130: n/a",
+      "z60": 6.1,
+      "et": 14.7,
+      "trap": 95.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2017 Chevrolet Silverado 5.3",
+      "excelHp": 355,
+      "weightLbs": 4800,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 91 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2016 Ram 1500 5.7 Hemi",
+      "excelHp": 395,
+      "weightLbs": 5100,
+      "raw": "0-60: 6.4s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2014 Toyota Tacoma V6",
+      "excelHp": 236,
+      "weightLbs": 3950,
+      "raw": "0-60: 7.6s | 1/4: 16.0s @ 86 mph | 60-130: n/a",
+      "z60": 7.6,
+      "et": 16.0,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Ford F-150 EcoBoost",
+      "excelHp": 365,
+      "weightLbs": 4800,
+      "raw": "0-60: 6.2s | 1/4: 14.8s @ 94 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.8,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Ram 1500 5.7 Hemi",
+      "excelHp": 395,
+      "weightLbs": 5100,
+      "raw": "0-60: 6.5s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Chevrolet Avalanche 5.3",
+      "excelHp": 320,
+      "weightLbs": 5600,
+      "raw": "0-60: 7.4s | 1/4: 15.8s @ 88 mph | 60-130: n/a",
+      "z60": 7.4,
+      "et": 15.8,
+      "trap": 88.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Toyota Tundra 5.7",
+      "excelHp": 381,
+      "weightLbs": 5600,
+      "raw": "0-60: 6.3s | 1/4: 14.9s @ 94 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.9,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Ford F-150 Harley-Davidson",
+      "excelHp": 300,
+      "weightLbs": 5200,
+      "raw": "0-60: 7.4s | 1/4: 15.8s @ 88 mph | 60-130: n/a",
+      "z60": 7.4,
+      "et": 15.8,
+      "trap": 88.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 GMC Sierra Denali 6.2",
+      "excelHp": 403,
+      "weightLbs": 5400,
+      "raw": "0-60: 6.0s | 1/4: 14.6s @ 96 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.6,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Nissan Titan 5.6",
+      "excelHp": 317,
+      "weightLbs": 5200,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 91 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Toyota Sequoia 5.7",
+      "excelHp": 381,
+      "weightLbs": 5800,
+      "raw": "0-60: 6.6s | 1/4: 15.1s @ 92 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 15.1,
+      "trap": 92.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Ford F-150 4.6 Triton",
+      "excelHp": 248,
+      "weightLbs": 4800,
+      "raw": "0-60: 8.5s | 1/4: 16.6s @ 84 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.6,
+      "trap": 84.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+      "excelHp": 367,
+      "weightLbs": 5200,
+      "raw": "0-60: 6.4s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Toyota Tacoma 4.0 V6",
+      "excelHp": 236,
+      "weightLbs": 3950,
+      "raw": "0-60: 7.6s | 1/4: 16.0s @ 86 mph | 60-130: n/a",
+      "z60": 7.6,
+      "et": 16.0,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2015 Nissan Frontier 4.0",
+      "excelHp": 261,
+      "weightLbs": 4300,
+      "raw": "0-60: 7.8s | 1/4: 16.1s @ 86 mph | 60-130: n/a",
+      "z60": 7.8,
+      "et": 16.1,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2005 Ford F-250 V10",
+      "excelHp": 362,
+      "weightLbs": 6400,
+      "raw": "0-60: 8.8s | 1/4: 16.8s @ 82 mph | 60-130: n/a",
+      "z60": 8.8,
+      "et": 16.8,
+      "trap": 82.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Chevrolet Silverado 2500HD 6.0",
+      "excelHp": 300,
+      "weightLbs": 6200,
+      "raw": "0-60: 8.5s | 1/4: 16.6s @ 83 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.6,
+      "trap": 83.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Toyota Tundra 4.7",
+      "excelHp": 271,
+      "weightLbs": 5200,
+      "raw": "0-60: 8.0s | 1/4: 16.3s @ 85 mph | 60-130: n/a",
+      "z60": 8.0,
+      "et": 16.3,
+      "trap": 85.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 Nissan Titan Pro-4X",
+      "excelHp": 317,
+      "weightLbs": 5400,
+      "raw": "0-60: 7.0s | 1/4: 15.4s @ 90 mph | 60-130: n/a",
+      "z60": 7.0,
+      "et": 15.4,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1969 Dodge Charger 440",
+      "excelHp": 375,
+      "weightLbs": 4100,
+      "raw": "0-60: 6.1s | 1/4: 14.3s @ 99 mph | 60-130: n/a",
+      "z60": 6.1,
+      "et": 14.3,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1967 Ford Mustang GT 390",
+      "excelHp": 320,
+      "weightLbs": 3400,
+      "raw": "0-60: 6.8s | 1/4: 15.2s @ 93 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.2,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1970 Chevrolet Chevelle SS 454",
+      "excelHp": 450,
+      "weightLbs": 3960,
+      "raw": "0-60: 5.8s | 1/4: 13.9s @ 103 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 13.9,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1970 Dodge Challenger 426 Hemi",
+      "excelHp": 425,
+      "weightLbs": 3750,
+      "raw": "0-60: 5.8s | 1/4: 13.8s @ 104 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 13.8,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1969 Chevrolet Camaro SS 396",
+      "excelHp": 375,
+      "weightLbs": 3600,
+      "raw": "0-60: 6.0s | 1/4: 14.4s @ 99 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.4,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1971 Dodge Demon 340",
+      "excelHp": 275,
+      "weightLbs": 3200,
+      "raw": "0-60: 6.4s | 1/4: 14.8s @ 96 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 14.8,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1966 Ford GT40 MkII",
+      "excelHp": 485,
+      "weightLbs": 2685,
+      "raw": "0-60: 4.5s | 1/4: 11.8s @ 131 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 11.8,
+      "trap": 131.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1965 Shelby Cobra 427",
+      "excelHp": 425,
+      "weightLbs": 2420,
+      "raw": "0-60: 4.3s | 1/4: 12.2s @ 120 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.2,
+      "trap": 120.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1970 Plymouth Road Runner 440",
+      "excelHp": 390,
+      "weightLbs": 3850,
+      "raw": "0-60: 6.0s | 1/4: 14.2s @ 100 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.2,
+      "trap": 100.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1968 Dodge Dart GTS 383",
+      "excelHp": 300,
+      "weightLbs": 3400,
+      "raw": "0-60: 6.5s | 1/4: 14.8s @ 96 mph | 60-130: n/a",
+      "z60": 6.5,
+      "et": 14.8,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1964 Pontiac GTO",
+      "excelHp": 348,
+      "weightLbs": 3500,
+      "raw": "0-60: 6.6s | 1/4: 14.8s @ 98 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 14.8,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1965 Chevrolet Chevelle SS396",
+      "excelHp": 375,
+      "weightLbs": 3600,
+      "raw": "0-60: 6.4s | 1/4: 14.7s @ 98 mph | 60-130: n/a",
+      "z60": 6.4,
+      "et": 14.7,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1963 Corvette Stingray 327",
+      "excelHp": 360,
+      "weightLbs": 3100,
+      "raw": "0-60: 5.9s | 1/4: 14.4s @ 100 mph | 60-130: n/a",
+      "z60": 5.9,
+      "et": 14.4,
+      "trap": 100.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1972 Oldsmobile 442",
+      "excelHp": 300,
+      "weightLbs": 3800,
+      "raw": "0-60: 7.5s | 1/4: 15.8s @ 90 mph | 60-130: n/a",
+      "z60": 7.5,
+      "et": 15.8,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1962 Chevrolet Impala SS 409",
+      "excelHp": 409,
+      "weightLbs": 3800,
+      "raw": "0-60: 6.3s | 1/4: 14.6s @ 99 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.6,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1967 Plymouth GTX 440",
+      "excelHp": 375,
+      "weightLbs": 3850,
+      "raw": "0-60: 6.0s | 1/4: 14.3s @ 100 mph | 60-130: n/a",
+      "z60": 6.0,
+      "et": 14.3,
+      "trap": 100.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1973 Ford Torino 351",
+      "excelHp": 248,
+      "weightLbs": 3900,
+      "raw": "0-60: 8.5s | 1/4: 16.5s @ 85 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.5,
+      "trap": 85.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1978 Dodge Magnum XE",
+      "excelHp": 195,
+      "weightLbs": 3900,
+      "raw": "0-60: 9.5s | 1/4: 17.2s @ 80 mph | 60-130: n/a",
+      "z60": 9.5,
+      "et": 17.2,
+      "trap": 80.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1957 Chevrolet Bel Air 283",
+      "excelHp": 220,
+      "weightLbs": 3450,
+      "raw": "0-60: 8.5s | 1/4: 16.6s @ 82 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.6,
+      "trap": 82.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1960 Ford Galaxie 352",
+      "excelHp": 300,
+      "weightLbs": 3800,
+      "raw": "0-60: 8.8s | 1/4: 16.8s @ 82 mph | 60-130: n/a",
+      "z60": 8.8,
+      "et": 16.8,
+      "trap": 82.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1974 Pontiac Firebird 400",
+      "excelHp": 225,
+      "weightLbs": 3800,
+      "raw": "0-60: 8.2s | 1/4: 16.3s @ 86 mph | 60-130: n/a",
+      "z60": 8.2,
+      "et": 16.3,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1977 Chevrolet Monte Carlo",
+      "excelHp": 170,
+      "weightLbs": 3900,
+      "raw": "0-60: 10.5s | 1/4: 17.8s @ 78 mph | 60-130: n/a",
+      "z60": 10.5,
+      "et": 17.8,
+      "trap": 78.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1955 Ford Thunderbird",
+      "excelHp": 193,
+      "weightLbs": 3500,
+      "raw": "0-60: 9.5s | 1/4: 17.2s @ 80 mph | 60-130: n/a",
+      "z60": 9.5,
+      "et": 17.2,
+      "trap": 80.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1961 Chevrolet Corvette 283",
+      "excelHp": 270,
+      "weightLbs": 3100,
+      "raw": "0-60: 6.6s | 1/4: 15.0s @ 93 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 15.0,
+      "trap": 93.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1968 Mercury Cougar XR-7",
+      "excelHp": 335,
+      "weightLbs": 3600,
+      "raw": "0-60: 7.2s | 1/4: 15.5s @ 91 mph | 60-130: n/a",
+      "z60": 7.2,
+      "et": 15.5,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1975 Chevrolet Nova 350",
+      "excelHp": 145,
+      "weightLbs": 3500,
+      "raw": "0-60: 9.8s | 1/4: 17.4s @ 79 mph | 60-130: n/a",
+      "z60": 9.8,
+      "et": 17.4,
+      "trap": 79.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 Volkswagen Golf R",
+      "excelHp": 315,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.1s | 1/4: 12.6s @ 112 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.6,
+      "trap": 112.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Toyota GR Corolla",
+      "excelHp": 300,
+      "weightLbs": 3250,
+      "raw": "0-60: 4.7s | 1/4: 13.4s @ 103 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.4,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 BMW M5 Competition",
+      "excelHp": 617,
+      "weightLbs": 4300,
+      "raw": "0-60: 2.8s | 1/4: 10.9s @ 128.5 mph | 60-130: n/a",
+      "z60": 2.8,
+      "et": 10.9,
+      "trap": 128.5,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 1,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2020 Audi RS7",
+      "excelHp": 591,
+      "weightLbs": 4500,
+      "raw": "0-60: 3.1s | 1/4: 11.4s @ 124 mph | 60-130: n/a",
+      "z60": 3.1,
+      "et": 11.4,
+      "trap": 124.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2018 BMW M3 Competition",
+      "excelHp": 444,
+      "weightLbs": 3540,
+      "raw": "0-60: 3.8s | 1/4: 11.9s @ 122 mph | 60-130: n/a",
+      "z60": 3.8,
+      "et": 11.9,
+      "trap": 122.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2017 Mercedes-AMG C63 S",
+      "excelHp": 503,
+      "weightLbs": 3900,
+      "raw": "0-60: 3.8s | 1/4: 11.8s @ 123 mph | 60-130: n/a",
+      "z60": 3.8,
+      "et": 11.8,
+      "trap": 123.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2019 Audi RS5 Sportback",
+      "excelHp": 444,
+      "weightLbs": 3968,
+      "raw": "0-60: 3.5s | 1/4: 11.9s @ 115 mph | 60-130: n/a",
+      "z60": 3.5,
+      "et": 11.9,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Jeep Trackhawk",
+      "excelHp": 707,
+      "weightLbs": 5350,
+      "raw": "0-60: 3.5s | 1/4: 11.6 @ 118 mph | 60-130: n/a",
+      "z60": 3.5,
+      "et": 11.6,
+      "trap": 118.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 BMW X5M Competition",
+      "excelHp": 617,
+      "weightLbs": 5300,
+      "raw": "0-60: 3.3s | 1/4: 11.8s @ 118 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.8,
+      "trap": 118.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2020 Dodge Durango SRT",
+      "excelHp": 475,
+      "weightLbs": 5300,
+      "raw": "0-60: 4.4s | 1/4: 12.9s @ 110 mph | 60-130: n/a",
+      "z60": 4.4,
+      "et": 12.9,
+      "trap": 110.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2022 Cadillac Escalade V",
+      "excelHp": 682,
+      "weightLbs": 6200,
+      "raw": "0-60: 4.3s | 1/4: 12.7s @ 112 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.7,
+      "trap": 112.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2021 Range Rover Sport SVR",
+      "excelHp": 575,
+      "weightLbs": 5200,
+      "raw": "0-60: 4.3s | 1/4: 12.8s @ 111 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.8,
+      "trap": 111.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2019 Dodge Durango R/T",
+      "excelHp": 360,
+      "weightLbs": 5100,
+      "raw": "0-60: 6.3s | 1/4: 14.8s @ 95 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.8,
+      "trap": 95.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2018 Jeep Grand Cherokee SRT",
+      "excelHp": 475,
+      "weightLbs": 5200,
+      "raw": "0-60: 4.5s | 1/4: 13.1s @ 108 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 13.1,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2017 BMW X6M",
+      "excelHp": 567,
+      "weightLbs": 5150,
+      "raw": "0-60: 3.8s | 1/4: 12.3s @ 114 mph | 60-130: 8.8s",
+      "z60": 3.8,
+      "et": 12.3,
+      "trap": 114.0,
+      "z60130": 8.8,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2012 Chevrolet Tahoe 5.3",
+      "excelHp": 320,
+      "weightLbs": 5300,
+      "raw": "0-60: 7.6s | 1/4: 16.0s @ 87 mph | 60-130: n/a",
+      "z60": 7.6,
+      "et": 16.0,
+      "trap": 87.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Ford Expedition 5.4",
+      "excelHp": 310,
+      "weightLbs": 5600,
+      "raw": "0-60: 7.8s | 1/4: 16.1s @ 86 mph | 60-130: n/a",
+      "z60": 7.8,
+      "et": 16.1,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2014 Jeep Wrangler Rubicon",
+      "excelHp": 285,
+      "weightLbs": 4300,
+      "raw": "0-60: 8.1s | 1/4: 16.4s @ 85 mph | 60-130: n/a",
+      "z60": 8.1,
+      "et": 16.4,
+      "trap": 85.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Toyota 4Runner V8",
+      "excelHp": 260,
+      "weightLbs": 4400,
+      "raw": "0-60: 7.0s | 1/4: 15.5s @ 90 mph | 60-130: n/a",
+      "z60": 7.0,
+      "et": 15.5,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Chevrolet Suburban 5.3",
+      "excelHp": 320,
+      "weightLbs": 5600,
+      "raw": "0-60: 7.8s | 1/4: 16.1s @ 86 mph | 60-130: n/a",
+      "z60": 7.8,
+      "et": 16.1,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Jeep Liberty 3.7",
+      "excelHp": 210,
+      "weightLbs": 4200,
+      "raw": "0-60: 8.8s | 1/4: 16.8s @ 82 mph | 60-130: n/a",
+      "z60": 8.8,
+      "et": 16.8,
+      "trap": 82.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Toyota Highlander V6",
+      "excelHp": 270,
+      "weightLbs": 4100,
+      "raw": "0-60: 7.2s | 1/4: 15.6s @ 89 mph | 60-130: n/a",
+      "z60": 7.2,
+      "et": 15.6,
+      "trap": 89.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Honda Pilot",
+      "excelHp": 250,
+      "weightLbs": 4400,
+      "raw": "0-60: 7.8s | 1/4: 16.1s @ 86 mph | 60-130: n/a",
+      "z60": 7.8,
+      "et": 16.1,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Jeep Commander 5.7",
+      "excelHp": 357,
+      "weightLbs": 5100,
+      "raw": "0-60: 6.8s | 1/4: 15.3s @ 91 mph | 60-130: n/a",
+      "z60": 6.8,
+      "et": 15.3,
+      "trap": 91.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1994 Toyota Supra Twin Turbo",
+      "excelHp": 320,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.6s | 1/4: 13.1s @ 108 mph | 60-130: n/a",
+      "z60": 4.6,
+      "et": 13.1,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1999 Nissan Skyline GT-R R34",
+      "excelHp": 276,
+      "weightLbs": 3439,
+      "raw": "0-60: 4.8s | 1/4: 13.3s @ 107 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.3,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1992 Honda NSX",
+      "excelHp": 270,
+      "weightLbs": 3010,
+      "raw": "0-60: 5.3s | 1/4: 13.8s @ 104 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 13.8,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1990 Nissan 300ZX NA",
+      "excelHp": 222,
+      "weightLbs": 3300,
+      "raw": "0-60: 6.7s | 1/4: 15.2s @ 92 mph | 60-130: n/a",
+      "z60": 6.7,
+      "et": 15.2,
+      "trap": 92.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1989 Toyota MR2 Supercharged",
+      "excelHp": 145,
+      "weightLbs": 2600,
+      "raw": "0-60: 6.6s | 1/4: 15.2s @ 90 mph | 60-130: n/a",
+      "z60": 6.6,
+      "et": 15.2,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 BMW 335i",
+      "excelHp": 300,
+      "weightLbs": 3600,
+      "raw": "0-60: 5.1s | 1/4: 13.6s @ 104 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.6,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Mercedes C63 AMG",
+      "excelHp": 451,
+      "weightLbs": 3800,
+      "raw": "0-60: 4.1s | 1/4: 12.5s @ 115 mph | 60-130: 10.5s",
+      "z60": 4.1,
+      "et": 12.5,
+      "trap": 115.0,
+      "z60130": 10.5,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": 1
+      }
+    },
+    {
+      "name": "2008 Audi S5",
+      "excelHp": 354,
+      "weightLbs": 3850,
+      "raw": "0-60: 4.9s | 1/4: 13.4s @ 105 mph | 60-130: n/a",
+      "z60": 4.9,
+      "et": 13.4,
+      "trap": 105.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1986 Toyota Corolla AE86",
+      "excelHp": 128,
+      "weightLbs": 2300,
+      "raw": "0-60: 8.3s | 1/4: 16.4s @ 84 mph | 60-130: n/a",
+      "z60": 8.3,
+      "et": 16.4,
+      "trap": 84.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1990 Mazda RX-7 FC Turbo",
+      "excelHp": 200,
+      "weightLbs": 2800,
+      "raw": "0-60: 6.3s | 1/4: 14.8s @ 95 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.8,
+      "trap": 95.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1995 Mitsubishi Eclipse GSX",
+      "excelHp": 210,
+      "weightLbs": 3200,
+      "raw": "0-60: 6.3s | 1/4: 14.8s @ 94 mph | 60-130: n/a",
+      "z60": 6.3,
+      "et": 14.8,
+      "trap": 94.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1985 Mazda RX-7 GSL-SE",
+      "excelHp": 135,
+      "weightLbs": 2600,
+      "raw": "0-60: 7.8s | 1/4: 16.0s @ 86 mph | 60-130: n/a",
+      "z60": 7.8,
+      "et": 16.0,
+      "trap": 86.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1993 Honda Accord SiR",
+      "excelHp": 190,
+      "weightLbs": 2900,
+      "raw": "0-60: 7.2s | 1/4: 15.6s @ 89 mph | 60-130: n/a",
+      "z60": 7.2,
+      "et": 15.6,
+      "trap": 89.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1997 Toyota Chaser Tourer V",
+      "excelHp": 276,
+      "weightLbs": 3400,
+      "raw": "0-60: 5.8s | 1/4: 14.4s @ 98 mph | 60-130: n/a",
+      "z60": 5.8,
+      "et": 14.4,
+      "trap": 98.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1983 Toyota Supra (Mk2)",
+      "excelHp": 160,
+      "weightLbs": 3000,
+      "raw": "0-60: 8.5s | 1/4: 16.5s @ 85 mph | 60-130: n/a",
+      "z60": 8.5,
+      "et": 16.5,
+      "trap": 85.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1987 Nissan Skyline GTS-R",
+      "excelHp": 210,
+      "weightLbs": 3000,
+      "raw": "0-60: 6.2s | 1/4: 14.6s @ 97 mph | 60-130: n/a",
+      "z60": 6.2,
+      "et": 14.6,
+      "trap": 97.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "1996 Honda Integra SiR",
+      "excelHp": 180,
+      "weightLbs": 2600,
+      "raw": "0-60: 7.0s | 1/4: 15.4s @ 90 mph | 60-130: n/a",
+      "z60": 7.0,
+      "et": 15.4,
+      "trap": 90.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2018 Mercedes-AMG GT R",
+      "excelHp": 577,
+      "weightLbs": 3540,
+      "raw": "0-60: 3.4s | 1/4: 11.6s @ 125 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.6,
+      "trap": 125.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2019 Porsche 911 GT3",
+      "excelHp": 500,
+      "weightLbs": 3153,
+      "raw": "0-60: 3.2s | 1/4: 11.4s @ 125 mph | 60-130: n/a",
+      "z60": 3.2,
+      "et": 11.4,
+      "trap": 125.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2016 Audi TT RS",
+      "excelHp": 400,
+      "weightLbs": 3300,
+      "raw": "0-60: 3.3s | 1/4: 11.7s @ 120 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.7,
+      "trap": 120.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2015 BMW M4",
+      "excelHp": 425,
+      "weightLbs": 3535,
+      "raw": "0-60: 3.9s | 1/4: 12.1s @ 118 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.1,
+      "trap": 118.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2014 Mercedes CLA45 AMG",
+      "excelHp": 355,
+      "weightLbs": 3450,
+      "raw": "0-60: 4.1s | 1/4: 12.6s @ 111 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.6,
+      "trap": 111.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2012 BMW M5",
+      "excelHp": 560,
+      "weightLbs": 4350,
+      "raw": "0-60: 3.7s | 1/4: 12.0s @ 122 mph | 60-130: n/a",
+      "z60": 3.7,
+      "et": 12.0,
+      "trap": 122.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2013 Audi RS4 Avant",
+      "excelHp": 450,
+      "weightLbs": 3950,
+      "raw": "0-60: 4.1s | 1/4: 12.6s @ 114 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.6,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Mercedes E63 AMG",
+      "excelHp": 518,
+      "weightLbs": 4200,
+      "raw": "0-60: 3.9s | 1/4: 12.3s @ 117 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.3,
+      "trap": 117.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 BMW 335i",
+      "excelHp": 300,
+      "weightLbs": 3600,
+      "raw": "0-60: 5.1s | 1/4: 13.6s @ 104 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.6,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2010 Mercedes C63 AMG",
+      "excelHp": 451,
+      "weightLbs": 3800,
+      "raw": "0-60: 4.1s | 1/4: 12.2s @ 115 mph | 60-130: n/a",
+      "z60": 4.1,
+      "et": 12.2,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Audi S5",
+      "excelHp": 354,
+      "weightLbs": 3850,
+      "raw": "0-60: 4.9s | 1/4: 13.4s @ 105 mph | 60-130: n/a",
+      "z60": 4.9,
+      "et": 13.4,
+      "trap": 105.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 BMW 550i",
+      "excelHp": 360,
+      "weightLbs": 3900,
+      "raw": "0-60: 5.2s | 1/4: 13.7s @ 104 mph | 60-130: n/a",
+      "z60": 5.2,
+      "et": 13.7,
+      "trap": 104.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2009 Mercedes CLS550",
+      "excelHp": 382,
+      "weightLbs": 4050,
+      "raw": "0-60: 5.4s | 1/4: 13.9s @ 103 mph | 60-130: n/a",
+      "z60": 5.4,
+      "et": 13.9,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 Audi A7 3.0T",
+      "excelHp": 310,
+      "weightLbs": 4200,
+      "raw": "0-60: 5.2s | 1/4: 13.7s @ 103 mph | 60-130: n/a",
+      "z60": 5.2,
+      "et": 13.7,
+      "trap": 103.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2004 BMW 330Ci ZHP",
+      "excelHp": 235,
+      "weightLbs": 3400,
+      "raw": "0-60: 5.6s | 1/4: 14.2s @ 99 mph | 60-130: n/a",
+      "z60": 5.6,
+      "et": 14.2,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2006 Mercedes CLK55 AMG",
+      "excelHp": 362,
+      "weightLbs": 3800,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 106 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 106.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2007 Audi S6 V10",
+      "excelHp": 435,
+      "weightLbs": 4300,
+      "raw": "0-60: 5.1s | 1/4: 13.6s @ 105 mph | 60-130: n/a",
+      "z60": 5.1,
+      "et": 13.6,
+      "trap": 105.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2003 BMW M3 E46",
+      "excelHp": 333,
+      "weightLbs": 3415,
+      "raw": "0-60: 4.8s | 1/4: 13.3s @ 107 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.3,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2005 Mercedes E55 AMG",
+      "excelHp": 469,
+      "weightLbs": 4100,
+      "raw": "0-60: 4.3s | 1/4: 12.6s @ 114 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.6,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2008 Audi RS4",
+      "excelHp": 420,
+      "weightLbs": 3950,
+      "raw": "0-60: 4.5s | 1/4: 13.0s @ 109 mph | 60-130: n/a",
+      "z60": 4.5,
+      "et": 13.0,
+      "trap": 109.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2011 - 2014 Ford F-150 Enrique's 3.5EB",
+      "excelHp": 462,
+      "weightLbs": 5688,
+      "raw": "0-60: n/a | 1/4: n/a | 60-130: n/a",
+      "z60": null,
+      "et": null,
+      "trap": null,
+      "z60130": null,
+      "decs": {
+        "z60": null,
+        "et": null,
+        "trap": null,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Porsche 911 GT3 RS",
+      "excelHp": 518,
+      "weightLbs": 3197,
+      "raw": "0-60: 3.0s | 1/4: 11.1s @ 128 mph | 60-130: n/a",
+      "z60": 3.0,
+      "et": 11.1,
+      "trap": 128.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Porsche 718 Cayman GT4 RS",
+      "excelHp": 493,
+      "weightLbs": 3227,
+      "raw": "0-60: 3.1s | 1/4: 11.3s @ 125 mph | 60-130: n/a",
+      "z60": 3.1,
+      "et": 11.3,
+      "trap": 125.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Toyota GR Supra 3.0",
+      "excelHp": 382,
+      "weightLbs": 3400,
+      "raw": "0-60: 3.9s | 1/4: 12.3s @ 115 mph | 60-130: n/a",
+      "z60": 3.9,
+      "et": 12.3,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Nissan Z Performance",
+      "excelHp": 400,
+      "weightLbs": 3536,
+      "raw": "0-60: 4.3s | 1/4: 12.3s @ 116 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.3,
+      "trap": 116.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 BMW M2",
+      "excelHp": 453,
+      "weightLbs": 3814,
+      "raw": "0-60: 3.4s | 1/4: 11.8s @ 120 mph | 60-130: n/a",
+      "z60": 3.4,
+      "et": 11.8,
+      "trap": 120.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Chevrolet Corvette Stingray",
+      "excelHp": 490,
+      "weightLbs": 3366,
+      "raw": "0-60: 3.3s | 1/4: 11.2s @ 123 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.2,
+      "trap": 123.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Mazda MX-5 Miata Club",
+      "excelHp": 181,
+      "weightLbs": 2341,
+      "raw": "0-60: 5.7s | 1/4: 14.3s @ 96 mph | 60-130: n/a",
+      "z60": 5.7,
+      "et": 14.3,
+      "trap": 96.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Lexus LC 500 Coupe",
+      "excelHp": 471,
+      "weightLbs": 4340,
+      "raw": "0-60: 4.4s | 1/4: 12.8s @ 114 mph | 60-130: n/a",
+      "z60": 4.4,
+      "et": 12.8,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Ford Bronco Raptor",
+      "excelHp": 418,
+      "weightLbs": 5733,
+      "raw": "0-60: 5.6s | 1/4: 14.2s @ 99 mph | 60-130: n/a",
+      "z60": 5.6,
+      "et": 14.2,
+      "trap": 99.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Toyota GR86",
+      "excelHp": 228,
+      "weightLbs": 2811,
+      "raw": "0-60: 5.3s | 1/4: 14.0s @ 101 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 14.0,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Subaru BRZ",
+      "excelHp": 228,
+      "weightLbs": 2820,
+      "raw": "0-60: 5.3s | 1/4: 14.0s @ 101 mph | 60-130: n/a",
+      "z60": 5.3,
+      "et": 14.0,
+      "trap": 101.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Chevrolet Corvette Z06",
+      "excelHp": 670,
+      "weightLbs": 3666,
+      "raw": "0-60: 3.0s | 1/4: 10.9s @ 131 mph | 60-130: n/a",
+      "z60": 3.0,
+      "et": 10.9,
+      "trap": 131.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2026 Chevrolet Corvette ZR1X",
+      "excelHp": 1250,
+      "weightLbs": 3978,
+      "raw": "0-60: 1.9s | 1/4: 8.675 @ 159 | 60-130: 3.87",
+      "z60": 1.9,
+      "et": 8.675,
+      "trap": 159.0,
+      "z60130": 3.87,
+      "decs": {
+        "z60": 1,
+        "et": 3,
+        "trap": 0,
+        "z60130": 2
+      }
+    },
+    {
+      "name": "2024 Acura Integra Type S",
+      "excelHp": 320,
+      "weightLbs": 3219,
+      "raw": "0-60: 5.0s | 1/4: 13.5s @ 106 mph | 60-130: n/a",
+      "z60": 5.0,
+      "et": 13.5,
+      "trap": 106.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Acura TLX Type S",
+      "excelHp": 355,
+      "weightLbs": 4221,
+      "raw": "0-60: 4.7s | 1/4: 13.2s @ 107 mph | 60-130: n/a",
+      "z60": 4.7,
+      "et": 13.2,
+      "trap": 107.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Lexus IS 500",
+      "excelHp": 472,
+      "weightLbs": 3891,
+      "raw": "0-60: 4.4s | 1/4: 12.8s @ 114 mph | 60-130: n/a",
+      "z60": 4.4,
+      "et": 12.8,
+      "trap": 114.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Audi RS 3",
+      "excelHp": 401,
+      "weightLbs": 3649,
+      "raw": "0-60: 3.3s | 1/4: 11.7s @ 119 mph | 60-130: n/a",
+      "z60": 3.3,
+      "et": 11.7,
+      "trap": 119.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2024 Lexus RC F",
+      "excelHp": 472,
+      "weightLbs": 3902,
+      "raw": "0-60: 4.3s | 1/4: 12.6s @ 115 mph | 60-130: n/a",
+      "z60": 4.3,
+      "et": 12.6,
+      "trap": 115.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    },
+    {
+      "name": "2023 Honda Civic Type R",
+      "excelHp": 315,
+      "weightLbs": 3188,
+      "raw": "0-60: 4.8s | 1/4: 13.3s @ 108 mph | 60-130: n/a",
+      "z60": 4.8,
+      "et": 13.3,
+      "trap": 108.0,
+      "z60130": null,
+      "decs": {
+        "z60": 1,
+        "et": 1,
+        "trap": 0,
+        "z60130": null
+      }
+    }
+  ]
+}
