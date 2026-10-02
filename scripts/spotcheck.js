@@ -353,7 +353,7 @@ console.log('\n---------- EV SPEED LIMITERS + CHART ----------');
     var r = Phys.runQuarterMile(car, envFor(car.tireType | 0));
     var vmax = r.topSpeedMph;
     var okV = vmax != null && Math.abs(vmax - s.lim) <= s.tol;
-    var okReason = (r.vmaxReason || '').indexOf('ev_speed_limiter_') === 0;
+    var okReason = (r.vmaxReason || '').indexOf('speed_limiter_') === 0;
     console.log(car.name + ' limiter baked=' + baked + ' (want ' + s.lim + ') · Vmax ' +
       (vmax != null ? vmax.toFixed(1) : '—') + ' · ' + (r.vmaxReason || '') +
       ' → ' + (okBake && okV && okReason ? 'PASS' : 'FAIL'));
@@ -406,7 +406,7 @@ console.log('\n---------- CYBERTRUCK BEAST + ATC ----------');
   var okEt = r.quarterMileTime != null && Math.abs(r.quarterMileTime - 11.0) <= 0.35;
   var okTrap = r.quarterMileSpeedMph != null && Math.abs(r.quarterMileSpeedMph - 119) <= 6;
   var okV = r.topSpeedMph != null && Math.abs(r.topSpeedMph - 130) <= 2
-    && String(r.vmaxReason || '').indexOf('ev_speed_limiter_') === 0;
+    && String(r.vmaxReason || '').indexOf('speed_limiter_') === 0;
   console.log('Cybertruck Tri-Motor: ' +
     (r.quarterMileTime != null ? r.quarterMileTime.toFixed(3) : '—') + 's @ ' +
     (r.quarterMileSpeedMph != null ? r.quarterMileSpeedMph.toFixed(1) : '—') + ' · 0-60 ' +

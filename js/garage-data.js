@@ -1,6 +1,6 @@
 /**
  * VelocityBench PowerCurve — baked garage.
- * Factory-reset 1–13 + TX OEM + CG deepen2 (published C&D/SAE CG + OEM WD).
+ * Factory-reset 1–13 + Ultra/Hyper OEM speedLimiterMph + Chiron Cd Autobahn.
  * Slick=Z28 only; R-Comp=ZR1X only; no factory DR; forceScale=1.
  * Credit: Jorge Guerra. Tip: review/factory-reset-1-13.
  */
@@ -12935,7 +12935,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@137 (loss 8.6, TX DCT, driver 200, Summer, trap-first; PDK) | Phase 32 trap-first; tire AllSeason; loss 8.7; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@137 (loss 8.6, TX DCT, driver 200, Summer, trap-first; PDK) | Phase 32 trap-first; tire AllSeason; loss 8.7; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top track speed 330 km/h (205 mph) (Porsche 992 Turbo S; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 456.87148775527567,
       "1100": 466.40441869904464,
@@ -13007,7 +13007,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 205
   },
   {
     "id": "2020-lamborghini-hurac-n-evo",
@@ -13160,7 +13161,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.9@148 (loss 14.6, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 30.2; driver 200 | ET-first closer: loss 17 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 20 / loss 15 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.9@148 (loss 14.6, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 30.2; driver 200 | ET-first closer: loss 17 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 20 / loss 15 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 330 km/h (205 mph) (McLaren 765LT press kit; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 538.816165099337,
       "1100": 549.334672136534,
@@ -13226,7 +13227,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 205
   },
   {
     "id": "2017-ferrari-812-superfast",
@@ -13266,7 +13268,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.4@138 (loss 19.9, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 26; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.4@138 (loss 19.9, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 26; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 340 km/h (211 mph) (Ferrari 812 Superfast; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 381.35469601818505,
       "1100": 387.72808150479773,
@@ -13347,7 +13349,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 211
   },
   {
     "id": "2018-mclaren-600lt",
@@ -13609,7 +13612,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.3@140 (loss 15.5, TX DCT, driver 200, UHP, trap-first; PDK) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 23 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 20.5 / loss 12.5 / tire 1 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin PS Cup 2 → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.3@140 (loss 15.5, TX DCT, driver 200, UHP, trap-first; PDK) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 23 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 20.5 / loss 12.5 / tire 1 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin PS Cup 2 → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 340 km/h (211 mph); Cd 0.35 catalogue (Porsche GT2 RS; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 495.19519261808153,
       "1100": 504.9074132071285,
@@ -13678,7 +13681,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 211
   },
   {
     "id": "2016-ferrari-488-gtb",
@@ -13941,7 +13945,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@129 (loss 30.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 28.3; driver 200 | ET-first closer: loss 11.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 23.5 / loss 9.5 / tire 1 / launch 3500 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@129 (loss 30.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 28.3; driver 200 | ET-first closer: loss 11.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 23.5 / loss 9.5 / tire 1 / launch 3500 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 340 km/h (211 mph) (Ferrari F12; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 345.02179042237776,
       "1100": 350.35407446946533,
@@ -14022,7 +14026,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 211
   },
   {
     "id": "2013-mclaren-mp4-12c",
@@ -16743,7 +16748,7 @@ var GARAGE = [
     "category": "Hypercars",
     "peakHp": 1479,
     "weightLbs": 4398,
-    "dragCoefficient": 0.35,
+    "dragCoefficient": 0.39,
     "frontalAreaSqFt": 23,
     "tireRadiusInches": 13.8,
     "finalDriveRatio": 3.64,
@@ -16775,7 +16780,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM limiter 420 km/h (261 mph) Top Speed mode / Cd 0.39 Autobahn (Bugatti Chiron tech specs; was Cd 0.35 vs OEM 0.36–0.41; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1117.756837569051,
       "1100": 1140.8244531501591,
@@ -16841,7 +16846,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 261
   },
   {
     "id": "2020-mclaren-720s",
@@ -16881,7 +16887,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.2@145 (loss 9.9, TX DCT, driver 200, Summer, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.2@145 (loss 9.9, TX DCT, driver 200, Summer, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 341 km/h (212 mph) (McLaren 720S press; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 530.2441793187282,
       "1100": 540.880496794106,
@@ -16947,7 +16953,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 212
   },
   {
     "id": "2019-lamborghini-aventador-svj",
@@ -16987,7 +16994,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.3@136 (loss 22.8, TX DCT, driver 200, All-season, trap-first; ISR automated) | Phase 32 trap-first; tire UHP; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22 / loss 4.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_ISR_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.3@136 (loss 22.8, TX DCT, driver 200, All-season, trap-first; ISR automated) | Phase 32 trap-first; tire UHP; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22 / loss 4.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_ISR_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 351 km/h (218 mph) (Lamborghini SVJ brochure; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 436.98966932461803,
       "1100": 444.64460754758784,
@@ -17060,7 +17067,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 218
   },
   {
     "id": "2021-rimac-nevera",
@@ -17387,7 +17395,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 9.9@146 (loss 28.1, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 10.5 / tire 4 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 9.9@146 (loss 28.1, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 10.5 / tire 4 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM limiter 415 km/h (258 mph) tyre protection (Bugatti Super Sport press; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 829.9081005776985,
       "1100": 847.3882097090192,
@@ -17452,7 +17460,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 258
   },
   {
     "id": "2005-bugatti-veyron",
@@ -17492,7 +17501,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.1@142 (loss 19.4, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 19.5; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22.5 / loss 2.5 / tire 4 / launch 800 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.1@142 (loss 19.4, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 19.5; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22.5 / loss 2.5 / tire 4 / launch 800 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM road limiter 407 km/h (253 mph) type-approval / Top Speed mode (Bugatti; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 692.2816738985636,
       "1100": 706.8629982656068,
@@ -17557,7 +17566,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 253
   },
   {
     "id": "2006-saleen-s7-twin-turbo",
@@ -17993,7 +18003,7 @@ var GARAGE = [
     "category": "Hypercars",
     "peakHp": 1500,
     "weightLbs": 4400,
-    "dragCoefficient": 0.35,
+    "dragCoefficient": 0.39,
     "frontalAreaSqFt": 23,
     "tireRadiusInches": 13.8,
     "finalDriveRatio": 3.64,
@@ -18025,7 +18035,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 26.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | ET-first closer: loss 15 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 24 / loss 9 / tire 4 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 26.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | ET-first closer: loss 15 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 24 / loss 9 / tire 4 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM limiter 420 km/h (261 mph) Top Speed mode / Cd 0.39 Autobahn (Bugatti Chiron Sport tech specs; was Cd 0.35; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1133.6276243093823,
       "1100": 1157.0227719575648,
@@ -18091,7 +18101,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 261
   },
   {
     "id": "2019-mclaren-speedtail",
@@ -18131,7 +18142,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10@151 (loss 30.5, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.7; driver 200 | ET-first closer: loss 21.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 20 / loss 21.5 / tire 2 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10@151 (loss 30.5, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.7; driver 200 | ET-first closer: loss 21.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 20 / loss 21.5 / tire 2 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM Velocity-mode limiter 403 km/h (250 mph) (McLaren Speedtail press; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 738.6420276527336,
       "1100": 753.0614379620037,
@@ -18197,7 +18208,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 250
   },
   {
     "id": "2016-koenigsegg-regera",
@@ -18338,7 +18350,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.5@155 (loss 31.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 31.3; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 23 / loss 16.5 / tire 4 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.5@155 (loss 31.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 31.3; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 23 / loss 16.5 / tire 4 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM limiter 380 km/h (236 mph) — no Top Speed mode (Bugatti Divo press; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1037.3851257221233,
       "1100": 1059.235262136274,
@@ -18403,7 +18415,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 236
   },
   {
     "id": "2020-mclaren-elva",
@@ -18443,7 +18456,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.5@140 (loss 32, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 33 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20 / loss 32.5 / tire 2 / launch 1500 / fall×0.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.5@140 (loss 32, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 33 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20 / loss 32.5 / tire 2 / launch 1500 / fall×0.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM top speed 326 km/h (203 mph) class (McLaren Elva; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 564.6742890621321,
       "1100": 576.5678333881102,
@@ -18508,7 +18521,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 203
   },
   {
     "id": "2016-bugatti-chiron",
@@ -18516,7 +18530,7 @@ var GARAGE = [
     "category": "Hypercars",
     "peakHp": 1479,
     "weightLbs": 4400,
-    "dragCoefficient": 0.35,
+    "dragCoefficient": 0.39,
     "frontalAreaSqFt": 23,
     "tireRadiusInches": 13.8,
     "finalDriveRatio": 3.64,
@@ -18548,7 +18562,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.2, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.4; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.2, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.4; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM limiter 420 km/h (261 mph) Top Speed mode / Cd 0.39 Autobahn (Bugatti Chiron tech specs; was Cd 0.35; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1117.756837569051,
       "1100": 1140.8244531501591,
@@ -18614,7 +18628,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 261
   },
   {
     "id": "2021-mclaren-sabre",
@@ -18654,7 +18669,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.4@142 (loss 26.4, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | ET-first closer: loss 22.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20.5 / loss 20.5 / tire 2 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.4@142 (loss 26.4, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | ET-first closer: loss 22.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20.5 / loss 20.5 / tire 2 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | Ultra/Hyper OEM Vmax/Cd: OEM/MSO claimed top speed 350 km/h (218 mph) (McLaren Sabre; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 569.870229063353,
       "1100": 581.8732373335265,
@@ -18719,7 +18734,8 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "speedLimiterMph": 218
   },
   {
     "id": "1998-toyota-supra-turbo-mk4",

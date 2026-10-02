@@ -1,0 +1,701 @@
+{
+  "tipNote": "Ultra/Hyper OEM speedLimiterMph + Chiron Cd Autobahn 0.39; physics honors ICE OEM limiters",
+  "wx": {
+    "tempF": 59,
+    "humidity": 45,
+    "pressureInHg": 29.92,
+    "windSpeedMph": 0,
+    "windDirDeg": 0,
+    "gustMph": 0,
+    "launchMode": "auto",
+    "trackPrep": "unprepped",
+    "driverWeightLbs": 200,
+    "needSixtyToOneThirty": true
+  },
+  "tol": {
+    "z60": 0.25,
+    "et": 0.25,
+    "trap": 2.5,
+    "z60130": 0.75
+  },
+  "fleet": {
+    "matched": 315,
+    "hitRates": {
+      "et": "93/313",
+      "trap": "139/313",
+      "z60": "79/315",
+      "z60130": "23/61",
+      "priorityAll": "30/315"
+    },
+    "mae": {
+      "et": 0.568,
+      "trap": 3.84,
+      "z60": 0.662,
+      "z60130": 0.948
+    },
+    "missCounts": {
+      "et": 220,
+      "trap": 174,
+      "z60": 236,
+      "z60130": 38
+    },
+    "forceScaleBad": 0,
+    "worstTrap": [
+      {
+        "name": "2014 Hennessey Venom GT",
+        "d": -37.48960822526939,
+        "sim": 132.5103917747306,
+        "tgt": 170,
+        "et": 12.327999999998607
+      },
+      {
+        "name": "2022 Tesla Model X Plaid",
+        "d": 20.303570550488445,
+        "sim": 144.30357055048844,
+        "tgt": 124,
+        "et": 10.306999999999727
+      },
+      {
+        "name": "2018 Bugatti Divo",
+        "d": 15.68153174298348,
+        "sim": 170.68153174298348,
+        "tgt": 155,
+        "et": 9.156000000000365
+      },
+      {
+        "name": "2020 McLaren Elva",
+        "d": 15.494957816311711,
+        "sim": 151.4949578163117,
+        "tgt": 136,
+        "et": 11.089999999999293
+      },
+      {
+        "name": "1968 Mercury Cougar XR-7",
+        "d": 14.048753081643227,
+        "sim": 105.04875308164323,
+        "tgt": 91,
+        "et": 14.121999999997612
+      },
+      {
+        "name": "1965 Chevrolet Chevelle SS396",
+        "d": 12.686828140785636,
+        "sim": 110.68682814078564,
+        "tgt": 98,
+        "et": 13.538999999997936
+      },
+      {
+        "name": "2017 Bugatti Chiron Sport",
+        "d": 12.325116101398294,
+        "sim": 170.3251161013983,
+        "tgt": 158,
+        "et": 9.167000000000359
+      },
+      {
+        "name": "2019 Bugatti Chiron",
+        "d": 11.653843591455882,
+        "sim": 169.65384359145588,
+        "tgt": 158,
+        "et": 9.177000000000353
+      },
+      {
+        "name": "2016 Bugatti Chiron",
+        "d": 11.634225811745011,
+        "sim": 169.634225811745,
+        "tgt": 158,
+        "et": 9.177000000000353
+      },
+      {
+        "name": "2017 Porsche 911 GT2 RS",
+        "d": 11.575734097315461,
+        "sim": 145.57573409731546,
+        "tgt": 134,
+        "et": 10.509999999999614
+      },
+      {
+        "name": "1967 Ford Mustang GT 390",
+        "d": 11.475254164786193,
+        "sim": 104.4752541647862,
+        "tgt": 93,
+        "et": 14.058999999997647
+      },
+      {
+        "name": "2013 Bugatti Veyron Super Sport",
+        "d": 11.32462311549699,
+        "sim": 159.324623115497,
+        "tgt": 148,
+        "et": 9.373000000000244
+      },
+      {
+        "name": "1960 Ford Galaxie 352",
+        "d": 11.19278909844303,
+        "sim": 93.19278909844303,
+        "tgt": 82,
+        "et": 15.56899999999681
+      },
+      {
+        "name": "2021 BMW S1000RR",
+        "d": -11.102926769734523,
+        "sim": 144.89707323026548,
+        "tgt": 156,
+        "et": 10.939999999999376
+      },
+      {
+        "name": "2021 McLaren Sabre",
+        "d": 10.983139638782859,
+        "sim": 148.98313963878286,
+        "tgt": 138,
+        "et": 10.992999999999347
+      }
+    ]
+  },
+  "hyperAnchors": [
+    {
+      "name": "2019 Bugatti Chiron",
+      "lim": 261,
+      "Cd": 0.39,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.4929999999998365,
+        "et": 9.177000000000353,
+        "trap": 169.65384359145588,
+        "z60130": 3.522000000000507,
+        "sixty": 1.7489999999999182,
+        "vmax": 261.00043263360004,
+        "vmaxReason": "speed_limiter_261mph"
+      },
+      "excel": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "dTrap": 11.7,
+      "dEt": -0.223
+    },
+    {
+      "name": "2017 Bugatti Chiron Sport",
+      "lim": 261,
+      "Cd": 0.39,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.496999999999836,
+        "et": 9.167000000000359,
+        "trap": 170.3251161013983,
+        "z60130": 3.4980000000005007,
+        "sixty": 1.750999999999918,
+        "vmax": 261.00043263360004,
+        "vmaxReason": "speed_limiter_261mph"
+      },
+      "excel": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "dTrap": 12.3,
+      "dEt": -0.233
+    },
+    {
+      "name": "2016 Bugatti Chiron",
+      "lim": 261,
+      "Cd": 0.39,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.4929999999998365,
+        "et": 9.177000000000353,
+        "trap": 169.634225811745,
+        "z60130": 3.522000000000507,
+        "sixty": 1.7489999999999182,
+        "vmax": 261.00043263360004,
+        "vmaxReason": "speed_limiter_261mph"
+      },
+      "excel": {
+        "z60": 2.4,
+        "et": 9.4,
+        "trap": 158,
+        "z60130": 5
+      },
+      "dTrap": 11.6,
+      "dEt": -0.223
+    },
+    {
+      "name": "2018 Bugatti Divo",
+      "lim": 236,
+      "Cd": 0.38,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.4919999999998366,
+        "et": 9.156000000000365,
+        "trap": 170.68153174298348,
+        "z60130": 3.487000000000495,
+        "sixty": 1.7489999999999182,
+        "vmax": 236.00039119360002,
+        "vmaxReason": "speed_limiter_236mph"
+      },
+      "excel": {
+        "z60": 2.4,
+        "et": 9.5,
+        "trap": 155,
+        "z60130": 5
+      },
+      "dTrap": 15.7,
+      "dEt": -0.344
+    },
+    {
+      "name": "2017 Porsche 911 GT2 RS",
+      "lim": 211,
+      "Cd": 0.35,
+      "FA": 20.5,
+      "tire": 4,
+      "sim": {
+        "z60": 3.2209999999997563,
+        "et": 10.509999999999614,
+        "trap": 145.57573409731546,
+        "z60130": 5.356000000000929,
+        "sixty": 1.9649999999998944,
+        "vmax": 211.0003497536,
+        "vmaxReason": "speed_limiter_211mph"
+      },
+      "excel": {
+        "z60": 2.7,
+        "et": 10.6,
+        "trap": 134,
+        "z60130": 6.2
+      },
+      "dTrap": 11.6,
+      "dEt": -0.09
+    },
+    {
+      "name": "2014 Hennessey Venom GT",
+      "lim": null,
+      "Cd": 0.44,
+      "FA": 21,
+      "tire": 3,
+      "sim": {
+        "z60": 4.65699999999989,
+        "et": 12.327999999998607,
+        "trap": 132.5103917747306,
+        "z60130": 7.381999999998877,
+        "sixty": 2.287999999999859,
+        "vmax": 247.66652358391894,
+        "vmaxReason": "aero_mech_equilibrium"
+      },
+      "excel": {
+        "z60": 2.7,
+        "et": 9.8,
+        "trap": 170,
+        "z60130": 4.5
+      },
+      "dTrap": -37.5,
+      "dEt": 2.528
+    },
+    {
+      "name": "2021 Ferrari SF90 Stradale",
+      "lim": 211,
+      "Cd": 0.34,
+      "FA": 21,
+      "tire": 4,
+      "sim": {
+        "z60": 2.4449999999998417,
+        "et": 9.557000000000142,
+        "trap": 154.76352611629176,
+        "z60130": 4.470000000000802,
+        "sixty": 1.7539999999999176,
+        "vmax": 211.0003497536,
+        "vmaxReason": "speed_limiter_211mph"
+      },
+      "excel": {
+        "z60": 2,
+        "et": 9.5,
+        "trap": 148
+      },
+      "dTrap": 6.8,
+      "dEt": 0.057
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "lim": 250,
+      "Cd": 0.27,
+      "FA": 20,
+      "tire": 4,
+      "sim": {
+        "z60": 3.921999999999679,
+        "et": 11.09499999999929,
+        "trap": 155.3173655180304,
+        "z60130": 5.223000000000692,
+        "sixty": 2.1399999999998753,
+        "vmax": 250.00041440000004,
+        "vmaxReason": "speed_limiter_250mph"
+      },
+      "excel": {
+        "z60": 2.5,
+        "et": 10,
+        "trap": 150,
+        "z60130": 5.2
+      },
+      "dTrap": 5.3,
+      "dEt": 1.095
+    },
+    {
+      "name": "2013 Bugatti Veyron Super Sport",
+      "lim": 258,
+      "Cd": 0.36,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.404999999999846,
+        "et": 9.373000000000244,
+        "trap": 159.324623115497,
+        "z60130": 4.110000000000664,
+        "sixty": 1.7289999999999204,
+        "vmax": 258.0004276608,
+        "vmaxReason": "speed_limiter_258mph"
+      },
+      "excel": {
+        "z60": 2.4,
+        "et": 9.9,
+        "trap": 148,
+        "z60130": 4.8
+      },
+      "dTrap": 11.3,
+      "dEt": -0.527
+    },
+    {
+      "name": "2005 Bugatti Veyron",
+      "lim": 253,
+      "Cd": 0.36,
+      "FA": 23,
+      "tire": 4,
+      "sim": {
+        "z60": 2.296999999999858,
+        "et": 9.641000000000096,
+        "trap": 149.94773572645727,
+        "z60130": 5.026000000000922,
+        "sixty": 1.6809999999999257,
+        "vmax": 253.0004193728,
+        "vmaxReason": "speed_limiter_253mph"
+      },
+      "excel": {
+        "z60": 2.5,
+        "et": 10.1,
+        "trap": 142,
+        "z60130": 5.4
+      },
+      "dTrap": 7.9,
+      "dEt": -0.459
+    },
+    {
+      "name": "2019 Koenigsegg Jesko",
+      "lim": null,
+      "Cd": 0.28,
+      "FA": 21.5,
+      "tire": 4,
+      "sim": {
+        "z60": 4.0509999999996875,
+        "et": 11.31199999999917,
+        "trap": 151.55696199587143,
+        "z60130": 5.545000000000433,
+        "sixty": 2.1589999999998732,
+        "vmax": 250.0009098712236,
+        "vmaxReason": "speed_cap_250mph"
+      },
+      "excel": {
+        "z60": 2.6,
+        "et": 9.6,
+        "trap": 152,
+        "z60130": 4.5
+      },
+      "dTrap": -0.4,
+      "dEt": 1.712
+    },
+    {
+      "name": "2016 Koenigsegg Regera",
+      "lim": 250,
+      "Cd": 0.28,
+      "FA": 21,
+      "tire": 4,
+      "sim": {
+        "z60": 3.332999999999744,
+        "et": 10.526999999999605,
+        "trap": 158.85427436565064,
+        "z60130": 5.01100000000107,
+        "sixty": 2.043999999999886,
+        "vmax": 250.00041440000004,
+        "vmaxReason": "speed_limiter_250mph"
+      },
+      "excel": {
+        "z60": 2.7,
+        "et": 9.9,
+        "trap": 150,
+        "z60130": 3.9
+      },
+      "dTrap": 8.9,
+      "dEt": 0.627
+    },
+    {
+      "name": "2021 Rimac Nevera",
+      "lim": 258,
+      "Cd": 0.28,
+      "FA": 22,
+      "tire": 4,
+      "sim": {
+        "z60": 2.3489999999998523,
+        "et": 8.846000000000537,
+        "trap": 179.29903086963202,
+        "z60130": 3.172000000000326,
+        "sixty": 1.7019999999999234,
+        "vmax": 258.0004276608,
+        "vmaxReason": "speed_limiter_258mph"
+      },
+      "excel": {
+        "z60": 1.74,
+        "z60130": 2.99
+      },
+      "dTrap": null,
+      "dEt": null
+    },
+    {
+      "name": "2015 McLaren P1",
+      "lim": 217,
+      "Cd": 0.34,
+      "FA": 21,
+      "tire": 4,
+      "sim": {
+        "z60": 3.82299999999969,
+        "et": 11.02199999999933,
+        "trap": 149.2239092442522,
+        "z60130": 5.248000000000722,
+        "sixty": 2.1199999999998775,
+        "vmax": 217.0003596992,
+        "vmaxReason": "speed_limiter_217mph"
+      },
+      "excel": {
+        "z60": 2.6,
+        "et": 9.8,
+        "trap": 148,
+        "z60130": 5.4
+      },
+      "dTrap": 1.2,
+      "dEt": 1.222
+    },
+    {
+      "name": "2020 McLaren 720S",
+      "lim": 212,
+      "Cd": 0.27,
+      "FA": 20,
+      "tire": 4,
+      "sim": {
+        "z60": 3.6989999999997036,
+        "et": 10.966999999999361,
+        "trap": 145.4418745193852,
+        "z60130": 5.5040000000006355,
+        "sixty": 2.086999999999881,
+        "vmax": 212.00035141120003,
+        "vmaxReason": "speed_limiter_212mph"
+      },
+      "excel": {
+        "z60": 2.5,
+        "et": 10.1,
+        "trap": 142,
+        "z60130": 5.6
+      },
+      "dTrap": 3.4,
+      "dEt": 0.867
+    },
+    {
+      "name": "2020 McLaren 765LT",
+      "lim": 205,
+      "Cd": 0.3,
+      "FA": 20,
+      "tire": 4,
+      "sim": {
+        "z60": 3.795999999999693,
+        "et": 10.993999999999346,
+        "trap": 149.4640770284792,
+        "z60130": 5.247000000000734,
+        "sixty": 2.106999999999879,
+        "vmax": 205.000339808,
+        "vmaxReason": "speed_limiter_205mph"
+      },
+      "excel": {
+        "z60": 2.6,
+        "et": 10.2,
+        "trap": 141,
+        "z60130": 6
+      },
+      "dTrap": 8.5,
+      "dEt": 0.794
+    },
+    {
+      "name": "2019 Lamborghini Aventador SVJ",
+      "lim": 218,
+      "Cd": 0.33,
+      "FA": 21,
+      "tire": 4,
+      "sim": {
+        "z60": 3.45899999999973,
+        "et": 10.815999999999445,
+        "trap": 143.04766758335072,
+        "z60130": 5.719000000000623,
+        "sixty": 1.9729999999998935,
+        "vmax": 218.00036120641784,
+        "vmaxReason": "speed_limiter_218mph"
+      },
+      "excel": {
+        "z60": 2.6,
+        "et": 10.3,
+        "trap": 136,
+        "z60130": 5.8
+      },
+      "dTrap": 7,
+      "dEt": 0.516
+    },
+    {
+      "name": "2017 Ferrari 812 Superfast",
+      "lim": 211,
+      "Cd": 0.31,
+      "FA": 21,
+      "tire": 4,
+      "sim": {
+        "z60": 3.6179999999997126,
+        "et": 10.926999999999383,
+        "trap": 144.16630195445296,
+        "z60130": 5.626000000000603,
+        "sixty": 2.0469999999998856,
+        "vmax": 211.0003497536,
+        "vmaxReason": "speed_limiter_211mph"
+      },
+      "excel": {
+        "z60": 2.8,
+        "et": 10.5,
+        "trap": 136,
+        "z60130": 6.5
+      },
+      "dTrap": 8.2,
+      "dEt": 0.427
+    },
+    {
+      "name": "2021 Porsche 911 Turbo S",
+      "lim": 205,
+      "Cd": 0.33,
+      "FA": 21.5,
+      "tire": 4,
+      "sim": {
+        "z60": 2.4109999999998455,
+        "et": 10.140999999999819,
+        "trap": 138.99993529765544,
+        "z60130": 6.422000000000699,
+        "sixty": 1.6809999999999257,
+        "vmax": 205.000339808,
+        "vmaxReason": "speed_limiter_205mph"
+      },
+      "excel": {
+        "z60": 2.2,
+        "et": 10.3,
+        "trap": 137,
+        "z60130": 5.8
+      },
+      "dTrap": 2,
+      "dEt": -0.159
+    }
+  ],
+  "fantasyExcel": [
+    {
+      "name": "2014 Hennessey Venom GT",
+      "excelTrap": 170,
+      "simTrap": 132.5103917747306,
+      "note": "Excel trap 170 is fantasy vs sim ~133 and peer physics; do not inflate HP/loss to chase. Document only."
+    },
+    {
+      "name": "2022 Tesla Model X Plaid",
+      "excelTrap": 124,
+      "note": "L_Fixes trap 124 conflicts Garage-sheet ~145; sim matches Garage-sheet physics. Excel SOI error."
+    }
+  ],
+  "carsLimitedThisTip": [
+    {
+      "name": "2021 Porsche 911 Turbo S",
+      "lim": "undefined→205",
+      "cd": "0.33 (unchanged)"
+    },
+    {
+      "name": "2020 McLaren 765LT",
+      "lim": "undefined→205",
+      "cd": "0.3 (unchanged)"
+    },
+    {
+      "name": "2017 Ferrari 812 Superfast",
+      "lim": "undefined→211",
+      "cd": "0.31 (unchanged)"
+    },
+    {
+      "name": "2017 Porsche 911 GT2 RS",
+      "lim": "undefined→211",
+      "cd": "0.35 (unchanged)"
+    },
+    {
+      "name": "2014 Ferrari F12 Berlinetta",
+      "lim": "undefined→211",
+      "cd": "0.31 (unchanged)"
+    },
+    {
+      "name": "2019 Bugatti Chiron",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2020 McLaren 720S",
+      "lim": "undefined→212",
+      "cd": "0.27 (unchanged)"
+    },
+    {
+      "name": "2019 Lamborghini Aventador SVJ",
+      "lim": "undefined→218",
+      "cd": "0.33 (unchanged)"
+    },
+    {
+      "name": "2013 Bugatti Veyron Super Sport",
+      "lim": "undefined→258",
+      "cd": "0.36 (unchanged)"
+    },
+    {
+      "name": "2005 Bugatti Veyron",
+      "lim": "undefined→253",
+      "cd": "0.36 (unchanged)"
+    },
+    {
+      "name": "2017 Bugatti Chiron Sport",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "lim": "undefined→250",
+      "cd": "0.27 (unchanged)"
+    },
+    {
+      "name": "2018 Bugatti Divo",
+      "lim": "undefined→236",
+      "cd": "0.38 (unchanged)"
+    },
+    {
+      "name": "2020 McLaren Elva",
+      "lim": "undefined→203",
+      "cd": "0.32 (unchanged)"
+    },
+    {
+      "name": "2016 Bugatti Chiron",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2021 McLaren Sabre",
+      "lim": "undefined→218",
+      "cd": "0.32 (unchanged)"
+    }
+  ]
+}

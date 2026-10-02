@@ -993,18 +993,15 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
   /**
    * Published electronic top-speed limiter (mph).
    * Field: speedLimiterMph (alias topSpeedMph).
-   * Enforced for EVs always when set; for Hybrids when a published limiter was baked;
-   * Custom EV uses the same path when the user sets a limit.
+   * Enforced whenever OEM/custom limiter is set (>0) — EV, Hybrid, and ICE hypercars
+   * with documented electronic Vmax (Chiron/Divo/GT2 RS/etc). Do not invent limiters.
    */
   function resolveSpeedLimiterMph(car) {
     if (!car) return 0;
     var raw = car.speedLimiterMph != null ? car.speedLimiterMph : car.topSpeedMph;
     var lim = Number(raw);
     if (!(lim > 0) || !isFinite(lim)) return 0;
-    var isEv = !!(car.isEv || car.powerSource === 'ev');
-    var isHybrid = !!(car.isHybrid || car.powerSource === 'hybrid');
-    if (isEv || isHybrid) return lim;
-    return 0;
+    return lim;
   }
 
   function runQuarterMile(car, env) {
@@ -1702,7 +1699,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
 
       v += a * DT;
       if (v < 0) v = 0;
-      // EV / Hybrid electronic speed limiter — hard clamp (not aero equilibrium)
+      // OEM/custom electronic speed limiter — hard clamp (not aero equilibrium)
       if (limiterMps > 0 && v > limiterMps) {
         v = limiterMps;
         a = 0;
@@ -1775,7 +1772,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       if (hit1320 && !env.quickMetrics) {
         if (speedLimiterMph > 0 && v >= limiterMps - 1e-6) {
           vmaxDone = true;
-          vmaxReason = 'ev_speed_limiter_' + speedLimiterMph + 'mph';
+          vmaxReason = 'speed_limiter_' + speedLimiterMph + 'mph';
         } else if (v >= speedCapMps) {
           vmaxDone = true;
           vmaxReason = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';

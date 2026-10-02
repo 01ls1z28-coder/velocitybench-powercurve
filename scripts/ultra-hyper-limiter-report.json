@@ -1,0 +1,97 @@
+{
+  "applied": [
+    {
+      "name": "2021 Porsche 911 Turbo S",
+      "lim": "undefined→205",
+      "cd": "0.33 (unchanged)"
+    },
+    {
+      "name": "2020 McLaren 765LT",
+      "lim": "undefined→205",
+      "cd": "0.3 (unchanged)"
+    },
+    {
+      "name": "2017 Ferrari 812 Superfast",
+      "lim": "undefined→211",
+      "cd": "0.31 (unchanged)"
+    },
+    {
+      "name": "2017 Porsche 911 GT2 RS",
+      "lim": "undefined→211",
+      "cd": "0.35 (unchanged)"
+    },
+    {
+      "name": "2014 Ferrari F12 Berlinetta",
+      "lim": "undefined→211",
+      "cd": "0.31 (unchanged)"
+    },
+    {
+      "name": "2019 Bugatti Chiron",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2020 McLaren 720S",
+      "lim": "undefined→212",
+      "cd": "0.27 (unchanged)"
+    },
+    {
+      "name": "2019 Lamborghini Aventador SVJ",
+      "lim": "undefined→218",
+      "cd": "0.33 (unchanged)"
+    },
+    {
+      "name": "2013 Bugatti Veyron Super Sport",
+      "lim": "undefined→258",
+      "cd": "0.36 (unchanged)"
+    },
+    {
+      "name": "2005 Bugatti Veyron",
+      "lim": "undefined→253",
+      "cd": "0.36 (unchanged)"
+    },
+    {
+      "name": "2017 Bugatti Chiron Sport",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2019 McLaren Speedtail",
+      "lim": "undefined→250",
+      "cd": "0.27 (unchanged)"
+    },
+    {
+      "name": "2018 Bugatti Divo",
+      "lim": "undefined→236",
+      "cd": "0.38 (unchanged)"
+    },
+    {
+      "name": "2020 McLaren Elva",
+      "lim": "undefined→203",
+      "cd": "0.32 (unchanged)"
+    },
+    {
+      "name": "2016 Bugatti Chiron",
+      "lim": "undefined→261",
+      "cd": "0.35→0.39"
+    },
+    {
+      "name": "2021 McLaren Sabre",
+      "lim": "undefined→218",
+      "cd": "0.32 (unchanged)"
+    }
+  ],
+  "missing": [
+    "2012 Pagani Huayra",
+    "2017 Pagani Huayra BC",
+    "2019 Pagani Huayra Roadster BC"
+  ],
+  "alreadyOk": [
+    "2021 Ferrari SF90 Stradale",
+    "2015 McLaren P1",
+    "2016 Koenigsegg Regera",
+    "2021 Rimac Nevera",
+    "2026 Chevrolet Corvette ZR1X"
+  ],
+  "n": 16
+}
