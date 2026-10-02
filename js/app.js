@@ -20,7 +20,7 @@
     finalDriveRatio: 3.73, gearRatios: [2.66, 1.78, 1.30, 1.00, 0.74, 0.50],
     peakHp: 450, peakTqRpm: 4200, peakHpRpm: 6200, redline: 6800,
     isNA: true, driveType: 'RWD', shiftRpm: 6500, launchRpm: 3000,
-    drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 1, forceScale: 1,
+    drivetrainLossPercent: 15, txKey: 'TR6060_6', tireType: 0, forceScale: 1,
     engineLayout: 'Front',
     frontWeightPercent: 45, rearWeightPercent: 55,
     leftWeightPercent: 50, rightWeightPercent: 50,
