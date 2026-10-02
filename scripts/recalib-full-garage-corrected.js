@@ -1,5 +1,6 @@
 'use strict';
 /**
+ * LOCKED: see scripts/JORGE_LOCKED_RECALIB_RULES.md — NEVER touch Cd/FA/mass/gears for Excel hit rate.
  * FULL GARAGE match to VelocityBench_Garage_Corrected.xlsx Garage sheet.
  * ACCEPTANCE: exact to sheet decimal places (NOT ±0.5/±0.05).
  * ICE: tires(+prep) FIRST → drivetrainLossPercent SECOND. No free peakHp.

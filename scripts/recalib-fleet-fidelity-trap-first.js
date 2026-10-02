@@ -1,5 +1,6 @@
 /**
  * Fleet fidelity tip (Jorge Guerra) — fast path:
+ * LOCKED: see scripts/JORGE_LOCKED_RECALIB_RULES.md — NEVER touch Cd/FA/mass/gears for Excel hit rate.
  * 1) Demote every non-Z28 slick → factory-like seed
  * 2) Step-up Street→Summer→UHP→DR + modest launchRpm search only when Excel misses
  * Never touch Cd/FA/weight/peakHp/TX/FD/curve. forceScale=1.

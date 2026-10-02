@@ -1,5 +1,6 @@
 /**
  * Tip: pc-trap-first-tire-prep (credit Jorge Guerra ONLY)
+ * LOCKED: see scripts/JORGE_LOCKED_RECALIB_RULES.md — NEVER touch Cd/FA/mass/gears for Excel hit rate.
  * Parent: 21fb630 review/pc-fleet-realism-pass
  * Priority: trap → ET → 60-130 → 0-60
  * Knobs: Cd / frontalArea / modest loss / curve post-peak fall / tire / launch

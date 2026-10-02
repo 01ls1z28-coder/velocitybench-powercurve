@@ -1,5 +1,6 @@
 /**
  * Tip review/ev-excel-full-match — EV 100% Corrected Excel after tire µ retune.
+ * LOCKED: see scripts/JORGE_LOCKED_RECALIB_RULES.md — NEVER touch Cd/FA/mass/gears for Excel hit rate.
  * Priority trap→ET→60-130→0-60→60ft. forceScale=1. Jorge Guerra only.
  */
 'use strict';
