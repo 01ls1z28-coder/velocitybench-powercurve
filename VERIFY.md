@@ -2,7 +2,7 @@
 
 **Credit:** Jorge Guerra only  
 **Full report:** [VERIFY-pc-mu-60ft-calibrate.md](./VERIFY-pc-mu-60ft-calibrate.md)  
-**Tip SHA:** `4d65c3c` · **Base:** `6464c65` sibling tip (EV batch dirty — no clobber)  
+**Tip SHA:** `30efc8e` (bake `4d65c3c`) · **Base:** `6464c65` sibling tip (EV batch dirty — no clobber)  
 **Pages / main:** HOLD
 
 Corrected `TIRE_MU_BY_PREP` so class 60fts match Jorge targets (Hellcat unprep + Z28 sticky prep).  
