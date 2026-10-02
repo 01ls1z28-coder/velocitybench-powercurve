@@ -567,6 +567,12 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     if (lr < 1000) {
       lr = Math.round(clamp(peakTq * 0.9, 1800, Math.min(redline - 200, peakTq)));
     }
+    // Stock auto: never resolve to brake-stand dump RPM (card may still show high)
+    if (car && !car.isEv && !car.hasAftermarketConverter &&
+        /auto/i.test(String(car.transmission || '')) &&
+        !/manual|mt\b|stick/i.test(String(car.transmission || ''))) {
+      if (lr > 2200) lr = 2200; // STOCK_AUTO_CALM_LAUNCH
+    }
     return clamp(lr, 800, redline);
   }
 
@@ -1104,6 +1110,16 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var redline = Number(car.redline) || shiftRpm;
 
     var launchMode = env.launchMode || 'auto';
+    // Jorge Guerra: stock AUTOMATICS — calm D-gate leave. Never brake-stand /
+    // two-foot dump in Auto launch mode. Aftermarket converters keep stall path.
+    // Aggressive/Custom launches remain user-intent. STOCK_AUTO_CALM_LAUNCH=2200.
+    var STOCK_AUTO_CALM_LAUNCH = 2200;
+    if (!car.isEv && !car.hasAftermarketConverter &&
+        (launchMode === 'auto' || launchMode == null || launchMode === '') &&
+        /auto/i.test(String(car.transmission || '')) &&
+        !/manual|mt\b|stick/i.test(String(car.transmission || ''))) {
+      if (launchRpm > STOCK_AUTO_CALM_LAUNCH) launchRpm = STOCK_AUTO_CALM_LAUNCH;
+    }
     var slipTarget = 0.10;
     var launchDriveMult = 1.0;
     // Soft = cooler leave/tach (NOT mu-cheat fastest). Aggressive = hotter ATC flash-stall
@@ -1311,7 +1327,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
           // Explicit car.flashRpm still wins; stock/non-ATC path never enters here.
           // Soft/Aggressive modulate stall + flash span; Auto bias0/span1 = prior path.
           var stallFacFlash = clamp((stall - 1500) / 4000, 0, 1);
-          var flash = Number(car.flashRpm) || Math.max(stall + Math.round(280 + stallFacFlash * 1100), stall + 200);
+          var flash = Number(car.flashRpm) || Math.max(stall + Math.round(240 + stallFacFlash * 900), stall + 200);
           if (flash < stall) flash = stall;
           var flashSpan = Math.max(0, flash - stall);
           flash = stall + flashSpan * launchFlashSpanScale;
@@ -1355,7 +1371,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
             // Lockup progress: 0 at standstill → 1 by stall-scaled mph.
             // Anchored at ~50 mph for Circle D 4400 (Auto launch identity); low stall
             // couples earlier, high stall stays open longer (real converter behavior).
-            var lockMph = 42 + (stallFacFlash - 0.725) * 24; // Jorge Z28 gold tone-down (42@4400)
+            var lockMph = 38 + (stallFacFlash - 0.725) * 20; // Jorge Z28 gold tone-down v2 (38@4400)
             if (lockMph < 28) lockMph = 28;
             if (lockMph > 70) lockMph = 70;
             var lockup = clamp(mphNow / lockMph, 0, 1);
@@ -1552,16 +1568,17 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         var stallFacN = clamp((stallN - 1500) / 4000, 0, 1);
         // LIVE used stallBoost≈0.196 @4400 ((4400-2200)/2800*0.25). Keep that at 4400;
         // widen endpoints so 1500 is tighter and 5500 is looser.
-        var stallBoost = 0.10 + (stallFacN - 0.725) * 0.40; // Jorge Z28 gold tone-down (~0@1500, 0.10@4400, ~0.21@5500)
+        var stallBoost = 0.06 + (stallFacN - 0.725) * 0.32; // Jorge Z28 gold tone-down v2 (~0@1500, 0.06@4400)
         if (stallBoost < 0) stallBoost = 0;
-        var tMult = 1.0 + Math.min(0.95, slipR * (1.35 + stallBoost));
+        var tMult = 1.0 + Math.min(0.65, slipR * (0.9 + stallBoost));
         // Jorge Z28 gold: launch multiply fades out by ~32 mph so 60ft can
         // hook without over-carrying into 0-60 / ET (tone-down vs prior 2.2×/1.35).
-        if (mph > 8.0) {
-          var fadeSpan = 22.0 + (stallFacN - 0.725) * 18.0; // ~22@4400
-          if (fadeSpan < 12) fadeSpan = 12;
-          if (fadeSpan > 36) fadeSpan = 36;
-          var fade = Math.min(1.0, Math.max(0, (mph - 8.0) / fadeSpan));
+        if (mph > 5) {
+          // Jorge Z28 gold v2: earlier multiply fade so 0-60/ET slow without wrecking 60ft
+          var fadeSpan = 14 + (stallFacN - 0.725) * 9; // ~14@4400
+          if (fadeSpan < 8) fadeSpan = 8;
+          if (fadeSpan > 24) fadeSpan = 24;
+          var fade = Math.min(1.0, Math.max(0, (mph - 5) / fadeSpan));
           tMult = 1.0 + (tMult - 1.0) * (1.0 - fade);
         }
         // (retired) post-shift mph-gated trap-unlock multiply — Excel-chase invent

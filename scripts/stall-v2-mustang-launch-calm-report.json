@@ -1,0 +1,399 @@
+{
+  "tip": "stall-v2-stock-auto-calm-launch-mustang",
+  "credit": "Jorge Guerra only",
+  "pages": false,
+  "fleetRule": "curve DOWN only ≤ factory peak; stock AUTO launch calm ≤2200 (no brake-stand two-foot); ATC keep stall path",
+  "stallV2": true,
+  "stockAutoCalmLaunch": 2200,
+  "fleetCalm": {
+    "touched": 67,
+    "examples": [
+      {
+        "id": "2020-ford-mustang-gt",
+        "before": 5300,
+        "after": 2200
+      },
+      {
+        "id": "2020-dodge-challenger-hellcat",
+        "before": 2950,
+        "after": 2200
+      },
+      {
+        "id": "2023-chevrolet-camaro-zl1",
+        "before": 4100,
+        "after": 2200
+      },
+      {
+        "id": "2010-dodge-challenger-srt8",
+        "before": 2650,
+        "after": 2200
+      },
+      {
+        "id": "2009-pontiac-g8-gxp",
+        "before": 2650,
+        "after": 2200
+      },
+      {
+        "id": "1987-buick-gnx",
+        "before": 3050,
+        "after": 2200
+      },
+      {
+        "id": "1985-chevrolet-camaro-iroc-z",
+        "before": 3850,
+        "after": 2200
+      },
+      {
+        "id": "2006-dodge-charger-r-t",
+        "before": 4450,
+        "after": 2200
+      },
+      {
+        "id": "1982-pontiac-firebird-trans-am",
+        "before": 4150,
+        "after": 2200
+      },
+      {
+        "id": "2009-dodge-challenger-r-t",
+        "before": 2850,
+        "after": 2200
+      },
+      {
+        "id": "1981-chevrolet-camaro-z28",
+        "before": 4200,
+        "after": 2200
+      },
+      {
+        "id": "2007-dodge-charger-srt8",
+        "before": 2550,
+        "after": 2200
+      }
+    ]
+  },
+  "z28": {
+    "before": {
+      "et": 11.183,
+      "trap": 119.64,
+      "z60": 2.787,
+      "sixtyFt": 1.6
+    },
+    "after": {
+      "z60": 2.9719999999997837,
+      "et": 11.344999999999152,
+      "trap": 119.53293857862131,
+      "z60130": 10.663999999998097,
+      "sixtyFt": 1.722999999999921,
+      "launchRpmUsed": 3000
+    },
+    "gaps": {
+      "et": -0.255,
+      "trap": -0.17,
+      "z60": -0.508,
+      "sixtyFt": 0.043
+    },
+    "scare": {
+      "1800": {
+        "z60": 3.322999999999745,
+        "et": 11.624999999998996,
+        "trap": 120.23914527232459,
+        "z60130": 10.381999999998099,
+        "sixtyFt": 1.9809999999998926,
+        "launchRpmUsed": 3000
+      },
+      "2800": {
+        "z60": 3.1729999999997616,
+        "et": 11.499999999999066,
+        "trap": 119.99373143340345,
+        "z60130": 10.47999999999811,
+        "sixtyFt": 1.8649999999999054,
+        "launchRpmUsed": 3000
+      },
+      "3600": {
+        "z60": 3.0659999999997734,
+        "et": 11.415999999999112,
+        "trap": 119.77295923037138,
+        "z60130": 10.568999999998109,
+        "sixtyFt": 1.7889999999999138,
+        "launchRpmUsed": 3000
+      },
+      "4400": {
+        "z60": 2.9719999999997837,
+        "et": 11.344999999999152,
+        "trap": 119.53293857862131,
+        "z60130": 10.663999999998097,
+        "sixtyFt": 1.722999999999921,
+        "launchRpmUsed": 3000
+      },
+      "5200": {
+        "z60": 2.961999999999785,
+        "et": 11.341999999999153,
+        "trap": 119.34008247105528,
+        "z60130": 10.727999999998067,
+        "sixtyFt": 1.7159999999999218,
+        "launchRpmUsed": 3000
+      },
+      "5500": {
+        "z60": 2.967999999999784,
+        "et": 11.350999999999148,
+        "trap": 119.24837766492213,
+        "z60130": 10.757999999998049,
+        "sixtyFt": 1.7199999999999214,
+        "launchRpmUsed": 3000
+      }
+    },
+    "mono": {
+      "ok": true,
+      "notes": []
+    },
+    "note": "Exact 1.68 60ft + 3.48 0-60 + 11.6 ET conflict under one ATC model; residual honest."
+  },
+  "mustang": {
+    "before": {
+      "2020-ford-mustang-gt": {
+        "peakHp": 460,
+        "launchRpm": 5300,
+        "loss": 14,
+        "tireType": 0,
+        "tx": "Auto",
+        "txKey": "Ford_10R80",
+        "fd": 3.15,
+        "metrics": {
+          "trap": {
+            "sheetTarget": 119,
+            "finalResult": 120,
+            "match": false,
+            "gap": 1
+          },
+          "et": {
+            "sheetTarget": 12.1,
+            "finalResult": 12.1,
+            "match": true,
+            "gap": 0
+          },
+          "z60130": {
+            "sheetTarget": 11.1,
+            "finalResult": 10.6,
+            "match": false,
+            "gap": -0.5
+          },
+          "z60": {
+            "sheetTarget": 3.8,
+            "finalResult": 3.9,
+            "match": false,
+            "gap": 0.1
+          }
+        }
+      },
+      "2018-ford-mustang-gt-pp2": {
+        "peakHp": 460,
+        "launchRpm": 4200,
+        "loss": 19.75,
+        "tireType": 0,
+        "tx": "Manual",
+        "txKey": "Getrag_MT82",
+        "fd": 3.55,
+        "metrics": {
+          "trap": {
+            "sheetTarget": 115,
+            "finalResult": 115,
+            "match": true,
+            "gap": 0
+          },
+          "et": {
+            "sheetTarget": 12.6,
+            "finalResult": 12.5,
+            "match": false,
+            "gap": -0.1
+          },
+          "z60130": {
+            "sheetTarget": 11.65,
+            "finalResult": 12.64,
+            "match": false,
+            "gap": 0.99
+          },
+          "z60": {
+            "sheetTarget": 4.3,
+            "finalResult": 4.1,
+            "match": false,
+            "gap": -0.2
+          }
+        }
+      }
+    },
+    "results": [
+      {
+        "id": "2020-ford-mustang-gt",
+        "name": "2020 Ford Mustang GT",
+        "fullMatch": false,
+        "methodUsed": "drivetrain_loss+launch_rpm_down",
+        "factoryPeakCeiling": 460,
+        "peakAfter": 460,
+        "launchBefore": 5300,
+        "launchAfter": 2200,
+        "launchUsedInSim": 2200,
+        "metrics": {
+          "trap": {
+            "sheetTarget": 119,
+            "finalResult": 119,
+            "match": true,
+            "gap": 0
+          },
+          "et": {
+            "sheetTarget": 12.1,
+            "finalResult": 12.1,
+            "match": true,
+            "gap": 0
+          },
+          "z60130": {
+            "sheetTarget": 11.1,
+            "finalResult": 11,
+            "match": false,
+            "gap": -0.1
+          },
+          "z60": {
+            "sheetTarget": 3.8,
+            "finalResult": 3.9,
+            "match": false,
+            "gap": 0.1
+          }
+        },
+        "baseline": {
+          "trap": {
+            "sheetTarget": 119,
+            "finalResult": 120,
+            "match": false,
+            "gap": 1
+          },
+          "et": {
+            "sheetTarget": 12.1,
+            "finalResult": 12.1,
+            "match": true,
+            "gap": 0
+          },
+          "z60130": {
+            "sheetTarget": 11.1,
+            "finalResult": 10.6,
+            "match": false,
+            "gap": -0.5
+          },
+          "z60": {
+            "sheetTarget": 3.8,
+            "finalResult": 3.9,
+            "match": false,
+            "gap": 0.1
+          }
+        },
+        "knobs": {
+          "tireType": 0,
+          "tireLabel": "Street",
+          "loss": 16.13,
+          "peakHp": 460,
+          "launchRpm": 2200,
+          "transmission": "Auto",
+          "txKey": "Ford_10R80",
+          "fd": 3.15,
+          "curveHash": "0a03747e7f032029"
+        },
+        "why": "miss after tires→loss + curve-down≤factory + calm launch",
+        "missVec": [
+          0,
+          0,
+          2.0550000000369373,
+          0.7319999999962317
+        ]
+      },
+      {
+        "id": "2018-ford-mustang-gt-pp2",
+        "name": "2018 Ford Mustang GT PP2",
+        "fullMatch": false,
+        "methodUsed": "drivetrain_loss+curve_down+launch_rpm_down",
+        "factoryPeakCeiling": 460,
+        "peakAfter": 430,
+        "launchBefore": 4200,
+        "launchAfter": 3000,
+        "launchUsedInSim": 3000,
+        "metrics": {
+          "trap": {
+            "sheetTarget": 115,
+            "finalResult": 115,
+            "match": true,
+            "gap": 0
+          },
+          "et": {
+            "sheetTarget": 12.6,
+            "finalResult": 12.6,
+            "match": true,
+            "gap": 0
+          },
+          "z60130": {
+            "sheetTarget": 11.65,
+            "finalResult": 12.64,
+            "match": false,
+            "gap": 0.99
+          },
+          "z60": {
+            "sheetTarget": 4.3,
+            "finalResult": 4.1,
+            "match": false,
+            "gap": -0.2
+          }
+        },
+        "baseline": {
+          "trap": {
+            "sheetTarget": 115,
+            "finalResult": 115,
+            "match": true,
+            "gap": 0
+          },
+          "et": {
+            "sheetTarget": 12.6,
+            "finalResult": 12.5,
+            "match": false,
+            "gap": -0.1
+          },
+          "z60130": {
+            "sheetTarget": 11.65,
+            "finalResult": 12.64,
+            "match": false,
+            "gap": 0.99
+          },
+          "z60": {
+            "sheetTarget": 4.3,
+            "finalResult": 4.1,
+            "match": false,
+            "gap": -0.2
+          }
+        },
+        "knobs": {
+          "tireType": 0,
+          "tireLabel": "Street",
+          "loss": 14.13,
+          "peakHp": 430,
+          "launchRpm": 3000,
+          "transmission": "Manual",
+          "txKey": "Getrag_MT82",
+          "fd": 3.55,
+          "curveHash": "51385ca3b251fdbf"
+        },
+        "why": "miss after tires→loss + curve-down≤factory + calm launch",
+        "missVec": [
+          0,
+          0,
+          14.879999999966893,
+          2.136000000003463
+        ],
+        "z60130Note": "60-130 slower than sheet under MT-82 with trap near target; sheet likely auto-era. Cannot hit both trap and sheet 60-130 with Coyote≤460 + MT without raising power above factory."
+      }
+    ],
+    "curveIdentity": {
+      "hashGT": "0a03747e7f032029",
+      "hashPP2": "51385ca3b251fdbf",
+      "peakGT": 460,
+      "peakPP2": 430,
+      "identicalCurve": false,
+      "launchGT": 2200,
+      "launchPP2": 3000
+    }
+  },
+  "simsTotal": 1118
+}
