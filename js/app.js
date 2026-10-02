@@ -888,7 +888,7 @@
     if (Phys.normalizeTrackPrep) trackPrep = Phys.normalizeTrackPrep(trackPrep);
     var tireLab = Phys.tireLabelForType
       ? Phys.tireLabelForType(tireType)
-      : ['Street', 'Drag Radial', 'Slick'][tireType] || 'Street';
+      : ({0:'Street',1:'Drag Radial',2:'Slick',3:'Summer',4:'UHP',5:'R-Compound'}[tireType] || 'Street');
     var prepLab = Phys.trackPrepLabel ? Phys.trackPrepLabel(trackPrep) : trackPrep;
     return {
       tempF: clampNum($('tempF').value, -40, 140, 70),

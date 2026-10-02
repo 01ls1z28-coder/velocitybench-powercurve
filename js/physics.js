@@ -787,12 +787,12 @@
   }
 
   /**
-   * Tire µ ladder (Jorge Guerra — research-grounded fidelity).
-   * Prep mainly boosts DR/Slick toward strip; Street/Summer/UHP modest bumps.
+   * Tire µ ladder + traction character (Jorge Guerra — deepen realism).
+   * Prep mainly boosts DR/Slick toward strip; Street/Summer/UHP/R-Comp modest.
    * Default trackPrep = unprepped (garage Excel SOI / fleet verify).
-   * Ladder always: Street < Summer < UHP < Drag Radial < Slick (both modes).
+   * Ladder always: Street < Summer < UHP < R-Comp < Drag Radial < Slick (both modes).
    *
-   * Sources (sportsman Coulomb scale; NOT Top Fuel tread-momentum 3–5):
+   * Peak µ sources (sportsman Coulomb scale; NOT Top Fuel tread-momentum 3–5):
    *   Wong/HPWizard dry asphalt street peak ~0.80–0.90; racing tires up to ~1.8
    *     http://www.hpwizard.com/tire-friction-coefficient.html
    *   Drag-radial effective µ from 60′ back-calc ~1.5–1.8 on prepared surface
@@ -801,25 +801,58 @@
    *     https://livephysics.com/infographics/engineering-drag-racing-traction-and-the-prepped-track/
    *   Hallum SAE 942484: TF effective >>2 via tread momentum — out of scope here
    *   No-prep culture: slicks need rubber/VHT; unprep slick ≪ prepped slick
+   *   MechCodex µ-slip: street peak ~1.0–1.3; racing slick ~1.4–1.8; sliding 10–30% below peak
+   *     https://mechcodex.com/learn/dynamics-vibration/tire-slip-ratio
+   *   R-compound / 200TW sits between UHP street and DOT drag radial (track-day reality)
    *
-   *   Unprepped: DR 1.28 / Slick 1.32
-   *   Prepped:   DR 1.50 / Slick 1.62
+   * Kinetic falloff (past peak slip): street compounds shed drive harder; DR/Slick
+   * hold more of peak while spinning (softer / glue-like). Prep softens falloff for
+   * DR/Slick (VHT + rubber). Matches real 60′ character: Street spins → slow 60′;
+   * Slick on prep hooks → low 1.x; Slick on unprep barely beats DR.
+   *
+   *   Unprepped: DR 1.28 / Slick 1.30
+   *   Prepped:   DR 1.52 / Slick 1.68
    */
   var TIRE_MU_BY_PREP = {
     unprepped: {
       0: 0.90,  // Street / All-season — Wong dry-asphalt peak band
       3: 1.02,  // Summer — above street, below UHP
       4: 1.12,  // UHP — warm dry compound
+      5: 1.20,  // R-Compound (≈200TW) — track-day street; between UHP and DR
       1: 1.28,  // Drag Radial — works without full VHT (below strip 1.5–1.8)
-      2: 1.32   // Slick — small burnout-heat edge; needs prep to shine
+      2: 1.30   // Slick — tiny edge vs DR cold; needs prep to shine
     },
     prepped: {
-      0: 0.94,  // Street — modest rubber/VHT bump
+      0: 0.94,  // Street — modest rubber/VHT bump (forums: sticky helps a little)
       3: 1.08,  // Summer
       4: 1.20,  // UHP
-      1: 1.50,  // Drag Radial — LS1GTO effective band low end
-      2: 1.62   // Slick — LivePhysics prepped ~1.6 sportsman strip
+      5: 1.35,  // R-Comp — some prep gain; not VHT-optimized like DR
+      1: 1.52,  // Drag Radial — LS1GTO effective band (~1.5–1.8)
+      2: 1.68   // Slick — sportsman prepped toward 1.6–1.8 (LivePhysics/HPWizard)
     }
+  };
+
+  /**
+   * Kinetic fall coefficient by tire (applied as kin = 1 - fall * slip^exp).
+   * Higher = more drive lost when spinning (street). Lower = holds better (DR/Slick).
+   * Research: sliding µ often 10–30% below peak (MechCodex / Wong sliding column).
+   */
+  var TIRE_KINETIC_FALL = {
+    0: 0.30,  // Street — harsh fall past peak
+    3: 0.26,  // Summer
+    4: 0.24,  // UHP
+    5: 0.20,  // R-Compound
+    1: 0.16,  // Drag Radial — soft compound holds while spinning
+    2: 0.13   // Slick — glue-like; least kinetic penalty when warm/prepped
+  };
+  /** Slip exponent: higher → gentler early-slip then steeper late (street-ish). */
+  var TIRE_KINETIC_EXP = {
+    0: 0.68,
+    3: 0.72,
+    4: 0.74,
+    5: 0.76,
+    1: 0.80,
+    2: 0.85
   };
 
   function normalizeTrackPrep(trackPrep) {
@@ -828,7 +861,7 @@
     return 'unprepped';
   }
 
-  /** Tire ladder: 0 Street, 1 Drag Radial, 2 Slick, 3 Summer, 4 UHP. */
+  /** Tire ladder: 0 Street, 1 Drag Radial, 2 Slick, 3 Summer, 4 UHP, 5 R-Compound. */
   function tireGripForType(tireType, trackPrep) {
     var prep = normalizeTrackPrep(trackPrep);
     var table = TIRE_MU_BY_PREP[prep] || TIRE_MU_BY_PREP.unprepped;
@@ -836,12 +869,29 @@
     return mu != null ? mu : DEFAULT_MU;
   }
 
+  /** Kinetic falloff for spin — prep softens DR/Slick/R-Comp fall (VHT/rubber). */
+  function tireKineticParams(tireType, trackPrep) {
+    var id = tireType | 0;
+    var fall = TIRE_KINETIC_FALL[id];
+    var exp = TIRE_KINETIC_EXP[id];
+    if (fall == null) fall = 0.22;
+    if (exp == null) exp = 0.75;
+    if (normalizeTrackPrep(trackPrep) === 'prepped') {
+      // Sticky strip: street compounds tiny help; race tires meaningfully milder spin loss
+      if (id === 1 || id === 2) fall *= 0.82;
+      else if (id === 5) fall *= 0.90;
+      else fall *= 0.96;
+    }
+    return { fall: fall, exp: exp };
+  }
+
   var TIRE_LABELS = {
     0: 'Street',
     1: 'Drag Radial',
     2: 'Slick',
     3: 'Summer',
-    4: 'UHP'
+    4: 'UHP',
+    5: 'R-Compound'
   };
   function tireLabelForType(tireType) {
     return TIRE_LABELS[tireType | 0] || TIRE_LABELS[0];
@@ -1543,9 +1593,11 @@
           spinSum += slip;
           spinN++;
           spinPct = slip * 100.0;
-          // Kinetic µ: traction and g go together — heavy spin → lower long. force.
-          // ~65% slip → kin≈0.84 → launch peak ~1.15–1.25g (Dragy), not invented 1.37+.
-          var kin = 1.0 - 0.22 * Math.pow(clamp(slip, 0, 1), 0.75);
+          // Kinetic µ by tire type (Jorge): street sheds drive harder past peak;
+          // DR/Slick hold more while spinning; prep softens race-tire falloff.
+          // ~65% slip street → kin≈0.78; slick/prepped → kin≈0.88 — real 60′ spread.
+          var kinP = tireKineticParams(env.tireType, env.trackPrep);
+          var kin = 1.0 - kinP.fall * Math.pow(clamp(slip, 0, 1), kinP.exp);
           appliedCmd *= kin;
           // Traction-fight chatter (deterministic): noisy valleys while spinning.
           var chatter = 0.048 * Math.sin(t * 78.0 + slip * 11.0)
@@ -1791,10 +1843,13 @@
     softTractionForce: softTractionForce,
     tireGripForType: tireGripForType,
     tireLabelForType: tireLabelForType,
+    tireKineticParams: tireKineticParams,
     trackPrepLabel: trackPrepLabel,
     normalizeTrackPrep: normalizeTrackPrep,
     TIRE_LABELS: TIRE_LABELS,
     TIRE_MU_BY_PREP: TIRE_MU_BY_PREP,
+    TIRE_KINETIC_FALL: TIRE_KINETIC_FALL,
+    TIRE_KINETIC_EXP: TIRE_KINETIC_EXP,
     get CalibrationFactor() { return CalibrationFactor; },
     set CalibrationFactor(v) { CalibrationFactor = Number(v) || CalibrationFactor; },
     constants: {

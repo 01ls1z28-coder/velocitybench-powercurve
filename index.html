@@ -134,6 +134,7 @@
               <option value="0">Street</option>
               <option value="3">Summer</option>
               <option value="4">UHP</option>
+              <option value="5">R-Compound</option>
               <option value="1" selected>Drag Radial</option>
               <option value="2">Slick</option>
             </select>
@@ -141,12 +142,12 @@
         </div>
         <div class="field-row">
           <label class="field"><span>Track prep</span>
-            <select id="trackPrep" title="Prepped raises DR/Slick µ toward strip levels; Unprepped = good asphalt (default garage/Excel).">
+            <select id="trackPrep" title="Prepped raises DR/Slick µ toward strip (1.28/1.30→1.52/1.68); Street–R-Comp modest. Unprepped = good asphalt (garage/Excel default).">
               <option value="unprepped" selected>Unprepped</option>
               <option value="prepped">Prepped</option>
             </select>
           </label>
-          <label class="field"><span></span><span class="hint" id="trackPrepHint" style="display:block;padding-top:6px">Default Unprepped · prep mainly boosts DR/Slick (µ 1.38/1.40 → 1.43/1.45)</span></label>
+          <label class="field"><span></span><span class="hint" id="trackPrepHint" style="display:block;padding-top:6px">Default Unprepped · prep mainly boosts DR/Slick (µ 1.28/1.30 → 1.52/1.68); Street/Summer/UHP/R-Comp modest</span></label>
         </div>
 
         <div class="card-title">Weather · Wind · Converter · Advanced</div>
@@ -326,9 +327,9 @@
     </div>
   </div>
 
-  <script src="js/physics.js?v=067fa77"></script>
-  <script src="js/gauges.js?v=067fa77"></script>
-  <script src="js/garage-data.js?v=067fa77"></script>
-  <script src="js/app.js?v=067fa77"></script>
+  <script src="js/physics.js?v=TIRETRACTION"></script>
+  <script src="js/gauges.js?v=TIRETRACTION"></script>
+  <script src="js/garage-data.js?v=TIRETRACTION"></script>
+  <script src="js/app.js?v=TIRETRACTION"></script>
 </body>
 </html>

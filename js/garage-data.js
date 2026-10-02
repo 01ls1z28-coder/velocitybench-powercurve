@@ -1,7 +1,8 @@
 /**
  * VelocityBench PowerCurve — baked garage.
  * Fleet fidelity: research µ + slicks only Jorge Z28; tire step-up Street→DR.
- * Credit: Jorge Guerra. Tip: review/fleet-fidelity-trap-first.
+ * Tire traction realism: R-Compound UI + kinetic-by-type (physics); garage slicks still Z28-only.
+ * Credit: Jorge Guerra. Tip: review/tire-traction-realism.
  * Knobs: tireType + launchRpm only. OEM Cd/FA/weight/peakHp/TX untouched. forceScale=1.
  */
 var GARAGE = [
