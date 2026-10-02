@@ -3,7 +3,7 @@
 **Credit:** Jorge Guerra only
 **Branch:** `review/mu-60ft-calibrate`
 **Base:** `6464c65` (`review/oem-tire-ev-power-batch`) — sibling tip (EV worktree was dirty; no clobber)
-**Tip SHA:** _(filled after commit)_
+**Tip SHA:** `4d65c3c` (`4d65c3c0c6318efbd4cb6b0ccca188fd0e6e9a5f`)
 **Repo:** `01ls1z28-coder/velocitybench-powercurve`
 **Pages / main:** HOLD for Seraph — tip only
 **Report:** `scripts/mu-60ft-calibrate-report.json`
