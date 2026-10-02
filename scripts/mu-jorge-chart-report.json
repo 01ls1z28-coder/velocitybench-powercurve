@@ -1,0 +1,80 @@
+{
+  "before": {
+    "unprepped": {
+      "Street": 2.13,
+      "Summer": 2.103,
+      "UHP": 1.923,
+      "R-Comp": 1.745,
+      "DR": 1.739,
+      "Slick": 1.908
+    },
+    "prepped": {
+      "Street": 2.04,
+      "Summer": 1.989,
+      "UHP": 1.938,
+      "R-Comp": 1.879,
+      "DR": 1.778,
+      "Slick": 1.738
+    }
+  },
+  "after": {
+    "unprepped": {
+      "Street": 2.2,
+      "Summer": 2.103,
+      "UHP": 1.96,
+      "R-Comp": 1.9,
+      "DR": 1.82,
+      "Slick": 1.908
+    },
+    "prepped": {
+      "Street": 2.04,
+      "Summer": 1.989,
+      "UHP": 1.9,
+      "R-Comp": 1.85,
+      "DR": 1.73,
+      "Slick": 1.708
+    }
+  },
+  "chart": {
+    "unprepped": {
+      "Street": 2.2,
+      "Summer": 2.103,
+      "UHP": 1.96,
+      "R-Comp": 1.9,
+      "DR": 1.82,
+      "Slick": 1.908
+    },
+    "prepped": {
+      "Street": 2.04,
+      "Summer": 1.989,
+      "UHP": 1.9,
+      "R-Comp": 1.85,
+      "DR": 1.73,
+      "Slick": 1.708
+    }
+  },
+  "mu": {
+    "unprepped": {
+      "0": 1.155,
+      "1": 1.39,
+      "2": 1.293,
+      "3": 1.196,
+      "4": 1.289,
+      "5": 1.324
+    },
+    "prepped": {
+      "0": 1.255,
+      "1": 2.025,
+      "2": 2.025,
+      "3": 1.273,
+      "4": 1.333,
+      "5": 1.362
+    }
+  },
+  "misses": [],
+  "prepHook": {
+    "DR": 1.011,
+    "Slick": 1.039
+  },
+  "prepSlickVsDr": 0.022
+}

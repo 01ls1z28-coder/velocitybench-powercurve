@@ -1,6 +1,8 @@
 [
   {
     "name": "2020 Ford Mustang GT",
+    "excelHp": 460,
+    "excelWt": 3705,
     "z60": 3.8,
     "et": 12.1,
     "trap": 119.0,
@@ -8,12 +10,17 @@
   },
   {
     "name": "2018 Ford Mustang GT PP2",
+    "excelHp": 460,
+    "excelWt": 3705,
     "z60": 4.3,
     "et": 12.6,
-    "trap": 115.0
+    "trap": 115.0,
+    "z60130": 11.65
   },
   {
     "name": "2020 Chevrolet Camaro SS",
+    "excelHp": 455,
+    "excelWt": 3685,
     "z60": 3.9,
     "et": 12.2,
     "trap": 118.0,
@@ -21,25 +28,35 @@
   },
   {
     "name": "2020 Dodge Challenger R/T Scat Pack",
+    "excelHp": 485,
+    "excelWt": 4232,
     "z60": 4.2,
-    "et": 12.6,
-    "trap": 114.0
+    "et": 12.5,
+    "trap": 114.0,
+    "z60130": 12.7
   },
   {
     "name": "2020 Dodge Challenger Hellcat",
+    "excelHp": 717,
+    "excelWt": 4449,
     "z60": 3.7,
-    "et": 11.8,
-    "trap": 125.0,
-    "z60130": 9.0
+    "et": 11.6,
+    "trap": 126.0,
+    "z60130": 8.5
   },
   {
     "name": "2024 Ford Mustang Dark Horse",
+    "excelHp": 500,
+    "excelWt": 3900,
     "z60": 3.7,
     "et": 12.0,
-    "trap": 118.4
+    "trap": 118.4,
+    "z60130": 11.07
   },
   {
     "name": "2023 Chevrolet Camaro ZL1",
+    "excelHp": 650,
+    "excelWt": 3886,
     "z60": 3.4,
     "et": 11.5,
     "trap": 125.0,
@@ -47,6 +64,8 @@
   },
   {
     "name": "2021 Dodge Charger Hellcat Redeye",
+    "excelHp": 797,
+    "excelWt": 4590,
     "z60": 3.6,
     "et": 11.5,
     "trap": 128.0,
@@ -54,6 +73,8 @@
   },
   {
     "name": "2016 Ford Mustang GT350R",
+    "excelHp": 526,
+    "excelWt": 3650,
     "z60": 3.9,
     "et": 12.2,
     "trap": 119.0,
@@ -61,80 +82,102 @@
   },
   {
     "name": "2015 Dodge Challenger Hellcat",
+    "excelHp": 707,
+    "excelWt": 4449,
     "z60": 3.6,
     "et": 11.7,
-    "trap": 126.0,
-    "z60130": 8.8
+    "trap": 125.0,
+    "z60130": 8.6
   },
   {
     "name": "2014 Chevrolet Camaro Z/28",
+    "excelHp": 505,
+    "excelWt": 3850,
     "z60": 4.5,
-    "et": 12.7,
-    "trap": 116.0
+    "et": 12.3,
+    "trap": 118.0
   },
   {
     "name": "2013 Ford Mustang Boss 302",
+    "excelHp": 444,
+    "excelWt": 3632,
     "z60": 4.3,
     "et": 12.7,
     "trap": 114.0
   },
   {
     "name": "2012 Chevrolet Corvette ZR1",
+    "excelHp": 638,
+    "excelWt": 3333,
     "z60": 3.4,
     "et": 11.5,
     "trap": 128.0
   },
   {
     "name": "2010 Dodge Challenger SRT8",
+    "excelHp": 425,
+    "excelWt": 4140,
     "z60": 4.7,
     "et": 13.2,
     "trap": 109.0
   },
   {
     "name": "2009 Pontiac G8 GXP",
+    "excelHp": 415,
+    "excelWt": 3995,
     "z60": 4.7,
     "et": 13.2,
     "trap": 108.0
   },
   {
     "name": "2004 Pontiac GTO",
+    "excelHp": 350,
+    "excelWt": 3725,
     "z60": 5.3,
     "et": 13.8,
     "trap": 104.0
   },
   {
     "name": "2003 Ford Mustang Cobra (Terminator)",
+    "excelHp": 390,
+    "excelWt": 3665,
     "z60": 4.5,
     "et": 13.0,
     "trap": 107.0
   },
   {
     "name": "2002 Chevrolet Camaro SS",
+    "excelHp": 325,
+    "excelWt": 3475,
     "z60": 5.2,
     "et": 13.7,
     "trap": 104.0
   },
   {
     "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
-    "z60": 3.2,
-    "et": 11.6,
-    "trap": 119.72,
-    "z60130": 10.9
+    "excelHp": 494,
+    "excelWt": 3340
   },
   {
     "name": "1996 Chevrolet Impala SS",
+    "excelHp": 260,
+    "excelWt": 4218,
     "z60": 7.1,
     "et": 15.4,
     "trap": 91.0
   },
   {
     "name": "2023 Dodge Charger Scat Pack",
+    "excelHp": 485,
+    "excelWt": 4350,
     "z60": 4.1,
     "et": 12.4,
     "trap": 116.0
   },
   {
     "name": "2020 Ford Mustang Shelby GT500",
+    "excelHp": 760,
+    "excelWt": 4171,
     "z60": 3.4,
     "et": 11.3,
     "trap": 132.0,
@@ -142,192 +185,256 @@
   },
   {
     "name": "2012 Chevrolet Camaro ZL1",
+    "excelHp": 580,
+    "excelWt": 4120,
     "z60": 3.9,
     "et": 12.1,
     "trap": 117.0
   },
   {
     "name": "2011 Ford Mustang GT 5.0",
+    "excelHp": 412,
+    "excelWt": 3605,
     "z60": 4.4,
     "et": 12.8,
     "trap": 112.0
   },
   {
     "name": "2008 Dodge Challenger SRT8",
+    "excelHp": 425,
+    "excelWt": 4140,
     "z60": 4.8,
     "et": 13.3,
     "trap": 108.0
   },
   {
     "name": "2001 Pontiac Firebird Trans Am WS6",
+    "excelHp": 325,
+    "excelWt": 3460,
     "z60": 5.0,
     "et": 13.5,
     "trap": 106.0
   },
   {
     "name": "1996 Ford Mustang SVT Cobra",
+    "excelHp": 305,
+    "excelWt": 3450,
     "z60": 5.5,
     "et": 14.1,
     "trap": 99.0
   },
   {
     "name": "1993 Chevrolet Camaro Z28",
+    "excelHp": 275,
+    "excelWt": 3460,
     "z60": 5.4,
     "et": 14.1,
     "trap": 98.0
   },
   {
     "name": "1987 Buick GNX",
+    "excelHp": 276,
+    "excelWt": 3450,
     "z60": 4.7,
     "et": 13.5,
     "trap": 104.0
   },
   {
     "name": "1979 Pontiac Firebird Trans Am",
+    "excelHp": 220,
+    "excelWt": 3660,
     "z60": 8.5,
     "et": 16.5,
     "trap": 86.0
   },
   {
     "name": "1985 Chevrolet Camaro IROC-Z",
+    "excelHp": 215,
+    "excelWt": 3300,
     "z60": 7.0,
     "et": 15.5,
     "trap": 90.0
   },
   {
     "name": "1987 Ford Mustang 5.0 LX",
+    "excelHp": 225,
+    "excelWt": 3080,
     "z60": 6.2,
     "et": 14.7,
     "trap": 94.0
   },
   {
     "name": "1994 Pontiac Firebird Formula",
+    "excelHp": 275,
+    "excelWt": 3450,
     "z60": 5.5,
     "et": 14.1,
     "trap": 98.0
   },
   {
     "name": "2000 Chevrolet Camaro SS",
+    "excelHp": 320,
+    "excelWt": 3475,
     "z60": 5.1,
     "et": 13.6,
     "trap": 105.0
   },
   {
     "name": "2007 Ford Mustang GT",
+    "excelHp": 300,
+    "excelWt": 3500,
     "z60": 5.1,
     "et": 13.7,
     "trap": 103.0
   },
   {
     "name": "2010 Chevrolet Camaro LT",
+    "excelHp": 304,
+    "excelWt": 3750,
     "z60": 6.1,
     "et": 14.7,
     "trap": 96.0
   },
   {
     "name": "1984 Chevrolet Corvette C4",
+    "excelHp": 205,
+    "excelWt": 3200,
     "z60": 6.6,
     "et": 15.0,
     "trap": 91.0
   },
   {
     "name": "1992 Ford Mustang LX 5.0",
+    "excelHp": 225,
+    "excelWt": 3080,
     "z60": 6.0,
     "et": 14.6,
     "trap": 94.0
   },
   {
     "name": "1998 Pontiac Firebird Formula",
+    "excelHp": 305,
+    "excelWt": 3450,
     "z60": 5.2,
     "et": 13.8,
     "trap": 103.0
   },
   {
     "name": "2006 Dodge Charger R/T",
+    "excelHp": 340,
+    "excelWt": 4020,
     "z60": 5.3,
     "et": 13.9,
     "trap": 101.0
   },
   {
     "name": "2011 Chevrolet Camaro LT",
+    "excelHp": 312,
+    "excelWt": 3750,
     "z60": 6.0,
     "et": 14.6,
     "trap": 97.0
   },
   {
     "name": "2013 Ford Mustang V6",
+    "excelHp": 305,
+    "excelWt": 3510,
     "z60": 5.1,
     "et": 13.8,
     "trap": 101.0
   },
   {
     "name": "1982 Pontiac Firebird Trans Am",
+    "excelHp": 165,
+    "excelWt": 3200,
     "z60": 9.2,
     "et": 17.0,
     "trap": 82.0
   },
   {
     "name": "1991 Chevrolet Camaro Z28",
+    "excelHp": 245,
+    "excelWt": 3400,
     "z60": 6.2,
     "et": 14.8,
     "trap": 94.0
   },
   {
     "name": "1994 Ford Mustang GT",
+    "excelHp": 215,
+    "excelWt": 3300,
     "z60": 6.1,
     "et": 14.7,
     "trap": 94.0
   },
   {
     "name": "2002 Pontiac Firebird WS6",
+    "excelHp": 325,
+    "excelWt": 3450,
     "z60": 5.0,
     "et": 13.5,
     "trap": 106.0
   },
   {
     "name": "2009 Dodge Challenger R/T",
+    "excelHp": 372,
+    "excelWt": 4100,
     "z60": 5.3,
     "et": 13.9,
     "trap": 102.0
   },
   {
     "name": "2012 Ford Mustang Boss 302 Laguna Seca",
+    "excelHp": 444,
+    "excelWt": 3632,
     "z60": 4.3,
     "et": 12.7,
     "trap": 114.0
   },
   {
     "name": "1981 Chevrolet Camaro Z28",
+    "excelHp": 175,
+    "excelWt": 3400,
     "z60": 8.8,
     "et": 16.7,
     "trap": 83.0
   },
   {
     "name": "1989 Ford Mustang GT 5.0",
+    "excelHp": 225,
+    "excelWt": 3150,
     "z60": 6.2,
     "et": 14.7,
     "trap": 94.0
   },
   {
     "name": "1993 Pontiac Firebird Formula",
+    "excelHp": 275,
+    "excelWt": 3450,
     "z60": 5.5,
     "et": 14.1,
     "trap": 98.0
   },
   {
     "name": "2004 Ford Mustang Mach 1",
+    "excelHp": 305,
+    "excelWt": 3650,
     "z60": 5.2,
     "et": 13.8,
     "trap": 103.0
   },
   {
     "name": "2007 Dodge Charger SRT8",
+    "excelHp": 425,
+    "excelWt": 4250,
     "z60": 5.0,
     "et": 13.5,
     "trap": 106.0
   },
   {
     "name": "2014 Chevrolet SS",
+    "excelHp": 415,
+    "excelWt": 3995,
     "z60": 4.5,
     "et": 13.0,
     "trap": 111.0,
@@ -335,6 +442,8 @@
   },
   {
     "name": "2022 Tesla Model S Plaid",
+    "excelHp": 1020,
+    "excelWt": 4827,
     "z60": 2.1,
     "et": 9.25,
     "trap": 151.0,
@@ -342,12 +451,16 @@
   },
   {
     "name": "2024 Tesla Model 3 Performance",
+    "excelHp": 510,
+    "excelWt": 4072,
     "z60": 2.9,
     "et": 11.0,
-    "trap": 123.0
+    "trap": 124.5
   },
   {
     "name": "2022 Porsche Taycan Turbo S",
+    "excelHp": 750,
+    "excelWt": 5121,
     "z60": 2.4,
     "et": 10.5,
     "trap": 130.0,
@@ -355,6 +468,8 @@
   },
   {
     "name": "2024 Lucid Air Sapphire",
+    "excelHp": 1234,
+    "excelWt": 5345,
     "z60": 2.1,
     "et": 9.0,
     "trap": 157.0,
@@ -362,216 +477,288 @@
   },
   {
     "name": "2023 Hyundai Ioniq 5 N",
+    "excelHp": 641,
+    "excelWt": 4700,
     "z60": 3.2,
-    "et": 11.5,
-    "trap": 121.0
+    "et": 11.0,
+    "trap": 124.9
   },
   {
     "name": "2022 Ford F-150 Lightning",
+    "excelHp": 580,
+    "excelWt": 6500,
     "z60": 4.0,
     "et": 12.5,
     "trap": 108.0
   },
   {
     "name": "2023 Tesla Model Y Performance",
+    "excelHp": 456,
+    "excelWt": 4416,
     "z60": 3.5,
     "et": 11.8,
     "trap": 115.0
   },
   {
     "name": "2022 Tesla Model X Plaid",
+    "excelHp": 1020,
+    "excelWt": 5328,
     "z60": 2.5,
-    "et": 10.2,
-    "trap": 124.0
+    "et": 9.8,
+    "trap": 145.0
   },
   {
     "name": "2023 Kia EV6 GT",
+    "excelHp": 576,
+    "excelWt": 4780,
     "z60": 3.2,
     "et": 11.4,
     "trap": 122.0
   },
   {
     "name": "2023 Polestar 2 Performance",
+    "excelHp": 476,
+    "excelWt": 4650,
     "z60": 4.1,
     "et": 12.6,
     "trap": 111.0
   },
   {
     "name": "2022 BMW iX M60",
+    "excelHp": 610,
+    "excelWt": 5750,
     "z60": 3.6,
     "et": 12.1,
     "trap": 114.0
   },
   {
     "name": "2023 Mercedes EQE AMG 53",
+    "excelHp": 677,
+    "excelWt": 5400,
     "z60": 3.2,
     "et": 11.6,
     "trap": 120.0
   },
   {
     "name": "2024 Cadillac Lyriq AWD",
+    "excelHp": 500,
+    "excelWt": 5600,
     "z60": 4.6,
     "et": 13.3,
     "trap": 104.0
   },
   {
     "name": "2024 Tesla Cybertruck Tri-Motor",
+    "excelHp": 845,
+    "excelWt": 6800,
     "z60": 2.6,
     "et": 11.0,
     "trap": 119.0
   },
   {
     "name": "2023 Genesis GV60 Performance",
+    "excelHp": 429,
+    "excelWt": 4750,
     "z60": 3.8,
     "et": 12.3,
     "trap": 113.0
   },
   {
     "name": "2024 Volvo EX90 Twin Motor",
+    "excelHp": 496,
+    "excelWt": 6100,
     "z60": 4.9,
     "et": 13.5,
     "trap": 103.0
   },
   {
     "name": "2023 Audi Q4 e-tron",
+    "excelHp": 295,
+    "excelWt": 4800,
     "z60": 5.8,
     "et": 14.5,
     "trap": 97.0
   },
   {
     "name": "2022 Mercedes EQB 350",
+    "excelHp": 288,
+    "excelWt": 4800,
     "z60": 6.0,
     "et": 14.6,
     "trap": 96.0
   },
   {
     "name": "2024 Tesla Model X Long Range",
+    "excelHp": 670,
+    "excelWt": 5185,
     "z60": 3.6,
     "et": 11.4,
     "trap": 127.0
   },
   {
     "name": "2023 Nissan Ariya e-4ORCE",
+    "excelHp": 389,
+    "excelWt": 4800,
     "z60": 5.1,
     "et": 13.8,
     "trap": 101.0
   },
   {
     "name": "2024 Subaru Solterra",
+    "excelHp": 215,
+    "excelWt": 4650,
     "z60": 6.5,
     "et": 15.1,
     "trap": 92.0
   },
   {
     "name": "2023 Toyota bZ4X AWD",
+    "excelHp": 214,
+    "excelWt": 4500,
     "z60": 6.5,
     "et": 15.1,
     "trap": 92.0
   },
   {
     "name": "2024 Fisker Ocean Extreme",
+    "excelHp": 564,
+    "excelWt": 5400,
     "z60": 3.9,
     "et": 12.5,
     "trap": 110.0
   },
   {
     "name": "2024 Hyundai Ioniq 6 AWD",
+    "excelHp": 320,
+    "excelWt": 4400,
     "z60": 4.8,
     "et": 13.4,
     "trap": 104.0
   },
   {
     "name": "2023 VW ID.4 AWD Pro",
+    "excelHp": 295,
+    "excelWt": 4800,
     "z60": 5.7,
     "et": 14.4,
     "trap": 97.0
   },
   {
     "name": "2024 Chevrolet Blazer EV SS",
+    "excelHp": 557,
+    "excelWt": 5400,
     "z60": 3.4,
     "et": 11.7,
     "trap": 117.0
   },
   {
     "name": "2023 Ford Mustang Mach-E GT",
+    "excelHp": 480,
+    "excelWt": 4900,
     "z60": 3.6,
     "et": 12.2,
     "trap": 114.0
   },
   {
     "name": "2024 BMW i5 M60",
+    "excelHp": 590,
+    "excelWt": 5200,
     "z60": 3.6,
     "et": 12.1,
     "trap": 115.0
   },
   {
     "name": "2024 Rivian R1S Quad Motor",
+    "excelHp": 835,
+    "excelWt": 7100,
     "z60": 3.0,
-    "et": 11.3,
+    "et": 11.1,
     "trap": 121.0
   },
   {
     "name": "2023 BMW i7 xDrive60",
+    "excelHp": 536,
+    "excelWt": 5950,
     "z60": 4.3,
     "et": 12.8,
     "trap": 111.0
   },
   {
     "name": "2024 Mercedes EQS 450+",
+    "excelHp": 355,
+    "excelWt": 5600,
     "z60": 5.4,
     "et": 14.0,
     "trap": 101.0
   },
   {
     "name": "2023 Audi e-tron GT",
+    "excelHp": 522,
+    "excelWt": 5100,
     "z60": 3.6,
     "et": 12.1,
     "trap": 116.0
   },
   {
     "name": "2024 Lucid Air Touring",
+    "excelHp": 620,
+    "excelWt": 4900,
     "z60": 3.0,
     "et": 11.2,
     "trap": 123.0
   },
   {
     "name": "2024 Tesla Model S Long Range",
+    "excelHp": 670,
+    "excelWt": 4760,
     "z60": 3.1,
-    "et": 11.4,
-    "trap": 120.0
+    "et": 10.8,
+    "trap": 129.0
   },
   {
     "name": "2023 Hyundai Kona Electric",
+    "excelHp": 201,
+    "excelWt": 3800,
     "z60": 6.8,
     "et": 15.3,
     "trap": 90.0
   },
   {
     "name": "2024 Kia Niro EV",
+    "excelHp": 201,
+    "excelWt": 3850,
     "z60": 6.9,
     "et": 15.4,
     "trap": 90.0
   },
   {
     "name": "2023 Mercedes EQS 580 SUV",
+    "excelHp": 536,
+    "excelWt": 6200,
     "z60": 4.5,
     "et": 13.1,
     "trap": 108.0
   },
   {
     "name": "2024 Volvo XC40 Recharge",
+    "excelHp": 402,
+    "excelWt": 4700,
     "z60": 4.5,
     "et": 13.2,
     "trap": 104.0
   },
   {
     "name": "2021 Ferrari SF90 Stradale",
+    "excelHp": 986,
+    "excelWt": 3461,
     "z60": 2.0,
     "et": 9.5,
     "trap": 148.0
   },
   {
     "name": "2021 Porsche 911 Turbo S",
+    "excelHp": 640,
+    "excelWt": 3616,
     "z60": 2.2,
     "et": 10.3,
     "trap": 137.0,
@@ -579,6 +766,8 @@
   },
   {
     "name": "2020 Lamborghini Hurac\u00e1n EVO",
+    "excelHp": 631,
+    "excelWt": 3400,
     "z60": 2.5,
     "et": 10.6,
     "trap": 133.0,
@@ -586,6 +775,8 @@
   },
   {
     "name": "2020 McLaren 765LT",
+    "excelHp": 755,
+    "excelWt": 2950,
     "z60": 2.6,
     "et": 10.2,
     "trap": 141.0,
@@ -593,6 +784,8 @@
   },
   {
     "name": "2017 Ferrari 812 Superfast",
+    "excelHp": 789,
+    "excelWt": 3593,
     "z60": 2.8,
     "et": 10.5,
     "trap": 136.0,
@@ -600,6 +793,8 @@
   },
   {
     "name": "2018 McLaren 600LT",
+    "excelHp": 592,
+    "excelWt": 2844,
     "z60": 2.8,
     "et": 10.7,
     "trap": 135.0,
@@ -607,6 +802,8 @@
   },
   {
     "name": "2019 Lamborghini Hurac\u00e1n Performante",
+    "excelHp": 631,
+    "excelWt": 3047,
     "z60": 2.5,
     "et": 10.5,
     "trap": 134.0,
@@ -614,6 +811,8 @@
   },
   {
     "name": "2017 Porsche 911 GT2 RS",
+    "excelHp": 700,
+    "excelWt": 3241,
     "z60": 2.7,
     "et": 10.6,
     "trap": 134.0,
@@ -621,6 +820,8 @@
   },
   {
     "name": "2016 Ferrari 488 GTB",
+    "excelHp": 661,
+    "excelWt": 3252,
     "z60": 2.8,
     "et": 10.7,
     "trap": 133.0,
@@ -628,6 +829,8 @@
   },
   {
     "name": "2015 McLaren P1",
+    "excelHp": 903,
+    "excelWt": 3470,
     "z60": 2.6,
     "et": 9.8,
     "trap": 148.0,
@@ -635,6 +838,8 @@
   },
   {
     "name": "2014 Ferrari F12 Berlinetta",
+    "excelHp": 731,
+    "excelWt": 3593,
     "z60": 2.9,
     "et": 10.9,
     "trap": 131.0,
@@ -642,6 +847,8 @@
   },
   {
     "name": "2013 McLaren MP4-12C",
+    "excelHp": 616,
+    "excelWt": 3161,
     "z60": 2.9,
     "et": 10.7,
     "trap": 134.0,
@@ -649,12 +856,16 @@
   },
   {
     "name": "2012 Lamborghini Gallardo LP570-4",
+    "excelHp": 562,
+    "excelWt": 3296,
     "z60": 3.2,
     "et": 11.2,
     "trap": 127.0
   },
   {
     "name": "2010 Ferrari 458 Italia",
+    "excelHp": 562,
+    "excelWt": 3274,
     "z60": 3.0,
     "et": 10.9,
     "trap": 127.0,
@@ -662,12 +873,16 @@
   },
   {
     "name": "2006 Ford GT",
+    "excelHp": 550,
+    "excelWt": 3485,
     "z60": 3.3,
     "et": 11.2,
     "trap": 131.0
   },
   {
     "name": "2004 Porsche Carrera GT",
+    "excelHp": 605,
+    "excelWt": 3043,
     "z60": 3.5,
     "et": 11.2,
     "trap": 130.0,
@@ -675,6 +890,8 @@
   },
   {
     "name": "2002 Ferrari Enzo",
+    "excelHp": 651,
+    "excelWt": 3263,
     "z60": 3.3,
     "et": 11.1,
     "trap": 133.0,
@@ -682,18 +899,24 @@
   },
   {
     "name": "2007 Lamborghini Murci\u00e9lago LP640",
+    "excelHp": 631,
+    "excelWt": 3671,
     "z60": 3.4,
     "et": 11.4,
     "trap": 129.0
   },
   {
     "name": "2009 Nissan GT-R",
+    "excelHp": 480,
+    "excelWt": 3800,
     "z60": 3.3,
     "et": 11.5,
     "trap": 124.0
   },
   {
     "name": "2012 Audi R8 V10",
+    "excelHp": 525,
+    "excelWt": 3571,
     "z60": 3.5,
     "et": 11.6,
     "trap": 124.0,
@@ -701,48 +924,64 @@
   },
   {
     "name": "2001 Lamborghini Diablo VT 6.0",
+    "excelHp": 550,
+    "excelWt": 3470,
     "z60": 3.6,
     "et": 11.8,
     "trap": 122.0
   },
   {
     "name": "2003 Ferrari 360 Modena",
+    "excelHp": 400,
+    "excelWt": 3064,
     "z60": 4.3,
     "et": 12.6,
     "trap": 114.0
   },
   {
     "name": "2007 Porsche 911 Turbo",
+    "excelHp": 480,
+    "excelWt": 3500,
     "z60": 3.4,
     "et": 11.6,
     "trap": 124.0
   },
   {
     "name": "2008 Aston Martin DBS",
+    "excelHp": 510,
+    "excelWt": 3737,
     "z60": 4.2,
     "et": 12.5,
     "trap": 117.0
   },
   {
     "name": "2011 Mercedes SLS AMG",
+    "excelHp": 563,
+    "excelWt": 3924,
     "z60": 3.5,
     "et": 11.7,
     "trap": 125.0
   },
   {
     "name": "2005 Ferrari F430",
+    "excelHp": 483,
+    "excelWt": 3197,
     "z60": 3.9,
     "et": 12.1,
     "trap": 118.0
   },
   {
     "name": "2009 Lamborghini Gallardo LP560-4",
+    "excelHp": 552,
+    "excelWt": 3400,
     "z60": 3.3,
     "et": 11.4,
     "trap": 126.0
   },
   {
     "name": "2010 Aston Martin V12 Vantage",
+    "excelHp": 510,
+    "excelWt": 3700,
     "z60": 4.1,
     "et": 12.4,
     "trap": 118.0,
@@ -750,6 +989,8 @@
   },
   {
     "name": "2013 SRT Viper GTS",
+    "excelHp": 640,
+    "excelWt": 3354,
     "z60": 3.3,
     "et": 11.4,
     "trap": 129.0,
@@ -757,42 +998,56 @@
   },
   {
     "name": "2014 Porsche 911 Carrera S",
+    "excelHp": 400,
+    "excelWt": 3150,
     "z60": 3.7,
     "et": 12.0,
     "trap": 117.0
   },
   {
     "name": "2002 Porsche 911 Turbo (996)",
+    "excelHp": 415,
+    "excelWt": 3400,
     "z60": 3.9,
     "et": 12.2,
     "trap": 115.0
   },
   {
     "name": "2006 Ferrari 612 Scaglietti",
+    "excelHp": 533,
+    "excelWt": 4050,
     "z60": 4.3,
     "et": 12.6,
     "trap": 116.0
   },
   {
     "name": "2008 Lamborghini Revent\u00f3n",
+    "excelHp": 650,
+    "excelWt": 3700,
     "z60": 3.3,
     "et": 11.3,
     "trap": 128.0
   },
   {
     "name": "2011 McLaren MP4-12C HS",
+    "excelHp": 616,
+    "excelWt": 3161,
     "z60": 2.9,
     "et": 10.7,
     "trap": 134.0
   },
   {
     "name": "2015 Aston Martin V12 Vantage S",
+    "excelHp": 565,
+    "excelWt": 3700,
     "z60": 3.7,
     "et": 12.0,
     "trap": 122.0
   },
   {
     "name": "2019 Bugatti Chiron",
+    "excelHp": 1479,
+    "excelWt": 4398,
     "z60": 2.4,
     "et": 9.4,
     "trap": 158.0,
@@ -800,6 +1055,8 @@
   },
   {
     "name": "2020 McLaren 720S",
+    "excelHp": 710,
+    "excelWt": 3228,
     "z60": 2.5,
     "et": 10.1,
     "trap": 142.0,
@@ -807,6 +1064,8 @@
   },
   {
     "name": "2019 Lamborghini Aventador SVJ",
+    "excelHp": 759,
+    "excelWt": 3472,
     "z60": 2.6,
     "et": 10.3,
     "trap": 136.0,
@@ -814,11 +1073,16 @@
   },
   {
     "name": "2021 Rimac Nevera",
+    "excelHp": 1914,
+    "excelWt": 4750,
     "z60": 1.74,
+    "et": 8.25,
     "z60130": 2.99
   },
   {
     "name": "2015 Koenigsegg One:1",
+    "excelHp": 1341,
+    "excelWt": 2998,
     "z60": 2.8,
     "et": 9.9,
     "trap": 150.0,
@@ -826,6 +1090,8 @@
   },
   {
     "name": "2019 Koenigsegg Jesko",
+    "excelHp": 1281,
+    "excelWt": 3131,
     "z60": 2.6,
     "et": 9.6,
     "trap": 152.0,
@@ -833,6 +1099,8 @@
   },
   {
     "name": "2013 Bugatti Veyron Super Sport",
+    "excelHp": 1200,
+    "excelWt": 4387,
     "z60": 2.4,
     "et": 9.9,
     "trap": 148.0,
@@ -840,6 +1108,8 @@
   },
   {
     "name": "2005 Bugatti Veyron",
+    "excelHp": 1001,
+    "excelWt": 4480,
     "z60": 2.5,
     "et": 10.1,
     "trap": 142.0,
@@ -847,6 +1117,8 @@
   },
   {
     "name": "2011 Koenigsegg Agera R",
+    "excelHp": 1140,
+    "excelWt": 3130,
     "z60": 2.8,
     "et": 10.0,
     "trap": 148.0,
@@ -854,6 +1126,8 @@
   },
   {
     "name": "2006 Saleen S7 Twin Turbo",
+    "excelHp": 750,
+    "excelWt": 2950,
     "z60": 3.3,
     "et": 10.9,
     "trap": 140.0,
@@ -861,6 +1135,8 @@
   },
   {
     "name": "2010 Pagani Zonda R",
+    "excelHp": 740,
+    "excelWt": 2350,
     "z60": 2.7,
     "et": 10.1,
     "trap": 140.0,
@@ -868,6 +1144,8 @@
   },
   {
     "name": "2004 Maserati MC12",
+    "excelHp": 621,
+    "excelWt": 3263,
     "z60": 3.7,
     "et": 11.3,
     "trap": 128.0,
@@ -875,6 +1153,8 @@
   },
   {
     "name": "2010 Gumpert Apollo Sport",
+    "excelHp": 690,
+    "excelWt": 2635,
     "z60": 3.0,
     "et": 10.8,
     "trap": 136.0,
@@ -882,6 +1162,8 @@
   },
   {
     "name": "2014 Hennessey Venom GT",
+    "excelHp": 1244,
+    "excelWt": 2743,
     "z60": 2.7,
     "et": 9.8,
     "trap": 170.0,
@@ -889,6 +1171,8 @@
   },
   {
     "name": "2018 Zenvo TSR-S",
+    "excelHp": 1177,
+    "excelWt": 3300,
     "z60": 2.8,
     "et": 10.4,
     "trap": 140.0,
@@ -896,6 +1180,8 @@
   },
   {
     "name": "2008 Koenigsegg CCX",
+    "excelHp": 806,
+    "excelWt": 3130,
     "z60": 3.2,
     "et": 10.7,
     "trap": 137.0,
@@ -903,6 +1189,8 @@
   },
   {
     "name": "2012 Pagani Huayra",
+    "excelHp": 720,
+    "excelWt": 2970,
     "z60": 3.0,
     "et": 10.6,
     "trap": 135.0,
@@ -910,6 +1198,8 @@
   },
   {
     "name": "2017 Bugatti Chiron Sport",
+    "excelHp": 1500,
+    "excelWt": 4400,
     "z60": 2.4,
     "et": 9.4,
     "trap": 158.0,
@@ -917,6 +1207,8 @@
   },
   {
     "name": "2019 McLaren Speedtail",
+    "excelHp": 1035,
+    "excelWt": 3150,
     "z60": 2.5,
     "et": 10.0,
     "trap": 150.0,
@@ -924,6 +1216,8 @@
   },
   {
     "name": "2016 Koenigsegg Regera",
+    "excelHp": 1500,
+    "excelWt": 3515,
     "z60": 2.7,
     "et": 9.9,
     "trap": 150.0,
@@ -931,6 +1225,8 @@
   },
   {
     "name": "2017 Pagani Huayra BC",
+    "excelHp": 745,
+    "excelWt": 2685,
     "z60": 2.8,
     "et": 10.3,
     "trap": 138.0,
@@ -938,6 +1234,8 @@
   },
   {
     "name": "2018 Bugatti Divo",
+    "excelHp": 1500,
+    "excelWt": 4300,
     "z60": 2.4,
     "et": 9.5,
     "trap": 155.0,
@@ -945,6 +1243,8 @@
   },
   {
     "name": "2020 McLaren Elva",
+    "excelHp": 804,
+    "excelWt": 2800,
     "z60": 2.8,
     "et": 10.6,
     "trap": 136.0,
@@ -952,6 +1252,8 @@
   },
   {
     "name": "2014 Koenigsegg Agera S",
+    "excelHp": 1030,
+    "excelWt": 3130,
     "z60": 2.8,
     "et": 10.1,
     "trap": 145.0,
@@ -959,6 +1261,8 @@
   },
   {
     "name": "2016 Bugatti Chiron",
+    "excelHp": 1479,
+    "excelWt": 4400,
     "z60": 2.4,
     "et": 9.4,
     "trap": 158.0,
@@ -966,6 +1270,8 @@
   },
   {
     "name": "2019 Pagani Huayra Roadster BC",
+    "excelHp": 791,
+    "excelWt": 2750,
     "z60": 2.8,
     "et": 10.3,
     "trap": 137.0,
@@ -973,6 +1279,8 @@
   },
   {
     "name": "2021 McLaren Sabre",
+    "excelHp": 824,
+    "excelWt": 3200,
     "z60": 2.7,
     "et": 10.4,
     "trap": 138.0,
@@ -980,210 +1288,280 @@
   },
   {
     "name": "1998 Toyota Supra Turbo (Mk4)",
+    "excelHp": 320,
+    "excelWt": 3450,
     "z60": 4.6,
     "et": 13.1,
     "trap": 108.0
   },
   {
     "name": "2002 Nissan Skyline GT-R R34",
+    "excelHp": 276,
+    "excelWt": 3439,
     "z60": 4.8,
     "et": 13.3,
     "trap": 107.0
   },
   {
     "name": "2020 Subaru WRX STI",
+    "excelHp": 310,
+    "excelWt": 3450,
     "z60": 4.6,
     "et": 13.2,
     "trap": 104.0
   },
   {
     "name": "2018 Honda Civic Type R",
+    "excelHp": 306,
+    "excelWt": 3117,
     "z60": 4.9,
     "et": 13.5,
     "trap": 107.0
   },
   {
     "name": "2008 Mitsubishi Lancer Evolution X",
+    "excelHp": 291,
+    "excelWt": 3550,
     "z60": 5.0,
     "et": 13.5,
     "trap": 104.0
   },
   {
     "name": "2006 Subaru WRX STI",
+    "excelHp": 300,
+    "excelWt": 3380,
     "z60": 4.7,
     "et": 13.3,
     "trap": 104.0
   },
   {
     "name": "2005 Nissan 350Z",
+    "excelHp": 287,
+    "excelWt": 3400,
     "z60": 5.3,
     "et": 13.9,
     "trap": 103.0
   },
   {
     "name": "2008 BMW 135i",
+    "excelHp": 300,
+    "excelWt": 3400,
     "z60": 4.8,
     "et": 13.4,
     "trap": 105.0
   },
   {
     "name": "2010 Mazda RX-8 R3",
+    "excelHp": 232,
+    "excelWt": 3064,
     "z60": 6.2,
     "et": 14.8,
     "trap": 96.0
   },
   {
     "name": "2003 Mitsubishi Lancer Evolution VIII",
+    "excelHp": 271,
+    "excelWt": 3263,
     "z60": 4.8,
     "et": 13.4,
     "trap": 104.0
   },
   {
     "name": "1999 Subaru Impreza 22B STI",
+    "excelHp": 276,
+    "excelWt": 2800,
     "z60": 4.7,
     "et": 13.3,
     "trap": 104.0
   },
   {
     "name": "2001 Honda S2000",
+    "excelHp": 240,
+    "excelWt": 2835,
     "z60": 5.8,
     "et": 14.4,
     "trap": 97.0
   },
   {
     "name": "2004 Mazda RX-8",
+    "excelHp": 238,
+    "excelWt": 3020,
     "z60": 6.4,
     "et": 15.0,
     "trap": 94.0
   },
   {
     "name": "1995 Nissan Silvia S14",
+    "excelHp": 217,
+    "excelWt": 2800,
     "z60": 6.4,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "1991 Nissan 240SX (S13)",
+    "excelHp": 155,
+    "excelWt": 2700,
     "z60": 7.5,
     "et": 15.8,
     "trap": 88.0
   },
   {
     "name": "1998 Honda Prelude Type SH",
+    "excelHp": 200,
+    "excelWt": 3000,
     "z60": 6.8,
     "et": 15.3,
     "trap": 91.0
   },
   {
     "name": "2003 Acura RSX Type-S",
+    "excelHp": 200,
+    "excelWt": 2770,
     "z60": 6.5,
     "et": 15.1,
     "trap": 93.0
   },
   {
     "name": "2007 MazdaSpeed3",
+    "excelHp": 263,
+    "excelWt": 3200,
     "z60": 5.3,
     "et": 13.9,
     "trap": 101.0
   },
   {
     "name": "2013 Scion FR-S",
+    "excelHp": 200,
+    "excelWt": 2760,
     "z60": 6.2,
     "et": 14.8,
     "trap": 94.0
   },
   {
     "name": "1990 Mazda Miata NA",
+    "excelHp": 116,
+    "excelWt": 2100,
     "z60": 8.1,
     "et": 16.3,
     "trap": 84.0
   },
   {
     "name": "1997 Honda Civic Type R EK9",
+    "excelHp": 182,
+    "excelWt": 2380,
     "z60": 6.7,
     "et": 15.2,
     "trap": 91.0
   },
   {
     "name": "2002 Subaru WRX Wagon",
+    "excelHp": 227,
+    "excelWt": 3200,
     "z60": 5.8,
     "et": 14.4,
     "trap": 96.0
   },
   {
     "name": "2005 Mitsubishi Eclipse GT",
+    "excelHp": 263,
+    "excelWt": 3500,
     "z60": 6.3,
     "et": 14.8,
     "trap": 96.0
   },
   {
     "name": "2012 Scion tC",
+    "excelHp": 180,
+    "excelWt": 3100,
     "z60": 7.2,
     "et": 15.6,
     "trap": 90.0
   },
   {
     "name": "1992 Nissan Pulsar GTI-R",
+    "excelHp": 227,
+    "excelWt": 2700,
     "z60": 5.4,
     "et": 14.0,
     "trap": 99.0
   },
   {
     "name": "1998 Toyota Celica GT-Four",
+    "excelHp": 255,
+    "excelWt": 3200,
     "z60": 6.0,
     "et": 14.5,
     "trap": 97.0
   },
   {
     "name": "2001 Mitsubishi Eclipse GSX",
+    "excelHp": 210,
+    "excelWt": 3300,
     "z60": 6.5,
     "et": 15.0,
     "trap": 92.0
   },
   {
     "name": "2006 Honda Accord Euro R",
+    "excelHp": 220,
+    "excelWt": 3000,
     "z60": 6.6,
     "et": 15.1,
     "trap": 93.0
   },
   {
     "name": "2010 Hyundai Genesis Coupe 3.8",
+    "excelHp": 306,
+    "excelWt": 3500,
     "z60": 5.5,
     "et": 14.1,
     "trap": 101.0
   },
   {
     "name": "1991 Toyota Soarer GT-T",
+    "excelHp": 276,
+    "excelWt": 3500,
     "z60": 6.2,
     "et": 14.7,
     "trap": 96.0
   },
   {
     "name": "1994 Nissan 180SX Type X",
+    "excelHp": 205,
+    "excelWt": 2700,
     "z60": 6.5,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "1999 Honda Prelude SH",
+    "excelHp": 200,
+    "excelWt": 3000,
     "z60": 6.8,
     "et": 15.3,
     "trap": 91.0
   },
   {
     "name": "2008 Subaru Legacy GT Spec.B",
+    "excelHp": 243,
+    "excelWt": 3500,
     "z60": 5.5,
     "et": 14.1,
     "trap": 99.0
   },
   {
     "name": "2011 MazdaSpeed6",
+    "excelHp": 274,
+    "excelWt": 3600,
     "z60": 5.8,
     "et": 14.4,
     "trap": 97.0
   },
   {
     "name": "2021 Kawasaki Ninja ZX-10R",
+    "excelHp": 203,
+    "excelWt": 454,
     "z60": 3.1,
     "et": 10.2,
     "trap": 147.0,
@@ -1191,6 +1569,8 @@
   },
   {
     "name": "2016 Kawasaki Ninja ZX-10R",
+    "excelHp": 197,
+    "excelWt": 449,
     "z60": 3.0,
     "et": 10.2,
     "trap": 147.0,
@@ -1198,6 +1578,8 @@
   },
   {
     "name": "2020 Suzuki GSX-R1000",
+    "excelHp": 199,
+    "excelWt": 445,
     "z60": 3.0,
     "et": 10.2,
     "trap": 148.0,
@@ -1205,6 +1587,8 @@
   },
   {
     "name": "2020 Suzuki GSX-R1000R",
+    "excelHp": 202,
+    "excelWt": 443,
     "z60": 2.9,
     "et": 10.1,
     "trap": 149.0,
@@ -1212,6 +1596,8 @@
   },
   {
     "name": "2020 Yamaha YZF-R1",
+    "excelHp": 197,
+    "excelWt": 448,
     "z60": 2.9,
     "et": 10.1,
     "trap": 148.0,
@@ -1219,6 +1605,8 @@
   },
   {
     "name": "2020 Yamaha YZF-R1M",
+    "excelHp": 200,
+    "excelWt": 443,
     "z60": 2.9,
     "et": 10.0,
     "trap": 149.0,
@@ -1226,6 +1614,8 @@
   },
   {
     "name": "2021 BMW S1000RR",
+    "excelHp": 205,
+    "excelWt": 434,
     "z60": 3.1,
     "et": 10.12,
     "trap": 156.0,
@@ -1233,6 +1623,8 @@
   },
   {
     "name": "2021 Honda CBR1000RR-R Fireblade",
+    "excelHp": 214,
+    "excelWt": 443,
     "z60": 2.9,
     "et": 10.0,
     "trap": 151.0,
@@ -1240,6 +1632,8 @@
   },
   {
     "name": "2022 Suzuki Hayabusa",
+    "excelHp": 187,
+    "excelWt": 582,
     "z60": 2.5,
     "et": 9.7,
     "trap": 148.0,
@@ -1247,6 +1641,8 @@
   },
   {
     "name": "2020 Kawasaki Ninja ZX-14R",
+    "excelHp": 208,
+    "excelWt": 593,
     "z60": 2.6,
     "et": 9.7,
     "trap": 149.0,
@@ -1254,6 +1650,8 @@
   },
   {
     "name": "2021 Ducati Panigale V4",
+    "excelHp": 214,
+    "excelWt": 436,
     "z60": 2.8,
     "et": 10.0,
     "trap": 152.0,
@@ -1261,6 +1659,8 @@
   },
   {
     "name": "2021 Kawasaki Ninja H2",
+    "excelHp": 228,
+    "excelWt": 525,
     "z60": 2.6,
     "et": 9.7,
     "trap": 152.0,
@@ -1268,402 +1668,534 @@
   },
   {
     "name": "2020 Ford F-150 Raptor",
+    "excelHp": 450,
+    "excelWt": 5697,
     "z60": 5.1,
     "et": 13.8,
     "trap": 101.0
   },
   {
     "name": "2021 Ram TRX",
+    "excelHp": 702,
+    "excelWt": 6350,
     "z60": 4.1,
     "et": 12.3,
     "trap": 110.0
   },
   {
     "name": "2023 Chevrolet Silverado ZR2",
+    "excelHp": 420,
+    "excelWt": 5950,
     "z60": 6.2,
     "et": 14.8,
     "trap": 95.0
   },
   {
     "name": "2020 Chevrolet Silverado 6.2",
+    "excelHp": 420,
+    "excelWt": 5200,
     "z60": 5.4,
     "et": 14.0,
     "trap": 99.0
   },
   {
     "name": "2019 Ford F-250 6.7 PowerStroke",
+    "excelHp": 450,
+    "excelWt": 7300,
     "z60": 7.2,
     "et": 15.6,
     "trap": 89.0
   },
   {
     "name": "2021 Toyota Tundra",
+    "excelHp": 381,
+    "excelWt": 5800,
     "z60": 6.1,
     "et": 14.7,
     "trap": 95.0
   },
   {
     "name": "2018 Ford F-150 5.0",
+    "excelHp": 395,
+    "excelWt": 4700,
     "z60": 6.1,
     "et": 14.7,
     "trap": 95.0
   },
   {
     "name": "2017 Chevrolet Silverado 5.3",
+    "excelHp": 355,
+    "excelWt": 4800,
     "z60": 6.8,
     "et": 15.3,
     "trap": 91.0
   },
   {
     "name": "2016 Ram 1500 5.7 Hemi",
+    "excelHp": 395,
+    "excelWt": 5100,
     "z60": 6.4,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "2014 Toyota Tacoma V6",
+    "excelHp": 236,
+    "excelWt": 3950,
     "z60": 7.6,
     "et": 16.0,
     "trap": 86.0
   },
   {
     "name": "2012 Ford F-150 EcoBoost",
+    "excelHp": 365,
+    "excelWt": 4800,
     "z60": 6.2,
     "et": 14.8,
     "trap": 94.0
   },
   {
     "name": "2013 Ram 1500 5.7 Hemi",
+    "excelHp": 395,
+    "excelWt": 5100,
     "z60": 6.5,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "2011 Chevrolet Avalanche 5.3",
+    "excelHp": 320,
+    "excelWt": 5600,
     "z60": 7.4,
     "et": 15.8,
     "trap": 88.0
   },
   {
     "name": "2010 Toyota Tundra 5.7",
+    "excelHp": 381,
+    "excelWt": 5600,
     "z60": 6.3,
     "et": 14.9,
     "trap": 94.0
   },
   {
     "name": "2008 Ford F-150 Harley-Davidson",
+    "excelHp": 300,
+    "excelWt": 5200,
     "z60": 7.4,
     "et": 15.8,
     "trap": 88.0
   },
   {
     "name": "2009 GMC Sierra Denali 6.2",
+    "excelHp": 403,
+    "excelWt": 5400,
     "z60": 6.0,
     "et": 14.6,
     "trap": 96.0
   },
   {
     "name": "2010 Nissan Titan 5.6",
+    "excelHp": 317,
+    "excelWt": 5200,
     "z60": 6.8,
     "et": 15.3,
     "trap": 91.0
   },
   {
     "name": "2013 Toyota Sequoia 5.7",
+    "excelHp": 381,
+    "excelWt": 5800,
     "z60": 6.6,
     "et": 15.1,
     "trap": 92.0
   },
   {
     "name": "2007 Ford F-150 4.6 Triton",
+    "excelHp": 248,
+    "excelWt": 4800,
     "z60": 8.5,
     "et": 16.6,
     "trap": 84.0
   },
   {
     "name": "2008 Chevrolet Silverado 6.0 Vortec Max",
+    "excelHp": 367,
+    "excelWt": 5200,
     "z60": 6.4,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "2011 Toyota Tacoma 4.0 V6",
+    "excelHp": 236,
+    "excelWt": 3950,
     "z60": 7.6,
     "et": 16.0,
     "trap": 86.0
   },
   {
     "name": "2015 Nissan Frontier 4.0",
+    "excelHp": 261,
+    "excelWt": 4300,
     "z60": 7.8,
     "et": 16.1,
     "trap": 86.0
   },
   {
     "name": "2005 Ford F-250 V10",
+    "excelHp": 362,
+    "excelWt": 6400,
     "z60": 8.8,
     "et": 16.8,
     "trap": 82.0
   },
   {
     "name": "2006 Chevrolet Silverado 2500HD 6.0",
+    "excelHp": 300,
+    "excelWt": 6200,
     "z60": 8.5,
     "et": 16.6,
     "trap": 83.0
   },
   {
     "name": "2007 Toyota Tundra 4.7",
+    "excelHp": 271,
+    "excelWt": 5200,
     "z60": 8.0,
     "et": 16.3,
     "trap": 85.0
   },
   {
     "name": "2012 Nissan Titan Pro-4X",
+    "excelHp": 317,
+    "excelWt": 5400,
     "z60": 7.0,
     "et": 15.4,
     "trap": 90.0
   },
   {
     "name": "1969 Dodge Charger 440",
+    "excelHp": 375,
+    "excelWt": 4100,
     "z60": 6.1,
     "et": 14.3,
     "trap": 99.0
   },
   {
     "name": "1967 Ford Mustang GT 390",
+    "excelHp": 320,
+    "excelWt": 3400,
     "z60": 6.8,
     "et": 15.2,
     "trap": 93.0
   },
   {
     "name": "1970 Chevrolet Chevelle SS 454",
+    "excelHp": 450,
+    "excelWt": 3960,
     "z60": 5.8,
     "et": 13.9,
     "trap": 103.0
   },
   {
     "name": "1970 Dodge Challenger 426 Hemi",
+    "excelHp": 425,
+    "excelWt": 3750,
     "z60": 5.8,
     "et": 13.8,
     "trap": 104.0
   },
   {
     "name": "1969 Chevrolet Camaro SS 396",
+    "excelHp": 375,
+    "excelWt": 3600,
     "z60": 6.0,
     "et": 14.4,
     "trap": 99.0
   },
   {
     "name": "1971 Dodge Demon 340",
+    "excelHp": 275,
+    "excelWt": 3200,
     "z60": 6.4,
     "et": 14.8,
     "trap": 96.0
   },
   {
     "name": "1966 Ford GT40 MkII",
+    "excelHp": 485,
+    "excelWt": 2685,
     "z60": 4.5,
     "et": 11.8,
     "trap": 131.0
   },
   {
     "name": "1965 Shelby Cobra 427",
+    "excelHp": 425,
+    "excelWt": 2420,
     "z60": 4.3,
     "et": 12.2,
     "trap": 120.0
   },
   {
     "name": "1970 Plymouth Road Runner 440",
+    "excelHp": 390,
+    "excelWt": 3850,
     "z60": 6.0,
     "et": 14.2,
     "trap": 100.0
   },
   {
     "name": "1968 Dodge Dart GTS 383",
+    "excelHp": 300,
+    "excelWt": 3400,
     "z60": 6.5,
     "et": 14.8,
     "trap": 96.0
   },
   {
     "name": "1964 Pontiac GTO",
+    "excelHp": 348,
+    "excelWt": 3500,
     "z60": 6.6,
     "et": 14.8,
     "trap": 98.0
   },
   {
     "name": "1965 Chevrolet Chevelle SS396",
+    "excelHp": 375,
+    "excelWt": 3600,
     "z60": 6.4,
     "et": 14.7,
     "trap": 98.0
   },
   {
     "name": "1963 Corvette Stingray 327",
+    "excelHp": 360,
+    "excelWt": 3100,
     "z60": 5.9,
     "et": 14.4,
     "trap": 100.0
   },
   {
     "name": "1972 Oldsmobile 442",
+    "excelHp": 300,
+    "excelWt": 3800,
     "z60": 7.5,
     "et": 15.8,
     "trap": 90.0
   },
   {
     "name": "1962 Chevrolet Impala SS 409",
+    "excelHp": 409,
+    "excelWt": 3800,
     "z60": 6.3,
     "et": 14.6,
     "trap": 99.0
   },
   {
     "name": "1967 Plymouth GTX 440",
+    "excelHp": 375,
+    "excelWt": 3850,
     "z60": 6.0,
     "et": 14.3,
     "trap": 100.0
   },
   {
     "name": "1973 Ford Torino 351",
+    "excelHp": 248,
+    "excelWt": 3900,
     "z60": 8.5,
     "et": 16.5,
     "trap": 85.0
   },
   {
     "name": "1978 Dodge Magnum XE",
+    "excelHp": 195,
+    "excelWt": 3900,
     "z60": 9.5,
     "et": 17.2,
     "trap": 80.0
   },
   {
     "name": "1957 Chevrolet Bel Air 283",
+    "excelHp": 220,
+    "excelWt": 3450,
     "z60": 8.5,
     "et": 16.6,
     "trap": 82.0
   },
   {
     "name": "1960 Ford Galaxie 352",
+    "excelHp": 300,
+    "excelWt": 3800,
     "z60": 8.8,
     "et": 16.8,
     "trap": 82.0
   },
   {
     "name": "1974 Pontiac Firebird 400",
+    "excelHp": 225,
+    "excelWt": 3800,
     "z60": 8.2,
     "et": 16.3,
     "trap": 86.0
   },
   {
     "name": "1977 Chevrolet Monte Carlo",
+    "excelHp": 170,
+    "excelWt": 3900,
     "z60": 10.5,
     "et": 17.8,
     "trap": 78.0
   },
   {
     "name": "1955 Ford Thunderbird",
+    "excelHp": 193,
+    "excelWt": 3500,
     "z60": 9.5,
     "et": 17.2,
     "trap": 80.0
   },
   {
     "name": "1961 Chevrolet Corvette 283",
+    "excelHp": 270,
+    "excelWt": 3100,
     "z60": 6.6,
     "et": 15.0,
     "trap": 93.0
   },
   {
     "name": "1968 Mercury Cougar XR-7",
+    "excelHp": 335,
+    "excelWt": 3600,
     "z60": 7.2,
     "et": 15.5,
     "trap": 91.0
   },
   {
     "name": "1975 Chevrolet Nova 350",
+    "excelHp": 145,
+    "excelWt": 3500,
     "z60": 9.8,
     "et": 17.4,
     "trap": 79.0
   },
   {
     "name": "2022 Volkswagen Golf R",
+    "excelHp": 315,
+    "excelWt": 3450,
     "z60": 4.1,
     "et": 12.6,
     "trap": 112.0
   },
   {
     "name": "2023 Toyota GR Corolla",
+    "excelHp": 300,
+    "excelWt": 3250,
     "z60": 4.7,
     "et": 13.4,
     "trap": 103.0
   },
   {
     "name": "2021 BMW M5 Competition",
+    "excelHp": 617,
+    "excelWt": 4300,
     "z60": 2.8,
     "et": 10.9,
     "trap": 128.5
   },
   {
     "name": "2020 Audi RS7",
+    "excelHp": 591,
+    "excelWt": 4500,
     "z60": 3.1,
     "et": 11.4,
     "trap": 124.0
   },
   {
     "name": "2018 BMW M3 Competition",
+    "excelHp": 444,
+    "excelWt": 3540,
     "z60": 3.8,
     "et": 11.9,
     "trap": 122.0
   },
   {
     "name": "2017 Mercedes-AMG C63 S",
+    "excelHp": 503,
+    "excelWt": 3900,
     "z60": 3.8,
     "et": 11.8,
     "trap": 123.0
   },
   {
     "name": "2019 Audi RS5 Sportback",
+    "excelHp": 444,
+    "excelWt": 3968,
     "z60": 3.5,
     "et": 11.9,
     "trap": 115.0
   },
   {
     "name": "2021 Jeep Trackhawk",
-    "z60": 3.5,
-    "et": 11.6,
-    "trap": 118.0
+    "excelHp": 707,
+    "excelWt": 5350,
+    "z60": 3.5
   },
   {
     "name": "2023 BMW X5M Competition",
+    "excelHp": 617,
+    "excelWt": 5300,
     "z60": 3.3,
     "et": 11.8,
     "trap": 118.0
   },
   {
     "name": "2020 Dodge Durango SRT",
+    "excelHp": 475,
+    "excelWt": 5300,
     "z60": 4.4,
     "et": 12.9,
     "trap": 110.0
   },
   {
     "name": "2022 Cadillac Escalade V",
+    "excelHp": 682,
+    "excelWt": 6200,
     "z60": 4.3,
     "et": 12.7,
     "trap": 112.0
   },
   {
     "name": "2021 Range Rover Sport SVR",
+    "excelHp": 575,
+    "excelWt": 5200,
     "z60": 4.3,
     "et": 12.8,
     "trap": 111.0
   },
   {
     "name": "2019 Dodge Durango R/T",
+    "excelHp": 360,
+    "excelWt": 5100,
     "z60": 6.3,
     "et": 14.8,
     "trap": 95.0
   },
   {
     "name": "2018 Jeep Grand Cherokee SRT",
+    "excelHp": 475,
+    "excelWt": 5200,
     "z60": 4.5,
     "et": 13.1,
     "trap": 108.0
   },
   {
     "name": "2017 BMW X6M",
+    "excelHp": 567,
+    "excelWt": 5150,
     "z60": 3.8,
     "et": 12.3,
     "trap": 114.0,
@@ -1671,370 +2203,524 @@
   },
   {
     "name": "2012 Chevrolet Tahoe 5.3",
+    "excelHp": 320,
+    "excelWt": 5300,
     "z60": 7.6,
     "et": 16.0,
     "trap": 87.0
   },
   {
     "name": "2013 Ford Expedition 5.4",
+    "excelHp": 310,
+    "excelWt": 5600,
     "z60": 7.8,
     "et": 16.1,
     "trap": 86.0
   },
   {
     "name": "2014 Jeep Wrangler Rubicon",
+    "excelHp": 285,
+    "excelWt": 4300,
     "z60": 8.1,
     "et": 16.4,
     "trap": 85.0
   },
   {
     "name": "2009 Toyota 4Runner V8",
+    "excelHp": 260,
+    "excelWt": 4400,
     "z60": 7.0,
     "et": 15.5,
     "trap": 90.0
   },
   {
     "name": "2010 Chevrolet Suburban 5.3",
+    "excelHp": 320,
+    "excelWt": 5600,
     "z60": 7.8,
     "et": 16.1,
     "trap": 86.0
   },
   {
     "name": "2011 Jeep Liberty 3.7",
+    "excelHp": 210,
+    "excelWt": 4200,
     "z60": 8.8,
     "et": 16.8,
     "trap": 82.0
   },
   {
     "name": "2008 Toyota Highlander V6",
+    "excelHp": 270,
+    "excelWt": 4100,
     "z60": 7.2,
     "et": 15.6,
     "trap": 89.0
   },
   {
     "name": "2009 Honda Pilot",
+    "excelHp": 250,
+    "excelWt": 4400,
     "z60": 7.8,
     "et": 16.1,
     "trap": 86.0
   },
   {
     "name": "2010 Jeep Commander 5.7",
+    "excelHp": 357,
+    "excelWt": 5100,
     "z60": 6.8,
     "et": 15.3,
     "trap": 91.0
   },
   {
     "name": "1994 Toyota Supra Twin Turbo",
+    "excelHp": 320,
+    "excelWt": 3450,
     "z60": 4.6,
     "et": 13.1,
     "trap": 108.0
   },
   {
     "name": "1999 Nissan Skyline GT-R R34",
+    "excelHp": 276,
+    "excelWt": 3439,
     "z60": 4.8,
     "et": 13.3,
     "trap": 107.0
   },
   {
     "name": "1992 Honda NSX",
+    "excelHp": 270,
+    "excelWt": 3010,
     "z60": 5.3,
     "et": 13.8,
     "trap": 104.0
   },
   {
     "name": "1990 Nissan 300ZX NA",
+    "excelHp": 222,
+    "excelWt": 3300,
     "z60": 6.7,
     "et": 15.2,
     "trap": 92.0
   },
   {
     "name": "1989 Toyota MR2 Supercharged",
+    "excelHp": 145,
+    "excelWt": 2600,
     "z60": 6.6,
     "et": 15.2,
     "trap": 90.0
   },
   {
     "name": "2009 BMW 335i",
+    "excelHp": 300,
+    "excelWt": 3600,
     "z60": 5.1,
     "et": 13.6,
     "trap": 104.0
   },
   {
     "name": "2010 Mercedes C63 AMG",
+    "excelHp": 451,
+    "excelWt": 3800,
     "z60": 4.1,
-    "et": 12.2,
-    "trap": 115.0
+    "et": 12.5,
+    "trap": 115.0,
+    "z60130": 10.5
   },
   {
     "name": "2008 Audi S5",
+    "excelHp": 354,
+    "excelWt": 3850,
     "z60": 4.9,
     "et": 13.4,
     "trap": 105.0
   },
   {
     "name": "1986 Toyota Corolla AE86",
+    "excelHp": 128,
+    "excelWt": 2300,
     "z60": 8.3,
     "et": 16.4,
     "trap": 84.0
   },
   {
     "name": "1990 Mazda RX-7 FC Turbo",
+    "excelHp": 200,
+    "excelWt": 2800,
     "z60": 6.3,
     "et": 14.8,
     "trap": 95.0
   },
   {
     "name": "1995 Mitsubishi Eclipse GSX",
+    "excelHp": 210,
+    "excelWt": 3200,
     "z60": 6.3,
     "et": 14.8,
     "trap": 94.0
   },
   {
     "name": "1985 Mazda RX-7 GSL-SE",
+    "excelHp": 135,
+    "excelWt": 2600,
     "z60": 7.8,
     "et": 16.0,
     "trap": 86.0
   },
   {
     "name": "1993 Honda Accord SiR",
+    "excelHp": 190,
+    "excelWt": 2900,
     "z60": 7.2,
     "et": 15.6,
     "trap": 89.0
   },
   {
     "name": "1997 Toyota Chaser Tourer V",
+    "excelHp": 276,
+    "excelWt": 3400,
     "z60": 5.8,
     "et": 14.4,
     "trap": 98.0
   },
   {
     "name": "1983 Toyota Supra (Mk2)",
+    "excelHp": 160,
+    "excelWt": 3000,
     "z60": 8.5,
     "et": 16.5,
     "trap": 85.0
   },
   {
     "name": "1987 Nissan Skyline GTS-R",
+    "excelHp": 210,
+    "excelWt": 3000,
     "z60": 6.2,
     "et": 14.6,
     "trap": 97.0
   },
   {
     "name": "1996 Honda Integra SiR",
+    "excelHp": 180,
+    "excelWt": 2600,
     "z60": 7.0,
     "et": 15.4,
     "trap": 90.0
   },
   {
     "name": "2018 Mercedes-AMG GT R",
+    "excelHp": 577,
+    "excelWt": 3540,
     "z60": 3.4,
     "et": 11.6,
     "trap": 125.0
   },
   {
     "name": "2019 Porsche 911 GT3",
+    "excelHp": 500,
+    "excelWt": 3153,
     "z60": 3.2,
     "et": 11.4,
     "trap": 125.0
   },
   {
     "name": "2016 Audi TT RS",
+    "excelHp": 400,
+    "excelWt": 3300,
     "z60": 3.3,
     "et": 11.7,
     "trap": 120.0
   },
   {
     "name": "2015 BMW M4",
+    "excelHp": 425,
+    "excelWt": 3535,
     "z60": 3.9,
     "et": 12.1,
     "trap": 118.0
   },
   {
     "name": "2014 Mercedes CLA45 AMG",
+    "excelHp": 355,
+    "excelWt": 3450,
     "z60": 4.1,
     "et": 12.6,
     "trap": 111.0
   },
   {
     "name": "2012 BMW M5",
+    "excelHp": 560,
+    "excelWt": 4350,
     "z60": 3.7,
     "et": 12.0,
     "trap": 122.0
   },
   {
     "name": "2013 Audi RS4 Avant",
+    "excelHp": 450,
+    "excelWt": 3950,
     "z60": 4.1,
     "et": 12.6,
     "trap": 114.0
   },
   {
     "name": "2011 Mercedes E63 AMG",
+    "excelHp": 518,
+    "excelWt": 4200,
     "z60": 3.9,
     "et": 12.3,
     "trap": 117.0
   },
   {
+    "name": "2009 BMW 335i",
+    "excelHp": 300,
+    "excelWt": 3600,
+    "z60": 5.1,
+    "et": 13.6,
+    "trap": 104.0
+  },
+  {
+    "name": "2010 Mercedes C63 AMG",
+    "excelHp": 451,
+    "excelWt": 3800,
+    "z60": 4.1,
+    "et": 12.2,
+    "trap": 115.0
+  },
+  {
+    "name": "2008 Audi S5",
+    "excelHp": 354,
+    "excelWt": 3850,
+    "z60": 4.9,
+    "et": 13.4,
+    "trap": 105.0
+  },
+  {
     "name": "2007 BMW 550i",
+    "excelHp": 360,
+    "excelWt": 3900,
     "z60": 5.2,
     "et": 13.7,
     "trap": 104.0
   },
   {
     "name": "2009 Mercedes CLS550",
+    "excelHp": 382,
+    "excelWt": 4050,
     "z60": 5.4,
     "et": 13.9,
     "trap": 103.0
   },
   {
     "name": "2011 Audi A7 3.0T",
+    "excelHp": 310,
+    "excelWt": 4200,
     "z60": 5.2,
     "et": 13.7,
     "trap": 103.0
   },
   {
     "name": "2004 BMW 330Ci ZHP",
+    "excelHp": 235,
+    "excelWt": 3400,
     "z60": 5.6,
     "et": 14.2,
     "trap": 99.0
   },
   {
     "name": "2006 Mercedes CLK55 AMG",
+    "excelHp": 362,
+    "excelWt": 3800,
     "z60": 5.0,
     "et": 13.5,
     "trap": 106.0
   },
   {
     "name": "2007 Audi S6 V10",
+    "excelHp": 435,
+    "excelWt": 4300,
     "z60": 5.1,
     "et": 13.6,
     "trap": 105.0
   },
   {
     "name": "2003 BMW M3 E46",
+    "excelHp": 333,
+    "excelWt": 3415,
     "z60": 4.8,
     "et": 13.3,
     "trap": 107.0
   },
   {
     "name": "2005 Mercedes E55 AMG",
+    "excelHp": 469,
+    "excelWt": 4100,
     "z60": 4.3,
     "et": 12.6,
     "trap": 114.0
   },
   {
     "name": "2008 Audi RS4",
+    "excelHp": 420,
+    "excelWt": 3950,
     "z60": 4.5,
     "et": 13.0,
     "trap": 109.0
   },
   {
+    "name": "2011 - 2014 Ford F-150 Enrique's 3.5EB",
+    "excelHp": 462,
+    "excelWt": 5688
+  },
+  {
     "name": "2024 Porsche 911 GT3 RS",
+    "excelHp": 518,
+    "excelWt": 3197,
     "z60": 3.0,
     "et": 11.1,
     "trap": 128.0
   },
   {
     "name": "2023 Porsche 718 Cayman GT4 RS",
+    "excelHp": 493,
+    "excelWt": 3227,
     "z60": 3.1,
     "et": 11.3,
     "trap": 125.0
   },
   {
     "name": "2023 Toyota GR Supra 3.0",
+    "excelHp": 382,
+    "excelWt": 3400,
     "z60": 3.9,
     "et": 12.3,
     "trap": 115.0
   },
   {
     "name": "2023 Nissan Z Performance",
+    "excelHp": 400,
+    "excelWt": 3536,
     "z60": 4.3,
     "et": 12.3,
     "trap": 116.0
   },
   {
     "name": "2024 BMW M2",
+    "excelHp": 453,
+    "excelWt": 3814,
     "z60": 3.4,
     "et": 11.8,
     "trap": 120.0
   },
   {
     "name": "2024 Chevrolet Corvette Stingray",
+    "excelHp": 490,
+    "excelWt": 3366,
     "z60": 3.3,
     "et": 11.2,
     "trap": 123.0
   },
   {
     "name": "2023 Mazda MX-5 Miata Club",
+    "excelHp": 181,
+    "excelWt": 2341,
     "z60": 5.7,
     "et": 14.3,
     "trap": 96.0
   },
   {
     "name": "2024 Lexus LC 500 Coupe",
+    "excelHp": 471,
+    "excelWt": 4340,
     "z60": 4.4,
     "et": 12.8,
     "trap": 114.0
   },
   {
     "name": "2023 Ford Bronco Raptor",
+    "excelHp": 418,
+    "excelWt": 5733,
     "z60": 5.6,
     "et": 14.2,
     "trap": 99.0
   },
   {
     "name": "2024 Toyota GR86",
+    "excelHp": 228,
+    "excelWt": 2811,
     "z60": 5.3,
     "et": 14.0,
     "trap": 101.0
   },
   {
     "name": "2024 Subaru BRZ",
+    "excelHp": 228,
+    "excelWt": 2820,
     "z60": 5.3,
     "et": 14.0,
     "trap": 101.0
   },
   {
     "name": "2023 Chevrolet Corvette Z06",
+    "excelHp": 670,
+    "excelWt": 3666,
     "z60": 3.0,
     "et": 10.9,
     "trap": 131.0
   },
   {
     "name": "2026 Chevrolet Corvette ZR1X",
-    "z60": 2.0
+    "excelHp": 1250,
+    "excelWt": 3978,
+    "z60": 1.9
   },
   {
     "name": "2024 Acura Integra Type S",
+    "excelHp": 320,
+    "excelWt": 3219,
     "z60": 5.0,
     "et": 13.5,
     "trap": 106.0
   },
   {
     "name": "2023 Acura TLX Type S",
+    "excelHp": 355,
+    "excelWt": 4221,
     "z60": 4.7,
     "et": 13.2,
     "trap": 107.0
   },
   {
     "name": "2024 Lexus IS 500",
+    "excelHp": 472,
+    "excelWt": 3891,
     "z60": 4.4,
     "et": 12.8,
     "trap": 114.0
   },
   {
     "name": "2024 Audi RS 3",
+    "excelHp": 401,
+    "excelWt": 3649,
     "z60": 3.3,
     "et": 11.7,
     "trap": 119.0
   },
   {
     "name": "2024 Lexus RC F",
+    "excelHp": 472,
+    "excelWt": 3902,
     "z60": 4.3,
     "et": 12.6,
     "trap": 115.0
   },
   {
     "name": "2023 Honda Civic Type R",
+    "excelHp": 315,
+    "excelWt": 3188,
     "z60": 4.8,
     "et": 13.3,
     "trap": 108.0

@@ -855,36 +855,34 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
    *   Prepped 60ft targets: Street 1.7–1.75 / Summer 1.6 / UHP 1.45–1.5 /
    *     R-comp 1.5 / Slick 1.45–1.50 / DR ≈ slick+0.05
    */
-  /** Explicit 60ft targets used to bake TIRE_MU_BY_PREP (Jorge Mustang GT deltas). */
+      /** Explicit 60ft targets used to bake TIRE_MU_BY_PREP (Jorge Mustang GT chart). */
   var TARGET_60FT_BY_PREP = {
-    unprepped: { 0: 2.830, 3: 2.103, 4: 1.924, 5: 2.545, 1: 2.439, 2: 1.908 },
-    prepped:   { 0: 2.040, 3: 1.989, 4: 1.938, 5: 1.879, 1: 1.729, 2: 1.688 }
+    unprepped: { 0: 2.200, 3: 2.103, 4: 1.960, 5: 1.900, 1: 1.820, 2: 1.908 },
+    prepped:   { 0: 2.040, 3: 1.989, 4: 1.900, 5: 1.850, 1: 1.730, 2: 1.708 }
   };
 
   var TIRE_MU_BY_PREP = {
     /**
-     * Jorge Guerra µ ↔ 60ft Mustang GT deltas (tip review/mu-60ft-mustang-deltas).
-     * Base LIVE 3a55f8d 60fts + Jorge Δ; ref car 2020-ford-mustang-gt.
-     * Unprep Δ: Street +0.70 · Summer +0.20 · UHP +0.12 · R-comp +0.80 · DR +0.70 · Slick +0.13
-     * Prep Δ:   Street +0.30 · Summer +0.25 · UHP +0.20 · R-comp +0.14 · DR −0.01 · Slick −0.05
-     * Prep DR/Slick “faster” hit Mustang power floor ~1.738s — kept LIVE µ.
-     * Tunable: edit numbers below or re-run scripts/recalib-mu-60ft.js --apply.
+     * Jorge Guerra AUTHORITATIVE Mustang GT 60ft chart (tip review/ev-excel-full-match).
+     * Unprep: Street 2.200 · Summer 2.103 · UHP 1.960 · R-Comp 1.900 · DR 1.820 · Slick 1.908
+     * Prep:   Street 2.040 · Summer 1.989 · UHP 1.900 · R-Comp 1.850 · DR 1.730 · Slick 1.708
+     * Prep Slick 0.022s faster than DR (chart). forceScale=1, driver 200.
      */
     unprepped: {
-      0: 0.822,  // Street → ~2.828s Mustang
+      0: 1.155,  // Street → ~2.2s
       3: 1.196,  // Summer → ~2.103s
-      4: 1.317,  // UHP → ~1.923s
-      2: 1.293,  // Slick cold/unprep → ~1.908s
-      5: 0.894,  // R-Compound → ~2.545s
-      1: 0.929   // Drag Radial → ~2.439s
+      4: 1.289,  // UHP → ~1.96s
+      2: 1.293,  // Slick → ~1.908s
+      5: 1.324,  // R-Compound → ~1.9s
+      1: 1.390   // Drag Radial → ~1.82s
     },
     prepped: {
-      0: 1.255,  // Street → ~2.040s
+      0: 1.255,  // Street → ~2.04s
       3: 1.273,  // Summer → ~1.989s
-      1: 1.900,  // DR → power-floor; kept LIVE µ (target faster)
-      5: 1.338,  // R-Compound → ~1.879s
-      4: 1.303,  // UHP → ~1.938s
-      2: 2.200   // Slick → power-floor; kept LIVE µ (target faster)
+      1: 2.025,  // DR → ~1.738s
+      5: 1.362,  // R-Compound → ~1.85s
+      4: 1.333,  // UHP → ~1.9s
+      2: 2.025   // Slick → ~1.738s
     }
   };
 
@@ -1154,6 +1152,30 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       launchDriveMult = evAwd ? 1.10 : 1.05;
       launchMuMult = evAwd ? 1.06 : 1.03;
       slipTarget = evAwd ? 0.12 : 0.10;
+      // Per-car OEM/TC launch bake (Jorge Guerra EV Excel full-match). Optional overrides
+      // on top of AWD/FWD stock TC — not Soft/Agg. forceScale stays 1.
+      if (car.evLaunchDriveMult != null && isFinite(Number(car.evLaunchDriveMult))) {
+        launchDriveMult = clamp(Number(car.evLaunchDriveMult), 0.70, 1.55);
+      }
+      if (car.evLaunchMuMult != null && isFinite(Number(car.evLaunchMuMult))) {
+        launchMuMult = clamp(Number(car.evLaunchMuMult), 0.85, 1.25);
+      }
+      if (car.evLaunchSlipTarget != null && isFinite(Number(car.evLaunchSlipTarget))) {
+        slipTarget = clamp(Number(car.evLaunchSlipTarget), 0.04, 0.22);
+      }
+    }
+    // Prepped strip race-tire hook (Jorge Guerra Mustang GT chart): µ alone cannot
+    // beat Mustang ~1.738s power floor for Prep DR 1.730 / Slick 1.708. Mild auto-mode
+    // drive lift for DR/Slick on Prepped only — models VHT/rubber hook beyond peak µ.
+    // Tunable constants; forceScale stays 1. Soft/Agg unchanged.
+    if ((launchMode === 'auto' || launchMode == null || launchMode === '') &&
+        normalizeTrackPrep(env.trackPrep) === 'prepped') {
+      var prepTire = env.tireType != null ? (env.tireType | 0) : (car.tireType | 0);
+      if (prepTire === 2) { // Slick
+        launchDriveMult *= 1.039;
+      } else if (prepTire === 1) { // Drag Radial
+        launchDriveMult *= 1.011;
+      }
     }
 
     // Effective leave target (absurd ICE launchRpm → peak-TQ band)

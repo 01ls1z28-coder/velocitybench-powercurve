@@ -1,0 +1,843 @@
+{
+  "hitRates": {
+    "trap": "38/38",
+    "et": "37/39",
+    "z60130": "1/4",
+    "z60": "16/39"
+  },
+  "stillMiss": [
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "sim": {
+        "z60": 2.001,
+        "et": 9.218,
+        "trap": 150.51,
+        "z60130": 4.448,
+        "ft60": 1.586
+      },
+      "excel": {
+        "trap": 151,
+        "et": 9.25,
+        "z60": 2.1,
+        "z60130": 4.8
+      }
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "sim": {
+        "z60": 2.379,
+        "et": 10.524,
+        "trap": 130.43,
+        "z60130": 8.063,
+        "ft60": 1.625
+      },
+      "excel": {
+        "trap": 130,
+        "et": 10.5,
+        "z60": 2.4,
+        "z60130": 6.5
+      }
+    },
+    {
+      "name": "2024 Lucid Air Sapphire",
+      "sim": {
+        "z60": 1.866,
+        "et": 9.05,
+        "trap": 156.6,
+        "z60130": 4.299,
+        "ft60": 1.519
+      },
+      "excel": {
+        "trap": 157,
+        "et": 9,
+        "z60": 2.1,
+        "z60130": 4.6
+      }
+    },
+    {
+      "name": "2022 Ford F-150 Lightning",
+      "sim": {
+        "z60": 4.064,
+        "et": 12.459,
+        "trap": 108.3,
+        "z60130": null,
+        "ft60": 2.052
+      },
+      "excel": {
+        "trap": 108,
+        "et": 12.5,
+        "z60": 4
+      }
+    },
+    {
+      "name": "2023 Polestar 2 Performance",
+      "sim": {
+        "z60": 4.156,
+        "et": 12.55,
+        "trap": 111.3,
+        "z60130": null,
+        "ft60": 2.066
+      },
+      "excel": {
+        "trap": 111,
+        "et": 12.6,
+        "z60": 4.1
+      }
+    },
+    {
+      "name": "2024 Cadillac Lyriq AWD",
+      "sim": {
+        "z60": 4.837,
+        "et": 13.25,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.206
+      },
+      "excel": {
+        "trap": 104,
+        "et": 13.3,
+        "z60": 4.6
+      }
+    },
+    {
+      "name": "2023 Genesis GV60 Performance",
+      "sim": {
+        "z60": 3.89,
+        "et": 12.254,
+        "trap": 113.4,
+        "z60130": null,
+        "ft60": 2.001
+      },
+      "excel": {
+        "trap": 113,
+        "et": 12.3,
+        "z60": 3.8
+      }
+    },
+    {
+      "name": "2024 Volvo EX90 Twin Motor",
+      "sim": {
+        "z60": 5.051,
+        "et": 13.458,
+        "trap": 103.4,
+        "z60130": null,
+        "ft60": 2.247
+      },
+      "excel": {
+        "trap": 103,
+        "et": 13.5,
+        "z60": 4.9
+      }
+    },
+    {
+      "name": "2023 Audi Q4 e-tron",
+      "sim": {
+        "z60": 6.122,
+        "et": 14.456,
+        "trap": 97.4,
+        "z60130": null,
+        "ft60": 2.464
+      },
+      "excel": {
+        "trap": 97,
+        "et": 14.5,
+        "z60": 5.8
+      }
+    },
+    {
+      "name": "2022 Mercedes EQB 350",
+      "sim": {
+        "z60": 6.221,
+        "et": 14.558,
+        "trap": 96.4,
+        "z60130": null,
+        "ft60": 2.457
+      },
+      "excel": {
+        "trap": 96,
+        "et": 14.6,
+        "z60": 6
+      }
+    },
+    {
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "sim": {
+        "z60": 5.341,
+        "et": 13.751,
+        "trap": 101.4,
+        "z60130": null,
+        "ft60": 2.282
+      },
+      "excel": {
+        "trap": 101,
+        "et": 13.8,
+        "z60": 5.1
+      }
+    },
+    {
+      "name": "2024 Subaru Solterra",
+      "sim": {
+        "z60": 6.77,
+        "et": 15.05,
+        "trap": 92.4,
+        "z60130": null,
+        "ft60": 2.526
+      },
+      "excel": {
+        "trap": 92,
+        "et": 15.1,
+        "z60": 6.5
+      }
+    },
+    {
+      "name": "2023 Toyota bZ4X AWD",
+      "sim": {
+        "z60": 6.772,
+        "et": 15.075,
+        "trap": 92.4,
+        "z60130": null,
+        "ft60": 2.523
+      },
+      "excel": {
+        "trap": 92,
+        "et": 15.1,
+        "z60": 6.5
+      }
+    },
+    {
+      "name": "2024 Fisker Ocean Extreme",
+      "sim": {
+        "z60": 4.049,
+        "et": 12.455,
+        "trap": 110.4,
+        "z60130": null,
+        "ft60": 2.038
+      },
+      "excel": {
+        "trap": 110,
+        "et": 12.5,
+        "z60": 3.9
+      }
+    },
+    {
+      "name": "2024 Hyundai Ioniq 6 AWD",
+      "sim": {
+        "z60": 4.951,
+        "et": 13.37,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.206
+      },
+      "excel": {
+        "trap": 104,
+        "et": 13.4,
+        "z60": 4.8
+      }
+    },
+    {
+      "name": "2023 VW ID.4 AWD Pro",
+      "sim": {
+        "z60": 5.991,
+        "et": 14.352,
+        "trap": 97.4,
+        "z60130": null,
+        "ft60": 2.398
+      },
+      "excel": {
+        "trap": 97,
+        "et": 14.4,
+        "z60": 5.7
+      }
+    },
+    {
+      "name": "2023 Ford Mustang Mach-E GT",
+      "sim": {
+        "z60": 3.798,
+        "et": 12.156,
+        "trap": 114.4,
+        "z60130": null,
+        "ft60": 1.977
+      },
+      "excel": {
+        "trap": 114,
+        "et": 12.2,
+        "z60": 3.6
+      }
+    },
+    {
+      "name": "2024 BMW i5 M60",
+      "sim": {
+        "z60": 3.74,
+        "et": 12.051,
+        "trap": 115.4,
+        "z60130": null,
+        "ft60": 1.968
+      },
+      "excel": {
+        "trap": 115,
+        "et": 12.1,
+        "z60": 3.6
+      }
+    },
+    {
+      "name": "2023 BMW i7 xDrive60",
+      "sim": {
+        "z60": 4.381,
+        "et": 12.755,
+        "trap": 111.3,
+        "z60130": null,
+        "ft60": 2.114
+      },
+      "excel": {
+        "trap": 111,
+        "et": 12.8,
+        "z60": 4.3
+      }
+    },
+    {
+      "name": "2024 Mercedes EQS 450+",
+      "sim": {
+        "z60": 5.602,
+        "et": 13.951,
+        "trap": 101.4,
+        "z60130": null,
+        "ft60": 2.335
+      },
+      "excel": {
+        "trap": 101,
+        "et": 14,
+        "z60": 5.4
+      }
+    },
+    {
+      "name": "2023 Hyundai Kona Electric",
+      "sim": {
+        "z60": 6.964,
+        "et": 15.267,
+        "trap": 90.4,
+        "z60130": null,
+        "ft60": 2.591
+      },
+      "excel": {
+        "trap": 90,
+        "et": 15.3,
+        "z60": 6.8
+      }
+    },
+    {
+      "name": "2024 Kia Niro EV",
+      "sim": {
+        "z60": 7.112,
+        "et": 15.381,
+        "trap": 90.4,
+        "z60130": null,
+        "ft60": 2.613
+      },
+      "excel": {
+        "trap": 90,
+        "et": 15.4,
+        "z60": 6.9
+      }
+    },
+    {
+      "name": "2023 Mercedes EQS 580 SUV",
+      "sim": {
+        "z60": 4.693,
+        "et": 13.051,
+        "trap": 108.4,
+        "z60130": null,
+        "ft60": 2.175
+      },
+      "excel": {
+        "trap": 108,
+        "et": 13.1,
+        "z60": 4.5
+      }
+    },
+    {
+      "name": "2024 Volvo XC40 Recharge",
+      "sim": {
+        "z60": 4.716,
+        "et": 13.159,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.196
+      },
+      "excel": {
+        "trap": 104,
+        "et": 13.2,
+        "z60": 4.5
+      }
+    }
+  ],
+  "closerRows": [
+    {
+      "name": "2022 Tesla Model S Plaid",
+      "ok": false,
+      "sim": {
+        "z60": 2.001,
+        "et": 9.218,
+        "trap": 150.51,
+        "z60130": 4.448,
+        "ft60": 1.586
+      },
+      "after": {
+        "hp": 1134,
+        "drive": 1.264,
+        "mu": 1.167,
+        "drag": 0.24543999999999996,
+        "lim": 151.4
+      }
+    },
+    {
+      "name": "2022 Porsche Taycan Turbo S",
+      "ok": false,
+      "sim": {
+        "z60": 2.379,
+        "et": 10.524,
+        "trap": 130.43,
+        "z60130": 8.063,
+        "ft60": 1.625
+      },
+      "after": {
+        "hp": 689,
+        "drive": 1.058,
+        "mu": 1.034,
+        "drag": 0.26,
+        "lim": 162
+      }
+    },
+    {
+      "name": "2024 Lucid Air Sapphire",
+      "ok": false,
+      "sim": {
+        "z60": 1.866,
+        "et": 9.05,
+        "trap": 156.6,
+        "z60130": 4.299,
+        "ft60": 1.519
+      },
+      "after": {
+        "hp": 1286,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2435,
+        "lim": 157.4
+      }
+    },
+    {
+      "name": "2022 Ford F-150 Lightning",
+      "ok": false,
+      "sim": {
+        "z60": 4.064,
+        "et": 12.459,
+        "trap": 108.3,
+        "z60130": null,
+        "ft60": 2.052
+      },
+      "after": {
+        "hp": 634,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.4609,
+        "lim": 108.3
+      }
+    },
+    {
+      "name": "2023 Polestar 2 Performance",
+      "ok": false,
+      "sim": {
+        "z60": 4.156,
+        "et": 12.55,
+        "trap": 111.3,
+        "z60130": null,
+        "ft60": 2.066
+      },
+      "after": {
+        "hp": 418,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2716,
+        "lim": 111.3
+      }
+    },
+    {
+      "name": "2024 Cadillac Lyriq AWD",
+      "ok": false,
+      "sim": {
+        "z60": 4.837,
+        "et": 13.25,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.206
+      },
+      "after": {
+        "hp": 453,
+        "drive": 1.5,
+        "mu": 1.28,
+        "drag": 0.33,
+        "lim": 104.4
+      }
+    },
+    {
+      "name": "2023 Genesis GV60 Performance",
+      "ok": false,
+      "sim": {
+        "z60": 3.89,
+        "et": 12.254,
+        "trap": 113.4,
+        "z60130": null,
+        "ft60": 2.001
+      },
+      "after": {
+        "hp": 455,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2813,
+        "lim": 113.4
+      }
+    },
+    {
+      "name": "2024 Volvo EX90 Twin Motor",
+      "ok": false,
+      "sim": {
+        "z60": 5.051,
+        "et": 13.458,
+        "trap": 103.4,
+        "z60130": null,
+        "ft60": 2.247
+      },
+      "after": {
+        "hp": 474,
+        "drive": 1.5,
+        "mu": 1.28,
+        "drag": 0.33,
+        "lim": 103.4
+      }
+    },
+    {
+      "name": "2023 Audi Q4 e-tron",
+      "ok": false,
+      "sim": {
+        "z60": 6.122,
+        "et": 14.456,
+        "trap": 97.4,
+        "z60130": null,
+        "ft60": 2.464
+      },
+      "after": {
+        "hp": 324,
+        "drive": 1.45,
+        "mu": 1.25,
+        "drag": 0.3152,
+        "lim": 97.4
+      }
+    },
+    {
+      "name": "2022 Mercedes EQB 350",
+      "ok": false,
+      "sim": {
+        "z60": 6.221,
+        "et": 14.558,
+        "trap": 96.4,
+        "z60130": null,
+        "ft60": 2.457
+      },
+      "after": {
+        "hp": 315,
+        "drive": 1.5,
+        "mu": 1.28,
+        "drag": 0.3152,
+        "lim": 96.4
+      }
+    },
+    {
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "ok": false,
+      "sim": {
+        "z60": 5.341,
+        "et": 13.751,
+        "trap": 101.4,
+        "z60130": null,
+        "ft60": 2.282
+      },
+      "after": {
+        "hp": 353,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.3058,
+        "lim": 101.4
+      }
+    },
+    {
+      "name": "2024 Subaru Solterra",
+      "ok": false,
+      "sim": {
+        "z60": 6.77,
+        "et": 15.05,
+        "trap": 92.4,
+        "z60130": null,
+        "ft60": 2.526
+      },
+      "after": {
+        "hp": 280,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2965,
+        "lim": 92.4
+      }
+    },
+    {
+      "name": "2023 Toyota bZ4X AWD",
+      "ok": false,
+      "sim": {
+        "z60": 6.772,
+        "et": 15.075,
+        "trap": 92.4,
+        "z60130": null,
+        "ft60": 2.523
+      },
+      "after": {
+        "hp": 264,
+        "drive": 1.53,
+        "mu": 1.28,
+        "drag": 0.3104,
+        "lim": 92.4
+      }
+    },
+    {
+      "name": "2024 Fisker Ocean Extreme",
+      "ok": false,
+      "sim": {
+        "z60": 4.049,
+        "et": 12.455,
+        "trap": 110.4,
+        "z60130": null,
+        "ft60": 2.038
+      },
+      "after": {
+        "hp": 496,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.3252,
+        "lim": 110.4
+      }
+    },
+    {
+      "name": "2024 Hyundai Ioniq 6 AWD",
+      "ok": false,
+      "sim": {
+        "z60": 4.951,
+        "et": 13.37,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.206
+      },
+      "after": {
+        "hp": 333,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2008,
+        "lim": 104.4
+      }
+    },
+    {
+      "name": "2023 VW ID.4 AWD Pro",
+      "ok": false,
+      "sim": {
+        "z60": 5.991,
+        "et": 14.352,
+        "trap": 97.4,
+        "z60130": null,
+        "ft60": 2.398
+      },
+      "after": {
+        "hp": 320,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2965,
+        "lim": 97.4
+      }
+    },
+    {
+      "name": "2023 Ford Mustang Mach-E GT",
+      "ok": false,
+      "sim": {
+        "z60": 3.798,
+        "et": 12.156,
+        "trap": 114.4,
+        "z60130": null,
+        "ft60": 1.977
+      },
+      "after": {
+        "hp": 480,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2947,
+        "lim": 114.4
+      }
+    },
+    {
+      "name": "2024 BMW i5 M60",
+      "ok": false,
+      "sim": {
+        "z60": 3.74,
+        "et": 12.051,
+        "trap": 115.4,
+        "z60130": null,
+        "ft60": 1.968
+      },
+      "after": {
+        "hp": 513,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2303,
+        "lim": 115.4
+      }
+    },
+    {
+      "name": "2024 Rivian R1S Quad Motor",
+      "ok": true,
+      "sim": {
+        "z60": 3.047,
+        "et": 11.056,
+        "trap": 121.3,
+        "z60130": null,
+        "ft60": 1.841
+      },
+      "after": {
+        "hp": 967,
+        "drive": 1.49,
+        "mu": 1.275,
+        "drag": 0.3,
+        "lim": 121.3
+      }
+    },
+    {
+      "name": "2023 BMW i7 xDrive60",
+      "ok": false,
+      "sim": {
+        "z60": 4.381,
+        "et": 12.755,
+        "trap": 111.3,
+        "z60130": null,
+        "ft60": 2.114
+      },
+      "after": {
+        "hp": 506,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2258,
+        "lim": 111.3
+      }
+    },
+    {
+      "name": "2024 Mercedes EQS 450+",
+      "ok": false,
+      "sim": {
+        "z60": 5.602,
+        "et": 13.951,
+        "trap": 101.4,
+        "z60130": null,
+        "ft60": 2.335
+      },
+      "after": {
+        "hp": 391,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2258,
+        "lim": 101.4
+      }
+    },
+    {
+      "name": "2023 Hyundai Kona Electric",
+      "ok": false,
+      "sim": {
+        "z60": 6.964,
+        "et": 15.267,
+        "trap": 90.4,
+        "z60130": null,
+        "ft60": 2.591
+      },
+      "after": {
+        "hp": 225,
+        "drive": 1.45,
+        "mu": 1.25,
+        "drag": 0.33,
+        "lim": 90.4
+      }
+    },
+    {
+      "name": "2024 Kia Niro EV",
+      "ok": false,
+      "sim": {
+        "z60": 7.112,
+        "et": 15.381,
+        "trap": 90.4,
+        "z60130": null,
+        "ft60": 2.613
+      },
+      "after": {
+        "hp": 224,
+        "drive": 1.45,
+        "mu": 1.25,
+        "drag": 0.34,
+        "lim": 90.4
+      }
+    },
+    {
+      "name": "2023 Mercedes EQS 580 SUV",
+      "ok": false,
+      "sim": {
+        "z60": 4.693,
+        "et": 13.051,
+        "trap": 108.4,
+        "z60130": null,
+        "ft60": 2.175
+      },
+      "after": {
+        "hp": 525,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.2917,
+        "lim": 108.4
+      }
+    },
+    {
+      "name": "2024 Volvo XC40 Recharge",
+      "ok": false,
+      "sim": {
+        "z60": 4.716,
+        "et": 13.159,
+        "trap": 104.4,
+        "z60130": null,
+        "ft60": 2.196
+      },
+      "after": {
+        "hp": 388,
+        "drive": 1.55,
+        "mu": 1.28,
+        "drag": 0.3105,
+        "lim": 104.4
+      }
+    },
+    {
+      "name": "2021 Rimac Nevera",
+      "ok": true,
+      "sim": {
+        "z60": 1.738,
+        "et": 8.286,
+        "trap": 173.23,
+        "z60130": 2.949,
+        "ft60": 1.455
+      },
+      "after": {
+        "hp": 1851,
+        "drive": 1.3800000000000001,
+        "mu": 1.2,
+        "drag": 0.7608,
+        "lim": 258
+      }
+    }
+  ]
+}

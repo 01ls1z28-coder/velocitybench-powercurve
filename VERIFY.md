@@ -1,5 +1,5 @@
 # PowerCurve tip VERIFY index
 
-Latest tip: **µ ↔ 60ft Mustang GT Jorge deltas** — see `VERIFY-pc-mu-60ft-calibrate.md`.
+Latest tip: **EV Excel full-match + Jorge Mustang GT 60ft µ chart** — see `VERIFY-pc-ev-excel-full-match.md`.
 
-Credit: Jorge Guerra only. Tip-only — no Pages / main deploy.
+Credit: Jorge Guerra only. Tip-only — no Pages / main deploy until Seraph CLEAR.
