@@ -101,7 +101,7 @@
   var GRIP_20_40 = 1.15;
   var GRIP_40_60 = 1.05;
   var FORCE_LT30 = 2.05;
-  var FORCE_GT60 = 1.10;
+  var FORCE_GT60 = 1.0;   // was 1.10 invented top-end boost; identity at speed
 
   var DEFAULT_LAUNCH_RPM = 3000;
   var DEFAULT_SHIFT_RPM = 6500;
@@ -119,8 +119,8 @@
   var VMAX_A_THRESH = 0.05;       // m/s^2 — equilibrium detect
   var VMAX_HOLD_S = 0.50;         // sustained low-a before declaring Vmax
 
-  /** Global drive-force scale. Tuned via VERIFY spot-checks. */
-  var CalibrationFactor = 0.95;
+  /** Global drive-force scale. Must stay 1.0 (forceScale honesty — no silent kneecap). */
+  var CalibrationFactor = 1.0;
 
   /**
    * Shift-coast residual HOLE floor by transmission family.
@@ -984,8 +984,14 @@
     var shiftTime = car.shiftTimeSeconds != null ? Number(car.shiftTimeSeconds) : DEFAULT_SHIFT_TIME;
     var shiftRpm = car.shiftRpm != null ? Number(car.shiftRpm) : DEFAULT_SHIFT_RPM;
     var launchRpm = car.launchRpm != null ? Number(car.launchRpm) : DEFAULT_LAUNCH_RPM;
-    var wheelbaseM = (Number(car.wheelbaseFeet) || DEFAULT_WB_FT) * FEET_TO_M;
-    var cgHeightM = (Number(car.cgHeightFeet) || DEFAULT_CG_FT) * FEET_TO_M;
+    // Motorcycles: car defaults (WB 8.5 ft / CG 1.5 ft) understate weight transfer and
+    // starve RWD traction — use sportbike + rider geometry when unset.
+    var isBikeChassis = !!(car.category === 'Motorcycle' ||
+      /ninja|hayabusa|yamaha yzf|suzuki gsx|honda cbr|ducati|bmw s1000|motorcycle|bike\b|panigale/i.test(String(car.name || '')));
+    var wbFtDefault = isBikeChassis ? 4.70 : DEFAULT_WB_FT;
+    var cgFtDefault = isBikeChassis ? 1.85 : DEFAULT_CG_FT;
+    var wheelbaseM = (Number(car.wheelbaseFeet) || wbFtDefault) * FEET_TO_M;
+    var cgHeightM = (Number(car.cgHeightFeet) || cgFtDefault) * FEET_TO_M;
     var wDist = resolveWeightDistribution(car);
     var frontPct = wDist.frontWeightPercent;
     var rearPct = wDist.rearWeightPercent;
@@ -997,11 +1003,11 @@
     var curve = car.torqueCurve;
     if (!curve || (typeof curve === 'object' && !Array.isArray(curve) && !Object.keys(curve).length)) {
       curve = synthesizeTorqueCurve(car.peakHp || car.horsepower, car.peakTqRpm, car.redline, car.peakHpRpm);
-    } else if (!car.isEv) {
-      // Shared sim path (ICE only): sanitize + cap so post-peak HP keeps falling; peakHp honesty.
-      // EVs keep their motor maps — dyno-fall sanitize is an ICE characteristic.
+    } else {
+      // peakHp honesty for ICE + EV. Post-peak dyno-fall sanitize is ICE-only;
+      // both are capped to published peakHp when set (no inflated motor-map cheat).
       curve = Object.assign({}, curve);
-      sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
+      if (!car.isEv) sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
       if (car.peakHp > 0) capTorqueCurveToPeakHp(curve, car.peakHp);
     }
 
@@ -1514,6 +1520,10 @@
         lastDriveWhTQ = engagedWhTQ;
       }
 
+      // NOTE (audit): whTQ is lb·ft while tireRadius is m and drag/traction are SI Newtons.
+      // Inherited CarTestClone unit mix; FORCE bands historically compensated. Full lb·ft→N·m
+      // migration is a follow-on tip (breaks ATC/ICE anchors without retune). This tip removes
+      // Cal=0.95 + FORCE_GT60 invent instead of silently patching units.
       var driveF = tireRadius > 0 ? whTQ / tireRadius : 0;
       // Smooth FORCE bands — kill 30/60 square stairs; continuous taper with speed (A/E).
       driveF *= driveForceMultSmooth(mph);
