@@ -1,19 +1,30 @@
 {
   "credit": "Jorge Guerra only",
-  "updated": "2026-10-02T11:40:00.000Z",
+  "updated": "2026-10-02T11:41:51.496Z",
   "gold": "VelocityBench_Garage_Corrected.xlsx Garage sheet",
-  "priority": ["trap", "et", "z60130", "z60"],
+  "priority": [
+    "trap",
+    "et",
+    "z60130",
+    "z60"
+  ],
   "tipBase": "4c17760",
   "noPages": true,
   "chunks": {
     "1_m3p_ui_path": {
-      "status": "in_progress",
-      "note": "app.js+physics.js EV sanitize skip + evLaunch preserve present in WT; M3P UI-path fixed vs broken slip; z60130 still ~9.288 vs 9.2 (tol 0.05) — fullOk pending chunk2 tune"
+      "status": "committed_ui_path",
+      "note": "UI-path fix committed; M3P trap/et/z60 hit offline, z60130 still miss — continue chunk2 one-by-one. No Pages.",
+      "tip": "7899762"
     },
     "2_ev_one_by_one": {
       "status": "pending",
       "lastKnownFullOk": "18/39",
-      "lastKnownHitRates": {"trap": "38/38", "et": "37/39", "z60130": "1/5", "z60": "21/39"}
+      "lastKnownHitRates": {
+        "trap": "38/38",
+        "et": "37/39",
+        "z60130": "1/5",
+        "z60": "21/39"
+      }
     },
     "3_tire_research": {
       "status": "notes_complete_verify_pending",
@@ -22,8 +33,15 @@
     "4_ice_batches": {
       "status": "pending",
       "lastKnownFullOk": "29/276",
-      "lastKnownHitRates": {"trap": "274/276", "et": "106/276", "z60130": "6/62", "z60": "55/276"}
+      "lastKnownHitRates": {
+        "trap": "274/276",
+        "et": "106/276",
+        "z60130": "6/62",
+        "z60": "55/276"
+      }
     }
   },
-  "interruptDiagnosis": "scripts/recal-interrupt-diagnosis.md"
+  "interruptDiagnosis": "scripts/recal-interrupt-diagnosis.md",
+  "tipSha": "789976237f94135f0ac98891bb6d8ebbb693fa64",
+  "tipShort": "7899762"
 }
