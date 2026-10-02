@@ -448,6 +448,8 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     Honda_Accord_SiR_5: { name: 'Honda Accord SiR 5MT', gears: [3.285, 1.956, 1.344, 1.034, 0.812], finalDrive: 4.266, loss: 13 },
     Mazda_ND_Miata_6: { name: 'Mazda MX-5 ND 6MT', gears: [5.087, 2.991, 2.035, 1.594, 1.286, 1.0], finalDrive: 2.866, loss: 12 },
     Acura_10AT: { name: 'Acura/Honda 10-spd Auto (TLX Type S)', gears: [5.25, 3.27, 2.19, 1.6, 1.3, 1.0, 0.78, 0.65, 0.58, 0.52], finalDrive: 3.59, loss: 15 },
+    Maserati_MC12_Cambiocorsa_6: { name: 'Maserati MC12 Cambiocorsa 6 AMT', gears: [3.15, 2.18, 1.57, 1.19, 0.94, 0.71], finalDrive: 4.10, loss: 12 },
+    Toyota_U151E: { name: 'Toyota U151E/U151F 5-spd Auto (Highlander)', gears: [4.235, 2.360, 1.517, 1.047, 0.756], finalDrive: 3.478, loss: 16 },
     ZF_6HP: { name: 'ZF 6HP Auto', gears: [4.17, 2.34, 1.52, 1.14, 0.87, 0.69], finalDrive: 3.46, loss: 15 }
   };
 

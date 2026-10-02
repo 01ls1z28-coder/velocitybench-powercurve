@@ -1,6 +1,6 @@
 /**
  * VelocityBench PowerCurve — baked garage.
- * Factory-reset 1–13 + TX OEM gear/FD follow-on + published CG height.
+ * Factory-reset 1–13 + TX OEM follow-on + CG deepen (MC12/Highlander + published CG).
  * Slick=Z28 only; R-Comp=ZR1X only; no factory DR; forceScale=1.
  * Credit: Jorge Guerra. Tip: review/factory-reset-1-13.
  */
@@ -46,7 +46,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Edmunds/AutoGuide Mustang GT ~4.3–4.6 0-60; class auto ~12.5@114 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.7; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21.5 / loss 0 / tire 4 / launch 3000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Pirelli P Zero / Goodyear Eagle F1 summer (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang GT OEM ~53/47; credit Jorge Guerra)",
+    "source": "Perf: Edmunds/AutoGuide Mustang GT ~4.3\u20134.6 0-60; class auto ~12.5@114 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.7; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21.5 / loss 0 / tire 4 / launch 3000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Pirelli P Zero / Goodyear Eagle F1 summer (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang GT OEM ~53/47; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 317.4576258202136,
       "1100": 322.89760619827314,
@@ -162,7 +162,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Mustang GT PP2 auto ~4.2 / ~12.4@114 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 3 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang GT OEM ~53/47; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Mustang GT PP2 auto ~4.2 / ~12.4@114 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 3 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang GT OEM ~53/47; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 290.4039,
       "1100": 295.8603,
@@ -278,7 +278,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Chevy catalog SS auto 4.0 / 12.3@116 (loss 14.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 10; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21 / loss 0 / tire 4 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Goodyear Eagle F1 Asymmetric 3 / summer UHP (documented; credit Jorge Guerra) | WD OEM 52/48 (GM Camaro SS published ~52/48; credit Jorge Guerra)",
+    "source": "Perf: Chevy catalog SS auto 4.0 / 12.3@116 (loss 14.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 10; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21 / loss 0 / tire 4 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Goodyear Eagle F1 Asymmetric 3 / summer UHP (documented; credit Jorge Guerra) | WD OEM 52/48 (GM Camaro SS published ~52/48; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 271.39767807577,
       "1100": 276.496967946385,
@@ -392,7 +392,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Scat Pack auto 4.2 / 12.6@114 (loss 12.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.3; driver 200 | ET-first closer: loss 5.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0 / tire 4 / launch 3000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Eagle F1 / P Zero Nero All Season mix (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D Scat Pack auto 4.2 / 12.6@114 (loss 12.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.3; driver 200 | ET-first closer: loss 5.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0 / tire 4 / launch 3000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Eagle F1 / P Zero Nero All Season mix (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 295.0416217717284,
       "1100": 300.2099942674856,
@@ -506,7 +506,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Hellcat auto 3.6 / 11.7@126 (loss 18, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.7; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3 / tire 4 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 25.5 / loss 3 / tire 4 / launch 3600 / fall×1.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Pirelli P Zero Nero All Season (typical OE) (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D Hellcat auto 3.6 / 11.7@126 (loss 18, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.7; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3 / tire 4 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 25.5 / loss 3 / tire 4 / launch 3600 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Pirelli P Zero Nero All Season (typical OE) (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 497.8901329548232,
       "1100": 508.37703048794776,
@@ -614,7 +614,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2024 Dark Horse MT 4.1 / 12.5@115 (loss 22.7, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 23 / loss 1.5 / tire 1 / launch 3800 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero PZ4 (Trofeo RS Handling Pack optional) (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang S650 OEM ~53/47 leaning; credit Jorge Guerra)",
+    "source": "Perf: C&D 2024 Dark Horse MT 4.1 / 12.5@115 (loss 22.7, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 23 / loss 1.5 / tire 1 / launch 3800 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero PZ4 (Trofeo RS Handling Pack optional) (documented; credit Jorge Guerra) | WD OEM 53/47 (Ford Mustang S650 OEM ~53/47 leaning; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 301.32283079789215,
       "1100": 307.2936245866987,
@@ -730,7 +730,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Camaro ZL1 1LE 3.4 / 11.5@124 (loss 25.2, TX AUTO, driver 200, UHP, trap-first) | Phase 32 trap-first; tire Summer; loss 24.3; driver 200 | ET-first closer: loss 8.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 22.5 / loss 9 / tire 4 / launch 2400 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Goodyear Eagle F1 Supercar 3 285/30–305/30R20 (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D Camaro ZL1 1LE 3.4 / 11.5@124 (loss 25.2, TX AUTO, driver 200, UHP, trap-first) | Phase 32 trap-first; tire Summer; loss 24.3; driver 200 | ET-first closer: loss 8.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 22.5 / loss 9 / tire 4 / launch 2400 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Goodyear Eagle F1 Supercar 3 285/30\u2013305/30R20 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 464.95089343964804,
       "1100": 474.32309656398604,
@@ -840,7 +840,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Hellcat Redeye ~3.6 / 11.8@125 (loss 26.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Pirelli P Zero Nero All Season (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D Hellcat Redeye ~3.6 / 11.8@125 (loss 26.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Pirelli P Zero Nero All Season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1500": 420,
       "1600": 440,
@@ -938,7 +938,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: MT GT350R 4.0 / 12.2@119 (loss 22.6, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.6; driver 200 | ET-first closer: loss 2.5 / tire 4 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 23.5 / loss 2.5 / tire 3 / launch 3200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Tremec_TR3160 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin PS Cup 2 → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: MT GT350R 4.0 / 12.2@119 (loss 22.6, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.6; driver 200 | ET-first closer: loss 2.5 / tire 4 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 23.5 / loss 2.5 / tire 3 / launch 3200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Tremec_TR3160 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Michelin PS Cup 2 \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra) | Published CG: C&D instrumented Mustang Shelby GT350 CG 19.5 in (S550 GT350 family; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 265.2771874198771,
       "1100": 269.53548812115264,
@@ -1019,7 +1019,10 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "cgHeightFeet": 1.625,
+    "cgHeightPublished": true,
+    "cgHeightSource": "C&D instrumented Mustang Shelby GT350 CG 19.5 in (S550 GT350 family; credit Jorge Guerra)"
   },
   {
     "id": "2015-dodge-challenger-hellcat",
@@ -1060,7 +1063,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2015 Hellcat auto 3.6 / 11.7@126 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Pirelli P Zero Nero All Season (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2015 Hellcat auto 3.6 / 11.7@126 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Pirelli P Zero Nero All Season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 517.5091,
       "1100": 528.4093,
@@ -1164,7 +1167,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2014 Camaro Z/28 MT 4.4 / 12.7@116 (loss 21.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 12.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 23 / loss 0 / tire 0 / launch 3000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: C&D 2014 Camaro Z/28 MT 4.4 / 12.7@116 (loss 21.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 12.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 23 / loss 0 / tire 0 / launch 3000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 325.3193,
       "1100": 331.4318,
@@ -1276,7 +1279,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2012 Boss 302 MT 4.3 / 12.8@113 (loss 22.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.2; driver 200 | ET-first closer: loss 1 / tire 3 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.2 / loss 0 / tire 3 / launch 2000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Pirelli P Zero (non-Laguna) (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2012 Boss 302 MT 4.3 / 12.8@113 (loss 22.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.2; driver 200 | ET-first closer: loss 1 / tire 3 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.2 / loss 0 / tire 3 / launch 2000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Pirelli P Zero (non-Laguna) (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "2000": 250,
       "2100": 256,
@@ -1379,7 +1382,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "OEM TX: C6 ZR1 Tremec TR6060 6MT only (never Auto) — ratios 2.29/1.61/1.21/1.00/0.82/0.68 FD 3.42 (Corvette Action Center 2012 ZR1 / GM press via jbcarpages). Credit Jorge Guerra. | Perf note: C&D C6 ZR1 ~3.4 / ~11.5@126 (prior Phase32 baked Auto/6L80 was wrong; loss/tire untouched this tip) | ET-first closer: loss 8.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22 / loss 8 / tire 4 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 2 ZP (Cup ZP PDE optional) (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — GM press / CAC ZR1 MH3 TR6060 close-ratio; FD 3.42 | WD OEM 51/49 (Corvette Action Center ZR1 OEM 51/49; credit Jorge Guerra)",
+    "source": "OEM TX: C6 ZR1 Tremec TR6060 6MT only (never Auto) \u2014 ratios 2.29/1.61/1.21/1.00/0.82/0.68 FD 3.42 (Corvette Action Center 2012 ZR1 / GM press via jbcarpages). Credit Jorge Guerra. | Perf note: C&D C6 ZR1 ~3.4 / ~11.5@126 (prior Phase32 baked Auto/6L80 was wrong; loss/tire untouched this tip) | ET-first closer: loss 8.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22 / loss 8 / tire 4 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 2 ZP (Cup ZP PDE optional) (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 GM press / CAC ZR1 MH3 TR6060 close-ratio; FD 3.42 | WD OEM 51/49 (Corvette Action Center ZR1 OEM 51/49; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 417.6951,
       "1100": 426.2947,
@@ -1489,7 +1492,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/MT Challenger SRT8 6.1 auto class ~4.8 / ~13.3@108 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.8; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0 / tire 3 / launch 3900 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Eagle F1 All Season / summer mix (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT Challenger SRT8 6.1 auto class ~4.8 / ~13.3@108 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.8; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0 / tire 3 / launch 3900 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Eagle F1 All Season / summer mix (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 275.12533563392054,
       "1100": 279.7639911768681,
@@ -1597,7 +1600,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer G8 GXP auto ~4.7 / ~13.0@110 (loss 14.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.2; driver 200 | ET-first closer: loss 0 / tire 3 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer G8 GXP auto ~4.7 / ~13.0@110 (loss 14.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.2; driver 200 | ET-first closer: loss 0 / tire 3 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 265.06733277915055,
       "1100": 270.19884956545343,
@@ -1705,7 +1708,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2004 GTO MT 5.3 / 14.0@102 (loss 26.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.1; driver 200 | ET-first closer: loss 1 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22 / loss 2 / tire 0 / launch 1800 / fall×1.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 2004 GTO MT 5.3 / 14.0@102 (loss 26.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.1; driver 200 | ET-first closer: loss 1 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22 / loss 2 / tire 0 / launch 1800 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 223.55076258482575,
       "1100": 227.87854782628602,
@@ -1813,7 +1816,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: MT/peer Terminator Cobra MT ~4.5 / ~12.8@110 (loss 20.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 23 / loss 1.5 / tire 3 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: MT/peer Terminator Cobra MT ~4.5 / ~12.8@110 (loss 20.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 23 / loss 1.5 / tire 3 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 255.33087764753785,
       "1100": 260.58769810432096,
@@ -1921,7 +1924,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer 2002 Camaro SS MT ~5.2 / ~13.8@104 (loss 21.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22.5 / loss 0.5 / tire 3 / launch 2100 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 2002 Camaro SS MT ~5.2 / ~13.8@104 (loss 21.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22.5 / loss 0.5 / tire 3 / launch 2100 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 207.5828509716239,
       "1100": 211.60150869583703,
@@ -2027,7 +2030,7 @@ var GARAGE = [
     "hasAftermarketConverter": true,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Jorge Guerra garage card: Modern Muscle · NA · 494 hp · 3340 lb · GM 4L65-E + shift kit · Circle D 4400 stall converter | ET-first closer: loss 1 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 23 / loss 1 / tire 2 / launch 3000 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_4L65E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Slick (Jorge Z28 ATC only; credit Jorge Guerra)",
+    "source": "Jorge Guerra garage card: Modern Muscle \u00b7 NA \u00b7 494 hp \u00b7 3340 lb \u00b7 GM 4L65-E + shift kit \u00b7 Circle D 4400 stall converter | ET-first closer: loss 1 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 23 / loss 1 / tire 2 / launch 3000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_4L65E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Slick (Jorge Z28 ATC only; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 294.66032798908304,
       "1100": 300.1967354102872,
@@ -2139,7 +2142,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 1994–96 Impala SS auto ~6.5 / 15.0@92 (loss 15.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.8; driver 200 | Fleet miss-batch: C&D 1994 Impala SS 6.5 / 15.0@92; OEM LT1 260@5000 / 330@2400; FD 3.08 — Published LT1 powerband + Cd 0.34 + Drag Radial. Residual trap/0–60 short after honest bake — parked further knobs. | ET-first closer: loss 2.5 / tire 4 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 23.5 / loss 2.5 / tire 0 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via GM_4L60E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1994\u201396 Impala SS auto ~6.5 / 15.0@92 (loss 15.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.8; driver 200 | Fleet miss-batch: C&D 1994 Impala SS 6.5 / 15.0@92; OEM LT1 260@5000 / 330@2400; FD 3.08 \u2014 Published LT1 powerband + Cd 0.34 + Drag Radial. Residual trap/0\u201360 short after honest bake \u2014 parked further knobs. | ET-first closer: loss 2.5 / tire 4 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 23.5 / loss 2.5 / tire 0 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via GM_4L60E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 232.51112073561276,
       "1100": 237.435827774162,
@@ -2236,7 +2239,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/MT Charger Scat Pack auto ~4.2 / peer Challenger 12.6@114 (loss 10.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 6; driver 200 | ET-first closer: loss 4.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 22.5 / loss 0 / tire 4 / launch 2100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE typical (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT Charger Scat Pack auto ~4.2 / peer Challenger 12.6@114 (loss 10.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 6; driver 200 | ET-first closer: loss 4.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 22.5 / loss 0 / tire 4 / launch 2100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE typical (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 339.85772494930217,
       "1100": 345.9484613803581,
@@ -2349,7 +2352,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.4@132 (loss 16.6, TX DCT, driver 200, Summer, trap-first; Tremec 7DCT) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 23.2 / loss 0 / tire 4 / launch 1800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9070_7DCT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (Cup 2 Handling Pack optional) (documented; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.4@132 (loss 16.6, TX DCT, driver 200, Summer, trap-first; Tremec 7DCT) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 23.2 / loss 0 / tire 4 / launch 1800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9070_7DCT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (Cup 2 Handling Pack optional) (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "2000": 420,
       "2100": 432,
@@ -2452,7 +2455,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2012 Camaro ZL1 MT 4.1 / 12.3@119 (loss 24.7, TX MANUAL, driver 200, UHP, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.6; driver 200 | ET-first closer: loss 7 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 24 / loss 7 / tire 4 / launch 800 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Goodyear Eagle F1 Supercar G:2 (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2012 Camaro ZL1 MT 4.1 / 12.3@119 (loss 24.7, TX MANUAL, driver 200, UHP, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.6; driver 200 | ET-first closer: loss 7 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 24 / loss 7 / tire 4 / launch 800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Goodyear Eagle F1 Supercar G:2 (documented; credit Jorge Guerra) | WD OEM: GM 2012 Camaro ZL1 dealer ref guide 51/49 (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 379.7228436809537,
       "1100": 387.5406792320671,
@@ -2516,8 +2519,8 @@ var GARAGE = [
       "6700": 329.60540369088807,
       "6800": 291.20612227763075
     },
-    "frontWeightPercent": 45,
-    "rearWeightPercent": 55,
+    "frontWeightPercent": 51,
+    "rearWeightPercent": 49,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "supercharger",
@@ -2560,7 +2563,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2011 Mustang GT 5.0 MT ~4.6 / ~13.1@109 (loss 25.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.7; driver 200 | ET-first closer: loss 0.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 23 / loss 0.5 / tire 3 / launch 2700 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Pirelli P Zero Nero / summer (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2011 Mustang GT 5.0 MT ~4.6 / ~13.1@109 (loss 25.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.7; driver 200 | ET-first closer: loss 0.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 23 / loss 0.5 / tire 3 / launch 2700 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Pirelli P Zero Nero / summer (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 278.5192,
       "1100": 283.9111,
@@ -2667,7 +2670,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2008 Challenger SRT8 auto 4.8 / 13.3@108 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17; driver 200 | Fleet miss-batch: C&D/MT 2008 SRT8 ~4.8 / 13.3@108; OEM 425@6200 / 420@4800; FD 3.06; Cd~0.36 | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.5 / loss 0 / tire 0 / launch 1000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Eagle RS-A / all-season (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2008 Challenger SRT8 auto 4.8 / 13.3@108 (loss 16.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17; driver 200 | Fleet miss-batch: C&D/MT 2008 SRT8 ~4.8 / 13.3@108; OEM 425@6200 / 420@4800; FD 3.06; Cd~0.36 | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.5 / loss 0 / tire 0 / launch 1000 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Eagle RS-A / all-season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 299.1796864890281,
       "1100": 303.5371094425931,
@@ -2769,7 +2772,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Trans Am WS6 LS1 MT ~5.0 / ~13.5@106 (loss 16.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17; driver 200 | ET-first closer: loss 0 / tire 2 / launch 3700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Trans Am WS6 LS1 MT ~5.0 / ~13.5@106 (loss 16.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17; driver 200 | ET-first closer: loss 0 / tire 2 / launch 3700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 207.5828509716239,
       "1100": 211.60150869583703,
@@ -2876,7 +2879,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1996 SVT Cobra MT 5.4 / ~14.0@102 (loss 20.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.8; driver 200 | Factory powertrain loss 13% via Tremec_T45 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1996 SVT Cobra MT 5.4 / ~14.0@102 (loss 20.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.8; driver 200 | Factory powertrain loss 13% via Tremec_T45 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 194.80852168106244,
       "1100": 198.57987739147782,
@@ -2984,7 +2987,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1993 Camaro Z28 MT 5.3 / 14.0@100 (loss 17.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 0 / tire 1 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1993 Camaro Z28 MT 5.3 / 14.0@100 (loss 17.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 0 / tire 1 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 208.37707914655422,
       "1100": 212.6520115036142,
@@ -3090,7 +3093,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: period/peer Buick GNX auto ~4.7 / ~13.5@99 (loss 19.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.1; driver 200 | ET-first closer: loss 1.5 / tire 2 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 21.5 / loss 0 / tire 2 / launch 3900 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_2004R OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: period/peer Buick GNX auto ~4.7 / ~13.5@99 (loss 19.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.1; driver 200 | ET-first closer: loss 1.5 / tire 2 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 21.5 / loss 0 / tire 2 / launch 3900 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_2004R OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 218.36539768785855,
       "1100": 222.43353742741803,
@@ -3196,7 +3199,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1979 Trans Am MT 6.7 / 15.3@97 (loss 5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3171 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.435 / FA 25.5 / loss 0 / tire 0 / launch 4071 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1979 Trans Am MT 6.7 / 15.3@97 (loss 5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3171 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.435 / FA 25.5 / loss 0 / tire 0 / launch 4071 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 178.48558671997893,
       "1100": 182.52199392029144,
@@ -3292,7 +3295,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 1985 IROC-Z 215hp auto 7.0 / 15.2@91 (loss 20.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.5; driver 200 | ET-first closer: loss 0 / tire 3 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 23.5 / loss 0 / tire 4 / launch 3600 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via GM_700R4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1985 IROC-Z 215hp auto 7.0 / 15.2@91 (loss 20.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.5; driver 200 | ET-first closer: loss 0 / tire 3 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 23.5 / loss 0 / tire 4 / launch 3600 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via GM_700R4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 144.42352893324656,
       "1100": 147.38643070481473,
@@ -3399,7 +3402,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: MT/peer 1987 Mustang LX 5.0 MT ~6.2 / ~14.8@96 (loss 17.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory base/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: MT/peer 1987 Mustang LX 5.0 MT ~6.2 / ~14.8@96 (loss 17.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory base/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 156.63693518552952,
       "1100": 159.85039947477787,
@@ -3507,7 +3510,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Firebird Formula LT1 MT ~5.4 / ~14.0@100 (loss 18, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | ET-first closer: loss 0 / tire 2 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Firebird Formula LT1 MT ~5.4 / ~14.0@100 (loss 18, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | ET-first closer: loss 0 / tire 2 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 175.64702774522024,
       "1100": 179.04743043493903,
@@ -3615,7 +3618,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Camaro SS LS1 MT ~5.0 / ~13.6@106 (loss 15.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18; driver 200 | ET-first closer: loss 0 / tire 2 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Camaro SS LS1 MT ~5.0 / ~13.6@106 (loss 15.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18; driver 200 | ET-first closer: loss 0 / tire 2 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 204.38926864898357,
       "1100": 208.34610086974723,
@@ -3722,7 +3725,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer 2007 Mustang GT MT ~5.1 / ~13.7@102 (loss 18, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.7; driver 200 | ET-first closer: loss 2 / tire 3 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21 / loss 0.5 / tire 4 / launch 2900 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Tremec_TR3650 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Goodyear Eagle F1 / P Zero (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 2007 Mustang GT MT ~5.1 / ~13.7@102 (loss 18, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.7; driver 200 | ET-first closer: loss 2 / tire 3 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21 / loss 0.5 / tire 4 / launch 2900 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Tremec_TR3650 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Goodyear Eagle F1 / P Zero (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 187.39186947202018,
       "1100": 190.55132525978635,
@@ -3830,7 +3833,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2010 Camaro V6 MT 5.9 / 14.5@99 (loss 22.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_AY6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory base/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 2010 Camaro V6 MT 5.9 / 14.5@99 (loss 22.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_AY6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory base/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 194.1698052165344,
       "1100": 197.9287958262599,
@@ -3936,7 +3939,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer 1984 Corvette L83 auto ~7.1 / ~15.3@90 (loss 23.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.4; driver 200 | Fleet miss-batch: C&D 1984 C4 6.7 / 15.2@90; OEM L83 205@4300 / 290@2800; FD 3.07; Cd 0.34 | ET-first closer: loss 0 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 21 / loss 0 / tire 0 / launch 800 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_700R4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1984 Corvette L83 auto ~7.1 / ~15.3@90 (loss 23.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.4; driver 200 | Fleet miss-batch: C&D 1984 C4 6.7 / 15.2@90; OEM L83 205@4300 / 290@2800; FD 3.07; Cd 0.34 | ET-first closer: loss 0 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 21 / loss 0 / tire 0 / launch 800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_700R4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 233.40257466385592,
       "1100": 237.199044780843,
@@ -4025,7 +4028,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Mustang LX 5.0 MT ~6.2 / ~14.8@95 (loss 20, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory base/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Mustang LX 5.0 MT ~6.2 / ~14.8@95 (loss 20, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory base/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 162.13296799905692,
       "1100": 165.4591854212613,
@@ -4133,7 +4136,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Firebird Formula LS1 MT ~5.2 / ~13.8@104 (loss 16.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.3; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 0 / launch 3900 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Firebird Formula LS1 MT ~5.2 / ~13.8@104 (loss 16.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.3; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 0 / launch 3900 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 194.80852168106244,
       "1100": 198.57987739147782,
@@ -4240,7 +4243,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Charger R/T 5.7 Hemi auto ~5.3 / ~13.8@103 (loss 13, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 1 / tire 1 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.5 / loss 2 / tire 3 / launch 3300 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Charger R/T 5.7 Hemi auto ~5.3 / ~13.8@103 (loss 13, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 1 / tire 1 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.5 / loss 2 / tire 3 / launch 3300 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 228.41528828400206,
       "1100": 232.53179005300123,
@@ -4348,7 +4351,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer 2011 Camaro V6 MT ~5.9 / ~14.5@99 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.6; driver 200 | ET-first closer: loss 6 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 23 / loss 6 / tire 0 / launch 3500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_AY6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory base/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 2011 Camaro V6 MT ~5.9 / ~14.5@99 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.6; driver 200 | ET-first closer: loss 6 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 23 / loss 6 / tire 0 / launch 3500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_AY6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory base/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 199.27953693275896,
       "1100": 203.13744834800355,
@@ -4456,7 +4459,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: MT 2013 Mustang V6 Perf Pkg MT 5.3 / 13.9@100 (loss 24, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22 / loss 1.5 / tire 3 / launch 1800 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory base/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: MT 2013 Mustang V6 Perf Pkg MT 5.3 / 13.9@100 (loss 24, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22 / loss 1.5 / tire 3 / launch 1800 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory base/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 183.5872466675883,
       "1100": 186.68255592875434,
@@ -4562,7 +4565,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer 1982 Trans Am 165hp auto ~9.2 / ~17.0@80 (loss 31.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 21 / loss 0 / tire 0 / launch 3000 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_2004R OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1982 Trans Am 165hp auto ~9.2 / ~17.0@80 (loss 31.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 21 / loss 0 / tire 0 / launch 3000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via GM_2004R OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 105.38821664713214,
       "1100": 107.42845826096341,
@@ -4669,7 +4672,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1991 Camaro Z28 MT 6.4 / 14.9@93 (loss 27.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.3; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 22.5 / loss 0 / tire 1 / launch 3800 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via T5_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1991 Camaro Z28 MT 6.4 / 14.9@93 (loss 27.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.3; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 22.5 / loss 0 / tire 1 / launch 3800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via T5_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 156.4855649003357,
       "1100": 159.51504375879088,
@@ -4776,7 +4779,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 1994 Mustang GT 215hp MT ~6.2 / ~14.9@94 (loss 15, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.1; driver 200 | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1994 Mustang GT 215hp MT ~6.2 / ~14.9@94 (loss 15, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.1; driver 200 | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via T5_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 178.73546534505186,
       "1100": 182.03443988926648,
@@ -4884,7 +4887,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Trans Am WS6 LS1 MT ~5.0 / ~13.5@106 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.2; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4200 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Trans Am WS6 LS1 MT ~5.0 / ~13.5@106 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.2; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20 / loss 0 / tire 2 / launch 4200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 207.58285678561762,
       "1100": 211.60146970629407,
@@ -4991,7 +4994,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Challenger R/T 5.7 Hemi auto ~5.1 / ~13.7@104 (loss 16.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0.5 / tire 0 / launch 3900 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Challenger R/T 5.7 Hemi auto ~5.1 / ~13.7@104 (loss 16.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 22.5 / loss 0.5 / tire 0 / launch 3900 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 244.34429194930016,
       "1100": 249.0884416080139,
@@ -5099,7 +5102,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Boss 302 Laguna MT ~4.3 / ~12.7@114 (loss 20, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.2; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 23.5 / loss 0 / tire 3 / launch 3500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli P Zero Corsa → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Boss 302 Laguna MT ~4.3 / ~12.7@114 (loss 20, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.2; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 23.5 / loss 0 / tire 3 / launch 3500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Getrag_MT82 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli P Zero Corsa \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 230.0083,
       "1100": 233.8723,
@@ -5216,7 +5219,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer 1981 Camaro Z28 auto ~8.8 / ~16.7@82 (loss 26.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.9; driver 200 | Trap-first tire-prep: Cd 0.285 / FA 21 / loss 0 / tire 0 / launch 4200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via GM_TH350 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1981 Camaro Z28 auto ~8.8 / ~16.7@82 (loss 26.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.9; driver 200 | Trap-first tire-prep: Cd 0.285 / FA 21 / loss 0 / tire 0 / launch 4200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via GM_TH350 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 114.8169570473515,
       "1100": 116.93616835111908,
@@ -5323,7 +5326,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 1989 Mustang GT 5.0 MT ~6.0 / ~14.7@95 (loss 18.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via T5_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1989 Mustang GT 5.0 MT ~6.0 / ~14.7@95 (loss 18.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 20.5 / loss 0 / tire 1 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via T5_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 143.7111595273983,
       "1100": 146.4933778101664,
@@ -5431,7 +5434,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1993 Firebird Formula MT 5.5 / 14.2@99 (loss 20.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 23 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1993 Firebird Formula MT 5.5 / 14.2@99 (loss 20.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 23 / loss 0 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Tremec_T56 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 175.64702774522024,
       "1100": 179.04743043493903,
@@ -5538,7 +5541,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 2004 Mustang Mach 1 MT ~5.3 / ~13.9@102 (loss 16.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.3; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21 / loss 1.5 / tire 1 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Tremec_TR3650 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 2004 Mustang Mach 1 MT ~5.3 / ~13.9@102 (loss 16.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.3; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 21 / loss 1.5 / tire 1 / launch 3300 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Tremec_TR3650 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 193.9789506527434,
       "1100": 197.24946564398277,
@@ -5645,7 +5648,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2008 Charger SRT8 auto ~4.9 / 13.2@109 (loss 13.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.6; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 24 / loss 0 / tire 0 / launch 3000 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear RSA / all-season (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2008 Charger SRT8 auto ~4.9 / 13.2@109 (loss 13.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.6; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 24 / loss 0 / tire 0 / launch 3000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear RSA / all-season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 271.4544974244313,
       "1100": 276.709665217633,
@@ -5753,7 +5756,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Chevy SS auto ~4.5 / ~13.0@109 (loss 17, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21.5 / loss 0 / tire 3 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Chevy SS auto ~4.5 / ~13.0@109 (loss 17, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21.5 / loss 0 / tire 3 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 277.5231309515765,
       "1100": 282.2022136929697,
@@ -5856,7 +5859,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Model S Plaid 2.1 / 9.4@151 (loss 6.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.208 / FA 25.5 / loss 5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Tesla_EV_Plaid OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1020 (was ~1387 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Model S Plaid 2.1 / 9.4@151 (loss 6.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.208 / FA 25.5 / loss 5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Tesla_EV_Plaid OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1020 (was ~1387 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 912.6707,
       "600": 912.6707,
@@ -6038,7 +6041,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2024 Model 3 Perf 2.8 / 11.0@125 (loss 15.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire Summer; loss 17.1; driver 200 | ET-first closer: loss 0 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 25.5 / loss 0.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero / Hankook iON summer UHP (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 510 (was ~601 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D 2024 Model 3 Perf 2.8 / 11.0@125 (loss 15.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire Summer; loss 17.1; driver 200 | ET-first closer: loss 0 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 25.5 / loss 0.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero / Hankook iON summer UHP (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 510 (was ~601 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 474.002,
       "600": 474.002,
@@ -6218,7 +6221,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "DCT",
-    "source": "Perf: C&D Taycan Turbo S 2.4 / 10.5@130 (loss 20.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 20.6; driver 200 | ET-first closer: loss 9.5 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 27 / loss 10.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Porsche_Taycan_2 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero / Michelin PS4S N-spec (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 750 (was ~923 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Taycan Turbo S 2.4 / 10.5@130 (loss 20.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 20.6; driver 200 | ET-first closer: loss 9.5 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 27 / loss 10.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Porsche_Taycan_2 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero / Michelin PS4S N-spec (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 750 (was ~923 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 697.0617,
       "600": 697.0617,
@@ -6397,7 +6400,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Lucid Air Sapphire 1.9 / 9.0@155 (loss 13, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5; driver 200 | ET-first closer: loss 1 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.277 / FA 25.5 / loss 1.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero HL (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1234 (was ~1598 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Lucid Air Sapphire 1.9 / 9.0@155 (loss 13, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5; driver 200 | ET-first closer: loss 1 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.277 / FA 25.5 / loss 1.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero HL (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1234 (was ~1598 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 1104.1527,
       "600": 1104.1527,
@@ -6576,7 +6579,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Ioniq 5 N 3.0 / 11.1@123 (loss 25.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 12.5 / tire 1 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 27.5 / loss 15.5 / tire 1 / launch 200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 641 (was ~794 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Ioniq 5 N 3.0 / 11.1@123 (loss 25.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 12.5 / tire 1 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 27.5 / loss 15.5 / tire 1 / launch 200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 641 (was ~794 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 573.5508,
       "600": 573.5508,
@@ -6755,7 +6758,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D F-150 Lightning Platinum 4.0 / 12.7@107 (loss 20.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.7; driver 200 | ET-first closer: loss 2.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.465 / FA 34.5 / loss 1.5 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Wrangler Territory / all-season truck (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 580 (was ~774 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D F-150 Lightning Platinum 4.0 / 12.7@107 (loss 20.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.7; driver 200 | ET-first closer: loss 2.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.465 / FA 34.5 / loss 1.5 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Wrangler Territory / all-season truck (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 580 (was ~774 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 539.0611,
       "600": 539.0611,
@@ -6934,7 +6937,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Model Y Perf ~3.5–3.6 / 12.0–12.1@113–114 (loss 21.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 20; driver 200 | Trap-first tire-prep: Cd 0.325 / FA 29.5 / loss 1.5 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 456 (was ~537 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Model Y Perf ~3.5\u20133.6 / 12.0\u201312.1@113\u2013114 (loss 21.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 20; driver 200 | Trap-first tire-prep: Cd 0.325 / FA 29.5 / loss 1.5 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 456 (was ~537 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 423.8135,
       "600": 423.8135,
@@ -7113,7 +7116,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Model X Plaid ~2.5 / ~9.8@146 (loss 15, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 9.6; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Tesla_EV_Plaid OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1020 (was ~1222 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Model X Plaid ~2.5 / ~9.8@146 (loss 15, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 9.6; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Tesla_EV_Plaid OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 1020 (was ~1222 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 948.004,
       "600": 948.004,
@@ -7292,7 +7295,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D EV6 GT (576 hp gen) ~3.4 / ~11.4@120 (loss 21.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 25 / loss 0.5 / tire 1 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S / P Zero (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 576 (was ~665 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D EV6 GT (576 hp gen) ~3.4 / ~11.4@120 (loss 21.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.8; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.32 / FA 25 / loss 0.5 / tire 1 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S / P Zero (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 576 (was ~665 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 535.3435,
       "600": 535.3435,
@@ -7471,7 +7474,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2023 Polestar 2 Performance 3.9 / 12.2@116 (loss 16.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27; driver 200 | Trap-first tire-prep: Cd 0.36 / FA 25.5 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 2023 Polestar 2 Performance 3.9 / 12.2@116 (loss 16.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27; driver 200 | Trap-first tire-prep: Cd 0.36 / FA 25.5 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 453.1163,
       "600": 453.1163,
@@ -7650,7 +7653,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D iX M60 3.2 / 11.5@120 (loss 11.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | Fleet miss-batch: C&D iX M60 3.2 / 11.5@120 (Excel 3.6 / 12.1@114 — prefer C&D) | ET-first closer: loss 13 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 610 (was ~711 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D iX M60 3.2 / 11.5@120 (loss 11.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | Fleet miss-batch: C&D iX M60 3.2 / 11.5@120 (Excel 3.6 / 12.1@114 \u2014 prefer C&D) | ET-first closer: loss 13 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 610 (was ~711 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 785.5409,
       "600": 785.5409,
@@ -7829,7 +7832,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer EQE AMG 53 Dual Motor ~3.2 / ~11.6@118 (loss 30.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | Fleet miss-batch: C&D EQE AMG 53 ~2.8 / 11.2@119 (Excel peer ~3.2 / 11.6@120) | ET-first closer: loss 14.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 23.5 / loss 3 / tire 0 / launch 500 (fs=1; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 677 (was ~727 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer EQE AMG 53 Dual Motor ~3.2 / ~11.6@118 (loss 30.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | Fleet miss-batch: C&D EQE AMG 53 ~2.8 / 11.2@119 (Excel peer ~3.2 / 11.6@120) | ET-first closer: loss 14.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 23.5 / loss 3 / tire 0 / launch 500 (fs=1; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 677 (was ~727 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 945.6394,
       "600": 945.6394,
@@ -8008,7 +8011,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2023 Lyriq AWD 4.6 / 12.9@113 (loss 11.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.6; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 33 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2023 Lyriq AWD 4.6 / 12.9@113 (loss 11.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.6; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 33 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 475.9625,
       "600": 475.9625,
@@ -8187,7 +8190,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200 | CT tip: C&D Beast 2.6 / 11.0@119 / 130gov; launch+curve taper+aero retune | fs=1 tip: absorb→curve; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 | ET-first tip: fs=1; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | ET-first tip: fs=1; Excel wt 6800 locked; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | Beast curve-respan tip: RPM×(15.02/7.8) TQ÷span; OEM FD 15.02 kept; loss/tire/launch; C&D 2.6 / 11.0@119 / lim 130 | Beast trap-119 tip: Cd→0.34 (pub) + Summer; OEM FD 15.02 / fs=1 kept; C&D 2.6 / 11.0@119 / lim 130 | Factory powertrain loss 8% via Tesla_EV_Cybertruck OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Wrangler All-Terrain Adventure (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 845 (was ~1060 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Cybertruck Beast 2.6 / 11.0@119 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 23; driver 200 | CT tip: C&D Beast 2.6 / 11.0@119 / 130gov; launch+curve taper+aero retune | fs=1 tip: absorb\u2192curve; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 | ET-first tip: fs=1; Excel wt 6800; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | ET-first tip: fs=1; Excel wt 6800 locked; loss/tire/launch; Excel 2.6 / 11.0@119 / lim 130 | Beast curve-respan tip: RPM\u00d7(15.02/7.8) TQ\u00f7span; OEM FD 15.02 kept; loss/tire/launch; C&D 2.6 / 11.0@119 / lim 130 | Beast trap-119 tip: Cd\u21920.34 (pub) + Summer; OEM FD 15.02 / fs=1 kept; C&D 2.6 / 11.0@119 / lim 130 | Factory powertrain loss 8% via Tesla_EV_Cybertruck OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Wrangler All-Terrain Adventure (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 845 (was ~1060 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 601.9809,
       "600": 601.9809,
@@ -8496,7 +8499,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2023 GV60 Performance 3.7 / 12.2@112 (loss 14.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.2; driver 200 | ET-first closer: loss 2 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 28.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 429 (was ~546 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D 2023 GV60 Performance 3.7 / 12.2@112 (loss 14.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.2; driver 200 | ET-first closer: loss 2 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 28.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 429 (was ~546 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 398.7193,
       "600": 398.7193,
@@ -8675,7 +8678,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D EX90 Twin Motor Performance 4.1 / 12.9@106 (loss 19.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.6; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 35 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 496 (was ~536 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D EX90 Twin Motor Performance 4.1 / 12.9@106 (loss 19.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.6; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 35 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 496 (was ~536 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 460.9902,
       "600": 460.9902,
@@ -8854,7 +8857,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Q4 e-tron Quattro 5.0 / 13.7@97 (loss 17.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 30 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 295 (was ~358 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Q4 e-tron Quattro 5.0 / 13.7@97 (loss 17.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 30 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 295 (was ~358 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 274.1776,
       "600": 274.1776,
@@ -9033,7 +9036,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer EQB 350 4MATIC ~5.8 / ~14.5@95 (loss 20.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 31 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 288 (was ~352 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer EQB 350 4MATIC ~5.8 / ~14.5@95 (loss 20.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 31 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 288 (was ~352 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 267.6717,
       "600": 267.6717,
@@ -9212,7 +9215,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Model X Dual Motor LR ~3.5 / ~11.4@126 (loss 16, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 670 (was ~773 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Model X Dual Motor LR ~3.5 / ~11.4@126 (loss 16, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 670 (was ~773 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 622.7084,
       "600": 622.7084,
@@ -9391,7 +9394,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Ariya e-4ORCE Platinum+ ~5.0 / ~13.4@105 (loss 20.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 30 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Ariya e-4ORCE Platinum+ ~5.0 / ~13.4@105 (loss 20.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 30 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 373.9278,
       "600": 373.9278,
@@ -9570,7 +9573,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: peer/OEM Solterra AWD ~6.5 / ~15.0@90 (loss 10.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | Trap-first tire-prep: Cd 0.325 / FA 28 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Yokohama Geolandar / all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 215 (was ~305 curve peak; credit Jorge Guerra)",
+    "source": "Perf: peer/OEM Solterra AWD ~6.5 / ~15.0@90 (loss 10.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | Trap-first tire-prep: Cd 0.325 / FA 28 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Yokohama Geolandar / all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 215 (was ~305 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 199.8244,
       "600": 199.8244,
@@ -9749,7 +9752,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: peer/OEM bZ4X AWD ~6.9 / ~15.2@89 (loss 15.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.6; driver 200 | Trap-first tire-prep: Cd 0.4 / FA 28.5 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 214 (was ~291 curve peak; credit Jorge Guerra)",
+    "source": "Perf: peer/OEM bZ4X AWD ~6.9 / ~15.2@89 (loss 15.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.6; driver 200 | Trap-first tire-prep: Cd 0.4 / FA 28.5 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 214 (was ~291 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 198.895,
       "600": 198.895,
@@ -9928,7 +9931,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: peer Fisker Ocean Extreme Dual Motor ~4.0 / ~12.5@110 (loss 30.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 31 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Fisker Ocean Extreme Dual Motor ~4.0 / ~12.5@110 (loss 30.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 31 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 536.8857,
       "600": 536.8857,
@@ -10107,7 +10110,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Ioniq 6 Long Range AWD ~4.4 / ~12.9@110 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.3; driver 200 | ET-first closer: loss 0 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.315 / FA 26.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory all-season/AT EV/utility → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 320 (was ~387 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Ioniq 6 Long Range AWD ~4.4 / ~12.9@110 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.3; driver 200 | ET-first closer: loss 0 / tire 4 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.315 / FA 26.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory all-season/AT EV/utility \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 320 (was ~387 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 297.413,
       "600": 297.413,
@@ -10286,7 +10289,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer ID.4 Dual Motor (295hp class) ~5.4 / ~14.0@97 (loss 17.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 30 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 295 (was ~360 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer ID.4 Dual Motor (295hp class) ~5.4 / ~14.0@97 (loss 17.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | Trap-first tire-prep: Cd 0.415 / FA 30 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 295 (was ~360 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 274.1776,
       "600": 274.1776,
@@ -10465,7 +10468,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Blazer EV SS 3.3 / 11.8@117 (loss 14.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.4; driver 200 | Trap-first tire-prep: Cd 0.385 / FA 32.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 557 (was ~688 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Blazer EV SS 3.3 / 11.8@117 (loss 14.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.4; driver 200 | Trap-first tire-prep: Cd 0.385 / FA 32.5 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 557 (was ~688 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 517.6845,
       "600": 517.6845,
@@ -10644,7 +10647,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Mach-E GT Performance 3.7 / 12.7@101 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.4; driver 200 | ET-first closer: loss 4.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 30 / loss 4.5 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero Elect (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 480 (was ~595 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Mach-E GT Performance 3.7 / 12.7@101 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.4; driver 200 | ET-first closer: loss 4.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 30 / loss 4.5 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero Elect (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 480 (was ~595 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 446.1195,
       "600": 446.1195,
@@ -10823,7 +10826,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2024 i5 M60 3.3 / 11.5@124 (loss 10.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.7; driver 200 | ET-first closer: loss 4 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 27.5 / loss 6 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 590 (was ~632 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D 2024 i5 M60 3.3 / 11.5@124 (loss 10.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.7; driver 200 | ET-first closer: loss 4 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 27.5 / loss 6 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 590 (was ~632 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 548.3552,
       "600": 548.3552,
@@ -11002,7 +11005,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer R1S Quad ~3.0 / ~11.5@112 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 18.4; driver 200 | ET-first closer: loss 6 / tire 3 / launch 400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 3 / launch 400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 33 / loss 4.5 / tire 3 / launch 400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory all-season/AT EV/utility → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 835 (was ~1155 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer R1S Quad ~3.0 / ~11.5@112 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Slicks; loss 18.4; driver 200 | ET-first closer: loss 6 / tire 3 / launch 400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 3 / launch 400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 33 / loss 4.5 / tire 3 / launch 400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory all-season/AT EV/utility \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 835 (was ~1155 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 776.0621,
       "600": 776.0621,
@@ -11181,7 +11184,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D 2023 i7 xDrive60 4.1 / 12.5@114 (loss 12.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.6; driver 200 | ET-first closer: loss 3 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.315 / FA 27.5 / loss 1.5 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 536 (was ~619 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D 2023 i7 xDrive60 4.1 / 12.5@114 (loss 12.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.6; driver 200 | ET-first closer: loss 3 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.315 / FA 27.5 / loss 1.5 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 536 (was ~619 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 498.1669,
       "600": 498.1669,
@@ -11360,7 +11363,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer EQS 450+ RWD ~5.5 / ~14.0@100 (loss 15.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.1; driver 200 | Trap-first tire-prep: Cd 0.335 / FA 30 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 355 (was ~449 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer EQS 450+ RWD ~5.5 / ~14.0@100 (loss 15.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.1; driver 200 | Trap-first tire-prep: Cd 0.335 / FA 30 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 355 (was ~449 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 329.9426,
       "600": 329.9426,
@@ -11540,7 +11543,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "DCT",
-    "source": "Perf: C&D/peer e-tron GT (non-RS) ~3.9 / ~12.3@113 (loss 24.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Porsche_Taycan_2 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4 / Conti (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 522 (was ~615 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer e-tron GT (non-RS) ~3.9 / ~12.3@113 (loss 24.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Porsche_Taycan_2 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4 / Conti (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 522 (was ~615 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 485.155,
       "600": 485.155,
@@ -11719,7 +11722,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D Lucid Air Touring 3.0 / 11.0@126 (loss 16.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.3; driver 200 | Fleet miss-batch: C&D Lucid Air Touring 3.0 / 11.0@126 | ET-first closer: loss 4.5 / tire 3 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 620 (was ~671 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D Lucid Air Touring 3.0 / 11.0@126 (loss 16.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.3; driver 200 | Fleet miss-batch: C&D Lucid Air Touring 3.0 / 11.0@126 | ET-first closer: loss 4.5 / tire 3 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 620 (was ~671 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 751.7067,
       "600": 751.7067,
@@ -11898,7 +11901,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Model S Dual Motor LR ~3.1 / ~10.6@130 (loss 16, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19; driver 200 | ET-first closer: loss 10 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.295 / FA 27.5 / loss 22 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 670 (was ~803 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Model S Dual Motor LR ~3.1 / ~10.6@130 (loss 16, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19; driver 200 | ET-first closer: loss 10 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 3 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.295 / FA 27.5 / loss 22 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 670 (was ~803 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 599.4992,
       "600": 599.4992,
@@ -12080,7 +12083,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Kona Electric ~6.2 / ~14.8@94 (loss 9.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.6; driver 200 | Trap-first tire-prep: Cd 0.34 / FA 25.5 / loss 0 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Hankook / Nexen all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 201 (was ~237 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Kona Electric ~6.2 / ~14.8@94 (loss 9.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.6; driver 200 | Trap-first tire-prep: Cd 0.34 / FA 25.5 / loss 0 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Hankook / Nexen all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 201 (was ~237 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 186.8125,
       "600": 186.8125,
@@ -12259,7 +12262,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Niro EV ~6.2 / ~14.9@93 (loss 11.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.9; driver 200 | Trap-first tire-prep: Cd 0.435 / FA 28 / loss 0 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Nexen / Hankook all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 201 (was ~241 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Niro EV ~6.2 / ~14.9@93 (loss 11.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.9; driver 200 | Trap-first tire-prep: Cd 0.435 / FA 28 / loss 0 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Nexen / Hankook all-season (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 201 (was ~241 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 186.8126,
       "600": 186.8126,
@@ -12438,7 +12441,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer EQS 580 SUV Dual Motor ~4.0 / ~12.5@112 (loss 11.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.3; driver 200 | Trap-first tire-prep: Cd 0.395 / FA 36 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream EV all-season → Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 536 (was ~613 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer EQS 580 SUV Dual Motor ~4.0 / ~12.5@112 (loss 11.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.3; driver 200 | Trap-first tire-prep: Cd 0.395 / FA 36 / loss 0 / tire 4 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream EV all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | EV curve scaled to card peakHp 536 (was ~613 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 498.1668,
       "600": 498.1668,
@@ -12617,7 +12620,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer XC40 Recharge Twin Motor ~4.3 / ~12.8@108 (loss 18, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 31 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 402 (was ~446 curve peak; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer XC40 Recharge Twin Motor ~4.3 / ~12.8@108 (loss 18, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | Trap-first tire-prep: Cd 0.425 / FA 31 / loss 0 / tire 3 / launch 500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | EV curve scaled to card peakHp 402 (was ~446 curve peak; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 359.6997,
       "600": 359.6997,
@@ -12803,7 +12806,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2 / 9.5@148 (loss 27.1, TX DCT, driver 200, Summer, trap-first; Ferrari 8DCT) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 3 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 21 / loss 1.5 / tire 2 / launch 1200 / fall×1.15 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_8 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2 / 9.5@148 (loss 27.1, TX DCT, driver 200, Summer, trap-first; Ferrari 8DCT) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 3 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 21 / loss 1.5 / tire 2 / launch 1200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_8 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 474.0373,
       "1100": 483.3189,
@@ -12920,7 +12923,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@137 (loss 8.6, TX DCT, driver 200, Summer, trap-first; PDK) | Phase 32 trap-first; tire AllSeason; loss 8.7; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@137 (loss 8.6, TX DCT, driver 200, Summer, trap-first; PDK) | Phase 32 trap-first; tire AllSeason; loss 8.7; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 456.87148775527567,
       "1100": 466.40441869904464,
@@ -12996,7 +12999,7 @@ var GARAGE = [
   },
   {
     "id": "2020-lamborghini-hurac-n-evo",
-    "name": "2020 Lamborghini Huracán EVO",
+    "name": "2020 Lamborghini Hurac\u00e1n EVO",
     "category": "Supercars",
     "peakHp": 631,
     "weightLbs": 3400,
@@ -13032,7 +13035,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.4@135 (loss 13.4, TX DCT, driver 200, Summer, trap-first; LDF DCT) | Phase 32 trap-first; tire AllSeason; loss 17.5; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 21 / loss 0 / tire 4 / launch 2400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Lambo_LDF_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.4@135 (loss 13.4, TX DCT, driver 200, Summer, trap-first; LDF DCT) | Phase 32 trap-first; tire AllSeason; loss 17.5; driver 200 | ET-first closer: loss 2 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 21 / loss 0 / tire 4 / launch 2400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Lambo_LDF_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 376.37786834233077,
       "1100": 383.449676202209,
@@ -13145,7 +13148,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.9@148 (loss 14.6, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 30.2; driver 200 | ET-first closer: loss 17 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 20 / loss 15 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.9@148 (loss 14.6, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 30.2; driver 200 | ET-first closer: loss 17 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 20 / loss 15 / tire 2 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 538.816165099337,
       "1100": 549.334672136534,
@@ -13251,7 +13254,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.4@138 (loss 19.9, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 26; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.4@138 (loss 19.9, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 26; driver 200 | ET-first closer: loss 12.5 / tire 2 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 381.35469601818505,
       "1100": 387.72808150479773,
@@ -13372,7 +13375,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.7@132 (loss 26.9, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 22.7; driver 200 | ET-first closer: loss 7 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.7@132 (loss 26.9, TX DCT, driver 200, UHP, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 22.7; driver 200 | ET-first closer: loss 7 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 387.579178377801,
       "1100": 395.5587622506615,
@@ -13445,7 +13448,7 @@ var GARAGE = [
   },
   {
     "id": "2019-lamborghini-hurac-n-performante",
-    "name": "2019 Lamborghini Huracán Performante",
+    "name": "2019 Lamborghini Hurac\u00e1n Performante",
     "category": "Supercars",
     "peakHp": 631,
     "weightLbs": 3047,
@@ -13481,7 +13484,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@136 (loss 17.2, TX DCT, driver 200, UHP, trap-first; LDF DCT) | Phase 32 trap-first; tire UHP; loss 23; driver 200 | ET-first closer: loss 8.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 23 / loss 1.5 / tire 2 / launch 1100 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Lambo_LDF_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.2 / 10.1@136 (loss 17.2, TX DCT, driver 200, UHP, trap-first; LDF DCT) | Phase 32 trap-first; tire UHP; loss 23; driver 200 | ET-first closer: loss 8.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 2 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 23 / loss 1.5 / tire 2 / launch 1100 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Lambo_LDF_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 387.19530869035157,
       "1100": 394.30048315536544,
@@ -13594,7 +13597,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.3@140 (loss 15.5, TX DCT, driver 200, UHP, trap-first; PDK) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 23 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 20.5 / loss 12.5 / tire 1 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin PS Cup 2 → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.3@140 (loss 15.5, TX DCT, driver 200, UHP, trap-first; PDK) | Phase 32 trap-first; tire Summer; loss 27.8; driver 200 | ET-first closer: loss 23 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 20.5 / loss 12.5 / tire 1 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Michelin PS Cup 2 \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 495.19519261808153,
       "1100": 504.9074132071285,
@@ -13703,7 +13706,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.3@140 (loss 10.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 25.8; driver 200 | ET-first closer: loss 14 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 21 / loss 7.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.3@140 (loss 10.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 25.8; driver 200 | ET-first closer: loss 14 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 21 / loss 7.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 398.32862744385085,
       "1100": 405.5848783925484,
@@ -13819,7 +13822,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.2@145 (loss 21.7, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 19.7; driver 200 | ET-first closer: loss 3 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 21 / loss 0 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.6 / 10.2@145 (loss 21.7, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 19.7; driver 200 | ET-first closer: loss 3 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 21 / loss 0 / tire 2 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 588.909,
       "1100": 601.313,
@@ -13926,7 +13929,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@129 (loss 30.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 28.3; driver 200 | ET-first closer: loss 11.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 23.5 / loss 9.5 / tire 1 / launch 3500 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@129 (loss 30.7, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire Summer; loss 28.3; driver 200 | ET-first closer: loss 11.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 23.5 / loss 9.5 / tire 1 / launch 3500 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 345.02179042237776,
       "1100": 350.35407446946533,
@@ -14047,7 +14050,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.7@134 (loss 19.7, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 21; driver 200 | ET-first closer: loss 1 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.7@134 (loss 19.7, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 21; driver 200 | ET-first closer: loss 1 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 403.2918,
       "1100": 411.5949,
@@ -14155,7 +14158,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.2 / 11.2@128 (loss 19.3, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 21.3; driver 200 | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18.5 / loss 7 / tire 0 / launch 3300 / fall×1.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.2 / 11.2@128 (loss 19.3, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 21.3; driver 200 | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18.5 / loss 7 / tire 0 / launch 3300 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 335.2208589673374,
       "1100": 341.5193629566425,
@@ -14268,7 +14271,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 11.2@126 (loss 22.6, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 21.4; driver 200 | ET-first closer: loss 7 / tire 2 / launch 5500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 23 / loss 0 / tire 2 / launch 2700 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 11.2@126 (loss 22.6, TX DCT, driver 200, All-season, trap-first; Ferrari 7DCT) | Phase 32 trap-first; tire UHP; loss 21.4; driver 200 | ET-first closer: loss 7 / tire 2 / launch 5500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 23 / loss 0 / tire 2 / launch 2700 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 285.90492318255644,
       "1100": 290.89315860469264,
@@ -14388,7 +14391,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: C&D 2005/06 Ford GT MT ~3.6 / ~11.8@125 (loss 20.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7; driver 200 | ET-first closer: loss 0 / tire 2 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 19.5 / loss 0 / tire 1 / launch 3600 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ford_Ricardo_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 2005/06 Ford GT MT ~3.6 / ~11.8@125 (loss 20.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7; driver 200 | ET-first closer: loss 0 / tire 2 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 19.5 / loss 0 / tire 1 / launch 3600 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ford_Ricardo_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 406.01928509480547,
       "1100": 413.23226052097533,
@@ -14496,7 +14499,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: C&D Carrera GT MT ~3.6 / ~11.3@130 (loss 24.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 20 / loss 1.5 / tire 1 / launch 4500 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Porsche_CGT_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin Pilot Sport Cup → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: C&D Carrera GT MT ~3.6 / ~11.3@130 (loss 24.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.4; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 20 / loss 1.5 / tire 1 / launch 4500 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Porsche_CGT_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Michelin Pilot Sport Cup \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 364.6006252654495,
       "1100": 371.8252857499054,
@@ -14608,7 +14611,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.2@136 (loss 13.3, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 6.5 / tire 4 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 21 / loss 3.5 / tire 1 / launch 4500 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.2@136 (loss 13.3, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 19.4; driver 200 | ET-first closer: loss 6.5 / tire 4 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 21 / loss 3.5 / tire 1 / launch 4500 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | WD OEM: Enzo OEM 41/59 (JBCarPages / published Enzo specs) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 307.2629077496141,
       "1100": 312.0116312990724,
@@ -14684,8 +14687,8 @@ var GARAGE = [
       "8100": 372.8595802469134,
       "8200": 358.5835024390242
     },
-    "frontWeightPercent": 45,
-    "rearWeightPercent": 55,
+    "frontWeightPercent": 41,
+    "rearWeightPercent": 59,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
@@ -14693,7 +14696,7 @@ var GARAGE = [
   },
   {
     "id": "2007-lamborghini-murci-lago-lp640",
-    "name": "2007 Lamborghini Murciélago LP640",
+    "name": "2007 Lamborghini Murci\u00e9lago LP640",
     "category": "Supercars",
     "peakHp": 631,
     "weightLbs": 3671,
@@ -14728,7 +14731,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.5@126 (loss 24.5, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 18.8; driver 200 | ET-first closer: loss 8.5 / tire 0 / launch 2548 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5.5 / tire 0 / launch 1648 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 5 / tire 0 / launch 1048 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_EGear_V12_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.5@126 (loss 24.5, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 18.8; driver 200 | ET-first closer: loss 8.5 / tire 0 / launch 2548 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5.5 / tire 0 / launch 1648 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 5 / tire 0 / launch 1048 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_EGear_V12_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 376.37786834233077,
       "1100": 383.449676202209,
@@ -14840,7 +14843,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.5@124 (loss 7.6, TX DCT, driver 200, Summer, trap-first; GR6 DCT) | Phase 32 trap-first; tire AllSeason; loss 7.6; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 19.5 / loss 0 / tire 4 / launch 1800 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via GR6_DCT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Bridgestone Potenza RE070R / Dunlop SP Sport 600 (documented; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.5@124 (loss 7.6, TX DCT, driver 200, Summer, trap-first; GR6 DCT) | Phase 32 trap-first; tire AllSeason; loss 7.6; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 19.5 / loss 0 / tire 4 / launch 1800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via GR6_DCT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Bridgestone Potenza RE070R / Dunlop SP Sport 600 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 338.4615396200198,
       "1100": 344.4743445719145,
@@ -14948,7 +14951,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: C&D/peer R8 V10 ~3.5 / ~11.7@122 (loss 18.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.4; driver 200 | ET-first closer: loss 1 / tire 0 / launch 6687 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 19.5 / loss 0 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Audi UK R8 V10 R-tronic technical data",
+    "source": "Perf: C&D/peer R8 V10 ~3.5 / ~11.7@122 (loss 18.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.4; driver 200 | ET-first closer: loss 1 / tire 0 / launch 6687 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 19.5 / loss 0 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Audi UK R8 V10 R-tronic technical data",
     "torqueCurve": {
       "1000": 300.04274587117675,
       "1100": 305.1843034126002,
@@ -15059,7 +15062,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: C&D Diablo VT 6.0 4.3 / 12.2@122 (loss 26.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.2; driver 200 | ET-first closer: loss 10 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 20.5 / loss 9 / tire 0 / launch 2700 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_Manual_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Diablo VT 6.0 4.3 / 12.2@122 (loss 26.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.2; driver 200 | ET-first closer: loss 10 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 20.5 / loss 9 / tire 0 / launch 2700 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_Manual_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 328.06311820646897,
       "1100": 334.2271345661092,
@@ -15171,7 +15174,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.5 / 13@112 (loss 28.8, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 24.8; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.425 / FA 23 / loss 0 / tire 3 / launch 3500 / fall×1.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.5 / 13@112 (loss 28.8, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 24.8; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.425 / FA 23 / loss 0 / tire 3 / launch 3500 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 195.7810693294169,
       "1100": 199.070061014534,
@@ -15290,7 +15293,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 997 Turbo ~3.4 / ~11.7@118 (loss 24.7, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | Fleet miss-batch: C&D 997 Turbo Tip 3.4 / 11.6@122; OEM ~480@6000 / 460@1950–5000 — Trap-priority FI plateau + Summer + loss0. 0–60 optimistic vs C&D Tip; txKey kept. | ET-first closer: loss 9 / tire 3 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 3 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18 / loss 0 / tire 0 / launch 2200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 997 Turbo ~3.4 / ~11.7@118 (loss 24.7, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | Fleet miss-batch: C&D 997 Turbo Tip 3.4 / 11.6@122; OEM ~480@6000 / 460@1950\u20135000 \u2014 Trap-priority FI plateau + Summer + loss0. 0\u201360 optimistic vs C&D Tip; txKey kept. | ET-first closer: loss 9 / tire 3 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 3 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18 / loss 0 / tire 0 / launch 2200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 401.35539798577145,
       "1100": 410.49373362510676,
@@ -15398,7 +15401,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Aston DBS ~4.3 / ~12.7@114 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.6; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Aston DBS ~4.3 / ~12.7@114 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.6; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 304.2039823369076,
       "1100": 309.9197065976649,
@@ -15512,7 +15515,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.7@124 (loss 11.5, TX DCT, driver 200, All-season, trap-first; AMG Speedshift DCT) | Phase 32 trap-first; tire AllSeason; loss 9.2; driver 200 | ET-first closer: loss 2.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 22 / loss 1.5 / tire 1 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.7@124 (loss 11.5, TX DCT, driver 200, All-season, trap-first; AMG Speedshift DCT) | Phase 32 trap-first; tire AllSeason; loss 9.2; driver 200 | ET-first closer: loss 2.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 22 / loss 1.5 / tire 1 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 377.0588287166749,
       "1100": 383.81626212519467,
@@ -15624,7 +15627,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.9@120 (loss 24.3, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 28.3; driver 200 | ET-first closer: loss 13.5 / tire 3 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 21 / loss 8.5 / tire 4 / launch 4500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.6 / 11.9@120 (loss 24.3, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 28.3; driver 200 | ET-first closer: loss 13.5 / tire 3 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 4 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 21 / loss 8.5 / tire 4 / launch 4500 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 236.4056412152709,
       "1100": 240.37709867504975,
@@ -15744,7 +15747,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.2 / 11.2@130 (loss 11.5, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 19.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5.5 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 18.5 / loss 4.5 / tire 0 / launch 2800 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.2 / 11.2@130 (loss 11.5, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 19.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5.5 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 18.5 / loss 4.5 / tire 0 / launch 2800 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 311.2565309682568,
       "1100": 316.37156885478475,
@@ -15856,7 +15859,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D V12 Vantage MT 4.2 / 12.5@117 (loss 24.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.5; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 22 / loss 0 / tire 3 / launch 1200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aston_Graziano_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D V12 Vantage MT 4.2 / 12.5@117 (loss 24.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.5; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 22 / loss 0 / tire 3 / launch 1200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aston_Graziano_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 304.2039823369076,
       "1100": 309.9197065976649,
@@ -15968,7 +15971,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D SRT Viper GTS MT ~3.5 / ~11.5@128 (loss 25.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.3; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22 / loss 0 / tire 4 / launch 3500 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D SRT Viper GTS MT ~3.5 / ~11.5@128 (loss 25.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.3; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22 / loss 0 / tire 4 / launch 3500 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via TR6060_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 313.249710927067,
       "1100": 318.5120976232543,
@@ -16089,7 +16092,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.2@114 (loss 24.8, TX DCT, driver 200, All-season, trap-first; PDK (source PDK)) | Phase 32 trap-first; tire AllSeason; loss 18.4; driver 200 | ET-first closer: loss 5.5 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.2@114 (loss 24.8, TX DCT, driver 200, All-season, trap-first; PDK (source PDK)) | Phase 32 trap-first; tire AllSeason; loss 18.4; driver 200 | ET-first closer: loss 5.5 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 270.407,
       "1100": 275.6419,
@@ -16196,7 +16199,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 996 Turbo Tiptronic ~4.0 / ~12.3@116 (loss 19.3, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 5 / tire 0 / launch 3200 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 996 Turbo Tiptronic ~4.0 / ~12.3@116 (loss 19.3, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 5 / tire 0 / launch 3200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 271.69824159930306,
       "1100": 277.2920377263928,
@@ -16305,7 +16308,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.3 / 12.5@119 (loss 16.7, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 23.1; driver 200 | ET-first closer: loss 9 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.435 / FA 24.5 / loss 0.5 / tire 3 / launch 3500 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.3 / 12.5@119 (loss 16.7, TX DCT, driver 200, All-season, trap-first; Ferrari F1 automated) | Phase 32 trap-first; tire AllSeason; loss 23.1; driver 200 | ET-first closer: loss 9 / tire 0 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.435 / FA 24.5 / loss 0.5 / tire 3 / launch 3500 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 261.29175590372165,
       "1100": 265.8505609001605,
@@ -16390,7 +16393,7 @@ var GARAGE = [
   },
   {
     "id": "2008-lamborghini-revent-n",
-    "name": "2008 Lamborghini Reventón",
+    "name": "2008 Lamborghini Revent\u00f3n",
     "category": "Supercars",
     "peakHp": 650,
     "weightLbs": 3700,
@@ -16425,7 +16428,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.5@125 (loss 28.3, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_V12_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.5@125 (loss 28.3, TX DCT, driver 200, All-season, trap-first; e-gear (ISR/DCT class)) | Phase 32 trap-first; tire AllSeason; loss 23; driver 200 | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Lambo_EGear_V12_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 391.71968003725976,
       "1100": 399.4817119627083,
@@ -16538,7 +16541,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 10.8@135 (loss 17.8, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 21; driver 200 | ET-first closer: loss 3 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 10.8@135 (loss 17.8, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 21; driver 200 | ET-first closer: loss 3 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 403.2918,
       "1100": 411.5949,
@@ -16647,7 +16650,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Sequential",
-    "source": "Perf: peer V12 Vantage S Sportshift ~3.7 / ~12.1@122 (loss 20.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.7; driver 200 | ET-first closer: loss 7 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 4 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 22 / loss 4 / tire 4 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Aston Martin V12 Vantage S Sportshift III tech sheet",
+    "source": "Perf: peer V12 Vantage S Sportshift ~3.7 / ~12.1@122 (loss 20.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.7; driver 200 | ET-first closer: loss 7 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 4 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 22 / loss 4 / tire 4 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Aston Martin V12 Vantage S Sportshift III tech sheet",
     "torqueCurve": {
       "1000": 325.2953401428316,
       "1100": 330.9936801902334,
@@ -16760,7 +16763,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1117.756837569051,
       "1100": 1140.8244531501591,
@@ -16866,7 +16869,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.2@145 (loss 9.9, TX DCT, driver 200, Summer, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.2@145 (loss 9.9, TX DCT, driver 200, Summer, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire UHP; loss 18.8; driver 200 | ET-first closer: loss 3.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 530.2441793187282,
       "1100": 540.880496794106,
@@ -16972,7 +16975,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.3@136 (loss 22.8, TX DCT, driver 200, All-season, trap-first; ISR automated) | Phase 32 trap-first; tire UHP; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22 / loss 4.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_ISR_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Pirelli Trofeo R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.3@136 (loss 22.8, TX DCT, driver 200, All-season, trap-first; ISR automated) | Phase 32 trap-first; tire UHP; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22 / loss 4.5 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Lambo_ISR_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Pirelli Trofeo R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 436.98966932461803,
       "1100": 444.64460754758784,
@@ -17079,7 +17082,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: C&D/OEM Rimac Nevera ~1.9 / ~8.5@167 (loss 27.6, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire Summer; loss 25.7; driver 200 | ET-first closer: loss 3.5 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.36 / FA 22.5 / loss 2.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance EV summer/UHP → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/OEM Rimac Nevera ~1.9 / ~8.5@167 (loss 27.6, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire Summer; loss 25.7; driver 200 | ET-first closer: loss 3.5 / tire 1 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 2 / launch 500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.36 / FA 22.5 / loss 2.5 / tire 2 / launch 500 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via EV_Single OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance EV summer/UHP \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "500": 1821.98445,
       "600": 1821.98445,
@@ -17266,7 +17269,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: OEM/peer Jesko ~2.5 / ~9.1@170 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.9; driver 200 | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 21.5 / loss 32.5 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_8 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Koenigsegg LST published ratios (Geneva / tech coverage)",
+    "source": "Perf: OEM/peer Jesko ~2.5 / ~9.1@170 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.9; driver 200 | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.29 / FA 21.5 / loss 32.5 / tire 2 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Ferrari_DCT_8 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Koenigsegg LST published ratios (Geneva / tech coverage)",
     "torqueCurve": {
       "1000": 914.203321181789,
       "1100": 932.0499536515231,
@@ -17372,7 +17375,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 9.9@146 (loss 28.1, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 10.5 / tire 4 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 9.9@146 (loss 28.1, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 10.5 / tire 4 / launch 3300 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 829.9081005776985,
       "1100": 847.3882097090192,
@@ -17477,7 +17480,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.1@142 (loss 19.4, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 19.5; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22.5 / loss 2.5 / tire 4 / launch 800 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.5 / 10.1@142 (loss 19.4, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 19.5; driver 200 | ET-first closer: loss 5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 22.5 / loss 2.5 / tire 4 / launch 800 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 692.2816738985636,
       "1100": 706.8629982656068,
@@ -17581,7 +17584,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: peer Saleen S7 Twin Turbo MT ~3.3 / ~11.0@140 (loss 30, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.1; driver 200 | ET-first closer: loss 4 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22.5 / loss 5 / tire 1 / launch 4200 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Saleen_Ricardo_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Saleen S7 Twin Turbo MT ~3.3 / ~11.0@140 (loss 30, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.1; driver 200 | ET-first closer: loss 4 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 22.5 / loss 5 / tire 1 / launch 4200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Saleen_Ricardo_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 596.4190285394743,
       "1100": 608.0620306525495,
@@ -17667,7 +17670,7 @@ var GARAGE = [
       0.94,
       0.71
     ],
-    "txKey": "Ferrari_F1_6",
+    "txKey": "Maserati_MC12_Cambiocorsa_6",
     "drivetrainLossPercent": 12,
     "driveType": "RWD",
     "isEv": false,
@@ -17686,7 +17689,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: OEM/MT MC12 ~3.8 / 11.3@124 (loss 31, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.6; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 24.5 / loss 7.5 / tire 1 / launch 4400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: OEM/MT MC12 ~3.8 / 11.3@124 (loss 31, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.6; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 24.5 / loss 7.5 / tire 1 / launch 4400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Ferrari_F1_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM: Maserati Cambiocorsa 6 published ratios FD 4.10 (supercars.net/Maserati press table; credit Jorge Guerra) | WD OEM 41/59 (Maserati MC12 press)",
     "torqueCurve": {
       "1000": 357.53700217468753,
       "1100": 363.80013344802643,
@@ -17754,8 +17757,8 @@ var GARAGE = [
       "7100": 385.9233708920188,
       "7200": 367.9804074074074
     },
-    "frontWeightPercent": 45,
-    "rearWeightPercent": 55,
+    "frontWeightPercent": 41,
+    "rearWeightPercent": 59,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
@@ -17799,7 +17802,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: OEM/peer Venom GT ~2.7 / ~10.0@170 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 14.7; driver 200 | ET-first closer: loss 8 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 18.5 / loss 0 / tire 2 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ford_Ricardo_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: OEM/peer Venom GT ~2.7 / ~10.0@170 (loss 5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 14.7; driver 200 | ET-first closer: loss 8 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 18.5 / loss 0 / tire 2 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Ford_Ricardo_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 876.9128650224364,
       "1100": 892.7929480111953,
@@ -17905,7 +17908,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: peer Koenigsegg CCX MT ~3.2 / ~10.9@135 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 17 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 21 / loss 17 / tire 1 / launch 800 / fall×1.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via CIMA_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Koenigsegg CCX MT ~3.2 / ~10.9@135 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 17 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.34 / FA 21 / loss 17 / tire 1 / launch 800 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via CIMA_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 557.4216075546875,
       "1100": 569.1624141878913,
@@ -18010,7 +18013,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 26.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | ET-first closer: loss 15 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 24 / loss 9 / tire 4 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 26.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 26.5; driver 200 | ET-first closer: loss 15 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 24 / loss 9 / tire 4 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1133.6276243093823,
       "1100": 1157.0227719575648,
@@ -18116,7 +18119,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10@151 (loss 30.5, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.7; driver 200 | ET-first closer: loss 21.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 20 / loss 21.5 / tire 2 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10@151 (loss 30.5, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.7; driver 200 | ET-first closer: loss 21.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.28 / FA 20 / loss 21.5 / tire 2 / launch 1000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 738.6420276527336,
       "1100": 753.0614379620037,
@@ -18216,7 +18219,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Auto",
-    "source": "Perf: OEM/peer Regera ~2.7 / ~9.8@156 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 35; driver 200 | ET-first closer: loss 2.5 / tire 2 / launch 2500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.37 / FA 23.5 / loss 16 / tire 2 / launch 2800 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Koenigsegg_KDD OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: OEM/peer Regera ~2.7 / ~9.8@156 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 35; driver 200 | ET-first closer: loss 2.5 / tire 2 / launch 2500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.37 / FA 23.5 / loss 16 / tire 2 / launch 2800 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 8% via Koenigsegg_KDD OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 850.6558030921411,
       "1100": 868.5729149517447,
@@ -18323,7 +18326,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.5@155 (loss 31.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 31.3; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 23 / loss 16.5 / tire 4 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.5@155 (loss 31.3, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 31.3; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 23 / loss 16.5 / tire 4 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1037.3851257221233,
       "1100": 1059.235262136274,
@@ -18428,7 +18431,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.5@140 (loss 32, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 33 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20 / loss 32.5 / tire 2 / launch 1500 / fall×0.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.9 / 10.5@140 (loss 32, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 33 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 32.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20 / loss 32.5 / tire 2 / launch 1500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 564.6742890621321,
       "1100": 576.5678333881102,
@@ -18533,7 +18536,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.2, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.4; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.4 / 9.4@158 (loss 25.2, TX DCT, driver 200, All-season, trap-first; Bugatti DCT) | Phase 32 trap-first; tire AllSeason; loss 25.4; driver 200 | ET-first closer: loss 14 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 4 / launch 1200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Bugatti_DSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 1117.756837569051,
       "1100": 1140.8244531501591,
@@ -18639,7 +18642,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.4@142 (loss 26.4, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | ET-first closer: loss 22.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20.5 / loss 20.5 / tire 2 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 2.8 / 10.4@142 (loss 26.4, TX DCT, driver 200, All-season, trap-first; McLaren SSG DCT) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | ET-first closer: loss 22.5 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.33 / FA 20.5 / loss 20.5 / tire 2 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via McLaren_SSG_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 569.870229063353,
       "1100": 581.8732373335265,
@@ -18741,7 +18744,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: period Mk4 TT class ~4.9 / ~13.4@105 (loss 19.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | ET-first closer: loss 0.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 3900 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Bridgestone Potenza / Yokohama summer (documented; credit Jorge Guerra)",
+    "source": "Perf: period Mk4 TT class ~4.9 / ~13.4@105 (loss 19.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 12.6; driver 200 | ET-first closer: loss 0.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19 / loss 0 / tire 2 / launch 3900 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Bridgestone Potenza / Yokohama summer (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 225.1561490071194,
       "1100": 229.15607174344993,
@@ -18849,7 +18852,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer R34 GT-R (276 hp) MT ~4.9 / ~13.3@105 (loss 11, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 0 / tire 0 / launch 3600 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Getrag_R34 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Bridgestone Potenza RE010 (documented; credit Jorge Guerra)",
+    "source": "Perf: peer R34 GT-R (276 hp) MT ~4.9 / ~13.3@105 (loss 11, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 0 / tire 0 / launch 3600 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Getrag_R34 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Bridgestone Potenza RE010 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 181.93100067009755,
       "1100": 185.0703620185738,
@@ -18967,7 +18970,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/MT WRX STI ~4.8 / ~13.3@103 (loss 24.1, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.2; driver 200 | ET-first closer: loss 7.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Subaru_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Dunlop SP Sport Maxx / summer (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT WRX STI ~4.8 / ~13.3@103 (loss 24.1, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.2; driver 200 | ET-first closer: loss 7.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Subaru_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Dunlop SP Sport Maxx / summer (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 220.30581772426393,
       "1100": 224.6266567200468,
@@ -19075,7 +19078,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D FK8 CTR ~5.0 / 13.5@106 (loss 22.7, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.4; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21.5 / loss 0 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Continental SportContact 6 (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D FK8 CTR ~5.0 / 13.5@106 (loss 22.7, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.4; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 21.5 / loss 0 / tire 2 / launch 1200 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Continental SportContact 6 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 182.1673,
       "1100": 185.7341,
@@ -19189,7 +19192,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/MT Evo X MT class ~5.4 / ~13.9@100 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 0 / launch 1100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT Evo X MT class ~5.4 / ~13.9@100 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 0 / launch 1100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 188.34442798233215,
       "1100": 191.69038661179815,
@@ -19297,7 +19300,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer 2006 WRX STI MT ~4.8 / ~13.3@103 (loss 22.5, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.7; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 19.5 / loss 1 / tire 0 / launch 1100 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Subaru_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — Dunlop SP Sport 600 / Bridgestone Potenza (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 2006 WRX STI MT ~4.8 / ~13.3@103 (loss 22.5, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.7; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 19.5 / loss 1 / tire 0 / launch 1100 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Subaru_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 Dunlop SP Sport 600 / Bridgestone Potenza (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 196.40836494980485,
       "1100": 200.45211048757866,
@@ -19405,7 +19408,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer 350Z MT ~5.2 / ~13.9@102 (loss 19.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.8; driver 200 | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 0 / tire 3 / launch 3900 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Nissan_FS6R31A OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 350Z MT ~5.2 / ~13.9@102 (loss 19.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.8; driver 200 | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19 / loss 0 / tire 3 / launch 3900 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Nissan_FS6R31A OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 190.025497011998,
       "1100": 193.4501377200763,
@@ -19513,7 +19516,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 135i auto ~5.0 / ~13.6@104 (loss 17.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.6; driver 200 | ET-first closer: loss 2.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 4 / launch 800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 135i auto ~5.0 / ~13.6@104 (loss 17.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.6; driver 200 | ET-first closer: loss 2.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 4 / launch 800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 212.22651112203494,
       "1100": 216.38889137448362,
@@ -19621,7 +19624,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 2009 RX-8 R3 MT 6.3 / 14.9@94 (loss 29, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34; driver 200 | ET-first closer: loss 6 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18.5 / loss 4 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 2009 RX-8 R3 MT 6.3 / 14.9@94 (loss 29, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34; driver 200 | ET-first closer: loss 6 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18.5 / loss 4 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 139.64669254714912,
       "1100": 142.00115729662625,
@@ -19728,7 +19731,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Evo VIII MT ~4.8 / ~13.3@103 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.1; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 0 / launch 2000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Evo VIII MT ~4.8 / ~13.3@103 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15.1; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 0 / tire 0 / launch 2000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 178.5319163821926,
       "1100": 181.70355470806936,
@@ -19835,7 +19838,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D Impreza 22B STI MT 4.7 / 13.5@101 (loss 32, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.8; driver 200 | ET-first closer: loss 12 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 18.5 / loss 7.5 / tire 0 / launch 1000 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Subaru 22B STI 5MT published chart; FD 4.444",
+    "source": "Perf: C&D Impreza 22B STI MT 4.7 / 13.5@101 (loss 32, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.8; driver 200 | ET-first closer: loss 12 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 18.5 / loss 7.5 / tire 0 / launch 1000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Subaru 22B STI 5MT published chart; FD 4.444",
     "torqueCurve": {
       "1000": 186.7095958347177,
       "1100": 190.27669505936137,
@@ -19943,7 +19946,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D S2000 MT class ~5.8 / ~14.3@97 (loss 29.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | ET-first closer: loss 15.5 / tire 3 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13 / tire 3 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 17.5 / loss 14.5 / tire 3 / launch 2200 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_S2000_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D S2000 MT class ~5.8 / ~14.3@97 (loss 29.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | ET-first closer: loss 15.5 / tire 3 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13 / tire 3 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 17.5 / loss 14.5 / tire 3 / launch 2200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_S2000_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 117.46863264880334,
       "1100": 119.44205440115289,
@@ -20063,7 +20066,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D RX-8 MT 5.9 / 14.5@96 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 13 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18.5 / loss 13 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D RX-8 MT 5.9 / 14.5@96 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 13 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18.5 / loss 13 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 143.25824494060987,
       "1100": 145.67360101981484,
@@ -20170,7 +20173,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Prelude Type SH MT ~7.0 / ~15.5@90 (loss 28.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda News Prelude Type SH 5MT (M2U4)",
+    "source": "Perf: C&D/peer Prelude Type SH MT ~7.0 / ~15.5@90 (loss 28.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda News Prelude Type SH 5MT (M2U4)",
     "torqueCurve": {
       "1000": 97.89049442531676,
       "1100": 99.53505390264658,
@@ -20290,7 +20293,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer RSX Type-S MT ~6.5 / ~15.1@92 (loss 29.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.8; driver 200 | ET-first closer: loss 11 / tire 2 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11 / tire 2 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18 / loss 9.5 / tire 1 / launch 3700 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Acura RSX Type-S 02-04 press 6MT; FD 4.389",
+    "source": "Perf: C&D/peer RSX Type-S MT ~6.5 / ~15.1@92 (loss 29.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.8; driver 200 | ET-first closer: loss 11 / tire 2 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11 / tire 2 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 18 / loss 9.5 / tire 1 / launch 3700 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Acura RSX Type-S 02-04 press 6MT; FD 4.389",
     "torqueCurve": {
       "1000": 122.14723285594154,
       "1100": 124.2985201530483,
@@ -20398,7 +20401,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Mazdaspeed3 MT ~5.9 / ~14.5@96 (loss 31.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.9; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 22 / loss 0 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Mazda_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — MazdaSpeed3 OEM 6MT (primary FD 3.941; dual-FD 5/6 noted)",
+    "source": "Perf: C&D/peer Mazdaspeed3 MT ~5.9 / ~14.5@96 (loss 31.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.9; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 22 / loss 0 / tire 2 / launch 1200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Mazda_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 MazdaSpeed3 OEM 6MT (primary FD 3.941; dual-FD 5/6 noted)",
     "torqueCurve": {
       "1000": 208.57479376943144,
       "1100": 212.7791202077841,
@@ -20506,7 +20509,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer FR-S MT ~6.3 / ~14.9@93 (loss 29, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.5; driver 200 | ET-first closer: loss 8 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 3 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 18.5 / loss 8.5 / tire 3 / launch 1200 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer FR-S MT ~6.3 / ~14.9@93 (loss 29, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.5; driver 200 | ET-first closer: loss 8 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 3 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.2 / FA 18.5 / loss 8.5 / tire 3 / launch 1200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | Published CG: C&D instrumented Toyota 86 / Scion FR-S CG 18.0 in (credit Jorge Guerra) | WD OEM: Toyota USA Newsroom FR-S 53/47 (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 122.14723285594154,
       "1100": 124.2985201530483,
@@ -20570,12 +20573,15 @@ var GARAGE = [
       "6700": 136.16738315343696,
       "6800": 129.75529411764705
     },
-    "frontWeightPercent": 45,
-    "rearWeightPercent": 55,
+    "frontWeightPercent": 53,
+    "rearWeightPercent": 47,
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "cgHeightFeet": 1.5,
+    "cgHeightPublished": true,
+    "cgHeightSource": "C&D instrumented Toyota 86 / Scion FR-S CG 18.0 in (credit Jorge Guerra)"
   },
   {
     "id": "1990-mazda-miata-na",
@@ -20613,7 +20619,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer NA Miata MT ~8.5 / ~16.5@82 (loss 30.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.8; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 16 / loss 6 / tire 0 / launch 1100 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Mazda_Miata_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer NA Miata MT ~8.5 / ~16.5@82 (loss 30.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.8; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 16 / loss 6 / tire 0 / launch 1100 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Mazda_Miata_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 70.84539505644608,
       "1100": 72.093141688768,
@@ -20720,7 +20726,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Civic Type R EK9 MT ~6.7 / ~15.2@92 (loss 32, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 15 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18 / loss 17 / tire 1 / launch 1500 / fall×0.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda EK9 Civic Type R 5MT published; FD 4.400",
+    "source": "Perf: peer Civic Type R EK9 MT ~6.7 / ~15.2@92 (loss 32, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 15 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18 / loss 17 / tire 1 / launch 1500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda EK9 Civic Type R 5MT published; FD 4.400",
     "torqueCurve": {
       "1000": 89.08038654488469,
       "1100": 90.57687776161295,
@@ -20839,7 +20845,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer WRX Wagon MT ~6.0 / ~14.7@94 (loss 25.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 3 / tire 1 / launch 1300 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Subaru Bugeye WRX 5MT TY752 family; FD 3.900",
+    "source": "Perf: peer WRX Wagon MT ~6.0 / ~14.7@94 (loss 25.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 3 / tire 1 / launch 1300 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Subaru Bugeye WRX 5MT TY752 family; FD 3.900",
     "torqueCurve": {
       "1000": 149.5451845710617,
       "1100": 152.2018705488256,
@@ -20946,7 +20952,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Eclipse GT 3.8 MT ~6.5 / ~15.0@93 (loss 30.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30; driver 200 | ET-first closer: loss 5.5 / tire 2 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 4 / tire 1 / launch 4200 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Mitsubishi Eclipse 4G F5M51 5MT; FD 4.111",
+    "source": "Perf: peer Eclipse GT 3.8 MT ~6.5 / ~15.0@93 (loss 30.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30; driver 200 | ET-first closer: loss 5.5 / tire 2 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 4 / tire 1 / launch 4200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Mitsubishi Eclipse 4G F5M51 5MT; FD 4.111",
     "torqueCurve": {
       "1000": 160.62361120556312,
       "1100": 163.4525540012585,
@@ -21054,7 +21060,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Scion tC auto ~7.4 / ~15.8@88 (loss 21.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18.5 / loss 1.5 / tire 4 / launch 2100 / fall×0.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — 2012 Scion tC 6MT OEM specs",
+    "source": "Perf: C&D/peer Scion tC auto ~7.4 / ~15.8@88 (loss 21.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.8; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 18.5 / loss 1.5 / tire 4 / launch 2100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 2012 Scion tC 6MT OEM specs",
     "torqueCurve": {
       "1000": 114.96893762097498,
       "1100": 117.19465263583682,
@@ -21161,7 +21167,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Eclipse GSX turbo AWD MT ~6.4 / ~15.0@90 (loss 27.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.8; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Mitsubishi Eclipse 3G GSX F5M42 5MT; FD 3.722",
+    "source": "Perf: peer Eclipse GSX turbo AWD MT ~6.4 / ~15.0@90 (loss 27.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.8; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Mitsubishi Eclipse 3G GSX F5M42 5MT; FD 3.722",
     "torqueCurve": {
       "1000": 140.72150713170672,
       "1100": 143.34314389941255,
@@ -21268,7 +21274,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Accord Euro R MT ~6.8 / ~15.2@92 (loss 31.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.5; driver 200 | ET-first closer: loss 5.5 / tire 4 / launch 4000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda Accord Euro R T2W4 5MT; FD 4.266",
+    "source": "Perf: peer Accord Euro R MT ~6.8 / ~15.2@92 (loss 31.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.5; driver 200 | ET-first closer: loss 5.5 / tire 4 / launch 4000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda Accord Euro R T2W4 5MT; FD 4.266",
     "torqueCurve": {
       "1000": 120.1166,
       "1100": 122.1345,
@@ -21388,7 +21394,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D Genesis Coupe 3.8 MT 5.7 / 14.3@100 (loss 26, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 22 / loss 0 / tire 0 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Hyundai_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Genesis Coupe 3.8 MT 5.7 / 14.3@100 (loss 26, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 22 / loss 0 / tire 0 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Hyundai_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 195.44723814559057,
       "1100": 199.23095895669582,
@@ -21495,7 +21501,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer Prelude SH MT ~7.0 / ~15.5@90 (loss 28.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda News Prelude Type SH 5MT (M2U4)",
+    "source": "Perf: C&D/peer Prelude SH MT ~7.0 / ~15.5@90 (loss 28.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.3 / FA 20.5 / loss 1 / tire 2 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda News Prelude Type SH 5MT (M2U4)",
     "torqueCurve": {
       "1000": 97.89049442531676,
       "1100": 99.53505390264658,
@@ -21615,7 +21621,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D Legacy GT Spec.B MT 5.3 / 14.0@98 (loss 15.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 0 / launch 2800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Subaru_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Subaru Legacy GT Spec.B 6MT TY856 / STI set; FD 3.900",
+    "source": "Perf: C&D Legacy GT Spec.B MT 5.3 / 14.0@98 (loss 15.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.7; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 0 / launch 2800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Subaru_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Subaru Legacy GT Spec.B 6MT TY856 / STI set; FD 3.900",
     "torqueCurve": {
       "1000": 171.3199065535859,
       "1100": 174.3634227641427,
@@ -21723,7 +21729,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D Mazdaspeed6 MT 5.4 / 14.0@99 (loss 20.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 10 / tire 0 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — MazdaSpeed6 OEM 6MT shared MS3 set; FD 3.941 primary",
+    "source": "Perf: C&D Mazdaspeed6 MT 5.4 / 14.0@99 (loss 20.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 10 / tire 0 / launch 1000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Mazda_6MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 MazdaSpeed6 OEM 6MT shared MS3 set; FD 3.941 primary",
     "torqueCurve": {
       "1000": 177.34147245215019,
       "1100": 180.49196241604304,
@@ -21831,7 +21837,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World ZX-10R class ~2.8 / ~10.3@146 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 27 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.46 / FA 6.8 / loss 13 / tire 2 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World ZX-10R class ~2.8 / ~10.3@146 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.4; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 27 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.46 / FA 6.8 / loss 13 / tire 2 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 53.17428888934876,
       "1100": 53.72233019368732,
@@ -22004,7 +22010,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World ZX-10R class ~2.8 / ~10.3@146 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.1; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 20 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 6.8 / loss 11 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World ZX-10R class ~2.8 / ~10.3@146 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 34.1; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 20 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.45 / FA 6.8 / loss 11 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 50.37006024497257,
       "1100": 50.93500429072777,
@@ -22177,7 +22183,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer GSX-R1000 ~2.8 / ~10.2@148 (loss 29.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.7; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 25 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 6.8 / loss 15 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer GSX-R1000 ~2.8 / ~10.2@148 (loss 29.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.7; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 25 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.42 / FA 6.8 / loss 15 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 48.148673489286246,
       "1100": 48.70123405725861,
@@ -22360,7 +22366,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer GSX-R1000R ~2.7 / ~10.0@150 (loss 26.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.4; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 19.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 6.8 / loss 16 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer GSX-R1000R ~2.7 / ~10.0@150 (loss 26.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.4; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 19.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 6.8 / loss 16 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 47.83464921014088,
       "1100": 48.38360599380379,
@@ -22543,7 +22549,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer YZF-R1 ~2.8 / ~9.9@150 (loss 25.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.6; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 19.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 6.8 / loss 13.5 / tire 2 / launch 2400 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer YZF-R1 ~2.8 / ~9.9@150 (loss 25.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.6; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 19.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13.5 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 6.8 / loss 13.5 / tire 2 / launch 2400 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 47.2980212518157,
       "1100": 47.81972552597852,
@@ -22726,7 +22732,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer YZF-R1M ~2.8 / ~9.9@150 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.3; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 22.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 6.8 / loss 17.5 / tire 2 / launch 2400 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer YZF-R1M ~2.8 / ~9.9@150 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.3; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 22.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 6.8 / loss 17.5 / tire 2 / launch 2400 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 48.79131583524964,
       "1100": 49.31244720453419,
@@ -22909,7 +22915,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer S1000RR ~2.7 / ~9.9@150 (loss 30.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 24.9; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | Fleet miss-batch: Cycle World/class ~2.7–3.1 / ~9.9–10.3@150–156; OEM ~205@13500 / 83 lb-ft@11000 | ET-first closer: loss 18.5 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.36 / FA 4.8 / loss 19.5 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer S1000RR ~2.7 / ~9.9@150 (loss 30.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 24.9; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | Fleet miss-batch: Cycle World/class ~2.7\u20133.1 / ~9.9\u201310.3@150\u2013156; OEM ~205@13500 / 83 lb-ft@11000 | ET-first closer: loss 18.5 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.36 / FA 4.8 / loss 19.5 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 46.95584415812531,
       "1100": 47.56976199756448,
@@ -23093,7 +23099,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer CBR1000RR-R ~2.8 / ~9.9@150 (loss 30.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 33; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 21.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 6.8 / loss 20.5 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer CBR1000RR-R ~2.8 / ~9.9@150 (loss 30.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 33; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 21.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 6.8 / loss 20.5 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 49.7491354475782,
       "1100": 50.240185422496296,
@@ -23276,7 +23282,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World Hayabusa class ~2.7 / ~9.9@145 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 15.6; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 6.8 / loss 0.5 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Hyper_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World Hayabusa class ~2.7 / ~9.9@145 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 15.6; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 6.8 / loss 0.5 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Hyper_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 62.755471745944874,
       "1100": 63.598497353065646,
@@ -23424,7 +23430,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer ZX-14R ~2.7 / ~9.7@152 (loss 8.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 21; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 6.5 / tire 2 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.46 / FA 6.8 / loss 0 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Hyper_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer ZX-14R ~2.7 / ~9.7@152 (loss 8.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 21; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 6.5 / tire 2 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.46 / FA 6.8 / loss 0 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Hyper_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 72.5799755913467,
       "1100": 73.59292648111483,
@@ -23572,7 +23578,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/peer Panigale V4 ~2.9 / ~10.3@150 (loss 31.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.2; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 14.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 6.3 / loss 20 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/peer Panigale V4 ~2.9 / ~10.3@150 (loss 31.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 32.2; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 14.5 / tire 2 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19 / tire 2 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 6.3 / loss 20 / tire 2 / launch 2400 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 51.72263945691196,
       "1100": 52.24289132398621,
@@ -23755,7 +23761,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Sequential",
-    "source": "Perf: Cycle World/Hot Bike H2 class ~2.7 / ~9.6@152 (loss 24.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 31; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 17.5 / tire 2 / launch 5000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 6.8 / loss 14.5 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Cycle World/Hot Bike H2 class ~2.7 / ~9.6@152 (loss 24.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire UHP; loss 31; driver 200 | Phase 34 AS bake (WeightLbs < 1500) | ET-first closer: loss 17.5 / tire 2 / launch 5000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 11 / tire 2 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 6.8 / loss 14.5 / tire 2 / launch 2700 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Bike_Sport_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 60.180514579649554,
       "1100": 60.844314688968424,
@@ -23937,7 +23943,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2020 F-150 Raptor 5.3 / 14.0@97 (loss 23.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.1; driver 200 | ET-first closer: loss 11.5 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.355 / FA 29.5 / loss 1 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — BFGoodrich All-Terrain T/A KO2 LT315/70R17 (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2020 F-150 Raptor 5.3 / 14.0@97 (loss 23.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.1; driver 200 | ET-first closer: loss 11.5 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.355 / FA 29.5 / loss 1 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 BFGoodrich All-Terrain T/A KO2 LT315/70R17 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 262.7704335917146,
       "1100": 267.4385780612032,
@@ -24047,7 +24053,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2021 Ram TRX 3.7 / 12.3@110 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.53 / FA 34 / loss 0 / tire 0 / launch 1000 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Wrangler Territory All-Terrain (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2021 Ram TRX 3.7 / 12.3@110 (loss 19, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.53 / FA 34 / loss 0 / tire 0 / launch 1000 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Wrangler Territory All-Terrain (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 500.99198397315837,
       "1100": 510.77210574814154,
@@ -24156,7 +24162,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer C&D Silverado ZR2 6.2 ~6.4 / ~14.8@95 (loss 16.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.2; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 8 / tire 0 / launch 1000 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_10L90 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Goodyear Wrangler Territory MT / AT (documented; credit Jorge Guerra)",
+    "source": "Perf: peer C&D Silverado ZR2 6.2 ~6.4 / ~14.8@95 (loss 16.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.2; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 8 / tire 0 / launch 1000 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_10L90 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Goodyear Wrangler Territory MT / AT (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 260.7985167218412,
       "1100": 265.61215382611334,
@@ -24268,7 +24274,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Silverado 6.2 ~5.4 / ~14.0@100 (loss 12.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15; driver 200 | ET-first closer: loss 1 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 30.5 / loss 1 / tire 3 / launch 3900 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Silverado 6.2 ~5.4 / ~14.0@100 (loss 12.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 15; driver 200 | ET-first closer: loss 1 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 30.5 / loss 1 / tire 3 / launch 3900 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_10L90 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 283.9274,
       "1100": 289.424,
@@ -24376,7 +24382,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer F-250 6.7 PowerStroke ~7.2 / ~15.6@88 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.455 / FA 33.5 / loss 8 / tire 0 / launch 1900 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — 2019 F-250 Super Duty TorqShift 6R140 (not 10R); FD 3.73 OEM common",
+    "source": "Perf: peer F-250 6.7 PowerStroke ~7.2 / ~15.6@88 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.455 / FA 33.5 / loss 8 / tire 0 / launch 1900 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 2019 F-250 Super Duty TorqShift 6R140 (not 10R); FD 3.73 OEM common",
     "torqueCurve": {
       "1000": 898.1936740757953,
       "1100": 922.8923534650988,
@@ -24454,7 +24460,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Tundra 5.7 ~6.5 / ~15.0@92 (loss 20, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 3 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Michelin Primacy / highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota AB60E 6AT (2nd-gen Tundra 5.7); FD 4.30",
+    "source": "Perf: C&D/peer Tundra 5.7 ~6.5 / ~15.0@92 (loss 20, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 3 / launch 3300 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Michelin Primacy / highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota AB60E 6AT (2nd-gen Tundra 5.7); FD 4.30",
     "torqueCurve": {
       "1000": 242.31470304774757,
       "1100": 246.40016627068294,
@@ -24566,7 +24572,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer F-150 5.0 ~6.1 / ~14.6@96 (loss 25.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.5; driver 200 | ET-first closer: loss 16.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16 / tire 0 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 30.5 / loss 15.5 / tire 0 / launch 3800 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer F-150 5.0 ~6.1 / ~14.6@96 (loss 25.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.5; driver 200 | ET-first closer: loss 16.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 16 / tire 0 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.345 / FA 30.5 / loss 15.5 / tire 0 / launch 3800 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 250.01699667441835,
       "1100": 254.8712866600084,
@@ -24674,7 +24680,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Silverado 5.3 ~7.0 / ~15.4@90 (loss 29, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.5; driver 200 | ET-first closer: loss 10.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 13 / tire 0 / launch 1100 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Silverado 5.3 ~7.0 / ~15.4@90 (loss 29, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.5; driver 200 | ET-first closer: loss 10.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 13 / tire 0 / launch 1100 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 224.99289825587346,
       "1100": 228.95552886681776,
@@ -24784,7 +24790,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Ram 1500 5.7 ~6.5 / ~15.0@92 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.9; driver 200 | ET-first closer: loss 13 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 14 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 31.5 / loss 12 / tire 0 / launch 4200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Ram 1500 5.7 ~6.5 / ~15.0@92 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.9; driver 200 | ET-first closer: loss 13 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 14 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 31.5 / loss 12 / tire 0 / launch 4200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 250.01699667441835,
       "1100": 254.8712866600084,
@@ -24892,7 +24898,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Tacoma V6 ~7.5 / ~15.8@88 (loss 18.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.9; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 27.5 / loss 6.5 / tire 1 / launch 1100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota A750E 5AT Tacoma V6; FD 3.727",
+    "source": "Perf: peer Tacoma V6 ~7.5 / ~15.8@88 (loss 18.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.9; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 27.5 / loss 6.5 / tire 1 / launch 1100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota A750E 5AT Tacoma V6; FD 3.727",
     "torqueCurve": {
       "1000": 147.41493731798923,
       "1100": 149.90037587103194,
@@ -25000,7 +25006,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer F-150 EcoBoost ~6.5 / ~15.0@92 (loss 29.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 30.5 / loss 4.5 / tire 0 / launch 800 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer F-150 EcoBoost ~6.5 / ~15.0@92 (loss 29.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 30.5 / loss 4.5 / tire 0 / launch 800 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 249.45607705615464,
       "1100": 254.34863757322782,
@@ -25110,7 +25116,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Ram 1500 5.7 ~6.5 / ~15.0@92 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.9; driver 200 | ET-first closer: loss 14 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 31.5 / loss 12 / tire 0 / launch 4200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Ram 1500 5.7 ~6.5 / ~15.0@92 (loss 27.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.9; driver 200 | ET-first closer: loss 14 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.4 / FA 31.5 / loss 12 / tire 0 / launch 4200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 250.01699667441835,
       "1100": 254.8712866600084,
@@ -25219,7 +25225,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Avalanche 5.3 ~8.0 / ~16.2@85 (loss 24.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 31.5 / loss 0 / tire 0 / launch 1400 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Avalanche 5.3 ~8.0 / ~16.2@85 (loss 24.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 31.5 / loss 0 / tire 0 / launch 1400 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 202.8104998362803,
       "1100": 206.3824485560047,
@@ -25327,7 +25333,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Tundra 5.7 ~6.6 / ~15.1@91 (loss 24.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.9; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 0 / launch 3900 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota AB60E 6AT; FD 4.30",
+    "source": "Perf: C&D/peer Tundra 5.7 ~6.6 / ~15.1@91 (loss 24.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.9; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 0 / launch 3900 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota AB60E 6AT; FD 4.30",
     "torqueCurve": {
       "1000": 247.78199858739728,
       "1100": 252.47024769821223,
@@ -25433,7 +25439,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer F-150 Harley-Davidson ~7.5 / ~15.8@88 (loss 16.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.6; driver 200 | Fleet miss-batch: Peer ~7.4 / 15.8@88 — 5.4 3V ~300@5000 / 365@3750 — Powerband bake. Residual vs peer — parked. | ET-first closer: loss 0 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 0 / tire 1 / launch 2100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Ford 4R75E 4AT F-150 through 2008; FD 3.73",
+    "source": "Perf: peer F-150 Harley-Davidson ~7.5 / ~15.8@88 (loss 16.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.6; driver 200 | Fleet miss-batch: Peer ~7.4 / 15.8@88 \u2014 5.4 3V ~300@5000 / 365@3750 \u2014 Powerband bake. Residual vs peer \u2014 parked. | ET-first closer: loss 0 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 0 / tire 1 / launch 2100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Ford 4R75E 4AT F-150 through 2008; FD 3.73",
     "torqueCurve": {
       "1000": 259.6273514397582,
       "1100": 264.7125908538694,
@@ -25528,7 +25534,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Sierra Denali 6.2 ~6.0 / ~14.5@97 (loss 13, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.6; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 31.5 / loss 0 / tire 0 / launch 3000 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Sierra Denali 6.2 ~6.0 / ~14.5@97 (loss 13, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 23.6; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 31.5 / loss 0 / tire 0 / launch 3000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 257.40273520481367,
       "1100": 262.3858707828379,
@@ -25635,7 +25641,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Titan 5.6 ~7.2 / ~15.5@90 (loss 16.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 30.5 / loss 0 / tire 1 / launch 4200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Nissan RE5R05A 5AT Titan; FD 2.937 standard",
+    "source": "Perf: peer Titan 5.6 ~7.2 / ~15.5@90 (loss 16.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 21.5; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 30.5 / loss 0 / tire 1 / launch 4200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Nissan RE5R05A 5AT Titan; FD 2.937 standard",
     "torqueCurve": {
       "1000": 211.9875482208427,
       "1100": 215.5616909413768,
@@ -25743,7 +25749,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Sequoia 5.7 ~7.0 / ~15.4@90 (loss 25.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.1; driver 200 | ET-first closer: loss 3 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 31.5 / loss 3.5 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota AB60E/F 6AT Sequoia 5.7; FD 4.30",
+    "source": "Perf: peer Sequoia 5.7 ~7.0 / ~15.4@90 (loss 25.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.1; driver 200 | ET-first closer: loss 3 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.31 / FA 31.5 / loss 3.5 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota AB60E/F 6AT Sequoia 5.7; FD 4.30",
     "torqueCurve": {
       "1000": 229.33357698475783,
       "1100": 233.20017642247672,
@@ -25849,7 +25855,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer F-150 4.6 Triton ~8.5 / ~16.6@84 (loss 17.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29; driver 200 | Fleet miss-batch: Peer/Excel ~8.5 / 16.6@84 — 4.6 Triton ~248@4750 / 294@4000 — Powerband bake only. Residual slow vs peer (brick Cd×FA + weight) — parked further invent. | ET-first closer: loss 0 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 0 / tire 0 / launch 2700 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Ford 4R75E 4AT F-150 4.6; FD 3.73",
+    "source": "Perf: peer F-150 4.6 Triton ~8.5 / ~16.6@84 (loss 17.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29; driver 200 | Fleet miss-batch: Peer/Excel ~8.5 / 16.6@84 \u2014 4.6 Triton ~248@4750 / 294@4000 \u2014 Powerband bake only. Residual slow vs peer (brick Cd\u00d7FA + weight) \u2014 parked further invent. | ET-first closer: loss 0 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 30.5 / loss 0 / tire 0 / launch 2700 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Ford 4R75E 4AT F-150 4.6; FD 3.73",
     "torqueCurve": {
       "1000": 207.96364846091788,
       "1100": 211.9064852175698,
@@ -25943,7 +25949,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Silverado 6.0 Vortec Max ~6.5 / ~15.0@93 (loss 18.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 31.5 / loss 0 / tire 0 / launch 4200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Silverado 6.0 Vortec Max ~6.5 / ~15.0@93 (loss 18.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 31.5 / loss 0 / tire 0 / launch 4200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 220.90662140001604,
       "1100": 224.63114106836994,
@@ -26050,7 +26056,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Tacoma 4.0 V6 ~7.8 / ~16.0@86 (loss 24, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.9; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 27.5 / loss 6.5 / tire 1 / launch 1100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota A750E 5AT Tacoma 4.0; FD 3.727",
+    "source": "Perf: peer Tacoma 4.0 V6 ~7.8 / ~16.0@86 (loss 24, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.9; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 27.5 / loss 6.5 / tire 1 / launch 1100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota A750E 5AT Tacoma 4.0; FD 3.727",
     "torqueCurve": {
       "1000": 147.41493731798923,
       "1100": 149.90037587103194,
@@ -26157,7 +26163,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Frontier 4.0 ~7.5 / ~15.8@88 (loss 20.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.7; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29 / loss 10 / tire 0 / launch 1000 / fall×1.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Nissan RE5R05A 5AT Frontier V6; FD 3.357",
+    "source": "Perf: peer Frontier 4.0 ~7.5 / ~15.8@88 (loss 20.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.7; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29 / loss 10 / tire 0 / launch 1000 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Nissan RE5R05A 5AT Frontier V6; FD 3.357",
     "torqueCurve": {
       "1000": 166.7049972418272,
       "1100": 169.93228852188756,
@@ -26264,7 +26270,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer F-250 V10 ~8.5 / ~16.6@84 (loss 25.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 12.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.455 / FA 33.5 / loss 14 / tire 0 / launch 2600 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Ford TorqShift 5R110W 5AT Super Duty; FD 3.73",
+    "source": "Perf: peer F-250 V10 ~8.5 / ~16.6@84 (loss 25.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 12.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 13 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.455 / FA 33.5 / loss 14 / tire 0 / launch 2600 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Ford TorqShift 5R110W 5AT Super Duty; FD 3.73",
     "torqueCurve": {
       "1000": 226.11952249623772,
       "1100": 229.93193248014222,
@@ -26372,7 +26378,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Silverado 2500HD 6.0 ~9.0 / ~17.0@82 (loss 20.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 1 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 32.5 / loss 0 / tire 0 / launch 2000 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Silverado 2500HD 6.0 ~9.0 / ~17.0@82 (loss 20.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.5; driver 200 | ET-first closer: loss 1 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 32.5 / loss 0 / tire 0 / launch 2000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 191.61499729243246,
       "1100": 195.32446465285068,
@@ -26479,7 +26485,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Tundra 4.7 ~8.2 / ~16.4@85 (loss 19.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 1 / launch 3000 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota A750E 5AT Tundra 4.7; FD 3.91 axle",
+    "source": "Perf: peer Tundra 4.7 ~8.2 / ~16.4@85 (loss 19.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.8; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 29.5 / loss 0 / tire 1 / launch 3000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway all-season (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota A750E 5AT Tundra 4.7; FD 3.91 axle",
     "torqueCurve": {
       "1000": 173.09216188710795,
       "1100": 176.44310417406717,
@@ -26586,7 +26592,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Titan Pro-4X ~7.5 / ~15.8@88 (loss 19.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 30.5 / loss 1 / tire 0 / launch 3900 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Nissan RE5R05A 5AT Titan Pro-4X; FD 3.357",
+    "source": "Perf: peer Titan Pro-4X ~7.5 / ~15.8@88 (loss 19.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 30.5 / loss 1 / tire 0 / launch 3900 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Nissan RE5R05A 5AT Titan Pro-4X; FD 3.357",
     "torqueCurve": {
       "1000": 205.21113269635956,
       "1100": 208.67102400721694,
@@ -26692,7 +26698,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 1969 Charger 440 MT ~6.1 / ~14.4@99 (loss 25, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.2; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1969 Charger 440 MT ~6.1 / ~14.4@99 (loss 25, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25.2; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 12 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.43 / FA 23.5 / loss 8 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 315.6460297766093,
       "1100": 323.31342713237,
@@ -26788,7 +26794,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 1967 Mustang GT 390 MT ~6.5 / ~14.9@95 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 24 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 24.5 / loss 25 / tire 0 / launch 2100 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toploader_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1967 Mustang GT 390 MT ~6.5 / ~14.9@95 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 24 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 24.5 / loss 25 / tire 0 / launch 2100 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toploader_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 260.20751169679244,
       "1100": 266.0069713812969,
@@ -26883,7 +26889,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: MT/Hot Rod Chevelle SS 454 LS6 ~6.0 / ~13.8@105 (loss 26.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.2; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 24 / loss 12 / tire 0 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: MT/Hot Rod Chevelle SS 454 LS6 ~6.0 / ~13.8@105 (loss 26.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.2; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 10.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 24 / loss 12 / tire 0 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 280.20826979698785,
       "1100": 285.2825830566056,
@@ -26986,7 +26992,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Challenger 426 Hemi MT ~5.6 / ~13.8@104 (loss 30.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.7; driver 200 | ET-first closer: loss 14.5 / tire 0 / launch 3818 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 0 / launch 4118 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 8.5 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Challenger 426 Hemi MT ~5.6 / ~13.8@104 (loss 30.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.7; driver 200 | ET-first closer: loss 14.5 / tire 0 / launch 3818 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 8.5 / tire 0 / launch 4118 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.38 / FA 23 / loss 8.5 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 276.9114392921019,
       "1100": 283.18961837700044,
@@ -27089,7 +27095,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Camaro SS 396 L78 MT ~5.8 / ~14.0@103 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 24 / tire 1 / launch 5271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 23.5 / tire 3 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 21.5 / loss 24.5 / tire 0 / launch 3600 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Camaro SS 396 L78 MT ~5.8 / ~14.0@103 (loss 26.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 24 / tire 1 / launch 5271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 23.5 / tire 3 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 21.5 / loss 24.5 / tire 0 / launch 3600 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 292.7919992083913,
       "1100": 298.3501752045914,
@@ -27185,7 +27191,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Demon 340 MT ~6.5 / ~14.9@94 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | Fleet miss-batch: Peer ~6.5 / 14.9@94; OEM-era 275@5000 / 340@3200 — Published-era 340 curve; trap improved. Residual 0–60/ET quick vs peer. | ET-first closer: loss 20.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.38 / FA 20.5 / loss 10.5 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Demon 340 MT ~6.5 / ~14.9@94 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | Fleet miss-batch: Peer ~6.5 / 14.9@94; OEM-era 275@5000 / 340@3200 \u2014 Published-era 340 curve; trap improved. Residual 0\u201360/ET quick vs peer. | ET-first closer: loss 20.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.38 / FA 20.5 / loss 10.5 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 270.0642291774737,
       "1100": 276.6119756032363,
@@ -27277,7 +27283,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: peer GT40 MkII race ~4.2 / ~12.2@120 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.6; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18 / loss 0 / tire 3 / launch 3300 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via KarKraft_T44_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer GT40 MkII race ~4.2 / ~12.2@120 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.6; driver 200 | ET-first closer: loss 9 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18 / loss 0 / tire 3 / launch 3300 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via KarKraft_T44_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 395.47707068193654,
       "1100": 403.1973816533995,
@@ -27380,7 +27386,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Shelby Cobra 427 MT ~4.2 / ~12.2@118 (loss 31.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.4; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toploader_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Shelby Cobra 427 MT ~4.2 / ~12.2@118 (loss 31.1, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 27.4; driver 200 | ET-first closer: loss 0.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toploader_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1500": 380,
       "1600": 388,
@@ -27476,7 +27482,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Road Runner 440 MT ~6.0 / ~14.4@100 (loss 31.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.7; driver 200 | ET-first closer: loss 19.5 / tire 0 / launch 3471 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19 / tire 0 / launch 3771 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 22.5 / loss 15.5 / tire 0 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Road Runner 440 MT ~6.0 / ~14.4@100 (loss 31.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 31.7; driver 200 | ET-first closer: loss 19.5 / tire 0 / launch 3471 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19 / tire 0 / launch 3771 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.37 / FA 22.5 / loss 15.5 / tire 0 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 348.77177964592136,
       "1100": 357.2438387524898,
@@ -27572,7 +27578,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Dart GTS 383 MT ~6.5 / ~14.9@95 (loss 31.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Fleet miss-batch: Peer card ~6.5 / 14.9@95 (no fresh C&D) — 383 band ~300 hp / ~390 lb-ft — Peer-sourced powerband; trap improved. Residual 0–60/ET quick vs peer — no invent. | ET-first closer: loss 22.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 21.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 21.5 / loss 18 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Dart GTS 383 MT ~6.5 / ~14.9@95 (loss 31.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Fleet miss-batch: Peer card ~6.5 / 14.9@95 (no fresh C&D) \u2014 383 band ~300 hp / ~390 lb-ft \u2014 Peer-sourced powerband; trap improved. Residual 0\u201360/ET quick vs peer \u2014 no invent. | ET-first closer: loss 22.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 21.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.355 / FA 21.5 / loss 18 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 381.2430859293922,
       "1100": 390.1533366297322,
@@ -27663,7 +27669,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 1964 GTO MT ~6.6 / ~15.0@95 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.2; driver 200 | ET-first closer: loss 17.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.47 / FA 25 / loss 18 / tire 0 / launch 1000 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 1964 GTO MT ~6.6 / ~15.0@95 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.2; driver 200 | ET-first closer: loss 17.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.47 / FA 25 / loss 18 / tire 0 / launch 1000 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 260.0520980558465,
       "1100": 264.988760714264,
@@ -27759,7 +27765,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Chevelle SS396 MT ~6.0 / ~14.5@99 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Fleet miss-batch: Peer ~6.0 / 14.5@99; 375 hp SS396 band ~415 lb-ft@3600 — Period powerband; trap near peer. Residual 0–60/ET quick. | ET-first closer: loss 27 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 27.5 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.415 / FA 25 / loss 27.5 / tire 1 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Chevelle SS396 MT ~6.0 / ~14.5@99 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Fleet miss-batch: Peer ~6.0 / 14.5@99; 375 hp SS396 band ~415 lb-ft@3600 \u2014 Period powerband; trap near peer. Residual 0\u201360/ET quick. | ET-first closer: loss 27 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 27.5 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.415 / FA 25 / loss 27.5 / tire 1 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 275.8062807014192,
       "1100": 280.7861993399474,
@@ -27855,7 +27861,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Corvette Stingray 327 FI MT ~5.9 / ~14.3@100 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 30 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 30.5 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.35 / FA 19.5 / loss 24.5 / tire 0 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Corvette Stingray 327 FI MT ~5.9 / ~14.3@100 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 30 / tire 0 / launch 4200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 30.5 / tire 0 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.35 / FA 19.5 / loss 24.5 / tire 0 / launch 3300 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 268.9765291374993,
       "1100": 275.51027179135156,
@@ -27950,7 +27956,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Olds 442 ~7.0 / ~15.4@91 (loss 31.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 20 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 22.5 / loss 22 / tire 0 / launch 2400 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via TH400_3 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Olds 442 ~7.0 / ~15.4@91 (loss 31.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 20 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 20.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 22.5 / loss 22 / tire 0 / launch 2400 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via TH400_3 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 243.94454221574293,
       "1100": 249.3815356699659,
@@ -28046,7 +28052,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Impala SS 409 MT ~6.5 / ~14.9@96 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 21 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 24 / loss 22 / tire 0 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Impala SS 409 MT ~6.5 / ~14.9@96 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 20.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 21 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.405 / FA 24 / loss 22 / tire 0 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 280.6238407838404,
       "1100": 286.2529535174714,
@@ -28149,7 +28155,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer GTX 440 MT ~6.1 / ~14.4@99 (loss 30.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.9; driver 200 | ET-first closer: loss 18.5 / tire 0 / launch 5271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 22.5 / loss 14.5 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer GTX 440 MT ~6.1 / ~14.4@99 (loss 30.9, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.9; driver 200 | ET-first closer: loss 18.5 / tire 0 / launch 5271 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 0 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.375 / FA 22.5 / loss 14.5 / tire 0 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via A833_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 315.6460297766093,
       "1100": 323.31342713237,
@@ -28244,7 +28250,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Torino 351 ~8.5 / ~16.5@85 (loss 30.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 1 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.545 / FA 26 / loss 1 / tire 0 / launch 1300 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via Ford_C6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Torino 351 ~8.5 / ~16.5@85 (loss 30.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 1 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.545 / FA 26 / loss 1 / tire 0 / launch 1300 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via Ford_C6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 197.72219472666583,
       "1100": 201.68012027381414,
@@ -28339,7 +28345,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Magnum XE ~10.5 / ~18.0@76 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.425 / FA 25 / loss 0.5 / tire 0 / launch 3000 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via Chrysler_727 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Magnum XE ~10.5 / ~18.0@76 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.425 / FA 25 / loss 0.5 / tire 0 / launch 3000 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via Chrysler_727 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 157.31380223936964,
       "1100": 160.55329397393936,
@@ -28435,7 +28441,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Bel Air 283 MT ~9.5 / ~17.2@80 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 12 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Bel Air 283 MT ~9.5 / ~17.2@80 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 12 / tire 0 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 175.3987211284939,
       "1100": 178.90978411386737,
@@ -28530,7 +28536,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Galaxie 352 ~8.5 / ~16.5@85 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 28 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via Ford_C6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Ford Cruise-O-Matic 3-spd; FD 3.56 typical Galaxie",
+    "source": "Perf: peer Galaxie 352 ~8.5 / ~16.5@85 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 28 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via Ford_C6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Ford Cruise-O-Matic 3-spd; FD 3.56 typical Galaxie",
     "torqueCurve": {
       "1000": 229.3079,
       "1100": 234.4186,
@@ -28625,7 +28631,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Firebird 400 ~9.0 / ~16.8@82 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | ET-first closer: loss 1 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 25 / loss 2 / tire 0 / launch 4500 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Firebird 400 ~9.0 / ~16.8@82 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.8; driver 200 | ET-first closer: loss 1 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 25 / loss 2 / tire 0 / launch 4500 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 196.53432042694538,
       "1100": 201.3083602899662,
@@ -28720,7 +28726,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Monte Carlo ~11.0 / ~18.5@74 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.6; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 23.5 / loss 0 / tire 0 / launch 3000 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Monte Carlo ~11.0 / ~18.5@74 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.6; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.385 / FA 23.5 / loss 0 / tire 0 / launch 3000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 145.39249362965234,
       "1100": 148.30290369108175,
@@ -28815,7 +28821,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer 1955 Thunderbird ~10.0 / ~17.8@77 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 8 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via Ford_C4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Ford Fordomatic/Cruise-O-Matic 3-spd; FD 3.31 Tbird",
+    "source": "Perf: peer 1955 Thunderbird ~10.0 / ~17.8@77 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.9; driver 200 | ET-first closer: loss 8 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 18% via Ford_C4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Ford Fordomatic/Cruise-O-Matic 3-spd; FD 3.31 Tbird",
     "torqueCurve": {
       "1000": 156.93765549212796,
       "1100": 160.43545461434474,
@@ -28911,7 +28917,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Corvette 283 MT ~7.0 / ~15.2@93 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.6; driver 200 | ET-first closer: loss 17 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 22.5 / loss 19 / tire 1 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Corvette 283 MT ~7.0 / ~15.2@93 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.6; driver 200 | ET-first closer: loss 17 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 18 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.395 / FA 22.5 / loss 19 / tire 1 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Muncie_M21 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 210.81023943004172,
       "1100": 214.8121261473058,
@@ -29007,7 +29013,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Cougar XR-7 MT ~6.8 / ~15.2@93 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Factory powertrain loss 12% via Toploader_4 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Cougar XR-7 MT ~6.8 / ~15.2@93 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | Factory powertrain loss 12% via Toploader_4 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 272.4047388075796,
       "1100": 278.47604816479526,
@@ -29102,7 +29108,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Nova 350 ~11.5 / ~18.8@73 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 21.5 / loss 0 / tire 0 / launch 3000 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory classic highway/bias-era → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Nova 350 ~11.5 / ~18.8@73 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 0 / tire 0 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.365 / FA 21.5 / loss 0 / tire 0 / launch 3000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 18% via TH400_3 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory classic highway/bias-era \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 129.7380494925151,
       "1100": 132.40968626568707,
@@ -29201,7 +29207,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.1 / 12.6@110 (loss 7.9, TX DCT, driver 200, Summer, trap-first; DSG DCT) | Phase 32 trap-first; tire AllSeason; loss 5.3; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 2 / launch 2800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.1 / 12.6@110 (loss 7.9, TX DCT, driver 200, Summer, trap-first; DSG DCT) | Phase 32 trap-first; tire AllSeason; loss 5.3; driver 200 | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 2 / launch 2800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 233.00339446267904,
       "1100": 237.14272434224628,
@@ -29309,7 +29315,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D GR Corolla MT ~4.5 / ~13.1@104 (loss 22.8, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 19.5 / loss 6 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toyota_iT6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4 (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D GR Corolla MT ~4.5 / ~13.1@104 (loss 22.8, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.6; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 19.5 / loss 6 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Toyota_iT6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4 (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 196.40836742118296,
       "1100": 200.45207546486228,
@@ -29419,7 +29425,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2021 M5 Competition 2.8 / 10.9@128 (loss 7.6, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 6.5; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2021 M5 Competition 2.8 / 10.9@128 (loss 7.6, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 6.5; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 2 / launch 1200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 468.6491558810917,
       "1100": 477.6027291192514,
@@ -29529,7 +29535,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2021 RS7 (591 hp gen) 3.0 / 11.3@122 (loss 13.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 8.9; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 22.5 / loss 0 / tire 4 / launch 2400 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero / ContiSportContact (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2021 RS7 (591 hp gen) 3.0 / 11.3@122 (loss 13.1, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 8.9; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 22.5 / loss 0 / tire 4 / launch 2400 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero / ContiSportContact (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 444.6658551169319,
       "1100": 452.94996448215375,
@@ -29638,7 +29644,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4 / 12.2@120 (loss 10.7, TX DCT, driver 200, Summer, trap-first; BMW DCT (source)) | Phase 32 trap-first; tire AllSeason; loss 6.1; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 2 / tire 2 / launch 2100 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Super Sport / PS4S (documented; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4 / 12.2@120 (loss 10.7, TX DCT, driver 200, Summer, trap-first; BMW DCT (source)) | Phase 32 trap-first; tire AllSeason; loss 6.1; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 2 / tire 2 / launch 2100 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Super Sport / PS4S (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 314.40487286962366,
       "1100": 319.99030859922726,
@@ -29747,7 +29753,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.8 / 12@121 (loss 11.7, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire AllSeason; loss 7; driver 200 | ET-first closer: loss 0 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 21.5 / loss 0 / tire 1 / launch 800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.8 / 12@121 (loss 11.7, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire AllSeason; loss 7; driver 200 | ET-first closer: loss 0 / tire 1 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 21.5 / loss 0 / tire 1 / launch 800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 364.15017346787715,
       "1100": 371.10728670902523,
@@ -29857,7 +29863,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D RS5 Sportback 3.3 / ~11.9@118 (loss 6.4, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 13.4; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 4 / launch 2100 / fall×0.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Pirelli P Zero (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D RS5 Sportback 3.3 / ~11.9@118 (loss 6.4, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 13.4; driver 200 | ET-first closer: loss 0.5 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 4 / launch 2100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Pirelli P Zero (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 290.6843962552221,
       "1100": 296.6689949696495,
@@ -29967,7 +29973,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/MT Trackhawk ~3.5 / ~11.8@116 (loss 22.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.4; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 32 / loss 1 / tire 3 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT Trackhawk ~3.5 / ~11.8@116 (loss 22.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.4; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.41 / FA 32 / loss 1 / tire 3 / launch 1000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 504.56030294732614,
       "1100": 514.4100837093106,
@@ -30074,7 +30080,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D X5 M Competition 3.4 / 11.8@118 (loss 9.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 9.4; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 28.5 / loss 0 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D X5 M Competition 3.4 / 11.8@118 (loss 9.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 9.4; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 1 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 28.5 / loss 0 / tire 4 / launch 1200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 468.6491558810917,
       "1100": 477.6027291192514,
@@ -30184,7 +30190,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Durango SRT ~4.4 / ~12.9@108 (loss 8.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 29.5 / loss 0 / tire 0 / launch 1500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Durango SRT ~4.4 / ~12.9@108 (loss 8.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 29.5 / loss 0 / tire 0 / launch 1500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 357.38795462020755,
       "1100": 364.04607974453984,
@@ -30296,7 +30302,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Escalade-V 4.3 / 12.7@111 (loss 19.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | Fleet miss-batch: C&D Escalade-V 4.3 / 12.7@111; OEM 682@6000 / 653@4400 (80% TQ@2000); FD 3.23; Cd~0.36 — Trap-priority published LT4 curve + Cd 0.36 + Summer + loss4. 0–60/ET optimistic vs C&D. | ET-first closer: loss 16 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 32.5 / loss 6 / tire 0 / launch 3300 / fall×0.75 (fs=1; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Escalade-V 4.3 / 12.7@111 (loss 19.4, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.4; driver 200 | Fleet miss-batch: C&D Escalade-V 4.3 / 12.7@111; OEM 682@6000 / 653@4400 (80% TQ@2000); FD 3.23; Cd~0.36 \u2014 Trap-priority published LT4 curve + Cd 0.36 + Summer + loss4. 0\u201360/ET optimistic vs C&D. | ET-first closer: loss 16 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 32.5 / loss 6 / tire 0 / launch 3300 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 572.2538769271123,
       "1100": 575.4400814820622,
@@ -30399,7 +30405,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D Range Rover Sport SVR ~3.9 / ~12.4@112 (loss 17.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.1; driver 200 | Fleet miss-batch: C&D RR Sport SVR class ~4.3 / 12.8@111; 575 hp / 516 lb-ft SC V8 band; FD 3.15 — Published SC powerband + Summer + loss0. Trap in tol; 0–60/ET optimistic. | ET-first closer: loss 15 / tire 3 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 29.5 / loss 4 / tire 0 / launch 800 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D Range Rover Sport SVR ~3.9 / ~12.4@112 (loss 17.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.1; driver 200 | Fleet miss-batch: C&D RR Sport SVR class ~4.3 / 12.8@111; 575 hp / 516 lb-ft SC V8 band; FD 3.15 \u2014 Published SC powerband + Summer + loss0. Trap in tol; 0\u201360/ET optimistic. | ET-first closer: loss 15 / tire 3 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 15 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 29.5 / loss 4 / tire 0 / launch 800 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 337.5351464635657,
       "1100": 343.7023191685998,
@@ -30505,7 +30511,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Durango R/T ~6.5 / ~15.0@92 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.9; driver 200 | ET-first closer: loss 4 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 29.5 / loss 2.5 / tire 0 / launch 4200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Durango R/T ~6.5 / ~15.0@92 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.9; driver 200 | ET-first closer: loss 4 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 29.5 / loss 2.5 / tire 0 / launch 4200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 216.69314360764517,
       "1100": 220.3466233913166,
@@ -30615,7 +30621,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/MT Grand Cherokee SRT ~4.5 / ~13.1@105 (loss 14.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 29.5 / loss 0 / tire 0 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/MT Grand Cherokee SRT ~4.5 / ~13.1@105 (loss 14.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 7.5; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 3 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 29.5 / loss 0 / tire 0 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 277.9456136021914,
       "1100": 282.5132361338273,
@@ -30729,7 +30735,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D 2017 X6 M 3.8 / 12.3@114 (loss 13.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 13.4; driver 200 | ET-first closer: loss 3 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 28.5 / loss 0 / tire 0 / launch 2800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — Michelin Pilot Sport 4S / ContiSportContact (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D 2017 X6 M 3.8 / 12.3@114 (loss 13.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 13.4; driver 200 | ET-first closer: loss 3 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 28.5 / loss 0 / tire 0 / launch 2800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 Michelin Pilot Sport 4S / ContiSportContact (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 405.58024089273914,
       "1100": 413.75568577196935,
@@ -30837,7 +30843,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Tahoe 5.3 ~8.0 / ~16.2@85 (loss 30.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 31.5 / loss 6 / tire 0 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway all-season (documented; credit Jorge Guerra)",
+    "source": "Perf: peer Tahoe 5.3 ~8.0 / ~16.2@85 (loss 30.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.7; driver 200 | ET-first closer: loss 5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 31.5 / loss 6 / tire 0 / launch 1000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway all-season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 202.8104998362803,
       "1100": 206.3824485560047,
@@ -30945,7 +30951,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Expedition 5.4 ~8.2 / ~16.4@84 (loss 26.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 32.5 / loss 0.5 / tire 0 / launch 1200 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway all-season (documented; credit Jorge Guerra)",
+    "source": "Perf: peer Expedition 5.4 ~8.2 / ~16.4@84 (loss 26.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 28.2; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 32.5 / loss 0.5 / tire 0 / launch 1200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway all-season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 196.47267171639655,
       "1100": 199.93299703862957,
@@ -31053,7 +31059,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Wrangler Rubicon ~8.5 / ~16.5@84 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 19 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19.5 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.415 / FA 29.5 / loss 19 / tire 3 / launch 1000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — BFGoodrich All-Terrain / Mud-Terrain (documented; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer Wrangler Rubicon ~8.5 / ~16.5@84 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 35; driver 200 | ET-first closer: loss 19 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 19.5 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.415 / FA 29.5 / loss 19 / tire 3 / launch 1000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 BFGoodrich All-Terrain / Mud-Terrain (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 178.0222759984192,
       "1100": 181.02375899679706,
@@ -31161,7 +31167,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer 4Runner V8 ~7.5 / ~15.8@88 (loss 19.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 29.5 / loss 0 / tire 0 / launch 2000 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway / AT OE (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Toyota A750E 5AT 4Runner V8 (not 6-spd); FD 3.727",
+    "source": "Perf: peer 4Runner V8 ~7.5 / ~15.8@88 (loss 19.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.7; driver 200 | ET-first closer: loss 0 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 29.5 / loss 0 / tire 0 / launch 2000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway / AT OE (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Toyota A750E 5AT 4Runner V8 (not 6-spd); FD 3.727",
     "torqueCurve": {
       "1000": 165.35913847372123,
       "1100": 168.14711902262565,
@@ -31269,7 +31275,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Suburban 5.3 ~8.2 / ~16.4@84 (loss 28.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.6; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 32.5 / loss 4 / tire 0 / launch 1100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — Highway all-season (documented; credit Jorge Guerra)",
+    "source": "Perf: peer Suburban 5.3 ~8.2 / ~16.4@84 (loss 28.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.6; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.325 / FA 32.5 / loss 4 / tire 0 / launch 1100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via GM_6L80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 Highway all-season (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 202.8104998362803,
       "1100": 206.3824485560047,
@@ -31375,7 +31381,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Liberty 3.7 ~9.0 / ~17.0@80 (loss 26.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.2; driver 200 | Trap-first tire-prep: Cd 0.355 / FA 28.5 / loss 0 / tire 0 / launch 900 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Chrysler 42RLE 4AT Jeep Liberty; FD 3.73",
+    "source": "Perf: peer Liberty 3.7 ~9.0 / ~17.0@80 (loss 26.3, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.2; driver 200 | Trap-first tire-prep: Cd 0.355 / FA 28.5 / loss 0 / tire 0 / launch 900 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Chrysler 42RLE 4AT Jeep Liberty; FD 3.73",
     "torqueCurve": {
       "1000": 141.53903713152684,
       "1100": 144.21707778323074,
@@ -31457,13 +31463,13 @@ var GARAGE = [
     "tireRadiusInches": 13.8,
     "finalDriveRatio": 3.478,
     "gearRatios": [
-      3.3,
-      1.9,
-      1.42,
-      1,
-      0.713
+      4.235,
+      2.36,
+      1.517,
+      1.047,
+      0.756
     ],
-    "txKey": "Toyota_A340E",
+    "txKey": "Toyota_U151E",
     "drivetrainLossPercent": 16,
     "driveType": "RWD",
     "isEv": false,
@@ -31482,7 +31488,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Highlander V6 ~7.5 / ~15.8@88 (loss 28.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 30.5 / loss 6.5 / tire 0 / launch 1400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra)",
+    "source": "Perf: peer Highlander V6 ~7.5 / ~15.8@88 (loss 28.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.285 / FA 30.5 / loss 6.5 / tire 0 / launch 1400 (fs=1; credit Jorge Guerra) | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | TX OEM: Toyota U151E/F 5AT ratios + Highlander FD 3.478 (Toyota U-family / TCC specs; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 172.4534454225799,
       "1100": 175.79202260884924,
@@ -31590,7 +31596,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer Pilot ~8.0 / ~16.2@85 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.2; driver 200 | Trap-first tire-prep: Cd 0.28 / FA 30 / loss 0 / tire 0 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — All-season OE (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda Pilot AWD 5AT published; FD 4.312",
+    "source": "Perf: C&D/peer Pilot ~8.0 / ~16.2@85 (loss 25.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.2; driver 200 | Trap-first tire-prep: Cd 0.28 / FA 30 / loss 0 / tire 0 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 16% via Toyota_A340E OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 All-season OE (documented; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda Pilot AWD 5AT published; FD 4.312",
     "torqueCurve": {
       "1000": 131.8067018877848,
       "1100": 134.10635749326656,
@@ -31709,7 +31715,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: peer Commander 5.7 ~7.5 / ~15.8@88 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.4; driver 200 | ET-first closer: loss 6 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 30.5 / loss 6.5 / tire 1 / launch 1700 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Commander 5.7 ~7.5 / ~15.8@88 (loss 32, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 32.4; driver 200 | ET-first closer: loss 6 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 7 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.305 / FA 30.5 / loss 6.5 / tire 1 / launch 1700 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 228.0217778365223,
       "1100": 232.43611878281175,
@@ -31818,7 +31824,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D 1993 Supra Turbo MT 4.6 / 13.1@109 (loss 11.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 1 / tire 1 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 18.5 / loss 1.5 / tire 1 / launch 1900 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D 1993 Supra Turbo MT 4.6 / 13.1@109 (loss 11.8, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 1 / tire 1 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 2800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 18.5 / loss 1.5 / tire 1 / launch 1900 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "2000": 185,
       "2100": 194,
@@ -31916,7 +31922,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer R34 GT-R (276 hp) MT ~4.8 / ~13.2@105 (loss 11, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 4.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18.5 / loss 0 / tire 0 / launch 2900 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Getrag_R34 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer R34 GT-R (276 hp) MT ~4.8 / ~13.2@105 (loss 11, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 5.9; driver 200 | ET-first closer: loss 4.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 18.5 / loss 0 / tire 0 / launch 2900 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 14% via Getrag_R34 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 204.1553551482521,
       "1100": 207.78219656653962,
@@ -32023,7 +32029,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: C&D NSX MT ~5.2 / ~13.8@102 (loss 23.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.3; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 17.5 / loss 0 / tire 3 / launch 2600 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_NSX_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D NSX MT ~5.2 / ~13.8@102 (loss 23.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.3; driver 200 | ET-first closer: loss 6.5 / tire 0 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 17.5 / loss 0 / tire 3 / launch 2600 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_NSX_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 132.15226595185837,
       "1100": 134.3723192461114,
@@ -32142,7 +32148,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "Manual",
-    "source": "Perf: peer MR2 Supercharged MT ~7.4 / ~15.7@88 (loss 21.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 7.5 / tire 3 / launch 2200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 0 / tire 1 / launch 4000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Toyota_W58_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer MR2 Supercharged MT ~7.4 / ~15.7@88 (loss 21.5, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.6; driver 200 | ET-first closer: loss 7.5 / tire 3 / launch 2200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 1 / launch 3100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 0 / tire 1 / launch 4000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Toyota_W58_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 102.02388001885096,
       "1100": 103.83634500875075,
@@ -32250,7 +32256,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 335i auto ~5.1 / ~13.7@104 (loss 13.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 1.5 / tire 4 / launch 800 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 335i auto ~5.1 / ~13.7@104 (loss 13.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 1.5 / tire 4 / launch 800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 208.0844341045287,
       "1100": 211.96103985126166,
@@ -32359,7 +32365,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.3@116 (loss 16, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire Summer; loss 18.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 0 / tire 4 / launch 1500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.3@116 (loss 16, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire Summer; loss 18.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 0 / tire 4 / launch 1500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 308.23202945842667,
       "1100": 314.2773576589746,
@@ -32467,7 +32473,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer S5 4.2 V8 ~4.9 / ~13.4@105 (loss 19.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 8.5 / tire 0 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Audi S5 Tiptronic ZF 6HP ratios; FD 3.889 quattro",
+    "source": "Perf: C&D/peer S5 4.2 V8 ~4.9 / ~13.4@105 (loss 19.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 8.5 / tire 0 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Audi S5 Tiptronic ZF 6HP ratios; FD 3.889 quattro",
     "torqueCurve": {
       "1000": 225.0285759022005,
       "1100": 229.02623228886588,
@@ -32574,7 +32580,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer AE86 Levin/Trueno MT ~8.8 / ~16.8@82 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 7 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 8.5 / tire 0 / launch 1000 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Toyota_T50_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer AE86 Levin/Trueno MT ~8.8 / ~16.8@82 (loss 32, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 34.7; driver 200 | ET-first closer: loss 7 / tire 0 / launch 1400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 8.5 / tire 0 / launch 1000 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Toyota_T50_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 78.17422902780258,
       "1100": 79.55105289795091,
@@ -32681,7 +32687,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D/peer RX-7 Turbo II MT ~6.5 / ~15.0@92 (loss 31, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.1; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 19.5 / loss 3.5 / tire 0 / launch 3300 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Mazda_5M OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer RX-7 Turbo II MT ~6.5 / ~15.0@92 (loss 31, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 30.1; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 19.5 / loss 3.5 / tire 0 / launch 3300 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Mazda_5M OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 116.7500604066749,
       "1100": 119.03606629205349,
@@ -32794,7 +32800,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Eclipse GSX turbo AWD MT ~6.4 / ~15.0@90 (loss 29.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 7 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 0.5 / tire 0 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory sportbike summer OEM → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Mitsubishi Eclipse 2G GSX AWD 5MT; FD 4.312",
+    "source": "Perf: peer Eclipse GSX turbo AWD MT ~6.4 / ~15.0@90 (loss 29.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 29.7; driver 200 | ET-first closer: loss 7 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 0.5 / tire 0 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 14% via Mitsubishi_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory sportbike summer OEM \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Mitsubishi Eclipse 2G GSX AWD 5MT; FD 4.312",
     "torqueCurve": {
       "1000": 137.4858624197898,
       "1100": 140.3165111667889,
@@ -32901,7 +32907,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer RX-7 GSL-SE MT ~8.5 / ~16.5@85 (loss 21.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.3; driver 200 | ET-first closer: loss 15.5 / tire 0 / launch 4700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 0 / tire 3 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Mazda_5M OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer RX-7 GSL-SE MT ~8.5 / ~16.5@85 (loss 21.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.3; driver 200 | ET-first closer: loss 15.5 / tire 0 / launch 4700 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 4500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 16.5 / loss 0 / tire 3 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Mazda_5M OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 73.33594311561522,
       "1100": 74.46934422362871,
@@ -33020,7 +33026,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Accord SiR MT ~7.5 / ~15.8@89 (loss 29.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.6; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 21.5 / loss 4 / tire 2 / launch 1200 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda Accord SiR/SiR-T 5MT family; FD 4.266",
+    "source": "Perf: peer Accord SiR MT ~7.5 / ~15.8@89 (loss 29.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.6; driver 200 | ET-first closer: loss 13.5 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 21.5 / loss 4 / tire 2 / launch 1200 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda Accord SiR/SiR-T 5MT family; FD 4.266",
     "torqueCurve": {
       "1000": 92.9959976813589,
       "1100": 94.55834693725673,
@@ -33139,7 +33145,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Celica Supra Mk2 MT ~8.5 / ~16.5@85 (loss 23.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 18.5 / loss 3.5 / tire 0 / launch 1000 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Toyota_W58_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Celica Supra Mk2 MT ~8.5 / ~16.5@85 (loss 23.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.8; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 18.5 / loss 3.5 / tire 0 / launch 1000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Toyota_W58_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 101.40524991814014,
       "1100": 103.19122427800235,
@@ -33246,7 +33252,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Skyline GTS-R RB20DET MT ~6.5 / ~15.0@93 (loss 26.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.9; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 18.5 / loss 0 / tire 0 / launch 1400 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Nissan_FS5W71_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer Skyline GTS-R RB20DET MT ~6.5 / ~15.0@93 (loss 26.7, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.9; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 18.5 / loss 0 / tire 0 / launch 1400 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 13% via Nissan_FS5W71_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 155.30693467958,
       "1100": 158.43751934770955,
@@ -33353,7 +33359,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer Integra SiR B18C MT ~7.2 / ~15.6@90 (loss 30, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.7; driver 200 | ET-first closer: loss 7 / tire 4 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 20 / loss 7.5 / tire 4 / launch 3000 / fall×0.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Honda Integra SiR / USDM GS-R Y80 5MT; FD 4.400",
+    "source": "Perf: peer Integra SiR B18C MT ~7.2 / ~15.6@90 (loss 30, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 33.7; driver 200 | ET-first closer: loss 7 / tire 4 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.335 / FA 20 / loss 7.5 / tire 4 / launch 3000 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Factory powertrain loss 13% via Honda_5MT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Honda Integra SiR / USDM GS-R Y80 5MT; FD 4.400",
     "torqueCurve": {
       "1000": 88.10145242318663,
       "1100": 89.58150576160777,
@@ -33474,7 +33480,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@131 (loss 9.1, TX DCT, driver 200, Summer, trap-first; AMG Speedshift DCT) | Phase 32 trap-first; tire AllSeason; loss 21.8; driver 200 | ET-first closer: loss 6.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 22 / loss 5 / tire 4 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.1 / 11.1@131 (loss 9.1, TX DCT, driver 200, Summer, trap-first; AMG Speedshift DCT) | Phase 32 trap-first; tire AllSeason; loss 21.8; driver 200 | ET-first closer: loss 6.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.39 / FA 22 / loss 5 / tire 4 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 377.7587600067419,
       "1100": 385.53615847741844,
@@ -33583,7 +33589,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 11.1@126 (loss 15.8, TX DCT, driver 200, UHP, trap-first; PDK (source AUTO/PDK class)) | Phase 32 trap-first; tire AllSeason; loss 17.9; driver 200 | ET-first closer: loss 0.5 / tire 4 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 20 / loss 0.5 / tire 4 / launch 1700 / fall×1.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3 / 11.1@126 (loss 15.8, TX DCT, driver 200, UHP, trap-first; PDK (source AUTO/PDK class)) | Phase 32 trap-first; tire AllSeason; loss 17.9; driver 200 | ET-first closer: loss 0.5 / tire 4 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.35 / FA 20 / loss 0.5 / tire 4 / launch 1700 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 244.7263588124707,
       "1100": 248.83756619299794,
@@ -33704,7 +33710,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.9@117 (loss 16.5, TX DCT, driver 200, All-season, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 9.9; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 18.5 / loss 0 / tire 1 / launch 1200 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.4 / 11.9@117 (loss 16.5, TX DCT, driver 200, All-season, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 9.9; driver 200 | ET-first closer: loss 1.5 / tire 0 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1800 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 18.5 / loss 0 / tire 1 / launch 1200 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 282.9686814960466,
       "1100": 288.51852183264486,
@@ -33813,7 +33819,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.8 / 12.1@118 (loss 11.6, TX DCT, driver 200, All-season, trap-first; BMW DCT (source)) | Phase 32 trap-first; tire AllSeason; loss 11.8; driver 200 | ET-first closer: loss 3 / tire 4 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 2 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 2 / tire 1 / launch 3800 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.8 / 12.1@118 (loss 11.6, TX DCT, driver 200, All-season, trap-first; BMW DCT (source)) | Phase 32 trap-first; tire AllSeason; loss 11.8; driver 200 | ET-first closer: loss 3 / tire 4 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 2 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 20.5 / loss 2 / tire 1 / launch 3800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 276.26702818919256,
       "1100": 281.1749410853111,
@@ -33922,7 +33928,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.2 / 12.7@108 (loss 22.8, TX DCT, driver 200, All-season, trap-first; AMG Speedshift DCT (factory; was mis-TX MANUAL)) | Phase 32 trap-first; tire AllSeason; loss 16.1; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 3 / tire 0 / launch 800 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.2 / 12.7@108 (loss 22.8, TX DCT, driver 200, All-season, trap-first; AMG Speedshift DCT (factory; was mis-TX MANUAL)) | Phase 32 trap-first; tire AllSeason; loss 16.1; driver 200 | ET-first closer: loss 8 / tire 0 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 4 / tire 0 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 19.5 / loss 3 / tire 0 / launch 800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via AMG_SPEEDSHIFT_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 232.4165681150665,
       "1100": 237.20162263342036,
@@ -34031,7 +34037,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: C&D F10 M5 ~3.7 / ~11.9@122 (loss 9.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 10.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 1 / launch 3600 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D F10 M5 ~3.7 / ~11.9@122 (loss 9.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 10.6; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21.5 / loss 0 / tire 1 / launch 3600 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via BMW_M_DCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 368.92204123257517,
       "1100": 375.4759802085567,
@@ -34141,7 +34147,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.5 / 12.9@110 (loss 24.7, TX DCT, driver 200, Summer, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 16; driver 200 | ET-first closer: loss 10.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 3 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Audi_STronic_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.5 / 12.9@110 (loss 24.7, TX DCT, driver 200, Summer, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 16; driver 200 | ET-first closer: loss 10.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 6.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 3 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 10% via Audi_STronic_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 281.0878042080303,
       "1100": 285.8269878896796,
@@ -34250,7 +34256,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.2 / 12.5@116 (loss 20.4, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire AllSeason; loss 18.3; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 23 / loss 0 / tire 4 / launch 3900 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 4.2 / 12.5@116 (loss 20.4, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire AllSeason; loss 18.3; driver 200 | ET-first closer: loss 7 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 23 / loss 0 / tire 4 / launch 3900 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 358.9371,
       "1100": 366.327,
@@ -34358,7 +34364,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 335i auto ~5.1 / ~13.7@104 (loss 13.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 1.5 / tire 4 / launch 800 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 335i auto ~5.1 / ~13.7@104 (loss 13.8, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 14.2; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 1.5 / tire 4 / launch 800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 208.0844341045287,
       "1100": 211.96103985126166,
@@ -34467,7 +34473,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.3@116 (loss 16, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire Summer; loss 18.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 0 / tire 4 / launch 1500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: Phase13 DCT recalib vs prior Sources 3.9 / 12.3@116 (loss 16, TX DCT, driver 200, All-season, trap-first; AMG Speedshift MCT) | Phase 32 trap-first; tire Summer; loss 18.9; driver 200 | ET-first closer: loss 0 / tire 4 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 0 / tire 4 / launch 1500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 308.23202945842667,
       "1100": 314.2773576589746,
@@ -34575,7 +34581,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer S5 4.2 V8 ~4.9 / ~13.4@105 (loss 19.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 8.5 / tire 0 / launch 1000 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Audi S5 Tiptronic ZF 6HP ratios; FD 3.889 quattro",
+    "source": "Perf: C&D/peer S5 4.2 V8 ~4.9 / ~13.4@105 (loss 19.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 1200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 21.5 / loss 8.5 / tire 0 / launch 1000 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Audi S5 Tiptronic ZF 6HP ratios; FD 3.889 quattro",
     "torqueCurve": {
       "1000": 225.0285759022005,
       "1100": 229.02623228886588,
@@ -34683,7 +34689,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer 550i E60 ~5.4 / ~13.9@103 (loss 22.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.4; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.23 / FA 24 / loss 1.5 / tire 3 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer 550i E60 ~5.4 / ~13.9@103 (loss 22.5, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.4; driver 200 | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.23 / FA 24 / loss 1.5 / tire 3 / launch 4200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 216.69314360764517,
       "1100": 220.3466233913166,
@@ -34792,7 +34798,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D CLS550 4.7 / 13.3@107 (loss 15.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.23 / FA 21.5 / loss 9.5 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D CLS550 4.7 / 13.3@107 (loss 15.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.7; driver 200 | ET-first closer: loss 9.5 / tire 0 / launch 3300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.23 / FA 21.5 / loss 9.5 / tire 0 / launch 4200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via AMG_SPEEDSHIFT_MCT_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 243.98968944972415,
       "1100": 248.71315791326077,
@@ -34903,7 +34909,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer A7 3.0T Quattro ~5.4 / ~13.9@100 (loss 15.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.7; driver 200 | ET-first closer: loss 0.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 23.5 / loss 0.5 / tire 3 / launch 3000 / fall×1.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer A7 3.0T Quattro ~5.4 / ~13.9@100 (loss 15.7, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 19.7; driver 200 | ET-first closer: loss 0.5 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 23.5 / loss 0.5 / tire 3 / launch 3000 / fall\u00d71.3 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 204.2247013966041,
       "1100": 207.85277475830813,
@@ -35012,7 +35018,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: peer 330Ci ZHP MT ~6.0 / ~14.5@97 (loss 14.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.1; driver 200 | ET-first closer: loss 3 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 0 / tire 2 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via BMW_Getrag_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: peer 330Ci ZHP MT ~6.0 / ~14.5@97 (loss 14.6, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.1; driver 200 | ET-first closer: loss 3 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.215 / FA 20.5 / loss 0 / tire 2 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via BMW_Getrag_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 162.80378478069147,
       "1100": 165.54868167266892,
@@ -35119,7 +35125,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D CLK55 AMG 4.7 / 13.2@107 (loss 15, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.6; driver 200 | Fleet miss-batch: C&D CLK55 4.7 / 13.2@107; 362 hp / ~376 lb-ft NA M113 — Published NA curve + Summer + loss6. Residual mild miss — parked aero invent. | ET-first closer: loss 1 / tire 0 / launch 2200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 23 / loss 0 / tire 0 / launch 1300 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D CLK55 AMG 4.7 / 13.2@107 (loss 15, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.6; driver 200 | Fleet miss-batch: C&D CLK55 4.7 / 13.2@107; 362 hp / ~376 lb-ft NA M113 \u2014 Published NA curve + Summer + loss6. Residual mild miss \u2014 parked aero invent. | ET-first closer: loss 1 / tire 0 / launch 2200 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.24 / FA 23 / loss 0 / tire 0 / launch 1300 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 282.21544921628833,
       "1100": 286.3144014547565,
@@ -35224,7 +35230,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer S6 V10 ~5.1 / ~13.5@106 (loss 24, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.2; driver 200 | ET-first closer: loss 20.5 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 22 / tire 1 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.225 / FA 21.5 / loss 11 / tire 0 / launch 3200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer S6 V10 ~5.1 / ~13.5@106 (loss 24, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 26.2; driver 200 | ET-first closer: loss 20.5 / tire 1 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 22 / tire 1 / launch 2300 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.225 / FA 21.5 / loss 11 / tire 0 / launch 3200 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF_6HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 261.8375485259046,
       "1100": 266.25216993117425,
@@ -35333,7 +35339,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D E46 M3 MT ~4.8 / ~13.3@104 (loss 25.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.5; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 20 / loss 0 / tire 4 / launch 800 / fall×0.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via BMW_Getrag_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D E46 M3 MT ~4.8 / ~13.3@104 (loss 25.4, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.5; driver 200 | ET-first closer: loss 0 / tire 4 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 20 / loss 0 / tire 4 / launch 800 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via BMW_Getrag_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 212.69254818125245,
       "1100": 216.81017843860994,
@@ -35440,7 +35446,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "Perf: C&D/peer E55 AMG W211 ~4.5 / ~12.9@113 (loss 20, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.8; driver 200 | Fleet miss-batch: C&D W211 E55; OEM 469@6100 / 516@2650–4500; Cd~0.28; FD 2.65 — Trap-priority: published SC curve + Cd 0.28; loss0. 0–60/ET stay optimistic vs C&D (ET–trap conflict). | ET-first closer: loss 9.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D/peer E55 AMG W211 ~4.5 / ~12.9@113 (loss 20, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.8; driver 200 | Fleet miss-batch: C&D W211 E55; OEM 469@6100 / 516@2650\u20134500; Cd~0.28; FD 2.65 \u2014 Trap-priority: published SC curve + Cd 0.28; loss0. 0\u201360/ET stay optimistic vs C&D (ET\u2013trap conflict). | ET-first closer: loss 9.5 / tire 3 / launch 2000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 3 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via Chrysler_NAG1_5 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 448.2027916239757,
       "1100": 453.10365540866803,
@@ -35563,7 +35569,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "Perf: C&D RS4 B7 MT ~4.5 / ~13.0@108 (loss 24.6, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.5; driver 200 | ET-first closer: loss 8 / tire 0 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 2 / tire 0 / launch 4100 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Audi_Getrag_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "Perf: C&D RS4 B7 MT ~4.5 / ~13.0@108 (loss 24.6, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22.5; driver 200 | ET-first closer: loss 8 / tire 0 / launch 3200 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.25 / FA 24 / loss 2 / tire 0 / launch 4100 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Audi_Getrag_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 252.8086675422527,
       "1100": 257.0710606232027,
@@ -35671,7 +35677,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "heuristic+import | Factory powertrain loss 15% via Ford_6R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory SUV/truck all-season/AT → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "heuristic+import | Factory powertrain loss 15% via Ford_6R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory SUV/truck all-season/AT \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 275.57301929343396,
       "1100": 280.7507930355318,
@@ -35784,7 +35790,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "HP 518 / DIN curb 1450 kg (3197 lb): Porsche Newsroom tech data PDF S22_3515. Cd/area: class estimate near bake 2019 911 GT3 (0.33/20.5) with RS aero bump. | Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.9@127 (loss 14.7, TX DCT, driver 200, UHP, trap-first; PDK-only) | Phase 32 trap-first; tire Summer; loss 15.4; driver 200 | ET-first closer: loss 0 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22 / loss 0 / tire 1 / launch 3500 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — OEM Michelin PS Cup 2 R → UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
+    "source": "HP 518 / DIN curb 1450 kg (3197 lb): Porsche Newsroom tech data PDF S22_3515. Cd/area: class estimate near bake 2019 911 GT3 (0.33/20.5) with RS aero bump. | Perf: Phase13 DCT recalib vs prior Sources 2.7 / 10.9@127 (loss 14.7, TX DCT, driver 200, UHP, trap-first; PDK-only) | Phase 32 trap-first; tire Summer; loss 15.4; driver 200 | ET-first closer: loss 0 / tire 1 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.27 / FA 22 / loss 0 / tire 1 / launch 3500 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 OEM Michelin PS Cup 2 R \u2192 UHP (Jorge R-Comp=ZR1X-only) (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 244.4887653061446,
       "1100": 248.2673195282942,
@@ -35905,7 +35911,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Rear",
     "transmission": "DCT",
-    "source": "HP 493, US curb 3227 lb, Cd 0.33, A 2.033 m² (≈21.9 sq ft): Porsche Newsroom 718 Cayman GT4 RS Technical Data PDF. | Perf: Phase13 DCT recalib vs prior Sources 2.8 / 11@126 (loss 12, TX DCT, driver 200, UHP, trap-first; PDK-only) | Phase 32 trap-first; tire Summer; loss 15; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.4 / loss 0 / tire 1 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 493, US curb 3227 lb, Cd 0.33, A 2.033 m\u00b2 (\u224821.9 sq ft): Porsche Newsroom 718 Cayman GT4 RS Technical Data PDF. | Perf: Phase13 DCT recalib vs prior Sources 2.8 / 11@126 (loss 12, TX DCT, driver 200, UHP, trap-first; PDK-only) | Phase 32 trap-first; tire Summer; loss 15; driver 200 | ET-first closer: loss 0 / tire 1 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 22.4 / loss 0 / tire 1 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Porsche_PDK_7_GT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 297.10431116672163,
       "1100": 302.9915138424849,
@@ -36019,7 +36025,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 382 / curb 3400 lb: Toyota MY23 GR Supra eBrochure. Cd/area: class estimate matching bake Supra peers (0.33/21.5). | Perf: C&D GR Supra auto ~3.7 / ~12.2@116 (loss 9.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 11; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 1 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19 / loss 0 / tire 1 / launch 3600 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 382 / curb 3400 lb: Toyota MY23 GR Supra eBrochure. Cd/area: class estimate matching bake Supra peers (0.33/21.5). | Perf: C&D GR Supra auto ~3.7 / ~12.2@116 (loss 9.9, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 11; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 1 / launch 2700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19 / loss 0 / tire 1 / launch 3600 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | Published CG: C&D instrumented A90 Supra CG 19.5 in (credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 258.4169043799354,
       "1100": 263.3539764952031,
@@ -36088,7 +36094,10 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "turbo",
-    "isHybrid": false
+    "isHybrid": false,
+    "cgHeightFeet": 1.625,
+    "cgHeightPublished": true,
+    "cgHeightSource": "C&D instrumented A90 Supra CG 19.5 in (credit Jorge Guerra)"
   },
   {
     "id": "2023-nissan-z-performance",
@@ -36127,7 +36136,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 400 / MT curb 3536 lb: Nissan USA 2023 Z brochure. Cd/area: class estimate for modern RWD sports coupe. | Perf: C&D Nissan Z MT ~4.3 / ~12.8@112 (loss 19, TX MANUAL, driver 200, All-season, trap-first; FLAG IsForcedInduction=false but name/source looks FI) | Phase 32 trap-first; tire AllSeason; loss 9.5; driver 200 | ET-first closer: loss 0 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 0 / tire 1 / launch 1800 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Nissan_Z_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 400 / MT curb 3536 lb: Nissan USA 2023 Z brochure. Cd/area: class estimate for modern RWD sports coupe. | Perf: C&D Nissan Z MT ~4.3 / ~12.8@112 (loss 19, TX MANUAL, driver 200, All-season, trap-first; FLAG IsForcedInduction=false but name/source looks FI) | Phase 32 trap-first; tire AllSeason; loss 9.5; driver 200 | ET-first closer: loss 0 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 0 / tire 1 / launch 1800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Nissan_Z_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 288.56153917335627,
       "1100": 294.02137236203606,
@@ -36237,7 +36246,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 453: Car and Driver 2024 M2 instrumented. Curb 3814 lb: KBB/BMW USA curb listings for 2024 M2. Cd/area: class estimate compact RWD coupe. | Perf: C&D 2024 M2 ~3.4 / ~11.7@120 (loss 5.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 6.4; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 0 / tire 2 / launch 1200 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 453: Car and Driver 2024 M2 instrumented. Curb 3814 lb: KBB/BMW USA curb listings for 2024 M2. Cd/area: class estimate compact RWD coupe. | Perf: C&D 2024 M2 ~3.4 / ~11.7@120 (loss 5.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire Summer; loss 6.4; driver 200 | ET-first closer: loss 1.5 / tire 1 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.255 / FA 20 / loss 0 / tire 2 / launch 1200 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 340.83524935358736,
       "1100": 347.18499815637165,
@@ -36347,7 +36356,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "HP 490 (std LT2) / coupe curb 3366 lb: Chevrolet 2024 Corvette Stingray specs. Cd/area: class estimate mid-engine sports (no invented HP/weight). | Perf: C&D C8 Stingray Z51 2.8 / 11.2@122 (loss 15.5, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire UHP; loss 16.4; driver 200 | ET-first closer: loss 7.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 0 / tire 2 / launch 1100 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 490 (std LT2) / coupe curb 3366 lb: Chevrolet 2024 Corvette Stingray specs. Cd/area: class estimate mid-engine sports (no invented HP/weight). | Perf: C&D C8 Stingray Z51 2.8 / 11.2@122 (loss 15.5, TX AUTO, driver 200, Summer, trap-first) | Phase 32 trap-first; tire UHP; loss 16.4; driver 200 | ET-first closer: loss 7.5 / tire 2 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1700 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.245 / FA 19.5 / loss 0 / tire 2 / launch 1100 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 295.0762141554025,
       "1100": 300.364401875021,
@@ -36459,7 +36468,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 181: Mazda USA 2023 MX-5 pricing/packaging. Curb 2341 lb: KBB/TheCarConnection Club soft-top. Cd/area: class estimate matching bake NA Miata peers. | Perf: C&D ND Miata Club class ~5.7 / ~14.4@95 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22; driver 200 | ET-first closer: loss 0 / tire 4 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 16.8 / loss 1.5 / tire 3 / launch 3200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Mazda MX-5 ND Club 6MT OEM; FD 2.866",
+    "source": "HP 181: Mazda USA 2023 MX-5 pricing/packaging. Curb 2341 lb: KBB/TheCarConnection Club soft-top. Cd/area: class estimate matching bake NA Miata peers. | Perf: C&D ND Miata Club class ~5.7 / ~14.4@95 (loss 24.2, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 22; driver 200 | ET-first closer: loss 0 / tire 4 / launch 4100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.265 / FA 16.8 / loss 1.5 / tire 3 / launch 3200 (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Aisin_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Mazda MX-5 ND Club 6MT OEM; FD 2.866 | Published CG: C&D instrumented ND Miata Club softtop roof-up CG 18.5 in (credit Jorge Guerra)",
     "torqueCurve": {
       "2000": 118.335,
       "2100": 121.2652,
@@ -36523,7 +36532,10 @@ var GARAGE = [
     "leftWeightPercent": 50,
     "rightWeightPercent": 50,
     "powerSource": "na",
-    "isHybrid": false
+    "isHybrid": false,
+    "cgHeightFeet": 1.5417,
+    "cgHeightPublished": true,
+    "cgHeightSource": "C&D instrumented ND Miata Club softtop roof-up CG 18.5 in (credit Jorge Guerra)"
   },
   {
     "id": "2024-lexus-lc-500-coupe",
@@ -36564,7 +36576,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 471 @ 7100 / curb 4340 lb coupe: U.S. News / KBB 2024 LC 500 Coupe specs. Cd/area: class estimate grand tourer coupe. | Perf: C&D LC 500 coupe ~4.7 / 13.2@111 (loss 17.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 11.1; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21 / loss 0 / tire 3 / launch 2700 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 471 @ 7100 / curb 4340 lb coupe: U.S. News / KBB 2024 LC 500 Coupe specs. Cd/area: class estimate grand tourer coupe. | Perf: C&D LC 500 coupe ~4.7 / 13.2@111 (loss 17.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 11.1; driver 200 | ET-first closer: loss 2.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 21 / loss 0 / tire 3 / launch 2700 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 314.2008878031128,
       "1100": 319.58506044663216,
@@ -36680,7 +36692,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 418: Ford/Road & Track 2023 Bronco Raptor. Curb 5733 lb: Edmunds/JD Power base curb. Cd/area: high-drag off-road SUV class estimate (boxy body + 37s). | Perf: C&D Bronco Raptor 5.6 / 14.4@94 (loss 21.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 10 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.455 / FA 29.5 / loss 0.5 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — BFGoodrich All-Terrain KO2 / Baja-Ready AT (documented; credit Jorge Guerra)",
+    "source": "HP 418: Ford/Road & Track 2023 Bronco Raptor. Curb 5733 lb: Edmunds/JD Power base curb. Cd/area: high-drag off-road SUV class estimate (boxy body + 37s). | Perf: C&D Bronco Raptor 5.6 / 14.4@94 (loss 21.9, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 25; driver 200 | ET-first closer: loss 10 / tire 0 / launch 1300 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 9.5 / tire 0 / launch 1600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first park-rescue (trap hit > ET guard): Cd 0.455 / FA 29.5 / loss 0.5 / tire 0 / launch 800 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 BFGoodrich All-Terrain KO2 / Baja-Ready AT (documented; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 290.03370438861634,
       "1100": 296.4321494837402,
@@ -36789,7 +36801,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 228: Toyota 2024 GR86 eBrochure. Curb 2811 lb MT base: Car and Driver / Toyota curb tables. Cd/area: class estimate RWD sports coupe (no OEM Cd published in brochure excerpt). | Perf: C&D 2024 GR86 MT 5.4 / 14.0@101 (loss 17.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.7; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 4 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.205 / FA 18 / loss 0 / tire 4 / launch 3800 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 228: Toyota 2024 GR86 eBrochure. Curb 2811 lb MT base: Car and Driver / Toyota curb tables. Cd/area: class estimate RWD sports coupe (no OEM Cd published in brochure excerpt). | Perf: C&D 2024 GR86 MT 5.4 / 14.0@101 (loss 17.3, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.7; driver 200 | ET-first closer: loss 4 / tire 3 / launch 2600 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1 / tire 4 / launch 2900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.205 / FA 18 / loss 0 / tire 4 / launch 3800 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 144.5024811333497,
       "1100": 147.04749459615337,
@@ -36897,7 +36909,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 228 / Premium MT curb 2820 lb: Subaru 2024 BRZ brochure. Cd/area: class estimate twin of GR86 (no OEM Cd in brochure). | Perf: C&D 2024 BRZ tS MT 5.5 / 14.0@101 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.2; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.205 / FA 18 / loss 0 / tire 4 / launch 4500 / fall×0.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer — factory performance summer OE → Summer (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 228 / Premium MT curb 2820 lb: Subaru 2024 BRZ brochure. Cd/area: class estimate twin of GR86 (no OEM Cd in brochure). | Perf: C&D 2024 BRZ tS MT 5.5 / 14.0@101 (loss 17, TX MANUAL, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 17.2; driver 200 | ET-first closer: loss 3.5 / tire 3 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0.5 / tire 4 / launch 3600 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.205 / FA 18 / loss 0 / tire 4 / launch 4500 / fall\u00d70.75 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 12% via Toyota_FA86_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Summer \u2014 factory performance summer OE \u2192 Summer (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 148.31262907367906,
       "1100": 150.9855202121549,
@@ -37007,7 +37019,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Mid",
     "transmission": "DCT",
-    "source": "HP 670 LT6: Chevrolet/GMAuthority Z06 specs. Curb 3666 lb: Car and Driver instrumented coupe (GM dry weight listed 3500 lb — using C&D curb, not dry). Cd/area: class estimate mid-engine sports. | Perf: C&D 2023 Z06 coupe 2.6 / 10.5@131 (loss 16.6, TX AUTO, driver 200, UHP, trap-first) | Phase 32 trap-first; tire Summer; loss 19.7; driver 200 | ET-first closer: loss 4.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 670 LT6: Chevrolet/GMAuthority Z06 specs. Curb 3666 lb: Car and Driver instrumented coupe (GM dry weight listed 3500 lb \u2014 using C&D curb, not dry). Cd/area: class estimate mid-engine sports. | Perf: C&D 2023 Z06 coupe 2.6 / 10.5@131 (loss 16.6, TX AUTO, driver 200, UHP, trap-first) | Phase 32 trap-first; tire Summer; loss 19.7; driver 200 | ET-first closer: loss 4.5 / tire 2 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 399.64052581515307,
       "1100": 407.1494184714421,
@@ -37124,7 +37136,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Dual",
     "transmission": "DCT",
-    "source": "2026 Chevrolet Corvette ZR1X | Excel lock 1.9 / 8.675@159 / 60-130 3.87; lim233 | tip review/zr1x-quarter-rebake @aa8a04f: fs=1; Cd0.36/wt3978/FD5.56/TR9080 locked; Slick kept; loss 4.5→6.2 (ET@trap → Excel); assist0.28 launch2400; credit Jorge Guerra | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: R-Compound (ZR1X factory Cup-class; only R-Comp in garage; credit Jorge Guerra)",
+    "source": "2026 Chevrolet Corvette ZR1X | Excel lock 1.9 / 8.675@159 / 60-130 3.87; lim233 | tip review/zr1x-quarter-rebake @aa8a04f: fs=1; Cd0.36/wt3978/FD5.56/TR9080 locked; Slick kept; loss 4.5\u21926.2 (ET@trap \u2192 Excel); assist0.28 launch2400; credit Jorge Guerra | Factory powertrain loss 10% via Tremec_TR9080_8DCT OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: R-Compound (ZR1X factory Cup-class; only R-Comp in garage; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 921.5438,
       "1100": 941.3206,
@@ -37227,7 +37239,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 320 @ 6500 / curb 3219 lb: Acura 2024 Integra & Type S specifications release. Cd/area: class estimate matching bake Civic Type R peer (0.32/22). | Perf: C&D Integra Type S MT ~5.0 / ~13.5@106 (loss 24.1, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.1; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 320 @ 6500 / curb 3219 lb: Acura 2024 Integra & Type S specifications release. Cd/area: class estimate matching bake Civic Type R peer (0.32/22). | Perf: C&D Integra Type S MT ~5.0 / ~13.5@106 (loss 24.1, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 24.1; driver 200 | ET-first closer: loss 0 / tire 2 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 209.50225858259518,
       "1100": 213.81554716251978,
@@ -37339,7 +37351,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 355 @ 5500 / curb 4221 lb SH-AWD: Acura 2023 TLX Type S specifications PDF. Cd/area: class estimate performance sedan. | Perf: C&D 2024 TLX Type S 4.6 / 13.3@105 (loss 13.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 8.6; driver 200 | Fleet miss-batch: C&D TLX Type S ~4.6 / 13.3@105; OEM 355@5500 / 354@1400–5000; FD 3.59 — Published turbo plateau curve + Summer. Residual trap short (~103–104) after honest bake — parked Cd invent. | ET-first closer: loss 7 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 23.5 / loss 2.5 / tire 3 / launch 1300 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) — Acura TLX Type S 10AT published; FD 3.59",
+    "source": "HP 355 @ 5500 / curb 4221 lb SH-AWD: Acura 2023 TLX Type S specifications PDF. Cd/area: class estimate performance sedan. | Perf: C&D 2024 TLX Type S 4.6 / 13.3@105 (loss 13.2, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 8.6; driver 200 | Fleet miss-batch: C&D TLX Type S ~4.6 / 13.3@105; OEM 355@5500 / 354@1400\u20135000; FD 3.59 \u2014 Published turbo plateau curve + Summer. Residual trap short (~103\u2013104) after honest bake \u2014 parked Cd invent. | ET-first closer: loss 7 / tire 3 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 2.5 / tire 3 / launch 1000 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.275 / FA 23.5 / loss 2.5 / tire 3 / launch 1300 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via Ford_10R80 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra) | TX OEM gear/FD remap (credit Jorge Guerra) \u2014 Acura TLX Type S 10AT published; FD 3.59",
     "torqueCurve": {
       "1000": 368.68469083869513,
       "1100": 380.5925407495434,
@@ -37444,7 +37456,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 472 @ 7100 / curb 3891 lb: Cars.com / Auto123 / C&D curb tables for 2024 IS 500 F SPORT Performance. Cd/area: class estimate compact RWD sedan. | Perf: C&D IS500 F Sport 4.3 / 12.8@112 (loss 24.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.5; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 23 / loss 1.5 / tire 3 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 472 @ 7100 / curb 3891 lb: Cars.com / Auto123 / C&D curb tables for 2024 IS 500 F SPORT Performance. Cd/area: class estimate compact RWD sedan. | Perf: C&D IS500 F Sport 4.3 / 12.8@112 (loss 24.6, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 20.5; driver 200 | ET-first closer: loss 5.5 / tire 0 / launch 3000 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 1.5 / tire 3 / launch 3900 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.295 / FA 23 / loss 1.5 / tire 3 / launch 4500 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 269.7527162879913,
       "1100": 274.37522135380436,
@@ -37557,7 +37569,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "DCT",
-    "source": "HP 401: Audi/Car and Driver 2024 RS 3. Curb 3649 lb: KBB 2024 RS 3. Cd/area: class estimate compact quattro sedan. | Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.6@119 (loss 5, TX DCT, driver 200, Summer, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 5.2; driver 200 | ET-first closer: loss 1.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 20 / loss 0 / tire 2 / launch 2700 / fall×0.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 401: Audi/Car and Driver 2024 RS 3. Curb 3649 lb: KBB 2024 RS 3. Cd/area: class estimate compact quattro sedan. | Perf: Phase13 DCT recalib vs prior Sources 3.3 / 11.6@119 (loss 5, TX DCT, driver 200, Summer, trap-first; S tronic DCT) | Phase 32 trap-first; tire AllSeason; loss 5.2; driver 200 | ET-first closer: loss 1.5 / tire 4 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.235 / FA 20 / loss 0 / tire 2 / launch 2700 / fall\u00d70.85 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 10% via VW_DQ500_7 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 311.28398873379075,
       "1100": 316.8139816275339,
@@ -37667,7 +37679,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Auto",
-    "source": "HP 472: Lexus USA Newsroom 2024 RC F. Curb 3902 lb: Carbuzz / AutomartUSA 2024 RC F curb. Cd/area: class estimate RWD coupe. | Perf: C&D RC F 4.1 / 12.7@113 (loss 21, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.8; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 23.5 / loss 0 / tire 3 / launch 2100 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: Street — factory mainstream Street/all-season → Street (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 472: Lexus USA Newsroom 2024 RC F. Curb 3902 lb: Carbuzz / AutomartUSA 2024 RC F curb. Cd/area: class estimate RWD coupe. | Perf: C&D RC F 4.1 / 12.7@113 (loss 21, TX AUTO, driver 200, All-season, trap-first) | Phase 32 trap-first; tire AllSeason; loss 16.8; driver 200 | ET-first closer: loss 0 / tire 3 / launch 2100 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.26 / FA 23.5 / loss 0 / tire 3 / launch 2100 (fs=1; credit Jorge Guerra) | Factory powertrain loss 15% via ZF8HP OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: Street \u2014 factory mainstream Street/all-season \u2192 Street (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 281.53780326082426,
       "1100": 286.8276500276428,
@@ -37779,7 +37791,7 @@ var GARAGE = [
     "hasAftermarketConverter": false,
     "engineLayout": "Front",
     "transmission": "Manual",
-    "source": "HP 315 @ 6500 / curb 3188 lb: Honda News 2023 Civic Type R Specifications & Features. Cd/area: class estimate matching bake 2018 CTR peer (0.32/22). | Perf: C&D 2023 Civic Type R MT 4.9 / 13.5@106 (loss 23.4, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.9; driver 200 | ET-first closer: loss 0.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 2 / launch 1200 / fall×1.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial → OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank→wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP — factory performance/super UHP summer → UHP (factory-identical heuristic; credit Jorge Guerra)",
+    "source": "HP 315 @ 6500 / curb 3188 lb: Honda News 2023 Civic Type R Specifications & Features. Cd/area: class estimate matching bake 2018 CTR peer (0.32/22). | Perf: C&D 2023 Civic Type R MT 4.9 / 13.5@106 (loss 23.4, TX MANUAL, driver 200, Summer, trap-first) | Phase 32 trap-first; tire AllSeason; loss 18.9; driver 200 | ET-first closer: loss 0.5 / tire 2 / launch 2400 vs Corrected Excel (fs=1; credit Jorge Guerra) | ET-first closer: loss 0 / tire 2 / launch 1500 vs Corrected Excel (fs=1; credit Jorge Guerra) | Trap-first tire-prep: Cd 0.225 / FA 19.5 / loss 0 / tire 2 / launch 1200 / fall\u00d71.15 (fs=1; credit Jorge Guerra) | Engine-curve accuracy: shape/loss only (no Cd/FA/HP/wt); fs=1; credit Jorge Guerra | No-factory-DR: demoted factory Drag Radial \u2192 OEM Street/Summer/UHP seed (fs=1; credit Jorge Guerra) | Factory powertrain loss 12% via Honda_CTR_6 OEM package (crank\u2192wheel / factory TX; credit Jorge Guerra) | OEM tire: UHP \u2014 factory performance/super UHP summer \u2192 UHP (factory-identical heuristic; credit Jorge Guerra)",
     "torqueCurve": {
       "1000": 198.23246682525743,
       "1100": 201.93238445314523,
@@ -37857,8 +37869,8 @@ var GARAGE = [
     "powerSource": "turbo",
     "isHybrid": false
   }
-]
-;
+];
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = GARAGE;
 }
