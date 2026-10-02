@@ -1,0 +1,433 @@
+{
+  "tipNote": "OEM EV speedLimiterMph + M3P 60′/60-130; Pages NOT shipped; Jorge Guerra",
+  "field": "speedLimiterMph",
+  "evCount": 39,
+  "vmax": {
+    "changed": 34,
+    "unchanged": 5,
+    "unsure": 0,
+    "table": [
+      {
+        "id": "2022-tesla-model-s-plaid",
+        "name": "2022 Tesla Model S Plaid",
+        "old": 151.4,
+        "neu": 200,
+        "status": "CHANGED",
+        "note": "Model S Plaid advertised 200 mph",
+        "src": "Tesla.com"
+      },
+      {
+        "id": "2024-tesla-model-3-performance",
+        "name": "2024 Tesla Model 3 Performance",
+        "old": 146,
+        "neu": 163,
+        "status": "CHANGED",
+        "note": "M3P Highland 262 km/h / 163 mph",
+        "src": "Tesla / auto-data"
+      },
+      {
+        "id": "2022-porsche-taycan-turbo-s",
+        "name": "2022 Porsche Taycan Turbo S",
+        "old": 162,
+        "neu": 162,
+        "status": "UNCHANGED",
+        "note": "Taycan Turbo S top track 162 mph",
+        "src": "Porsche USA"
+      },
+      {
+        "id": "2024-lucid-air-sapphire",
+        "name": "2024 Lucid Air Sapphire",
+        "old": 157.4,
+        "neu": 205,
+        "status": "CHANGED",
+        "note": "Air Sapphire 205 mph",
+        "src": "Lucid Motors"
+      },
+      {
+        "id": "2023-hyundai-ioniq-5-n",
+        "name": "2023 Hyundai Ioniq 5 N",
+        "old": 125.3,
+        "neu": 161,
+        "status": "CHANGED",
+        "note": "IONIQ 5 N 161 mph",
+        "src": "Hyundai US tech sheet"
+      },
+      {
+        "id": "2022-ford-f-150-lightning",
+        "name": "2022 Ford F-150 Lightning",
+        "old": 108.3,
+        "neu": 110,
+        "status": "CHANGED",
+        "note": "F-150 Lightning OEM ~110 mph",
+        "src": "Ford"
+      },
+      {
+        "id": "2023-tesla-model-y-performance",
+        "name": "2023 Tesla Model Y Performance",
+        "old": 115.4,
+        "neu": 155,
+        "status": "CHANGED",
+        "note": "Model Y Performance 155 mph",
+        "src": "Tesla.com"
+      },
+      {
+        "id": "2022-tesla-model-x-plaid",
+        "name": "2022 Tesla Model X Plaid",
+        "old": 145.4,
+        "neu": 163,
+        "status": "CHANGED",
+        "note": "Model X Plaid 163 mph (22\" summer)",
+        "src": "Tesla"
+      },
+      {
+        "id": "2023-kia-ev6-gt",
+        "name": "2023 Kia EV6 GT",
+        "old": 162,
+        "neu": 161,
+        "status": "CHANGED",
+        "note": "EV6 GT 260 km/h / 161 mph",
+        "src": "Kia / EV-DB"
+      },
+      {
+        "id": "2023-polestar-2-performance",
+        "name": "2023 Polestar 2 Performance",
+        "old": 111.3,
+        "neu": 127,
+        "status": "CHANGED",
+        "note": "Polestar 2 Perf 205 km/h",
+        "src": "Polestar / EV-DB"
+      },
+      {
+        "id": "2022-bmw-ix-m60",
+        "name": "2022 BMW iX M60",
+        "old": 155,
+        "neu": 155,
+        "status": "UNCHANGED",
+        "note": "iX M60 limited 250 km/h",
+        "src": "BMW / EV-DB"
+      },
+      {
+        "id": "2023-mercedes-eqe-amg-53",
+        "name": "2023 Mercedes EQE AMG 53",
+        "old": 149,
+        "neu": 137,
+        "status": "CHANGED",
+        "note": "EQE 53 sedan 220 km/h base",
+        "src": "MB AMG / EV-DB"
+      },
+      {
+        "id": "2024-cadillac-lyriq-awd",
+        "name": "2024 Cadillac Lyriq AWD",
+        "old": 104.4,
+        "neu": 130,
+        "status": "CHANGED",
+        "note": "LYRIQ AWD 210 km/h",
+        "src": "Cadillac / EV-DB"
+      },
+      {
+        "id": "2024-tesla-cybertruck-tri-motor",
+        "name": "2024 Tesla Cybertruck Tri-Motor",
+        "old": 130,
+        "neu": 130,
+        "status": "UNCHANGED",
+        "note": "Cyberbeast 130 mph",
+        "src": "Tesla.com"
+      },
+      {
+        "id": "2023-genesis-gv60-performance",
+        "name": "2023 Genesis GV60 Performance",
+        "old": 113.4,
+        "neu": 146,
+        "status": "CHANGED",
+        "note": "GV60 Performance 235 km/h",
+        "src": "Genesis / EV-DB"
+      },
+      {
+        "id": "2024-volvo-ex90-twin-motor",
+        "name": "2024 Volvo EX90 Twin Motor",
+        "old": 103.4,
+        "neu": 112,
+        "status": "CHANGED",
+        "note": "EX90 Twin 180 km/h",
+        "src": "Volvo / EV-DB"
+      },
+      {
+        "id": "2023-audi-q4-e-tron",
+        "name": "2023 Audi Q4 e-tron",
+        "old": 97.4,
+        "neu": 112,
+        "status": "CHANGED",
+        "note": "Q4 e-tron 180 km/h",
+        "src": "Audi / EV-DB"
+      },
+      {
+        "id": "2022-mercedes-eqb-350",
+        "name": "2022 Mercedes EQB 350",
+        "old": 96.4,
+        "neu": 99,
+        "status": "CHANGED",
+        "note": "EQB 350 160 km/h",
+        "src": "MB / EV-DB"
+      },
+      {
+        "id": "2024-tesla-model-x-long-range",
+        "name": "2024 Tesla Model X Long Range",
+        "old": 127.4,
+        "neu": 149,
+        "status": "CHANGED",
+        "note": "Model X LR 149 mph",
+        "src": "Tesla.com"
+      },
+      {
+        "id": "2023-nissan-ariya-e-4orce",
+        "name": "2023 Nissan Ariya e-4ORCE",
+        "old": 101.4,
+        "neu": 124,
+        "status": "CHANGED",
+        "note": "Ariya e-4ORCE 200 km/h",
+        "src": "Nissan / EV-DB"
+      },
+      {
+        "id": "2024-subaru-solterra",
+        "name": "2024 Subaru Solterra",
+        "old": 92.4,
+        "neu": 99,
+        "status": "CHANGED",
+        "note": "Solterra 160 km/h",
+        "src": "Subaru / EV-DB"
+      },
+      {
+        "id": "2023-toyota-bz4x-awd",
+        "name": "2023 Toyota bZ4X AWD",
+        "old": 92.4,
+        "neu": 99,
+        "status": "CHANGED",
+        "note": "bZ4X AWD 160 km/h",
+        "src": "Toyota / EV-DB"
+      },
+      {
+        "id": "2024-fisker-ocean-extreme",
+        "name": "2024 Fisker Ocean Extreme",
+        "old": 110.4,
+        "neu": 127,
+        "status": "CHANGED",
+        "note": "Ocean Extreme ~205 km/h",
+        "src": "EVspecs"
+      },
+      {
+        "id": "2024-hyundai-ioniq-6-awd",
+        "name": "2024 Hyundai Ioniq 6 AWD",
+        "old": 104.4,
+        "neu": 115,
+        "status": "CHANGED",
+        "note": "Ioniq 6 AWD 185 km/h",
+        "src": "EV-DB"
+      },
+      {
+        "id": "2023-vw-id-4-awd-pro",
+        "name": "2023 VW ID.4 AWD Pro",
+        "old": 97.4,
+        "neu": 112,
+        "status": "CHANGED",
+        "note": "ID.4 AWD Pro 180 km/h",
+        "src": "VW / EV-DB"
+      },
+      {
+        "id": "2024-chevrolet-blazer-ev-ss",
+        "name": "2024 Chevrolet Blazer EV SS",
+        "old": 117.4,
+        "neu": 130,
+        "status": "CHANGED",
+        "note": "Blazer EV SS limited 130 mph",
+        "src": "Chevy"
+      },
+      {
+        "id": "2023-ford-mustang-mach-e-gt",
+        "name": "2023 Ford Mustang Mach-E GT",
+        "old": 114.4,
+        "neu": 124,
+        "status": "CHANGED",
+        "note": "Mach-E GT 200 km/h",
+        "src": "Ford / EV-DB"
+      },
+      {
+        "id": "2024-bmw-i5-m60",
+        "name": "2024 BMW i5 M60",
+        "old": 115.4,
+        "neu": 143,
+        "status": "CHANGED",
+        "note": "i5 M60 230 km/h",
+        "src": "BMW / EV-DB"
+      },
+      {
+        "id": "2024-rivian-r1s-quad-motor",
+        "name": "2024 Rivian R1S Quad Motor",
+        "old": 121.3,
+        "neu": 125,
+        "status": "CHANGED",
+        "note": "R1S Quad ~125 mph",
+        "src": "Rivian"
+      },
+      {
+        "id": "2023-bmw-i7-xdrive60",
+        "name": "2023 BMW i7 xDrive60",
+        "old": 111.3,
+        "neu": 149,
+        "status": "CHANGED",
+        "note": "i7 xDrive60 240 km/h",
+        "src": "BMW / EV-DB"
+      },
+      {
+        "id": "2024-mercedes-eqs-450",
+        "name": "2024 Mercedes EQS 450+",
+        "old": 101.4,
+        "neu": 130,
+        "status": "CHANGED",
+        "note": "EQS 450+ 210 km/h",
+        "src": "MB / EV-DB"
+      },
+      {
+        "id": "2023-audi-e-tron-gt",
+        "name": "2023 Audi e-tron GT",
+        "old": 152,
+        "neu": 152,
+        "status": "UNCHANGED",
+        "note": "e-tron GT 245 km/h",
+        "src": "Audi / EV-DB"
+      },
+      {
+        "id": "2024-lucid-air-touring",
+        "name": "2024 Lucid Air Touring",
+        "old": 155,
+        "neu": 140,
+        "status": "CHANGED",
+        "note": "Air Touring 140 mph",
+        "src": "Lucid 2024 PDF"
+      },
+      {
+        "id": "2024-tesla-model-s-long-range",
+        "name": "2024 Tesla Model S Long Range",
+        "old": 129.4,
+        "neu": 149,
+        "status": "CHANGED",
+        "note": "Model S LR 149 mph",
+        "src": "Tesla.com"
+      },
+      {
+        "id": "2023-hyundai-kona-electric",
+        "name": "2023 Hyundai Kona Electric",
+        "old": 90.4,
+        "neu": 107,
+        "status": "CHANGED",
+        "note": "Kona Electric 172 km/h",
+        "src": "EV-DB"
+      },
+      {
+        "id": "2024-kia-niro-ev",
+        "name": "2024 Kia Niro EV",
+        "old": 90.4,
+        "neu": 104,
+        "status": "CHANGED",
+        "note": "Niro EV ~167 km/h / 104 mph",
+        "src": "Kia"
+      },
+      {
+        "id": "2023-mercedes-eqs-580-suv",
+        "name": "2023 Mercedes EQS 580 SUV",
+        "old": 108.4,
+        "neu": 130,
+        "status": "CHANGED",
+        "note": "EQS SUV 580 210 km/h",
+        "src": "MB / EV-DB"
+      },
+      {
+        "id": "2024-volvo-xc40-recharge",
+        "name": "2024 Volvo XC40 Recharge",
+        "old": 104.4,
+        "neu": 112,
+        "status": "CHANGED",
+        "note": "XC40 Recharge 180 km/h",
+        "src": "Volvo / EV-DB"
+      },
+      {
+        "id": "2021-rimac-nevera",
+        "name": "2021 Rimac Nevera",
+        "old": 258,
+        "neu": 258,
+        "status": "UNCHANGED",
+        "note": "Rimac Nevera 412 km/h (258 mph)",
+        "src": "Rimac"
+      }
+    ]
+  },
+  "m3p": {
+    "before": {
+      "knobs": {
+        "peakHp": 480,
+        "drive": 1.52,
+        "mu": 1.08,
+        "lim": 163
+      },
+      "sim": {
+        "z60": 2.892,
+        "et": 11.049,
+        "trap": 124.53,
+        "z60130": 9.426,
+        "ft60": 1.773,
+        "vmax": 163,
+        "vmaxReason": "speed_limiter_163mph"
+      }
+    },
+    "after": {
+      "knobs": {
+        "peakHp": 495,
+        "drive": 1.625,
+        "mu": 0.87,
+        "lim": 163
+      },
+      "sim": {
+        "z60": 2.635,
+        "et": 10.8,
+        "trap": 125.82,
+        "z60130": 9.1,
+        "ft60": 1.69,
+        "vmax": 163,
+        "vmaxReason": "speed_limiter_163mph"
+      }
+    },
+    "inBand": true,
+    "factoryHpCap": 510
+  },
+  "verify": {
+    "bindVar": "VB_POWERCURVE_GARAGE",
+    "evCount": 39,
+    "samples": [
+      {
+        "id": "2024-tesla-model-3-performance",
+        "lim": 163,
+        "name": "2024 Tesla Model 3 Performance"
+      },
+      {
+        "id": "2022-tesla-model-s-plaid",
+        "lim": 200,
+        "name": "2022 Tesla Model S Plaid"
+      },
+      {
+        "id": "2024-lucid-air-sapphire",
+        "lim": 205,
+        "name": "2024 Lucid Air Sapphire"
+      },
+      {
+        "id": "2022-porsche-taycan-turbo-s",
+        "lim": 162,
+        "name": "2022 Porsche Taycan Turbo S"
+      },
+      {
+        "id": "2024-tesla-cybertruck-tri-motor",
+        "lim": 130,
+        "name": "2024 Tesla Cybertruck Tri-Motor"
+      }
+    ],
+    "totalCars": 316
+  }
+}
