@@ -1,0 +1,1896 @@
+{
+  "tip": "fleet-fidelity-trap-first",
+  "credit": "Jorge Guerra",
+  "elapsedSec": 530.9,
+  "knobs": [
+    "tireType",
+    "launchRpm"
+  ],
+  "neverTouch": [
+    "dragCoefficient",
+    "frontalAreaSqFt",
+    "weightLbs",
+    "peakHp",
+    "gearRatios",
+    "finalDriveRatio",
+    "torqueCurve"
+  ],
+  "demotedSlicks": 67,
+  "demoted": [
+    {
+      "id": "2001-pontiac-firebird-trans-am-ws6",
+      "name": "2001 Pontiac Firebird Trans Am WS6",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1987-buick-gnx",
+      "name": "1987 Buick GNX",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "1994-pontiac-firebird-formula",
+      "name": "1994 Pontiac Firebird Formula",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2000-chevrolet-camaro-ss",
+      "name": "2000 Chevrolet Camaro SS",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2007-ford-mustang-gt",
+      "name": "2007 Ford Mustang GT",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1993-pontiac-firebird-formula",
+      "name": "1993 Pontiac Firebird Formula",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2022-tesla-model-s-plaid",
+      "name": "2022 Tesla Model S Plaid",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-tesla-model-3-performance",
+      "name": "2024 Tesla Model 3 Performance",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-lucid-air-sapphire",
+      "name": "2024 Lucid Air Sapphire",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2022-tesla-model-x-plaid",
+      "name": "2022 Tesla Model X Plaid",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-hyundai-kona-electric",
+      "name": "2023 Hyundai Kona Electric",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-kia-niro-ev",
+      "name": "2024 Kia Niro EV",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2021-ferrari-sf90-stradale",
+      "name": "2021 Ferrari SF90 Stradale",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2021-porsche-911-turbo-s",
+      "name": "2021 Porsche 911 Turbo S",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2020-mclaren-765lt",
+      "name": "2020 McLaren 765LT",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2017-ferrari-812-superfast",
+      "name": "2017 Ferrari 812 Superfast",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2018-mclaren-600lt",
+      "name": "2018 McLaren 600LT",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2019-lamborghini-hurac-n-performante",
+      "name": "2019 Lamborghini Huracán Performante",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2016-ferrari-488-gtb",
+      "name": "2016 Ferrari 488 GTB",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2015-mclaren-p1",
+      "name": "2015 McLaren P1",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2013-mclaren-mp4-12c",
+      "name": "2013 McLaren MP4-12C",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2010-ferrari-458-italia",
+      "name": "2010 Ferrari 458 Italia",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2006-ford-gt",
+      "name": "2006 Ford GT",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2011-mclaren-mp4-12c-hs",
+      "name": "2011 McLaren MP4-12C HS",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2020-mclaren-720s",
+      "name": "2020 McLaren 720S",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2019-lamborghini-aventador-svj",
+      "name": "2019 Lamborghini Aventador SVJ",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2021-rimac-nevera",
+      "name": "2021 Rimac Nevera",
+      "from": 2,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2019-koenigsegg-jesko",
+      "name": "2019 Koenigsegg Jesko",
+      "from": 2,
+      "to": 4,
+      "category": "Hypercars"
+    },
+    {
+      "id": "2014-hennessey-venom-gt",
+      "name": "2014 Hennessey Venom GT",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2019-mclaren-speedtail",
+      "name": "2019 McLaren Speedtail",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2016-koenigsegg-regera",
+      "name": "2016 Koenigsegg Regera",
+      "from": 2,
+      "to": 4,
+      "category": "Hypercars"
+    },
+    {
+      "id": "2020-mclaren-elva",
+      "name": "2020 McLaren Elva",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2021-mclaren-sabre",
+      "name": "2021 McLaren Sabre",
+      "from": 2,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "1998-toyota-supra-turbo-mk4",
+      "name": "1998 Toyota Supra Turbo (Mk4)",
+      "from": 2,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2018-honda-civic-type-r",
+      "name": "2018 Honda Civic Type R",
+      "from": 2,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "1998-honda-prelude-type-sh",
+      "name": "1998 Honda Prelude Type SH",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2003-acura-rsx-type-s",
+      "name": "2003 Acura RSX Type-S",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2007-mazdaspeed3",
+      "name": "2007 MazdaSpeed3",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "1997-honda-civic-type-r-ek9",
+      "name": "1997 Honda Civic Type R EK9",
+      "from": 2,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2005-mitsubishi-eclipse-gt",
+      "name": "2005 Mitsubishi Eclipse GT",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "1999-honda-prelude-sh",
+      "name": "1999 Honda Prelude SH",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2021-kawasaki-ninja-zx-10r",
+      "name": "2021 Kawasaki Ninja ZX-10R",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2016-kawasaki-ninja-zx-10r",
+      "name": "2016 Kawasaki Ninja ZX-10R",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000",
+      "name": "2020 Suzuki GSX-R1000",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2020-suzuki-gsx-r1000r",
+      "name": "2020 Suzuki GSX-R1000R",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2020-yamaha-yzf-r1",
+      "name": "2020 Yamaha YZF-R1",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2020-yamaha-yzf-r1m",
+      "name": "2020 Yamaha YZF-R1M",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2021-bmw-s1000rr",
+      "name": "2021 BMW S1000RR",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2021-honda-cbr1000rr-r-fireblade",
+      "name": "2021 Honda CBR1000RR-R Fireblade",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2022-suzuki-hayabusa",
+      "name": "2022 Suzuki Hayabusa",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2020-kawasaki-ninja-zx-14r",
+      "name": "2020 Kawasaki Ninja ZX-14R",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2021-ducati-panigale-v4",
+      "name": "2021 Ducati Panigale V4",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2021-kawasaki-ninja-h2",
+      "name": "2021 Kawasaki Ninja H2",
+      "from": 2,
+      "to": 4,
+      "category": "Motorcycle"
+    },
+    {
+      "id": "2022-volkswagen-golf-r",
+      "name": "2022 Volkswagen Golf R",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2021-bmw-m5-competition",
+      "name": "2021 BMW M5 Competition",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2018-bmw-m3-competition",
+      "name": "2018 BMW M3 Competition",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "1993-honda-accord-sir",
+      "name": "1993 Honda Accord SiR",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2016-audi-tt-rs",
+      "name": "2016 Audi TT RS",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2015-bmw-m4",
+      "name": "2015 BMW M4",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2004-bmw-330ci-zhp",
+      "name": "2004 BMW 330Ci ZHP",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2023-nissan-z-performance",
+      "name": "2023 Nissan Z Performance",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2024-bmw-m2",
+      "name": "2024 BMW M2",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2024-chevrolet-corvette-stingray",
+      "name": "2024 Chevrolet Corvette Stingray",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2023-chevrolet-corvette-z06",
+      "name": "2023 Chevrolet Corvette Z06",
+      "from": 2,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2024-acura-integra-type-s",
+      "name": "2024 Acura Integra Type S",
+      "from": 2,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2024-audi-rs-3",
+      "name": "2024 Audi RS 3",
+      "from": 2,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2023-honda-civic-type-r",
+      "name": "2023 Honda Civic Type R",
+      "from": 2,
+      "to": 3,
+      "category": "Sports Cars"
+    }
+  ],
+  "reseatedToFactory": 135,
+  "reseated": [
+    {
+      "id": "2020-ford-mustang-gt",
+      "name": "2020 Ford Mustang GT",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2020-chevrolet-camaro-ss",
+      "name": "2020 Chevrolet Camaro SS",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2020-dodge-challenger-r-t-scat-pack",
+      "name": "2020 Dodge Challenger R/T Scat Pack",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2020-dodge-challenger-hellcat",
+      "name": "2020 Dodge Challenger Hellcat",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2024-ford-mustang-dark-horse",
+      "name": "2024 Ford Mustang Dark Horse",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2023-chevrolet-camaro-zl1",
+      "name": "2023 Chevrolet Camaro ZL1",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2021-dodge-charger-hellcat-redeye",
+      "name": "2021 Dodge Charger Hellcat Redeye",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2015-dodge-challenger-hellcat",
+      "name": "2015 Dodge Challenger Hellcat",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2014-chevrolet-camaro-z-28",
+      "name": "2014 Chevrolet Camaro Z/28",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2012-chevrolet-corvette-zr1",
+      "name": "2012 Chevrolet Corvette ZR1",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2004-pontiac-gto",
+      "name": "2004 Pontiac GTO",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2023-dodge-charger-scat-pack",
+      "name": "2023 Dodge Charger Scat Pack",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2020-ford-mustang-shelby-gt500",
+      "name": "2020 Ford Mustang Shelby GT500",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2012-chevrolet-camaro-zl1",
+      "name": "2012 Chevrolet Camaro ZL1",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2011-ford-mustang-gt-5-0",
+      "name": "2011 Ford Mustang GT 5.0",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2008-dodge-challenger-srt8",
+      "name": "2008 Dodge Challenger SRT8",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1996-ford-mustang-svt-cobra",
+      "name": "1996 Ford Mustang SVT Cobra",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1993-chevrolet-camaro-z28",
+      "name": "1993 Chevrolet Camaro Z28",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1987-ford-mustang-5-0-lx",
+      "name": "1987 Ford Mustang 5.0 LX",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2010-chevrolet-camaro-lt",
+      "name": "2010 Chevrolet Camaro LT",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1992-ford-mustang-lx-5-0",
+      "name": "1992 Ford Mustang LX 5.0",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1998-pontiac-firebird-formula",
+      "name": "1998 Pontiac Firebird Formula",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2006-dodge-charger-r-t",
+      "name": "2006 Dodge Charger R/T",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2011-chevrolet-camaro-lt",
+      "name": "2011 Chevrolet Camaro LT",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1991-chevrolet-camaro-z28",
+      "name": "1991 Chevrolet Camaro Z28",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1994-ford-mustang-gt",
+      "name": "1994 Ford Mustang GT",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2002-pontiac-firebird-ws6",
+      "name": "2002 Pontiac Firebird WS6",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2009-dodge-challenger-r-t",
+      "name": "2009 Dodge Challenger R/T",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "1989-ford-mustang-gt-5-0",
+      "name": "1989 Ford Mustang GT 5.0",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2004-ford-mustang-mach-1",
+      "name": "2004 Ford Mustang Mach 1",
+      "from": 1,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2007-dodge-charger-srt8",
+      "name": "2007 Dodge Charger SRT8",
+      "from": 0,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2014-chevrolet-ss",
+      "name": "2014 Chevrolet SS",
+      "from": 4,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2022-porsche-taycan-turbo-s",
+      "name": "2022 Porsche Taycan Turbo S",
+      "from": 1,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-hyundai-ioniq-5-n",
+      "name": "2023 Hyundai Ioniq 5 N",
+      "from": 1,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-tesla-model-y-performance",
+      "name": "2023 Tesla Model Y Performance",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-polestar-2-performance",
+      "name": "2023 Polestar 2 Performance",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2022-bmw-ix-m60",
+      "name": "2022 BMW iX M60",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-mercedes-eqe-amg-53",
+      "name": "2023 Mercedes EQE AMG 53",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-cadillac-lyriq-awd",
+      "name": "2024 Cadillac Lyriq AWD",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-tesla-cybertruck-tri-motor",
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-tesla-model-x-long-range",
+      "name": "2024 Tesla Model X Long Range",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-nissan-ariya-e-4orce",
+      "name": "2023 Nissan Ariya e-4ORCE",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-toyota-bz4x-awd",
+      "name": "2023 Toyota bZ4X AWD",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-fisker-ocean-extreme",
+      "name": "2024 Fisker Ocean Extreme",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-ford-mustang-mach-e-gt",
+      "name": "2023 Ford Mustang Mach-E GT",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-bmw-i5-m60",
+      "name": "2024 BMW i5 M60",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-rivian-r1s-quad-motor",
+      "name": "2024 Rivian R1S Quad Motor",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-bmw-i7-xdrive60",
+      "name": "2023 BMW i7 xDrive60",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-mercedes-eqs-450",
+      "name": "2024 Mercedes EQS 450+",
+      "from": 1,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2023-audi-e-tron-gt",
+      "name": "2023 Audi e-tron GT",
+      "from": 0,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-lucid-air-touring",
+      "name": "2024 Lucid Air Touring",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-tesla-model-s-long-range",
+      "name": "2024 Tesla Model S Long Range",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2024-volvo-xc40-recharge",
+      "name": "2024 Volvo XC40 Recharge",
+      "from": 3,
+      "to": 4,
+      "category": "EV"
+    },
+    {
+      "id": "2017-porsche-911-gt2-rs",
+      "name": "2017 Porsche 911 GT2 RS",
+      "from": 1,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2014-ferrari-f12-berlinetta",
+      "name": "2014 Ferrari F12 Berlinetta",
+      "from": 1,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2004-porsche-carrera-gt",
+      "name": "2004 Porsche Carrera GT",
+      "from": 1,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2002-ferrari-enzo",
+      "name": "2002 Ferrari Enzo",
+      "from": 1,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2007-lamborghini-murci-lago-lp640",
+      "name": "2007 Lamborghini Murciélago LP640",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2009-nissan-gt-r",
+      "name": "2009 Nissan GT-R",
+      "from": 1,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2012-audi-r8-v10",
+      "name": "2012 Audi R8 V10",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2001-lamborghini-diablo-vt-6-0",
+      "name": "2001 Lamborghini Diablo VT 6.0",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2003-ferrari-360-modena",
+      "name": "2003 Ferrari 360 Modena",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2007-porsche-911-turbo",
+      "name": "2007 Porsche 911 Turbo",
+      "from": 3,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2011-mercedes-sls-amg",
+      "name": "2011 Mercedes SLS AMG",
+      "from": 1,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2009-lamborghini-gallardo-lp560-4",
+      "name": "2009 Lamborghini Gallardo LP560-4",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2013-srt-viper-gts",
+      "name": "2013 SRT Viper GTS",
+      "from": 4,
+      "to": 3,
+      "category": "Modern Muscle"
+    },
+    {
+      "id": "2002-porsche-911-turbo-996",
+      "name": "2002 Porsche 911 Turbo (996)",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2006-ferrari-612-scaglietti",
+      "name": "2006 Ferrari 612 Scaglietti",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2008-lamborghini-revent-n",
+      "name": "2008 Lamborghini Reventón",
+      "from": 0,
+      "to": 4,
+      "category": "Supercars"
+    },
+    {
+      "id": "2015-aston-martin-v12-vantage-s",
+      "name": "2015 Aston Martin V12 Vantage S",
+      "from": 4,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2006-saleen-s7-twin-turbo",
+      "name": "2006 Saleen S7 Twin Turbo",
+      "from": 1,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2004-maserati-mc12",
+      "name": "2004 Maserati MC12",
+      "from": 1,
+      "to": 3,
+      "category": "Garage"
+    },
+    {
+      "id": "2008-koenigsegg-ccx",
+      "name": "2008 Koenigsegg CCX",
+      "from": 1,
+      "to": 4,
+      "category": "Hypercars"
+    },
+    {
+      "id": "2002-nissan-skyline-gt-r-r34",
+      "name": "2002 Nissan Skyline GT-R R34",
+      "from": 0,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2020-subaru-wrx-sti",
+      "name": "2020 Subaru WRX STI",
+      "from": 0,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2008-mitsubishi-lancer-evolution-x",
+      "name": "2008 Mitsubishi Lancer Evolution X",
+      "from": 0,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2006-subaru-wrx-sti",
+      "name": "2006 Subaru WRX STI",
+      "from": 0,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2008-bmw-135i",
+      "name": "2008 BMW 135i",
+      "from": 4,
+      "to": 0,
+      "category": "Garage"
+    },
+    {
+      "id": "2003-mitsubishi-lancer-evolution-viii",
+      "name": "2003 Mitsubishi Lancer Evolution VIII",
+      "from": 1,
+      "to": 3,
+      "category": "Sports Cars"
+    },
+    {
+      "id": "2013-scion-fr-s",
+      "name": "2013 Scion FR-S",
+      "from": 3,
+      "to": 0,
+      "category": "Garage"
+    }
+  ],
+  "locked": [
+    {
+      "id": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "tire": 2
+    }
+  ],
+  "applied": 192,
+  "unchanged": 121,
+  "parked": [
+    {
+      "id": "2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals",
+      "name": "2001 Chevrolet Camaro Z28 (H/C/E) MS3-TSP5.3stage2.5-1.3/4LT-TrueDuals",
+      "reason": "skip-locked"
+    },
+    {
+      "id": "2026-chevrolet-corvette-zr1x",
+      "name": "2026 Chevrolet Corvette ZR1X",
+      "reason": "skip-locked"
+    }
+  ],
+  "slickResidual": [
+    "2026 Chevrolet Corvette ZR1X"
+  ],
+  "tireHistAfter": {
+    "0": 56,
+    "1": 86,
+    "2": 1,
+    "3": 90,
+    "4": 83
+  },
+  "sampleApplied": [
+    {
+      "id": "2020-ford-mustang-gt",
+      "name": "2020 Ford Mustang GT",
+      "before": {
+        "tire": 3,
+        "launch": 3900
+      },
+      "after": {
+        "tire": 1,
+        "launch": 4500
+      },
+      "sim": {
+        "et": 11.946999999998818,
+        "trap": 117.00041526597383,
+        "z60": 3.587999999999716,
+        "z60130": 11.741999999997226,
+        "sixty": 1.9799999999998927
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -7.093
+    },
+    {
+      "id": "2020-chevrolet-camaro-ss",
+      "name": "2020 Chevrolet Camaro SS",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1700
+      },
+      "sim": {
+        "et": 12.323999999998609,
+        "trap": 115.61618197707746,
+        "z60": 3.9549999999996754,
+        "z60130": 12.25299999999715,
+        "sixty": 2.0939999999998804
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": false
+      },
+      "nh": 3,
+      "cost": 1.47
+    },
+    {
+      "id": "2020-dodge-challenger-r-t-scat-pack",
+      "name": "2020 Dodge Challenger R/T Scat Pack",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 4,
+        "launch": 2700
+      },
+      "sim": {
+        "et": 12.59299999999846,
+        "trap": 111.99035893476503,
+        "z60": 4.158999999999724,
+        "z60130": 13.71699999999914,
+        "sixty": 2.113999999999878
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -8.28
+    },
+    {
+      "id": "2020-dodge-challenger-hellcat",
+      "name": "2020 Dodge Challenger Hellcat",
+      "before": {
+        "tire": 3,
+        "launch": 3300
+      },
+      "after": {
+        "tire": 4,
+        "launch": 2900
+      },
+      "sim": {
+        "et": 11.807999999998895,
+        "trap": 124.44426769816977,
+        "z60": 3.748999999999698,
+        "z60130": 9.18899999999857,
+        "sixty": 2.169999999999872
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -16.883
+    },
+    {
+      "id": "2024-ford-mustang-dark-horse",
+      "name": "2024 Ford Mustang Dark Horse",
+      "before": {
+        "tire": 3,
+        "launch": 2900
+      },
+      "after": {
+        "tire": 1,
+        "launch": 2500
+      },
+      "sim": {
+        "et": 12.060999999998755,
+        "trap": 116.6292549114272,
+        "z60": 3.7259999999997007,
+        "z60130": 12.099999999996967,
+        "sixty": 1.959999999999895
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -8.114
+    },
+    {
+      "id": "2023-chevrolet-camaro-zl1",
+      "name": "2023 Chevrolet Camaro ZL1",
+      "before": {
+        "tire": 3,
+        "launch": 3300
+      },
+      "after": {
+        "tire": 1,
+        "launch": 3700
+      },
+      "sim": {
+        "et": 11.42099999999911,
+        "trap": 125.45750527863669,
+        "z60": 3.3119999999997463,
+        "z60130": 9.01499999999886,
+        "sixty": 1.985999999999892
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -14.047
+    },
+    {
+      "id": "2021-dodge-charger-hellcat-redeye",
+      "name": "2021 Dodge Charger Hellcat Redeye",
+      "before": {
+        "tire": 3,
+        "launch": 1300
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1200
+      },
+      "sim": {
+        "et": 11.586999999999017,
+        "trap": 127.62772715462057,
+        "z60": 3.669999999999707,
+        "z60130": 8.380999999999053,
+        "sixty": 2.1089999999998787
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -15.635
+    },
+    {
+      "id": "2015-dodge-challenger-hellcat",
+      "name": "2015 Dodge Challenger Hellcat",
+      "before": {
+        "tire": 3,
+        "launch": 1500
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1200
+      },
+      "sim": {
+        "et": 11.739999999998933,
+        "trap": 125.16785631459831,
+        "z60": 3.714999999999702,
+        "z60130": 8.987999999998697,
+        "sixty": 2.143999999999875
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -14.991
+    },
+    {
+      "id": "2014-chevrolet-camaro-z-28",
+      "name": "2014 Chevrolet Camaro Z/28",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 3,
+        "launch": 2700
+      },
+      "sim": {
+        "et": 12.419999999998556,
+        "trap": 115.721710228254,
+        "z60": 4.164999999999726,
+        "z60130": 11.909999999996938,
+        "sixty": 2.1769999999998713
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 2,
+      "cost": 9.294
+    },
+    {
+      "id": "2012-chevrolet-corvette-zr1",
+      "name": "2012 Chevrolet Corvette ZR1",
+      "before": {
+        "tire": 3,
+        "launch": 1100
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1200
+      },
+      "sim": {
+        "et": 11.517999999999056,
+        "trap": 127.59860365193397,
+        "z60": 3.560999999999719,
+        "z60130": 8.379999999999102,
+        "sixty": 2.0549999999998847
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -11.94
+    },
+    {
+      "id": "2023-dodge-charger-scat-pack",
+      "name": "2023 Dodge Charger Scat Pack",
+      "before": {
+        "tire": 3,
+        "launch": 3000
+      },
+      "after": {
+        "tire": 4,
+        "launch": 2600
+      },
+      "sim": {
+        "et": 12.548999999998484,
+        "trap": 112.81162391749142,
+        "z60": 4.133999999999715,
+        "z60130": 13.377999999998703,
+        "sixty": 2.131999999999876
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 5.528
+    },
+    {
+      "id": "2020-ford-mustang-shelby-gt500",
+      "name": "2020 Ford Mustang Shelby GT500",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1700
+      },
+      "sim": {
+        "et": 11.430999999999104,
+        "trap": 130.7959881395836,
+        "z60": 3.702999999999703,
+        "z60130": 7.594999999999475,
+        "sixty": 2.107999999999879
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": -3.497
+    },
+    {
+      "id": "2012-chevrolet-camaro-zl1",
+      "name": "2012 Chevrolet Camaro ZL1",
+      "before": {
+        "tire": 3,
+        "launch": 1500
+      },
+      "after": {
+        "tire": 4,
+        "launch": 1200
+      },
+      "sim": {
+        "et": 12.1599999999987,
+        "trap": 116.44612109584534,
+        "z60": 3.8729999999996845,
+        "z60130": 11.438999999997268,
+        "sixty": 2.0289999999998876
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -11.893
+    },
+    {
+      "id": "1996-ford-mustang-svt-cobra",
+      "name": "1996 Ford Mustang SVT Cobra",
+      "before": {
+        "tire": 3,
+        "launch": 3000
+      },
+      "after": {
+        "tire": 3,
+        "launch": 3400
+      },
+      "sim": {
+        "et": 13.83699999999777,
+        "trap": 99.74760340930592,
+        "z60": 5.276000000000097,
+        "z60130": 23.16500000001168,
+        "sixty": 2.144999999999875
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 1.513
+    },
+    {
+      "id": "1987-buick-gnx",
+      "name": "1987 Buick GNX",
+      "before": {
+        "tire": 0,
+        "launch": 3600
+      },
+      "after": {
+        "tire": 1,
+        "launch": 3200
+      },
+      "sim": {
+        "et": 13.49499999999796,
+        "trap": 99.47137436853362,
+        "z60": 4.841999999999952,
+        "z60130": 24.26000000001263,
+        "sixty": 1.977999999999893
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 8.192
+    },
+    {
+      "id": "2007-ford-mustang-gt",
+      "name": "2007 Ford Mustang GT",
+      "before": {
+        "tire": 3,
+        "launch": 2600
+      },
+      "after": {
+        "tire": 1,
+        "launch": 3200
+      },
+      "sim": {
+        "et": 13.755999999997815,
+        "trap": 99.75469372427452,
+        "z60": 5.0960000000000365,
+        "z60130": 22.99300000001131,
+        "sixty": 2.0099999999998897
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 4.047
+    },
+    {
+      "id": "2006-dodge-charger-r-t",
+      "name": "2006 Dodge Charger R/T",
+      "before": {
+        "tire": 3,
+        "launch": 3600
+      },
+      "after": {
+        "tire": 3,
+        "launch": 4200
+      },
+      "sim": {
+        "et": 13.87299999999775,
+        "trap": 98.2961067134809,
+        "z60": 5.274000000000096,
+        "z60130": 23.47000000001205,
+        "sixty": 2.152999999999874
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 1.888
+    },
+    {
+      "id": "1982-pontiac-firebird-trans-am",
+      "name": "1982 Pontiac Firebird Trans Am",
+      "before": {
+        "tire": 0,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 0,
+        "launch": 2700
+      },
+      "sim": {
+        "et": 17.333999999998202,
+        "trap": 80.18231054408264,
+        "z60": 9.476000000000187,
+        "z60130": null,
+        "sixty": 2.8179999999998007
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 2,
+      "cost": 14.194
+    },
+    {
+      "id": "2004-ford-mustang-mach-1",
+      "name": "2004 Ford Mustang Mach 1",
+      "before": {
+        "tire": 3,
+        "launch": 3600
+      },
+      "after": {
+        "tire": 1,
+        "launch": 3200
+      },
+      "sim": {
+        "et": 13.80099999999779,
+        "trap": 99.50835766935812,
+        "z60": 5.1440000000000525,
+        "z60130": 22.945000000011294,
+        "sixty": 2.016999999999889
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 4.311
+    },
+    {
+      "id": "2007-dodge-charger-srt8",
+      "name": "2007 Dodge Charger SRT8",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 3,
+        "launch": 2700
+      },
+      "sim": {
+        "et": 13.273999999998082,
+        "trap": 105.34597633314806,
+        "z60": 4.707999999999907,
+        "z60130": 17.863000000004696,
+        "sixty": 2.177999999999871
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 1.183
+    },
+    {
+      "id": "2014-chevrolet-ss",
+      "name": "2014 Chevrolet SS",
+      "before": {
+        "tire": 3,
+        "launch": 2100
+      },
+      "after": {
+        "tire": 3,
+        "launch": 1700
+      },
+      "sim": {
+        "et": 13.113999999998171,
+        "trap": 108.99817473262755,
+        "z60": 4.6199999999998775,
+        "z60130": 14.875000000000966,
+        "sixty": 2.2179999999998667
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": false
+      },
+      "nh": 3,
+      "cost": 0.831
+    },
+    {
+      "id": "2022-tesla-model-s-plaid",
+      "name": "2022 Tesla Model S Plaid",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 9.414000000000222,
+        "trap": 150.9992385281639,
+        "z60": 2.3009999999998576,
+        "z60130": 4.364000000000702,
+        "sixty": 1.6529999999999287
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -13.738
+    },
+    {
+      "id": "2024-tesla-model-3-performance",
+      "name": "2024 Tesla Model 3 Performance",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 11.060999999999309,
+        "trap": 124.86348124430683,
+        "z60": 3.0559999999997745,
+        "z60130": 9.20399999999887,
+        "sixty": 1.6729999999999265
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -6.77
+    },
+    {
+      "id": "2022-porsche-taycan-turbo-s",
+      "name": "2022 Porsche Taycan Turbo S",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 10.520999999999608,
+        "trap": 132.13569891280983,
+        "z60": 2.495999999999836,
+        "z60130": 7.633999999999989,
+        "sixty": 1.6759999999999262
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": false
+      },
+      "nh": 3,
+      "cost": -0.038
+    },
+    {
+      "id": "2024-lucid-air-sapphire",
+      "name": "2024 Lucid Air Sapphire",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 9.307000000000281,
+        "trap": 159.0075329723283,
+        "z60": 2.361999999999851,
+        "z60130": 4.010000000000612,
+        "sixty": 1.649999999999929
+      },
+      "hits": {
+        "et": false,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 2,
+      "cost": 11.68
+    },
+    {
+      "id": "2022-tesla-model-x-plaid",
+      "name": "2022 Tesla Model X Plaid",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 10.26599999999975,
+        "trap": 140.31712495295181,
+        "z60": 2.7219999999998112,
+        "z60130": 6.036000000000774,
+        "sixty": 1.650999999999929
+      },
+      "hits": {
+        "et": true,
+        "trap": false,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 45.214
+    },
+    {
+      "id": "2024-tesla-cybertruck-tri-motor",
+      "name": "2024 Tesla Cybertruck Tri-Motor",
+      "before": {
+        "tire": 4,
+        "launch": 200
+      },
+      "after": {
+        "tire": 1,
+        "launch": 200
+      },
+      "sim": {
+        "et": 11.02299999999933,
+        "trap": 119.03649225095121,
+        "z60": 2.769999999999806,
+        "z60130": 13.620999999997244,
+        "sixty": 1.650999999999929
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": true,
+        "z60130": true
+      },
+      "nh": 4,
+      "cost": -12.759
+    },
+    {
+      "id": "2023-hyundai-kona-electric",
+      "name": "2023 Hyundai Kona Electric",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 15.538999999996827,
+        "trap": 91.89249366120842,
+        "z60": 7.487000000000835,
+        "z60130": null,
+        "sixty": 2.4089999999998457
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 8.59
+    },
+    {
+      "id": "2024-kia-niro-ev",
+      "name": "2024 Kia Niro EV",
+      "before": {
+        "tire": 4,
+        "launch": 500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 500
+      },
+      "sim": {
+        "et": 15.517999999996839,
+        "trap": 91.96058323652939,
+        "z60": 7.457000000000825,
+        "z60130": null,
+        "sixty": 2.404999999999846
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": 5.744
+    },
+    {
+      "id": "2021-ferrari-sf90-stradale",
+      "name": "2021 Ferrari SF90 Stradale",
+      "before": {
+        "tire": 4,
+        "launch": 1500
+      },
+      "after": {
+        "tire": 1,
+        "launch": 1300
+      },
+      "sim": {
+        "et": 9.676000000000077,
+        "trap": 148.15344543983107,
+        "z60": 2.287999999999859,
+        "z60130": 5.143000000000957,
+        "sixty": 1.7079999999999227
+      },
+      "hits": {
+        "et": true,
+        "trap": true,
+        "z60": false,
+        "z60130": true
+      },
+      "nh": 3,
+      "cost": -0.932
+    }
+  ]
+}

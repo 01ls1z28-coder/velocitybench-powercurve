@@ -787,28 +787,38 @@
   }
 
   /**
-   * Tire µ ladder (Jorge Guerra track-prep realism).
-   * Prep mainly boosts DR/Slick; Street/Summer/UHP stay sensible.
+   * Tire µ ladder (Jorge Guerra — research-grounded fidelity).
+   * Prep mainly boosts DR/Slick toward strip; Street/Summer/UHP modest bumps.
    * Default trackPrep = unprepped (garage Excel SOI / fleet verify).
-   * Ladder always: Street < Summer < UHP < Drag Radial < Slick.
+   * Ladder always: Street < Summer < UHP < Drag Radial < Slick (both modes).
    *
-   *   Unprepped good surface: DR 1.38 / Slick 1.40
-   *   Prepped track:          DR 1.43 / Slick 1.45
+   * Sources (sportsman Coulomb scale; NOT Top Fuel tread-momentum 3–5):
+   *   Wong/HPWizard dry asphalt street peak ~0.80–0.90; racing tires up to ~1.8
+   *     http://www.hpwizard.com/tire-friction-coefficient.html
+   *   Drag-radial effective µ from 60′ back-calc ~1.5–1.8 on prepared surface
+   *     https://www.ls1gto.com/threads/drag-radial-tire-coefficients-of-friction.448707/
+   *   Prepped-strip example µ≈1.6 (LivePhysics drag traction)
+   *     https://livephysics.com/infographics/engineering-drag-racing-traction-and-the-prepped-track/
+   *   Hallum SAE 942484: TF effective >>2 via tread momentum — out of scope here
+   *   No-prep culture: slicks need rubber/VHT; unprep slick ≪ prepped slick
+   *
+   *   Unprepped: DR 1.28 / Slick 1.32
+   *   Prepped:   DR 1.50 / Slick 1.62
    */
   var TIRE_MU_BY_PREP = {
     unprepped: {
-      0: 0.95,  // Street / All-season
-      3: 1.05,  // Summer
-      4: 1.15,  // UHP
-      1: 1.38,  // Drag Radial
-      2: 1.40   // Slick
+      0: 0.90,  // Street / All-season — Wong dry-asphalt peak band
+      3: 1.02,  // Summer — above street, below UHP
+      4: 1.12,  // UHP — warm dry compound
+      1: 1.28,  // Drag Radial — works without full VHT (below strip 1.5–1.8)
+      2: 1.32   // Slick — small burnout-heat edge; needs prep to shine
     },
     prepped: {
-      0: 0.98,  // Street — slight prep bump
-      3: 1.10,  // Summer
-      4: 1.22,  // UHP
-      1: 1.43,  // Drag Radial (prepped)
-      2: 1.45   // Slick (prepped)
+      0: 0.94,  // Street — modest rubber/VHT bump
+      3: 1.08,  // Summer
+      4: 1.20,  // UHP
+      1: 1.50,  // Drag Radial — LS1GTO effective band low end
+      2: 1.62   // Slick — LivePhysics prepped ~1.6 sportsman strip
     }
   };
 
