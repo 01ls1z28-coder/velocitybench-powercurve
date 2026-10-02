@@ -3,7 +3,7 @@
 **Credit:** Jorge Guerra only
 **Branch:** `review/mu-60ft-mustang-deltas`
 **Base:** `3a55f8d` (LIVE main — OEM tire + EV power)
-**Tip SHA:** `3b7da22` (`3b7da2284a1a544449e6a64414b9b530f71f8e6c`) — bake
+**Tip SHA:** `a5f033f` (`a5f033f968fbf0b78dffe5062572197cd64fe5aa`) — bake `3b7da22`
 **Repo:** `01ls1z28-coder/velocitybench-powercurve`
 **Pages / main:** HOLD — tip only (no deploy)
 **Report:** `scripts/mu-60ft-calibrate-report.json`
