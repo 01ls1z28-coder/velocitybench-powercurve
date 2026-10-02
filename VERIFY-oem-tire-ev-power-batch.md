@@ -2,6 +2,7 @@
 
 **Credit:** Jorge Guerra only
 **Branch:** `review/oem-tire-ev-power-batch`
+**Tip SHA:** `b755624` (`b755624de1149993271602c62dfaaa30876f45f4`)
 **Parent tire SHA:** `6464c65` (Mustang GT 10AT → Street P235/50R18 all-season)
 **Repo:** `01ls1z28-coder/velocitybench-powercurve`
 **Pages / main:** HOLD until Seraph CLEAR → Merovingian (tip push only from this VERIFY)
