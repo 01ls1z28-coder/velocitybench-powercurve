@@ -68,5 +68,5 @@ Full-OK EVs: **18/39**. Remaining: **21** (honest leftovers under fs=1).
 
 ## Tip SHA
 
-_(post-commit)_
+`4c177607b3350ccc85438da020e065bf559bb8f3`
 
