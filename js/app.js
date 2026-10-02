@@ -739,13 +739,7 @@
     $('flashRpm').value = car.flashRpm || 3500;
     if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
     // Factory-reset: every new vehicle selection forces Unprepped (sticky prep across cars was the bug).
-    if ($('trackPrep')) {
-      $('trackPrep').value = 'unprepped';
-      var hint = $('trackPrepHint');
-      if (hint && Phys.trackPrepLabel) {
-        hint.textContent = 'Default Unprepped · prep mainly boosts DR/Slick (µ 1.28/1.30 → 1.52/1.68); Street/Summer/UHP/R-Comp modest';
-      }
-    }
+    if ($('trackPrep')) $('trackPrep').value = 'unprepped';
     configurePrimaryGauge(car);
     highlightGarage(car.id);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
