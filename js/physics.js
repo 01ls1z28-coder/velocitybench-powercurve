@@ -13,6 +13,8 @@
  * Hybrid: ICE crank TQ + separate electric-motor assist band (not cosmetic).
  * Drive force is SI-honest: wheel TQ (lb·ft)×1.3558179483314 → N·m ÷ tireRadius_m → N
  * (mass/drag/traction already SI). FORCE_LT30 / FORCE_GT60 retired to identity.
+ * Weather/DA honesty: humidity→virtual-temp DA; wx = density ratio only (no DA double-count);
+ * EV aero uses real rho (motors still wx=1).
  * Estimates — not track certified.
  */
 (function (global) {
@@ -468,10 +470,13 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var tempK = tempC + 273.15;
     var pHpa = pressureInHg * 33.8639;
     var es = 6.1078 * Math.exp((17.27 * tempC) / (tempC + 237.3));
-    var e = es * (humidityPct / 100.0);
-    void (tempK * (1.0 + 0.61 * (e / pHpa)));
+    var e = es * (clamp(Number(humidityPct) || 0, 0, 100) / 100.0);
+    // Virtual temperature: moist air is less dense → higher DA. Prior tip computed
+    // this then discarded it with void(...) — humidity never reached DA/rho/wx.
+    var tvK = tempK * (1.0 + 0.61 * (e / Math.max(pHpa, 1e-6)));
+    var tvC = tvK - 273.15;
     var pAlt = (1.0 - Math.pow(pHpa / 1013.25, 0.190284)) * 145366.45;
-    return pAlt + 118.8 * (tempC - (15.0 - 0.0019812 * pAlt));
+    return pAlt + 118.8 * (tvC - (15.0 - 0.0019812 * pAlt));
   }
 
   function getTorqueAtRpm(curve, rpm) {
@@ -792,18 +797,21 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
   function weatherTorqueFactor(opts, daFt, rho) {
     if (opts.isEv) return 1.0;
     var df = rho / RHO0;
-    var dak = daFt / 1000.0;
-    // Density-honest: wx → 1.0 at RHO0 / DA0 (no invented 0.985 / 1.015 fudge).
-    // Hybrid: ICE density-sensitive; e-motor share softens DA vs pure NA.
+    // Density-honest: torque scales with intake density ratio only.
+    // df = rho/RHO0 already comes from airDensityFromDA(daFt) — do NOT multiply by
+    // an extra (1 - k·DA_kft) term (that double-counted altitude vs density).
+    // daFt kept in signature for callers / probes; unused after honesty fix.
+    void daFt;
     if (opts.isHybrid) {
-      return (0.70 + 0.30 * df) * Math.max(0.35, 1.0 - 0.022 * Math.max(0, dak));
+      // ~70% e-motor (density-independent) + ~30% ICE share
+      return 0.70 + 0.30 * df;
     }
     if (opts.isNA && !opts.isFI) {
-      return df * Math.max(0.30, 1.0 - 0.03 * Math.max(0, dak));
+      return df;
     }
     if (opts.isFI && !opts.isNA) {
-      // FI less DA-sensitive than NA; identity at standard density
-      return (0.55 + 0.45 * df) * Math.max(0.40, 1.0 - 0.015 * Math.max(0, dak));
+      // FI less density-sensitive than NA (boost partially compensates); identity at RHO0
+      return 0.55 + 0.45 * df;
     }
     return df;
   }
@@ -1061,12 +1069,12 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var daFt;
     if (env.densityAltitudeFtInput != null && !isNaN(Number(env.densityAltitudeFtInput))) {
       daFt = Number(env.densityAltitudeFtInput);
-    } else if (car.isEv) {
-      daFt = 0;
     } else {
+      // Always compute real DA (humidity + pressure + temp) — including EVs.
+      // EV motors ignore DA via weatherTorqueFactor→1; aero must still feel rho.
       daFt = computeDensityAltitude(tempF, humidity, pressureInHg);
     }
-    var rho = car.isEv ? RHO0 : airDensityFromDA(daFt);
+    var rho = airDensityFromDA(daFt);
     var wx = weatherTorqueFactor(
       {
         isEv: !!car.isEv,
@@ -1249,7 +1257,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
            * - Post-upshift ONLY: unlock/slip hang lerps seed→shiftRpm with turbine
            *   progress (smooth tach all the way to next shift); stall 1500–5500
            *   scales gap/slip/multiply (low=larger gap/less slip; high=smaller gap/more
-           *   slip + torque-multiply); mph-gated unlock + postFade keep 60-130 ~10.9.
+           *   slip + torque-multiply). Trap-unlock / postFade Excel-chase invents retired.
            */
           var stall = Number(car.stallRpm) || 2800;
           stall = Math.max(1200, stall + launchStallBias);
