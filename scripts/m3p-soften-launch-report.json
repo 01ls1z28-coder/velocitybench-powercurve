@@ -1,0 +1,53 @@
+{
+  "credit": "Jorge Guerra only",
+  "tip": "m3p-soften-launch-zr1x-rcomp",
+  "noPages": true,
+  "m3p": {
+    "id": "2024-tesla-model-3-performance",
+    "factoryHpCap": 510,
+    "before": {
+      "launch": {
+        "drive": 1.7,
+        "mu": 1.3,
+        "slip": 0.08
+      },
+      "hp": 475,
+      "lim": 125,
+      "sim": {
+        "z60": 2.667,
+        "et": 10.891,
+        "trap": 124.539,
+        "z60130": null,
+        "ft60": 1.687
+      }
+    },
+    "after": {
+      "launch": {
+        "drive": 1.52,
+        "mu": 1.08,
+        "slip": 0.14
+      },
+      "hp": 480,
+      "lim": 146,
+      "drag": 0.178,
+      "sim": {
+        "z60": 2.892,
+        "et": 11.049,
+        "trap": 124.535,
+        "z60130": 9.426,
+        "ft60": 1.773
+      }
+    }
+  },
+  "zr1x": {
+    "id": "2026-chevrolet-corvette-zr1x",
+    "beforeTireType": 0,
+    "afterTireType": 5
+  },
+  "targets": {
+    "z60": 2.9,
+    "et": 11,
+    "trap": 124.5,
+    "z60130": 9.2
+  }
+}
