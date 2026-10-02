@@ -976,7 +976,19 @@
     var gears = (car.gearRatios || []).map(Number).filter(function (g) { return g > 0; });
     if (!gears.length) return result;
 
-    var weightLbs = clamp(Number(car.weightLbs) || 3500, 20, 120000);
+    // Curb + driver: prefer env.driverWeightLbs (recalib/UI), else car.driverWeightLbs, else 200.
+    var curbLbs = clamp(Number(car.weightLbs) || 3500, 20, 120000);
+    var driverRaw;
+    if (env.driverWeightLbs != null && env.driverWeightLbs !== '') {
+      driverRaw = Number(env.driverWeightLbs);
+    } else if (car.driverWeightLbs != null && car.driverWeightLbs !== '') {
+      driverRaw = Number(car.driverWeightLbs);
+    } else {
+      driverRaw = 200;
+    }
+    if (!isFinite(driverRaw)) driverRaw = 200;
+    var driverLbs = clamp(driverRaw, 0, 500);
+    var weightLbs = curbLbs + driverLbs;
     var mass = weightLbs * 0.453592;
     var tireRadius = (Number(car.tireRadiusInches) || 13.0) * 0.0254;
     var frontalArea = (Number(car.frontalAreaSqFt) || 22.0) * 0.092903;

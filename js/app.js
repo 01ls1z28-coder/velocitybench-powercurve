@@ -898,6 +898,7 @@
       ? Phys.tireLabelForType(tireType)
       : ({0:'Street',1:'Drag Radial',2:'Slick',3:'Summer',4:'UHP',5:'R-Compound'}[tireType] || 'Street');
     var prepLab = Phys.trackPrepLabel ? Phys.trackPrepLabel(trackPrep) : trackPrep;
+    var dwEl = $('driverWeightLbs');
     return {
       tempF: clampNum($('tempF').value, -40, 140, 59),
       humidity: clampNum($('humidity').value, 0, 100, 45),
@@ -909,7 +910,9 @@
       tireType: tireType,
       trackPrep: trackPrep,
       launchMode: $('launchMode').value,
-      tireLabel: tireLab + ' · ' + prepLab
+      tireLabel: tireLab + ' · ' + prepLab,
+      // Sticky env field (like temp) — default 200; not wiped on car load
+      driverWeightLbs: clampNum(dwEl ? dwEl.value : 200, 0, 500, 200)
     };
   }
 
