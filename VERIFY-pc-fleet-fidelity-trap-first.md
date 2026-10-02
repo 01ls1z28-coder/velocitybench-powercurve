@@ -1,7 +1,7 @@
 # VERIFY — PowerCurve fleet fidelity (trap-first / µ + tires)
 
-**Branch:**   
-**Tip SHA:**  ()`review/fleet-fidelity-trap-first`  
+**Branch:** `review/fleet-fidelity-trap-first`  
+**Tip SHA:** `87174c24c09d80169cb55b02bfd0ee422fb00ed2` (`87174c2`)  
 **Parent tip:** `3c37b84981672d67851841569a42978faf386d70` (`main` — garage bind + cachebust)  
 **Credit:** Jorge Guerra only  
 **Pages / main:** **NOT touched** (tip only; HOLD Merovingian)  
@@ -13,7 +13,7 @@
 
 | Goal | Result |
 |------|--------|
-| Research µ ladder Street→Slick × Unprep/Prep | **PASS** — see table; prep Δ DR +0.22 / Slick +0.30 |
+| Research µ ladder Street→Slick × Unprep/Prep | **PASS** — prep Δ DR +0.22 / Slick +0.30 |
 | Slicks only Jorge Z28 | **PASS** — hist Slick=1 |
 | No OEM Cd/FA/weight/peakHp/TX edits | **PASS** |
 | forceScale=1 | **PASS** — 0 non-one |
@@ -32,7 +32,7 @@
 | DR | 1.38→**1.28** | 1.43→**1.50** |
 | Slick | 1.40→**1.32** | 1.45→**1.62** |
 
-Sources: HPWizard/Wong; LS1GTO DR 60′ back-calc; LivePhysics prepped µ≈1.6; Hallum SAE TF out-of-scope. Full URLs in AUDIT.
+Sources: HPWizard/Wong dry asphalt 0.80–0.90; LS1GTO DR effective ~1.5–1.8 prepared; LivePhysics prepped µ≈1.6; Hallum SAE TF tread-momentum out-of-scope. Full URLs in AUDIT.
 
 ## Fleet Excel (Unprepped)
 
@@ -51,7 +51,6 @@ Sources: HPWizard/Wong; LS1GTO DR 60′ back-calc; LivePhysics prepped µ≈1.6;
 - **Z28 ATC** slick locked; trap+ET hit Unprepped; 0–60 soft; prep 60′ 2.00→1.74  
 - **Mustangs** GT / PP2 / Dark Horse — priority hits with factory Cd/FA  
 - **Camaro SS** UHP — hits  
-- **ATC path** unchanged (Z28 skip-locked)  
 - Worst Excel residuals: bikes (no slick), Model X Plaid, OEM-aero trap-under
 
 ## Blockers parked
