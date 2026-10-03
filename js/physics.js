@@ -1496,9 +1496,14 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
                 launchLocked = true;
                 rpm = mechRpm;
               } else if (isManual) {
-                // Clutch fade: blend open → mech (allows real bog if dumped hard)
-                var clutch = Math.max(clamp(mphNow / 28.0, 0, 1), clamp(t / 0.55, 0, 1));
+                // Slip until road speed catches the leave. Do not force the
+                // clutch out on a clock: t/0.55 blended every manual to mechRpm
+                // and the 900 rpm floor while still in 1st, so the car pulled
+                // idle torque (~0.36 g) and could not use the tire. Bite floor
+                // is 85% of leave until the gear actually catches.
+                var clutch = clamp(mphNow / 28.0, 0, 1);
                 rpm = openRpm * (1 - clutch) + mechRpm * clutch;
+                if (mechRpm < stall && rpm < stall * 0.85) rpm = stall * 0.85;
                 if (rpm < 900) rpm = 900;
                 if (clutch >= 0.85 && mechRpm >= stall * 0.92) {
                   launchLocked = true;
