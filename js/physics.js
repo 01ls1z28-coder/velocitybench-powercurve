@@ -1285,6 +1285,16 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var redline = Number(car.redline) || shiftRpm;
 
     var launchMode = env.launchMode || 'auto';
+    // Medium blends Soft (0) toward Aggressive (1) on the knobs those two already use.
+    // 60-foot is not linear in those knobs: a flat 0.5 left both test cars closer to
+    // Aggressive than to the average. Weights stay inside the existing endpoints.
+    // Drive is the knob that moves 60-foot. Stall stays at halfway. Mu is the
+    // Aggressive end and the launch tip/keep stay at the Soft end so the street
+    // car meets the average without moving the prepped slick.
+    var mediumDrive = 0.35;
+    var mediumLeave = 0.50;
+    var mediumMu = 1.0;
+    var mediumTip = 0.0;
     // Jorge Guerra: stock AUTOMATICS — calm D-gate leave at 2200 in Auto
     // launch mode. Cap brake-stand dumps, and raise an unrealistic bog
     // (stored launch below 2200, e.g. 1200) up to 2200. Never above 2200.
@@ -1320,6 +1330,21 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       launchFlashSpanScale = 0.40;
       launchFlashTimeScale = 0.50;
       launchFlashMphScale = 0.68;
+    } else if (launchMode === 'medium') {
+      // Manual and DCT rpm is the user's number. Medium does not move it.
+      if (!clutchLaunchLocked) {
+        var softLeave = Math.max(car.isEv ? 200 : 1100, launchRpm - 800);
+        var aggLeave = Math.min(redline, launchRpm + (car.isEv ? 1400 : 1000));
+        launchRpm = softLeave + (aggLeave - softLeave) * mediumLeave;
+      }
+      slipTarget = 0.06 + (0.15 - 0.06) * mediumLeave;
+      launchDriveMult = car.isEv
+        ? (0.86 + (1.12 - 0.86) * mediumDrive)
+        : (0.875 + (1.11 - 0.875) * mediumDrive);
+      launchStallBias = -500 + (400 - -500) * mediumLeave;
+      launchFlashSpanScale = 0.40 + (1.52 - 0.40) * mediumLeave;
+      launchFlashTimeScale = 0.50 + (1.30 - 0.50) * mediumLeave;
+      launchFlashMphScale = 0.68 + (1.25 - 0.68) * mediumLeave;
     } else if (launchMode === 'aggressive') {
       // Higher leave, hotter flash-stall ceiling, full+ drive — slicks often quicker
       // Manual and DCT rpm is the user's number. Aggressive does not raise it.
@@ -1341,6 +1366,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var launchMuMult = 1.0;
     if (launchMode === 'soft' || launchMode === 'custom') {
       launchMuMult = clamp(1.0 + (0.10 - slipTarget) * 0.6, 0.96, 1.04);
+    } else if (launchMode === 'medium') {
+      // mediumMu = 1 uses Aggressive full grip. Soft's higher mu left the street 60-foot short of the average.
+      var softMu = clamp(1.0 + (0.10 - 0.06) * 0.6, 0.96, 1.04);
+      launchMuMult = softMu + (1.0 - softMu) * mediumMu;
     } else if (launchMode === 'aggressive') {
       launchMuMult = 1.0; // full grip; slipTarget used in traction keep band
     }
@@ -1600,6 +1629,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
               var hold = 0.0;
               if (launchMode === 'aggressive') hold = 0.55 * flashPulse;
               else if (launchMode === 'soft') hold = -0.30 * flashPulse;
+              else if (launchMode === 'medium') hold = (-0.30 + (0.55 - -0.30) * mediumLeave) * flashPulse;
               lockEff = clamp(lockup * (1.0 - hold), 0, 1);
             }
             rpm = target * (1 - lockEff) + mechRpm * lockEff;
@@ -1966,6 +1996,12 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         var overshoot = (0.006 + 0.055 * tip) * (1.0 - clamp(slipPre, 0, 1));
         if (launchMode === 'aggressive') overshoot = (0.008 + 0.070 * tip) * (1.0 - 0.85 * clamp(slipPre, 0, 1));
         else if (launchMode === 'soft') overshoot = (0.002 + 0.030 * tip) * (1.0 - clamp(slipPre, 0, 1));
+        else if (launchMode === 'medium') {
+          var overBase = 0.002 + (0.008 - 0.002) * mediumTip;
+          var tipC = 0.030 + (0.070 - 0.030) * mediumTip;
+          var slipC = 1.0 + (0.85 - 1.0) * mediumTip;
+          overshoot = (overBase + tipC * tip) * (1.0 - slipC * clamp(slipPre, 0, 1));
+        }
         appliedCmd = softTractionForce(driveF, tracLim, overshoot);
         if (!driveFLpSeeded) { driveFLp = driveF; driveFLpSeeded = true; }
         driveFLp += (driveF - driveFLp) * Math.min(1, 16.0 * DT);
@@ -1993,10 +2029,12 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
           if (appliedCmd > acHi) appliedCmd = acHi;
           if (appliedCmd < acLo) appliedCmd = acLo;
           if (appliedCmd > kinCeil) appliedCmd = kinCeil;
-          if (launchMode === 'aggressive' && slip <= Math.max(0.20, slipTarget * 1.6)) {
+          if ((launchMode === 'aggressive' || launchMode === 'medium') && slip <= Math.max(0.20, slipTarget * 1.6)) {
             var band = Math.max(0.20, slipTarget * 1.6);
             var keep = clamp(1.0 - slip / band, 0.35, 0.80);
-            appliedCmd = appliedCmd + (Math.min(driveF, kinCeil) - appliedCmd) * keep * 0.22;
+            // Aggressive keep is 0.22. Soft has none (0). Medium uses the same blend.
+            var keepGain = launchMode === 'medium' ? (0.22 * mediumTip) : 0.22;
+            appliedCmd = appliedCmd + (Math.min(driveF, kinCeil) - appliedCmd) * keep * keepGain;
             if (appliedCmd > kinCeil) appliedCmd = kinCeil;
           }
         }
