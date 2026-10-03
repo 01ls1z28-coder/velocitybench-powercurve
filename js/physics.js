@@ -856,12 +856,9 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
    * DR/Slick (VHT + rubber). Matches real 60′ character: Street spins → slow 60′;
    * Slick on prep hooks → low 1.x; Slick on unprep barely beats DR.
    *
-   *   Unprepped 60ft targets: Street 2.2 / Summer 2.0 / UHP 1.85–1.90 /
-   *     R-comp 1.75–1.80 / DR 1.65–1.72 / Slick 1.80–1.90
-   *   Prepped 60ft targets: Street 1.7–1.75 / Summer 1.6 / UHP 1.45–1.5 /
-   *     R-comp 1.5 / Slick 1.45–1.50 / DR ≈ slick+0.05
+   *   Authoritative 60ft targets: TARGET_60FT_BY_PREP (Jorge Mustang GT 10AT chart).
    */
-      /** Explicit 60ft targets used to bake TIRE_MU_BY_PREP (Jorge Mustang GT chart). */
+  /** Explicit 60ft targets used to bake TIRE_MU_BY_PREP (Jorge Mustang GT chart). */
   var TARGET_60FT_BY_PREP = {
     unprepped: { 0: 2.200, 3: 2.103, 4: 1.960, 5: 1.900, 1: 1.820, 2: 1.908 },
     prepped:   { 0: 2.040, 3: 1.989, 4: 1.900, 5: 1.850, 1: 1.730, 2: 1.708 }
@@ -869,26 +866,31 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
 
   var TIRE_MU_BY_PREP = {
     /**
-     * Jorge Guerra AUTHORITATIVE Mustang GT 60ft chart (tip review/ev-excel-full-match).
+     * Jorge Guerra AUTHORITATIVE Mustang GT 10AT 60ft chart.
+     * Baked at forceScale=1, driver 200 lb, launch auto, 70°F / 45% / 29.92 inHg.
      * Unprep: Street 2.200 · Summer 2.103 · UHP 1.960 · R-Comp 1.900 · DR 1.820 · Slick 1.908
      * Prep:   Street 2.040 · Summer 1.989 · UHP 1.900 · R-Comp 1.850 · DR 1.730 · Slick 1.708
-     * Prep Slick 0.022s faster than DR (chart). forceScale=1, driver 200.
+     * Stock 10R80 leave (calm auto, no aftermarket converter) power-floors 60ft near
+     * 1.921s once hooked (prep DR ~1.911 / prep Slick ~1.885 with the mild VHT drive lift).
+     * Compounds whose gold time is under that floor sit on it; µ above the hook knee
+     * keeps the gold order (DR grippiest unprep, Slick grippiest prep) for cars that
+     * still spin. Do not raise peakHp / cut Cd to fake a faster floor.
      */
     unprepped: {
-      0: 1.155,  // Street → ~2.2s
-      3: 1.196,  // Summer → ~2.103s
-      4: 1.289,  // UHP → ~1.96s
-      2: 1.293,  // Slick → ~1.908s
-      5: 1.324,  // R-Compound → ~1.9s
-      1: 1.390   // Drag Radial → ~1.82s
+      0: 1.094,  // Street → 2.201 (gold 2.200)
+      3: 1.138,  // Summer → 2.103
+      4: 1.377,  // UHP → 1.960
+      2: 1.600,  // Slick → 1.921 floor (gold 1.908)
+      5: 1.680,  // R-Compound → 1.921 floor (gold 1.900)
+      1: 1.780   // Drag Radial → 1.921 floor (gold 1.820; power floor)
     },
     prepped: {
-      0: 1.255,  // Street → ~2.04s
-      3: 1.273,  // Summer → ~1.989s
-      1: 2.025,  // DR → ~1.738s
-      5: 1.362,  // R-Compound → ~1.85s
-      4: 1.333,  // UHP → ~1.9s
-      2: 2.025   // Slick → ~1.738s
+      0: 1.228,  // Street → 2.040
+      3: 1.308,  // Summer → 1.989
+      4: 1.600,  // UHP → 1.921 floor (gold 1.900)
+      5: 1.700,  // R-Compound → 1.921 floor (gold 1.850; power floor)
+      1: 1.850,  // DR → 1.911 floor (gold 1.730; power floor)
+      2: 2.000   // Slick → 1.885 floor (gold 1.708; power floor)
     }
   };
 
