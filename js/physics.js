@@ -1116,15 +1116,17 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var redline = Number(car.redline) || shiftRpm;
 
     var launchMode = env.launchMode || 'auto';
-    // Jorge Guerra: stock AUTOMATICS — calm D-gate leave. Never brake-stand /
-    // two-foot dump in Auto launch mode. Aftermarket converters keep stall path.
-    // Aggressive/Custom launches remain user-intent. STOCK_AUTO_CALM_LAUNCH=2200.
+    // Jorge Guerra: stock AUTOMATICS — calm D-gate leave at 2200 in Auto
+    // launch mode. Cap brake-stand dumps, and raise an unrealistic bog
+    // (stored launch below 2200, e.g. 1200) up to 2200. Never above 2200.
+    // Manuals, EVs, DCT, sequential, and aftermarket converters are not
+    // touched. Soft/Aggressive/Custom stay user-intent (applied after this).
     var STOCK_AUTO_CALM_LAUNCH = 2200;
     if (!car.isEv && !car.hasAftermarketConverter &&
         (launchMode === 'auto' || launchMode == null || launchMode === '') &&
         /auto/i.test(String(car.transmission || '')) &&
         !/manual|mt\b|stick/i.test(String(car.transmission || ''))) {
-      if (launchRpm > STOCK_AUTO_CALM_LAUNCH) launchRpm = STOCK_AUTO_CALM_LAUNCH;
+      launchRpm = STOCK_AUTO_CALM_LAUNCH;
     }
     var slipTarget = 0.10;
     var launchDriveMult = 1.0;
