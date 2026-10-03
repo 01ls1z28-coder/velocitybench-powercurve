@@ -1356,6 +1356,8 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
 
     var v = 0, dist = 0, t = 0, rpm = launchRpm, gear = 1;
     var launchLocked = false; // after first catch, always follow mechRpm (preserve shift drops)
+    // High clutch dump only. Set when 1st is slipping above the torque peak.
+    var manualBog = false;
     var prevSpinPct = 0; // prior-step wheelspin % — shapes stock flash/dip (vehicle-varying)
     var shifting = false, shiftTimer = 0;
     // ATC post-upshift hang: engine RPM floor after unlock-on-shift (0 = inactive).
@@ -1620,6 +1622,19 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
                 // Turbine/road caught leave — lock and follow mech (shift drops preserved)
                 launchLocked = true;
                 rpm = mechRpm;
+              } else if (isManual && manualBog) {
+                // Dump was above the torque peak and the street tire was already
+                // loose. The clutch pulls the engine down to this gear instead of
+                // holding dump rpm for the whole 60-foot. 0.6s is that grab.
+                // A leave under the peak never sets manualBog.
+                var gapB = rpm - mechRpm;
+                rpm = rpm - gapB * Math.min(1, DT / 0.60);
+                if (rpm < mechRpm) rpm = mechRpm;
+                if (mechRpm >= rpm * 0.90) {
+                  launchLocked = true;
+                  rpm = mechRpm;
+                  manualBog = false;
+                }
               } else if (isManual) {
                 // Slip until road speed catches the leave. Do not force the
                 // clutch out on a clock: t/0.55 blended every manual to mechRpm
@@ -1785,6 +1800,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         }
         var trMan = (ratioMan <= 1.0 || speedRatioMan >= 0.90) ? 1.0 : ratioMan;
         engagedWhTQ = fullWhTQ * trMan;
+        var peakTqRpm = Number(car.peakTqRpm) || 0;
+        if (trMan > 1.05 && peakTqRpm > 0 && rpm > peakTqRpm && (rpm - mechMan) > 1800) {
+          manualBog = true;
+        }
       }
 
       var whTQ;
