@@ -2060,6 +2060,26 @@
   }
 
 
+  function fmtUnit(n, d, unit) {
+    if (n == null || !isFinite(Number(n))) return '\u2014';
+    return Number(n).toFixed(d) + (unit ? (' ' + unit) : '');
+  }
+
+  var ZERO_SPEED_MARKS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+
+  function metricCells(items) {
+    return items.map(function (it) {
+      return '<div class="metric"><div class="k">' + it[0] + '</div><div class="v">' + it[1] + '</div></div>';
+    }).join('');
+  }
+
+  function metricGroup(title, items, extraClass) {
+    return '<section class="metric-group">' +
+      '<div class="metric-group-title">' + title + '</div>' +
+      '<div class="metrics' + (extraClass ? (' ' + extraClass) : '') + '">' + metricCells(items) + '</div>' +
+      '</section>';
+  }
+
   function renderSlip(r, car) {
     var lines = [];
     lines.push('────────────────────────────────');
@@ -2083,6 +2103,22 @@
     lines.push('  60-130  ' + fmt(r.sixtyToOneThirty, 3) + ' s');
     lines.push('  100-150 ' + fmt(r.hundredToOneFifty, 3) + ' s');
     lines.push('────────────────────────────────');
+    lines.push('  DISTANCE');
+    lines.push('  1/2 mi  ' + fmt(r.halfMileTime, 3) + '  @ ' + fmt(r.halfMileSpeedMph, 1) + ' mph');
+    lines.push('  1 mi    ' + fmt(r.mileTime, 3) + '  @ ' + fmt(r.mileSpeedMph, 1) + ' mph');
+    lines.push('────────────────────────────────');
+    lines.push('  SPEED RANGES');
+    lines.push('  0-130   ' + fmt(r.zeroToOneThirty, 3) + ' s');
+    lines.push('  100-200 km/h  ' + fmt(r.hundredToTwoHundredKmh, 3) + ' s');
+    lines.push('  200-250 km/h  ' + fmt(r.twoHundredToTwoFiftyKmh, 3) + ' s');
+    lines.push('────────────────────────────────');
+    lines.push('  0–SPEED (mph)');
+    var zSlip = r.zeroToMph || {};
+    ZERO_SPEED_MARKS.forEach(function (m) {
+      var label = ('0-' + m).padEnd(7, ' ');
+      lines.push('  ' + label + fmt(zSlip[m], 3) + ' s');
+    });
+    lines.push('────────────────────────────────');
     lines.push('  TOP SPD ' + fmt(r.topSpeedMph, 1) + ' mph');
     lines.push('          @ ' + fmt(r.topSpeedTime, 2) + ' s / ' + fmt(r.topSpeedFeet, 0) + ' ft');
     if (r.vmaxReason) lines.push('  Vmax    ' + String(r.vmaxReason).replace(/_/g, ' '));
@@ -2100,19 +2136,36 @@
 
 
   function renderMetrics(r) {
-    var items = [
-      ['1/4 ET', fmt(r.quarterMileTime, 3) + ' s'],
-      ['Trap', fmt(r.quarterMileSpeedMph, 1) + ' mph'],
-      ['60 ft', fmt(r.sixtyFootTime, 3) + ' s'],
-      ['0–60', fmt(r.zeroToSixty, 2) + ' s'],
-      ['60–130', fmt(r.sixtyToOneThirty, 2) + ' s'],
-      ['100–150', fmt(r.hundredToOneFifty, 2) + ' s'],
-      ['Top Speed', fmt(r.topSpeedMph, 1) + ' mph'],
-      ['Peak HP', fmt(r.peakHorsepower, 0)]
+    var z = r.zeroToMph || {};
+    var headline = [
+      ['1/4 ET', fmtUnit(r.quarterMileTime, 3, 's')],
+      ['Trap', fmtUnit(r.quarterMileSpeedMph, 1, 'mph')],
+      ['60 ft', fmtUnit(r.sixtyFootTime, 3, 's')],
+      ['0–60', fmtUnit(r.zeroToSixty, 2, 's')],
+      ['60–130', fmtUnit(r.sixtyToOneThirty, 2, 's')],
+      ['100–150', fmtUnit(r.hundredToOneFifty, 2, 's')],
+      ['Top Speed', fmtUnit(r.topSpeedMph, 1, 'mph')],
+      ['Peak HP', fmtUnit(r.peakHorsepower, 0, '')]
     ];
-    $('metrics').innerHTML = items.map(function (it) {
-      return '<div class="metric"><div class="k">' + it[0] + '</div><div class="v">' + it[1] + '</div></div>';
-    }).join('');
+    var dist = [
+      ['1/2 mile', fmtUnit(r.halfMileTime, 3, 's')],
+      ['1/2 MPH', fmtUnit(r.halfMileSpeedMph, 1, 'mph')],
+      ['1 mile', fmtUnit(r.mileTime, 3, 's')],
+      ['1 mile MPH', fmtUnit(r.mileSpeedMph, 1, 'mph')]
+    ];
+    var ranges = [
+      ['0–130 MPH', fmtUnit(r.zeroToOneThirty, 2, 's')],
+      ['100–200 km/h', fmtUnit(r.hundredToTwoHundredKmh, 2, 's')],
+      ['200–250 km/h', fmtUnit(r.twoHundredToTwoFiftyKmh, 2, 's')]
+    ];
+    var accel = ZERO_SPEED_MARKS.map(function (m) {
+      return ['0–' + m, fmtUnit(z[m], 2, 's')];
+    });
+    $('metrics').innerHTML =
+      metricGroup('Run', headline) +
+      metricGroup('Distance', dist) +
+      metricGroup('Speed ranges', ranges) +
+      metricGroup('0–speed', accel, 'metrics-accel');
   }
 
   /** Wheel Spin logo badge — ON when timeline wheelspin ≥ threshold. */

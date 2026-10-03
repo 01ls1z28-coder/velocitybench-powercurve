@@ -1240,6 +1240,19 @@ body {
   margin-top: 10px;
   min-width: 0;
 }
+.metric-groups { margin-top: 10px; min-width: 0; }
+.metric-group { margin-top: 12px; }
+.metric-group:first-child { margin-top: 0; }
+.metric-group-title {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+.metric-group .metrics { margin-top: 0; }
+.metrics-accel { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
 .metric {
   background: rgba(0,0,0,0.35);
   border: 1px solid var(--panel-border);
@@ -1319,12 +1332,14 @@ body {
   }
   .garage-list { max-height: 180px; }
   .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ---- Responsive: tablet ---- */
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ---- Responsive: mobile ≤800px — page chrome; dials stay absolute ---- */
@@ -1360,6 +1375,7 @@ body {
   .chart-wrap { height: 170px; }
   .chart-wrap-speed { height: 180px; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .metric { padding: 6px 8px; }
   .metric .v { font-size: 13px; }
   .slip { font-size: 10px; padding: 10px; min-height: 180px; max-height: none; }
@@ -1376,6 +1392,7 @@ body {
   .gauges-dials { grid-template-columns: unset; gap: 0; }
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
   .metrics { grid-template-columns: 1fr 1fr; }
+  .metrics-accel { grid-template-columns: 1fr 1fr; }
 }
 
 

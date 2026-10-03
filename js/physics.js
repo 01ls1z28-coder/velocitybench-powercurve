@@ -1001,7 +1001,11 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       halfMileTime: null,
       halfMileSpeedMph: null,
       mileTime: null,
-      mileSpeedMph: null
+      mileSpeedMph: null,
+      zeroToMph: {},
+      zeroToOneThirty: null,
+      hundredToTwoHundredKmh: null,
+      twoHundredToTwoFiftyKmh: null
     };
   }
 
@@ -1273,6 +1277,16 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var qmT = null, qmMph = null;
     var t060 = null, t0100 = null, t60_130 = null, t100_150 = null;
     var at60 = null, at100 = null;
+    // 0–N mph crossings (same 1 ms step as 0-60). Missing marks stay unset.
+    var ZERO_MPH_MARKS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    var zeroToMph = {};
+    var nextZeroIdx = 0;
+    // km/h windows: exact mph = km/h / 1.609344 (international mile).
+    var KMH_PER_MPH = 1.609344;
+    var mph100kmh = 100 / KMH_PER_MPH;
+    var mph200kmh = 200 / KMH_PER_MPH;
+    var mph250kmh = 250 / KMH_PER_MPH;
+    var t100kmh = null, t200kmh = null, t250kmh = null;
     var peakG = 0, peakHP = 0, peakTQ = 0;
     var sampleAcc = 0;
     var rollBase = 0.015 * mass * G;
@@ -1817,6 +1831,13 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       if (mph >= 130 && t60_130 == null && at60 != null) t60_130 = t - at60;
       if (mph >= 100 && at100 == null) at100 = t;
       if (mph >= 150 && t100_150 == null && at100 != null) t100_150 = t - at100;
+      while (nextZeroIdx < ZERO_MPH_MARKS.length && mph >= ZERO_MPH_MARKS[nextZeroIdx]) {
+        zeroToMph[ZERO_MPH_MARKS[nextZeroIdx]] = t;
+        nextZeroIdx++;
+      }
+      if (t100kmh == null && mph >= mph100kmh) t100kmh = t;
+      if (t200kmh == null && mph >= mph200kmh) t200kmh = t;
+      if (t250kmh == null && mph >= mph250kmh) t250kmh = t;
 
       // Quick metrics mode (calib): stop after QM + optional speed windows, no Vmax crawl
       if (env.quickMetrics && hit1320) {
@@ -1834,26 +1855,26 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         }
       }
 
-      // Vmax / safety-cap detection (only after quarter-mile markers recorded)
+      // Vmax / safety-cap detection (only after quarter-mile markers recorded).
+      // Latch the reason when Vmax is reached, but keep stepping until the mile
+      // marker (or time/dist cap) so 1/2 and 1-mile ET are real crossings, not blanks.
       if (hit1320 && !env.quickMetrics) {
+        var vmaxWhy = '';
         if (speedLimiterMph > 0 && v >= limiterMps - 1e-6) {
-          vmaxDone = true;
-          vmaxReason = 'speed_limiter_' + speedLimiterMph + 'mph';
+          vmaxWhy = 'speed_limiter_' + speedLimiterMph + 'mph';
         } else if (v >= speedCapMps) {
-          vmaxDone = true;
-          vmaxReason = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';
+          vmaxWhy = 'speed_cap_' + VMAX_SPEED_CAP_MPH + 'mph';
         } else if (dist >= distCapM) {
-          vmaxDone = true;
-          vmaxReason = 'dist_cap_' + VMAX_DIST_CAP_FT + 'ft';
+          vmaxWhy = 'dist_cap_' + VMAX_DIST_CAP_FT + 'ft';
         } else if (a < VMAX_A_THRESH) {
           vmaxHold += DT;
-          if (vmaxHold >= VMAX_HOLD_S) {
-            vmaxDone = true;
-            vmaxReason = 'aero_mech_equilibrium';
-          }
+          if (vmaxHold >= VMAX_HOLD_S) vmaxWhy = 'aero_mech_equilibrium';
         } else {
           vmaxHold = 0;
         }
+        if (vmaxWhy && !vmaxReason) vmaxReason = vmaxWhy;
+        var hardCap = vmaxWhy.indexOf('dist_cap_') === 0;
+        if (vmaxWhy && (hitMile || hardCap)) vmaxDone = true;
       }
       if (t >= MAX_T) {
         vmaxDone = true;
@@ -1890,6 +1911,13 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     result.zeroToHundred = t0100;
     result.sixtyToOneThirty = t60_130;
     result.hundredToOneFifty = t100_150;
+    // Canonical 0-60 / 0-100 stay the existing fields (same crossing).
+    if (t060 != null) zeroToMph[60] = t060;
+    if (t0100 != null) zeroToMph[100] = t0100;
+    result.zeroToMph = zeroToMph;
+    result.zeroToOneThirty = (zeroToMph[130] != null) ? zeroToMph[130] : null;
+    result.hundredToTwoHundredKmh = (t100kmh != null && t200kmh != null) ? (t200kmh - t100kmh) : null;
+    result.twoHundredToTwoFiftyKmh = (t200kmh != null && t250kmh != null) ? (t250kmh - t200kmh) : null;
     result.peakG = peakG;
     result.peakHorsepower = peakHP;
     result.peakTorque = peakTQ;
