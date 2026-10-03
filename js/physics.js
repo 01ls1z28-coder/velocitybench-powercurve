@@ -867,30 +867,30 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
   var TIRE_MU_BY_PREP = {
     /**
      * Jorge Guerra AUTHORITATIVE Mustang GT 10AT 60ft chart.
-     * Baked at forceScale=1, driver 200 lb, launch auto, 70°F / 45% / 29.92 inHg.
+     * Baked at forceScale=1, driver 200 lb, launch auto, 70°F / 45% / 29.92 inHg,
+     * AFTER stock-automatic stall torque ratio (10R80 STR 1.70, fades by SR 0.90).
      * Unprep: Street 2.200 · Summer 2.103 · UHP 1.960 · R-Comp 1.900 · DR 1.820 · Slick 1.908
      * Prep:   Street 2.040 · Summer 1.989 · UHP 1.900 · R-Comp 1.850 · DR 1.730 · Slick 1.708
-     * Stock 10R80 leave (calm auto, no aftermarket converter) power-floors 60ft near
-     * 1.921s once hooked (prep DR ~1.911 / prep Slick ~1.885 with the mild VHT drive lift).
-     * Compounds whose gold time is under that floor sit on it; µ above the hook knee
-     * keeps the gold order (DR grippiest unprep, Slick grippiest prep) for cars that
-     * still spin. Do not raise peakHp / cut Cd to fake a faster floor.
+     * With STR the unprep power floor is ~1.80s, so every unprep gold time is reachable.
+     * Prep DR floors ~1.799 and prep Slick ~1.776 (VHT drive lift). Gold 1.730 / 1.708
+     * are under that floor — µ is parked on the hook knee, not raised to fake it.
+     * Do not raise peakHp / cut Cd to fake a faster floor.
      */
     unprepped: {
-      0: 1.094,  // Street → 2.201 (gold 2.200)
-      3: 1.138,  // Summer → 2.103
-      4: 1.377,  // UHP → 1.960
-      2: 1.600,  // Slick → 1.921 floor (gold 1.908)
-      5: 1.680,  // R-Compound → 1.921 floor (gold 1.900)
-      1: 1.780   // Drag Radial → 1.921 floor (gold 1.820; power floor)
+      0: 1.143,  // Street → 2.200
+      3: 1.187,  // Summer → 2.103
+      4: 1.305,  // UHP → 1.960
+      2: 1.331,  // Slick → 1.908
+      5: 1.362,  // R-Compound → 1.902 (gold 1.900)
+      1: 1.509   // Drag Radial → 1.820
     },
     prepped: {
-      0: 1.228,  // Street → 2.040
-      3: 1.308,  // Summer → 1.989
-      4: 1.600,  // UHP → 1.921 floor (gold 1.900)
-      5: 1.700,  // R-Compound → 1.921 floor (gold 1.850; power floor)
-      1: 1.850,  // DR → 1.911 floor (gold 1.730; power floor)
-      2: 2.000   // Slick → 1.885 floor (gold 1.708; power floor)
+      0: 1.253,  // Street → 2.039
+      3: 1.284,  // Summer → 1.989
+      4: 1.371,  // UHP → 1.900
+      5: 1.435,  // R-Compound → 1.850
+      1: 1.650,  // DR → ~1.799 floor (gold 1.730)
+      2: 1.700   // Slick → ~1.776 floor (gold 1.708)
     }
   };
 
@@ -1028,6 +1028,44 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var lim = Number(raw);
     if (!(lim > 0) || !isFinite(lim)) return 0;
     return lim;
+  }
+
+
+  /**
+   * Stock torque-converter stall torque ratio (STR).
+   * Only stock automatics. Aftermarket converters keep their own multiply.
+   * Manuals, DCT, sequential, MCT, and EVs are not torque-converter autos.
+   *
+   * TR falls with speed ratio, not a flat 2× through the 60':
+   *   speed ratio SR = turbine / engine (0 at stall, ~1 when coupled)
+   *   TR = STR at SR 0, linear to 1.0 at the coupling point SR 0.90
+   *   (SAE J643-style stall→coupling line).
+   *
+   * STR assumptions (literature band, not a per-car dyno):
+   *   Classic 3/4-speed and the stock LS1 4L60E/4L65E: 1.90.
+   *     LS1Tech treats ~1.8 as a tight street STR and calls the stock
+   *     F-body converter low-STR; late F-body stall is ~1850 rpm.
+   *     1.90 sits in the 1.8–2.0 stock-LS1 band.
+   *   6-speed automatics (6L80/6L90/6R80/6HP): 1.80.
+   *   Modern 8/10-speed (10R80, 10L90, ZF8, 8L): 1.70.
+   *     They flash higher and couple sooner; published STR is often ~1.6–1.8.
+   */
+  function stockStallTorqueRatio(car) {
+    var blob = (String(car.txKey || '') + ' ' + String(car.transmission || '') + ' ' +
+      String(car.txFactoryLabel || '')).toLowerCase();
+    if (/10r|10l|8l90|8l45|8hp|zf8|9hp|10at|8at|10-spd|8-spd|10spd|8spd/.test(blob)) return 1.70;
+    if (/6l80|6l90|6r80|6r140|zf_6|6hp|6at|6-spd|6spd|5r110|nag1|5at/.test(blob)) return 1.80;
+    return 1.90;
+  }
+
+  function isStockTorqueConverterAuto(car) {
+    if (!car || car.isEv || car.powerSource === 'ev' || car.hasAftermarketConverter) return false;
+    if (resolveShiftDriveFamily(car) !== 'automatic') return false;
+    var blob = (String(car.txKey || '') + ' ' + String(car.transmission || '') + ' ' +
+      String(car.txFactoryLabel || '')).toLowerCase();
+    // Wet-clutch / direct-drive units labeled Auto are not converters.
+    if (/mct|koenigsegg_kdd|direct drive|direct-drive/.test(blob)) return false;
+    return true;
   }
 
   function runQuarterMile(car, env) {
@@ -1606,6 +1644,17 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         }
         // (retired) post-shift mph-gated trap-unlock multiply — Excel-chase invent
         engagedWhTQ = fullWhTQ * tMult;
+      } else if (isStockTorqueConverterAuto(car)) {
+        // Stock converter: STR at stall, 1.0 once coupled. Do not stack on the
+        // aftermarket path above (hasAftermarketConverter already returned).
+        var mechStock = wheelRpm * gRatio * finalDrive;
+        var slipStock = rpm > 50 ? Math.max(0, (rpm - mechStock) / rpm) : 0;
+        var speedRatio = 1.0 - slipStock;
+        var coupleSR = 0.90;
+        var str = stockStallTorqueRatio(car);
+        var trStock = speedRatio >= coupleSR ? 1.0
+          : 1.0 + (str - 1.0) * ((coupleSR - speedRatio) / coupleSR);
+        engagedWhTQ = fullWhTQ * trStock;
       }
 
       var whTQ;
