@@ -2026,7 +2026,7 @@ var VB_POWERCURVE_GARAGE =
       0.7
     ],
     "txKey": "GM_4L65E",
-    "drivetrainLossPercent": 17.5,
+    "drivetrainLossPercent": 20,
     "driveType": "RWD",
     "isEv": false,
     "isFI": false,
