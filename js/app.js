@@ -2190,7 +2190,18 @@
     });
 
     lines.push('  -----------------------');
-    lines.push('  Shifts  ' + (r.totalShifts || 0) + '   Launch ' + r.launchRpm + ' → Shift ' + r.shiftRpm);
+    lines.push('  Shifts  ' + (r.totalShifts || 0) + '   Launch ' + r.launchRpm + ' → Shift ' + r.shiftRpm + ' RPM');
+    var shiftPoints = Array.isArray(r.shifts) ? r.shifts : [];
+    if (shiftPoints.length) {
+      lines.push('  SHIFT POINTS');
+      shiftPoints.forEach(function (sh) {
+        var toGear = Number(sh && sh.gear);
+        var fromGear = toGear > 1 ? toGear - 1 : toGear;
+        var shiftMph = sh && isFinite(Number(sh.mph)) ? Number(sh.mph).toFixed(1) + ' MPH' : '-- MPH';
+        var shiftRpm = r.shiftRpm != null && isFinite(Number(r.shiftRpm)) ? Math.round(Number(r.shiftRpm)) + ' RPM' : '-- RPM';
+        lines.push(slipLine('G' + fromGear + '→G' + toGear, shiftRpm + ' @ ' + shiftMph));
+      });
+    }
     lines.push('  Peak    ' + fmt(r.peakHorsepower, 0) + ' hp  /  ' + fmt(r.peakTorque, 0) + ' lb-ft');
     lines.push('  Peak G  ' + fmt(r.peakG, 2) + '   Wheelspin ' + fmt(r.wheelspinPercent, 1) + '%');
     lines.push('  -----------------------');
