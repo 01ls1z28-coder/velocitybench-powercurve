@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Static geared-RPM simulator: factory gearing, weather/DA, wind, FI boost, dyno curves, quarter-mile time slip, and run-to-Vmax. Estimates for comparison — not track certified." />
   <meta name="twitter:image" content="https://velocitybench.com/og.png" />
   <meta name="theme-color" content="#07090c" />
-  <link rel="stylesheet" href="css/styles.css?v=weight-viz-dead-knobs" />
+  <link rel="stylesheet" href="css/styles.css?v=digital-run" />
   <link rel="stylesheet" href="css/vb-chrome.css" />
 </head>
 <body>
@@ -390,13 +390,12 @@
         <div class="chart-label" id="powerChartLabel">HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label" id="speedChartLabel">Speed vs distance — MPH · g · ft · shifts · time · full Vmax · scrub · click/wheel zoom · drag pan</div>
-        <!-- Time Slip: telemetry paper layout under dyno/speed graphs. NOT a right-rail. -->
-        <section class="slip-block" aria-label="Time slip">
-          <div class="card-title slip-title">Time Slip</div>
-          <pre class="slip track-slip" id="slip">  VELOCITYBENCH TIME SLIP
-  -----------------------
-  Ready — pick a garage car
-  or set params, then RUN.</pre>
+        <!-- Run board: dark digital results under dyno/speed graphs. NOT a right-rail. -->
+        <section class="slip-block" aria-label="Run data">
+          <div class="card-title slip-title">Run Data</div>
+          <div class="run-board" id="slip" aria-live="polite">
+            <div class="run-board-idle">Ready — pick a garage car or set params, then RUN.</div>
+          </div>
         </section>
 
         <p class="disclaimer" style="margin-top:12px">
@@ -416,6 +415,6 @@
   <script src="js/physics.js?v=result-readouts"></script>
   <script src="js/gauges.js?v=0ce7872"></script>
   <script src="js/garage-data.js?v=ev-pages-ui-path"></script>
-  <script src="js/app.js?v=result-readouts"></script>
+  <script src="js/app.js?v=digital-run"></script>
 </body>
 </html>

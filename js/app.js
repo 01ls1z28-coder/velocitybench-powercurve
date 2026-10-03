@@ -2060,27 +2060,24 @@
   }
 
 
-  function slipLine(label, value) {
-    label = String(label);
-    value = String(value);
-    var width = 36;
-    var dots = width - label.length - value.length;
-    if (dots < 2) dots = 2;
-    var pad = '';
-    for (var i = 0; i < dots; i++) pad += '.';
-    return '  ' + label + ' ' + pad + ' ' + value;
-  }
-
   function slipTime(n) {
     var v = Number(n);
     if (n == null || !isFinite(v) || v <= 0) return null;
-    return v.toFixed(3) + ' s';
+    return v.toFixed(3);
   }
 
   function slipMph(n) {
     var v = Number(n);
     if (n == null || !isFinite(v) || v <= 0) return null;
     return v.toFixed(1);
+  }
+
+  function escHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   /** MPH at a distance from the sim timeline (same samples as the speed chart). */
@@ -2102,114 +2099,113 @@
     return null;
   }
 
-  function engineSlipLabel(car) {
-    if (!car) return 'Unspecified';
-    if (car.isEv || car.powerSource === 'ev') return 'EV';
-    if (car.isHybrid || car.powerSource === 'hybrid') return 'Hybrid';
-    var ps = car.powerSource || car.boostModel || '';
-    if (ps === 'turbo' || ps === 'supercharger' || ps === 'twincharge' || car.isFI) return 'Forced ind.';
-    return 'N/A';
-  }
-
-  function stopSlipLabel(reason) {
-    var s = String(reason || '');
-    if (!s || s === 'incomplete' || s === 'did_not_finish_quarter' || s.indexOf('quick_metrics') === 0) return null;
-    if (s === 'aero_mech_equilibrium' || s.indexOf('speed_limiter_') === 0) return 'mech top speed';
-    if (s.indexOf('speed_cap_') === 0 || s.indexOf('time_cap_') === 0 || s.indexOf('dist_cap_') === 0) return 'safety limit';
-    return null;
-  }
-
   var ZERO_SPEED_MARKS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
 
+  function dashCell(text, cls) {
+    var missing = text == null || text === '';
+    return '<span class="' + cls + (missing ? ' is-miss' : '') + '">' +
+      (missing ? '—' : escHtml(text)) + '</span>';
+  }
+
   function renderSlip(r, car) {
-    var lines = [];
-    var vehicle = (car && car.name) || r.carName || 'Custom setup';
-    lines.push('  VELOCITYBENCH TIME SLIP');
-    lines.push('  -----------------------');
-    lines.push(slipLine('VEHICLE', String(vehicle).slice(0, 24)));
-    lines.push(slipLine('PRINTED', new Date().toLocaleString()));
-    var ev = car && (car.isEv || car.powerSource === 'ev');
-    lines.push(slipLine(ev ? 'MOTOR' : 'ENGINE', engineSlipLabel(car)));
-    var txName = resolveTxDisplayName(car);
-    if (txName) lines.push(slipLine('TRANS', String(txName).slice(0, 24)));
-    var dwEl = $('driverWeightLbs');
-    var dw = dwEl ? Number(dwEl.value) : 0;
-    if (isFinite(dw) && dw > 0) lines.push(slipLine('DRIVER WT', Math.round(dw) + ' lb'));
-    if (r.densityAltitudeFeet != null && isFinite(Number(r.densityAltitudeFeet))) {
-      lines.push(slipLine('DA', Math.round(Number(r.densityAltitudeFeet)) + ' ft'));
-    }
-    if (r.tireDescription) lines.push(slipLine('TIRE', String(r.tireDescription).slice(0, 24)));
-    lines.push('  -----------------------');
+    var el = $('slip');
+    if (!el) return;
+    var vehicle = (car && car.name) || (r && r.carName) || 'Custom setup';
 
-    function mark(label, time, mph) {
-      var tStr = slipTime(time);
-      if (!tStr) {
-        lines.push(slipLine(label, '--'));
-        return;
-      }
-      lines.push(slipLine(label, tStr));
-      lines.push(slipLine(label + ' MPH', slipMph(mph) || '--'));
-    }
+    var distMarks = [
+      ['60 ft', r.sixtyFootTime, mphNearFeet(r, 60)],
+      ['330', r.threeThirtyTime, mphNearFeet(r, 330)],
+      ['1/8', r.eighthMileTime, r.eighthMileSpeedMph],
+      ['1000 ft', r.thousandFootTime, mphNearFeet(r, 1000)],
+      ['1/4', r.finished ? r.quarterMileTime : null, r.finished ? r.quarterMileSpeedMph : null],
+      ['1/2', r.halfMileTime, r.halfMileSpeedMph],
+      ['1 mile', r.mileTime, r.mileSpeedMph]
+    ];
+    var distRows = distMarks.map(function (row) {
+      return '<tr><th scope="row">' + escHtml(row[0]) + '</th><td>' +
+        dashCell(slipTime(row[1]), 'rd-time') + '</td><td>' +
+        dashCell(slipMph(row[2]), 'rd-mph') + '</td></tr>';
+    }).join('');
 
-    mark('60 FT', r.sixtyFootTime, mphNearFeet(r, 60));
-    mark('330 FT', r.threeThirtyTime, mphNearFeet(r, 330));
-    mark('1/8', r.eighthMileTime, r.eighthMileSpeedMph);
-    mark('1000 FT', r.thousandFootTime, mphNearFeet(r, 1000));
-    mark('1/4', r.finished ? r.quarterMileTime : null, r.finished ? r.quarterMileSpeedMph : null);
-    mark('1/2', r.halfMileTime, r.halfMileSpeedMph);
-    mark('1 MILE', r.mileTime, r.mileSpeedMph);
+    var ranges = [
+      ['0–60', r.zeroToSixty],
+      ['0–100', r.zeroToHundred],
+      ['0–130', r.zeroToOneThirty],
+      ['60–130', r.sixtyToOneThirty],
+      ['100–150', r.hundredToOneFifty],
+      ['100–200 km/h', r.hundredToTwoHundredKmh],
+      ['200–250 km/h', r.twoHundredToTwoFiftyKmh]
+    ];
+    var rangeHtml = ranges.map(function (row) {
+      return '<div class="rd-chip"><span class="rd-k">' + escHtml(row[0]) + '</span>' +
+        dashCell(slipTime(row[1]), 'rd-range') + '</div>';
+    }).join('');
 
-    lines.push('  -----------------------');
-    function range(label, n) {
-      lines.push(slipLine(label, slipTime(n) || '--'));
-    }
-    range('0-60 MPH', r.zeroToSixty);
-    range('0-100 MPH', r.zeroToHundred);
-    range('0-130 MPH', r.zeroToOneThirty);
-    range('60-130', r.sixtyToOneThirty);
-    range('100-150', r.hundredToOneFifty);
-    range('100-200 KM/H', r.hundredToTwoHundredKmh);
-    range('200-250 KM/H', r.twoHundredToTwoFiftyKmh);
-
-    lines.push('  -----------------------');
-    var tl = r.timeline;
-    var end = tl && tl.length ? tl[tl.length - 1] : null;
-    var runFt = end && isFinite(Number(end.feet)) ? Number(end.feet) : Number(r.topSpeedFeet);
-    var runS = end && isFinite(Number(end.t)) ? Number(end.t) : Number(r.topSpeedTime);
-    if (isFinite(runFt) && runFt > 0) lines.push(slipLine('RUN DIST', runFt.toFixed(1) + ' ft'));
-    if (isFinite(runS) && runS > 0) lines.push(slipLine('RUN TIME', runS.toFixed(2) + ' s'));
-    if (slipMph(r.topSpeedMph)) lines.push(slipLine('TOP SPD', slipMph(r.topSpeedMph) + ' mph'));
-    var stop = stopSlipLabel(r.vmaxReason);
-    if (stop) lines.push(slipLine('STOP', stop));
-
-    lines.push('  -----------------------');
-    lines.push('  0-X MPH BREAKDOWN');
     var z = r.zeroToMph || {};
-    ZERO_SPEED_MARKS.forEach(function (m) {
-      lines.push(slipLine('0-' + m, slipTime(z[m]) || '--'));
-    });
+    var zeroHtml = ZERO_SPEED_MARKS.map(function (m) {
+      return '<div class="rd-chip rd-chip--zero"><span class="rd-k">0–' + m + '</span>' +
+        dashCell(slipTime(z[m]), 'rd-time') + '</div>';
+    }).join('');
 
-    lines.push('  -----------------------');
-    lines.push('  Shifts  ' + (r.totalShifts || 0) + '   Launch ' + r.launchRpm + ' → Shift ' + r.shiftRpm + ' RPM');
+    var launch = r.launchRpm != null && isFinite(Number(r.launchRpm)) ? Math.round(Number(r.launchRpm)) : null;
+    var shiftRpm = r.shiftRpm != null && isFinite(Number(r.shiftRpm)) ? Math.round(Number(r.shiftRpm)) : null;
     var shiftPoints = Array.isArray(r.shifts) ? r.shifts : [];
-    if (shiftPoints.length) {
-      lines.push('  SHIFT POINTS');
-      shiftPoints.forEach(function (sh) {
-        var toGear = Number(sh && sh.gear);
-        var fromGear = toGear > 1 ? toGear - 1 : toGear;
-        var shiftMph = sh && isFinite(Number(sh.mph)) ? Number(sh.mph).toFixed(1) + ' MPH' : '-- MPH';
-        var shiftRpm = r.shiftRpm != null && isFinite(Number(r.shiftRpm)) ? Math.round(Number(r.shiftRpm)) + ' RPM' : '-- RPM';
-        lines.push(slipLine('G' + fromGear + '→G' + toGear, shiftRpm + ' @ ' + shiftMph));
-      });
-    }
-    lines.push('  Peak    ' + fmt(r.peakHorsepower, 0) + ' hp  /  ' + fmt(r.peakTorque, 0) + ' lb-ft');
-    lines.push('  Peak G  ' + fmt(r.peakG, 2) + '   Wheelspin ' + fmt(r.wheelspinPercent, 1) + '%');
-    lines.push('  -----------------------');
-    lines.push('Gears: ' + (r.gearsUsed || []).map(function (g) { return g.toFixed(2); }).join(', '));
-    lines.push('FD:    ' + fmt(r.finalDrive, 2));
-    lines.push('  -----------------------');
-    lines.push('  Estimates — not lab ET');
-    $('slip').textContent = lines.join('\n');
+    var pills = shiftPoints.map(function (sh) {
+      var toGear = Number(sh && sh.gear);
+      var fromGear = toGear > 1 ? toGear - 1 : toGear;
+      var gearLabel = (isFinite(fromGear) && isFinite(toGear))
+        ? ('G' + fromGear + '→G' + toGear)
+        : 'Shift';
+      var mph = sh && isFinite(Number(sh.mph)) && Number(sh.mph) > 0
+        ? Number(sh.mph).toFixed(1)
+        : null;
+      return '<span class="rd-shift">' + escHtml(gearLabel) +
+        ' <b class="rd-range">' + (shiftRpm == null ? '—' : escHtml(String(shiftRpm))) + '</b><span class="rd-k"> rpm</span>' +
+        ' <b class="rd-mph">' + (mph == null ? '—' : escHtml(mph)) + '</b><span class="rd-k"> mph</span></span>';
+    }).join('');
+
+    var gears = (r.gearsUsed || []).map(function (g) {
+      var n = Number(g);
+      return isFinite(n) ? n.toFixed(2) : null;
+    }).filter(Boolean);
+
+    el.innerHTML =
+      '<div class="rd-head">' +
+        '<div class="rd-name">' + escHtml(vehicle) + '</div>' +
+        '<div class="rd-tag">RUN</div>' +
+      '</div>' +
+      '<div class="rd-grid">' +
+        '<section class="rd-panel" aria-label="Distance marks">' +
+          '<h3>Distance</h3>' +
+          '<table class="rd-table"><thead><tr><th></th><th>sec</th><th>mph</th></tr></thead><tbody>' +
+          distRows + '</tbody></table>' +
+        '</section>' +
+        '<div class="rd-stack">' +
+          '<section class="rd-panel" aria-label="Speed ranges">' +
+            '<h3>Splits</h3>' +
+            '<div class="rd-ranges">' + rangeHtml + '</div>' +
+          '</section>' +
+          '<section class="rd-panel" aria-label="Zero to speed">' +
+            '<h3>0–mph</h3>' +
+            '<div class="rd-zeros">' + zeroHtml + '</div>' +
+          '</section>' +
+        '</div>' +
+      '</div>' +
+      '<section class="rd-panel rd-foot" aria-label="Shifts and gearing">' +
+        '<div class="rd-stats">' +
+          '<span><span class="rd-k">Shifts</span> <b class="rd-range">' + escHtml(String(r.totalShifts || 0)) + '</b></span>' +
+          '<span><span class="rd-k">Launch</span> <b class="rd-range">' + (launch == null ? '—' : escHtml(String(launch))) + '</b></span>' +
+          '<span><span class="rd-k">Shift</span> <b class="rd-range">' + (shiftRpm == null ? '—' : escHtml(String(shiftRpm))) + '</b></span>' +
+          '<span><span class="rd-k">Peak</span> <b class="rd-time">' + escHtml(fmt(r.peakHorsepower, 0)) + '</b> <span class="rd-k">hp</span>' +
+            ' <b class="rd-mph">' + escHtml(fmt(r.peakTorque, 0)) + '</b> <span class="rd-k">lb-ft</span></span>' +
+          '<span><span class="rd-k">Peak G</span> <b class="rd-range">' + escHtml(fmt(r.peakG, 2)) + '</b></span>' +
+          '<span><span class="rd-k">Wheelspin</span> <b class="rd-range">' + escHtml(fmt(r.wheelspinPercent, 1)) + '</b><span class="rd-k">%</span></span>' +
+          '<span><span class="rd-k">FD</span> <b class="rd-mph">' + escHtml(fmt(r.finalDrive, 2)) + '</b></span>' +
+        '</div>' +
+        (pills ? '<div class="rd-shifts">' + pills + '</div>' : '') +
+        '<div class="rd-gears"><span class="rd-k">Gears</span> ' +
+          (gears.length ? escHtml(gears.join('  ')) : '—') + '</div>' +
+      '</section>';
   }
 
   /** Wheel Spin logo badge — ON when timeline wheelspin ≥ threshold. */
