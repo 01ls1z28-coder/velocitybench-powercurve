@@ -1085,17 +1085,22 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
   }
 
   /**
-   * Slipping-clutch inertia ratio for this car, this tire, this rpm.
-   * Steady force already over the fitted tire → 1.0. A single fleet ratio
-   * (the old 3.20) added torque on cars that were already loose and slowed
-   * them (2018 GT PP2 street 60-foot ~2.11 → ~2.37).
-   * Under that tire → only enough to land ~8% over its grip (inside the
-   * 5–12% band) so the existing slip model can spin it.
-   * Cap 2.2 is clutch inertia: flywheel and pressure plate can dump a short
-   * spike above the steady curve, and 2.2 is that spike's ceiling. It is not
-   * a fleet fudge and it is not the old 3.20.
+   * Slipping-clutch inertia ratio from engine torque, not from the tire fitted.
+   * Steady wheel force already able to break an unprepped street tire → 1.0.
+   * A single fleet ratio (the old 3.20) added torque on cars that were already
+   * loose and slowed them (2018 GT PP2 street 60-foot ~2.11 → ~2.37).
+   * Under that street tire → only enough to land ~8% over unprepped-street
+   * grip (inside the 5–12% band). The same ratio is used on every compound:
+   * a stickier tire must not raise the spike, or street and slick accelerate
+   * the same and the 60-foot ladder goes flat.
+   * Cap 2.9 is the clutch-inertia ceiling, not a fleet ratio. 2.2 peaked
+   * near 15,950 N on the stock Camaro at 2000 rpm, under about 18,200 N of
+   * weight-transferred street grip, so a normal leave stayed hooked. The
+   * street-grip target for that car is about 2.87; 2.9 lets that target
+   * through. Cars already over the street tire stay at 1.0. It is not 3.20.
+   * gripN is the unprepped-street reference only.
    */
-  var CLUTCH_INERTIA_CAP = 2.2;
+  var CLUTCH_INERTIA_CAP = 2.9;
   var CLUTCH_OVER_GRIP = 1.08;
   function manualClutchInertiaRatio(steadyForceN, gripN) {
     if (!(steadyForceN > 1) || !(gripN > 1)) return 1.0;
@@ -1104,6 +1109,38 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     if (need < 1.0) return 1.0;
     if (need > CLUTCH_INERTIA_CAP) return CLUTCH_INERTIA_CAP;
     return need;
+  }
+
+  /**
+   * Unprepped-street traction the clutch spike is sized against.
+   * Solved at the street-tire traction limit so weight transfer is in the
+   * reference, but the fitted tire's mu and its acceleration are not.
+   * Same number for street, slick, prepped, and unprepped.
+   */
+  function streetReferenceGripN(mass, g, frontPct, rearPct, leftPct, driveType, mu, cg, wb) {
+    var w = mass * g;
+    var cgWb = cg / Math.max(wb, 1e-6);
+    var nMin = w * 0.08;
+    if (driveType === 'AWD') {
+      var nF = Math.max(nMin, w * (frontPct / 100.0));
+      var nR = Math.max(nMin, w * (rearPct / 100.0));
+      return axleTractionLimitN(nF, mu, leftPct, driveType) +
+        axleTractionLimitN(nR, mu, leftPct, driveType);
+    }
+    if (driveType === 'FWD') {
+      var denomF = 1.0 + mu * cgWb;
+      if (denomF < 0.25) denomF = 0.25;
+      var nFront = w * (frontPct / 100.0) / denomF;
+      if (nFront < nMin) nFront = nMin;
+      return axleTractionLimitN(nFront, mu, leftPct, driveType);
+    }
+    var denomR = 1.0 - mu * cgWb;
+    if (denomR < 0.25) denomR = 0.25;
+    var nRear = w * (rearPct / 100.0) / denomR;
+    if (nRear < nMin) nRear = nMin;
+    var nRearMax = w - nMin;
+    if (nRear > nRearMax) nRear = nRearMax;
+    return axleTractionLimitN(nRear, mu, leftPct, driveType);
   }
 
   function isStockTorqueConverterAuto(car) {
@@ -1704,38 +1741,49 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
           : 1.0 + (str - 1.0) * ((coupleSR - speedRatio) / coupleSR);
         engagedWhTQ = fullWhTQ * trStock;
       } else if (/^manual$/i.test(String(car.transmission || '').trim()) && gear === 1) {
-        // Slipping clutch in 1st only. Ratio is per car / per fitted tire /
-        // per rpm (manualClutchInertiaRatio), then the same 8→28 mph fade.
-        // Higher gears stay on the steady curve.
+        // Slipping clutch in 1st only. Same shape as a stock converter:
+        // manualClutchInertiaRatio for the whole slip, 1.0 at SR 0.90.
+        // It does not grow for a stickier tire. Higher gears stay steady.
         var mechMan = wheelRpm * gRatio * finalDrive;
         var slipMan = rpm > 50 ? Math.max(0, (rpm - mechMan) / rpm) : 0;
-        var fade = mph <= 8 ? 1 : mph >= 28 ? 0 : (28 - mph) / (28 - 8);
+        var speedRatioMan = 1.0 - slipMan;
+        // Same coupling point as stockStallTorqueRatio: full ratio while the
+        // clutch is actually slipping, 1.0 once speed ratio reaches 0.90.
+        // Do not multiply by slip again and do not fade 8→28 mph. That product
+        // dropped the Camaro under the tire within a fraction of a foot, while
+        // a converter holds STR until it couples.
         var ratioMan = 1.0;
-        if (slipMan > 0 && fade > 0) {
-          var wXferC = (mass * prevA * cgHeightM) / Math.max(wheelbaseM, 1e-6);
-          var nFrontC = mass * G * (frontPct / 100.0) - wXferC;
-          var nRearC = mass * G * (rearPct / 100.0) + wXferC;
-          var nMinC = mass * G * 0.08;
-          if (nFrontC < nMinC) nFrontC = nMinC;
-          if (nRearC < nMinC) nRearC = nMinC;
-          // Same low-speed grip factor the traction limit uses (GRIP_LT20 below 8 mph).
-          var muC = muBase * gripMultSmooth(mph);
-          if (inLaunch && launchMuMult !== 1.0) muC *= launchMuMult;
-          var gripC;
-          if (driveType === 'AWD') {
-            gripC = axleTractionLimitN(nFrontC, muC, leftPct, driveType) +
-              axleTractionLimitN(nRearC, muC, leftPct, driveType);
-          } else if (driveType === 'FWD') {
-            gripC = axleTractionLimitN(nFrontC, muC, leftPct, driveType);
-          } else {
-            gripC = axleTractionLimitN(nRearC, muC, leftPct, driveType);
-          }
+        if (slipMan > 0.10) {
+          // Street reference only. Fitted mu must not raise the ratio.
+          var muStreet = tireGripForType(0, 'unprepped') * gripMultSmooth(mph);
+          if (inLaunch && launchMuMult !== 1.0) muStreet *= launchMuMult;
+          var gripStreet = streetReferenceGripN(
+            mass, G, frontPct, rearPct, leftPct, driveType, muStreet, cgHeightM, wheelbaseM);
           var LBFT_TO_NM_C = 1.3558179483314;
           var steadyN = tireRadius > 0 ? (fullWhTQ * LBFT_TO_NM_C) / tireRadius : 0;
           steadyN *= driveForceMultSmooth(mph);
-          ratioMan = manualClutchInertiaRatio(steadyN, gripC);
+          // Already over the tire that is on the ground right now → 1.0.
+          // The closed-form reference can sit above that live load; using it
+          // alone gave the PP2 a ratio and slowed the launch.
+          var wXferL = (mass * prevA * cgHeightM) / Math.max(wheelbaseM, 1e-6);
+          var nRearL = mass * G * (rearPct / 100.0) + wXferL;
+          var nFrontL = mass * G * (frontPct / 100.0) - wXferL;
+          var nMinL = mass * G * 0.08;
+          if (nRearL < nMinL) nRearL = nMinL;
+          if (nFrontL < nMinL) nFrontL = nMinL;
+          var liveStreet;
+          if (driveType === 'AWD') {
+            liveStreet = axleTractionLimitN(nFrontL, muStreet, leftPct, driveType) +
+              axleTractionLimitN(nRearL, muStreet, leftPct, driveType);
+          } else if (driveType === 'FWD') {
+            liveStreet = axleTractionLimitN(nFrontL, muStreet, leftPct, driveType);
+          } else {
+            liveStreet = axleTractionLimitN(nRearL, muStreet, leftPct, driveType);
+          }
+          if (steadyN >= liveStreet) ratioMan = 1.0;
+          else ratioMan = manualClutchInertiaRatio(steadyN, gripStreet);
         }
-        var trMan = 1.0 + (ratioMan - 1.0) * slipMan * fade;
+        var trMan = (ratioMan <= 1.0 || speedRatioMan >= 0.90) ? 1.0 : ratioMan;
         engagedWhTQ = fullWhTQ * trMan;
       }
 

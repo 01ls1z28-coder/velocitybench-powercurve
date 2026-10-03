@@ -1918,7 +1918,7 @@ var VB_POWERCURVE_GARAGE = [
       0.5
     ],
     "txKey": "Tremec_T56",
-    "drivetrainLossPercent": 19,
+    "drivetrainLossPercent": 12,
     "driveType": "RWD",
     "isEv": false,
     "isFI": false,
