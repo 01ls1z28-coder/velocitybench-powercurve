@@ -1233,61 +1233,37 @@ body {
   margin-bottom: 8px;
 }
 
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 10px;
-  min-width: 0;
-}
-.metric-groups { margin-top: 10px; min-width: 0; }
-.metric-group { margin-top: 12px; }
-.metric-group:first-child { margin-top: 0; }
-.metric-group-title {
-  font-size: 10px;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0 0 6px;
-}
-.metric-group .metrics { margin-top: 0; }
-.metrics-accel { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-
-.metric {
-  background: rgba(0,0,0,0.35);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  min-width: 0;
-  overflow: hidden;
-}
-.metric .k {
-  font-size: 10px; color: var(--text-dim);
-  text-transform: uppercase; letter-spacing: 0.06em;
-}
-.metric .v {
-  font-family: var(--mono); font-size: 15px; color: var(--lime); margin-top: 2px;
-  overflow-wrap: anywhere;
-}
-
 .slip {
-  font-family: var(--mono);
+  font-family: "Courier New", Courier, ui-monospace, monospace;
   font-size: 11px;
-  line-height: 1.55;
-  background: rgba(0,0,0,0.45);
-  border: 1px solid rgba(76,201,240,0.25);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  color: #dff6ff;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  margin: 0;
+  /* Classic thermal track-slip paper — same presentation as Performance Telemetry */
+  background-color: #f3e6c8;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(120, 90, 40, 0.035) 2px,
+      rgba(120, 90, 40, 0.035) 3px
+    ),
+    linear-gradient(180deg, #f7ecd4 0%, #efe0bc 48%, #e8d4a8 100%);
+  border: 1px dashed rgba(90, 60, 20, 0.45);
+  border-radius: 3px;
+  padding: 10px 12px;
+  color: #1a140c;
   min-height: 200px;
-  max-height: none;
+  max-height: 520px;
   max-width: 100%;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  white-space: pre;
   overflow-x: auto;
   overflow-y: auto;
-  word-break: break-word;
   scrollbar-width: thin;
+  box-shadow:
+    0 0 0 1px rgba(184, 148, 74, 0.55),
+    inset 0 0 40px rgba(120, 80, 20, 0.08);
 }
 .slip-title { margin-top: 12px; }
 
@@ -1331,15 +1307,11 @@ body {
     grid-template-columns: 1fr;
   }
   .garage-list { max-height: 180px; }
-  .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ---- Responsive: tablet ---- */
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
-  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ---- Responsive: mobile ≤800px — page chrome; dials stay absolute ---- */
@@ -1374,10 +1346,6 @@ body {
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
   .chart-wrap { height: 170px; }
   .chart-wrap-speed { height: 180px; }
-  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-  .metrics-accel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .metric { padding: 6px 8px; }
-  .metric .v { font-size: 13px; }
   .slip { font-size: 10px; padding: 10px; min-height: 180px; max-height: none; }
   .seg label { flex: 1 1 calc(50% - 4px); }
   .live-readout { font-size: 11px; gap: 6px; }
@@ -1391,8 +1359,6 @@ body {
   .gears-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gauges-dials { grid-template-columns: unset; gap: 0; }
   .gauge-wrap, .gauge-wrap--tach, .gauge-wrap--speedo { max-width: none; }
-  .metrics { grid-template-columns: 1fr 1fr; }
-  .metrics-accel { grid-template-columns: 1fr 1fr; }
 }
 
 

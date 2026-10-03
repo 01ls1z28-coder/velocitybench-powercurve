@@ -390,12 +390,13 @@
         <div class="chart-label" id="powerChartLabel">HP / TQ vs RPM · drag TQ bullets (majors every 200 rpm · 100-RPM mesh) · HP≈TQ×RPM/5252 · hover scrub</div>
         <div class="chart-wrap chart-wrap-speed"><canvas id="speedChart"></canvas></div>
         <div class="chart-label" id="speedChartLabel">Speed vs distance — MPH · g · ft · shifts · time · full Vmax · scrub · click/wheel zoom · drag pan</div>
-        <div class="metric-groups" id="metrics" aria-live="polite"></div>
-
-        <!-- Time Slip: FULL WIDTH under dyno/speed graphs (center column). NOT a right-rail. -->
-        <section class="slip-block" aria-label="Quarter-mile time slip">
+        <!-- Time Slip: telemetry paper layout under dyno/speed graphs. NOT a right-rail. -->
+        <section class="slip-block" aria-label="Time slip">
           <div class="card-title slip-title">Time Slip</div>
-          <div class="slip" id="slip">Ready — pick a garage car or set params, then RUN.</div>
+          <pre class="slip track-slip" id="slip">  VELOCITYBENCH TIME SLIP
+  -----------------------
+  Ready — pick a garage car
+  or set params, then RUN.</pre>
         </section>
 
         <p class="disclaimer" style="margin-top:12px">

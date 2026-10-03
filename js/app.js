@@ -2060,112 +2060,145 @@
   }
 
 
-  function fmtUnit(n, d, unit) {
-    if (n == null || !isFinite(Number(n))) return '\u2014';
-    return Number(n).toFixed(d) + (unit ? (' ' + unit) : '');
+  function slipLine(label, value) {
+    label = String(label);
+    value = String(value);
+    var width = 36;
+    var dots = width - label.length - value.length;
+    if (dots < 2) dots = 2;
+    var pad = '';
+    for (var i = 0; i < dots; i++) pad += '.';
+    return '  ' + label + ' ' + pad + ' ' + value;
+  }
+
+  function slipTime(n) {
+    var v = Number(n);
+    if (n == null || !isFinite(v) || v <= 0) return null;
+    return v.toFixed(3) + ' s';
+  }
+
+  function slipMph(n) {
+    var v = Number(n);
+    if (n == null || !isFinite(v) || v <= 0) return null;
+    return v.toFixed(1);
+  }
+
+  /** MPH at a distance from the sim timeline (same samples as the speed chart). */
+  function mphNearFeet(r, targetFt) {
+    var tl = r && r.timeline;
+    if (!tl || !tl.length) return null;
+    var prev = null;
+    for (var i = 0; i < tl.length; i++) {
+      var ft = Number(tl[i].feet);
+      var mph = Number(tl[i].mph);
+      if (!isFinite(ft) || !isFinite(mph)) continue;
+      if (ft >= targetFt) {
+        if (!prev || ft === prev.feet) return mph;
+        var u = (targetFt - prev.feet) / (ft - prev.feet);
+        return prev.mph + (mph - prev.mph) * u;
+      }
+      prev = { feet: ft, mph: mph };
+    }
+    return null;
+  }
+
+  function engineSlipLabel(car) {
+    if (!car) return 'Unspecified';
+    if (car.isEv || car.powerSource === 'ev') return 'EV';
+    if (car.isHybrid || car.powerSource === 'hybrid') return 'Hybrid';
+    var ps = car.powerSource || car.boostModel || '';
+    if (ps === 'turbo' || ps === 'supercharger' || ps === 'twincharge' || car.isFI) return 'Forced ind.';
+    return 'N/A';
+  }
+
+  function stopSlipLabel(reason) {
+    var s = String(reason || '');
+    if (!s || s === 'incomplete' || s === 'did_not_finish_quarter' || s.indexOf('quick_metrics') === 0) return null;
+    if (s === 'aero_mech_equilibrium' || s.indexOf('speed_limiter_') === 0) return 'mech top speed';
+    if (s.indexOf('speed_cap_') === 0 || s.indexOf('time_cap_') === 0 || s.indexOf('dist_cap_') === 0) return 'safety limit';
+    return null;
   }
 
   var ZERO_SPEED_MARKS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
 
-  function metricCells(items) {
-    return items.map(function (it) {
-      return '<div class="metric"><div class="k">' + it[0] + '</div><div class="v">' + it[1] + '</div></div>';
-    }).join('');
-  }
-
-  function metricGroup(title, items, extraClass) {
-    return '<section class="metric-group">' +
-      '<div class="metric-group-title">' + title + '</div>' +
-      '<div class="metrics' + (extraClass ? (' ' + extraClass) : '') + '">' + metricCells(items) + '</div>' +
-      '</section>';
-  }
-
   function renderSlip(r, car) {
     var lines = [];
-    lines.push('────────────────────────────────');
-    lines.push('   VELOCITYBENCH POWERCURVE');
-    lines.push('      QUARTER-MILE TIME SLIP');
-    lines.push('────────────────────────────────');
-    lines.push('Car:  ' + (car.name || r.carName || '—'));
-    lines.push('Date: ' + new Date().toLocaleString());
-    lines.push('DA:   ' + Math.round(r.densityAltitudeFeet) + ' ft   Air: ' + Math.round(r.airTempF) + ' °F');
-    lines.push('Tire: ' + (r.tireDescription || '—'));
-    lines.push('────────────────────────────────');
-    lines.push('  R/T     ' + fmt(r.reactionTime, 3));
-    lines.push('  60 ft   ' + fmt(r.sixtyFootTime, 3));
-    lines.push('  330 ft  ' + fmt(r.threeThirtyTime, 3));
-    lines.push('  1/8     ' + fmt(r.eighthMileTime, 3) + '  @ ' + fmt(r.eighthMileSpeedMph, 1) + ' mph');
-    lines.push('  1000 ft ' + fmt(r.thousandFootTime, 3));
-    lines.push('  1/4     ' + fmt(r.quarterMileTime, 3) + '  @ ' + fmt(r.quarterMileSpeedMph, 1) + ' mph');
-    lines.push('────────────────────────────────');
-    lines.push('  0-60    ' + fmt(r.zeroToSixty, 3) + ' s');
-    lines.push('  0-100   ' + fmt(r.zeroToHundred, 3) + ' s');
-    lines.push('  60-130  ' + fmt(r.sixtyToOneThirty, 3) + ' s');
-    lines.push('  100-150 ' + fmt(r.hundredToOneFifty, 3) + ' s');
-    lines.push('────────────────────────────────');
-    lines.push('  DISTANCE');
-    lines.push('  1/2 mi  ' + fmt(r.halfMileTime, 3) + '  @ ' + fmt(r.halfMileSpeedMph, 1) + ' mph');
-    lines.push('  1 mi    ' + fmt(r.mileTime, 3) + '  @ ' + fmt(r.mileSpeedMph, 1) + ' mph');
-    lines.push('────────────────────────────────');
-    lines.push('  SPEED RANGES');
-    lines.push('  0-130   ' + fmt(r.zeroToOneThirty, 3) + ' s');
-    lines.push('  100-200 km/h  ' + fmt(r.hundredToTwoHundredKmh, 3) + ' s');
-    lines.push('  200-250 km/h  ' + fmt(r.twoHundredToTwoFiftyKmh, 3) + ' s');
-    lines.push('────────────────────────────────');
-    lines.push('  0–SPEED (mph)');
-    var zSlip = r.zeroToMph || {};
+    var vehicle = (car && car.name) || r.carName || 'Custom setup';
+    lines.push('  VELOCITYBENCH TIME SLIP');
+    lines.push('  -----------------------');
+    lines.push(slipLine('VEHICLE', String(vehicle).slice(0, 24)));
+    lines.push(slipLine('PRINTED', new Date().toLocaleString()));
+    var ev = car && (car.isEv || car.powerSource === 'ev');
+    lines.push(slipLine(ev ? 'MOTOR' : 'ENGINE', engineSlipLabel(car)));
+    var txName = resolveTxDisplayName(car);
+    if (txName) lines.push(slipLine('TRANS', String(txName).slice(0, 24)));
+    var dwEl = $('driverWeightLbs');
+    var dw = dwEl ? Number(dwEl.value) : 0;
+    if (isFinite(dw) && dw > 0) lines.push(slipLine('DRIVER WT', Math.round(dw) + ' lb'));
+    if (r.densityAltitudeFeet != null && isFinite(Number(r.densityAltitudeFeet))) {
+      lines.push(slipLine('DA', Math.round(Number(r.densityAltitudeFeet)) + ' ft'));
+    }
+    if (r.tireDescription) lines.push(slipLine('TIRE', String(r.tireDescription).slice(0, 24)));
+    lines.push('  -----------------------');
+
+    function mark(label, time, mph) {
+      var tStr = slipTime(time);
+      if (!tStr) {
+        lines.push(slipLine(label, '--'));
+        return;
+      }
+      lines.push(slipLine(label, tStr));
+      lines.push(slipLine(label + ' MPH', slipMph(mph) || '--'));
+    }
+
+    mark('60 FT', r.sixtyFootTime, mphNearFeet(r, 60));
+    mark('330 FT', r.threeThirtyTime, mphNearFeet(r, 330));
+    mark('1/8', r.eighthMileTime, r.eighthMileSpeedMph);
+    mark('1000 FT', r.thousandFootTime, mphNearFeet(r, 1000));
+    mark('1/4', r.finished ? r.quarterMileTime : null, r.finished ? r.quarterMileSpeedMph : null);
+    mark('1/2', r.halfMileTime, r.halfMileSpeedMph);
+    mark('1 MILE', r.mileTime, r.mileSpeedMph);
+
+    lines.push('  -----------------------');
+    function range(label, n) {
+      lines.push(slipLine(label, slipTime(n) || '--'));
+    }
+    range('0-60 MPH', r.zeroToSixty);
+    range('0-100 MPH', r.zeroToHundred);
+    range('0-130 MPH', r.zeroToOneThirty);
+    range('60-130', r.sixtyToOneThirty);
+    range('100-150', r.hundredToOneFifty);
+    range('100-200 KM/H', r.hundredToTwoHundredKmh);
+    range('200-250 KM/H', r.twoHundredToTwoFiftyKmh);
+
+    lines.push('  -----------------------');
+    var tl = r.timeline;
+    var end = tl && tl.length ? tl[tl.length - 1] : null;
+    var runFt = end && isFinite(Number(end.feet)) ? Number(end.feet) : Number(r.topSpeedFeet);
+    var runS = end && isFinite(Number(end.t)) ? Number(end.t) : Number(r.topSpeedTime);
+    if (isFinite(runFt) && runFt > 0) lines.push(slipLine('RUN DIST', runFt.toFixed(1) + ' ft'));
+    if (isFinite(runS) && runS > 0) lines.push(slipLine('RUN TIME', runS.toFixed(2) + ' s'));
+    if (slipMph(r.topSpeedMph)) lines.push(slipLine('TOP SPD', slipMph(r.topSpeedMph) + ' mph'));
+    var stop = stopSlipLabel(r.vmaxReason);
+    if (stop) lines.push(slipLine('STOP', stop));
+
+    lines.push('  -----------------------');
+    lines.push('  0-X MPH BREAKDOWN');
+    var z = r.zeroToMph || {};
     ZERO_SPEED_MARKS.forEach(function (m) {
-      var label = ('0-' + m).padEnd(7, ' ');
-      lines.push('  ' + label + fmt(zSlip[m], 3) + ' s');
+      lines.push(slipLine('0-' + m, slipTime(z[m]) || '--'));
     });
-    lines.push('────────────────────────────────');
-    lines.push('  TOP SPD ' + fmt(r.topSpeedMph, 1) + ' mph');
-    lines.push('          @ ' + fmt(r.topSpeedTime, 2) + ' s / ' + fmt(r.topSpeedFeet, 0) + ' ft');
-    if (r.vmaxReason) lines.push('  Vmax    ' + String(r.vmaxReason).replace(/_/g, ' '));
-    lines.push('────────────────────────────────');
+
+    lines.push('  -----------------------');
     lines.push('  Shifts  ' + (r.totalShifts || 0) + '   Launch ' + r.launchRpm + ' → Shift ' + r.shiftRpm);
     lines.push('  Peak    ' + fmt(r.peakHorsepower, 0) + ' hp  /  ' + fmt(r.peakTorque, 0) + ' lb-ft');
     lines.push('  Peak G  ' + fmt(r.peakG, 2) + '   Wheelspin ' + fmt(r.wheelspinPercent, 1) + '%');
-    lines.push('────────────────────────────────');
+    lines.push('  -----------------------');
     lines.push('Gears: ' + (r.gearsUsed || []).map(function (g) { return g.toFixed(2); }).join(', '));
     lines.push('FD:    ' + fmt(r.finalDrive, 2));
-    lines.push('────────────────────────────────');
-    lines.push('Estimate only — not track certified.');
+    lines.push('  -----------------------');
+    lines.push('  Estimates — not lab ET');
     $('slip').textContent = lines.join('\n');
-  }
-
-
-  function renderMetrics(r) {
-    var z = r.zeroToMph || {};
-    var headline = [
-      ['1/4 ET', fmtUnit(r.quarterMileTime, 3, 's')],
-      ['Trap', fmtUnit(r.quarterMileSpeedMph, 1, 'mph')],
-      ['60 ft', fmtUnit(r.sixtyFootTime, 3, 's')],
-      ['0–60', fmtUnit(r.zeroToSixty, 2, 's')],
-      ['60–130', fmtUnit(r.sixtyToOneThirty, 2, 's')],
-      ['100–150', fmtUnit(r.hundredToOneFifty, 2, 's')],
-      ['Top Speed', fmtUnit(r.topSpeedMph, 1, 'mph')],
-      ['Peak HP', fmtUnit(r.peakHorsepower, 0, '')]
-    ];
-    var dist = [
-      ['1/2 mile', fmtUnit(r.halfMileTime, 3, 's')],
-      ['1/2 MPH', fmtUnit(r.halfMileSpeedMph, 1, 'mph')],
-      ['1 mile', fmtUnit(r.mileTime, 3, 's')],
-      ['1 mile MPH', fmtUnit(r.mileSpeedMph, 1, 'mph')]
-    ];
-    var ranges = [
-      ['0–130 MPH', fmtUnit(r.zeroToOneThirty, 2, 's')],
-      ['100–200 km/h', fmtUnit(r.hundredToTwoHundredKmh, 2, 's')],
-      ['200–250 km/h', fmtUnit(r.twoHundredToTwoFiftyKmh, 2, 's')]
-    ];
-    var accel = ZERO_SPEED_MARKS.map(function (m) {
-      return ['0–' + m, fmtUnit(z[m], 2, 's')];
-    });
-    $('metrics').innerHTML =
-      metricGroup('Run', headline) +
-      metricGroup('Distance', dist) +
-      metricGroup('Speed ranges', ranges) +
-      metricGroup('0–speed', accel, 'metrics-accel');
   }
 
   /** Wheel Spin logo badge — ON when timeline wheelspin ≥ threshold. */
@@ -2553,7 +2586,7 @@
 
   /**
    * Stop: cancel RAF, reset gauges + live strip to idle (0 / —),
-   * clear TRACTION/SLIP + SHIFT LEDs. Keep lastResult / slip / metrics / charts.
+   * clear TRACTION/SLIP + SHIFT LEDs. Keep lastResult / slip / charts.
    */
   function stopPlayback() {
     cancelPlaybackRaf();
@@ -2578,7 +2611,6 @@
     state.car = car;
     configurePrimaryGauge(car);
     renderSlip(result, car);
-    renderMetrics(result);
     // Keep dense 100-RPM editable series authoritative — never replace with sparse result keys
     if (!state.curveEdited) {
       state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline, Number(car.peakHp) || null);
