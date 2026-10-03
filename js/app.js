@@ -702,7 +702,8 @@
     syncWeightFieldsFromCar(car);
     $('finalDrive').value = car.finalDriveRatio;
     $('lossPct').value = car.drivetrainLossPercent != null ? car.drivetrainLossPercent : 15;
-    $('launchRpm').value = car.launchRpm || 3000;
+    var launchShown = car.launchRpm || 3000;
+    $('launchRpm').value = launchShown;
     $('shiftRpm').value = car.shiftRpm || 6500;
     $('redline').value = car.redline || 6800;
     $('shiftTime').value = car.shiftTimeSeconds != null ? car.shiftTimeSeconds : 0.10;
@@ -733,6 +734,9 @@
     if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
     // Factory-reset: every new vehicle selection forces Unprepped (sticky prep across cars was the bug).
     if ($('trackPrep')) $('trackPrep').value = 'unprepped';
+    // Manual and DCT: the field opens on the tire-grip suggestion, not a
+    // stored high dump. After this the field is the user's number.
+    applyClutchLaunchField(car);
     configurePrimaryGauge(car);
     highlightGarage(car.id);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
@@ -740,6 +744,17 @@
     syncPowerCurveFromCar(car);
     // Peak HP baseline for continuous curve scale (all garage + Custom; no wipe)
     stashPeakHpBaseline(car, Math.round(hp));
+  }
+
+
+  function applyClutchLaunchField(car) {
+    if (!car || !$('launchRpm') || !Phys.suggestedClutchLaunchRpm || !Phys.resolveShiftDriveFamily) return;
+    var fam = Phys.resolveShiftDriveFamily(car);
+    if (fam !== 'manual' && fam !== 'dct') return;
+    var tire = $('tireType') ? parseInt($('tireType').value, 10) : (car.tireType | 0);
+    if (!isFinite(tire)) tire = car.tireType != null ? (car.tireType | 0) : 0;
+    var prep = $('trackPrep') ? $('trackPrep').value : 'unprepped';
+    $('launchRpm').value = Phys.suggestedClutchLaunchRpm(car, tire, prep);
   }
 
   function highlightGarage(id) {
@@ -909,6 +924,8 @@
       tireType: tireType,
       trackPrep: trackPrep,
       launchMode: $('launchMode').value,
+      // Launch RPM box is the user's leave. Manuals honor this exactly.
+      customLaunchRpm: clampNum($('launchRpm').value, 0, 28000, 0),
       tireLabel: tireLab + ' · ' + prepLab,
       // Sticky env field (like temp) — default 200; not wiped on car load
       driverWeightLbs: clampNum(dwEl ? dwEl.value : 200, 0, 500, 200)
@@ -2567,6 +2584,15 @@
       // Custom EV toggle + garage EV both swap primary instrument cluster
       if (state.car) configurePrimaryGauge(state.car);
       syncEvChartMode(state.car);
+    });
+  });
+
+  ['tireType', 'trackPrep'].forEach(function (id) {
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener('change', function () {
+      if (!state.car) return;
+      applyClutchLaunchField(state.car);
     });
   });
 

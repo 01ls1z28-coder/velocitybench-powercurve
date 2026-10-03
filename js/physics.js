@@ -563,9 +563,19 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var peakTq = Number(car && car.peakTqRpm);
     if (!(peakTq > 0)) peakTq = peakTqRpmFromCurve(curve);
     if (!(peakTq > 0)) peakTq = Math.min(4000, redline * 0.55);
-    // Absurd leave (calib leftovers / idle): seed ~0.9× peak-TQ band
-    if (lr < 1000) {
+    // Absurd leave (calib leftovers / idle): seed ~0.9× peak-TQ band.
+    // Manual and DCT keep the number they were given, even a low one.
+    // Do not lift either family toward the torque peak. Only a missing
+    // number uses the default. Never floor a clutch leave at 800.
+    var leaveFam = car ? resolveShiftDriveFamily(car) : '';
+    var clutchLeave = leaveFam === 'manual' || leaveFam === 'dct';
+    if (lr < 1000 && !clutchLeave) {
       lr = Math.round(clamp(peakTq * 0.9, 1800, Math.min(redline - 200, peakTq)));
+    }
+    if (clutchLeave) {
+      if (!(lr > 0)) return 2200;
+      if (lr > redline) return redline;
+      return lr;
     }
     // Auto launch mode already seeded a calm 2200 leave before this call.
     // Do not clamp Custom / Soft / Aggressive back to 2200. A stock
@@ -573,6 +583,42 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     // it is stalled; clamping every stock auto made a 2200–6000 sweep one
     // identical run.
     return clamp(lr, 800, redline);
+  }
+
+  /**
+   * Suggested leave for a clutch car (manual or DCT). Tire grip sets it.
+   * Street unprepped is a low realistic leave; more grip suggests higher.
+   * A high dump (4500 drag radial / 5200 slick) is suggested only on a
+   * prepped surface when that car already stored launchRpm >= 4000.
+   * customLaunchRpm > 0 on the car wins and is not raised. With no custom
+   * number the suggestion replaces the stored launch, so a 5750 garage
+   * dump on street becomes 2200. Missing tire uses car.tireType. Missing
+   * prep is unprepped.
+   * Indexes: 0 Street, 1 Drag Radial, 2 Slick, 3 Summer, 4 UHP, 5 R-Compound.
+   */
+  function suggestedClutchLaunchRpm(car, tireType, trackPrep) {
+    var custom = car && Number(car.customLaunchRpm);
+    if (custom > 0) return custom;
+    var tire;
+    if (tireType != null && tireType !== '' && isFinite(Number(tireType))) {
+      tire = Number(tireType) | 0;
+    } else if (car && car.tireType != null && isFinite(Number(car.tireType))) {
+      tire = Number(car.tireType) | 0;
+    } else {
+      tire = 0;
+    }
+    var prep = normalizeTrackPrep(trackPrep);
+    var stored = car && car.launchRpm != null ? Number(car.launchRpm) : 0;
+    if (!(stored > 0) || !isFinite(stored)) stored = 0;
+    if (prep === 'prepped' && stored >= 4000 && (tire === 1 || tire === 2)) {
+      return tire === 1 ? 4500 : 5200;
+    }
+    var table = prep === 'prepped'
+      ? { 0: 2600, 1: 3400, 2: 3600, 3: 2800, 4: 3200, 5: 3600 }
+      : { 0: 2200, 1: 3200, 2: 3400, 3: 2400, 4: 2600, 5: 3000 };
+    var rpm = table[tire];
+    if (!(rpm > 0)) rpm = prep === 'prepped' ? 2600 : 2200;
+    return rpm;
   }
 
   /**
@@ -1260,9 +1306,14 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var launchFlashSpanScale = 1.0;
     var launchFlashTimeScale = 1.0;
     var launchFlashMphScale = 1.0;
+    var clutchLaunchFamily = resolveShiftDriveFamily(car);
+    var clutchLaunchLocked = clutchLaunchFamily === 'manual' || clutchLaunchFamily === 'dct';
     if (launchMode === 'soft') {
       // Lower leave, muted converter flash/stall, mild drive ease — cooler tach
-      launchRpm = Math.max(car.isEv ? 200 : 1100, launchRpm - 800);
+      // Manual and DCT rpm is the user's number. Soft does not move it.
+      if (!clutchLaunchLocked) {
+        launchRpm = Math.max(car.isEv ? 200 : 1100, launchRpm - 800);
+      }
       slipTarget = 0.06;
       launchDriveMult = car.isEv ? 0.86 : 0.875;
       launchStallBias = -500;
@@ -1271,7 +1322,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       launchFlashMphScale = 0.68;
     } else if (launchMode === 'aggressive') {
       // Higher leave, hotter flash-stall ceiling, full+ drive — slicks often quicker
-      launchRpm = Math.min(redline, launchRpm + (car.isEv ? 1400 : 1000));
+      // Manual and DCT rpm is the user's number. Aggressive does not raise it.
+      if (!clutchLaunchLocked) {
+        launchRpm = Math.min(redline, launchRpm + (car.isEv ? 1400 : 1000));
+      }
       slipTarget = 0.15;
       launchDriveMult = car.isEv ? 1.12 : 1.11;
       launchStallBias = 400;
@@ -1322,6 +1376,17 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         launchDriveMult *= 1.039;
       } else if (prepTire === 1) { // Drag Radial
         launchDriveMult *= 1.011;
+      }
+    }
+
+    // Clutch cars (manual and DCT): a typed rpm wins and is never raised.
+    // With no typed rpm the tire-grip suggestion replaces a stored dump.
+    // Soft and aggressive already left this number alone.
+    if (clutchLaunchLocked) {
+      if (env.customLaunchRpm > 0) {
+        launchRpm = Number(env.customLaunchRpm);
+      } else {
+        launchRpm = suggestedClutchLaunchRpm(car, env.tireType, env.trackPrep);
       }
     }
 
@@ -1581,7 +1646,8 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
               // Mild stock flash ceiling (well below ATC Circle-D class unless spinning hard)
               var flashAdd;
               if (isManual) {
-                flashAdd = headroom * (0.08 + 0.55 * spinFrac);
+                // Stay on the rpm the user set. Do not flare above it.
+                flashAdd = 0;
               } else {
                 // Spin-scaled flash stall — stronger launchers (more wheelspin) flash higher
                 flashAdd = Math.min(headroom * 0.40, 280 + 720 * spinFrac);
@@ -1614,7 +1680,9 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
               var crawlGain = isManual ? 0.24 : 0.42;
               var crawl = stall + headroom * crawlGain * mphProg;
               if (crawl > stall + headroom * 0.55) crawl = stall + headroom * 0.55;
-              openRpm = Math.max(openRpm, crawl);
+              // Manuals do not crawl up toward the shift point on their own.
+              if (!isManual) openRpm = Math.max(openRpm, crawl);
+              if (isManual && openRpm > stall) openRpm = stall;
               if (openRpm > shiftRpm) openRpm = shiftRpm;
               if (openRpm < 900) openRpm = 900;
 
@@ -1755,10 +1823,11 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         var trStock = speedRatio >= coupleSR ? 1.0
           : 1.0 + (str - 1.0) * ((coupleSR - speedRatio) / coupleSR);
         engagedWhTQ = fullWhTQ * trStock;
-      } else if (/^manual$/i.test(String(car.transmission || '').trim()) && gear === 1) {
-        // Slipping clutch in 1st only. Same shape as a stock converter:
-        // manualClutchInertiaRatio for the whole slip, 1.0 at SR 0.90.
-        // It does not grow for a stickier tire. Higher gears stay steady.
+      } else if ((shiftFamily === 'manual' || shiftFamily === 'dct') && gear === 1) {
+        // Slipping clutch in 1st only, manuals and DCTs. Same shape as a
+        // stock converter: manualClutchInertiaRatio for the whole slip,
+        // 1.0 at SR 0.90. Not stacked on a torque converter. It does not
+        // grow for a stickier tire. Higher gears stay steady.
         var mechMan = wheelRpm * gRatio * finalDrive;
         var slipMan = rpm > 50 ? Math.max(0, (rpm - mechMan) / rpm) : 0;
         var speedRatioMan = 1.0 - slipMan;
@@ -2157,6 +2226,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     SHIFT_ENGAGE_TIME: SHIFT_ENGAGE_TIME,
     SHIFT_ENGAGE_OVERSHOOT: SHIFT_ENGAGE_OVERSHOOT,
     resolveShiftDriveFamily: resolveShiftDriveFamily,
+    suggestedClutchLaunchRpm: suggestedClutchLaunchRpm,
     shiftResidualFraction: shiftResidualFraction,
     shiftReleaseFraction: shiftReleaseFraction,
     shiftEngageTime: shiftEngageTime,
