@@ -1657,12 +1657,12 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         engagedWhTQ = fullWhTQ * trStock;
       } else if (/^manual$/i.test(String(car.transmission || '').trim())) {
         // Slipping clutch: flywheel inertia adds torque above the steady
-        // curve and fades to 1.0 as road speed catches the leave. Steady
-        // first-gear torque on a stock manual stays under a street tire at
-        // any rpm, so the 60' could not spin or reach a real leave.
+        // curve and fades out by 28 mph. Steady first-gear torque on a stock
+        // manual stays under a street tire from 2000 rpm through 6000, so the
+        // ratio has to be high enough that a 2000 rpm street leave still spins.
         var mechMan = wheelRpm * gRatio * finalDrive;
         var slipMan = rpm > 50 ? Math.max(0, (rpm - mechMan) / rpm) : 0;
-        var clutchStr = 2.05;
+        var clutchStr = 3.20;
         var fade = mph <= 8 ? 1 : mph >= 28 ? 0 : (28 - mph) / (28 - 8);
         var trMan = 1.0 + (clutchStr - 1.0) * slipMan * fade;
         engagedWhTQ = fullWhTQ * trMan;
