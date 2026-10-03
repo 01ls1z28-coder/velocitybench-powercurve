@@ -732,8 +732,13 @@
     $('converter').value = car.hasAftermarketConverter ? '1' : '0';
     $('stallRpm').value = car.stallRpm || 2800;
     if ($('tireType') && car.tireType != null) $('tireType').value = String(car.tireType | 0);
-    // Factory-reset: every new vehicle selection forces Unprepped (sticky prep across cars was the bug).
-    if ($('trackPrep')) $('trackPrep').value = 'unprepped';
+    // Unprepped on every car unless that car's own trackPrepDefault is prepped
+    // (Jorge's 2001 Z28). Prep must not stick from the previously selected car.
+    if ($('trackPrep')) {
+      var prepDefault = (car.trackPrepDefault && Phys.normalizeTrackPrep &&
+        Phys.normalizeTrackPrep(car.trackPrepDefault) === 'prepped') ? 'prepped' : 'unprepped';
+      $('trackPrep').value = prepDefault;
+    }
     // Manual and DCT: the field opens on the tire-grip suggestion, not a
     // stored high dump. After this the field is the user's number.
     applyClutchLaunchField(car);
