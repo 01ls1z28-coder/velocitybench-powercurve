@@ -567,12 +567,11 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     if (lr < 1000) {
       lr = Math.round(clamp(peakTq * 0.9, 1800, Math.min(redline - 200, peakTq)));
     }
-    // Stock auto: never resolve to brake-stand dump RPM (card may still show high)
-    if (car && !car.isEv && !car.hasAftermarketConverter &&
-        /auto/i.test(String(car.transmission || '')) &&
-        !/manual|mt\b|stick/i.test(String(car.transmission || ''))) {
-      if (lr > 2200) lr = 2200; // STOCK_AUTO_CALM_LAUNCH
-    }
+    // Auto launch mode already seeded a calm 2200 leave before this call.
+    // Do not clamp Custom / Soft / Aggressive back to 2200. A stock
+    // converter has to sample the torque curve at the commanded rpm while
+    // it is stalled; clamping every stock auto made a 2200–6000 sweep one
+    // identical run.
     return clamp(lr, 800, redline);
   }
 
@@ -1049,13 +1048,62 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
    *   6-speed automatics (6L80/6L90/6R80/6HP): 1.80.
    *   Modern 8/10-speed (10R80, 10L90, ZF8, 8L): 1.70.
    *     They flash higher and couple sooner; published STR is often ~1.6–1.8.
+   *     The Mustang GT 10R80 60-foot chart is baked on 1.70. Do not raise it.
+   *   NAG1 and other 5-speeds: 2.00. Real stock stall is about 1.8–2.2,
+   *     not a loose 2.8 converter. 2.00 is the middle of that band.
    */
   function stockStallTorqueRatio(car) {
     var blob = (String(car.txKey || '') + ' ' + String(car.transmission || '') + ' ' +
       String(car.txFactoryLabel || '')).toLowerCase();
     if (/10r|10l|8l90|8l45|8hp|zf8|9hp|10at|8at|10-spd|8-spd|10spd|8spd/.test(blob)) return 1.70;
-    if (/6l80|6l90|6r80|6r140|zf_6|6hp|6at|6-spd|6spd|5r110|nag1|5at/.test(blob)) return 1.80;
+    if (/6l80|6l90|6r80|6r140|zf_6|6hp|6at|6-spd|6spd/.test(blob)) return 1.80;
+    // 5-speed converters (NAG1, 5R110, RE5R05A, A750, U151, "*5AT").
+    // Gear count catches a 5-speed whose key does not say "5".
+    var gearsN = car && car.gearRatios ? car.gearRatios.length : 0;
+    if (/nag1|5at|5r110|5-spd|5spd|re5r|a750|u151/.test(blob) || gearsN === 5) return 2.00;
     return 1.90;
+  }
+
+  /**
+   * Per-axle traction (L/R split + load sensitivity + street LSD blend).
+   * Same formula the launch loop uses. driveType picks the lock fraction.
+   */
+  function axleTractionLimitN(nAxle, muAx, leftP, driveType) {
+    var nL = nAxle * (leftP / 100.0);
+    var nR = nAxle * (1.0 - leftP / 100.0);
+    var nRef = Math.max(1e-6, nAxle * 0.5);
+    function sideForce(n) {
+      var sens = Math.pow(nRef / Math.max(n, nRef * 0.12), 0.14);
+      return muAx * n * clamp(sens, 0.72, 1.18);
+    }
+    var fL = sideForce(nL);
+    var fR = sideForce(nR);
+    var locked = fL + fR;
+    var open = 2.0 * Math.min(fL, fR);
+    var lockFrac = driveType === 'AWD' ? 0.72 : 0.60;
+    return open * (1.0 - lockFrac) + locked * lockFrac;
+  }
+
+  /**
+   * Slipping-clutch inertia ratio for this car, this tire, this rpm.
+   * Steady force already over the fitted tire → 1.0. A single fleet ratio
+   * (the old 3.20) added torque on cars that were already loose and slowed
+   * them (2018 GT PP2 street 60-foot ~2.11 → ~2.37).
+   * Under that tire → only enough to land ~8% over its grip (inside the
+   * 5–12% band) so the existing slip model can spin it.
+   * Cap 2.2 is clutch inertia: flywheel and pressure plate can dump a short
+   * spike above the steady curve, and 2.2 is that spike's ceiling. It is not
+   * a fleet fudge and it is not the old 3.20.
+   */
+  var CLUTCH_INERTIA_CAP = 2.2;
+  var CLUTCH_OVER_GRIP = 1.08;
+  function manualClutchInertiaRatio(steadyForceN, gripN) {
+    if (!(steadyForceN > 1) || !(gripN > 1)) return 1.0;
+    if (steadyForceN >= gripN) return 1.0;
+    var need = (gripN * CLUTCH_OVER_GRIP) / steadyForceN;
+    if (need < 1.0) return 1.0;
+    if (need > CLUTCH_INERTIA_CAP) return CLUTCH_INERTIA_CAP;
+    return need;
   }
 
   function isStockTorqueConverterAuto(car) {
@@ -1655,16 +1703,39 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         var trStock = speedRatio >= coupleSR ? 1.0
           : 1.0 + (str - 1.0) * ((coupleSR - speedRatio) / coupleSR);
         engagedWhTQ = fullWhTQ * trStock;
-      } else if (/^manual$/i.test(String(car.transmission || '').trim())) {
-        // Slipping clutch: flywheel inertia adds torque above the steady
-        // curve and fades out by 28 mph. Steady first-gear torque on a stock
-        // manual stays under a street tire from 2000 rpm through 6000, so the
-        // ratio has to be high enough that a 2000 rpm street leave still spins.
+      } else if (/^manual$/i.test(String(car.transmission || '').trim()) && gear === 1) {
+        // Slipping clutch in 1st only. Ratio is per car / per fitted tire /
+        // per rpm (manualClutchInertiaRatio), then the same 8→28 mph fade.
+        // Higher gears stay on the steady curve.
         var mechMan = wheelRpm * gRatio * finalDrive;
         var slipMan = rpm > 50 ? Math.max(0, (rpm - mechMan) / rpm) : 0;
-        var clutchStr = 3.20;
         var fade = mph <= 8 ? 1 : mph >= 28 ? 0 : (28 - mph) / (28 - 8);
-        var trMan = 1.0 + (clutchStr - 1.0) * slipMan * fade;
+        var ratioMan = 1.0;
+        if (slipMan > 0 && fade > 0) {
+          var wXferC = (mass * prevA * cgHeightM) / Math.max(wheelbaseM, 1e-6);
+          var nFrontC = mass * G * (frontPct / 100.0) - wXferC;
+          var nRearC = mass * G * (rearPct / 100.0) + wXferC;
+          var nMinC = mass * G * 0.08;
+          if (nFrontC < nMinC) nFrontC = nMinC;
+          if (nRearC < nMinC) nRearC = nMinC;
+          // Same low-speed grip factor the traction limit uses (GRIP_LT20 below 8 mph).
+          var muC = muBase * gripMultSmooth(mph);
+          if (inLaunch && launchMuMult !== 1.0) muC *= launchMuMult;
+          var gripC;
+          if (driveType === 'AWD') {
+            gripC = axleTractionLimitN(nFrontC, muC, leftPct, driveType) +
+              axleTractionLimitN(nRearC, muC, leftPct, driveType);
+          } else if (driveType === 'FWD') {
+            gripC = axleTractionLimitN(nFrontC, muC, leftPct, driveType);
+          } else {
+            gripC = axleTractionLimitN(nRearC, muC, leftPct, driveType);
+          }
+          var LBFT_TO_NM_C = 1.3558179483314;
+          var steadyN = tireRadius > 0 ? (fullWhTQ * LBFT_TO_NM_C) / tireRadius : 0;
+          steadyN *= driveForceMultSmooth(mph);
+          ratioMan = manualClutchInertiaRatio(steadyN, gripC);
+        }
+        var trMan = 1.0 + (ratioMan - 1.0) * slipMan * fade;
         engagedWhTQ = fullWhTQ * trMan;
       }
 
@@ -1731,21 +1802,8 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
        * uneven L/R meaningfully cuts launch grip; load sensitivity softens the heavy side.
        */
       function axleTractionLimit(nAxle, muAx, leftP) {
-        var nL = nAxle * (leftP / 100.0);
-        var nR = nAxle * (1.0 - leftP / 100.0);
-        var nRef = Math.max(1e-6, nAxle * 0.5);
-        function sideForce(n) {
-          // Load sensitivity: µ_eff falls as load rises above the balanced half-axle
-          var sens = Math.pow(nRef / Math.max(n, nRef * 0.12), 0.14);
-          return muAx * n * clamp(sens, 0.72, 1.18);
-        }
-        var fL = sideForce(nL);
-        var fR = sideForce(nR);
-        var locked = fL + fR;
-        var open = 2.0 * Math.min(fL, fR);
-        // Street LSD blend (~60% locked). AWD axles slightly more locked.
-        var lockFrac = driveType === 'AWD' ? 0.72 : 0.60;
-        return open * (1.0 - lockFrac) + locked * lockFrac;
+        // Load sensitivity + street LSD blend live in axleTractionLimitN.
+        return axleTractionLimitN(nAxle, muAx, leftP, driveType);
       }
 
       var tracLim;
