@@ -386,6 +386,7 @@
     GM_4L65E: { name: 'GM 4L65-E 4-spd Auto', gears: [3.06, 1.63, 1.00, 0.70], finalDrive: 3.42, loss: 16 },
     GM_2004R: { name: 'GM THM 200-4R 4-spd Auto', gears: [2.74, 1.57, 1.00, 0.67], finalDrive: 3.42, loss: 16 },
     GM_6L80: { name: 'GM 6L80 6-spd Auto', gears: [4.027, 2.364, 1.532, 1.152, 0.852, 0.667], finalDrive: 3.27, loss: 15 },
+    GM_6L90: { name: 'Hydra-Matic 6L90 6-spd Auto', gears: [4.03, 2.36, 1.53, 1.15, 0.85, 0.67], finalDrive: 3.23, loss: 15 },
     Chrysler_NAG1_5: { name: 'Chrysler NAG1/W5A580 5-spd Auto', gears: [3.59, 2.19, 1.41, 1.00, 0.83], finalDrive: 3.06, loss: 15 },
     Mazda_Miata_5: { name: 'Mazda Miata NA 5-spd', gears: [3.136, 1.888, 1.330, 1.000, 0.814], finalDrive: 4.30, loss: 13 },
     Honda_S2000_6: { name: 'Honda S2000 6-spd (AP1)', gears: [3.133, 2.045, 1.481, 1.161, 0.970, 0.810], finalDrive: 4.756, loss: 12 },
