@@ -2259,19 +2259,23 @@ body > .vb-chrome {
   min-height: 30px;
   min-width: 0;
 }
-.compare-slot-name {
+.compare-slot-name,
+.compare-name-row .compare-picked {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--lime);
+  line-height: 16px;
+  color: var(--text-dim);
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: var(--radius-sm);
   padding: 6px 8px;
-  min-height: 30px;
+  height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.compare-slot-name,
+.compare-picked.is-set { color: var(--lime); }
 .compare-search {
   width: 100%;
   background: var(--input-bg);
@@ -2318,16 +2322,6 @@ body > .vb-chrome {
 .compare-match:hover { color: var(--lime); background: rgba(200, 255, 74, 0.06); }
 .compare-match-empty { color: var(--text-dim); cursor: default; }
 .compare-matches[hidden] { display: none !important; }
-.compare-picked {
-  margin-top: 4px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.compare-picked.is-set { color: var(--lime); }
 .compare-clear {
   margin-top: 0;
   width: fit-content;
@@ -2349,6 +2343,7 @@ body > .vb-chrome {
   align-items: center;
   gap: 6px;
   min-width: 0;
+  height: 30px;
 }
 .compare-name-row .compare-slot-name,
 .compare-name-row .compare-picked {
@@ -2366,40 +2361,58 @@ body > .vb-chrome {
   padding: 1px 6px;
 }
 .compare-slip {
-  margin-top: 4px;
+  margin-top: 0;
   width: 100%;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px;
-  line-height: 1.25;
+  line-height: 1.2;
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(76, 201, 240, 0.14);
   border-radius: 6px;
-  padding: 5px 8px 6px;
+  padding: 4px 6px 5px;
 }
-.lane-block + .lane-block {
-  margin-top: 4px;
-  padding-top: 4px;
-  border-top: 1px solid rgba(76, 201, 240, 0.16);
+.slip-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
-.lane-row {
-  display: grid;
-  grid-template-columns: 4.4em 4.7em 3.5em;
-  column-gap: 6px;
-  align-items: baseline;
-  padding: 0;
+.slip-col-k { width: 44%; }
+.slip-col-t { width: 32%; }
+.slip-col-m { width: 24%; }
+.slip-table thead th {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: right;
+  padding: 0 0 3px;
 }
-.lane-k {
+.slip-table thead th:first-child { text-align: left; }
+.slip-table tbody th {
+  text-align: left;
   color: var(--text-muted);
   font-size: 10px;
-  letter-spacing: 0.03em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 1px 4px 1px 2px;
   white-space: nowrap;
 }
-.lane-time, .lane-mph {
+.slip-table td {
   text-align: right;
-  font-variant-numeric: tabular-nums;
+  padding: 1px 2px;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
-.lane-mph:empty { visibility: hidden; }
+.slip-table tbody tr:nth-child(odd) th,
+.slip-table tbody tr:nth-child(odd) td {
+  background: rgba(255, 255, 255, 0.025);
+}
+.slip-more tr:first-child th,
+.slip-more tr:first-child td {
+  border-top: 1px solid rgba(76, 201, 240, 0.16);
+  padding-top: 4px;
+}
 
 @media (max-width: 900px) {
   .compare-slots { grid-template-columns: 1fr 1fr; }
