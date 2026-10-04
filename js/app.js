@@ -950,9 +950,10 @@
   }
 
   function slipRow(label, timeText, mphText, timeCls) {
-    var mph = mphText == null ? '' : '<span class="lane-mph">' + dashCell(mphText, 'rd-mph') + '</span>';
+    var mph = mphText == null ? '' : dashCell(mphText, 'rd-mph');
     return '<div class="lane-row"><span class="lane-k">' + escHtml(label) + '</span>' +
-      '<span class="lane-time">' + dashCell(timeText, timeCls || 'rd-time') + '</span>' + mph + '</div>';
+      '<span class="lane-time">' + dashCell(timeText, timeCls || 'rd-time') + '</span>' +
+      '<span class="lane-mph">' + mph + '</span></div>';
   }
 
   function renderCompare(lanes) {
@@ -977,22 +978,23 @@
       var qTime = r.finished ? r.quarterMileTime : null;
       var qMph = r.finished ? r.quarterMileSpeedMph : null;
       slip.innerHTML =
-        slipRow('60 ft', slipTime(r.sixtyFootTime)) +
-        slipRow('330', slipTime(r.threeThirtyTime)) +
-        slipRow('1/8', slipTime(r.eighthMileTime), slipMph(r.eighthMileSpeedMph)) +
-        slipRow('1000', slipTime(r.thousandFootTime)) +
-        slipRow('1/4', slipTime(qTime), slipMph(qMph)) +
-        '<div class="lane-gap"></div>' +
-        slipRow('1/2', slipTime(r.halfMileTime), slipMph(r.halfMileSpeedMph)) +
-        slipRow('1 mi', slipTime(r.mileTime), slipMph(r.mileSpeedMph)) +
-        '<div class="lane-gap"></div>' +
-        slipRow('0–60', slipTime(r.zeroToSixty)) +
-        slipRow('0–100', slipTime(r.zeroToHundred)) +
-        slipRow('0–130', slipTime(r.zeroToOneThirty)) +
-        slipRow('60–130', slipTime(r.sixtyToOneThirty)) +
-        slipRow('100–150', slipTime(r.hundredToOneFifty)) +
-        '<div class="lane-gap"></div>' +
-        slipRow('Margin', margin, null, 'rd-range');
+        '<div class="lane-block">' +
+          slipRow('60 ft', slipTime(r.sixtyFootTime)) +
+          slipRow('330', slipTime(r.threeThirtyTime)) +
+          slipRow('1/8', slipTime(r.eighthMileTime), slipMph(r.eighthMileSpeedMph)) +
+          slipRow('1000', slipTime(r.thousandFootTime)) +
+          slipRow('1/4', slipTime(qTime), slipMph(qMph)) +
+        '</div>' +
+        '<div class="lane-block">' +
+          slipRow('1/2', slipTime(r.halfMileTime), slipMph(r.halfMileSpeedMph)) +
+          slipRow('1 mi', slipTime(r.mileTime), slipMph(r.mileSpeedMph)) +
+          slipRow('0–60', slipTime(r.zeroToSixty)) +
+          slipRow('0–100', slipTime(r.zeroToHundred)) +
+          slipRow('0–130', slipTime(r.zeroToOneThirty)) +
+          slipRow('60–130', slipTime(r.sixtyToOneThirty)) +
+          slipRow('100–150', slipTime(r.hundredToOneFifty)) +
+          slipRow('Margin', margin, null, 'rd-range') +
+        '</div>';
       slip.hidden = false;
       var badge = $('compareWin' + n);
       if (badge) badge.hidden = !win;

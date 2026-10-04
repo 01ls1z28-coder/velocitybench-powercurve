@@ -2366,33 +2366,40 @@ body > .vb-chrome {
   padding: 1px 6px;
 }
 .compare-slip {
-  margin-top: 8px;
+  margin-top: 4px;
+  width: 100%;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px;
+  line-height: 1.25;
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(76, 201, 240, 0.14);
   border-radius: 6px;
-  padding: 6px 8px 8px;
+  padding: 5px 8px 6px;
+}
+.lane-block + .lane-block {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(76, 201, 240, 0.16);
 }
 .lane-row {
   display: grid;
-  grid-template-columns: 4.6em minmax(0, 1fr) auto;
-  gap: 6px;
+  grid-template-columns: 4.4em 4.7em 3.5em;
+  column-gap: 6px;
   align-items: baseline;
-  padding: 2px 0;
+  padding: 0;
 }
 .lane-k {
   color: var(--text-muted);
   font-size: 10px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
-.lane-time { text-align: right; }
-.lane-mph { text-align: right; min-width: 3.4em; }
-.lane-gap {
-  height: 0;
-  border-top: 1px solid rgba(76, 201, 240, 0.14);
-  margin: 5px 0 3px;
+.lane-time, .lane-mph {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
+.lane-mph:empty { visibility: hidden; }
 
 @media (max-width: 900px) {
   .compare-slots { grid-template-columns: 1fr 1fr; }
