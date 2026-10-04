@@ -834,6 +834,17 @@
       matches.hidden = true;
       matches.innerHTML = '';
     }
+    clearCompareSlip(n);
+  }
+
+  function clearCompareSlip(n) {
+    var slip = $('compareSlip' + n);
+    var win = $('compareWin' + n);
+    if (slip) {
+      slip.hidden = true;
+      slip.innerHTML = '';
+    }
+    if (win) win.hidden = true;
   }
 
   function renderCompareMatches(n, query) {
@@ -938,75 +949,54 @@
     return env;
   }
 
-  function compareMetric(label, text, cls) {
-    return '<div class="rd-chip"><span class="rd-k">' + escHtml(label) + '</span>' +
-      dashCell(text, cls) + '</div>';
+  function slipRow(label, timeText, mphText, timeCls) {
+    var mph = mphText == null ? '' : '<span class="lane-mph">' + dashCell(mphText, 'rd-mph') + '</span>';
+    return '<div class="lane-row"><span class="lane-k">' + escHtml(label) + '</span>' +
+      '<span class="lane-time">' + dashCell(timeText, timeCls || 'rd-time') + '</span>' + mph + '</div>';
   }
 
   function renderCompare(lanes) {
-    var el = $('compareBoard');
-    if (!el) return;
-    if (!lanes || !lanes.length) {
-      el.hidden = true;
-      el.innerHTML = '';
-      return;
-    }
+    [1, 2, 3, 4].forEach(clearCompareSlip);
+    if (!lanes || !lanes.length) return;
+    var bySlot = {};
     var best = null;
     lanes.forEach(function (lane) {
+      bySlot[lane.slot] = lane;
       var et = lane.result && lane.result.finished ? Number(lane.result.quarterMileTime) : NaN;
       if (isFinite(et) && et > 0 && (best == null || et < best)) best = et;
     });
-    var groups = [
-      ['Acceleration', [
-        ['0–60', function (r) { return slipTime(r.zeroToSixty); }, 'rd-time'],
-        ['0–100', function (r) { return slipTime(r.zeroToHundred); }, 'rd-time'],
-        ['0–130', function (r) { return slipTime(r.zeroToOneThirty); }, 'rd-time'],
-        ['60–130', function (r) { return slipTime(r.sixtyToOneThirty); }, 'rd-time'],
-        ['100–150', function (r) { return slipTime(r.hundredToOneFifty); }, 'rd-time']
-      ]],
-      ['Drag', [
-        ['60 ft', function (r) { return slipTime(r.sixtyFootTime); }, 'rd-time'],
-        ['330', function (r) { return slipTime(r.threeThirtyTime); }, 'rd-time'],
-        ['1/8', function (r) { return slipTime(r.eighthMileTime); }, 'rd-time'],
-        ['1/8 mph', function (r) { return slipMph(r.eighthMileSpeedMph); }, 'rd-mph'],
-        ['1000', function (r) { return slipTime(r.thousandFootTime); }, 'rd-time'],
-        ['1/4', function (r) { return slipTime(r.finished ? r.quarterMileTime : null); }, 'rd-time'],
-        ['1/4 mph', function (r) { return slipMph(r.finished ? r.quarterMileSpeedMph : null); }, 'rd-mph']
-      ]],
-      ['Long', [
-        ['1/2', function (r) { return slipTime(r.halfMileTime); }, 'rd-time'],
-        ['1/2 mph', function (r) { return slipMph(r.halfMileSpeedMph); }, 'rd-mph'],
-        ['1 mi', function (r) { return slipTime(r.mileTime); }, 'rd-time'],
-        ['1 mi mph', function (r) { return slipMph(r.mileSpeedMph); }, 'rd-mph']
-      ]]
-    ];
-    var cards = lanes.map(function (lane) {
-      var r = lane.result || {};
+    [1, 2, 3, 4].forEach(function (n) {
+      var lane = bySlot[n];
+      var slip = $('compareSlip' + n);
+      if (!slip || !lane || !lane.result) return;
+      var r = lane.result;
       var et = r.finished ? Number(r.quarterMileTime) : NaN;
       var win = best != null && isFinite(et) && Math.abs(et - best) < 0.0005;
       var margin = null;
       if (best != null && isFinite(et) && et > 0) margin = (et - best).toFixed(3);
-      var name = (lane.car && lane.car.name) || r.carName || 'Car';
-      var body = groups.map(function (g) {
-        var chips = g[1].map(function (c) {
-          return compareMetric(c[0], c[1](r), c[2]);
-        }).join('');
-        return '<section class="compare-group"><h3>' + escHtml(g[0]) + '</h3>' +
-          '<div class="compare-metrics">' + chips + '</div></section>';
-      }).join('');
-      return '<article class="compare-car' + (win ? ' is-winner' : '') + '">' +
-        '<header class="compare-car-head">' +
-          '<span class="compare-slot-n">' + lane.slot + '</span>' +
-          '<span class="compare-name">' + escHtml(name) + '</span>' +
-          (win ? '<span class="compare-win">WIN</span>' : '') +
-          '<span class="compare-margin"><span class="rd-k">Margin</span> ' +
-            dashCell(margin, 'rd-range') + '</span>' +
-        '</header>' +
-        '<div class="compare-groups">' + body + '</div>' +
-        '</article>';
-    }).join('');
-    el.innerHTML = '<div class="compare-cars">' + cards + '</div>';
-    el.hidden = false;
+      var qTime = r.finished ? r.quarterMileTime : null;
+      var qMph = r.finished ? r.quarterMileSpeedMph : null;
+      slip.innerHTML =
+        slipRow('60 ft', slipTime(r.sixtyFootTime)) +
+        slipRow('330', slipTime(r.threeThirtyTime)) +
+        slipRow('1/8', slipTime(r.eighthMileTime), slipMph(r.eighthMileSpeedMph)) +
+        slipRow('1000', slipTime(r.thousandFootTime)) +
+        slipRow('1/4', slipTime(qTime), slipMph(qMph)) +
+        '<div class="lane-gap"></div>' +
+        slipRow('1/2', slipTime(r.halfMileTime), slipMph(r.halfMileSpeedMph)) +
+        slipRow('1 mi', slipTime(r.mileTime), slipMph(r.mileSpeedMph)) +
+        '<div class="lane-gap"></div>' +
+        slipRow('0–60', slipTime(r.zeroToSixty)) +
+        slipRow('0–100', slipTime(r.zeroToHundred)) +
+        slipRow('0–130', slipTime(r.zeroToOneThirty)) +
+        slipRow('60–130', slipTime(r.sixtyToOneThirty)) +
+        slipRow('100–150', slipTime(r.hundredToOneFifty)) +
+        '<div class="lane-gap"></div>' +
+        slipRow('Margin', margin, null, 'rd-range');
+      slip.hidden = false;
+      var badge = $('compareWin' + n);
+      if (badge) badge.hidden = !win;
+    });
   }
 
   function readCarFromForm() {

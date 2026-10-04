@@ -2303,38 +2303,17 @@ body > .vb-chrome {
   cursor: pointer;
 }
 .compare-clear:hover { color: var(--text); border-color: rgba(76, 201, 240, 0.4); }
-.compare-board { margin-top: 12px; }
-.compare-cars { display: flex; flex-direction: column; gap: 8px; }
-.compare-car {
-  background: rgba(0, 0, 0, 0.32);
-  border: 1px solid rgba(76, 201, 240, 0.14);
-  border-radius: 6px;
-  padding: 8px 10px 10px;
-}
-.compare-car.is-winner {
-  border-color: rgba(200, 255, 74, 0.45);
-  background: rgba(200, 255, 74, 0.06);
-}
-.compare-car-head {
+.compare-name-row {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 8px;
+  align-items: center;
+  gap: 6px;
   min-width: 0;
 }
-.compare-name {
-  color: var(--brass-text, #e8d7b0);
-  font-weight: 700;
+.compare-name-row .compare-slot-name,
+.compare-name-row .compare-picked {
+  flex: 1 1 auto;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.compare-slot-n {
-  color: var(--text-dim);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  flex: 0 0 auto;
+  margin-top: 0;
 }
 .compare-win {
   flex: 0 0 auto;
@@ -2345,34 +2324,35 @@ body > .vb-chrome {
   border-radius: 999px;
   padding: 1px 6px;
 }
-.compare-margin {
-  margin-left: auto;
-  flex: 0 0 auto;
+.compare-slip {
+  margin-top: 8px;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px;
-  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(76, 201, 240, 0.14);
+  border-radius: 6px;
+  padding: 6px 8px 8px;
 }
-.compare-groups {
+.lane-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.35fr) minmax(0, 0.9fr);
-  gap: 8px;
+  grid-template-columns: 4.6em minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: baseline;
+  padding: 2px 0;
 }
-.compare-group h3 {
-  margin: 0 0 6px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
+.lane-k {
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.04em;
 }
-.compare-metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
-  gap: 4px;
+.lane-time { text-align: right; }
+.lane-mph { text-align: right; min-width: 3.4em; }
+.lane-gap {
+  height: 0;
+  border-top: 1px solid rgba(76, 201, 240, 0.14);
+  margin: 5px 0 3px;
 }
-.compare-metrics .rd-chip { flex-direction: column; align-items: flex-start; gap: 1px; }
 
 @media (max-width: 900px) {
   .compare-slots { grid-template-columns: 1fr 1fr; }
-  .compare-groups { grid-template-columns: 1fr; }
 }
