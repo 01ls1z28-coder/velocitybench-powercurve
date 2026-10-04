@@ -871,11 +871,10 @@
   }
 
   function renderCompare(lanes) {
-    var block = $('compareBoardBlock');
     var el = $('compareBoard');
-    if (!block || !el) return;
+    if (!el) return;
     if (!lanes || !lanes.length) {
-      block.hidden = true;
+      el.hidden = true;
       el.innerHTML = '';
       return;
     }
@@ -884,29 +883,51 @@
       var et = lane.result && lane.result.finished ? Number(lane.result.quarterMileTime) : NaN;
       if (isFinite(et) && et > 0 && (best == null || et < best)) best = et;
     });
+    // Columns are fields runQuarterMile already writes. No 1000-ft mph and no trap:
+    // the result has thousandFootTime only, and quarter mph is the trap speed.
+    var cols = [
+      ['0–60', function (r) { return slipTime(r.zeroToSixty); }, 'rd-time'],
+      ['0–100', function (r) { return slipTime(r.zeroToHundred); }, 'rd-time'],
+      ['0–130', function (r) { return slipTime(r.zeroToOneThirty); }, 'rd-time'],
+      ['60–130', function (r) { return slipTime(r.sixtyToOneThirty); }, 'rd-time'],
+      ['100–150', function (r) { return slipTime(r.hundredToOneFifty); }, 'rd-time'],
+      ['60 ft', function (r) { return slipTime(r.sixtyFootTime); }, 'rd-time'],
+      ['330', function (r) { return slipTime(r.threeThirtyTime); }, 'rd-time'],
+      ['1/8', function (r) { return slipTime(r.eighthMileTime); }, 'rd-time'],
+      ['1/8 mph', function (r) { return slipMph(r.eighthMileSpeedMph); }, 'rd-mph'],
+      ['1000', function (r) { return slipTime(r.thousandFootTime); }, 'rd-time'],
+      ['1/4', function (r) { return slipTime(r.finished ? r.quarterMileTime : null); }, 'rd-time'],
+      ['1/4 mph', function (r) { return slipMph(r.finished ? r.quarterMileSpeedMph : null); }, 'rd-mph'],
+      ['1/2', function (r) { return slipTime(r.halfMileTime); }, 'rd-time'],
+      ['1/2 mph', function (r) { return slipMph(r.halfMileSpeedMph); }, 'rd-mph'],
+      ['1 mi', function (r) { return slipTime(r.mileTime); }, 'rd-time'],
+      ['1 mi mph', function (r) { return slipMph(r.mileSpeedMph); }, 'rd-mph']
+    ];
+    var head = '<th>Car</th>' + cols.map(function (c) {
+      return '<th>' + escHtml(c[0]) + '</th>';
+    }).join('') + '<th>Margin</th>';
     var rows = lanes.map(function (lane) {
       var r = lane.result || {};
       var et = r.finished ? Number(r.quarterMileTime) : NaN;
       var win = best != null && isFinite(et) && Math.abs(et - best) < 0.0005;
+      var margin = null;
+      if (best != null && isFinite(et) && et > 0) margin = (et - best).toFixed(3);
       var name = (lane.car && lane.car.name) || r.carName || 'Car';
+      var cells = cols.map(function (c) {
+        return '<td>' + dashCell(c[1](r), c[2]) + '</td>';
+      }).join('');
       return '<tr class="' + (win ? 'is-winner' : '') + '">' +
         '<td><span class="compare-slot-n">' + lane.slot + '</span>' +
           '<span class="compare-name">' + escHtml(name) + '</span>' +
           (win ? '<span class="compare-win">WIN</span>' : '') + '</td>' +
-        '<td>' + dashCell(slipTime(r.sixtyFootTime), 'rd-time') + '</td>' +
-        '<td>' + dashCell(slipTime(r.threeThirtyTime), 'rd-time') + '</td>' +
-        '<td>' + dashCell(slipTime(r.eighthMileTime), 'rd-time') + '</td>' +
-        '<td>' + dashCell(slipMph(r.eighthMileSpeedMph), 'rd-mph') + '</td>' +
-        '<td>' + dashCell(slipTime(r.finished ? r.quarterMileTime : null), 'rd-time') + '</td>' +
-        '<td>' + dashCell(slipMph(r.finished ? r.quarterMileSpeedMph : null), 'rd-mph') + '</td>' +
-        '<td>' + dashCell(slipMph(r.finished ? r.quarterMileSpeedMph : null), 'rd-mph') + '</td>' +
+        cells +
+        '<td>' + dashCell(margin, 'rd-range') + '</td>' +
         '</tr>';
     }).join('');
     el.innerHTML =
-      '<table class="compare-table"><thead><tr>' +
-      '<th>Car</th><th>60 ft</th><th>330</th><th>1/8</th><th>mph</th><th>1/4</th><th>mph</th><th>Trap</th>' +
+      '<table class="compare-table"><thead><tr>' + head +
       '</tr></thead><tbody>' + rows + '</tbody></table>';
-    block.hidden = false;
+    el.hidden = false;
   }
 
   function readCarFromForm() {

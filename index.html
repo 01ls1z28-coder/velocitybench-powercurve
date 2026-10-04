@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Static geared-RPM simulator: factory gearing, weather/DA, wind, FI boost, dyno curves, quarter-mile time slip, and run-to-Vmax. Estimates for comparison — not track certified." />
   <meta name="twitter:image" content="https://velocitybench.com/og.png" />
   <meta name="theme-color" content="#07090c" />
-  <link rel="stylesheet" href="css/styles.css?v=compare-lanes" />
+  <link rel="stylesheet" href="css/styles.css?v=compare-under-run" />
   <link rel="stylesheet" href="css/vb-chrome.css" />
 </head>
 <body>
@@ -56,23 +56,6 @@
           <div class="garage-list" id="garageList"></div>
         </section>
 
-        <section class="setup-block" id="compareSlotsBlock">
-          <div class="card-title">Compare</div>
-          <p class="hint">Four lanes. Slot 1 is the car in this form. Slots 2–4 pick from the garage and stay empty until you choose.</p>
-          <label class="field compare-slot">
-            <span>1 · Your car</span>
-            <div class="compare-slot-name" id="compareSlot1Name">—</div>
-          </label>
-          <label class="field compare-slot"><span>2</span>
-            <select id="compareSlot2" title="Compare car 2. Leave empty to skip."></select>
-          </label>
-          <label class="field compare-slot"><span>3</span>
-            <select id="compareSlot3" title="Compare car 3. Leave empty to skip."></select>
-          </label>
-          <label class="field compare-slot"><span>4</span>
-            <select id="compareSlot4" title="Compare car 4. Leave empty to skip."></select>
-          </label>
-        </section>
 
         <section class="setup-block">
           <div class="card-title">Vehicle</div>
@@ -345,9 +328,27 @@
           </div>
         </section>
 
-        <section class="slip-block" id="compareBoardBlock" hidden>
+        <section class="slip-block" id="compareSection" aria-label="Compare">
           <div class="card-title slip-title">Compare</div>
-          <div class="run-board compare-board" id="compareBoard" aria-live="polite"></div>
+          <div class="run-board compare-setup">
+            <p class="hint">Four lanes on the same air and track. Slot 1 is the car in the form. Slots 2–4 stay empty until you pick a garage car.</p>
+            <div class="compare-slots">
+              <label class="field compare-slot">
+                <span>1 · Your car</span>
+                <div class="compare-slot-name" id="compareSlot1Name">—</div>
+              </label>
+              <label class="field compare-slot"><span>2</span>
+                <select id="compareSlot2" title="Compare car 2. Leave empty to skip."></select>
+              </label>
+              <label class="field compare-slot"><span>3</span>
+                <select id="compareSlot3" title="Compare car 3. Leave empty to skip."></select>
+              </label>
+              <label class="field compare-slot"><span>4</span>
+                <select id="compareSlot4" title="Compare car 4. Leave empty to skip."></select>
+              </label>
+            </div>
+            <div class="compare-board" id="compareBoard" aria-live="polite" hidden></div>
+          </div>
         </section>
 
         <p class="disclaimer" style="margin-top:12px">
@@ -367,6 +368,6 @@
   <script src="js/physics.js?v=result-readouts"></script>
   <script src="js/gauges.js?v=0ce7872"></script>
   <script src="js/garage-data.js?v=ev-pages-ui-path"></script>
-  <script src="js/app.js?v=compare-lanes"></script>
+  <script src="js/app.js?v=compare-under-run"></script>
 </body>
 </html>
