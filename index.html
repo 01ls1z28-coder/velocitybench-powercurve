@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Static geared-RPM simulator: factory gearing, weather/DA, wind, FI boost, dyno curves, quarter-mile time slip, and run-to-Vmax. Estimates for comparison — not track certified." />
   <meta name="twitter:image" content="https://velocitybench.com/og.png" />
   <meta name="theme-color" content="#07090c" />
-  <link rel="stylesheet" href="css/styles.css?v=compare-under-run" />
+  <link rel="stylesheet" href="css/styles.css?v=compare-search" />
   <link rel="stylesheet" href="css/vb-chrome.css" />
 </head>
 <body>
@@ -331,21 +331,36 @@
         <section class="slip-block" id="compareSection" aria-label="Compare">
           <div class="card-title slip-title">Compare</div>
           <div class="run-board compare-setup">
-            <p class="hint">Four lanes on the same air and track. Slot 1 is the car in the form. Slots 2–4 stay empty until you pick a garage car.</p>
+            <p class="hint">Four lanes on the same air and track. Slot 1 is the car in the form. Type part of a name in slots 2–4. Empty stays empty.</p>
             <div class="compare-slots">
               <label class="field compare-slot">
                 <span>1 · Your car</span>
                 <div class="compare-slot-name" id="compareSlot1Name">—</div>
               </label>
-              <label class="field compare-slot"><span>2</span>
-                <select id="compareSlot2" title="Compare car 2. Leave empty to skip."></select>
-              </label>
-              <label class="field compare-slot"><span>3</span>
-                <select id="compareSlot3" title="Compare car 3. Leave empty to skip."></select>
-              </label>
-              <label class="field compare-slot"><span>4</span>
-                <select id="compareSlot4" title="Compare car 4. Leave empty to skip."></select>
-              </label>
+              <div class="field compare-slot compare-pick">
+                <span>2</span>
+                <input type="search" id="compareSearch2" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
+                <div class="compare-matches" id="compareMatches2" hidden></div>
+                <div class="compare-picked" id="comparePicked2">Empty</div>
+                <button type="button" class="compare-clear" id="compareClear2" hidden>Clear</button>
+                <input type="hidden" id="compareSlot2" value="" />
+              </div>
+              <div class="field compare-slot compare-pick">
+                <span>3</span>
+                <input type="search" id="compareSearch3" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
+                <div class="compare-matches" id="compareMatches3" hidden></div>
+                <div class="compare-picked" id="comparePicked3">Empty</div>
+                <button type="button" class="compare-clear" id="compareClear3" hidden>Clear</button>
+                <input type="hidden" id="compareSlot3" value="" />
+              </div>
+              <div class="field compare-slot compare-pick">
+                <span>4</span>
+                <input type="search" id="compareSearch4" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
+                <div class="compare-matches" id="compareMatches4" hidden></div>
+                <div class="compare-picked" id="comparePicked4">Empty</div>
+                <button type="button" class="compare-clear" id="compareClear4" hidden>Clear</button>
+                <input type="hidden" id="compareSlot4" value="" />
+              </div>
             </div>
             <div class="compare-board" id="compareBoard" aria-live="polite" hidden></div>
           </div>
@@ -368,6 +383,6 @@
   <script src="js/physics.js?v=result-readouts"></script>
   <script src="js/gauges.js?v=0ce7872"></script>
   <script src="js/garage-data.js?v=ev-pages-ui-path"></script>
-  <script src="js/app.js?v=compare-under-run"></script>
+  <script src="js/app.js?v=compare-search"></script>
 </body>
 </html>

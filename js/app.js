@@ -809,20 +809,88 @@
     el.textContent = name || 'Your car';
   }
 
-  function populateCompareSelects() {
-    [2, 3, 4].forEach(function (n) {
-      var el = $('compareSlot' + n);
-      if (!el || el.options.length) return;
-      var blank = document.createElement('option');
-      blank.value = '';
-      blank.textContent = 'Empty';
-      el.appendChild(blank);
-      SAMPLE_CARS.forEach(function (c) {
-        var opt = document.createElement('option');
-        opt.value = c.id;
-        opt.textContent = c.name || c.id;
-        el.appendChild(opt);
+  function setCompareSlot(n, car) {
+    var hidden = $('compareSlot' + n);
+    var picked = $('comparePicked' + n);
+    var clearBtn = $('compareClear' + n);
+    var matches = $('compareMatches' + n);
+    if (!hidden) return;
+    if (!car) {
+      hidden.value = '';
+      if (picked) {
+        picked.textContent = 'Empty';
+        picked.classList.remove('is-set');
+      }
+      if (clearBtn) clearBtn.hidden = true;
+    } else {
+      hidden.value = car.id || '';
+      if (picked) {
+        picked.textContent = car.name || car.id || 'Car';
+        picked.classList.add('is-set');
+      }
+      if (clearBtn) clearBtn.hidden = false;
+    }
+    if (matches) {
+      matches.hidden = true;
+      matches.innerHTML = '';
+    }
+  }
+
+  function renderCompareMatches(n, query) {
+    var box = $('compareMatches' + n);
+    if (!box) return;
+    var q = (query || '').toLowerCase().trim();
+    if (!q) {
+      box.hidden = true;
+      box.innerHTML = '';
+      return;
+    }
+    var hits = [];
+    for (var i = 0; i < SAMPLE_CARS.length; i++) {
+      var c = SAMPLE_CARS[i];
+      var name = (c.name || '').toLowerCase();
+      if (name.indexOf(q) < 0) continue;
+      hits.push(c);
+      if (hits.length >= 8) break;
+    }
+    if (!hits.length) {
+      box.hidden = false;
+      box.innerHTML = '<div class="compare-match-empty">No matches</div>';
+      return;
+    }
+    box.innerHTML = hits.map(function (c) {
+      return '<button type="button" class="compare-match" data-id="' + escHtml(c.id) + '">' +
+        escHtml(c.name || c.id) + '</button>';
+    }).join('');
+    box.hidden = false;
+    box.querySelectorAll('.compare-match').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var car = carsById[btn.getAttribute('data-id')];
+        setCompareSlot(n, car || null);
+        var search = $('compareSearch' + n);
+        if (search) search.value = '';
       });
+    });
+  }
+
+  function wireCompareSearch() {
+    [2, 3, 4].forEach(function (n) {
+      var search = $('compareSearch' + n);
+      var clearBtn = $('compareClear' + n);
+      if (search && !search.dataset.wired) {
+        search.dataset.wired = '1';
+        search.addEventListener('input', function () {
+          renderCompareMatches(n, search.value);
+        });
+      }
+      if (clearBtn && !clearBtn.dataset.wired) {
+        clearBtn.dataset.wired = '1';
+        clearBtn.addEventListener('click', function () {
+          setCompareSlot(n, null);
+          if (search) search.value = '';
+        });
+      }
+      setCompareSlot(n, null);
     });
   }
 
@@ -870,6 +938,11 @@
     return env;
   }
 
+  function compareMetric(label, text, cls) {
+    return '<div class="rd-chip"><span class="rd-k">' + escHtml(label) + '</span>' +
+      dashCell(text, cls) + '</div>';
+  }
+
   function renderCompare(lanes) {
     var el = $('compareBoard');
     if (!el) return;
@@ -883,50 +956,56 @@
       var et = lane.result && lane.result.finished ? Number(lane.result.quarterMileTime) : NaN;
       if (isFinite(et) && et > 0 && (best == null || et < best)) best = et;
     });
-    // Columns are fields runQuarterMile already writes. No 1000-ft mph and no trap:
-    // the result has thousandFootTime only, and quarter mph is the trap speed.
-    var cols = [
-      ['0–60', function (r) { return slipTime(r.zeroToSixty); }, 'rd-time'],
-      ['0–100', function (r) { return slipTime(r.zeroToHundred); }, 'rd-time'],
-      ['0–130', function (r) { return slipTime(r.zeroToOneThirty); }, 'rd-time'],
-      ['60–130', function (r) { return slipTime(r.sixtyToOneThirty); }, 'rd-time'],
-      ['100–150', function (r) { return slipTime(r.hundredToOneFifty); }, 'rd-time'],
-      ['60 ft', function (r) { return slipTime(r.sixtyFootTime); }, 'rd-time'],
-      ['330', function (r) { return slipTime(r.threeThirtyTime); }, 'rd-time'],
-      ['1/8', function (r) { return slipTime(r.eighthMileTime); }, 'rd-time'],
-      ['1/8 mph', function (r) { return slipMph(r.eighthMileSpeedMph); }, 'rd-mph'],
-      ['1000', function (r) { return slipTime(r.thousandFootTime); }, 'rd-time'],
-      ['1/4', function (r) { return slipTime(r.finished ? r.quarterMileTime : null); }, 'rd-time'],
-      ['1/4 mph', function (r) { return slipMph(r.finished ? r.quarterMileSpeedMph : null); }, 'rd-mph'],
-      ['1/2', function (r) { return slipTime(r.halfMileTime); }, 'rd-time'],
-      ['1/2 mph', function (r) { return slipMph(r.halfMileSpeedMph); }, 'rd-mph'],
-      ['1 mi', function (r) { return slipTime(r.mileTime); }, 'rd-time'],
-      ['1 mi mph', function (r) { return slipMph(r.mileSpeedMph); }, 'rd-mph']
+    var groups = [
+      ['Acceleration', [
+        ['0–60', function (r) { return slipTime(r.zeroToSixty); }, 'rd-time'],
+        ['0–100', function (r) { return slipTime(r.zeroToHundred); }, 'rd-time'],
+        ['0–130', function (r) { return slipTime(r.zeroToOneThirty); }, 'rd-time'],
+        ['60–130', function (r) { return slipTime(r.sixtyToOneThirty); }, 'rd-time'],
+        ['100–150', function (r) { return slipTime(r.hundredToOneFifty); }, 'rd-time']
+      ]],
+      ['Drag', [
+        ['60 ft', function (r) { return slipTime(r.sixtyFootTime); }, 'rd-time'],
+        ['330', function (r) { return slipTime(r.threeThirtyTime); }, 'rd-time'],
+        ['1/8', function (r) { return slipTime(r.eighthMileTime); }, 'rd-time'],
+        ['1/8 mph', function (r) { return slipMph(r.eighthMileSpeedMph); }, 'rd-mph'],
+        ['1000', function (r) { return slipTime(r.thousandFootTime); }, 'rd-time'],
+        ['1/4', function (r) { return slipTime(r.finished ? r.quarterMileTime : null); }, 'rd-time'],
+        ['1/4 mph', function (r) { return slipMph(r.finished ? r.quarterMileSpeedMph : null); }, 'rd-mph']
+      ]],
+      ['Long', [
+        ['1/2', function (r) { return slipTime(r.halfMileTime); }, 'rd-time'],
+        ['1/2 mph', function (r) { return slipMph(r.halfMileSpeedMph); }, 'rd-mph'],
+        ['1 mi', function (r) { return slipTime(r.mileTime); }, 'rd-time'],
+        ['1 mi mph', function (r) { return slipMph(r.mileSpeedMph); }, 'rd-mph']
+      ]]
     ];
-    var head = '<th>Car</th>' + cols.map(function (c) {
-      return '<th>' + escHtml(c[0]) + '</th>';
-    }).join('') + '<th>Margin</th>';
-    var rows = lanes.map(function (lane) {
+    var cards = lanes.map(function (lane) {
       var r = lane.result || {};
       var et = r.finished ? Number(r.quarterMileTime) : NaN;
       var win = best != null && isFinite(et) && Math.abs(et - best) < 0.0005;
       var margin = null;
       if (best != null && isFinite(et) && et > 0) margin = (et - best).toFixed(3);
       var name = (lane.car && lane.car.name) || r.carName || 'Car';
-      var cells = cols.map(function (c) {
-        return '<td>' + dashCell(c[1](r), c[2]) + '</td>';
+      var body = groups.map(function (g) {
+        var chips = g[1].map(function (c) {
+          return compareMetric(c[0], c[1](r), c[2]);
+        }).join('');
+        return '<section class="compare-group"><h3>' + escHtml(g[0]) + '</h3>' +
+          '<div class="compare-metrics">' + chips + '</div></section>';
       }).join('');
-      return '<tr class="' + (win ? 'is-winner' : '') + '">' +
-        '<td><span class="compare-slot-n">' + lane.slot + '</span>' +
+      return '<article class="compare-car' + (win ? ' is-winner' : '') + '">' +
+        '<header class="compare-car-head">' +
+          '<span class="compare-slot-n">' + lane.slot + '</span>' +
           '<span class="compare-name">' + escHtml(name) + '</span>' +
-          (win ? '<span class="compare-win">WIN</span>' : '') + '</td>' +
-        cells +
-        '<td>' + dashCell(margin, 'rd-range') + '</td>' +
-        '</tr>';
+          (win ? '<span class="compare-win">WIN</span>' : '') +
+          '<span class="compare-margin"><span class="rd-k">Margin</span> ' +
+            dashCell(margin, 'rd-range') + '</span>' +
+        '</header>' +
+        '<div class="compare-groups">' + body + '</div>' +
+        '</article>';
     }).join('');
-    el.innerHTML =
-      '<table class="compare-table"><thead><tr>' + head +
-      '</tr></thead><tbody>' + rows + '</tbody></table>';
+    el.innerHTML = '<div class="compare-cars">' + cards + '</div>';
     el.hidden = false;
   }
 
@@ -3206,7 +3285,7 @@ $('btnReset').addEventListener('click', function () {
     });
   }
   renderGarage();
-  populateCompareSelects();
+  wireCompareSearch();
   var nameEl = $('carName');
   if (nameEl) nameEl.addEventListener('input', function () { updateCompareSlot1Name(state.car); });
   var defaultCar = SAMPLE_CARS.find(function (c) { return /Supra Twin Turbo/i.test(c.name); })
