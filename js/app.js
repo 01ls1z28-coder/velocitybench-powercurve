@@ -805,6 +805,7 @@
     var ind = inductionValue();
     var base = state.car || {};
     var car = {
+      id: base.id,
       name: $('carName').value || 'Custom',
       weightLbs: clampNum($('weightLbs').value, 20, 120000, 3800),
       dragCoefficient: clampNum($('cd').value, 0.15, 1.2, 0.35),
