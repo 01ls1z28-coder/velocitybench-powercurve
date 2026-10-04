@@ -324,8 +324,8 @@
     });
     // EV motor curves are flat/shelf shaped — ICE post-peak sanitize pins peakHpRpm
     // and crushes high-rpm HP (M3P Peak 466 bug). Physics already skips sanitize for isEv.
-    if (Phys.sanitizeTorqueCurvePostPeak && !(state.car && (state.car.isEv || state.car.powerSource === 'ev'))) {
-      Phys.sanitizeTorqueCurvePostPeak(map, state.car && state.car.peakHpRpm);
+    if (Phys.sanitizeTorqueCurvePostPeak && !(state.car && (state.car.isEv || state.car.powerSource === 'ev' || (Phys.preserveStoredDynoTip && Phys.preserveStoredDynoTip(state.car))))) {
+      Phys.sanitizeTorqueCurvePostPeak(map, state.car && state.car.peakHpRpm, state.car);
     }
     if (peakHpCap > 0 && Phys.capTorqueCurveToPeakHp) {
       Phys.capTorqueCurveToPeakHp(map, peakHpCap);
@@ -439,8 +439,8 @@
     if (state.drag) return;
     // Kill fake redline uptick on ICE curves only. EV: do NOT mutate torqueCurve —
     // sanitize + wrong peakHpRpm pin crushed Model 3 Perf 519→507 shelf (Peak 466).
-    if (Phys.sanitizeTorqueCurvePostPeak && !(car.isEv || car.powerSource === 'ev')) {
-      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
+    if (Phys.sanitizeTorqueCurvePostPeak && !(car.isEv || car.powerSource === 'ev' || (Phys.preserveStoredDynoTip && Phys.preserveStoredDynoTip(car)))) {
+      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm, car);
     }
     var cap = Number(car.peakHp);
     // Display series capped to Peak HP param; do not rescale fleet force curves here
@@ -887,8 +887,8 @@
       if (scaled) car.torqueCurve = scaled;
     }
     // ICE only — EV shelf curves must not be post-peak sanitized (see syncPowerCurveFromCar).
-    if (car.torqueCurve && Phys.sanitizeTorqueCurvePostPeak && !car.isEv) {
-      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm);
+    if (car.torqueCurve && Phys.sanitizeTorqueCurvePostPeak && !car.isEv && !(Phys.preserveStoredDynoTip && Phys.preserveStoredDynoTip(car))) {
+      Phys.sanitizeTorqueCurvePostPeak(car.torqueCurve, car.peakHpRpm, car);
     }
     // Dyno curves already include boost — don't double-apply for garage FI cars unless boostPsi set
     // Keep hybrid/EV powerSource identity; only clear FI boostModel multiplier when PSI is 0.

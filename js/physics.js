@@ -687,7 +687,19 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
    * no flat plateau at the tip. Preserves natural declining samples; when the
    * bake would rise or flatten, continue the established negative slope.
    */
-  function sanitizeTorqueCurvePostPeak(curve, peakHpRpmOpt) {
+  /** Jorge Z28 Mustang-dyno engine curve: keep stored post-peak tip (no steepen). */
+  var PRESERVE_STORED_DYNO_TIP_IDS = {
+    '2001-chevrolet-camaro-z28-h-c-e-ms3-tsp5-3stage2-5-1-3-4lt-trueduals': true
+  };
+
+  function preserveStoredDynoTip(carOrId) {
+    if (carOrId == null) return false;
+    var id = typeof carOrId === 'string' ? carOrId : carOrId.id;
+    return !!(id && PRESERVE_STORED_DYNO_TIP_IDS[id]);
+  }
+
+  function sanitizeTorqueCurvePostPeak(curve, peakHpRpmOpt, carOrId) {
+    if (preserveStoredDynoTip(carOrId)) return curve;
     if (!curve || typeof curve !== 'object') return curve;
     var keys = Object.keys(curve).map(Number).filter(function (k) { return isFinite(k); });
     keys.sort(function (a, b) { return a - b; });
@@ -1251,7 +1263,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       // peakHp honesty for ICE + EV. Post-peak dyno-fall sanitize is ICE-only;
       // both are capped to published peakHp when set (no inflated motor-map cheat).
       curve = Object.assign({}, curve);
-      if (!car.isEv) sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm);
+      if (!car.isEv) sanitizeTorqueCurvePostPeak(curve, car.peakHpRpm, car);
       if (car.peakHp > 0) capTorqueCurveToPeakHp(curve, car.peakHp);
     }
 
@@ -2271,6 +2283,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     synthesizeTorqueCurve: synthesizeTorqueCurve,
     peakHpFromCurve: peakHpFromCurve,
     sanitizeTorqueCurvePostPeak: sanitizeTorqueCurvePostPeak,
+    preserveStoredDynoTip: preserveStoredDynoTip,
     capTorqueCurveToPeakHp: capTorqueCurveToPeakHp,
     suggestedWeightDistribution: suggestedWeightDistribution,
     resolveWeightDistribution: resolveWeightDistribution,
