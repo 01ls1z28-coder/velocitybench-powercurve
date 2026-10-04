@@ -933,7 +933,7 @@ var VB_POWERCURVE_GARAGE =
       0.776
     ],
     "txKey": "Nissan_RE7R01A",
-    "drivetrainLossPercent": 15,
+    "drivetrainLossPercent": 22,
     "driveType": "RWD",
     "isEv": false,
     "isFI": true,
