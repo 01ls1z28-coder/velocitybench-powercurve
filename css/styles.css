@@ -1288,6 +1288,25 @@ body {
   gap: 8px;
   align-items: start;
 }
+/* Run Data is one slip. Distance table, then shifts and gears. Ranges and 0–mph sit under it. */
+.rd-slip {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(76, 201, 240, 0.14);
+  border-radius: 6px;
+  padding: 6px 8px 8px;
+  min-width: 0;
+}
+.rd-slip .rd-mph { color: #ffb347; }
+.rd-table--slip { table-layout: fixed; }
+.rd-col-k { width: 34%; }
+.rd-col-t { width: 36%; }
+.rd-col-m { width: 30%; }
+.rd-under {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .rd-stack { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .rd-panel {
   background: rgba(0, 0, 0, 0.32);
@@ -1347,7 +1366,22 @@ body {
   gap: 4px;
 }
 .rd-ranges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rd-ranges--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.rd-ranges--row .rd-chip { flex: 1 1 108px; }
 .rd-zeros { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.rd-zeros--board {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  width: 100%;
+}
+.rd-zeros--board .rd-chip--zero {
+  padding: 2px 3px;
+}
+.rd-zeros--board .rd-chip--zero .rd-k { font-size: 8px; }
+.rd-zeros--board .rd-time { font-size: 11px; }
 .rd-chip {
   display: flex;
   align-items: baseline;
@@ -1374,9 +1408,10 @@ body {
 }
 .rd-shifts {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 4px;
-  margin-top: 7px;
+  margin-top: 8px;
+  overflow-x: auto;
 }
 .rd-shift {
   font-size: 10px;
@@ -1472,6 +1507,7 @@ body {
   .run-board { padding: 8px; }
   .rd-grid { grid-template-columns: 1fr; }
   .rd-zeros { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rd-zeros--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .seg label { flex: 1 1 calc(50% - 4px); }
   .live-readout { font-size: 11px; gap: 6px; }
   .garage-list { max-height: 140px; }

@@ -2211,13 +2211,13 @@
     var vehicle = (car && car.name) || (r && r.carName) || 'Custom setup';
 
     var distMarks = [
-      ['60 ft', r.sixtyFootTime, mphNearFeet(r, 60)],
+      ['60 FT', r.sixtyFootTime, mphNearFeet(r, 60)],
       ['330', r.threeThirtyTime, mphNearFeet(r, 330)],
       ['1/8', r.eighthMileTime, r.eighthMileSpeedMph],
-      ['1000 ft', r.thousandFootTime, mphNearFeet(r, 1000)],
+      ['1000 FT', r.thousandFootTime, mphNearFeet(r, 1000)],
       ['1/4', r.finished ? r.quarterMileTime : null, r.finished ? r.quarterMileSpeedMph : null],
       ['1/2', r.halfMileTime, r.halfMileSpeedMph],
-      ['1 mile', r.mileTime, r.mileSpeedMph]
+      ['1 MILE', r.mileTime, r.mileSpeedMph]
     ];
     var distRows = distMarks.map(function (row) {
       return '<tr><th scope="row">' + escHtml(row[0]) + '</th><td>' +
@@ -2272,24 +2272,15 @@
         '<div class="rd-name">' + escHtml(vehicle) + '</div>' +
         '<div class="rd-tag">RUN</div>' +
       '</div>' +
-      '<div class="rd-grid">' +
-        '<section class="rd-panel" aria-label="Distance marks">' +
-          '<h3>Distance</h3>' +
-          '<table class="rd-table"><thead><tr><th></th><th>sec</th><th>mph</th></tr></thead><tbody>' +
-          distRows + '</tbody></table>' +
-        '</section>' +
-        '<div class="rd-stack">' +
-          '<section class="rd-panel" aria-label="Speed ranges">' +
-            '<h3>Splits</h3>' +
-            '<div class="rd-ranges">' + rangeHtml + '</div>' +
-          '</section>' +
-          '<section class="rd-panel" aria-label="Zero to speed">' +
-            '<h3>0–mph</h3>' +
-            '<div class="rd-zeros">' + zeroHtml + '</div>' +
-          '</section>' +
-        '</div>' +
-      '</div>' +
-      '<section class="rd-panel rd-foot" aria-label="Shifts and gearing">' +
+      '<section class="rd-slip" aria-label="Timeslip">' +
+        '<table class="rd-table rd-table--slip">' +
+          '<colgroup><col class="rd-col-k" /><col class="rd-col-t" /><col class="rd-col-m" /></colgroup>' +
+          '<thead><tr><th scope="col"></th><th scope="col">Time</th><th scope="col">Mph</th></tr></thead>' +
+          '<tbody>' + distRows + '</tbody>' +
+        '</table>' +
+        (pills ? '<div class="rd-shifts">' + pills + '</div>' : '') +
+        '<div class="rd-gears"><span class="rd-k">Gears</span> ' +
+          (gears.length ? escHtml(gears.join('  ')) : '—') + '</div>' +
         '<div class="rd-stats">' +
           '<span><span class="rd-k">Shifts</span> <b class="rd-range">' + escHtml(String(r.totalShifts || 0)) + '</b></span>' +
           '<span><span class="rd-k">Launch</span> <b class="rd-range">' + (launch == null ? '—' : escHtml(String(launch))) + '</b></span>' +
@@ -2300,10 +2291,11 @@
           '<span><span class="rd-k">Wheelspin</span> <b class="rd-range">' + escHtml(fmt(r.wheelspinPercent, 1)) + '</b><span class="rd-k">%</span></span>' +
           '<span><span class="rd-k">FD</span> <b class="rd-mph">' + escHtml(fmt(r.finalDrive, 2)) + '</b></span>' +
         '</div>' +
-        (pills ? '<div class="rd-shifts">' + pills + '</div>' : '') +
-        '<div class="rd-gears"><span class="rd-k">Gears</span> ' +
-          (gears.length ? escHtml(gears.join('  ')) : '—') + '</div>' +
-      '</section>';
+      '</section>' +
+      '<div class="rd-under">' +
+        '<div class="rd-ranges rd-ranges--row" aria-label="Speed ranges">' + rangeHtml + '</div>' +
+        '<div class="rd-zeros rd-zeros--board" aria-label="Zero to speed">' + zeroHtml + '</div>' +
+      '</div>';
   }
 
   /** Wheel Spin logo badge — ON when timeline wheelspin ≥ threshold. */
