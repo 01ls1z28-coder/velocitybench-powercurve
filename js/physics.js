@@ -442,6 +442,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     Toyota_A750E: { name: 'Toyota A750E/F 5-spd Auto', gears: [3.52, 2.042, 1.4, 1.0, 0.716], finalDrive: 3.727, loss: 16 },
     Ford_4R75E: { name: 'Ford 4R75E 4-spd Auto', gears: [2.84, 1.55, 1.0, 0.7], finalDrive: 3.73, loss: 16 },
     Nissan_RE5R05A: { name: 'Nissan RE5R05A 5-spd Auto', gears: [3.827, 2.368, 1.52, 1.0, 0.834], finalDrive: 2.937, loss: 15 },
+    Nissan_RE7R01A: { name: 'Nissan/Infiniti RE7R01A 7-spd Auto (Q50)', gears: [4.783, 3.103, 1.984, 1.371, 1.000, 0.871, 0.776], finalDrive: 2.937, loss: 15 },
     Ford_TorqShift_5R110W: { name: 'Ford TorqShift 5R110W 5-spd Auto', gears: [3.09, 2.2, 1.53, 1.0, 0.71], finalDrive: 3.73, loss: 16 },
     Ford_CruiseOMatic_3: { name: 'Ford Cruise-O-Matic / Fordomatic 3-spd', gears: [2.4, 1.47, 1.0], finalDrive: 3.56, loss: 18 },
     Chrysler_42RLE: { name: 'Chrysler 42RLE 4-spd Auto', gears: [2.84, 1.57, 1.0, 0.69], finalDrive: 3.73, loss: 16 },
