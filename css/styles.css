@@ -2226,3 +2226,64 @@ body > .vb-chrome {
   margin: 0.55rem auto 0.35rem;
   box-sizing: border-box;
 }
+
+/* Four-lane compare — same dark board as Run Data */
+.compare-slot-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--lime);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  min-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.compare-board { overflow-x: auto; }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 520px; }
+.compare-table th {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: right;
+  padding: 0 6px 6px;
+  white-space: nowrap;
+}
+.compare-table th:first-child { text-align: left; }
+.compare-table td {
+  padding: 5px 6px;
+  font-size: 12px;
+  text-align: right;
+  border-top: 1px solid rgba(76, 201, 240, 0.1);
+  white-space: nowrap;
+}
+.compare-table td:first-child { text-align: left; white-space: normal; }
+.compare-table tbody tr:nth-child(odd) td { background: rgba(255, 255, 255, 0.025); }
+.compare-table tr.is-winner td {
+  background: rgba(200, 255, 74, 0.08);
+}
+.compare-name {
+  color: var(--brass-text, #e8d7b0);
+  font-weight: 700;
+}
+.compare-slot-n {
+  color: var(--text-dim);
+  font-size: 10px;
+  margin-right: 6px;
+  letter-spacing: 0.08em;
+}
+.compare-win {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #c8ff4a;
+  border: 1px solid rgba(200, 255, 74, 0.45);
+  border-radius: 999px;
+  padding: 1px 6px;
+  vertical-align: 1px;
+}

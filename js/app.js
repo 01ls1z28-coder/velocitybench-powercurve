@@ -40,6 +40,8 @@
 
   var SAMPLE_CARS = loadGarageFleet();
   var garageFilterText = '';
+  var carsById = {};
+  SAMPLE_CARS.forEach(function (c) { if (c && c.id) carsById[c.id] = c; });
 
   var $ = function (id) { return document.getElementById(id); };
   var state = {
@@ -744,6 +746,7 @@
     applyClutchLaunchField(car);
     configurePrimaryGauge(car);
     highlightGarage(car.id);
+    updateCompareSlot1Name(car);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncEvChartMode(car);
     syncPowerCurveFromCar(car);
@@ -796,6 +799,114 @@
       empty.style.cursor = 'default';
       list.appendChild(empty);
     }
+  }
+
+
+  function updateCompareSlot1Name(car) {
+    var el = $('compareSlot1Name');
+    if (!el) return;
+    var name = ($('carName') && $('carName').value) || (car && car.name) || (state.car && state.car.name) || 'Your car';
+    el.textContent = name || 'Your car';
+  }
+
+  function populateCompareSelects() {
+    [2, 3, 4].forEach(function (n) {
+      var el = $('compareSlot' + n);
+      if (!el || el.options.length) return;
+      var blank = document.createElement('option');
+      blank.value = '';
+      blank.textContent = 'Empty';
+      el.appendChild(blank);
+      SAMPLE_CARS.forEach(function (c) {
+        var opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = c.name || c.id;
+        el.appendChild(opt);
+      });
+    });
+  }
+
+  /** Stored garage cars for lanes 2–4. Empty selects are skipped. */
+  function filledCompareCars() {
+    var out = [];
+    [2, 3, 4].forEach(function (n) {
+      var el = $('compareSlot' + n);
+      if (!el || !el.value) return;
+      var stored = carsById[el.value];
+      if (!stored) return;
+      out.push({ slot: n, car: JSON.parse(JSON.stringify(stored)) });
+    });
+    return out;
+  }
+
+  /**
+   * Same air, wind, density altitude, and track prep as the form.
+   * Curve, gears, tires, loss, converter, and launch rpm stay on the stored car.
+   * Launch mode stays Auto so slot 1's Soft/Aggressive offsets are not copied.
+   */
+  function envForCompareCar(stored, formEnv) {
+    var tire = stored.tireType != null && isFinite(Number(stored.tireType))
+      ? (Number(stored.tireType) | 0) : 0;
+    var tireLab = Phys.tireLabelForType ? Phys.tireLabelForType(tire) : 'Street';
+    var prepLab = Phys.trackPrepLabel ? Phys.trackPrepLabel(formEnv.trackPrep) : formEnv.trackPrep;
+    var env = {
+      tempF: formEnv.tempF,
+      humidity: formEnv.humidity,
+      pressureInHg: formEnv.pressureInHg,
+      densityAltitudeFtInput: formEnv.densityAltitudeFtInput,
+      windSpeedMph: formEnv.windSpeedMph,
+      windDirDeg: formEnv.windDirDeg,
+      gustMph: formEnv.gustMph,
+      trackPrep: formEnv.trackPrep,
+      tireType: tire,
+      tireLabel: tireLab + ' · ' + prepLab,
+      driverWeightLbs: formEnv.driverWeightLbs,
+      launchMode: 'auto'
+    };
+    // Clutch cars honor a typed rpm. Hand the stored leave so slot 1's field is not used.
+    if (stored.launchRpm != null && isFinite(Number(stored.launchRpm)) && Number(stored.launchRpm) > 0) {
+      env.customLaunchRpm = Number(stored.launchRpm);
+    }
+    return env;
+  }
+
+  function renderCompare(lanes) {
+    var block = $('compareBoardBlock');
+    var el = $('compareBoard');
+    if (!block || !el) return;
+    if (!lanes || !lanes.length) {
+      block.hidden = true;
+      el.innerHTML = '';
+      return;
+    }
+    var best = null;
+    lanes.forEach(function (lane) {
+      var et = lane.result && lane.result.finished ? Number(lane.result.quarterMileTime) : NaN;
+      if (isFinite(et) && et > 0 && (best == null || et < best)) best = et;
+    });
+    var rows = lanes.map(function (lane) {
+      var r = lane.result || {};
+      var et = r.finished ? Number(r.quarterMileTime) : NaN;
+      var win = best != null && isFinite(et) && Math.abs(et - best) < 0.0005;
+      var name = (lane.car && lane.car.name) || r.carName || 'Car';
+      return '<tr class="' + (win ? 'is-winner' : '') + '">' +
+        '<td><span class="compare-slot-n">' + lane.slot + '</span>' +
+          '<span class="compare-name">' + escHtml(name) + '</span>' +
+          (win ? '<span class="compare-win">WIN</span>' : '') + '</td>' +
+        '<td>' + dashCell(slipTime(r.sixtyFootTime), 'rd-time') + '</td>' +
+        '<td>' + dashCell(slipTime(r.threeThirtyTime), 'rd-time') + '</td>' +
+        '<td>' + dashCell(slipTime(r.eighthMileTime), 'rd-time') + '</td>' +
+        '<td>' + dashCell(slipMph(r.eighthMileSpeedMph), 'rd-mph') + '</td>' +
+        '<td>' + dashCell(slipTime(r.finished ? r.quarterMileTime : null), 'rd-time') + '</td>' +
+        '<td>' + dashCell(slipMph(r.finished ? r.quarterMileSpeedMph : null), 'rd-mph') + '</td>' +
+        '<td>' + dashCell(slipMph(r.finished ? r.quarterMileSpeedMph : null), 'rd-mph') + '</td>' +
+        '</tr>';
+    }).join('');
+    el.innerHTML =
+      '<table class="compare-table"><thead><tr>' +
+      '<th>Car</th><th>60 ft</th><th>330</th><th>1/8</th><th>mph</th><th>1/4</th><th>mph</th><th>Trap</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table>';
+    block.hidden = false;
   }
 
   function readCarFromForm() {
@@ -2512,6 +2623,12 @@
     state.car = car;
     configurePrimaryGauge(car);
     renderSlip(result, car);
+    var lanes = [{ slot: 1, car: car, result: result }];
+    filledCompareCars().forEach(function (lane) {
+      lane.result = Phys.runQuarterMile(lane.car, envForCompareCar(lane.car, env));
+      lanes.push(lane);
+    });
+    renderCompare(lanes);
     // Keep dense 100-RPM editable series authoritative — never replace with sparse result keys
     if (!state.curveEdited) {
       state.powerCurve = powerCurveFromTorqueCurve(car.torqueCurve, car.redline, Number(car.peakHp) || null);
@@ -3068,6 +3185,9 @@ $('btnReset').addEventListener('click', function () {
     });
   }
   renderGarage();
+  populateCompareSelects();
+  var nameEl = $('carName');
+  if (nameEl) nameEl.addEventListener('input', function () { updateCompareSlot1Name(state.car); });
   var defaultCar = SAMPLE_CARS.find(function (c) { return /Supra Twin Turbo/i.test(c.name); })
     || SAMPLE_CARS.find(function (c) { return c.id !== 'custom'; })
     || SAMPLE_CARS[0];
