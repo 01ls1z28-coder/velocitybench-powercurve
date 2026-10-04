@@ -2235,9 +2235,30 @@ body > .vb-chrome {
 .compare-slots {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  column-gap: 8px;
+  align-items: start;
 }
-.compare-slots .field { margin-bottom: 0; }
+.compare-lane {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 4;
+  row-gap: 4px;
+  align-items: start;
+  min-width: 0;
+}
+.compare-lane-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--brass-text);
+  opacity: 0.78;
+}
+.compare-search-pad {
+  position: relative;
+  min-height: 30px;
+  min-width: 0;
+}
 .compare-slot-name {
   font-family: var(--mono);
   font-size: 12px;
@@ -2251,14 +2272,32 @@ body > .vb-chrome {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.compare-search { width: 100%; }
+.compare-search {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 6px 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.compare-search:focus {
+  outline: none;
+  border-color: rgba(76, 201, 240, 0.55);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px rgba(76, 201, 240, 0.35);
+}
 .compare-matches {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
   max-height: 168px;
   overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-top: 4px;
   background: #07090d;
   border: 1px solid rgba(215, 196, 160, 0.38);
   border-radius: 6px;
@@ -2278,6 +2317,7 @@ body > .vb-chrome {
 }
 .compare-match:hover { color: var(--lime); background: rgba(200, 255, 74, 0.06); }
 .compare-match-empty { color: var(--text-dim); cursor: default; }
+.compare-matches[hidden] { display: none !important; }
 .compare-picked {
   margin-top: 4px;
   font-family: var(--mono);
@@ -2289,8 +2329,9 @@ body > .vb-chrome {
 }
 .compare-picked.is-set { color: var(--lime); }
 .compare-clear {
-  margin-top: 4px;
+  margin-top: 0;
   width: fit-content;
+  flex: 0 0 auto;
   background: transparent;
   border: 1px solid var(--panel-border);
   color: var(--text-muted);

@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Static geared-RPM simulator: factory gearing, weather/DA, wind, FI boost, dyno curves, quarter-mile time slip, and run-to-Vmax. Estimates for comparison — not track certified." />
   <meta name="twitter:image" content="https://velocitybench.com/og.png" />
   <meta name="theme-color" content="#07090c" />
-  <link rel="stylesheet" href="css/styles.css?v=compare-slip" />
+  <link rel="stylesheet" href="css/styles.css?v=compare-align" />
   <link rel="stylesheet" href="css/vb-chrome.css" />
 </head>
 <body>
@@ -334,54 +334,53 @@
             <p class="hint">Four lanes on the same air and track. Slot 1 is the car in the form. Type part of a name in slots 2–4. Empty stays empty.</p>
             <div class="compare-slots">
               <div class="compare-lane">
-                <label class="field compare-slot">
-                  <span>1 · Your car</span>
-                  <div class="compare-name-row">
-                    <div class="compare-slot-name" id="compareSlot1Name">—</div>
-                    <span class="compare-win" id="compareWin1" hidden>WIN</span>
-                  </div>
-                </label>
+                <div class="compare-lane-label">1 · Your car</div>
+                <div class="compare-search-pad" aria-hidden="true"></div>
+                <div class="compare-name-row">
+                  <div class="compare-slot-name" id="compareSlot1Name">—</div>
+                  <span class="compare-win" id="compareWin1" hidden>WIN</span>
+                </div>
                 <div class="compare-slip" id="compareSlip1" hidden></div>
               </div>
               <div class="compare-lane">
-                <div class="field compare-slot compare-pick">
-                  <span>2</span>
+                <div class="compare-lane-label">2</div>
+                <div class="compare-search-pad">
                   <input type="search" id="compareSearch2" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
                   <div class="compare-matches" id="compareMatches2" hidden></div>
-                  <div class="compare-name-row">
-                    <div class="compare-picked" id="comparePicked2">Empty</div>
-                    <span class="compare-win" id="compareWin2" hidden>WIN</span>
-                  </div>
-                  <button type="button" class="compare-clear" id="compareClear2" hidden>Clear</button>
                   <input type="hidden" id="compareSlot2" value="" />
+                </div>
+                <div class="compare-name-row">
+                  <div class="compare-picked" id="comparePicked2">Empty</div>
+                  <span class="compare-win" id="compareWin2" hidden>WIN</span>
+                  <button type="button" class="compare-clear" id="compareClear2" hidden>Clear</button>
                 </div>
                 <div class="compare-slip" id="compareSlip2" hidden></div>
               </div>
               <div class="compare-lane">
-                <div class="field compare-slot compare-pick">
-                  <span>3</span>
+                <div class="compare-lane-label">3</div>
+                <div class="compare-search-pad">
                   <input type="search" id="compareSearch3" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
                   <div class="compare-matches" id="compareMatches3" hidden></div>
-                  <div class="compare-name-row">
-                    <div class="compare-picked" id="comparePicked3">Empty</div>
-                    <span class="compare-win" id="compareWin3" hidden>WIN</span>
-                  </div>
-                  <button type="button" class="compare-clear" id="compareClear3" hidden>Clear</button>
                   <input type="hidden" id="compareSlot3" value="" />
+                </div>
+                <div class="compare-name-row">
+                  <div class="compare-picked" id="comparePicked3">Empty</div>
+                  <span class="compare-win" id="compareWin3" hidden>WIN</span>
+                  <button type="button" class="compare-clear" id="compareClear3" hidden>Clear</button>
                 </div>
                 <div class="compare-slip" id="compareSlip3" hidden></div>
               </div>
               <div class="compare-lane">
-                <div class="field compare-slot compare-pick">
-                  <span>4</span>
+                <div class="compare-lane-label">4</div>
+                <div class="compare-search-pad">
                   <input type="search" id="compareSearch4" class="compare-search" placeholder="Search cars…" autocomplete="off" title="Type part of a car name" />
                   <div class="compare-matches" id="compareMatches4" hidden></div>
-                  <div class="compare-name-row">
-                    <div class="compare-picked" id="comparePicked4">Empty</div>
-                    <span class="compare-win" id="compareWin4" hidden>WIN</span>
-                  </div>
-                  <button type="button" class="compare-clear" id="compareClear4" hidden>Clear</button>
                   <input type="hidden" id="compareSlot4" value="" />
+                </div>
+                <div class="compare-name-row">
+                  <div class="compare-picked" id="comparePicked4">Empty</div>
+                  <span class="compare-win" id="compareWin4" hidden>WIN</span>
+                  <button type="button" class="compare-clear" id="compareClear4" hidden>Clear</button>
                 </div>
                 <div class="compare-slip" id="compareSlip4" hidden></div>
               </div>
