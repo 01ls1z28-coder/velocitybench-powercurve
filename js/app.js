@@ -746,6 +746,7 @@
     applyClutchLaunchField(car);
     configurePrimaryGauge(car);
     highlightGarage(car.id);
+    renderEstimateNote(car, null);
     updateCompareSlot1Name(car);
     // Show baked (or working) dyno curve immediately — dense 100-RPM mesh, editable bullets
     syncEvChartMode(car);
@@ -754,6 +755,36 @@
     stashPeakHpBaseline(car, Math.round(hp));
   }
 
+
+  /**
+   * Estimates disclaimer — shown ONLY for garage cars flagged estimatesDisclaimer
+   * (2026 Tesla Roadster trims). Every other car keeps the note hidden.
+   */
+  function renderEstimateNote(car, result) {
+    var el = $('carEstimateNote');
+    if (!el) return;
+    if (!car || !car.estimatesDisclaimer) { el.hidden = true; el.innerHTML = ''; return; }
+    var html = '<strong>Estimates — not a tested car.</strong> Tesla revealed the Roadster on Oct 15, 2026; no instrumented test exists. ' +
+      'Published/reported: RWD, ~3,700 lb, 800+ kW (1,000+ kW top trims), 885 / 1,033 lb-ft, 0–60 claims &lt;1.6 s (Performance) / &lt;0.9 s (Thrust), &gt;230 mph, thrusters &gt;80 kN. ' +
+      'Estimated: torque curve, motor rpm, single ratio, Cd/area, tires, weight split, CG, fan suction (≈1 g, constant), and every thruster input (COPV size/pressure, nozzles, burn). ' +
+      'Tesla-style 0–60 uses a 1-ft rollout; the slip 0–60 has none.';
+    if (car.roadsterAddon && car.roadsterAddon.thruster) {
+      var th = car.roadsterAddon.thruster;
+      html += ' Thrust model: ' + th.tankVolumeL + ' L air COPV at ' + th.fillPressureBar + ' bar, isentropic blowdown through choked nozzles; thrust starts at ' +
+        Math.round(th.thrustPeakN / 1000) + ' kN and tapers as the tank empties; vented gas leaves the car.';
+    }
+    if (result && result.roadster) {
+      var rs = result.roadster;
+      html += '<br />This run: 0–60 ' + (result.zeroToSixty != null ? result.zeroToSixty.toFixed(3) : '—') + ' s (no rollout) · ' +
+        (rs.zeroToSixtyRollout1ft != null ? rs.zeroToSixtyRollout1ft.toFixed(3) : '—') + ' s (1-ft rollout)';
+      if (rs.thruster) {
+        html += ' · thrust burn ' + (rs.thruster.burnEndS != null ? rs.thruster.burnEndS.toFixed(2) : '—') + ' s, ' +
+          rs.thruster.gasMassKg.toFixed(1) + ' kg air vented, impulse ' + (rs.thruster.impulseNs / 1000).toFixed(1) + ' kN·s';
+      }
+    }
+    el.innerHTML = html;
+    el.hidden = false;
+  }
 
   function applyClutchLaunchField(car) {
     if (!car || !$('launchRpm') || !Phys.suggestedClutchLaunchRpm || !Phys.resolveShiftDriveFamily) return;
@@ -1074,6 +1105,13 @@
       cgHeightFeet: base.cgHeightFeet,
       cgHeightPublished: base.cgHeightPublished
     };
+    if (base.estimatesDisclaimer) car.estimatesDisclaimer = true;
+    // Tesla Roadster 2026 add-on (suction + thrusters): carried ONLY from its own
+    // garage entry; physics re-checks the car id, so no other car can enable it.
+    if (base.roadsterAddon) {
+      car.roadsterAddon = JSON.parse(JSON.stringify(base.roadsterAddon));
+      car.wheelbaseFeet = base.wheelbaseFeet;
+    }
     var w = readWeightDistributionFromForm(base);
     car.frontWeightPercent = w.frontWeightPercent;
     car.rearWeightPercent = w.rearWeightPercent;
@@ -2705,6 +2743,7 @@
     }
     var result = Phys.runQuarterMile(car, env);
     state.lastResult = result;
+    renderEstimateNote(car, result);
     state.car = car;
     configurePrimaryGauge(car);
     renderSlip(result, car);

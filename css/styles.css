@@ -2453,3 +2453,16 @@ body > .vb-chrome {
 @media (max-width: 900px) {
   .compare-slots { grid-template-columns: 1fr 1fr; }
 }
+
+/* 2026 Tesla Roadster estimates note (shown only on cars flagged estimatesDisclaimer) */
+.car-estimate-note {
+  margin: 6px 0 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 184, 77, 0.55);
+  border-left: 3px solid #ffb84d;
+  border-radius: 6px;
+  background: rgba(255, 184, 77, 0.08);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.car-estimate-note strong { color: #ffcf85; }

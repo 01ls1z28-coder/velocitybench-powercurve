@@ -1213,6 +1213,126 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     return true;
   }
 
+  /**
+   * ---------------------------------------------------------------------------
+   * 2026 Tesla Roadster ONLY — car-scoped add-on path (credit Jorge Guerra).
+   * Two physical terms that stock PowerCurve does not model:
+   *   1) Fan suction downforce (both trims): a speed-independent normal force
+   *      added to the tire loads (split by static F/R %). ESTIMATE.
+   *   2) Rear cold-gas thrusters (Thrust trim only): COPV blowdown → choked
+   *      converging-diverging nozzles. Thrust acts on the body directly (does
+   *      not go through the tires), and the vented gas mass leaves the car.
+   *
+   * Gate: the add-on is resolved ONLY when car.id is one of ROADSTER_ADDON_IDS
+   * AND car.roadsterAddon.model === ROADSTER_ADDON_MODEL. Any other car (incl.
+   * Custom Builder, id 'custom') gets null and runs the exact stock code path.
+   *
+   * Thruster physics (all inputs are ESTIMATES; Tesla published only ">80 kN"):
+   *   Tank: fixed volume V at fill pressure P0, fill temp T0 (dry air).
+   *     Fill density from Peng-Robinson (Tc 132.5 K, Pc 3.766 MPa, ω 0.035),
+   *     so 700 bar air is ~589 kg/m³ (Z≈1.41), not the ideal-gas 832 kg/m³.
+   *   Blowdown: ISENTROPIC (adiabatic) — a ~1 s vent leaves no time for heat
+   *     in from the tank walls. Gas temp follows T = T0·(ρ/ρ0)^(γ−1) (ideal-gas
+   *     entropy, γ=1.4); pressure from Peng-Robinson at that (ρ, T).
+   *   Throat: choked flow, ṁ = Cd·A*·Γ·√(P·ρ), Γ = √γ·(2/(γ+1))^((γ+1)/(2(γ−1))).
+   *   Nozzle: fixed area ratio ε; exit Mach from ε (supersonic root), exit
+   *     pressure pe = P·(1+(γ−1)/2·Me²)^(−γ/(γ−1)), ve = Me·√(γ·(P/ρ)·Te/T).
+   *   Thrust: F = η·[ṁ·ve + (pe − pa)·Ae]  (pressure term goes negative when
+   *     over-expanded late in the blowdown). Floored at 0.
+   *   Throat area A* is sized so the FIRST-INSTANT thrust equals thrustPeakN
+   *     (the reported 80 kN). Everything after that (taper, burn time) is an
+   *     output of the blowdown, not a fitted number.
+   *   Burn: valves open at t=0 (green) and stay open until tank pressure falls
+   *     to cutoffPa or thrust ≤ 0. Mass loss: car mass −= ṁ·dt each step.
+   * ---------------------------------------------------------------------------
+   */
+  var ROADSTER_ADDON_IDS = { '2026-tesla-roadster': 1, '2026-tesla-roadster-thrust': 1 };
+  var ROADSTER_ADDON_MODEL = 'tesla-roadster-2026-v1';
+  var CG_GAMMA = 1.4, CG_R = 287.05, CG_M = 0.028965;
+  var CG_GAMMA_FN = Math.sqrt(CG_GAMMA) * Math.pow(2 / (CG_GAMMA + 1), (CG_GAMMA + 1) / (2 * (CG_GAMMA - 1)));
+
+  function cgPrPressure(rho, T) {
+    var Ru = 8.314462618, Tc = 132.5, Pc = 3.766e6, w = 0.035;
+    var vm = CG_M / rho;
+    var k = 0.37464 + 1.54226 * w - 0.26992 * w * w;
+    var al = Math.pow(1 + k * (1 - Math.sqrt(T / Tc)), 2);
+    var a = 0.45724 * Ru * Ru * Tc * Tc / Pc * al, b = 0.07780 * Ru * Tc / Pc;
+    return Ru * T / (vm - b) - a / (vm * vm + 2 * b * vm - b * b);
+  }
+  function cgPrDensity(P, T) {
+    var lo = 1e-4, hi = 1000;
+    for (var i = 0; i < 120; i++) { var m = 0.5 * (lo + hi); if (cgPrPressure(m, T) < P) lo = m; else hi = m; }
+    return 0.5 * (lo + hi);
+  }
+  function cgAreaRatio(M) {
+    var g = CG_GAMMA;
+    return (1 / M) * Math.pow((2 / (g + 1)) * (1 + 0.5 * (g - 1) * M * M), (g + 1) / (2 * (g - 1)));
+  }
+  function cgExitMach(eps) {
+    var lo = 1.0000001, hi = 20;
+    for (var i = 0; i < 100; i++) { var m = 0.5 * (lo + hi); if (cgAreaRatio(m) < eps) lo = m; else hi = m; }
+    return 0.5 * (lo + hi);
+  }
+  /** Per-unit-throat-area nozzle state at tank (P, ρ, T). */
+  function cgNozzle(P, rho, T, cfg, Me) {
+    var g = CG_GAMMA;
+    var ratioT = 1 + 0.5 * (g - 1) * Me * Me;
+    var pe = P * Math.pow(ratioT, -g / (g - 1));
+    var ve = Me * Math.sqrt(g * (P / rho) / ratioT);
+    var mdotPerA = cfg.dischargeCoeff * CG_GAMMA_FN * Math.sqrt(P * rho);
+    var fPerA = cfg.thrustEfficiency * (mdotPerA * ve + (pe - cfg.ambientPa) * cfg.areaRatio);
+    return { mdotPerA: mdotPerA, fPerA: fPerA, pe: pe, ve: ve };
+  }
+  function coldGasThrusterInit(cfg) {
+    var V = cfg.tankVolumeL / 1000;
+    var rho0 = cgPrDensity(cfg.fillPressurePa, cfg.fillTempK);
+    var Me = cgExitMach(cfg.areaRatio);
+    var n0 = cgNozzle(cfg.fillPressurePa, rho0, cfg.fillTempK, cfg, Me);
+    var aStar = cfg.thrustPeakN / n0.fPerA;
+    return {
+      cfg: cfg, V: V, rho0: rho0, rho: rho0, T: cfg.fillTempK, P: cfg.fillPressurePa,
+      gasMass0: rho0 * V, gasMass: rho0 * V, Me: Me, aStar: aStar,
+      throatDiaPerNozzleMm: Math.sqrt(4 * aStar / cfg.nozzleCount / Math.PI) * 1000,
+      active: true, burnEnd: null, impulse: 0, peakThrust: 0, F: 0, mdot: 0
+    };
+  }
+  /** Advance the thruster one step; returns thrust (N). Mutates st. */
+  function coldGasThrusterStep(st, dt, t) {
+    if (!st.active) { st.F = 0; st.mdot = 0; return 0; }
+    var n = cgNozzle(st.P, st.rho, st.T, st.cfg, st.Me);
+    var F = n.fPerA * st.aStar;
+    var mdot = n.mdotPerA * st.aStar;
+    if (F <= 0 || st.P <= st.cfg.cutoffPa || st.gasMass <= 0) {
+      st.active = false; st.burnEnd = t; st.F = 0; st.mdot = 0; return 0;
+    }
+    var dm = Math.min(mdot * dt, st.gasMass);
+    st.gasMass -= dm;
+    st.rho = st.gasMass / st.V;
+    st.T = st.cfg.fillTempK * Math.pow(st.rho / st.rho0, CG_GAMMA - 1);
+    st.P = cgPrPressure(st.rho, st.T);
+    st.impulse += F * dt;
+    if (F > st.peakThrust) st.peakThrust = F;
+    st.F = F; st.mdot = dm / dt;
+    return F;
+  }
+  function resolveRoadsterAddon(car) {
+    if (!car || !Object.prototype.hasOwnProperty.call(ROADSTER_ADDON_IDS, String(car.id))) return null;
+    var a = car.roadsterAddon;
+    if (!a || a.model !== ROADSTER_ADDON_MODEL) return null;
+    var out = { suctionN: Math.max(0, Number(a.suctionDownforceLbf) || 0) * 4.4482216152605, thruster: null };
+    if (car.id === '2026-tesla-roadster-thrust' && a.thruster) {
+      var th = a.thruster;
+      out.thruster = coldGasThrusterInit({
+        tankVolumeL: Number(th.tankVolumeL), fillPressurePa: Number(th.fillPressureBar) * 1e5,
+        fillTempK: Number(th.fillTempK), areaRatio: Number(th.nozzleAreaRatio),
+        dischargeCoeff: Number(th.dischargeCoeff), thrustEfficiency: Number(th.thrustEfficiency),
+        ambientPa: 101325, cutoffPa: Number(th.cutoffBar) * 1e5,
+        thrustPeakN: Number(th.thrustPeakN), nozzleCount: Number(th.nozzleCount) || 4
+      });
+    }
+    return out;
+  }
+
   function runQuarterMile(car, env) {
     env = env || {};
     var result = emptyResult(car, env);
@@ -1547,6 +1667,14 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     var peakG = 0, peakHP = 0, peakTQ = 0;
     var sampleAcc = 0;
     var rollBase = 0.015 * mass * G;
+    // Tesla Roadster 2026 only (null for every other car → stock path untouched).
+    var rsAddon = resolveRoadsterAddon(car);
+    var rsGasMass = 0, rsThrustF = 0, rsT1ft = null, rsTrace = null;
+    if (rsAddon && rsAddon.thruster) {
+      // Car curb weight includes the full gas charge; it leaves as it vents.
+      rsGasMass = rsAddon.thruster.gasMass0;
+      rsTrace = [];
+    }
     var vmaxHold = 0;
     var vmaxDone = false;
     var vmaxReason = '';
@@ -1988,6 +2116,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       var nMin = mass * G * 0.08;
       if (nFront < nMin) nFront = nMin;
       if (nRear < nMin) nRear = nMin;
+      if (rsAddon && rsAddon.suctionN > 0) {
+        nFront += rsAddon.suctionN * (frontPct / 100.0);
+        nRear += rsAddon.suctionN * (rearPct / 100.0);
+      }
 
       var mu = muBase;
       if (inLaunch && launchMuMult !== 1.0) {
@@ -2100,6 +2232,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       var applied = dlForce;
 
       var net = applied - dragF - rollF;
+      if (rsAddon && rsAddon.thruster) {
+        rsThrustF = coldGasThrusterStep(rsAddon.thruster, DT, t);
+        net += rsThrustF;
+      }
       // Allow negative net after launch so aero can balance at Vmax
       if (net < 0 && !hit1320 && v < 5.0) net = 0;
       var a = net / mass;
@@ -2112,6 +2248,16 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
       }
       prevA = a;
 
+      if (rsAddon && rsAddon.thruster) {
+        // Vented gas leaves the car (mass loss).
+        var rsLeft = rsAddon.thruster.gasMass;
+        mass -= (rsGasMass - rsLeft);
+        rsGasMass = rsLeft;
+        if (rsTrace && (Math.round(t * 1000) % 20 === 0)) {
+          rsTrace.push({ t: t, thrustN: rsThrustF, tankBar: rsAddon.thruster.P / 1e5,
+            tankK: rsAddon.thruster.T, gasKg: rsLeft, massKg: mass, mph: v * MPS_TO_MPH });
+        }
+      }
       v += a * DT;
       if (v < 0) v = 0;
       // OEM/custom electronic speed limiter — hard clamp (not aero equilibrium)
@@ -2136,6 +2282,7 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
         peakMphFt = feet;
       }
 
+      if (rsAddon && rsT1ft == null && dist >= FEET_TO_M) rsT1ft = t;
       if (!hit60 && dist >= DIST_60) { result.sixtyFootTime = t; hit60 = true; }
       if (!hit330 && dist >= DIST_330) { result.threeThirtyTime = t; hit330 = true; }
       if (!hit660 && dist >= DIST_660) {
@@ -2243,6 +2390,23 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     }
     if (spinN > 0) result.wheelspinPercent = (spinSum / spinN) * 100.0;
     result.zeroToSixty = t060;
+    if (rsAddon) {
+      result.roadster = {
+        suctionDownforceN: rsAddon.suctionN,
+        zeroToSixtyRollout1ft: (t060 != null && rsT1ft != null) ? (t060 - rsT1ft) : null,
+        oneFootTime: rsT1ft
+      };
+      if (rsAddon.thruster) {
+        var th = rsAddon.thruster;
+        result.roadster.thruster = {
+          tankVolumeL: th.cfg.tankVolumeL, fillPressureBar: th.cfg.fillPressurePa / 1e5,
+          fillDensityKgM3: th.rho0, gasMassKg: th.gasMass0, gasLeftKg: th.gasMass,
+          throatAreaCm2: th.aStar * 1e4, throatDiaPerNozzleMm: th.throatDiaPerNozzleMm,
+          exitMach: th.Me, peakThrustN: th.peakThrust, impulseNs: th.impulse,
+          burnEndS: th.burnEnd, endTankBar: th.P / 1e5, endTankK: th.T, trace: rsTrace
+        };
+      }
+    }
     result.zeroToHundred = t0100;
     result.sixtyToOneThirty = t60_130;
     result.hundredToOneFifty = t100_150;
@@ -2311,6 +2475,10 @@ Tremec_TR6060_ZR1_MH3: { name: 'Tremec TR-6060 MH3 (C6 ZR1 close-ratio)', gears:
     driveForceMultSmooth: driveForceMultSmooth,
     softTractionForce: softTractionForce,
     tireGripForType: tireGripForType,
+    ROADSTER_ADDON_MODEL: ROADSTER_ADDON_MODEL,
+    coldGasThrusterInit: coldGasThrusterInit,
+    coldGasThrusterStep: coldGasThrusterStep,
+    resolveRoadsterAddon: resolveRoadsterAddon,
     tireLabelForType: tireLabelForType,
     tireKineticParams: tireKineticParams,
     trackPrepLabel: trackPrepLabel,
